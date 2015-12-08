@@ -6,5 +6,137 @@
 \chapter{Potenzreihen-Methode\label{chapter:potenzreihen}}
 \lhead{}
 \rhead{Potenzreihen-Methode}
-\section{Analytische L"osungen}
-\section{Trigonometrische Funktionen}
+Die meisten Differentialgleichungen k"onnen nicht in geschlossener
+Form gel"ost werden.
+Viele davon sind aber von generischer Bedeutung, sie treten
+in verschiedenen Anwendungen immer wieder auf, und verdienen daher
+genauer studiert zu werden.
+In solchen F"allen kann man die L"osungsfunktionen einfach also
+neue interessante Funktionen definieren, ihnen einen Namen geben
+und sie verwenden wie zum Beispiel die trigonometrischen Funktionen.
+Um sie aber auch berechnen zu k"onnen, braucht man irgend eine 
+effiziente Darstellung.
+Potenzreihen haben sich daf"ur als besonders geeignet herausgestellt.
+
+In diesem Kapitel wird gezeigt, wie Differentialgleichungen mit Potenzreihen
+gel"ost werden k"onnen.
+Es zeigt, dass die trigonometrischen Funktionen als Resultat
+dieser L"osungsmethode gefunden werden, und es verallgemeinert die
+Methode soweit, dass auch kompliziertere Funktionen wie die
+Bessel-Funktionen damit verstanden werden k"onnen.
+
+\section{Analytische L"osungen
+\label{section:potenzreihen:analytisch}}
+
+\section{Trigonometrische Funktionen
+\label{section:potenzreihen:trigo}}
+
+\section{Verallgemeinerte Potenzreihen
+\label{section:potenzreihen:verallgemeinert}}
+Viele Differentialgleichungen in der Anwendungen sind von der Form
+\begin{equation}
+x^2y''+p(x)xy'+q(x)y=0,
+\label{potenzreihen:verallgemeinert-dgl}
+\end{equation}
+wobei $p(x)$ und $q(x)$ beliebige Funktionen von $x$ sind.
+Das h"auffige Auftreten der Kombinationen $x^2y''$ und $xy'$ in Anwendungen
+wird durch ein Dimensionsargument verst"andlich.
+Schreiben wir $[u]$ f"ur die Masseinheit einer Gr"osse, dann gilt
+\begin{equation*}
+\begin{aligned}
+\biggl[\frac{dy}{dx}\biggr]
+&=
+\frac{[y]}{[x]}
+&
+&\Rightarrow&
+[xy']&=[y]\\
+\biggl[\frac{d^2y}{dx^2}\biggr]
+&=
+\frac{[y]}{[x]^2}
+&
+&\Rightarrow&
+[x^2y'']&=[y]
+\end{aligned}
+\end{equation*}
+Wenn zwischen den Termen $x^2y''$, $xy'$ und $y$ irgend ein
+gesetzm"assiger Zusammenhang bestehen soll, dann ist die wohl
+einfachste Form davon eine lineare Beziehung mit dimensionslosen
+Koeffizienten wie in~(\ref{potenzreihen:verallgemeinert-dgl}).
+
+Die Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+liefert f"ur den Punkt $x=0$ keinen Wert von $y''$.
+Eine L"osungsfunktion $y(x)$, die die Differentialgleichung f"ur
+$x\ne 0$ erf"ullt, erf"ullt sie f"ur alle $x$, wenn $y(0)=0$ der
+wenn $q(0)=0$ ist. 
+Insbesondere haben die Ableitungen an der Stelle $x=0$ keinen
+Einfluss darauf, ob die Differentialgleichung erf"ullt ist.
+Man spricht auch von einer ausserwesentlichen Singularit"at an
+der Stelle $x=0$.
+Wir k"onnen allerdings nicht mehr annehmen, dass die L"osung als
+Potenzreihe in $x$ geschrieben werden kann, denn eine solche
+L"osung w"urde beliebige Ableitungen im Punkt $x=0$ haben, was 
+die Differentialgleichung nicht garantieren kann.
+
+Wir suchen jetzt eine L"osung der
+Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+in Form einer verallgemeinerten Potenzreihe der Form
+\begin{equation}
+y(x)=x^\varrho\sum_{k=0}^\infty a_kx^k.
+\label{potenzreihen:verallgemeinert}
+\end{equation}
+Ausser den Koeffizienten $a_k,\;k\ge 0$ ist auch der Exponent
+$\varrho$ zu bestimmen.
+Wir k"onnen $y(x)$ und seine Ableitungen auch als
+\begin{equation}
+\left.
+\begin{aligned}
+y(x)
+&=
+\sum_{k=0}^\infty a_kx^{\varrho+k}
+\\
+y'(x)
+&=
+\sum_{k=0}^\infty (\varrho+k)a_kx^{\varrho+k-1}
+\\
+y''(x)
+&=
+\sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k-2}
+\end{aligned}
+\right\}
+\label{potenzreihen:verallgemeinert-ableitungen}
+\end{equation}
+schreiben, und vermeiden so eine explodierende Zahl von Termen, die
+die Produktregel hervorbringen w"urde.
+Wir setzen (\ref{potenzreihen:verallgmeinert-ableitungen})
+in die Differentialgleichung ein und erhalten
+\begin{equation}
+\sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
++p(x)
+\sum_{k=0}^\infty (\varrho+k)a_kx^{\varrho+k}
++q(x)
+\sum_{k=0}^\infty a_kx^{\varrho+k}
+=0
+\label{potenzreihen:verallgemeinert-reihen}
+\end{equation}
+Offenbar m"ussen wir jetzt zus"atzliche Annahmen "uber die
+Funktionen $p(x)$ und $q(x)$ machen.
+Wir nehmen an, dass sich beide als Potenzreihen schreiben lassen,
+wir setzen
+\begin{align*}
+p(x)&=\sum_{k=0}^\infty p_kx^k
+&
+q(x)&=\sum_{k=0}^\infty q_kx^k
+\end{align*}
+Einsetzen in die Gleichungen~(\ref{potenzreihen:verallgemeinert-reihen})
+ergibt
+\begin{equation}
+\sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
++\sum_{s=0}^\infty
+\sum_{k=0}^\infty p_s(\varrho+k)a_kx^{\varrho+k+s}
++
+\sum_{s=0}^\infty
+\sum_{k=0}^\infty q_sa_kx^{\varrho+k+s}
+=0.
+\end{equation}
+
+
