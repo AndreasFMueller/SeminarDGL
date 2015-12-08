@@ -27,9 +27,87 @@ Bessel-Funktionen damit verstanden werden k"onnen.
 
 \section{Analytische L"osungen
 \label{section:potenzreihen:analytisch}}
+Wir setzen daher die L"osung in Form einer Potenzreihe als
+\begin{equation}
+y(x)
+=
+\sum_{k=0}^\infty a_kx^k
+\label{potenzreihen:ansatz}
+\end{equation}
+an, und versuchen die Koeffizienten aus der Differentialgleichung mit
+Hilfe eines Koeffizientenvergleichs zu bestimmen.
+Die Ableitungen von $y(x)$ sind
+\begin{equation}
+\begin{aligned}
+y'(x)
+&=
+\sum_{k=1}^\infty a_kkx^{k-1}
+=
+\sum_{k=0}^\infty a_{k+1}(k+1)x^k
+\\
+y''(x)
+&=
+\sum_{k=2}^\infty a_kk(k-1)x^{k-2}
+=
+\sum_{k=0}^\infty a_{k+2}(k+1)(k+2)x^k 
+\\
+&\vdots
+\end{aligned}
+\label{potenzreihen:ableitungen}
+\end{equation}
 
 \section{Trigonometrische Funktionen
 \label{section:potenzreihen:trigo}}
+Die trigonometrischen Funktionen $\sin x$ und $\cos x$ sind L"osungen
+der Schwingungsdifferentialgleichung
+\begin{equation}
+\begin{aligned}
+y''&=-y
+&&\text{oder}&
+y''+y&=0.
+\end{aligned}
+\label{potenzreihen:schwingungsdgl}
+\end{equation}
+Die Potenzreihen-Methode erlaubt uns, direkt Potenzreihen f"ur die
+L"osungen von (\ref{potenzreihen:schwingungsdgl}) zu finden.
+Wir setzen den Ansatz (\ref{potenzreihen:ansatz}) und die zweite Ableitung
+(\ref{potenzreihen:ableitungen}) in die Schwingungsdifferentialgleichung
+(\ref{potenzreihen:schwingungsdgl}) ein und erhalten
+\begin{equation}
+\sum_{k=0}^\infty a_{k+2}(k+1)(k+2)x^k 
++
+\sum_{k=0}^\infty a_kx^k
+=0.
+\end{equation}
+Koeffizientenvergleich ergibt die Rekursionsformel
+\begin{equation}
+\begin{aligned}
+\sum_{k=0}^\infty \bigl(a_{k+2}(k+1)(k+2) + a_k\bigr)x^k
+&=0
+&&\Rightarrow&
+a_{k+2}=-a_k\frac1{(k+1)(k+2)}.
+\end{aligned}
+\end{equation}
+Damit die Koeffizienten eindeutig bestimmt sind, m"ussen $a_0$
+und $a_1$ festgelegt werden, also der Funktionswert  und die erste
+Ableitung bei $x=0$.
+Wir finden
+\begin{equation*}
+\begin{aligned}
+a_0&=1,&a_1&=0
+&&\Rightarrow&
+a_{2k}&=\frac{(-1)^k}{(2k)!},&a_{2k+1}&=0
+&&\Rightarrow&
+y(x)&=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\dots=\cos x
+\\
+a_0&=0,&a_1&=1
+&&\Rightarrow&
+a_{2k}&=0,&a_{2k+1}&=\frac{(-1)^k}{(2k+1)!}
+&&\Rightarrow&
+y(x)&=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots=\sin x,
+\end{aligned}
+\end{equation*}
+die bekannten Taylor-Reihenentwicklungen der trigonometrischen Funktionen.
 
 \section{Verallgemeinerte Potenzreihen
 \label{section:potenzreihen:verallgemeinert}}
@@ -39,7 +117,7 @@ x^2y''+p(x)xy'+q(x)y=0,
 \label{potenzreihen:verallgemeinert-dgl}
 \end{equation}
 wobei $p(x)$ und $q(x)$ beliebige Funktionen von $x$ sind.
-Das h"auffige Auftreten der Kombinationen $x^2y''$ und $xy'$ in Anwendungen
+Das h"aufige Auftreten der Kombinationen $x^2y''$ und $xy'$ in Anwendungen
 wird durch ein Dimensionsargument verst"andlich.
 Schreiben wir $[u]$ f"ur die Masseinheit einer Gr"osse, dann gilt
 \begin{equation*}
@@ -77,6 +155,40 @@ Potenzreihe in $x$ geschrieben werden kann, denn eine solche
 L"osung w"urde beliebige Ableitungen im Punkt $x=0$ haben, was 
 die Differentialgleichung nicht garantieren kann.
 
+Setzt man $y(x)$ als Potenzreihe der Form~(\ref{potenzreihen:ansatz}) an,
+dann beginnt die Potenzreihe von $x^2y''$ mit dem Term $a_2x^2$,
+und $xy'$ beginnt mit $a_1x$.
+Daraus folgt, dass nur der Term mit $y$ der
+Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+einen konstanten Term hat, also $a_0=0$.
+Teilt man die Differentialgleichung durch $x$ und l"asst $x$ gegen $0$
+streben, bekommt man
+\begin{align*}
+0&=
+\lim_{x\to 0}\biggl(
+\underbrace{xy''(x)}_{\to 0}+p(x)y'(x)+q(x)\underbrace{\frac{y(x)}{x}}_{\to y'(0)}\biggr)
+\\
+&=
+p(0)y'(0)+q(0)y'(0)
+=(p(0)+q(0))a_1
+\end{align*}
+so dass auch $a_1=0$ sein muss.
+Damit kann man auch noch durch $x^2$ teilen und bekommt
+\begin{align*}
+0&=
+\lim_{x\to 0}\biggl(
+y''(x)+p(x)\underbrace{\frac{y'(x)}{x}}_{\to y''(0)}+q(x)\frac{y(x)}{x^2}
+\biggr)
+\\
+&=y''(0)+p(0)y''(0)+q(0)a_2
+=2a_2+p(0)2a_2+q(0)a_2
+=(2+2p(0)+q(0))a_2
+\end{align*}
+also ist auch $a_2=0$, das Argument l"asst sich offenbar fortsetzen, 
+im Allgemeinen wird $a_k=0\;\forall k$ oder $y(x)=0$.
+Der einfache Potenzreihenansatz~(\ref{potenzreihen:ansatz}) f"uhrt
+daher nicht zum Ziel.
+
 Wir suchen jetzt eine L"osung der
 Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
 in Form einer verallgemeinerten Potenzreihe der Form
@@ -84,8 +196,27 @@ in Form einer verallgemeinerten Potenzreihe der Form
 y(x)=x^\varrho\sum_{k=0}^\infty a_kx^k.
 \label{potenzreihen:verallgemeinert}
 \end{equation}
+\index{Potenzreihe!verallgemeinerte}%
 Ausser den Koeffizienten $a_k,\;k\ge 0$ ist auch der Exponent
 $\varrho$ zu bestimmen.
+Das Problem ist so noch nicht eindeutig gestellt, denn es gilt zum Beispiel
+\[
+x^{-2}\bigl(x^2 + x^3 + x^4 + \dots\bigr)
+=
+x^{0}\bigl(1+x + x^2 + \dots\bigr),
+\]
+die gleiche Funktion wurde hier einmal mit $\varrho=-2$ und einmal
+mit $\varrho=0$ geschrieben.
+Um diese Zweideutigkeit zu vermeiden,
+verlangen wir daher zus"atzlich, dass $a_0\ne 0$.
+
+Aus der allgemeinen Theorie der linearen Differentialgleichungen
+ist bekannt, dass die Gleichung (\ref{potenzreihen:verallgemeinert-dgl})
+zwei linear unabh"angige L"osungsfunktionen haben wird,
+welche im Allgemeinen verschiedene $\varrho$ verwenden werden.
+Da jede L"osung sich als Linearkombination dieser zwei L"osungen schreiben
+l"asst, k"onnen wir f"ur die Basisl"osungen zus"atzlich $a_0=1$ fordern.
+
 Wir k"onnen $y(x)$ und seine Ableitungen auch als
 \begin{equation}
 \left.
@@ -106,8 +237,9 @@ y''(x)
 \label{potenzreihen:verallgemeinert-ableitungen}
 \end{equation}
 schreiben, und vermeiden so eine explodierende Zahl von Termen, die
-die Produktregel hervorbringen w"urde.
-Wir setzen (\ref{potenzreihen:verallgmeinert-ableitungen})
+die Produktregel aus (\ref{potenzreihen:verallgemeinert})
+hervorbringen w"urde.
+Wir setzen (\ref{potenzreihen:verallgemeinert-ableitungen})
 in die Differentialgleichung ein und erhalten
 \begin{equation}
 \sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
@@ -118,18 +250,28 @@ in die Differentialgleichung ein und erhalten
 =0
 \label{potenzreihen:verallgemeinert-reihen}
 \end{equation}
+Die Koeffizienten $a_k$ sollen mit Hilfe eines Koeffizientenvergleichs
+bestimmt werden.
+Wie in fr"uheren Beispielen kann man nicht erwarten, dass die $a_k$
+durch die Differentialgleichung alleine eindeutig bestimmt sind.
+Vielmehr ist davon auszugehen, dass die ersten zwei Koeffizienten
+als Parameter eingehen, und erst durch die Anfangs- oder Randbedingungen
+festgelegt werden k"onnen.
+
 Offenbar m"ussen wir jetzt zus"atzliche Annahmen "uber die
 Funktionen $p(x)$ und $q(x)$ machen.
 Wir nehmen an, dass sich beide als Potenzreihen schreiben lassen,
 wir setzen
-\begin{align*}
-p(x)&=\sum_{k=0}^\infty p_kx^k
+\begin{equation*}
+\begin{aligned}
+p(x)&=\sum_{k=0}^\infty p_kx^k&&\text{und}
 &
-q(x)&=\sum_{k=0}^\infty q_kx^k
-\end{align*}
+q(x)&=\sum_{k=0}^\infty q_kx^k.
+\end{aligned}
+\end{equation*}
 Einsetzen in die Gleichungen~(\ref{potenzreihen:verallgemeinert-reihen})
 ergibt
-\begin{equation}
+\begin{equation*}
 \sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
 +\sum_{s=0}^\infty
 \sum_{k=0}^\infty p_s(\varrho+k)a_kx^{\varrho+k+s}
@@ -137,6 +279,73 @@ ergibt
 \sum_{s=0}^\infty
 \sum_{k=0}^\infty q_sa_kx^{\varrho+k+s}
 =0.
+\end{equation*}
+Der kleinste m"ogliche Exponent von $x$ ist $\varrho$, f"ur $k=0$ und $s=0$.
+Koeffizientenvergleich in diesem Fall liefert
+\begin{equation}
+\varrho(\varrho-1)+p_0\varrho +q_0=0,
+\label{potenzreihen:indexgleichung}
 \end{equation}
+wobei wir $a_0=1$ verwendet haben.
+Die quadratische Gleichung (\ref{potenzreihen:indexgleichung}) heisst auch die
+{\em Indexgleichung}.
+\index{Indexgleichung}
+Sie hat im allgemeinen zwei verschiedenen L"osungen f"ur die beiden
+linear unabh"angigen L"osungen der Differentialgleichungen.
+
+\begin{beispiel}
+Als Beispiel nehmen wir an, dass $p(x)=p_0$ und $q(x)=q_0$ konstant sind.
+Dann verschwinden die Summen "uber $s$ und die Gleichungen f"ur den
+Koeffizientenvergleich besagen nur noch:
+\begin{equation}
+\begin{aligned}
+(\varrho + k)(\varrho+k-1)a_k+p_0(\varrho + k)a_k+q_0a_k&=0
+&&\Rightarrow&
+((\varrho + k)(\varrho+k-1)+p_0(\varrho + k)+q_0)a_k&=0
+\end{aligned}
+\end{equation}
+auch dies ist eine quadratische Gleichung f"ur $\varrho$, sie wird
+aber auch erf"ullt f"ur $a_k=0$ mit $k>0$.
+Multiplizieren wir aus, erhalten wir
+\[
+(\varrho(\varrho - 1) + k\varrho+k(\varrho-1)+k^2+p_0\varrho + p_0k+q_0)a_k=0
+\]
+Setzen wir die Indexgleichung ein, erhalten wir
+\[
+(k+(2\varrho-1)+p_0)ka_k=0.
+\]
+Der Klammerausdruck ist quadratisch in $k$, er verschwindet nur f"ur
+die Werte $k=0$ und $k=-p_0-(2\varrho-1)$, es kann also h"ochstens noch
+ein weiterer Koeffizient $a_k$ von $0$ verschieden sein, und zwar genau
+dann, wenn $-p_0-(2\varrho-1)$ ganzzahlig ist.
+\end{beispiel}
+
+\subsection{Bessel-Gleichung}
+Die Besselsche Differentialgleichung
+\begin{equation}
+x^2y''+xy'+(x^2-n^2)y=0
+\label{potenzreihen:verallgemeinert-bessel}
+\end{equation}
+ist ein Beispiel einer Differentialgleichung der
+Form~(\ref{potenzreihen:verallgemeinert-dgl}) mit
+$p(x)=1$ und $q(x)=x^2-n^2$.
+Die Indexgleichung~(\ref{potenzreihen:indexgleichung}) wird in diesem Fall zu
+\begin{equation}
+\begin{aligned}
+\varrho(\varrho - 1) + \varrho -n^2&=0
+&&\Rightarrow&
+\varrho^2-n^2&=0
+&&\Rightarrow&
+\varrho&=\pm n.
+\end{aligned}
+\label{potenzreihen:bessel-indexgleichung}
+\end{equation}
+Die Besselsche Differentialgleichung wird also zwei linear
+unabh"angige L"osungen
+$J_n(x)$ und $J_{-n}(x)$ haben, die in der Form
+\[
+J_{\pm n}(x)=x^{\pm n}\sum_{k=0}^\infty a_kx^k,\qquad a_0=1
+\]
+geschrieben werden k"onnen.
 
 
