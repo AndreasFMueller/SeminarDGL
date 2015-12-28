@@ -190,6 +190,52 @@ sehr viel kleineren Anzahl von Schritten eine viel gr"ossere Genaugikeit
 der Approximations zu erreichen.
 
 \section{Fehler-Entwicklung numerischer L"osungen}
+Wir betrachten wieder die Differentialgleichung~(\ref{numerik:eulerdgl})
+und versuchen, den Fehler eines N"aherungsverfahrens zu bestimmen,
+welches Schritte der Gr"osse $h$ durchf"uhrt, um den Wert $y(x)$
+zu approximieren.
+
+Das Euler-Verfahren verwendet Schritte der Form
+\[
+y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}}.
+\]
+In jedem einzelnen Schritt entsteht ein Fehler, dessen Gr"osse wir
+aus der Taylor-Entwicklung
+\[
+y(x+\Delta x)=
+y(x) + y'(x)\cdot \Delta x + R(x) \Delta x^2
+\]
+absch"atzen k"onnen.
+Die Funktion $R(x)$ ist beschr"ankt und beschreibt den verbleibenden
+Fehler.
+Um $y(x)$ zu approximieren, m"ussen $n=x/h$ Schritte der Schrittweite
+$h$ durchgef"uhrt werden, von denen jeder einen Fehler
+von der Gr"ossenordnung $R(x)h^2$ hat.
+Der Gesamtfehler ist daher von der Gr"ossenordnung
+\[
+y(x)-y_n=O\biggl(R(x)h^2\frac{x}h\biggr)=O(h),
+\]
+er ist also von erster Ordnung in $h$.
+Um eine zus"atzliche Stelle Genauigkeit zu erhalten, muss man also zehnmal
+so viele Schritte durchf"uhren, wodurch auch wieder Rundungsfehler
+eingef"uhrt werden.
+
+K"onnte man den Fehler des Einzelschrittes wesentlich verkleinern, w"urde
+auch die Abh"angigkeit des Fehlers des Verfahrens vorteilhafter.
+W"are der Fehler des Einzelschrittes $O(h^k)$ statt $O(h^2)$, dann
+w"are der Gesamtfehler des Verfahrens nur noch $O(h^{k-1})$.
+F"ur $k=3$ bedeutet dies, dass eine Halbierung der Schrittweite
+zwar doppelt so viele Schritte braucht, aber auch, dass in jedem
+Schritt nur ein Achtel des Fehlers auftritt.
+Der Gesamtfehler ist also nur ein Viertel.
+Mit zehnmal mehr Arbeit kann man also nicht nur eine Stelle an
+Genauigkeit gewinnen, sondern gleich deren zwei.
+Man spricht von einem quadratischen Verfahren oder einem Verfahren
+zweiter Ordnung.
+In der Praxis werden sogar Verfahren vierter und f"unfter Ordnung
+verwendet, so dass eine zehnmal kleinere Schrittweite zu gleich
+vier Stellen Genauigkeitsgewinn f"uhren.
+
 \section{Einschritt-Verfahren}
 \section{Mehrschritt-Verfahren}
 \section{Finite Elemente}
