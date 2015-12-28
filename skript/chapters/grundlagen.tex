@@ -7,8 +7,182 @@
 \label{chapter:grundlagen}}
 \lhead{}
 \rhead{Grundlagen}
-\section{Differentialgleichungen}
-\section{Anfangswertprobleme}
-\section{Randwertprobleme}
-\section{Analytische L"osungsverfahren}
+\section{Differentialgleichungen\label{section:differentialgleichungen}}
+Eine gew"ohnliche Differentialgleichung f"ur eine reellwertige
+Funktion $y(x)$ stellt einen Zusammenhang her zwischen der Funktion
+und ihren Ableitungen.
+Wir schreiben die Ableitungen als $y'$, $y''$, $y'''$ und $y^{(n)}$
+f"ur die $n$-te Ableitung.
+Wir lassen oft das Argument der Funktion weg.
+Beispiele von Differentialgleichungen sind
+\begin{align*}
+y'&=-Ny
+&&\text{Ordnung: $1$}
+\\
+y''&=-\omega^2 y
+&&\text{Ordnung: $2$}
+\\
+x^2y''+xy'+(x^2-n^2)y&=0
+&&\text{Ordnung: $2$}
+\end{align*}
+Die Abh"angigkeit kann in expliziter Form als
+\begin{equation}
+y^{(n)}=f(x,y,y',\dots,y^{(n-1)})
+\label{grundlagen:explizit}
+\end{equation}
+oder in impliziter Form
+\[
+F(x,y,y',\dots,y^{(n)})=0
+\]
+gegeben sein.
+Die Ordnung einer Differentialgleichung ist die h"ochste vorkommende
+Ableitung.
 
+Insbesondere in Anwendungen in der Physik ist die Zeit die
+unabh"angige Variable.
+Die abh"angige Variable ist dann zum Beispiel die Ortskoordinate
+$x(t)$ und wir bezeichnen ihre Ableitungen mit $\dot{x}(t)$ f"ur
+die Geschwindigkeit, $\ddot{x}(t)$ f"ur die Beschleunigung.
+Dieses Beispiel suggeriert auch, dass die abh"angige Variable 
+ein Vektor sein kann, den man als den Ortsvektor eines Teilchens
+interpretieren kann.
+Die Funktion $f(t,x,\dots,x^{(n-1)})$ ist dann auch vektorwertig, und
+alle Argumente ausser dem ersten von $f$ sind vektorwertig.
+
+Eine Differentialgleichung $n$-ter Ordnung f"ur eine skalare Funktion
+kann in eine Vektor-Differentialgleichung erster Ordnung f"ur eine
+$n$-dimensionale vektorwertige Funktion umgewandelt werden.
+Ist $y(x)$ die gesuchte Funktion in der
+Differentialgleichung~(\ref{grundlagen:explizit}), dann kann man
+den Vektor
+\[
+u(x)=\begin{pmatrix}
+y(x)\\y'(x)\\\vdots\\y^{(n-1)}(x)
+\end{pmatrix}
+\in\mathbb R^n
+\]
+bilden.
+Er erf"ullt die Differentialgleichung
+\begin{equation}
+\frac{d}{dx}\begin{pmatrix}
+y\\y'\\\vdots\\y^{(n-1)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y'\\y''\\\vdots\\y^{(n)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+y'\\y''\\\vdots\\f(x,y,y',\dots,y^{(n-1)}.
+\end{pmatrix}
+\label{grundlagen:vektordgl}
+\end{equation}
+Der Vektor auf der rechten Seite h"ang nur von $x$, der Funktion $y$
+und ihren Ableitungen bis zur $n-1$-ten Ordnung ab, also von $u$, man
+kann (\ref{grundlagen:vektordgl}) daher als
+\begin{equation}
+\frac{d}{dx}u=\tilde{f}(x,u)
+\end{equation}
+schreiben.
+
+\section{Anfangswertprobleme\label{section:anfangswertprobleme}}
+
+\section{Randwertprobleme\label{section:randwertprobleme}}
+
+\section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
+\subsection{Separation der Variablen}
+Differentialgleichungen erster Ordnung lassen sich oft durch sogenannte
+Trennung der Variablen auf die Berechnung von Integralen reduzieren.
+Dank der Schreibweise der Ableitung als Differentialquotient wird
+dieser L"osungsweg sehr suggestiv.
+Wir betrachten als Beispiel die Differentialgleichung
+\[
+y'=-Ny.
+\]
+Schreibt man die Ableitung als Differentialquotient, wird daraus die
+Gleichung
+\[
+\frac{dy}{dx}=-Ny.
+\]
+Durch Division durch $y$ und formale Multiplikation mit $dx$ wird daraus
+die formale Gleichung
+\begin{equation}
+\frac{dy}{y}=-N\,dx.
+\label{grundlagen:separiert}
+\end{equation}
+In dieser Gleichung kommt die Variable $y$ nur auf der linken, die Variable
+$x$ nur auf der rechten Seite vor.
+Man sagt, die Variablen seien {\em separiert}.
+\index{separiert}
+\index{Variablen, Separation der}
+Man beachte, dass die Gleichung (\ref{grundlagen:separiert}) nur eine
+formale Bedeutung haben kann, die Symbole $dy$ und $dx$ sind ja keine Zahlen,
+mit denen man algebraische Operationen durchf"uhren k"onnte.
+Mit etwas Vorsicht angewandt f"uhrt dieser Kalk"ul aber nicht auf
+Widerspr"uche.
+
+Wir integrieren jetzt beide Seiten von (\ref{grundlagen:separiert}), und
+erhalten 
+\[
+\int\frac1y\,dy=-N\int\,dx
+\]
+Beide Integrale lassen sich in geschlossener Form auswerten:
+\[
+\log|y|=-Nx+C.
+\]
+Aufgel"ost nach $y$ ergibt sich
+\[
+y=\pm e^{C}e^{-Nx},
+\]
+wobei die beiden Vorzeichen $\pm$ das Betragszeichen in der Stammfunktion
+von $\frac1y$ reflektieren.
+Man kann den Faktor $\pm e^{C}$ in eine neue Konstante $a$ zusammenfassen,
+und erh"alt somit als L"osung der urspr"unglichen Differentialgleichung
+die Familie
+\[
+y(x)=ae^{-Nx}
+\]
+von Funktionen.
+Der Paramter $a$ muss mit Hilfe der Anfangsbedingung festgelegt werden.
+
+\subsection{Lineare Differentialgleichungen}
+Eine Differentialgleichung der Form
+\begin{equation}
+a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\dots+a_2(x)y''+a_1(x)y'+a_0(x)=f(x)
+\label{grundlagen:linearedgl}
+\end{equation}
+heisst {\em lineare Differentialgleichung}.
+\index{lineare Differentialgleichung}
+Ist $f(x)=0$, nennt man die Differentialgleichung {\em homogen}, die
+Funktion $f(x)$ wird auch die {\em Inhomogenit"at} genannt.
+\index{homogen Differentialgleichung}
+\index{Inhomogenitat@Inhomogenit\"at}
+Die L"osungsmenge einer homogenen linearen Differentialgleichung
+bildet einen Vektorraum: jede Linearkombination von L"osungen
+ist wieder eine L"osung.
+Seien zum Beispiel $y_1(x)$ und $y_2(x)$ L"osungen der Differentialgleichung
+(\ref{grundlagen:linearedgl}).
+Wir m"ochten zeigen, dass
+$y(x)=\alpha y_1(x)+\beta y_2(x)$ eine L"osung ist.
+Die Ableitungen selbst sind linear:
+\begin{align*}
+y^{(k)}&=\alpha y_1^{(k)}(x)+\beta y_2^{(k)}(x).
+\end{align*}
+Setzt man dies in die Differentialgleichung ein, erh"alt man
+\begin{align*}
+a_ny^{(n)}+\dots+a_1y'+a_0y
+&=
+a_n\alpha y_1^{(n)}+a_n\beta y_2^{(n)}+\dots+a_1\alpha y_1'+a_1\beta y_2'
++ a_0\alpha y_1+a_0\beta y_2
+\\
+&=
+\alpha(\underbrace{a_ny_1^{(n)}+\dots+a_1y_1'+a_0y_1}_{=0})
++
+\beta(\underbrace{a_ny_2^{(n)}+\dots+a_1y_2'+a_0y_2}_{=0})=0,
+\end{align*}
+die Linearkombination $y$ erf"ullt also die homogene Differentialgleichung
+ebenfalls.
+
+
+\subsection{Variation der Konstanten}
+\subsection{Laplace-Transformation}
