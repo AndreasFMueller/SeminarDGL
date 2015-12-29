@@ -72,6 +72,7 @@ N"aherungsverfahren f"ur die L"osung einer Differentialgleichung
 konstruieren.
 
 \begin{satz}[Euler-Verfahren]
+\index{Euler-Verfahren}
 Die Differentialgleichung
 \begin{equation}
 y'=f(x,y),\qquad y(0)=y_0
@@ -197,7 +198,7 @@ zu approximieren.
 
 Das Euler-Verfahren verwendet Schritte der Form
 \[
-y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}}.
+y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}).
 \]
 In jedem einzelnen Schritt entsteht ein Fehler, dessen Gr"osse wir
 aus der Taylor-Entwicklung
@@ -217,8 +218,8 @@ y(x)-y_n=O\biggl(R(x)h^2\frac{x}h\biggr)=O(h),
 \]
 er ist also von erster Ordnung in $h$.
 Um eine zus"atzliche Stelle Genauigkeit zu erhalten, muss man also zehnmal
-so viele Schritte durchf"uhren, wodurch auch wieder Rundungsfehler
-eingef"uhrt werden.
+so viele Schritte von zehnmal kleinerer Gr"osse durchf"uhren,
+wodurch auch wieder Rundungsfehler eingef"uhrt werden.
 
 K"onnte man den Fehler des Einzelschrittes wesentlich verkleinern, w"urde
 auch die Abh"angigkeit des Fehlers des Verfahrens vorteilhafter.
@@ -230,12 +231,657 @@ Schritt nur ein Achtel des Fehlers auftritt.
 Der Gesamtfehler ist also nur ein Viertel.
 Mit zehnmal mehr Arbeit kann man also nicht nur eine Stelle an
 Genauigkeit gewinnen, sondern gleich deren zwei.
-Man spricht von einem quadratischen Verfahren oder einem Verfahren
-zweiter Ordnung.
-In der Praxis werden sogar Verfahren vierter und f"unfter Ordnung
+
+Man nennt ein Verfahren, bei dem der Gesamt-Fehler von der Gr"ossenordnung
+$O(h^k)$ ist, von einem Verfahren $k$-ter Ordnung.
+Das Euler-Verfahren ist also ein Verfahren erster Ordnung oder ein
+lineares Verfahren.
+In der Praxis werden Verfahren bis zu vierter und f"unfter Ordnung
 verwendet, so dass eine zehnmal kleinere Schrittweite zu gleich
 vier Stellen Genauigkeitsgewinn f"uhren.
+Das Ziel der kommenden Abschnitte muss daher sein, einfach
+berechnebare Approximationen der Funktion mit m"oglichst geringen
+Einzelschrittfehlern zu finden.
 
-\section{Einschritt-Verfahren}
+\section{Einschritt-Verfahren\label{section:numerik:einschritt}}
+Die relativ geringe Genauigkeit des Eulerschrittes beruht darauf,
+dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
+nur f"ur das linke Ende des Intervals $[x_k, x_k+h]$ zutrifft,
+weiter rechts im Interval wird die Abweichung immer gr"osser.
+Eine m"ogliche L"osung des Problems k"onnte darin bestehen, statt
+nur einer linearen N"aherung zus"atzliche Glieder der Taylorreihe
+\begin{equation}
+y(x+\Delta x)
+=
+y(x)
++
+y'(x)\cdot \Delta x
++
+\frac12 y''(x)\cdot \Delta x^2
++
+\frac16 y'''(x)\cdot \Delta x^3
++
+o(\Delta x^3)
+\label{numerik:taylor}
+\end{equation}
+zu verwenden.
+In (\ref{numerik:taylor}) werden h"ohere Ableitungen von $y(x)$ ben"otigt,
+w"ahrend die Differentialgleichung nur die erste Ableitung liefert.
+Wir k"onnen die Differentialgleichung (\ref{numerik:eulerdgl}) nochmals
+nach $x$ ableiten:
+\begin{align}
+y'(x)
+&=
+f(x,y),
+\notag
+\\
+y''(x)
+&=
+\frac{dy'(x)}{dx}
+=
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}y'(x)
+=
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y),
+\label{numerik:2abl}
+\\
+y'''(x)
+&=
+\frac{dy''(x)}{dx}
+\notag
+\\
+&=
+\frac{\partial^2 f(x,y)}{\partial x^2}
++ \frac{\partial^2 f(x,y)}{\partial y\,\partial x}y'(x)
++ \biggl(\frac{\partial^2 f(x,y)}{\partial x\,\partial y}
++ \frac{\partial^2 f(x,y)}{\partial y^2}y'(x)\biggr)f(x,y)
+\notag
+\\
+&\qquad
++ \frac{\partial f(x,y)}{\partial y}\biggl(
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y)
+\biggr),
+\notag
+\\
+&=
+\frac{\partial^2 f(x,y)}{\partial x^2}
++ 2\frac{\partial^2 f(x,y)}{\partial x\,\partial y}f(x,y)
++ \frac{\partial^2 f(x,y)}{\partial y^2}f(x,y)^2
++ \biggl(\frac{\partial f(x,y)}{\partial y}\biggr)^2 f(x,y)
++ \frac{\partial f(x,y)}{\partial y} \frac{\partial f(x,y)}{\partial x}.
+\notag
+\end{align}
+Die Terme werden offensichtlich schnell kompliziert.
+
+Wir untersuchen, wie sich das Verfahren f"ur die Beispiel-Gleichung
+(\ref{numerik:expdgl}) anwenden l"asst.
+Dort gilt
+\begin{equation*}
+\begin{aligned}
+y'(x)&=f(x,y)=-\alpha y
+\\
+\Rightarrow\qquad
+\frac{\partial f}{\partial x}&=0&\frac{\partial f}{\partial y}&=-\alpha
+\end{aligned}
+\end{equation*}
+Alle zweiten Ableitungen verschwinden.
+Die Gleichungen werden damit einfach:
+\begin{align*}
+y''(x)&=-\alpha f(x,y)=\alpha^2 y
+\\
+y'''(x)&=\alpha^2f(x,y)=-\alpha^3 y.
+\end{align*}
+Statt der linearen Approximation sollte daher die kubische Approximation
+\begin{equation}
+y_{k+1}
+=
+y_{k}-\alpha h y_k +\frac12\alpha^2 h^2 y_k -\frac16 \alpha^3h^3 y_k
+=
+y_{k}\underbrace{\biggl(1-\alpha h +\frac12\alpha^2h^2 -\frac16 \alpha^3h^3\biggr)}_{\simeq e^{-\alpha h}}
+\label{numerik:kubisch}
+\end{equation}
+verwendet werden.
+Dass man hier mit einer gr"osseren Genauigkeit rechnen darf ist schon daran
+erkennbar, dass der Klammerausdruck auf der rechten Seite eine viel
+bessere Approximation von $e^{-\alpha x}$ ist also der Faktor
+$(1-\alpha h)$ im Euler-Verfahren.
+Genauer erwarten wir, dass wir hier ein kubsisches Verfahren konstruiert haben.
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|r|r|r|}
+\hline
+$i$&$x$&$e^{-\alpha x}$&Euler&kubisch\\
+\hline
+ 1 & 0.1 & 0.95122942 & 0.\underline{95}000000 & 0.\underline{951229}17 \\
+ 2 & 0.2 & 0.90483742 & 0.\underline{90}250000 & 0.\underline{904836}93 \\
+ 3 & 0.3 & 0.86070798 & 0.\underline{85}737500 & 0.\underline{860707}28 \\
+ 4 & 0.4 & 0.81873075 & 0.\underline{81}450625 & 0.\underline{818729}87 \\
+ 5 & 0.5 & 0.77880078 & 0.\underline{77}378094 & 0.\underline{778799}73 \\
+ 6 & 0.6 & 0.74081822 & 0.\underline{73}509189 & 0.\underline{74081}702 \\
+ 7 & 0.7 & 0.70468809 & 0.\underline{6}9833730 & 0.\underline{70468}675 \\
+ 8 & 0.8 & 0.67032005 & 0.\underline{6}6342043 & 0.\underline{67031}859 \\
+ 9 & 0.9 & 0.63762815 & 0.\underline{6}3024941 & 0.\underline{63762}660 \\
+10 & 1.0 & 0.60653066 & 0.\underline{5}9873694 & 0.\underline{60652}902 \\
+\hline
+\end{tabular}
+\caption{N"aherungswerte f"ur die L"osung $e^{-\alpha x}$ der
+Beispieldifferentialgleichung (\ref{numerik:expdgl}) nach dem Eulerverfahren
+und nach dem kubischen Verfahren (\ref{numerik:kubisch}) mit einer
+Schrittweite von 0.1. Unterstrichen ist jeweils die Stellen, die nach
+Rundung auf die angegebene Anzahl stellen mit dem exakten Wert "ubereinstimmt.
+\label{numerik:euler-kubisch}}
+\end{table}%
+In Tabelle~\ref{numerik:euler-kubisch} werden die Resultate des
+kubischen Verfahrens denen des Euler-Verfahrens gegen"ubergestellt.
+Im ersten Schritt ist der Fehler des Eulerverfahrens kleiner als $10^{-2}$,
+was einer Einheit in der zweiten Nachkommastelle entspricht.
+Der Fehler des kubischen Verfahrens ist kleiner als $10^{-6}$, eine
+Einheit in der sechsten Nachkommanstelle, ungef"ahr die von einem
+kubischen Verfahren zu erwartende Verbesserung.
+Nach zehn Rechenschritten liefert das Euler-Verfahren dank Rundung
+gerade noch eine korrekte Stelle, w"ahrend das kubische Verfahren immer noch
+gerundet f"unf korrekte Stellen gibt.
+
+Es wurde bereits darauf hingewiesen, dass die Terme f"ur die Ableitungen
+sehr kompliziert werden.
+noch viel gravierender ist allerdings, dass auch die partiellen Ableitungen
+von $f$ nach $x$ und $y$ bekannt sein m"ussen.
+Es ist zwar im Prinzip m"oglich, diese zu berechnen, der Rechenaufwand 
+daf"ur kann aber so erheblich sein, dass er den Genauigkeitsgewinn
+leicht wieder zunichte machen kann.
+Praktisch n"utzliche Verfahren m"ussen daher danach streben,
+die h"oheren Ableitungen von $y(x)$ ausschliesslich aus Funktionswerten
+von $f(x,y)$ zu berechnen.
+
+Wir m"ochten aber weiterhin nur $y_{k+1}$ ausschliesslich aus $x_k$ und $y_k$
+berechnen, also in einem einzelnen Schritt der Form
+\[
+y_{k+1}=y_k + h\, F(x_k, y_k, h).
+\]
+Die Funktion $F(x,y,h)$ heisst die {\em Inkrement-Funktion}
+\index{Inkrement-Funktion}
+des Verfahrens.
+F"ur das Euler-Verfahren ist $F(x,y,h)=f(x,y)$.
+Es soll also eine Inkrement-Funktion gefunden werden, bei der $y(x+\Delta x)$
+durch $y(x) + \Delta x\cdot F(x,y,\Delta x)$ bis auf Terme h"oherer
+Ordnung approxmiert werden kann.
+
+\subsection{Quadratische Verfahren}
+Ein quadratisches Verfahren verwendet eine Inkrement-Funktion $F(x,y,h)$,
+welche
+\[
+y(x+h)=y(x)+hF(x,y,h)+O(h^3)
+\]
+erf"ullt.
+Aus den einleitenden Bemerkungen von~\ref{section:numerik:einschritt}
+folgt, dass dieses Ziel m"oglicherweise dadurch erreicht werden kann,
+dass man Werte von $f$ f"ur verschiedene $x$ geeignet miteinander
+kombiniert.
+Ein denkbarer Ansatz daf"ur ist
+\[
+F(x,y,h)=af(x,y) + bf(x+\alpha h, y +\beta hf(x,y)),
+\]
+oder anders ausgedr"uckt: Man f"uhrt zuerst etwas "ahnliches wie einen
+Eulerschritt durch, um zum Punkt $(x+\alpha h,y+\beta hf(x,y))$ zu
+gelangen.
+Dort berechnet man den Wert von $f$, und bildet dann einen geeigneten
+Mittelwert davon  mit $f(x,y)$.
+Durch geeignete Wahl von $a$, $b$, $\alpha$ und $\beta$ sollte es m"oglich
+sein, dass die Inkrement-Funktion einen Fehler h"ochstens dritter Ordnung
+hat, womit wir dann ein Integrationsverfahren zweiter Ordnung gewonnen
+h"atten.
+
+Wir m"ussen jetzt die Parameter $a$, $b$, $\alpha$ und $\beta$ bestimmen.
+Da wir mit dem "ubereinstimmen der ersten zwei Ableitungen
+nur zwei Bedingungen haben, k"onnen wir nicht erwarten, dass wir
+eine eindeutige L"osung finden werden.
+Vielmehr werden einzelne Parameter frei w"ahlbar sein, es wird eine
+ganze Familie von quadratischen L"osungsverfahren entstehen, parametrisiert
+durch eine der Variablen $a$, $b$, $\alpha$ und $\beta$.
+
+Wir berechnen nun $F(x,y,h)$ bis zur zweiten Ordnung, damit wird 
+$y(x+h)$ bis zur dritten Ordnung ausdr"ucken k"onnen.
+\begin{align*}
+f(x+\alpha h, y + \beta h f(x,y))
+&=
+f(x,y)+\alpha h\frac{\partial f(x,y)}{\partial x}
++ \beta h \frac{\partial f(x,y)}{\partial y} + O(h^2)
+\end{align*}
+\begin{align}
+F(x,y,h)
+&=
+af(x,y) + bf(x+\alpha h, y + \beta h f(x,y))
+\notag
+\\
+&=
+(a+b)f(x,y) + \biggl(\alpha b\frac{\partial f(x,y)}{\partial x}
++ \beta b\frac{\partial f(x,y)}{\partial y} f(x,y))\biggr)h+O(h^2)
+\label{numerik:inkrementF}
+\end{align}
+Damit dies bis zur zweiten Ordnung mit dem Inkrement zwischen $x$ und $x+h$
+"ubereinstimmt, muss~(\ref{numerik:inkrementF}) mit der Taylorreihe
+von $y(x)$ "ubereinstimmen, also mit
+\begin{equation}
+\frac{y(x+h)-y(x)}{h}=y'(x) + \frac12y''(x)h + O(h^2)
+=f(x,y) + \frac12\frac{\partial f(x,y)}{\partial x}
++\frac12\frac{\partial f(x,y)}{\partial y}f(x,y) + O(h^2),
+\label{numerik:ytaylor}
+\end{equation}
+wobei wir f"ur $y''(x)$ die Gleichung (\ref{numerik:2abl}) verwendet haben.
+Durch Koeffizientenvergleich finden wir die Bedinungen
+\[
+\begin{aligned}
+a+b&=1,&
+\alpha b&=\frac12,&
+\beta b&=\frac12.
+\end{aligned}
+\]
+Einzig $b$ kommt in allen drei Gleichungen vor, und bestimmt den Wert der
+jeweiligen anderen Variablen:
+\[
+\begin{aligned}
+a&=1-b,&\alpha&= \beta=\frac{1}{2b}.
+\end{aligned}
+\]
+Jeder Wert von $b$ zwischen $0$ und $1$ liefert ein Verfahren mit quadratischer
+Genauigkeit.
+
+Der Parameterwert $b=1$ f"uhrt auf $\alpha=\beta=1$ und $a=0$, die
+Rekursionsformel ist in diesem Falle
+\begin{equation}
+y_{k+1}=y_{k}+hf\biggl(x_k+\frac{h}2,y_k+\frac{h}2 f(x_k,y_k)\biggr).
+\label{numerik:improved-euler}
+\end{equation}
+Das Verfahren f"uhrt also erst einen halben Eulerschritt zum Punkt
+$(x_k+\frac12h,y_k+\frac{h}2f(x_k,y_k))$ durch, berechnet dort mit Hilfe
+von $f$ die Steigung, die dann f"ur einen Euler-Schritt der L"ange $h$
+verwendet wird.u
+Daher heisst dieses Verfahren auch das {\em verbesserte Euler-Verfahren}.
+\index{Euler-Verfahren!verbessertes}
+
+Verwendet man $b=\frac12$, folgt zun"achst $a=\frac12$ und $\alpha=\beta=1$.
+Daraus erh"alt man die Rekursionsformel
+\begin{equation}
+y_{k+1}=y_k+\frac{h}2\biggl(
+f(x_k,y_k) + f(x_k+h, y_k + hf(x_k,y_k))
+\biggr)
+\label{numerik:simplified-runge-kutta}
+\end{equation}
+In diesem Verfahren f"uhrt man also zuerst einen Eulerschritt der L"ange
+$h$ durch, mit dem man zum Punkt $(x_k+h, y_k+hf(x_k,y_k))$ gelangt.
+Dort berechnet mit mit Hilfe von $f$ die Steigung.
+Das arithmetische Mittel dieser Steigung mit der im Euler-Verfahren
+verwendeten Steigung $f(x_k,y_k)$ im Punkt $x_k$ wird dann als
+Steigung f"ur einen Euler-Schritt verwendet.z
+Statt eines einzigen Steigungswertes werden hier also zwei Steigungswerte
+von den Enden des Intervals $[x_k,x_k+1]$ gemittelt.
+Wegen der "Ahnlichkeit dieses Vorgehens mit dem sp"ater zu besprechenden
+Runge-Kutte-Verfahren heisst diese Verfahren auch das {\em
+vereinfachte Runge-Kutta-Verfahren}.
+\index{Runge-Kutta-Verfahren!vereinfachtes}
+
+\subsection{Runge-Kutta-Verfahren}
+\index{Runge-Kutta-Verfahren}
+Das {\em Runge-Kutta-Verfahren} erweitert die Inkrement-Funktion derart,
+dass der Einzelschritt bis zur f"unften Ordnung mit der Taylorreihe von
+$y(x)$ "ubereinstimmt.
+So entsteht ein Verfahren vierter Ordnung, es stellt einen guten Kompromiss
+zwischen Genauigkeit und Rechenaufwand dar.
+
+Da vier Ableitungen korrekt dargestellt werden m"ussen, ist zu erwarten,
+dass vier verschiedene Werte von $f$ an verschiedenen Punkten $(x,y)$
+ausgewertet und geeignet miteinander kombiniert werden m"ussen.
+Genauer: Man bestimmt zuerst die Werte
+\begin{align*}
+k_1&=f(x_k,y_k)\\
+k_2&=f\biggl(x_k+\frac{h}2,y_k+\frac{h}2k_1\biggr)\\
+k_3&=f\biggl(x_k+\frac{h}2,y_k+\frac{h}2k_2\biggr)\\
+k_4&=f(x_k+h, y_k+hk_3)
+\end{align*}
+und setzt diese dann zusammen, um den n"achsten Wert $y_{k+1}$
+zu berechnen:
+\begin{equation}
+y_{k+1} = y_k + h\frac{1}6(k_1 + 2k_2 + 2k_3 + k_4).
+\label{numerik:runge-kutta-rekursion}
+\end{equation}
+Man kann die Formeln wie folgt interpretieren.
+Zuerst wird ein halber Eulerschritt mit der Steigung $k_1=f(x_k,y_k)$,
+durchgef"uhrt, und und am Zielpunkt die Steigung $k_2$ ermittelt.
+Mit dieser Steigung wird dann erneut ein halber Schritt von $(x_k,y_k)$
+aus durchgef"uhrt, und am Zielpunkt erneut die Steigung $k_3$ ermittelt.
+Damit f"uhrt man einen ganzen Schritt aus, an dessen Zielpunkt man die
+Steigung $k_4$ findet.
+Diese vier Steigungen werden jetzt gewichtet gemittelt, wobei
+$k_2$ und $k_3$ doppeltes Gewicht erhalten, und mit dieser
+Steigung wird ein ganzer Schritt vorgenommen.
+
+Die Formeln f"ur die $k_i$ sowie (\ref{numerik:runge-kutta-rekursion})
+k"onnen ganz "ahnlich wie das verbesserte Euler-Verfahren bzw.~das
+vereinfachte Runge-Kutta-Verfahren begr"undet werden.
+Der Aufwand daf"ur ist aber betr"achtlich, so dass wir auf die
+detaillierte Darstellung dieser Herleitung verzichten wollen.
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|r|r|r|r|r|}
+\hline
+$i$& $x$ & $y(x)=e^{-\alpha x}$&Euler&verbessert&vereinfacht&Runge-Kutta\\
+\hline
+ 0 & 0.0 & 1.00000000 & 1.000 & 1.00000000 & 1.00000000 & 1.0000000000 \\
+ 1 & 0.1 & 0.95122942 & 0.\underline{95}0 & 0.\underline{9512}5000 & 0.\underline{9512}5000 & 0.\underline{95122942}71 \\
+ 2 & 0.2 & 0.90483742 & 0.\underline{90}2 & 0.\underline{9048}7656 & 0.\underline{9048}7656 & 0.\underline{9048374}229 \\
+ 3 & 0.3 & 0.86070798 & 0.\underline{85}7 & 0.\underline{8607}6383 & 0.\underline{8607}6383 & 0.\underline{8607079}834 \\
+ 4 & 0.4 & 0.81873075 & 0.\underline{81}4 & 0.\underline{8188}0159 & 0.\underline{8188}0159 & 0.\underline{8187307}620 \\
+ 5 & 0.5 & 0.77880078 & 0.\underline{77}3 & 0.\underline{7788}8502 & 0.\underline{7788}8502 & 0.\underline{7788007}936 \\
+ 6 & 0.6 & 0.74081822 & 0.\underline{73}5 & 0.\underline{7409}1437 & 0.\underline{7409}1437 & 0.\underline{7408182}327 \\
+ 7 & 0.7 & 0.70468809 & 0.\underline{69}8 & 0.\underline{704}79480 & 0.\underline{704}79480 & 0.\underline{7046881}031 \\
+ 8 & 0.8 & 0.67032005 & 0.\underline{6}63 & 0.\underline{670}43605 & 0.\underline{670}43605 & 0.\underline{6703200}606 \\
+ 9 & 0.9 & 0.63762815 & 0.\underline{6}30 & 0.\underline{637}75229 & 0.\underline{637}75229 & 0.\underline{6376281}672 \\
+10 & 1.0 & 0.60653066 & 0.\underline{5}98 & 0.\underline{606}66187 & 0.\underline{606}66187 & 0.\underline{6065306}762 \\
+\hline
+\end{tabular}
+\caption{Vergleich der Genauigkeit der verbesserten numerischen Verfahren.
+Unterstrichen jeweils die nach Rundung korrekten Stellen der L"osung.
+\label{numerik:genauigkeit}}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|c|r|>{$}r<{$}|}
+\hline
+Verfahren                           &$h$  &Schritte&$y_n$&\text{Fehler}\\
+\hline
+Euler-Verfahren                     &0.025&  40    & 0.\underline{60}462232 &  0.00190834 \\
+verbessertes Euler-Verfahren        &0.05 &  20    & 0.\underline{6065}6285 & -0.00003219 \\
+vereinfachtes Runge-Kutta-Verfahren &0.05 &  20    & 0.\underline{6065}6285 & -0.00003219 \\
+Runge-Kutta-Verfahren               &0.1  &  10    & 0.\underline{6065306}7 & -0.00000001 \\
+\hline
+\end{tabular}
+\caption{Vergleich der verschiedenen Verfahren bei gleichbleibendem 
+Rechenaufwand.
+Die Schrittweite wurde jeweils so angepasst, dass in allen Verfahren bis
+zum Wert $x=1$ die gleiche Anzahl von Auswertungen der Funktion $f$
+notwendig wurde.
+\label{numerik:vergleich-aufwand}}
+\end{table}
+
+Die Tabelle~\ref{numerik:genauigkeit} demonstriert die "uberragende
+Genauigkeit des Runge-Kutta-Verfahrens.
+Trotz der relativ grossen Schritteweite von $h=0.1$ erreicht das
+Verfahren nach zehn Schritten eine Genauigkeit von sieben signifikanten
+Stellen.
+Da in jedem Schritt die Funktion $f$ viermal ausgewertet werden muss,
+ist der Rechenaufwand mit dem Runge-Kutta-Verfahren viermal gr"osser
+als im Euler-Verfahren, letzteres kann aber mit nur einer signifikanten
+Stelle kaum als brauchbar bezeichnet werden.
+Passt man in jedem Verfahren die Schrittweite so an, dass f"ur die
+Berechnung der N"aherung f"ur $y(1)$ immer gleich viele Auswertungen
+der Funktion $f(x,y)$ n"otig sind, ergeben sich die Resultate in
+Tabelle~\ref{numerik:vergleich-aufwand}.
+Bei gleichem Rechenaufwand ist das Runge-Kutta-Verfahren um viele
+Gr"ossenordungen pr"aziser.
+Es gibt daher eigentlich keinen praktischen Grund, "uberhaupt je etwas
+anderes als das Runge-Kutta-Verfahren zu verwenden.
+
+\subsection{Matlab/Octave}
+Die im letzten Abschnitt entwickelten numerischen Verfahren zur L"osung
+einer Differentialgleichung kommen ausschliesslich mit Auswertungen der
+Funktion $f$ aus.
+
+
 \section{Mehrschritt-Verfahren}
+In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
+um die Inkrement-Funktion f"ur einen einzigen Schritt zu bestimmen.
+Das Ziel dabei war, $y(x+h)$ in "Ubereinstimmung mit der Taylorreihe
+bis zu m"oglichst hoher Ordnung zu bestimmen.
+Im Runge-Kutta-Verfahren wurden dabei halbe Eulerschritte durchgef"uhrt,
+man hat also eigentlich die Aufl"osung nochmals halbiert, um die
+Inkrement-Funktion zu ermitteln.
+Diese Zwischenwerte geben dem Verfahren die Information "uber die
+h"oheren Ableitungen der Funktionen.
+
+Sobald einige Werte der L"osung berechnet sind, l"asst sich die Kr"ummung
+der L"osungskurve auch aus diesen Werten ablesen.
+Es sollte daher auch m"oglich sein, aus mehreren bereits
+ermittelten Werten $y_{n\mathstrut},y_{n+1},\dots,y_{n+s-1}$
+den n"achsten Wert $y_{n+s\mathstrut}$ mit der verlangten Genauigkeit
+zu berechnen.
+Der Vorteil eines solchen Vorgehens ist, dass f"ur jeden Schritt nur 
+eine einzige Auswertung der Funktion $f$ n"otig ist,
+nicht mehrere wie bei den besprochenen Einschritt-Verfahren.
+
+Als Beispiel versuchen wir daher ein Verfahren aufzubauen, welches
+$y_{n+2}$ aus den bereits berechneten Werten $y_{n\mathstrut}$ und
+$y_{n+1}$ berechnet.
+Wir nehmben dabei an, dass $y_{n\mathstrut}$ und $y_{n+1}$ exakt
+sind.
+Der neue Datenpunkt soll mit Hilfe eines Ausdrucks der Form
+\begin{equation}
+y_{n+2}=y_{n+1} + h(af(x_{n+1},y_{n+1}) + b f(x_{n\mathstrut},y_{n\mathstrut}))
+\label{numerik:zweischrittansatz}
+\end{equation}
+gefunden werden.
+Die N"aherung kann wieder mit Hilfe der Ableitungen alleine
+durch Werte bei $x_{n+1}$ ausgedr"uckt werden:
+\begin{align*}
+y_{n+2}
+&=
+y_{n+1}+h(af(x_{n+1}, y_{n+1}) + bf(x_{n+1}-h, y_{n\mathstrut}))
+\\
+&=
+y_{n+1}+haf(x_{n+1}, y_{n+1}) + hbf(x_{n+1}-h, y_{n+1} - h f(x_{n+1},y_{n+1}) + O(h^2))
+\\
+&=
+y_{n+1}+haf(x_{n+1}, y_{n+1}) + hb
+\biggl(
+f(x_{n+1},y_{n+1})
+-h \frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
+\\
+&\qquad
+-h
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
++ 
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+O(h^2)
+\biggr)
+\\
+&=
+y_{n+1}
++ (a+b)hf(x_{n+1},y_{n+1})
+- bh^2\biggl(
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
++
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
++O(h^3)
+\biggr)
+\end{align*}
+Sie muss bis zur zweiten Ordnung mit der Taylorreihe "ubereinstimmen:
+\begin{align*}
+y(x_{n+2})
+&=
+y_{n+1} + hy'(x_{n+1}) + \frac12h^2 y''(x_{n+1})+O(h^3)
+\\
+&=
+y_{n+1}+hf(x_{n+1},y_{n+1})+\frac12h^2\biggl(
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
++
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
+\biggr)
+\end{align*}
+Vergleicht man Koeffizienten, findet man
+\[
+\begin{aligned}
+a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32
+\end{aligned}
+\]
+Aus der Formel (\ref{numerik:zweischrittansatz}) wird somit die
+Iterationsformel
+\begin{equation}
+y_{n+2}=y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
+- \frac12 f(x_{n\mathstrut},y_{n\mathstrut})\biggr)
+\end{equation}
+Diese Rekursionsformel definiert ein quadratisches Verfahren, das
+{\em Adams-Bashforth-Verfahren} mit $s=2$.
+\index{Adams-Bashforth-Verfahren}
+
+Das Verfahren kann "ahnlich wie das Runge-Kutta-Verfahren auf h"ohere
+Ordnung erweitert werden.
+Man findet nach einiger Rechnung
+\begin{align*}
+s&=1\colon&
+y_{n+1}
+&=
+y_n+hf(x_n,y_n)
+\\
+s&=2\colon&
+y_{n+2}
+&=
+y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})-\frac12f(x_n,y_n)\biggr)
+\\
+s&=3\colon&
+y_{n+3}
+&=
+y_{n+2}+h\biggl(\frac{23}{12}f(x_{n+2},y_{n+2})-\frac43f(x_{n+1},y_{n+1})+\frac{5}{12}f(x_n,y_n)\biggr)
+\\
+s&=4\colon&
+y_{n+4}
+&=
+y_{n+3}+h\biggl(\frac{55}{24}f(x_{n+3},y_{n+3})
+	-\frac{59}{24}f(x_{n+2},y_{n+2})
+	+\frac{37}{24}f(x_{n+1},y_{n+1})
+	-\frac{3}{8}f(x_n,y_n)
+\biggr)
+\end{align*}
+Es ist also m"oglich, ausgehend von dieser Idee Verfahren beliebig hoher
+Ordnung zu produzieren.
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|r|r|r|r|}
+\hline
+$i$& $x$ & $y(x)=e^{-\alpha x}$&Euler&Adams-Bashforth&Runge-Kutta\\
+\hline
+ 0 & 0.0 & 1.00000000 & 1.00000000 & 1.00000000 & 1.0000000000 \\
+ 1 & 0.1 & 0.95122942 & 0.\underline{95}000000 & 0.\underline{9512}8178 & 0.\underline{95122942}71 \\
+ 2 & 0.2 & 0.90483742 & 0.\underline{90}250000 & 0.\underline{904}93564 & 0.\underline{90483742}29 \\
+ 3 & 0.3 & 0.86070798 & 0.\underline{85}737500 & 0.\underline{860}84752 & 0.\underline{86070798}34 \\
+ 4 & 0.4 & 0.81873075 & 0.\underline{81}450625 & 0.\underline{818}90734 & 0.\underline{81873076}20 \\
+ 5 & 0.5 & 0.77880078 & 0.\underline{77}378094 & 0.\underline{779}01048 & 0.\underline{77880079}36 \\
+ 6 & 0.6 & 0.74081822 & 0.\underline{73}509189 & 0.\underline{741}05738 & 0.\underline{74081823}27 \\
+ 7 & 0.7 & 0.70468809 & 0.\underline{69}833730 & 0.\underline{704}95334 & 0.\underline{7046881}031 \\
+ 8 & 0.8 & 0.67032005 & 0.\underline{6}6342043 & 0.\underline{670}60827 & 0.\underline{6703200}606 \\
+ 9 & 0.9 & 0.63762815 & 0.\underline{63}024941 & 0.\underline{637}93648 & 0.\underline{6376281}672 \\
+10 & 1.0 & 0.60653066 & 0.\underline{59}873694 & 0.\underline{606}85645 & 0.\underline{6065306}762 \\
+\hline
+\end{tabular}
+\caption{Vergleich der Genauigkeit der Verfahren von Euler,
+Adams-Bashforth und Runge-Kutta.
+Als Startwerte f"ur das Adams-Bashforth-Verfahren wurden die
+Werte $y(-h)=e^{-\alpha h}$ und $y(0)=1$ verwendet, um keine zus"atzlichen
+Fehler aus der Durchf"uhrung des ersten Schrittes hinzuzuf"ugen.
+\label{numerik:genauigkeit-adams-bashforth}}
+\end{table}
+
+In der Tabelle~\ref{numerik:genauigkeit-adams-bashforth} wird
+das Adams-Bashforth-Verfahren verglichen mit dem lineare Euler-Verfahren 
+und dem Verfahren vierter Ordnung von Runge-Kutta.
+Die Verbesserung der Genauigkeit des Adams-Bashforth-Verfahrens
+gegen"uber dem Euler-Verfahren ist konsistent damit, dass
+das Adams-Bashforth-Verfahren ein quadratisches Verfahren ist.
+
+Nachteilig an den Mehrschritt-Verfahren ist die Notwendigkeit,
+gen"ugend viele Werte $y_{n},\dots,y_{n+s-1}$ mit ausreichend
+hoher Genauigkeit zu bestimmen, bevor das Mehrschritt-Verfahren
+seine Schritte der Ordnung $s$ beginnen kann.
+Solange diese Werte nicht zur Verf"ugung stehen, kann ein Mehrschritt-Verfahren
+nur Schritte niedrigerer Ordnung als $s$ durchf"uhren.
+
+Bei einem Einschritt-Verfahren kann in jedem Schritt die Schrittweite $h$
+ver"andert werden, zum Beispiel f"ur Bereiche von $x$-Werten, in denen
+die Steigung von $y(x)$ sehr rasch "andert.
+
+F"ur die Beispiel-Differentialgleichung (\ref{numerik:expdgl}) k"onnen
+wir das Adams-Bashforth-Verfahren zweiter Ordnung ($s=2$) vollst"andig
+analysieren.
+Die Rekursionsformel wird zu
+\[
+y_{n+2}=y_{n+1}+h\biggl(\frac32 (-\alpha y_{n+1})-\frac12(-\alpha y_n)\biggr)
+=
+\biggl(1-\frac32\alpha h\biggr)
+y_{n+1}
+-\frac{\alpha h}{2}
+y_{n\mathstrut}
+\]
+Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
+sie mit Hilfe eines Potenzansatzes l"osen. 
+Wir nehmen also an, dass $y_n=\lambda^n$, und setzen dies in die
+Rekursionsformel ein.
+Ausserdem k"urzen wir $\alpha h/2=\delta$  ab.
+Wir erhalten
+\[
+\lambda^{n+2}-(1-3\delta)\lambda^{n+1}+\delta\lambda^n=0.
+\]
+Nach Division durch $\lambda^n$ erhalten wir die quadratische Gleichung
+\[
+\lambda^2-(1-3\delta )\lambda+\delta=0
+\]
+f"ur $\lambda$ mit den L"osungen
+\[
+\lambda_\pm
+=
+\frac12(1-3\delta) \pm \frac12\sqrt{(1-3\delta)^2-4\delta}.
+\]
+Da $\delta$ klein ist, wird $\lambda_-$ ebenfalls klein sein,
+w"ahrend $\lambda_+$ n"aher bei $1$ sein wird.
+Der dominante Einfluss auf die L"osung r"uhrt also von $\lambda_+$ her.
+Um diesen Unterschied genauer zu verstehen, verwenden wir eine
+lineare Approximation der Wurzel auf der rechten Seite von $\lambda_\pm$:
+\begin{align*}
+\sqrt{1+x}
+&=
+1+\frac{x}{2}-\frac{x^2}{4}+\frac{3x^3}{8}-\dots
+\\
+\sqrt{x}
+&=
+\sqrt{x_0+x-x_0}
+=
+\sqrt{x_0}\sqrt{1+\frac{x-x_0}{x_0}}
+=
+\sqrt{x_0}\biggl(1+\frac12\frac{x-x_0}{x_0}-\frac14\frac{(x-x_0)^2}{x_0^2}+\dots\biggr)
+\\
+&=
+\sqrt{x_0}+\frac12\frac{x-x_0}{\sqrt{x_0}}-\frac14\frac{(x-x_0)^2}{\sqrt{x_0}^3}+\dots
+\end{align*}
+Wir verwenden diese Approximation mit $x_0=(1-3\delta)^2$ und $x-x_0=-4\delta$
+\begin{align*}
+\sqrt{(1-3\delta)^2-4\delta}
+&=
+(1-3\delta)\biggl(1-\frac12\frac{4\delta}{(1-3\delta)^2}
+-\frac14\frac{16\delta^2}{(1-3\delta)^4}+\dots\biggr)
+\\
+&=(1-3\delta)-\frac12\frac{4\delta}{1-3\delta}
+-\frac14\frac{16\delta^2}{(1-3\delta)^3}+\dots
+\\
+&=1-3\delta-2\delta(1+3\delta)-4\delta^2+O(\delta^3)
+\\
+&=1-3\delta-2\delta -10\delta^2+O(\delta^3)
+\end{align*}
+Damit k"onnen wir jetzt $\lambda_+$ bis zur zweiten Ordnung berechnen:
+\begin{align*}
+\lambda_+
+&=
+\frac12\biggl((1-3\delta)+ (1-3\delta)-      2\delta-     10\delta^2\biggr)
++O(\delta^2)
+\\
+&=
+1-3\delta-\delta-5\delta^2+O(\delta^3)
+\end{align*}
+
+
+Die beiden Terme in $\lambda_\pm$ 
+
 \section{Finite Elemente}
