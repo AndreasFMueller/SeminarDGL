@@ -790,7 +790,7 @@ In der Tabelle~\ref{numerik:genauigkeit-adams-bashforth} wird
 das Adams-Bashforth-Verfahren verglichen mit dem lineare Euler-Verfahren 
 und dem Verfahren vierter Ordnung von Runge-Kutta.
 Die Verbesserung der Genauigkeit des Adams-Bashforth-Verfahrens
-gegen"uber dem Euler-Verfahren ist konsistent damit, dass
+gegen"uber dem Euler-Ver\-fah\-ren ist konsistent damit, dass
 das Adams-Bashforth-Verfahren ein quadratisches Verfahren ist.
 
 Nachteilig an den Mehrschritt-Verfahren ist die Notwendigkeit,
@@ -813,7 +813,7 @@ y_{n+2}=y_{n+1}+h\biggl(\frac32 (-\alpha y_{n+1})-\frac12(-\alpha y_n)\biggr)
 =
 \biggl(1-\frac32\alpha h\biggr)
 y_{n+1}
--\frac{\alpha h}{2}
++\frac{\alpha h}{2}
 y_{n\mathstrut}
 \]
 Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
@@ -823,17 +823,17 @@ Rekursionsformel ein.
 Ausserdem k"urzen wir $\alpha h/2=\delta$  ab.
 Wir erhalten
 \[
-\lambda^{n+2}-(1-3\delta)\lambda^{n+1}+\delta\lambda^n=0.
+\lambda^{n+2}-(1-3\delta)\lambda^{n+1}-\delta\lambda^n=0.
 \]
 Nach Division durch $\lambda^n$ erhalten wir die quadratische Gleichung
 \[
-\lambda^2-(1-3\delta )\lambda+\delta=0
+\lambda^2-(1-3\delta )\lambda-\delta=0
 \]
 f"ur $\lambda$ mit den L"osungen
 \[
 \lambda_\pm
 =
-\frac12(1-3\delta) \pm \frac12\sqrt{(1-3\delta)^2-4\delta}.
+\frac12(1-3\delta) \pm \frac12\sqrt{(1-3\delta)^2+4\delta}.
 \]
 Da $\delta$ klein ist, wird $\lambda_-$ ebenfalls klein sein,
 w"ahrend $\lambda_+$ n"aher bei $1$ sein wird.
@@ -858,30 +858,44 @@ lineare Approximation der Wurzel auf der rechten Seite von $\lambda_\pm$:
 \end{align*}
 Wir verwenden diese Approximation mit $x_0=(1-3\delta)^2$ und $x-x_0=-4\delta$
 \begin{align*}
-\sqrt{(1-3\delta)^2-4\delta}
+\sqrt{(1-3\delta)^2+4\delta}
 &=
-(1-3\delta)\biggl(1-\frac12\frac{4\delta}{(1-3\delta)^2}
+(1-3\delta)\biggl(1+\frac12\frac{4\delta}{(1-3\delta)^2}
 -\frac14\frac{16\delta^2}{(1-3\delta)^4}+\dots\biggr)
 \\
-&=(1-3\delta)-\frac12\frac{4\delta}{1-3\delta}
+&=(1-3\delta)+\frac12\frac{4\delta}{1-3\delta}
 -\frac14\frac{16\delta^2}{(1-3\delta)^3}+\dots
 \\
-&=1-3\delta-2\delta(1+3\delta)-4\delta^2+O(\delta^3)
+&=1-3\delta+2\delta(1+3\delta)-4\delta^2+O(\delta^3)
 \\
-&=1-3\delta-2\delta -10\delta^2+O(\delta^3)
+&=1-3\delta+2\delta + 2\delta^2+O(\delta^3)
+\\
+&=1-3\delta+2\delta + \frac12(2\delta)^2+O(\delta^3)
 \end{align*}
 Damit k"onnen wir jetzt $\lambda_+$ bis zur zweiten Ordnung berechnen:
 \begin{align*}
 \lambda_+
 &=
-\frac12\biggl((1-3\delta)+ (1-3\delta)-      2\delta-     10\delta^2\biggr)
-+O(\delta^2)
+\frac12\biggl((1-3\delta)+ (1-3\delta)+2\delta+\frac12(2\delta)^2\biggr)
++O(\delta^3)
 \\
 &=
-1-3\delta-\delta-5\delta^2+O(\delta^3)
+1-2\delta+\frac12(2\delta)^2+O(\delta^3)
+\\
+&=e^{-2\delta}+O(\delta^3).
 \end{align*}
+Die exakte L"osung erf"ullt $y_{n+1}=e^{-2\delta}y_n$, der Faktor
+$\lambda_+$ stimmt bis auf Terme mindestens dritter Ordnung mit 
+$e^{-2\delta}$ "uberein.
+Damit ist erneut best"atigt, dass wir es mit einem quadratischen Verfahren zu
+tun haben.
 
+Wir k"onnen auch $\lambda_-$ berechnen, und erhalten
+\[
+\lambda_-=-\delta-2\delta^2+O(\delta^3).
+\]
+Da $\delta$ klein ist, ist eine Komponente der L"osung bereits nach
+drei Schritten kleiner als $O(\delta^3)$, und spielt daher im Vergleich
+zu den von $\lambda_+$ herr"uhrenden L"osungen in dritter Ordnung keine
+Rolle.
 
-Die beiden Terme in $\lambda_\pm$ 
-
-\section{Finite Elemente}
