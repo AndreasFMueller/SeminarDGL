@@ -267,50 +267,8 @@ o(\Delta x^3)
 zu verwenden.
 In (\ref{numerik:taylor}) werden h"ohere Ableitungen von $y(x)$ ben"otigt,
 w"ahrend die Differentialgleichung nur die erste Ableitung liefert.
-Wir k"onnen die Differentialgleichung (\ref{numerik:eulerdgl}) nochmals
-nach $x$ ableiten:
-\begin{align}
-y'(x)
-&=
-f(x,y),
-\notag
-\\
-y''(x)
-&=
-\frac{dy'(x)}{dx}
-=
-\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}y'(x)
-=
-\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y),
-\label{numerik:2abl}
-\\
-y'''(x)
-&=
-\frac{dy''(x)}{dx}
-\notag
-\\
-&=
-\frac{\partial^2 f(x,y)}{\partial x^2}
-+ \frac{\partial^2 f(x,y)}{\partial y\,\partial x}y'(x)
-+ \biggl(\frac{\partial^2 f(x,y)}{\partial x\,\partial y}
-+ \frac{\partial^2 f(x,y)}{\partial y^2}y'(x)\biggr)f(x,y)
-\notag
-\\
-&\qquad
-+ \frac{\partial f(x,y)}{\partial y}\biggl(
-\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y)
-\biggr),
-\notag
-\\
-&=
-\frac{\partial^2 f(x,y)}{\partial x^2}
-+ 2\frac{\partial^2 f(x,y)}{\partial x\,\partial y}f(x,y)
-+ \frac{\partial^2 f(x,y)}{\partial y^2}f(x,y)^2
-+ \biggl(\frac{\partial f(x,y)}{\partial y}\biggr)^2 f(x,y)
-+ \frac{\partial f(x,y)}{\partial y} \frac{\partial f(x,y)}{\partial x}.
-\notag
-\end{align}
-Die Terme werden offensichtlich schnell kompliziert.
+Die h"oheren Ableitungen wurden aber bereits im
+Abschnitt~\ref{grundlagen:hoehere-ableitungen} berechnet.
 
 Wir untersuchen, wie sich das Verfahren f"ur die Beispiel-Gleichung
 (\ref{numerik:expdgl}) anwenden l"asst.
@@ -467,7 +425,7 @@ von $y(x)$ "ubereinstimmen, also mit
 +\frac12\frac{\partial f(x,y)}{\partial y}f(x,y) + O(h^2),
 \label{numerik:ytaylor}
 \end{equation}
-wobei wir f"ur $y''(x)$ die Gleichung (\ref{numerik:2abl}) verwendet haben.
+wobei wir f"ur $y''(x)$ die Gleichung (\ref{grundlagen:2abl}) verwendet haben.
 Durch Koeffizientenvergleich finden wir die Bedinungen
 \[
 \begin{aligned}

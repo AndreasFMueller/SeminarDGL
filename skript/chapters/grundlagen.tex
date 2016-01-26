@@ -8,6 +8,7 @@
 \lhead{}
 \rhead{Grundlagen}
 \section{Differentialgleichungen\label{section:differentialgleichungen}}
+\lhead{Differentialgleichungen}
 Eine gew"ohnliche Differentialgleichung f"ur eine reellwertige
 Funktion $y(x)$ stellt einen Zusammenhang her zwischen der Funktion
 und ihren Ableitungen.
@@ -38,6 +39,23 @@ gegeben sein.
 Die Ordnung einer Differentialgleichung ist die h"ochste vorkommende
 Ableitung.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/images/grundlagen-1.pdf}
+\caption{Richtungsfeld der Differentialgleichung $y'=y-x$ mit
+einzelnen L"osungskurven.
+\label{grundlagen:richtungsfeld}}
+\end{figure}%
+
+Differentialgleichungen erster Ordnung lassen sich mit Hilfe eines
+Richtungsfeldes visualisieren, wie in Abbildung~\ref{grundlagen:richtungsfeld}
+dargestellt.
+In jedem Punkt $(x,y)$ der $x$-$y$-Ebene wird die Steigung $y'=f(x,y)$
+eingezeichnet.
+Eine L"osung der Differentialgleichung hat in diesem Bild als Graph
+eine Kurve in der $x$-$y$-Ebene, die an jeder Stelle als Tangente 
+das Richtungsfeld haben.
+
 Insbesondere in Anwendungen in der Physik ist die Zeit die
 unabh"angige Variable.
 Die abh"angige Variable ist dann zum Beispiel die Ortskoordinate
@@ -46,11 +64,11 @@ die Geschwindigkeit, $\ddot{x}(t)$ f"ur die Beschleunigung.
 Dieses Beispiel suggeriert auch, dass die abh"angige Variable 
 ein Vektor sein kann, den man als den Ortsvektor eines Teilchens
 interpretieren kann.
-Die Funktion $f(t,x,\dots,x^{(n-1)})$ ist dann auch vektorwertig, und
-alle Argumente ausser dem ersten von $f$ sind vektorwertig.
+Auch die Funktion $f(t,x,\dots,x^{(n-1)})$ muss dann vektorwertig sein, und
+ebenso alle Argumente ausser dem ersten von $f$.
 
 Eine Differentialgleichung $n$-ter Ordnung f"ur eine skalare Funktion
-kann in eine Vektor-Differentialgleichung erster Ordnung f"ur eine
+kann in eine Vektor-Differen\-tialgleichung erster Ordnung f"ur eine
 $n$-dimensionale vektorwertige Funktion umgewandelt werden.
 Ist $y(x)$ die gesuchte Funktion in der
 Differentialgleichung~(\ref{grundlagen:explizit}), dann kann man
@@ -73,8 +91,8 @@ y'\\y''\\\vdots\\y^{(n)}
 \end{pmatrix}
 =
 \begin{pmatrix}
-y'\\y''\\\vdots\\f(x,y,y',\dots,y^{(n-1)}.
-\end{pmatrix}
+y'\\y''\\\vdots\\f(x,y,y',\dots,y^{(n-1)})
+\end{pmatrix}.
 \label{grundlagen:vektordgl}
 \end{equation}
 Der Vektor auf der rechten Seite h"ang nur von $x$, der Funktion $y$
@@ -84,13 +102,336 @@ kann (\ref{grundlagen:vektordgl}) daher als
 \frac{d}{dx}u=\tilde{f}(x,u)
 \end{equation}
 schreiben.
+Im Folgenden werden wir fast ausschliesslich Differentialgleichungen
+erster Ordnung der Form $y'=f(x,y)$ betrachten, und dabei stillschweigend
+zulassen, dass $y$ ein Vektor ist.
 
-\section{Anfangswertprobleme\label{section:anfangswertprobleme}}
+Differentialgleichungen h"oherer Ordnung oder Vektordifferentialgleichungen
+lassen sich nicht so einfach visualisieren wie Differentialgleichungen
+erster Ordnung.
+Ist $y(x)$ eine L"osung der Vektor-Differentialgleichung $y'=f(x,y)$
+mit $y\in\mathbb R^n$, dann ist die Abbildung
+\[
+\gamma\colon
+x\mapsto\begin{pmatrix}
+x\\
+y(x)
+\end{pmatrix}\in\mathbb R^{n+1}
+\]
+eine Kurve im $n+1$-dimensionalen Raum. 
+Der Tangentialvektor ist
+\begin{equation}
+\gamma'(x)
+=
+\begin{pmatrix}1\\y'(x)\end{pmatrix}
+=
+\begin{pmatrix}1\\f(x,y(x))\end{pmatrix}.
+\label{grundlagen:gamma-vektorfeld}
+\end{equation}
+Die Kurve $\gamma(x)$ ist also in jedem Punkt des $n+1$-dimensionalen
+Raumes tangential an das Vektorfeld, welches
+durch~(\ref{grundlagen:gamma-vektorfeld}) definiert wird.
+Der Spezialfall $n=1$ f"uhrt wieder zur"uck auf das Richtungsfeld
+wie in Abbildung~\ref{grundlagen:richtungsfeld}.
 
-\section{Randwertprobleme\label{section:randwertprobleme}}
+\subsection{Anfangswertprobleme\label{section:anfangswertprobleme}}
+Die Differentialgleichung $y'=f(x,y)$ alleine kann eine L"osungsfunktion
+$y(x)$ nicht festlegen, sie codiert nur, wie sich die L"osung ver"andern wird.
+Es ist also zus"atzlich die Angabe eines Punktes der L"osungskurve
+notwendig.
+Man nennt das Problem, eine Funktion $y(x)$ zu finden, welche
+\[
+y'=f(x,y)
+\qquad
+\text{und}
+\qquad
+y(0)=y_0
+\]
+erf"ullt, ein {\em Anfangswertproblem}.
+Ein Anfangswertproblem verlangt f"ur die gew"ohnliche Differentialgleichung
+$n$-ter Ordnung verlangt also die Angabe der Werte von
+$y(0),y'(0),\dots,y^{(n-1)}(o)$
+
+\subsubsection{Existenz und Eindeutigkeit von L"osungen}
+Die Existenz und Eindeutigkeit einer L"osung ist aus den Beispielen und
+graphischen Darstellungen intuitiv verst"andlich, f"ur einen exakten
+Beweis sind jedoch zus"atzliche Voraussetzungen n"otig.
+
+\begin{definition}
+Eine Funktion $f\colon \mathbb R^n\to\mathbb R^m$ heisst global
+{\em Lipschitz-stetig},
+\index{Lipschitz-stetig}
+wenn es eine Zahl $L$ gibt 
+\begin{equation}
+|f(x_2)-f(x_1)| \le L\,|x_2-x_1|
+\label{grundlagen:lipschitz}
+\end{equation}
+f"ur alle Vektoren $x_1,x_2\in\mathbb R^n$.
+Eine Funktion heisst lokal Lipschitz-stetig im Punkt $x_0$, wenn die
+Bedingung (\ref{grundlagen:lipschitz}) f"ur $x_i$ in einer Umgebung von
+$x_0$ erf"ullt ist.
+\end{definition}
+
+Eine Funktion ist insbesondere dann lokal Lipschitz-stetig, wenn sie
+stetig differenzierbar ist.
+In diesem Fall ist die Ableitung $f'(x)$ in einer Umgebung von $x_0$
+beschr"ankt, also $|f(x)|<M$, und der Mittelwertsatz der Differentialgleichung
+sagt, dass
+\[
+|f(x_2)-f(x_1)|\le M |x_2-x_2|
+\]
+ist, $f$ ist also lokal Lipschitz-stetig.
+
+\begin{satz}[Picard-Lindel"of]
+\label{grundlagen:picard-lindeloef}
+Ist die Funktion $f(x,y)$ lokal Lipschitz-stetig bez"uglich der Variablen
+$y$ f"ur $x\in[x_0,b]$ und $|y-y_0|<R$.
+Dann hat das Anfangswertproblem
+\[
+y'(x)=f(x,y)\qquad\text{und}\qquad y(x_0)=y_0
+\]
+ein eindeutige L"osung, die in einem Interval $[x_0,x_0+\varepsilon)$
+definiert ist.
+\end{satz}
+
+In diesem Buch werden die Funktionen $f$ der Differentialgleichungen 
+meistens stetig differenzierbar sein, so dass der
+Satz~\ref{grundlagen:picard-lindeloef} in unseren Anwendungen die lokale
+Existenz und Eindeutigkeit einer L"osung garantiert.
+
+\subsubsection{Autonome Differentialgleichungen}
+Eine besondere Bedeutung haben Differentialgleichungen, in denen
+$f$ nicht von $x$ abh"angt, man nennt sie {\em autonom}
+\index{autonome Differentialgleichung}.
+Die L"osungen einer solchen Differentialgleichungen h"angen im
+folgenden Sinne nicht vom Start-$x$-Wert ab:
+Ist $y(x)$ die L"osung des Anfangswertproblems
+\[
+y'=f(y)\qquad\text{und}\qquad y(0)=y_0,
+\]
+dann ist die Funktion
+\[
+y_1(x)=y(x-x_0)
+\]
+L"osung des Anfangswertproblems
+\[
+y'=f(y)\qquad\text{und}\qquad y(x_0)=y_0.
+\]
+Dies bedeutet, dass Darstellungen der L"osungskurven ohne die Angabe des
+zugeh"origen $x$ aussagekr"aftig sein k"onnen.
+Wir nehmen im folgenden an, dass $f$ die Bedingungen f"ur Existenz
+und Eindeutigkeit von L"osungen sowie f"ur die stetige Abh"angigkeit
+von den Anfangsbedingungen erf"ullt.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/grundlagen-2.pdf}
+\caption{Vektorfeld des autonomen Differentialgleichungssystems
+(\ref{grundlagen:hopfsystem})
+mit L"osungskurven.
+\label{grundlagen:vektorfeld}}
+\end{figure}%
+
+Eine autonome Differentialgleichung definiert in jedem Punkt des
+Raumes, aus dem die $y$-Vektoren stammen, einen Vektor $f(y)$,
+man spricht von einem {\em Vektorfeld}.
+\index{Vektorfeld}
+Indem wir in jedem Punkt des $y$-Raumes den Vektor $f(y)$ aufzeichnen,
+k"onnen wir eine graphische Darstellung des Vektorfeldes erhalten
+(Abbildung~\ref{grundlagen:vektorfeld}).
+Die Bahn des Punktes $y(x)$ in Abh"angigkeit von $x$ ist eine Kurve,
+deren Tangentialvektor in jedem Punkt der $y$-Ebene durch die Funktion
+$f(y)$ gegeben ist.
+In Abbildung~\ref{grundlagen:vektorfeld} ist das Vektorfeld des
+Differentialgleichungssystems
+\begin{equation}
+\begin{aligned}
+y_1'&=y_1-y_2-y_1(y_1^2+y_2^2)\\
+y_2'&=y_1+y_2-y_2(y_1^2+y_2^2)
+\end{aligned}
+\label{grundlagen:hopfsystem}
+\end{equation}
+dargestellt.
+Das Vektorfeld ist durch die Funktion $f(y)$ mit
+\[
+y=\begin{pmatrix}y_1\\y_2\end{pmatrix}
+\qquad\text{und}\qquad
+f(y)=\begin{pmatrix}
+y_1-y_2-y_1(y_1^2+y_2^2)\\
+y_1+y_2-y_2(y_1^2+y_2^2)
+\end{pmatrix}
+\]
+gegeben.
+
+Sehr viele Differentialgleichungen der Physik sind autonom.
+Die unabh"angige Variable ist hier typischerweise die Zeit $t$, die
+Naturgesetze, die Anlass zu den Differentialgleichungen geben,
+h"angen nicht explizit von der Zeit ab. 
+Zum Beispiel f"uhrt das Kraftgesetz der Gravitation auf die
+Differentialgleichung
+\[
+m\ddot x=-\frac{GMm}{|x|^2}\frac{x}{|x|}
+\]
+f"ur die Bewegung eines Planeten der Masse $m$ um die Sonne mit Masse $M$.
+Da die Massen konstant bleiben, tritt die Zeit auf der rechten Seite nicht
+explizit auf.
+Dies bedeutet auch, dass die Bahn immer gleich aussieht, unabh"angig
+davon, wann der Planet startet.
+In der Physik spricht man auch davon, dass die Bahn von einem 
+Vektorfeld von Kraftvektoren $\vec F$ bestimmt wird.
+
+
+
+F"ur eine autonome Differentialgleichung l"asst sich also zu jedem
+Anfangspunkt eine L"osung finden.
+Sind ausserdem die Voraussetzungen f"ur Existenz, Eindeutigkeit
+und stetige Abh"angigkeit der L"osung von den Anfangsbedingungen erf"ullt,
+k"onnen wir alle L"osungen in eine Funktion $\varphi$ zusammenfassen.
+Sie ist definiert dadurch, dass
+die Abbildung
+\[
+x\mapsto \varphi_x(y_0)
+\]
+L"osung des Anfangswertproblems
+\[
+y'=f(y)
+\qquad\text{und}\qquad 
+y(0)=y_0
+\]
+Wegen der Autonomie ist dann auch $y_{x-x_0}(y_0)$ L"osung des
+Anfangswertproblems
+\[
+y'=f(y)
+\qquad\text{und}\qquad 
+y(x_0)=y_0,
+\]
+die Funktion $\varphi$ fasst also alle L"osungen in einer einzigen
+Funktion zusammen.
+Sie erf"ullt die Zusammensetzungsbedingung
+\[
+\varphi_{x_1+x_2}(y_0)=\varphi_{x_1}(\varphi_{x_2}(y_0)).
+\]
+Die Abbildung $\varphi$ heisst der {\em Fluss} des durch die autonome 
+Differentialgleichung gegebenen Vektorfeldes.
+\index{Fluss eines Vektorfeldes}
+
+\subsection{Randwertprobleme\label{section:randwertprobleme}}
+Wenn man einen Ball wirft, wird seine Bewegung durch die
+Vektordifferentialgleichung zweiter Ordnung
+\[
+\frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}0\\\displaystyle-\frac{g}{m}\end{pmatrix}
+\]
+beschrieben.
+Die Bahn ist ausserdem bestimmt durch die Anfangsbedingungen,
+d.~h.~also den Anfangspunkt und die Anfangsgeschwindigkeit der Bahn.
+Praktischer Ballwurf verlangt aber, dass ein Ziel erreicht wird.
+Die Aufgabenstellung ist daher eine Bahnkurve $\gamma(t)$ zu finden,
+welche sowohl durch den Anfangspunkt als auch den Zielpunkt
+verl"auft.
+
+Die L"osung einer Differentialgleichungen erster Ordnung f"ur eine
+unbekannte reellwertige Funktion $y(x)$ ist vollst"andig durch einen
+einzigen Anfangswert bestimmt.
+Eine Differentialgleichung zweiter Ordnung f"ur eine unbekannte
+rellwertige Funktion $y(x)$ verlangt dagegen zwei Anfangswerte,
+n"amlich f"ur $y(0)$ und $y'(0)$.
+In Analogie zum Problem des Ballwurfs k"onnte die L"osungsfunktion auch
+festgelegt werden durch den Wert f"ur $x=0$ und $x=1$.
+Gesucht ist also eine Funktion $y(x)$ auf dem Interval $[0,1]$, die
+\begin{equation}
+y''=f(x,y,y')
+\qquad\text{mit}\qquad
+y(0)=y_0,
+\qquad
+y(1)=y_1
+\end{equation}
+erf"ullt.
+
+\begin{beispiel}
+Wir l"osen die Differentialgleichung $y''=-y$ mit den Randwerten
+$y(0)=1$ und $y(1)=2$.
+Die homogene Differentialgleichung hat die Funktionen
+\[
+y(x)=A \cos x + B\sin x
+\]
+als allgemeine L"osung.
+Die Konstanten $A$ und $B$ m"ussen so gew"ahlt werden, dass die Randwerte
+korrekt sind.
+Setzt man $x=0$ und $x=1$ ein, erh"alt man die linearen Gleichungen
+\begin{align*}
+a=y(0)&=A\cos 0 + B\sin 0=A\\
+b=y(1)&=A\cos 1 + B\sin 1
+\qquad\Rightarrow\qquad
+\frac{b-a\cos 1}{\sin 1}.
+\end{align*}
+Die L"osung des Randwertproblems ist daher die Funktion
+\[
+y(x)=a\cos x +\frac{b-a\cos 1}{\sin 1}\sin x,
+\]
+wie man auch durch Einsetzen von $x=0$ und $x=1$ verifizieren kann.
+\end{beispiel}
+
+\subsection{H"ohere Ableitungen\label{grundlagen:hoehere-ableitungen}}
+Die Differentialgleichung $y'=f(x,y)$ erlaubt nicht nur die erste
+Ableitung einer Funktion zu bestimmen.
+Durch Ableitung nach $x$ k"onnen wir auch die h"oheren Ableitungen
+bestimmen, die eine L"osung der Differentialgleichung haben muss,
+die durch den Punkt $(x,y)$.
+\begin{align}
+y'(x)
+&=
+f(x,y),
+\notag
+\\
+y''(x)
+&=
+\frac{dy'(x)}{dx}
+=
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}y'(x)
+=
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y),
+\label{grundlagen:2abl}
+\\
+y'''(x)
+&=
+\frac{dy''(x)}{dx}
+\notag
+\\
+&=
+\frac{\partial^2 f(x,y)}{\partial x^2}
++ \frac{\partial^2 f(x,y)}{\partial y\,\partial x}y'(x)
++ \biggl(\frac{\partial^2 f(x,y)}{\partial x\,\partial y}
++ \frac{\partial^2 f(x,y)}{\partial y^2}y'(x)\biggr)f(x,y)
+\notag
+\\
+&\qquad
++ \frac{\partial f(x,y)}{\partial y}\biggl(
+\frac{\partial f(x,y)}{\partial x} + \frac{\partial f(x,y)}{\partial y}f(x,y)
+\biggr),
+\notag
+\\
+&=
+\frac{\partial^2 f(x,y)}{\partial x^2}
++ 2\frac{\partial^2 f(x,y)}{\partial x\,\partial y}f(x,y)
++ \frac{\partial^2 f(x,y)}{\partial y^2}f(x,y)^2
++ \biggl(\frac{\partial f(x,y)}{\partial y}\biggr)^2 f(x,y)
++ \frac{\partial f(x,y)}{\partial y} \frac{\partial f(x,y)}{\partial x}.
+\label{grundlagen:3abl}
+\end{align}
+Die Terme werden offensichtlich schnell kompliziert.
 
 \section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
-\subsection{Separation der Variablen}
+\lhead{Analytische L"osungsverfahren}
+Nur wenige Differentialgleichungen lassen sich in geschlossener Form
+l"osen, weshalb wird in Kapitel~\ref{chapter:numerik} Methoden zur
+numerischen L"osung studieren werden.
+In einzelnen F"allen lassen sich jedoch L"osungsverfahren angeben,
+mit denen man Formeln f"ur die L"osungen finden kann.
+Einige davon sollen in diesem Abschnitt kurz zusammengestellt werden.
+
+\subsection{Separierbare Differentialgleichungen}
 Differentialgleichungen erster Ordnung lassen sich oft durch sogenannte
 Trennung der Variablen auf die Berechnung von Integralen reduzieren.
 Dank der Schreibweise der Ableitung als Differentialquotient wird
@@ -145,6 +486,109 @@ y(x)=ae^{-Nx}
 von Funktionen.
 Der Paramter $a$ muss mit Hilfe der Anfangsbedingung festgelegt werden.
 
+Etwas allgemeiner kann die Methode der Separation der Variablen wie folgt
+formuliert werden:
+\begin{definition}
+\label{grundlagen:definition:separierbar}
+Eine Differentialgleichung der Form
+\[
+y'=f(y) g(x)
+\]
+mit stetigen Funktionen $f(y)$ und $g(x)$ heisst separierbar.
+\end{definition}
+
+\begin{satz}[Separation der Variablen]
+Eine separierbare Differentialgliechung mit Funktionen $f$ und $g$ wie
+in Definition~\ref{grundlagen:definition:separierbar},
+die ausserdem in einer Umgebung von $x_0$ und $y_0$ nicht verschwinden.
+Ausserdem sollen
+\[
+F(y)=\int_{y_0}^y \frac1{f(\eta)}\,d\eta
+\qquad\text{und}\qquad
+G(x)=\int_{x_0}^x g(\xi)\,d\xi
+\]
+Stammfunktionen sein.
+Dann ist $F$ in einer Umgebung von $y_0$ invertierbar und es gilt
+\[
+y(x)=F^{-1}(G(x))
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $y(x)$ die L"osung der Differentialgleichung, die die Anfangsbedinung
+$y(x_0)=y_0$ erf"ullt.
+Wir setzen $y(x)$ in die Differentialgleichung ein,
+dividieren sie durch $f(y)$ und integrieren "uber $x$:
+\[
+\int_{x_0}^x\frac1{f(y(\xi))}\frac{dy(\xi)}{d\xi}\,d\xi
+=
+\int_{x_0}^x g(\xi)\,d\xi.
+\]
+Die linke Seite kann mit der Formel f"ur die Variablentransformation in
+ein Integral "uber $y$ umgewandelt werden.
+\[
+\int_{x_0}^x\frac1{f(y(\xi))}\frac{dy(\xi)}{d\xi}\,d\xi
+=
+\int_{y_0}^y \frac1{f(\eta)}\,d\eta=F(y)
+\]
+die L"osung muss daher die Gleichung
+\begin{equation}
+F(y(x))=G(x)
+\label{grundlagen:FG}
+\end{equation}
+erf"ullen.
+Da $f(y)\ne 0$ in einer Umgebung von $y_0$, ist $F$ in einer Umgebung von $y_0$
+streng monoton wachsend oder fallend und damit invertierbar.
+Also ist die Gleichung~(\ref{grundlagen:FG}) nach $y(x)$ aufl"osbar, und
+es gilt
+\[
+y(x)=F^{-1}(G(x)).
+\]
+\end{proof}
+
+\begin{beispiel}
+Als Beispiel l"osen wir die Differentialgleichung
+\[
+y'=\frac{y^2+1}{x^2-1}
+\]
+mit den Anfangsbedingungen $x_0=0$ und $y(x_0)=y(0)=1$.
+Die Differentialgleichung ist separierbar, die beiden Funktionen sind
+\begin{align*}
+f(y)&=y^2+1
+\\
+g(x)&=\frac1{x^2-1}.
+\end{align*}
+Wir brauchen die beiden Stammfunktionen $F(y)$ und $G(x)$:
+\begin{align*}
+F(y)
+&=
+\int_{y_0}^y \frac1{f(\eta)}\,d\eta
+=
+\int_{1}^y \frac1{\eta^2+1}\,d\eta
+=
+\arctan y - \frac{\pi}2,
+\\
+G(x)
+&=
+\int_{x_0}^x\frac1{\xi^2-1}\,d\xi
+=
+\int_0^x \frac1{\xi^2-1}\,d\xi
+=
+\frac12(\log(1-x)-\log(1+x)).
+\end{align*}
+Die Umkehrfunktion von $F$ ist
+\[
+F^{-1}(u)=\tan\biggl(u+\frac{\pi}2\biggr),
+\]
+so dass die L"osung der Differentialgleichung
+\[
+y(x)=
+\tan\biggl(\frac12\log(1-x)-\frac12\log(1+x)+\frac{\pi}2\biggr)
+\]
+ist.
+Tats"achlich "uberpr"uft man leicht, dass $y(0)=\tan\frac{\pi}2=1$ ist.
+\end{beispiel}
+
 \subsection{Lineare Differentialgleichungen}
 Eine Differentialgleichung der Form
 \begin{equation}
@@ -166,7 +610,7 @@ Wir m"ochten zeigen, dass
 $y(x)=\alpha y_1(x)+\beta y_2(x)$ eine L"osung ist.
 Die Ableitungen selbst sind linear:
 \begin{align*}
-y^{(k)}&=\alpha y_1^{(k)}(x)+\beta y_2^{(k)}(x).
+y^{(k)}(x)&=\alpha y_1^{(k)}(x)+\beta y_2^{(k)}(x).
 \end{align*}
 Setzt man dies in die Differentialgleichung ein, erh"alt man
 \begin{align*}
@@ -183,6 +627,55 @@ a_n\alpha y_1^{(n)}+a_n\beta y_2^{(n)}+\dots+a_1\alpha y_1'+a_1\beta y_2'
 die Linearkombination $y$ erf"ullt also die homogene Differentialgleichung
 ebenfalls.
 
-
 \subsection{Variation der Konstanten}
-\subsection{Laplace-Transformation}
+
+\section{Lokal-Global-"Ubergang}
+Eine Differentialgleichung beschreibt einen Zusammenhang zwischen
+lokale Eigenschaften einer Funktion, also Eigenschaften, die in einer
+beliebig kleine Umgebung eines Wertes $x$ der unabh"angigen Variablen
+ermittelt werden k"onnen.
+Die L"osung einer Differentialgleichung dagegen ermittelt eine globale
+Funktion, die in jedem Punkt ihres Definitionsbereiches die von der
+Differentialgleichung verlangten lokalen Eigenschaften hat.
+L"osen einer Differentialgleichung ist also ein "Ubergang von rein lokalen
+Eigenschaften zu globalen L"osungen.
+
+Alle dargestellten analytischen L"osungsverfahren f"uhren die L"osung
+der Differentialgleichung letztendlich auf die Berechnung von Stammfunktionen
+zur"uck.
+Eine Stammfunktion $F(x)$ einer Funktion $f(x)$ ist diejenige Funktion,
+die in jedem Punkt ihres Definitionsbereiches die Eigenschaft $F'(x)=f(x)$
+hat.
+Die Stammfunktion $F(x)$ ist also das ultimative Beispiel einer Funktion,
+die durch eine lokale Eigenschaft, n"amlich die Steigung, definiert ist.
+
+In den folgenden Kapiteln sollen weitere Methoden untersucht werden,
+wie der "Ubergang von lokalen Eigenschaften zu einer globalen L"osung
+vollzogen werden kann.
+Die numerische L"osung verwendet die Steigung in einem Punkt, um in kleinen
+Schritten approximativ zu immer gr"osseren $x$-Werten vorzustossen.
+Techniken zur numerischen L"osung von Differentialgleichungen sollen
+im Kapitel~\ref{chapter:numerik} besprochen werden.
+
+In vielen F"allen lassen sich Funktionen durch Potenzreihen darstellen.
+Die Talyor-Reihe verbindet die Ableitungen einer Funktion in einem Punkt
+mit einer Potenzreihe. 
+Die Methode der Potenzreihen wird in Kapitel~\ref{chapter:potenzreihen}
+dargestellt.
+F"ur sogenannte analytische Funktionen ist die Taylorreihe konvergent
+und ihre Summe stimmt mit der urspr"unglichen Funktion "uberein.
+Dies Situation ist nicht ungew"ohnlich, sie tritt immer dann auf, wenn
+die Differentialgleichung eigentlich f"ur komplexe Variablen aufgestellt
+werden kann.
+In der komplexen Analysis wird gezeigt, dass komplex differenzierbare
+Funktionen sehr viel rigidere Eigenschaften haben.
+Sie sind zum Beispiel immer analytisch, und ihre Funktionswerte in
+einem Gebiet der komplexen Ebene ist immer vollst"andig durch die Werte
+auf dem Rand bestimmt.
+Es besteht daher die Hoffnung, dass die komplexe Analysis in einigen
+F"allen die L"osungen von Differentialgleichungen vereinfachen kann.
+Diese Theorie ist der Inhalt von Kapitel~\ref{chapter:komplexeanalysis}.
+
+
+
+

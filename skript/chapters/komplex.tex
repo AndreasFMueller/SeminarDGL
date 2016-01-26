@@ -3,6 +3,790 @@
 %
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
-\chapter{Komplexe Differentialgleichungen\label{chapter:komplex}}
+\chapter{Komplexe Differentialgleichungen\label{chapter:komplexeanalysis}}
 \lhead{}
 \rhead{Komplexe Differentialgleichungen}
+Die bisher betrachteten Differentialgleichungen waren immer f"ur
+$x\in\mathbb R$ definiert.
+Bei der L"osung mit Hilfe von Potenzreihen haben wir L"osungsfunktionen
+gefunden, die man auch f"ur komplexe $x$-Werte auswerten kann.
+Definiert man die Ableitung einer Funktionen einer komplexen Variablen
+$z$ rein formal als
+\[
+\frac{d}{dz}z^n= nz^{n-1},
+\]
+dann kann man auch Potenzreihen in der Variablen $z$ formal differenzieren,
+indem man jeden Term der Potenzreihe ableitet.
+Und die mit der Potenzreihen-Methode gefunden L"osungen erf"ullen dann
+auch die urspr"ungliche Differentialgleichung.
+Dies ist aber eine rein formale "Uberlegung, da die Ableitung nach einer
+komplexen Variablen noch gar nicht definiert ist.
+
+\section{Komplex differenzierbare Funktionen}
+Wir betrachten in diesem Kapitel komplexwertige Funktionen,
+die ein einem Teilgebiet der komplexen Ebene definiert sind.
+Ein {\em Gebiet} ist eine offene Teilmenge $\Omega\subset \mathbb C$.
+{\em Offen} heisst, dass mit jedem Punkt $z_0\in\Omega$ eine Umgebung
+\[
+U=\{z\in\mathbb Z\,|\,|z-z_0|<\varepsilon\}
+\]
+ebenfalls in $\Omega$ enthalten ist, also $U\subset \Omega$ f"ur gen"ugen
+kleines $\varepsilon$.
+Sei also $f(z)$ eine in $\Omega\subset\mathbb C$ definierte
+Funktion $f\colon\Omega\to\mathbb C$. 
+
+Eine komplexwertige Funktion $f(z)$ kann betrachtet werden als zwei
+reellwertige Funktionen von zwei Variablen $x$ und $y$:
+\[
+f(z)=\operatorname{Re}f(x+iy) + i \operatorname{Im}f(x+iy)
+\]
+Schreibt man
+$\operatorname{Re}f(x+iy)=u(x,y)$
+und
+$\operatorname{In}f(x+iy)=v(x,y)$,
+dann ist die komplexe Funktion vollst"andig durch reelle Funktionen
+beschrieben.
+Und nat"urlich wissen wir auch, was unter den Ableitungen der Funktionen 
+$u(x,y)$ und $v(x,y)$ zu verstehen ist.
+Der Funktion $f(z)$ entspricht eine Abbildung $\mathbb R^2\to\mathbb R^2$
+\[
+(x,y)\mapsto\begin{pmatrix}u(x,y)\\v(x,y)\end{pmatrix}.
+\]
+Die Ableitung einer solchen Funktion im Punkt $(x_0,y_0)$
+ist eine lineare Abbildung von Vektoren, die in linearer N"aherung
+den Funktionswert bei $f(z_0 + \Delta z)$ 
+\[
+\begin{pmatrix}
+u(x+\Delta x, y +\Delta y)\\
+v(x+\Delta x, y +\Delta y)
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\partial u}{\partial x}&\frac{\partial u}{\partial y}\\
+\frac{\partial v}{\partial x}&\frac{\partial v}{\partial y}
+\end{pmatrix}
+\begin{pmatrix} \Delta x\\\Delta y \end{pmatrix}
++o(\Delta x, \Delta y).
+\]
+In dieser Sicht einer komplexen Funktion gibt es keine einzelne Zahl, die
+die Funktion einer Ableitung "ubernehmen k"onnte, die Ableitung
+ist eine $2\times 2$-Matrix.
+
+\subsection{Komplexe Ableitung}
+Die Ableitung einer Funktion einer reellen Variablen wird mit Hilfe des
+Grenzwertes
+\[
+f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
+\]
+definiert, oder als diejenige Zahl $f'(x_0)\in\mathbb R$ mit der Eigenschaft,
+dass
+\begin{equation}
+f(x)=f(x_0)+f'(x_0)(x-x_0) + o(x-x_0)
+\label{komplex:abldef}
+\end{equation}
+gilt.
+Der Term $x-x_0$ und die Gleichung (\ref{komplex:abldef}) sind aber auch
+f"ur komplexe Argument sinnvoll, wir definieren daher
+
+\begin{definition}
+Die komplexe Funktion $f(z)$ heisst im Punkt komplex differenzierbar
+und hat die komplexe Ableitung $f'(z_0)\in\mathbb C$,
+wenn 
+\begin{equation}
+f(z)=f(z_0) + f'(z_0)(z-z_0) +o(z-z_0)
+\label{komplex:defkomplabl}
+\end{equation}
+gilt.
+\end{definition}
+
+\begin{beispiel}
+Die Funktion $z\mapsto f(z)=z^n$ ist "uberall komplex differenzierbar
+und hat die Ableitung $nz^{n-1}$.
+Um dies nachzupr"ufen, m"ussen wir die Bedingung~(\ref{komplex:defkomplabl})
+verifizieren.
+Aus einer wohlbekannten Faktorisierung von $z^n - z_0^n$ k"onnen wir den
+Differenzenquotienten finden:
+\[
+\frac{f(z)-f(z_0)}{z-z_0}
+=
+\frac{z^n-z_0^n}{z-z_0}
+=
+\frac{(z-z_0)(z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1})}{z-z_0}
+=
+z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1}
+\]
+Lassen wir jetzt $z$ gegen $z_0$ gehen, wird die rechte Seite
+zu $nz_0^{n-1}$.
+\end{beispiel}
+
+\begin{beispiel}
+Die Funktion $z\mapsto f(z)=\bar z=x-iy$ ist nicht differenzierbar.
+Wenn $f(z)=\bar z$ differenzierbar w"are, dann m"usste es eine Zahl
+$a\in\mathbb C$ geben, so dass 
+\[
+\bar z-\bar z_0=a(z-z_0)+o(z-z_0)
+\]
+gilt.
+w"ahlen wir $z=z_0+x$ bzw.~$z=z_0+iy$, dann erhalten wir
+\[
+\begin{aligned}
+z-z_0&=x:&
+\bar z-\bar z_0&=x
+&&\Rightarrow&
+\bar z-\bar z_0&=1\cdot x
+&&\Rightarrow&
+a&=1
+\\
+z-z_0&=iy:&
+\bar z-\bar z_0&=-iy
+&&\Rightarrow&
+\bar z-\bar z_0&=-1\cdot iy
+&&\Rightarrow&
+a&=-1
+\end{aligned}
+\]
+Es ist also nicht m"oglich, eine einzige Zahl $a$ zu finden, die als
+die Ableitung der Funktion $z\mapsto \bar z$ betrachtet werden k"onnte.
+\end{beispiel}
+
+Das letzte Beispiel zeigt, dass
+selbst Funktionen, deren Real- und Imagin"arteil beliebig oft stetig
+differenzierbare Funktionen sind, nicht komplex differenzierbar
+sein m"ussen.
+Komplexe Differenzierbarkeit ist eine wesentlich st"arkere Bedingung
+an eine Funktion, komplex differenzierbare Funktionen bilden eine
+echte Teilmenge aller Funktionen, deren Real- und Imagin"arteil
+differenzierbar ist.
+
+\subsection{Die Cauchy-Riemann-Differentialgleichungen}
+Komplexe Funktionen k"onnen nur differenzierbar sein, wenn sich die vier
+partiellen Ableitungen zu einer einzigen komplexen Zahl zusammenfassen
+lassen.
+Um diese Beziehung zu finden, gehen wir von einer komplexen Funktion
+\[
+f(x+iy) = u(x,y) + iv(x,y)
+\]
+aus, und berechnen die Ableitung auf zwei verschiedene Arten, indem
+wir sowohl nach $x$ als auch nach $iy$ ableiten:
+\begin{align*}
+f'(z)&
+=
+\lim_{x\to 0}\frac{f(z+x)-f(z)}{x}
+=
+\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}
+\\
+f'(z)&
+=
+\lim_{y\to 0}\frac{f(z+x)-f(z)}{iy}
+=
+\frac1{i}
+\frac{\partial u}{\partial y}+\frac{\partial v}{\partial y}
+=
+\frac{\partial v}{\partial y}
+-i
+\frac{\partial u}{\partial y}.
+\end{align*}
+Dies ist nur m"oglich, wenn Real- und Imagin"arteile "ubereinstimmen.
+Es folgt also
+
+\begin{satz}
+\label{komplex:satz:cauchy-riemann}
+Real- und Imagin"arteil $u(x,y)$ und $v(x,y)$ einer
+komplexe Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
+erf"ullen die Cauchy-Riemannschen Differentialgleichungen
+\index{Cauchy-Riemann-Differentialgleichungen}
+\begin{equation}
+\begin{aligned}
+\frac{\partial u}{\partial x}
+&=
+\frac{\partial v}{\partial y},
+&
+\frac{\partial u}{\partial y}
+&=
+-
+\frac{\partial v}{\partial x}
+\end{aligned}
+\label{komplex:dgl:cauchy-riemann}
+\end{equation}
+\end{satz}
+
+Leitet man die Cauchy-Riemann-Differentialgleichungen nochmals nach
+$x$ und $y$ ab, erh"alt man
+\begin{equation*}
+\begin{aligned}
+\frac{\partial^2 u}{\partial x^2}
+&=
+\frac{\partial^2 v}{\partial x\,\partial y},
+&
+\frac{\partial^2 u}{\partial x\,\partial y}
+&=
+-\frac{\partial^2 v}{\partial x^2},
+&
+\frac{\partial^2 u}{\partial y\,\partial x}
+&=
+\frac{\partial^2 v}{\partial y^2},
+&
+\frac{\partial^2 u}{\partial y^2}
+&=
+-\frac{\partial^2 v}{\partial y\,\partial x}.
+\end{aligned}
+\end{equation*}
+Die erste und die letzte sowie die mittleren zwei k"onnen zu jeweils
+einer Differentialgleichung f"ur die Funktionen $u$ und $v$ zusammengefasst
+werden, n"amlich
+\begin{equation*}
+\frac{\partial^2 u}{\partial x^2}
++
+\frac{\partial^2 u}{\partial y^2}
+=
+0
+\qquad\text{und}\qquad
+\frac{\partial^2 v}{\partial x^2}
++
+\frac{\partial^2 v}{\partial y^2}
+=
+0
+\end{equation*}
+
+\begin{definition}
+Der Operator 
+\[
+\Delta =
+\frac{\partial^2}{\partial x^2}
++
+\frac{\partial^2}{\partial y^2}
+\]
+heisst der {\em Laplace-Operator} in zwei Dimensionen
+\index{Laplace-Operator}.
+\end{definition}
+
+\begin{definition}
+Eine Funktion $h(x,y)$ von zwei Variablen heisst {\em harmonisch}, wenn sie
+die Gleichung
+\[
+\Delta h=0
+\]
+erf"ullt.
+\index{harmonische Funktion}
+\end{definition}
+
+\begin{satz}
+Real- und Imagin"arteil einer komplexen Funktion sind harmonische Funktionen.
+\end{satz}
+
+Die Cauchy-Riemann-Differentialgleichungen schr"anken also einerseits stark
+ein, welche Funktionen "uberhaupt als Real- und Imagin"arteil einer
+komplex differenzierbaren Funktion in Frage kommen.
+Andererseits koppeln sie auch Real- und Imagin"arteil stark zu sammen.
+
+\begin{beispiel}
+Von einer komplex differenzierbaren Funktion $f(z)$ sei nur der Realteil
+$u(x,y)=x^3 -3xy^2$ bekannt.
+Zun"achst kontrollieren wir, ob dies "uberhaupt ein Realteil sein kann,
+indem wir nachrechnen, ob $u(x,y)$ harmonisch ist.
+\begin{equation*}
+\begin{aligned}
+\frac{\partial u}{\partial x}
+&=
+3x^2-3y^2
+&&\Rightarrow&
+\frac{\partial^2 u}{\partial x^2}
+&=
+6x
+\\
+\frac{\partial u}{\partial y}
+&=
+-6xy
+&&\Rightarrow&
+\frac{\partial^2 u}{\partial y^2}
+&=
+-6x
+\\
+&&&&&\Delta u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}&=6x-6x=0,
+\end{aligned}
+\end{equation*}
+$u$ ist also harmonisch.
+Um die Funktion $f$ zu finden, brauchen wir jetzt noch den Imagin"arteil.
+Wir finden ihn mit Hilfe der Cauchy-Riemann-Differentialgleichungen.
+Es gilt
+\begin{equation}
+\begin{aligned}
+\frac{\partial v}{\partial x}
+&=
+-\frac{\partial u}{\partial y}=6xy,
+&
+\frac{\partial v}{\partial y}
+&=
+\frac{\partial u}{\partial x}=3x^2-3y^2
+\end{aligned}
+\label{komplex:crbeispiel}
+\end{equation}
+Aus der ersten Gleichung erh"alt man durch Integrieren nach $x$ 
+\[
+v(x,y)=-3x^2y + C(y),
+\]
+die Integrations-``Konstante'' ist eine Funktion, die aber nur von $y$
+abh"angen darf.
+Die zweite Cauchy-Riemann-Gleichung verwendet die Ableitung von $v$ nach $y$,
+sie ist
+\[
+\frac{\partial v}{\partial y}=3x^2+C'(y).
+\]
+Aus der zweiten Gleichung von (\ref{komplex:crbeispiel}) liesst man
+ab, dass
+\[
+C'(y)=-3y^2
+\qquad\Rightarrow\qquad
+C(y)=-y^3+k
+\]
+sein muss.
+Damit ist $v$ bis auf eine Konstante bestimmt.
+Die zugeh"orige Funktion $f(z)$ ist daher
+\[
+f(z)=f(x+iy)=x^3-3xy^2+i(3x^2y-y^3)+ik
+=x^3 + 3x^2iy + 3x(iy)^2+(iy)^3+ik=z^3+ik.
+\]
+Wir haben die Funktion $f(z)$ bis auf eine Konstanten $ik$ 
+aus ihrem Realteil rekonstruiert.
+\end{beispiel}
+
+\subsection{Wegintegrale und die Cauchy-Formel}
+Das Finden einer Stammfunktion, die Integration, ist die Grundtechnik,
+mit der man den "Ubergang von lokaler Information in Form von Ableitungen,
+zu globaler Information "uber reelle Funktionen vollzieht.
+Sie liefert aus der Steigung zwischen zwei Punkten $x_0$ und $x$ den
+Funktionswert mittels
+\[
+f(x)=f(x_0)+\int_{x_0}^xf'(\xi)\,d\xi.
+\]
+Bei einer reellen Funktion gibt es nur eine Richtung, entlang derer man
+integrieren k"onnte.
+
+Auch in der komplexen Ebene erwarten wir eine Formel
+\[
+f(z) = f(z_0) + \int_{z_0}^z f'(\zeta)\,d\zeta.
+\]
+In der komplexen Ebene gibt es aber beliebig viele Wege, mit denen die
+Punkte $z_0$ und $z$ verbunden werden k"onnen. 
+Der Wert von $f(z)$ muss also durch Integration entlang eines speziell
+gew"ahlten Weges $\gamma$
+\[
+f(z) = f(z_0) + \int_{\gamma} f'(\zeta)\,d\zeta
+\]
+bestimmt werden.
+Es muss also zun"achst gekl"art werden, wie ein solches Wegintegral
+"uberhaupt zu verstehen und zu berechnen ist.
+Dann gilt es zu untersuchen, inwieweit diese Konstruktion unabh"angig
+von der Wahl des Weges ist.
+F"ur komplex differenzierbare Funktionen wird sich eine sehr erfolgreiche
+Theorie ergeben.
+
+% XXX Ableitungsregeln
+
+\subsubsection{Wegintegrale}
+Ein Weg in der komplexen Ebene ist eine Abbildung 
+\[
+\gamma\colon [a,b]\to\mathbb C: t\mapsto \gamma(t).
+\]
+Wir verlangen f"ur unsere Zwecke zus"atzlich, dass $\gamma$ differenzierbar
+ist.
+Dann k"onnen wir f"ur jede beliebige Funktion das Wegintegral definieren.
+
+\begin{definition}
+Sei $\gamma\colon[a,b]\to\mathbb C$ ein Weg in $\mathbb C$ und $f(z)$
+eine stetige komplexe Funktion, dann heisst
+\[
+\int_{\gamma} f(z)\,dz = \int_a^bf(\gamma(t)) \gamma'(t)\,dt
+\]
+das {\em Wegintegral} von $f(z)$ entlang der Kurve $\gamma$.
+\index{Wegintegral}
+\end{definition}
+
+\begin{beispiel}
+Wir berechnen als Beispiel das Wegintegral der Funktion $f(z)=1/z$ entlang
+eines Halbkreises von $1$ zu $-1$. 
+Es gibt zwei verschiedene solche Halbkreise:
+\begin{equation*}
+\begin{aligned}
+\gamma_+(t)&=e^{it},&t&\in[0,\pi]
+\\
+\gamma_-(t)&=e^{-it},&t&\in[0,\pi]
+\end{aligned}
+\end{equation*}
+Wir finden f"ur die Wegintegrale
+\begin{align*}
+\int_{\gamma_+}\frac1z\,dz
+&=
+\int_0^\pi \frac1{e^{it}}ie^{it}\,dt=i\int_0^\pi\,dt=i\pi
+\\
+\int_{\gamma_-}\frac1z\,dz
+&=
+-\int_0^\pi \frac1{e^{-it}}ie^{-it}\,dt=-i\int_0^\pi\,dt=-i\pi
+\end{align*}
+Das Wegintegral zwischen $1$ und $-1$ h"angt also mindestens f"ur diese
+spezielle Funktion $f(z)=1/z$ von der Wahl des Weges ab.
+\end{beispiel}
+
+Wie Wahl der Parametrisierung der Kurve hat keinen Einfluss auf den 
+Wert des Wegintegrals.
+
+\begin{satz}
+Seien $\gamma_1(t), t\in[a,b],$ und $\gamma_2(s),s\in[c,d]$
+verschiedene Parametrisierungen
+der gleichen Kurve, es gebe also eine Funktion $t(s)$ derart, dass
+$\gamma_1(t(s))=\gamma_2(s)$.
+Dann ist
+\[
+\int_{\gamma_1}f(z)\,dz
+=
+\int_{\gamma_2}f(z)\,dz.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir verwenden die Definition des Wegintegrales
+\begin{align*}
+\int_{\gamma_1} f(z)\,dz
+&=
+\int_a^b f(\gamma_1(t))\,\gamma_1'(t)\,dt
+=
+\int_c^d f(\gamma_1(t(s))\,\underbrace{\gamma_1'(t(s)) t'(s)}_{\textstyle
+=\frac{d}{ds}\gamma_1(t(s))}\,ds
+\\
+&=
+\int_c^d f(\gamma_2(s)\,\gamma_2'(s)\,ds
+=
+\int_{\gamma_2}f(z)\,dz
+\end{align*}
+Beim zweiten Gleichheitszeichen haben wir die Formel f"ur die
+Variablentransformation $t=t(s)$ in einem Integral verwendet.
+\end{proof}
+
+Wir erwarten, dass das Wegintegral "ahnlich wie das Integral reeller
+Funktionen eine Art ``Umkehroperation'' zur Ableitung ist.
+Wir untersuchen daher den Fall, dass $f(z)$ eine komplexe Stammfunktion $F(z)$
+hat, also $f(z)=F'(z)$.
+Wir berechnen das Wegintegral entlang des Weges $\gamma$:
+\begin{align*}
+\int_{\gamma}f(z)\,dz
+&=
+\int_a^bf(\gamma(t))\,\gamma'(t)\,dt
+=
+\int_a^bF'(\gamma(t))\,\gamma'(t)\,dt
+=
+\int_a^b\frac{d}{dt}F(\gamma(t))\,dt
+=
+F(\gamma(a))-F(\gamma(b))
+\end{align*}
+Dies ist genau die Formel, die man als den Hauptsatz der Infinitesimalrechnung
+kennt.
+Trotzdem ist die Situation hier etwas anders.
+In der reellen Infinitesimalrechnung war die Existenz einer Stammfunktion
+durch das Integral gesichert, man konnte mit
+\[
+F(x)=\int_a^xf(\xi)\,d\xi
+\]
+immer eine Stammfunktion angeben.
+Im komplexen Fall k"onnen wir nat"urlich auch versuchen, eine Stammfunktion
+mit Hilfe von 
+\[
+F(z)=\int_{\gamma_z} f(\zeta)\,d\zeta
+\]
+zu definieren.
+Dabei muss allerdings $\gamma_z$ ein Weg sein, der im Punkt $z$ endet,
+und wir wissen noch nicht einmal, ob die Wahl des Weges eine Rolle
+spielt.
+Bevor wir also sicher sein k"onnen, dass eine Stammfunktion existiert,
+m"ussen wir zeigen, dass das Wegintegral einer komplex differenzierbaren
+Funktion zwischen zwei Punkten nicht von der Wahl des Weges abh"angt,
+der die beiden Punkte verbindet.
+Dazu ist notwendig, geschlossene Wege genauer zu betrachten.
+
+\subsubsection{Geschlossene Wege}
+\begin{definition}
+Ein Weg $\gamma\colon[a,b]\to\mathbb C$ heisst {\em geschlossen}, wenn
+$\gamma(a)=\gamma(b)$.
+\index{geschlossener Weg}
+Das Integral entlang eines geschlossenen Weges h"angt nicht von der
+Parametrisierung ab und wird zur Verdeutlichung mit
+\[
+\int_{\gamma}f(z)\,dz
+=
+\oint_{\gamma}f(z)\,dz
+\]
+bezeichnet.
+\end{definition}
+
+\begin{beispiel}
+Wir berechnen das Integral von $f(z)=z^n$ entlang des Einheitskreises,
+den wir mit $\gamma(t)=e^{it},t\in[0,2\pi]$ parametrisieren.
+Die Definition liefert:
+\begin{align*}
+\oint_{\gamma}f(z)\,dz
+&=
+\int_0^{2\pi}e^{int}ie^{it}\,dt
+=
+i\int_0^{2\pi}e^{i(n+1)t}\,dt
+\end{align*}
+F"ur $n=-1$ ist dies das Integral einer konstanten Funktion, also
+\[
+\oint_{\gamma}\frac1z\,dz=2\pi i.
+\]
+F"ur $n\ne -1$ kann man eine Stammfunktion von $e^{i(n+1)t}$
+verwenden:
+\[
+\oint_{\gamma}f(z)\,dz
+=
+i\left[\frac1{i(n+1)}e^{i(n+1)t}\right]_0^{2\pi}
+=0,
+\]
+weil $e^{i(n+1)t}$ periodisch ist mit Periode $2\pi$.
+\end{beispiel}
+Das Beispiel zeigt, dass ein Wegintegral der Potenzfunktionen,
+aller Polynome und schliesslich aller konvergenten Potenzreihen
+"uber einen geschlossenen Weg verschwinden.
+Es zeigt aber auch, dass das Wegintegral "uber einen geschlossenen
+Weg nicht zu verschwinden braucht, wie das Beispiel $f(z)=1/z$ 
+zeigt.
+Letztere Funktion unterscheidet sich von den Potenzfunktionen allerdings
+dadurch, dass sie im Nullpunkt nicht definiert ist.
+
+\begin{satz}
+Sei $f(z)$ eine in einem zusammenh"angenden Gebiet $\Omega\subset\mathbb C$
+definierte komplexe Funktion, f"ur die das Wegintegral "uber jeden
+geschlossenen Weg verschwindet.
+Dann hat $f(z)$ eine komplexe Stammfunktion $F(z)$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir w"ahlen einen beliebigen Punkt $z_0\in\Omega$ definieren die
+komplexe Stammfunktion mit Hilfe des Wegintegrals
+\[
+F(z)=\int_{\gamma_z} f(\zeta)\,d\zeta,
+\]
+wobei $\gamma_z$ ein beliebiger Weg ist, der $z_0$ mit $z$ verbindet.
+
+Wir m"ussen uns davon "uberzeugen, dass die Wahl des Weges keinen Einfluss
+auf $F(z)$ hat.
+Dazu seien $\gamma_1$ und $\gamma_2$ zwei verschiedene Wege, die
+$z_0$ mit $z$ verbinden.
+Da die Parametrisierung der Wege keinen Einfluss auf das Wegintegral haben,
+nehmen wir an, dass beide Wege auf dem Interval $[0,1]$ definiert sind.
+
+Jetzt konstruieren wir einen geschlossene Weg $\gamma$ durch die
+Defintion:
+\[
+\gamma\colon[0,2]\to\mathbb C:t\mapsto
+\begin{cases}
+\gamma_1(t)&\qquad 0\le t\le 1\\
+\gamma_2(2-t)&\qquad 1\le t\le 2
+\end{cases}
+\]
+Der Weg $\gamma$ besteht aus $\gamma_1$ und dem in umgekehrter Richtung
+durchlaufenen Weg $\gamma_2$, denn an der Stelle $t=1$ passen die
+beiden Teilwege natlos zusammen: $\gamma_1(1)=\gamma_2(1)=\gamma_2(2-1)$.
+Wegen $\gamma(2)=\gamma_2(2-2)=\gamma_2(0)=\gamma_1(0)$ ist der
+Weg geschlossen.
+Nach Voraussetzung ist verschwindet das Wegintegral "uber $\gamma$.
+Es folgt
+\begin{align*}
+0
+&=
+\int_{\gamma}f(z)\,dz
+\\
+&=
+\int_0^1 f(\gamma_1(t))\gamma_1'(t)\,dt
++ \int_1^2f(\gamma_2(2-t))\frac{d}{dt}\gamma_2(2-t)\,dt
+\\
+&=
+\int_0^1 f(\gamma_1(t))\gamma_1'(t)\,dt
+- \int_1^2f(\gamma_2(2-t))\gamma_2'(2-t)\,dt
+\\
+&=
+\int_0^1 f(\gamma_1(t))\gamma_1'(t)\,dt
+- \int_0^1f(\gamma_2(s))\gamma_2'(s)\,ds
+\\
+&=
+\int_{\gamma_1}f(z)\,dz - \int_{\gamma_2}f(z)\,dz
+\\
+\Rightarrow\qquad
+\int_{\gamma_2}f(z)\,dz&=\int_{\gamma_1}f(z)\,dz.
+\end{align*}
+Da die Wahl des Weges keine Rolle spielt, ist $F(z)$ wohldefiniert.
+\end{proof}
+
+Die Bedingung des eben bewiesenen Satzes ist nicht wirklich n"utzlich,
+sie ist kaum nachpr"ufbar.
+Es braucht also zus"atzliche Anstrengungen um gen"ugen viele
+Funktionen zu finden, welche die Eigenschaft haben, dass Wegintegrale
+"uber geschlossene Wege verschwinden.
+Wir zielen dabei auf den folgenden Satz hin:
+\begin{satz}[Cauchy]
+Ist $f(z)$ eine in einem Gebiet $\Omega\subset\mathbb C$ definierte
+komplex differenzierbare Funktion, und ist $\gamma$ ein im Gebiet
+$\Omega$ auf einen Punkt zusammenziehbarer Weg, dann gilt
+\[
+\int_{\gamma}f(z)\,dz=0.
+\]
+Ist insbesondere $\Omega$ {\em einfach zusammenh"angend}
+(d.~h.~jeder geschlossene Weg l"asst sich in einen Punkt zusammenziehen),
+dann verschwindet das Wegintegral von $f(z)$ "uber jeden geschlossenen
+Weg in $\Omega$.
+\index{einfach zusammenhangend@einfach zusammenh\"angend}
+\end{satz}
+
+% XXX Wegunabh"angigkeit und Integrale über geschlossene Wege
+
+\subsubsection{Cauchy-Integral}
+Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
+Dann ist auch die Funktion
+\[
+g(z)=\frac{f(z)}{z-a}
+\]
+komplex differenzierbar f"ur $z\ne a$.
+Insbesondere ist der Wert des Wegintegrales von $g(z)$ entlang
+eines geschlossenen Pfades um den Punkt $a$ unabh"angig von der Wahl
+des Weges.
+Zum Beispiel k"onnten wir das Wegintegral mit Hilfe eines kleinen Kreises
+um $a$ mit Radius $r$ mit der Parametrisierung
+\[
+t\mapsto \gamma(t)=a+re^{it},\quad t\in[0,2\pi]
+\]
+berechnen.
+Die Rechnung ergibt
+\begin{align*}
+\oint_\gamma \frac{f(z)}{z-a}\,dz
+&=
+\int_0^{2\pi} \frac{f(a+re^{it})}{re^{it}}ire^{it}\,dt
+=
+i\int_0^{2\pi} f(a+re^{it})\,dt
+\end{align*}
+Da $f(z)$ komplex differenzierbar ist, k"onnen wir $f(z)$ approximieren
+durch $f(z)=f(a)+f'(a)(z-a)+o(z-a)$, also
+\begin{align*}
+\oint_{\gamma} \frac{f(z)}{z-a}\,dz
+&=
+i\int_0^{2\pi}f(a) + f'(a)re^{it}+o(r)\,dt
+\\
+&=
+f(a)i\int_0^{2\pi}\,dt + irf'(a)\int e^{it}\,dt + i\int_0^{2\pi}o(r)\,dt
+\\
+&=
+2\pi i f(a) + irf'(a)\underbrace{\left[\frac1{i}e^{it}\right]_0^{2\pi}}_{=0}+o(r)
+\\
+&=2\pi i f(a)+o(r).
+\end{align*}
+Da das Wegintegral einer komplex differenzierbaren Funktion aber anabh"angig
+vom Weg und damit vom Radius $r$ sein muss, folgt
+\[
+\oint_\gamma \frac{f(z)}{z-a}\,dz=2\pi i f(a).
+\]
+Wir haben damit den folgenden Satz bewiesen:
+
+\begin{satz}[Cauchy]
+Ist $\gamma$ ein geschlossener Weg in der komplexen Ebene, die ein
+Gebiet berandet, in dem die komplexe Funktion $f(z)$ komplex
+differenzierbar ist, dann gilt
+\[
+f(a)=\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-a}\,dz.
+\]
+Insbesondere sind die Werte einer komplex differenzierbaren Funktion 
+im Inneren eines Gebietes durch die Werte auf dem Rand bereits vollst"andig
+bestimmt.
+\end{satz}
+
+\subsubsection{Analytische Funktionen}
+Bisher haben wir Potenzreihen nur f"ur reelle Funktionen betrachtet,
+nicht f"ur komplexe Funktionen.
+Die Eigenschaften komplex differenzierbarer Funktionen gestatten
+uns jetzt aber auch, mehr "uber deren Entwickelbarkeit in Potenzreihen
+zu erfahren.
+Wir definieren daher
+
+\begin{definition}
+Eine komplexe Funktion $f(z)$ heisst im Punkt $z_0$ {\em analytisch}, wenn
+sie in eine konvergente Potenzreihe
+\[
+f(z)=\sum_{k=0}^n a_kz^k
+\]
+entwickelt werden kann.
+\end{definition}
+
+Offenbar sind analytische Funktionen im Punkt $z_0$ beleibig oft
+differenzierbar, und es gilt
+\[
+a_k=\frac{f^{(k)}(z_0)}{k!},
+\]
+die Taylorreihe von $f(z)$ ist also die urspr"ungliche Potenzreihe.
+In der reellenn Analysis gibt es Funktionen, deren Taylerreihen zwar
+konvergieren, aber nicht mit der urspr"unglichen Funktion "ubereinstimmen.
+Wir m"ochten verstehen, dass dies im Komplexen nicht so ist.
+
+Sei als $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
+nehmen wir der Einfachheit halber einen Kreis vom Radius $r$ um den Nullpunkt,
+sein Rand ist die Kurve $\gamma$.
+Durch ableiten der Cachyschen Integralformel finden wir
+\begin{align*}
+f(z)
+&=
+\frac1{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+\\
+f'(zG)
+&=
+\frac1{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{(\zeta-z)^2}\,d\zeta
+\\
+f'' (z)
+&=
+\frac1{2\pi i}\oint_{\gamma}2\frac{f(\zeta)}{(\zeta-z)^3}\,d\zeta
+\\
+f'''(z)
+&=
+\frac1{2\pi i}\oint_{\gamma}2\cdot 3\frac{f(\zeta)}{(\zeta-z)^4}\,d\zeta
+\\
+&\vdots
+\\
+f^{(k)}(z)
+&=
+\frac{k!}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{k+1}}\,d\zeta
+\end{align*}
+Es folgt
+
+\begin{satz}
+Eine komplex differenzierbare Funktion ist beliebig oft differenzierbar.
+\end{satz}
+
+Es gilt aber noch mehr:
+
+\begin{satz}
+Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
+vom Radius $r$ um den Nullpunkt definiert ist, ist analytisch.
+Ihre Potenzreihenentwicklung
+\[
+f(z)=\sum_{k=0}^na_kz^k
+\]
+hat die Koeffizienten
+\[
+a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{z^{k+1}}\,dz.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Funktion
+\[
+g(z)=\sum_{k=0}^na_kz^k
+\]
+ist komplex differenzierbar.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+

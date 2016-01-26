@@ -45,6 +45,7 @@ skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
 
 skript.ind:	skript.tex $(TEXFILES)
 	touch skript.ind
+	cd chapters && make
 	pdflatex skript.tex
 	makeindex skript.idx
 
