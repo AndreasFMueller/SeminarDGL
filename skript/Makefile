@@ -6,7 +6,7 @@
 all:	subdirs skript.pdf
 
 subdirs:
-	for d in ; \
+	for d in chapters uebungsaufgaben; \
 	do \
 		cd $${d}; make; cd ..; \
 	done
