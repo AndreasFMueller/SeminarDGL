@@ -1,0 +1,9 @@
+Y: matrix( [ cos(x), sin(x)], [-sin(x), cos(x)]);
+V: matrix( [ 0 ], [sin(omega * x)]);
+
+I: transpose(subst(xi, x, Y)) . subst(xi, x, V);
+
+Y . integrate(I, xi, 0, x);
+positive;
+expand(%);
+tex(%);
