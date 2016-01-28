@@ -1045,8 +1045,8 @@ Sie lautet
 \frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
 +
 \begin{pmatrix}
-0&1\\
-1&0
+ 0&-1\\
+ 1& 0
 \end{pmatrix}
 \begin{pmatrix}
 y_1\\y_2
@@ -1065,7 +1065,7 @@ Y(x)
 -\sin x& \cos x
 \end{pmatrix}.
 \]
-Da dies eine orthogonale Matrix ist, ist $Y(x)^{-1})=Y(x)^t$,
+Da dies eine orthogonale Matrix ist, ist $Y(x)^{-1}=Y(x)^t$,
 und wir bekommen das Integral f"ur die L"osung
 \begin{align*}
 y_p(x)
@@ -1102,36 +1102,39 @@ y_0
  \cos \xi\sin\omega\xi
 \end{pmatrix}
 \,d\xi
-\\
-&=
-y_0+
-\begin{pmatrix}
-{{\cos x\,\left(\left(\omega-1\right)\,\sin \left(\left(
- \omega+1\right)\,x\right)+\left(\omega+1\right)\,\sin \left(\left(1-
- \omega\right)\,x\right)\right)}\over{2\,\omega^2-2}}+\sin x\,\left(
- {{\omega}\over{\omega^2-1}}-{{\left(\omega-1\right)\,\cos \left(
- \left(\omega+1\right)\,x\right)+\left(\omega+1\right)\,\cos \left(
- \left(\omega-1\right)\,x\right)}\over{2\,\omega^2-2}}\right)\cr 
- \cos x\,\left({{\omega}\over{\omega^2-1}}-{{\left(\omega-1\right)\,
- \cos \left(\left(\omega+1\right)\,x\right)+\left(\omega+1\right)\,
- \cos \left(\left(\omega-1\right)\,x\right)}\over{2\,\omega^2-2}}
- \right)-{{\sin x\,\left(\left(\omega-1\right)\,\sin \left(\left(
- \omega+1\right)\,x\right)+\left(\omega+1\right)\,\sin \left(\left(1-
- \omega\right)\,x\right)\right)}\over{2\,\omega^2-2}}
-\end{pmatrix}
 \end{align*}
-Davon interessiert uns nur die erste Komponente, sie ist
+Die Integrale sind etwas m"uhsam von Hand auszurechnen, das folgende
+Maxima\footnote{Maxima ist ein freies Computer-Algebra-System unter der
+GNU General Public License, kann also von jedermann f"ur beliebige
+Zwecke eingsetzt werden. Es ist erh"altlich von
+\url{http://maxima.sourceforge.net}.}-Skript automatisiert
+die Rechnung:
+\verbatiminput{chapters/dgl2.maxima}
+Vom resultierenden Vektor interessiert uns nur die erste Komponente,
+die zweite Komponenten enth"alt ja die Ableitung.
+Diese ist
 \[
-\frac1{2(\omega^2-1)}\biggl(
- (\omega-1)(\cos x\,\sin \left(\omega\,x+x\right)
--\,\sin x\,\cos \left(\omega\,x+x\right))
--(\omega+1)(\,\cos x\,\sin \left(\omega\,x-x\right)
-              \sin x\,\cos \left(\omega\,x-x\right))
-+{\omega\,\sin x}
-\biggr)
+y_p(x)=\frac1{\omega^2-1}(\omega\sin x-\sin\omega x).
 \]
+Man kann nachpr"ufen, dass $y_p(0)=y'_p(0)=0$.
+Dazu kommt jetzt noch die L"osung der homogenen Gleichung mit der
+Anfangsbedingung $y_0$, die allgemeine L"osung ist also
+\[
+y(x)=y(0) \cos x +y'(0)\sin x+\frac1{\omega^2-1}(\omega\sin x -\sin\omega x).
+\]
+Man kann aus dieser L"osung zum Beispiel ablesen, dass die Amplitude
+\index{Resonanz}
+f"ur $\omega$ sehr gross wird, was als {\em Resonanz} bekannt ist.
 
-
+Startet das System aus dem Ruhezustand ($y(0)=y'(0)=0$), dann dominiert
+f"ur $\omega\ll 1$ der Term $-\cos\omega x$, d.~h.~das System folgt der
+Bewegung der inhomogenen Anregung.
+F"ur $\omega \gg 1$ wird die L"osung vom Term
+\[
+\frac{\omega}{\omega^2-1}\cos x
+\]
+dominiert, das System schwingt mit seiner Eigenfrequenz, aber mit die
+Amplitude nimmt mit zunehmendem $\omega$ immer mehr ab.
 \end{beispiel}
 
 \section{Lokal-Global-"Ubergang}
