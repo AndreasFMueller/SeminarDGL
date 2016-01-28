@@ -948,3 +948,20 @@ berechnet mit der Funktion \texttt{lsode} von Octave.
 \label{numerik:octave-resultate}}
 \end{table}
 
+\subsection{GNU Scientific Library}
+W"ahrend Octave dem Benutzer die Wahl eines geeigneten Verfahrens abnimmt
+und ihm "uberhaupt wenig Kontrolle "uber den Gang der Rechnung gibt,
+kann ein Programmier durch den Einsatz der GNU Scientific Library (GSL) die
+volle Kontrolle "uber alle Aspekte der Iteration erhalten.
+Der Preis ist eine wesentlich h"ohere Komplexit"at.
+
+Die Funktionen zum L"osen von gew"ohnlichen Differentialgleichungen
+der GSL haben alle das Pr"afix \texttt{gsl\_odeiv2\_}. 
+Zun"achst braucht es nat"urlich wieder eine Implementation der
+Funktion $f$. 
+Die GSL "ubergibt zwei Arrays, im einen findet die Funktion die aktuellen
+$y$-Werte, im anderen soll sie die Werte der Ableitung zur"uckgeben.
+
+
+
+
