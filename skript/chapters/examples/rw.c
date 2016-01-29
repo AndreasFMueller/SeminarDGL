@@ -52,30 +52,25 @@ int	df(double x, const double y[], double *dfdy, double dfdx[], void *params) {
 static inline double	sqr(double x) { return x * x; }
 
 int	main(int argc, char *argv[]) {
-	double	omega = 0.1;
 	gsl_odeiv2_system	sys = { f, df, 4, &g };
 	gsl_odeiv2_driver	*driver
 		= gsl_odeiv2_driver_alloc_y_new(&sys, gsl_odeiv2_step_rkf45,
 			1e-6, 1e-6, 0.0);
 	double	x = 0.0;
-	double	y[2] = { 2.0, 3.0 };
-	for (int i = 1; i <= 10000; i++) {
-		double	xnext = i;
+	double	vx = 8;
+	double	vy = 7;
+	double	y[4] = { 0.0, 0.0, vx, vy };
+	double	deltax = 0.01;
+	for (int i = 1; i <= 200; i++) {
+		double	xnext = i * deltax;
 		int	status = gsl_odeiv2_driver_apply(driver, &x, xnext, y);
 		if (status != GSL_SUCCESS) {
 			fprintf(stderr, "error: return value = %d\n", status);
 		}
-		double yexakt = (omega * sin(x) - sin(omega * x))
-					/ (sqr(omega) - 1);
+		double	yexakt = vx * x - 0.5 * sqr(x) * g;
 		double delta = y[0] - yexakt;
-		if ((i < 10) ||
-			((i < 100) && (0 == i % 10)) ||
-			((i < 1000) && (0 == i % 100)) ||
-			((i < 10000) && (0 == i % 1000)) ||
-			((i < 100000) && (0 == i % 10000))) {
-			printf("%5.0f& %12.8f& %12.8f& %12.8f\\\\\n",
-				 x,    y[0],  yexakt, delta);
-		}
+		printf("%5.2f& %12.8f %12.8f& %12.8f& %12.8f\\\\\n",
+			 x,    y[0], y[1],  yexakt, delta);
 	}
 	return EXIT_SUCCESS;
 }
