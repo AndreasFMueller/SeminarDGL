@@ -1318,7 +1318,81 @@ Um die Jacobi-Matrix zu berechnen, m"ussen wir die Ableitung von $f$ berechnen:
 0& 0& 0& 0
 \end{pmatrix}.
 \end{equation}
-
+Da die rechte Seite nicht von $y$ abh"angt, k"onnen wir die Gleichung f"ur
+die Jacobi-Matrix ganz unabh"angig von $y$ l"osen.
+Da $F$ so einfach ist, kann man das Matrizenprodukt direkt ausrechnen, 
+so wird die Differentialgleichung f"ur $J$
+\begin{equation}
+\begin{pmatrix}
+J'_{11}&J'_{12}&J'_{13}&J'_{14}\\
+J'_{21}&J'_{22}&J'_{23}&J'_{24}\\
+J'_{31}&J'_{32}&J'_{33}&J'_{34}\\
+J'_{41}&J'_{42}&J'_{43}&J'_{44}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0& 0& 1& 0\\
+0& 0& 0& 1\\
+0& 0& 0& 0\\
+0& 0& 0& 0
+\end{pmatrix}
+\begin{pmatrix}
+J_{11}&J_{12}&J_{13}&J_{14}\\
+J_{21}&J_{22}&J_{23}&J_{24}\\
+J_{31}&J_{32}&J_{33}&J_{34}\\
+J_{41}&J_{42}&J_{43}&J_{44}
+\end{pmatrix}
+=
+\begin{pmatrix}
+J_{31}&J_{32}&J_{33}&J_{34}\\
+J_{41}&J_{42}&J_{43}&J_{44}\\
+     0&     0&     0&     0\\
+     0&     0&     0&     0
+\end{pmatrix}
+\end{equation}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+n&    v_y&    t& x(t)&      y(x)&\displaystyle\frac{\partial^{\mathstrut}y}{\partial v_y}&v_{y,\text{new}}&\Delta\\
+\hline
+0& 7.0000&  2.5& 20.0&-13.156250&  2.5& 12.26250000& -5.2625000000\\
+1&12.2625&  2.5& 20.0& -0.000004&  2.5& 12.26250145& -0.0000014458\\
+2&12.2625&  2.5& 20.0&  0.000000&  2.5& 12.26250143&  0.0000000204\\
+\hline
+\end{tabular}
+\caption{Newton-Algorithmus f"ur das Ball-Problem, Resultate der numerischen
+Rechnung.
+$v_y$ wird in drei Schritten mit einer Genauigkeit von mehr als 10 Stellen
+gefunden.
+\label{numerik:newton-resultate}}
+\end{table}%
+Daraus kann man ablesen, dass die Elemente $J_{3j}$ und $J_{4j}$ sich
+nicht "andern, sie bleiben also konstant.
+Aber auch in den ersten zwei Zeilen k"onnen sich nur die Elemente $J_{13}$
+und $J_{24}$ "andern, die Differentialgleichungen f"ur diese Elemente
+sind
+\begin{align*}
+J'_{13}&=1\\
+J'_{24}&=1
+\end{align*}
+oder in Matrixform:
+\begin{equation}
+J(x) = \begin{pmatrix}
+1&0&x&0\\
+0&1&0&x\\
+0&0&1&0\\
+0&0&0&1
+\end{pmatrix}
+\end{equation}
+Die L"osung $J_{13}(x)=x$ und $J_{24}=x$.
+Damit haben wir die n"otige Information, um den Newton-Algorithmus
+durchzuf"uhren.
+In Tabelle~\ref{numerik:newton-resultate}
+sind die Resultate der numerischen Rechnung zusammengestellt.
+Es zeigt sich, dass der korrekte Wert f"ur $v_y$ in drei Iterationen
+mit 10 Stellen Genauigkeit gefunden werden kann.
+Damit ist das Randwertproblem numerisch gel"ost.
 \end{beispiel}
 
 \subsection{Finite Elemente}
