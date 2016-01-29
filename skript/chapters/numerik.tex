@@ -39,6 +39,7 @@ In diesem Kapitel entwickeln wir Methoden, Differentialgleichungen
 numerisch zu l"osen.
 
 \section{Grundprinzip}
+\lhead{Grundprinzip}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/numerik-2.pdf}
@@ -191,6 +192,7 @@ sehr viel kleineren Anzahl von Schritten eine viel gr"ossere Genaugikeit
 der Approximations zu erreichen.
 
 \section{Fehler-Entwicklung numerischer L"osungen}
+\lhead{Fehler-Entwicklung}
 Wir betrachten wieder die Differentialgleichung~(\ref{numerik:eulerdgl})
 und versuchen, den Fehler eines N"aherungsverfahrens zu bestimmen,
 welches Schritte der Gr"osse $h$ durchf"uhrt, um den Wert $y(x)$
@@ -244,6 +246,7 @@ berechnebare Approximationen der Funktion mit m"oglichst geringen
 Einzelschrittfehlern zu finden.
 
 \section{Einschritt-Verfahren\label{section:numerik:einschritt}}
+\lhead{Einschritt-Verfahren}
 Die relativ geringe Genauigkeit des Eulerschrittes beruht darauf,
 dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
 nur f"ur das linke Ende des Intervals $[x_k, x_k+h]$ zutrifft,
@@ -478,7 +481,7 @@ Runge-Kutte-Verfahren heisst diese Verfahren auch das {\em
 vereinfachte Runge-Kutta-Verfahren}.
 \index{Runge-Kutta-Verfahren!vereinfachtes}
 
-\subsection{Runge-Kutta-Verfahren}
+\subsection{Runge-Kutta-Verfahren\label{subsection:numerik:runge-kutta}}
 \index{Runge-Kutta-Verfahren}
 Das {\em Runge-Kutta-Verfahren} erweitert die Inkrement-Funktion derart,
 dass der Einzelschritt bis zur f"unften Ordnung mit der Taylorreihe von
@@ -584,6 +587,7 @@ anderes als das Runge-Kutta-Verfahren zu verwenden.
 
 
 \section{Mehrschritt-Verfahren}
+\lhead{Mehrschritt-Verfahren}
 In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
 um die Inkrement-Funktion f"ur einen einzigen Schritt zu bestimmen.
 Das Ziel dabei war, $y(x+h)$ in "Ubereinstimmung mit der Taylorreihe
@@ -880,10 +884,13 @@ y_2\\
 \end{pmatrix}
 =
 f(x,Y)
-\label{numerik-beispieldgl}
+\label{numerik:beispieldgl}
 \end{equation}
 Ein numerisches Verfahren braucht also als Input eine Anfangsbedingung
 sowie die Funktion $f$.
+Ausserdem muss es M"oglichkeiten bereitstellen, wie man den Gang der
+Rechnung beeinflussen kann, z.~B.~um die $x$-Werte anzugeben, f"ur die
+die $Y(x)$ bestimmt werden sollen, oder um Genauigkeitsziele zu erreichen.
 
 \subsection{Octave}
 In Octave steht eine einzige Funktion \texttt{lsode} zur Verf"ugung, welche
@@ -891,9 +898,9 @@ auf zuverl"assige Art Differentialgleichungen l"ost.
 Der Anwender muss eine Implementation der Funktion $f$ zur Verf"ugung
 stellen, allerdings werden die Argument in der umgekehrten Reihenfolge
 zu der erwarte, die wir in diesem Skript bisher verwendet haben.
-F"ur die Beispieldifferentialgleichung (\ref{numerik-beispieldgl})
+F"ur die Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
 kann man sie zum Beispiel so defniieren:
-\verbatiminput{chapters/octave-dgl-f.m}
+\verbatiminput{chapters/examples/octave-dgl-f.m}
 
 Beim Aufruf der Funktion \texttt{lsode} muss man den {\em Namen}
 der Funktion, die Anfangsbedingung, sowie einen Vektoren mit $x$-Werten,
@@ -903,7 +910,7 @@ Der erste Wert im $x$-Vektor muss der $x$-Wert f"ur die Anfangsbedingung
 sein, in unserem Fall also $0$.
 Um die Werte von $y(x)$ f"ur ganzzahlige Werte von $x$ zu erhalten,
 muss man also die Befehle
-\verbatiminput{chapters/octave-dgl-sol.m}
+\verbatiminput{chapters/examples/octave-dgl-sol.m}
 ausf"uhren.
 Als R"uckgabewert erh"alt man eine Matrix, die in jeder Zeile die
 Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
@@ -913,11 +920,14 @@ L"osung~(\ref{grundlagen:numerik-beispiel-loesung}) in der dritten Spalte
 in der Tabelle~\ref{numerik:octave-resultate} zusammengestellt.
 Es ist gut erkennbar, wie der Fehler anf"anglich langsam ansteigt,
 dann aber unter Kontrolle bleibt.
+Die Dokumentation der Funktion \texttt{lsode} beschreibt, wie man mit
+Hilfe von Optionen ihr Verhalten und insbesondere die Gr"osse der
+Fehler weiter beeinflussen kann.
 \begin{table}
 \centering
 \begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
 \hline
-    x&  y_{\text{numerisch}}(x)&y_{\text{exakt}} & \text{Fehler}\\
+    x&  y_{\text{numerisch}}(x)&y_{\text{exakt}}(x) & \text{Fehler}\\
 \hline
     0&  0.00000000&  0.00000000&  0.00000000\\
     1&  0.00158525&  0.00158528&  0.00000003\\
@@ -954,14 +964,348 @@ und ihm "uberhaupt wenig Kontrolle "uber den Gang der Rechnung gibt,
 kann ein Programmier durch den Einsatz der GNU Scientific Library (GSL) die
 volle Kontrolle "uber alle Aspekte der Iteration erhalten.
 Der Preis ist eine wesentlich h"ohere Komplexit"at.
+Ziel dieses Abschnitts ist, ein einfaches Beispielprogramm zu
+zeigen, welches als Basis eigener Programme dienen kann.
+Es verwendet eine Runge-Kutta-Verfahren achter Ordnung.
 
 Die Funktionen zum L"osen von gew"ohnlichen Differentialgleichungen
 der GSL haben alle das Pr"afix \texttt{gsl\_odeiv2\_}. 
 Zun"achst braucht es nat"urlich wieder eine Implementation der
 Funktion $f$. 
 Die GSL "ubergibt zwei Arrays, im einen findet die Funktion die aktuellen
-$y$-Werte, im anderen soll sie die Werte der Ableitung zur"uckgeben.
+$Y$-Werte, im anderen soll sie die Werte der Ableitung zur"uckgeben.
+F"ur die Beispiel-Differentialgleichung (\ref{numerik:beispieldgl})
+sieht der Code wie folgt aus:
+\verbatiminput{chapters/examples/dgl-f.c}
+Der Parameter \texttt{params} dient dazu, der Funktion zus"atzliche
+Parameter zu "ubergeben.
+In unserem Fall ist das nur die Zahl $\omega$.
+Da \texttt{params} ein \texttt{void}-Pointer ist, kann eine beliebige
+Struktur zur Parameter"ubergabe verwendet werden.
 
+Die Differentialgleichung wird beschrieben durch eine Struktur vom Typ
+\texttt{gsl\_odeiv2\_system}, welche ausser Zeigern auf die Funktion
+und die Parameter-Struktur auch noch die Dimension der Vektoren enth"alt.
+Es kann auch noch ein Funktionszeiger f"ur eine eine Funktion "ubergeben
+werden, die die Jacobi-Matrix berechnet, in unserem Beispiel wird dies
+jedoch nicht ben"otigt.
+
+Die eigentliche wird von einer ``driver''-Funktion durchgef"uhrt.
+Diese sorgt im wesentlichen f"ur die Wahl der Schrittweite, verwaltet
+Datentrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
+durchf"uhren.
+Die Treiber-Funktion f"uhrt die einzelnen Schritte (im Sinne der
+in Abschnitt~\ref{section:numerik:einschritt} besprochenen
+Einschritt-Verfahren) mit
+Hilfe der Schritt-Funktionen durch, von denen die Bibliothek eine
+ganze Reihe bereitstellt.
+Die Funktion \texttt{gsl\_odeiv2\_step\_rk4} ist das klassische
+Runge-Kutta-Verfahren vierter Ordnung, welches in
+Abschnitt~\ref{subsection:numerik:runge-kutta}
+beschrieben wurde.
+Im Beispielverfahren verwenden wir \texttt{gsl\_odeiv2\_step\_rk8pd},
+das Runge-Kutta Prince-Dormand Verfahren achter Ordnung.
+F"ur Aufgaben allgemeiner Art ebenfalls sehr gut geeignet ist das
+Runge-Kutta-Fehlberg-Verfahren f"unfter Ordnung mit dem Namen
+\texttt{gsl\_odeiv2\_step\_rkf45}.
+Diese Datenstrukturen werden mit dem Code
+\verbatiminput{chapters/examples/dgl-init.c}
+initialisiert.
+Durch Austausch des zweiten Arguments der Driver-Allozierungs-Funktion
+kann man leicht das Verfahren wechseln und so Zeitaufwand und Genauigkeit
+f"ur verschiedene L"osungsverfahren vergleichen.
+
+Um die Rechnung durchzuf"uhren, muss jetzt die Driver-Funktion so oft
+angewendet werden, wie man Punkt der L"osungskurve ausgeben will.
+Dazu dient die Funktion \texttt{gsl\_odeiv2\_driver\_apply}. 
+An Argument braucht sie den eben initialisierten Driver, den aktuellen
+$x$-Wert, den $x_{\text{next}}$-Wert, f"ur den der n"achste Punkt
+ausgegeben werden soll, sowie einen Vektor, in dem der aktuelle Anfangswert
+f"ur $Y(x)$ "ubergeben und $Y(x_{\text{next}})$ zur"uckgegeben wird.
+$x$ wird als Referenz "ubergeben, wenn die Funktion zur"uckkehrt,
+findet man dort den neuen aktuellen Wert von $x$, also im Erfolgsfall
+$x_{\text{next}}$.
+In unserem Fall brauchen wir $X(x)$ f"ur ganzzahlige $x$, die folgende
+Schleife bewerkstelligt dies:
+\verbatiminput{chapters/examples/dgl-loop.c}
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+    x&  y_{\text{numerisch}}(x)&y_{\text{exakt}}(x) & \text{Fehler}\\
+\hline
+    1&   0.01584477&   0.01584477&  -0.00000000\\
+    2&   0.10882786&   0.10882787&  -0.00000000\\
+    3&   0.28425071&   0.28425071&  -0.00000001\\
+    4&   0.46979656&   0.46979656&  -0.00000000\\
+    5&   0.58112927&   0.58112926&   0.00000001\\
+    6&   0.59856974&   0.59856972&   0.00000002\\
+    7&   0.58436266&   0.58436265&   0.00000001\\
+    8&   0.62466692&   0.62466694&  -0.00000001\\
+    9&   0.74961115&   0.74961117&  -0.00000003\\
+   10&   0.90492231&   0.90492232&  -0.00000001\\
+   20&   0.82626555&   0.82626556&  -0.00000000\\
+   30&   0.24234669&   0.24234664&   0.00000005\\
+   40&  -0.83971103&  -0.83971092&  -0.00000011\\
+   50&  -0.94210772&  -0.94210787&   0.00000015\\
+   60&  -0.25144906&  -0.25144893&  -0.00000013\\
+   70&   0.58545210&   0.58545205&   0.00000005\\
+   80&   1.09974465&   1.09974456&   0.00000009\\
+   90&   0.32597838&   0.32597860&  -0.00000023\\
+  100&  -0.49836792&  -0.49836823&   0.00000031\\
+  200&   1.01037929&   1.01037877&   0.00000052\\
+  300&  -0.89702589&  -0.89702630&   0.00000041\\
+  400&   0.83859090&   0.83859101&  -0.00000010\\
+  500&  -0.21777633&  -0.21777543&  -0.00000090\\
+  600&  -0.31235410&  -0.31235239&  -0.00000171\\
+  700&   0.72675906&   0.72676124&  -0.00000219\\
+  800&  -1.09422992&  -1.09422790&  -0.00000202\\
+  900&   0.80223761&   0.80223872&  -0.00000111\\
+ 1000&  -0.59500324&  -0.59500363&   0.00000040\\
+ 2000&  -0.97606658&  -0.97606187&  -0.00000471\\
+ 3000&  -1.03200392&  -1.03199479&  -0.00000914\\
+ 4000&  -0.79047800&  -0.79047372&  -0.00000428\\
+ 5000&  -0.37269297&  -0.37270218&   0.00000921\\
+ 6000&   0.08785158&   0.08783273&   0.00001886\\
+ 7000&   0.49827647&   0.49826463&   0.00001184\\
+ 8000&   0.80219750&   0.80220742&  -0.00000992\\
+ 9000&   0.94568799&   0.94571577&  -0.00002778\\
+10000&   0.86607968&   0.86610200&  -0.00002232\\
+\hline
+\end{tabular}
+\caption{L"osungen der Beispieldifferentialgleichg (\ref{numerik:beispieldgl})
+mit Hilfe der GNU Scientific Library (GSL).
+\label{numerik:gsl-resultate}}
+\end{table}
+
+Man kann die Funktion $f$ im Programm nat"urlich auch mit einem Z"ahler
+ausstatten und damit herausfinden, wieviele Aufrufe der Funktion
+f"ur die numerische L"osung ben"otigt werden.
+Es stellt sich heraus, dass f"ur das erste Interval von $0$ bis $1$
+die Funktion $f$ 131 mal aufgerufen wird, hier versucht die Bibliothek
+die optimale Schrittweite $h$ zu bestimmen.
+In allen folgenden Intervallen der L"ange $1$ von $n$ bis $n+1$ werden nur
+noch jeweils 13 Aufrufe der Funktion ben"otigt.
+Verwendet man stattdessen das Runge-Kutta-Fehlberg-Verfahren,
+werden pro Interval 18 Auswertungen der Funktion $f$ ben"otigt,
+und die Genauigkeit sinkt auf zwei Stellen nach dem Komma.
+
+\section{Randwertprobleme\label{section:numerik:randwertprobleme}}
+Die bisher beschriebenen Verfahren gehen von einer Anfangsbedingung
+aus, und berechnen die dadurch eindeutig festgelegte L"osungskurve.
+Randwertproblem, beschrieben in Abschnitt~\ref{section:randwertprobleme},
+verkn"pfen dagegen Werte von einzelnen Komonenten von $Y$ an den
+R"andern eines Intervals.
+
+Wir betrachten zwei prototypische Randwertprobleme, die auch gleich
+zwei v"ollig verschiedene L"osungsverfahren motivieren.
+
+\newtheorem{aufgabe}{Aufgabe}[chapter]
+\begin{aufgabe}
+\label{numerik:aufgabe-ball}
+Mit einem nur der Schwerkraft unterworfenen Ball, der im Ursprung des
+Koordinatensystems geworfen wird, soll ein Ziel im Punkt $P$ getroffen
+werden.
+In welcher Richtung und mit welcher Anfangsgeschwindigkeit muss er geworfen
+werden?
+\end{aufgabe}
+
+Um das Problem einfach zu halten, modellieren wir diese Aufgabe wie
+folgt.
+Der Ball der Masse $m$ bewegt sich in der $x$-$y$-Ebene, wobei die
+Schwerkraft in negativer $y$-Richtung zeigt.
+Das Newtonsche Gesetz liefert die Differentialgleichung zweiter Ordnung
+\begin{equation}
+m\frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}
+0\\-mg
+\end{pmatrix}
+\label{numerik:ball-dgl}
+\end{equation}
+Die Masse $m$ kann herausgek"urzt werden.
+Gesucht ist eine L"osung so, dass die Bahn durch die Punkte $(0,0)$
+und $P=(p,0)$ geht.
+
+Genau genommen ist dies nicht ein Randwertproblem wie in 
+Abschnitt~\ref{section:randwertprobleme}, denn es wird nicht verlangt,
+dass der Ball zu einer bestimmten Zeit $t$ beim Punkt $P$ eintrift.
+Die Differentialgleichung bedeutet aber, dass die Horizontalgeschwindigkeit
+des Balls konstant ist (die horizontale Beschleunigung ist immer $0$).
+Ist $v_x$ die Horizontalgeschwindigkeit, dann erreicht der Ball zur
+Zeit $t_1=p/v_x$ die $x$-Koordinate des Ziels.
+Gesucht ist also die anf"angliche Vertikalgeschwindigkeit, die man
+dem Ball geben muss, dass zur Zeit $p/v_x$ die $y$-Komponente
+der L"osung den Wert $0$ hat.
+In dieser Form liegt ein Randwertproblem wie in
+Abschnitt~\ref{section:randwertprobleme} vor.
+
+Die L"osungen der Differentialgleichung~\ref{numerik:ball-dgl} sind aus
+dem Physik-Unterricht bekannt:
+es gilt
+\begin{equation}
+\begin{pmatrix}x(t)\\y(t)\end{pmatrix}
+=
+\begin{pmatrix}v_xt\\ v_yt-\frac12gt^2\end{pmatrix}
+\end{equation}
+Damit l"asst sich auch das Randwertproblem l"osen.
+F"ur $t=v_x/p$ muss $y(t)=0$ sein, also
+\begin{align}
+y(t)=y\biggl(\frac{p}{v_x}\biggr)
+=v_y\frac{p}{v_x}-\frac12g\biggl(\frac{p}{v_x}\biggr)^2&=0
+\notag
+\\
+\Rightarrow\qquad
+v_y
+&=
+\frac{v_x}p\frac12g\frac{p^2}{v_x^2}=\frac{gp}{2v_x}.
+\label{numerik:ball-bedingung}
+\end{align}
+Offenbar gibt es zu jedem $v_x$ einen passenden Wert von $v_y$,
+mit dem das Ziel getroffen wird.
+
+Die Differentialgleichung (\ref{numerik:ball-dgl}) ist nicht in einer
+Form, die der numerischen L"osung zug"anglich ist.
+Wir schreiben Sie daher als Differentialgleichung erster Ordnung 
+f"ur vierdimensionale Vektoren:
+\begin{align}
+\frac{d}{dt}Y
+=
+\frac{d}{dt}\begin{pmatrix}x\\y\\\dot x\\\dot y\end{pmatrix}
+&=
+\begin{pmatrix}\dot x\\\dot y\\ 0\\ -g\end{pmatrix}.
+\label{numerik:ball-dgl-1}
+\end{align}
+Gesucht ist eine L"osung, die die Randbedingungen
+\begin{equation}
+Y(0)
+=
+\begin{pmatrix}0\\0\\v_x\\\color{red}v_y\end{pmatrix},
+\qquad
+Y\biggl(\frac{p}{v_x}\biggr)
+=
+\begin{pmatrix}p\\0\\\color{red}?\\\color{red}?\end{pmatrix}
+\end{equation}
+erf"ullt.
+Darin stehen die roten Eintr"age f"ur Werte, die nicht vorgegeben sind.
+Aus der Symmetrie des Problems kann man nat"urlich auch die Endgeschwindigkeit
+ablesen.
+Zu bestimmen ist also $v_y$ so, dass die L"osungskurve durch den Punkt
+$(p,0)$ geht.
+
+Wird statt der Horizontakomponenten der Anfangsgeschwindigkeit die
+gesamte Anfangsgeschwindigkeit $v_0$ vorgegeben, dann muss der
+Winkel gefunden werden, unter dem der Ball geworfen werden muss,
+um das Ziel zu trefen.
+Bei der Elevation $\alpha$ sind die Komponenten der Anfangsgeschwinigkeit
+$v_x=v_0\cos\alpha$ und $v_y=v_0\sin\alpha$. 
+Setzt man dies in die Bedingung~(\ref{numerik:ball-bedingung}) ein,
+findet man
+\begin{align*}
+v_0 \sin \alpha &=\frac{gp}{2v_0\cos\alpha}
+\\
+2\sin\alpha\cos\alpha&=\frac{gp}{v_0^2}
+\\
+\sin2\alpha&=\frac{gp}{v_0^2}
+\\
+\alpha&= \frac12 \arcsin\frac{gp}{v_0^2}
+\end{align*}
+Im Nenner rechts steht im wesentlichen die kinetische Energie,
+je mehr kinetische Energie der Ball zu Beginn hat, desto kleiner
+ist der Winkel, man trifft das Ziel mit einer sehr flachen Bahn.
+Kleine Winkel reichen auch f"ur geringe Schwerkraft ($g$ klein)
+und kurze Distanzen ($p$ klein).
+Die maximale Distanz wird erreicht, wenn das Argument des Arcussinus
+den Wert $1$ erreicht, gr"osser darf $p$ nicht werden, weil es sonst
+keine L"osung mehr f"ur $\alpha$ gibt.
+Die Maximaldistanz ist daher
+\[
+p_{\text{max}} = \frac{v_0^2}{g}.
+\]
+
+\begin{aufgabe}
+\label{numerik:aufgabe-seil}
+Ein Seil ist zwischen zwei Punkten aufgeh"angt, welche Form nimmt es
+allein unter der Wirkung seines Eigengewichtes an?
+\end{aufgabe}
+
+\subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
+Wenn man experimentell versucht, ein Ziel zu treffen, dann wird man
+in wiederholten Versuchen die Richtung anpassen, so dass man dem Ziel
+immer n"aher kommt.
+Der $y$-Wert zur Zeit $p/v_x$ h"angt von der Vertikalgeschwindigkeit ab,
+wir bezeichnen ihn mit $g(v_y)$.
+Man ver"andert also $v_y$, bis die Gleichung $g(v_y)=0$ erf"ullt ist.
+Um das Randwertproblem zu l"osen, muss man also die Gleichung $g(v_y)=0$
+numerisch l"osen.
+
+Man kann dies zum Beispiel dadurch machen, dass man nach zwei Werten von $v_y$
+sucht, so dass die zum einen geh"orige Bahn unter dem Punkt $P$ durchgeht,
+w"ahrend der Ball im anderen Fall dar"uber hinwegfliegt.
+Durch wiederholte Halbierung des Intervalls kann man dann den korrekten
+Wert f"ur $v_y$ immer genauer eingrenzen%
+\footnote{%
+Tats"achlich wird dieses Verfahren in der Artillerie verwendet.
+Der Schiesskommandant beobachtet die einschlagenden Granaten und kommandiert
+"Anderungen der Anfangs-Elevation an die Gesch"utzbatterien.
+Dabei sucht er Einschl"age, die aus seiner Perspektive vor bzw.~hinter
+dem Ziel liegen, und halbiert dann das Interval, bis die Einschl"age dem
+Ziel gen"ugend nahe kommen.}.
+Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
+nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
+
+% XXX Graphik zum Newton-Verfahren
+Das Newton-Verfahren verwendet die Ableitung der Funktion $g$, um eine
+ungef"ahre L"osung $x_n$ der Gleichung $g(x)=0$ m"oglichst genau zu
+korrigieren.
+W"ahre $g$ eine lineare Funktion, dann w"urde die Tangente im Punkt
+$(x_n, g(x_n))$ die $x$-Achse genau in dem Punkt $x_{n+1}$ schneiden,
+in dem $g(x_{n+1})=0$ gilt.
+F"ur $x_{n+1}$ findet man
+\begin{equation}
+x_{n+1}=x_{\mathstrut n} - \frac{g(x_n)}{g'(x_n)}
+\label{numerik:ball-newton}
+\end{equation}
+Ist die Kr"ummung des Graphen von $g$ nicht allzu gross, ist $x_{n+1}$
+zwar nicht mehr eine L"osung, aber eine sehr viel bessere Approximation
+f"ur die tats"achliche L"osung.
+Es zeigt sich, dass die Approximationsfolge $x_n$ sehr schnell konvergiert,
+die Zahl der korrekten Stellen verdoppelt sich in jedem Schritt, man
+spricht von quadratischer Konvergenz.
+
+F"ur die Anwendung des Newton-Verfahrens auf das Randwert-Problem
+ist die Bestimmung der Steigung der Funktion $g$ n"otig.
+Wir m"ussen also berechnen, wie schnell sich $y(p/v_x)$ "andert,
+wenn $v_y$ ver"andert wird.
+Dies ist die Ableitung
+\[
+g'(v_y)= \frac{\partial y}{\partial v_y},
+\]
+ein Eintrag der Jacobi-Matrix.
+In Abschnitt~\ref{grundlagen:XXX} wurde gezeigt, wie man auch f"ur
+die Jacobi-Matrix eine Differentialgleichung aufstellen kann, die
+man nat"urlich ebenfalls mit den fr"uher beschriebenen numerischen
+Bibliotheken lo"sen kann.
+
+Das Randwertproblem kann daher mit folgendem Algorithmus numerisch gel"ost
+werden.
+\begin{enumerate}
+\item Beginne mit einer Sch"atzung f"ur $v_y$
+\item Finde numerisch die L"osung des Anfangswertproblems mit $v_y$
+als anf"angliche Vertikalgeschwindigkeit.
+Berechnet dabei auch die Jacobi-Matrix
+\item Lese die $g(v_y)$ aus der L"osung zur Zeit $p/v_x$ ab, und $g'(v_y)$
+aus der Jacobi-Matrix und verwendet den Newton-Algorithmus
+(\ref{numerik:ball-newton}), um eine verbesserte Sch"atzung von $v_y$ 
+zu bekommen.
+\item Wiederhole Schritte 2 und 3 bis die Randbedingung f"ur $t=p/v_x$
+gen"ugend genau erf"ullt ist.
+\item Die L"osung des Anfangswertproblems mit diesem $v_y$ ist die
+L"osung des gestellten Randwertproblems.
+\end{enumerate}
+
+\subsection{Finite Elemente}
 
 
 

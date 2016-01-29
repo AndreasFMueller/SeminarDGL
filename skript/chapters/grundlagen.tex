@@ -509,6 +509,209 @@ y'''(x)
 \end{align}
 Die Terme werden offensichtlich schnell kompliziert.
 
+\subsection{Ableitung nach der Anfangsbedingung}
+Ver"andert man die Anfangsbedingung, "andert sich auch die L"osung,
+die Komponentent $y_i$ ist also eine Funktion von $x$ und
+von allen Anfangswerten $y_{j0}$:
+\[
+y_i(x, y_{10},\dots,y_{n0}).
+\]
+Wenn man untersuchen will, wie empfindlich die $y_i$ auf "Anderungen
+der Anfangswerte reagieren, dann sucht man die Ableitungen der $y_i$
+nach den Anfangswerten, also die sogenannte Jacobi-Matrix
+\[
+J(x)
+=
+\begin{pmatrix}
+\displaystyle\frac{\partial y_1}{\partial y_{10}}&\dots&
+	\displaystyle\frac{\partial y_1}{\partial y_{n0}}\\
+\vdots&\ddots&\vdots\\
+\displaystyle\frac{\partial y_n}{\partial y_{10}}&\dots&
+	\displaystyle\frac{\partial y_n}{\partial y_{n0}}\\
+\end{pmatrix}
+\]
+Wir schreiben abk"urzend auch 
+\[
+J(x)= \frac{\partial y}{\partial y_0}.
+\]
+F"ur $x=0$ ist $y(x)=y(0)=y_0$, die Ableitung der $y$-Werte nach den
+Anfangswerten ist daher die Einheitsmatrix:
+\[
+J(0)=E,
+\]
+und es liegt nahe, dass auch $J(x)$ eine Differentialgleichung erf"ullen
+muss.
+
+Wie "andert sich $J(x)$ zwischen $x$ und $x+\Delta x$?
+Die Werte von $y$ "andern sich um
+\begin{equation}
+\frac{dy}{dx}= f(x,y),
+\label{grundlagen:jacobi-1}
+\end{equation}
+aber $y$ h"angt von den Anfangsbedingungen ab.
+Leiten wir (\ref{grundlagen:jacobi-1}) nach $y_0$ ab, finden wir
+\begin{equation}
+\frac{\partial}{\partial y_0}\frac{dy}{dx}
+=
+\frac{\partial}{\partial y_0}f(x,y).
+\label{grundlagen:jacobi-2}
+\end{equation}
+Die rechte Seite wir mit der Kettenregel zu
+\begin{align*}
+\frac{\partial}{\partial y_{j0}}f_i(x,y).
+&=
+\sum_{k=1}^n \frac{\partial f_i(x,y)}{\partial y_{k}}
+\underbrace{\frac{\partial y_k}{\partial y_{j0}}}_{J_{ij}(x)}.
+\end{align*}
+Schreiben wir die Ableitungen von $f$ nach $y$ in die Matrix
+\[
+\frac{\partial f(x,y)}{\partial y}
+=
+\begin{pmatrix}
+\displaystyle\frac{\partial f_1(x,y)}{\partial y_1}&\dots&
+	\displaystyle\frac{\partial f_1(x,y)}{\partial y_n}\\
+\vdots&\ddots&\vdots\\
+\displaystyle\frac{\partial f_n(x,y)}{\partial y_1}&\dots&
+	\displaystyle\frac{\partial f_n(x,y)}{\partial y_n}
+\end{pmatrix}
+=F(x,y),
+\]
+kann die Gleichung (\ref{grundlagen:jacobi-2}) mit dem Matrizenprodukt als
+\begin{equation*}
+\frac{\partial}{\partial y_0}\frac{dy}{dx}
+=
+F(x,y)J(x)
+\end{equation*}
+sehr viel kompakter geschrieben werden.
+Die Ableitungen auf der linken Seite vertauschen, und wir erhalten
+
+\begin{satz}
+Ist $y(x,y_0)$ die L"osung der Differentialgleichung 
+\[
+y'=f(x,y)\qquad\text{mit Anfangsbedingung}\qquad y(0)=y_0,
+\]
+dann erf"ullt die Jacobi-Matrix 
+\[
+\frac{\partial y}{\partial y_0}=J(x)
+\]
+die Differentialgleichung
+\begin{equation}
+\frac{d}{dx}\frac{\partial y}{\partial x}
+=
+\frac{d}{dx}J(x)
+=
+F(x,y)J(x)
+\qquad
+\text{mit Anfangsbedingung}
+\qquad
+J(x)=E.
+\label{grundlagen:jacobi-dgl}
+\end{equation}
+wobei $F$ die Ableitung von $F$ nach $y$ ist,
+\[
+F(x,y)=\frac{\partial f(x,y)}{\partial y}.
+\]
+\end{satz}
+Vor allem bei der numerischen L"osung mit dem Computer l"asst sich
+die Jacobi-Matrix also gleich mit bestimmen, indem man die gefundene
+L"osung $y$ als Input f"ur die Gleichung (\ref{grundlagen:jacobi-dgl})
+verwendet.
+
+\begin{beispiel}
+Wir betrachten wieder die Schwingungsdifferentialgleichung $y''=-y$,
+oder vielmehr die Form erster Ordnung
+\[
+\frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
+=
+\begin{pmatrix}
+y_2\\-y_1.
+\end{pmatrix}.
+\]
+Die Ableitungsmatrix $F(x,y)$ ist
+\[
+F(x,y)
+=
+\begin{pmatrix}
+\displaystyle\frac{\partial f_1}{\partial y_1}&\displaystyle\frac{\partial f_1}{\partial y_2}\\
+\displaystyle\frac{\partial f_2}{\partial y_1}&\displaystyle\frac{\partial f_2}{\partial y_2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 0&1\\
+-1&0
+\end{pmatrix}
+\]
+Die Jacobi-Matrix erf"ullt also die Differentialgleichung
+\[
+\frac{d}{dx}J(x)=\begin{pmatrix}0&1\\-1&0\end{pmatrix}J(x).
+\]
+Da wir die Differentialgleichung bereits vollst"andig gel"ost und
+die L"osung
+\[
+\begin{pmatrix}
+y_1(x)\\y_2(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+ y_{10}\cos x+y_{20}\sin x\\
+-y_{10}\sin x+y_{20}\cos x
+\end{pmatrix}
+=
+\begin{pmatrix}
+ \cos x&\sin x\\
+-\sin x&\cos x
+\end{pmatrix}
+\begin{pmatrix}y_{10}\\y_{20}\end{pmatrix}
+\]
+gefunden haben, k"onnen wir die Jacobi-Matrix auch aus der L"osung berechnen,
+und verifizieren, ob sie die Differentialgleichung erf"ullt.
+Die Jacobi-Matrix ist
+\begin{align*}
+J(x)
+=
+\frac{\partial y}{\partial y_0}
+&=
+\begin{pmatrix}
+ \cos x&\sin x\\
+-\sin x&\cos x
+\end{pmatrix}
+\end{align*}
+Die Ableitung davon ist
+\[
+\frac{d}{dx}J(x)
+=
+\begin{pmatrix}
+-\sin x& \cos x\\
+-\cos x&-\sin x
+\end{pmatrix}
+\]
+Setzen wir dies in die Differentialgleichung (\ref{grundlagen:jacobi-dgl}) ein
+finden wir
+\[
+F(x,y)J(x)
+=
+\begin{pmatrix}
+ 0&1\\
+-1&0
+\end{pmatrix}
+\begin{pmatrix}
+ \cos x&\sin x\\
+-\sin x&\cos x
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\sin x& \cos x
+-\cos x&-\sin x\\
+\end{pmatrix}
+=
+\frac{d}{dx}J(x),
+\]
+die Differentialgleichung ist also tats"achlich erf"ullt.
+\end{beispiel}
+Die M"oglichkeit, die Jacobi-Matrix zu berechnen, wird sich im
+Abschnitt~\ref{numerik:schiess-verfahren} bei der numerischen
+L"osung von Randwertproblemen als besonders n"utzlich erweisen.
+
 \section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
 \lhead{Analytische L"osungsverfahren}
 Nur wenige Differentialgleichungen lassen sich in geschlossener Form
