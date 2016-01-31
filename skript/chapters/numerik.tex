@@ -1186,6 +1186,7 @@ Y(0)
 Y\biggl(\frac{p}{v_x}\biggr)
 =
 \begin{pmatrix}p\\0\\\color{red}?\\\color{red}?\end{pmatrix}
+\label{numerik:ball-dgl-2}
 \end{equation}
 erf"ullt.
 Darin stehen die roten Eintr"age f"ur Werte, die nicht vorgegeben sind.
@@ -1256,6 +1257,13 @@ Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
 % XXX Graphik zum Newton-Verfahren
+\begin{figure}
+\centering
+\includegraphics{chapters/images/randwert-1.pdf}
+\caption{L"osungen des Anfangswertproblems~(\ref{numerik:ball-dgl-1}) und
+(\ref{numerik:ball-dgl-2})
+\label{numerik:randwert-bild}}
+\end{figure}
 Das Newton-Verfahren verwendet die Ableitung der Funktion $g$, um eine
 ungef"ahre L"osung $x_n$ der Gleichung $g(x)=0$ m"oglichst genau zu
 korrigieren.

@@ -3,7 +3,7 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	grundlagen numerik komplexezahlen
+all:	grundlagen numerik komplexezahlen randwert
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -28,6 +28,15 @@ komplexezahlen:	$(komplexezahlen_FILES)
 $(komplexezahlen_FILES): komplexezahlen.mp
 	TEX=latex mpost komplexezahlen.mp
 	for f in komplexezahlen.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
+randwert_FILES = randwert-1.pdf
+randwert:	$(randwert_FILES)
+$(randwert_FILES): randwert.mp
+	TEX=latex mpost randwert.mp
+	for f in randwert.[0-9]*; \
 	do \
 		mptopdf $${f}; \
 	done
