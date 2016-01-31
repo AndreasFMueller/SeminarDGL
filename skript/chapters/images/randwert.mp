@@ -71,10 +71,6 @@ z5 = (8 * xunit, 0);
 z6 = (0, 15 * yunit);
 z7 = z5 shifted z6;
 
-pickup pencircle scaled 1pt;
-drawarrow (-0.5 * xunit, 0)--z3;
-drawarrow (0, -0.5 * yunit)--z4;
-
 pickup pencircle scaled 1.5pt;
 drawarrow (z0--z5) scaled 0.5;
 drawarrow (z5--z7) scaled 0.5;
@@ -99,6 +95,10 @@ clip currentpicture to	( -0.5 * xunit,  -0.5 * yunit)--
 			( 20.5 * xunit,  -0.5 * yunit)--
 			( 20.5 * xunit,  12.5 * yunit)--
 			( -0.5 * xunit,  12.5 * yunit)--cycle;
+
+pickup pencircle scaled 1pt;
+drawarrow (-0.5 * xunit, 0)--z3;
+drawarrow (0, -0.5 * yunit)--z4;
 
 vy := 15;
 z8 = pfad(2.5);

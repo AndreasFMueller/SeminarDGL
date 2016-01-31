@@ -1257,13 +1257,7 @@ Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
 % XXX Graphik zum Newton-Verfahren
-\begin{figure}
-\centering
-\includegraphics{chapters/images/randwert-1.pdf}
-\caption{L"osungen des Anfangswertproblems~(\ref{numerik:ball-dgl-1}) und
-(\ref{numerik:ball-dgl-2})
-\label{numerik:randwert-bild}}
-\end{figure}
+
 Das Newton-Verfahren verwendet die Ableitung der Funktion $g$, um eine
 ungef"ahre L"osung $x_n$ der Gleichung $g(x)=0$ m"oglichst genau zu
 korrigieren.
@@ -1281,6 +1275,7 @@ f"ur die tats"achliche L"osung.
 Es zeigt sich, dass die Approximationsfolge $x_n$ sehr schnell konvergiert,
 die Zahl der korrekten Stellen verdoppelt sich in jedem Schritt, man
 spricht von quadratischer Konvergenz.
+
 
 F"ur die Anwendung des Newton-Verfahrens auf das Randwert-Problem
 ist die Bestimmung der Steigung der Funktion $g$ n"otig.
@@ -1314,6 +1309,15 @@ L"osung des gestellten Randwertproblems.
 \end{enumerate}
 
 \begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/randwert-1.pdf}
+\caption{L"osungen des Anfangswertproblems~(\ref{numerik:ball-dgl-1}) und
+(\ref{numerik:ball-dgl-2}).
+Das Newton-Verfahren korrigiert $v_y$ derart, dass $y(v_y)=0$ wird.
+So wird die L"osung des Randwertproblems (rot) gefunden.
+\label{numerik:randwert-bild}}
+\end{figure}
 Wir f"uhren den eben skizzierten Algorithmus f"ur das Ball-Problem durch.
 Um die Jacobi-Matrix zu berechnen, m"ussen wir die Ableitung von $f$ berechnen:
 \begin{equation}
