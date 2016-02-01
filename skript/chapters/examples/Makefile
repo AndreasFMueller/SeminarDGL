@@ -9,3 +9,6 @@ dgl:	dgl.c
 
 rw:	rw.c 
 	gcc -o rw -Wall -g -O2 -std=c99 rw.c -lgsl
+
+newton:	newton.c
+	gcc -o newton -Wall -g -O2 -std=c99 newton.c 

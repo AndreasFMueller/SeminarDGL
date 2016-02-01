@@ -243,4 +243,112 @@ label.rt(btex $y$ etex, z2 shifted (0,10));
 
 endfig;
 
+
+beginfig(3)
+
+numeric u;
+u := 100;
+
+z0 = (0,0);
+z1 = (-1.1, 0.0) * u;
+z2 = ( 1.3, 0.0) * u;
+z3 = (   0,-1.4) * u;
+z4 = (   0, 0.9) * u;
+
+pickup pencircle scaled 1pt;
+
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+def punkt(expr z, c, d) =
+	pickup pencircle scaled (4pt + d);
+	draw z withcolor c;
+	pickup pencircle scaled 3pt;
+	draw z withcolor white;
+enddef;
+
+z10 = ( 1.00000000000000,  0.00000000000000) * u;
+z11 = ( 1.00000000000000,  0.66666666666667) * u;
+z12 = ( 1.18145956607495,  0.40894148586456) * u;
+z13 = ( 1.21892938822774,  0.47603850125054) * u;
+z14 = ( 1.21960186643355,  0.47171212477008) * u;
+z15 = ( 1.21961650811721,  0.47171126771255) * u;
+z16 = ( 1.21961650797176,  0.47171126778939) * u;
+
+z20 = (-0.50000000000000,  0.90000000000000) * u;
+z21 = (-1.03346386614454,  0.53473359439896) * u;
+z22 = (-0.94869292114783,  0.84186088141752) * u;
+z23 = (-1.01928574066413,  0.81624551977315) * u;
+z24 = (-1.01830880732553,  0.82036616183886) * u;
+z25 = (-1.01832219520705,  0.82036324475529) * u;
+z26 = (-1.01832219514285,  0.82036324488371) * u;
+
+z30 = (-0.50000000000000, -0.90000000000000) * u;
+z31 = ( 0.03453186187255, -1.19926426960959) * u;
+z32 = (-0.23481848354109, -1.24856442593452) * u;
+z33 = (-0.19890115373077, -1.29222132621203) * u;
+z34 = (-0.20129444285241, -1.29207011738486) * u;
+z35 = (-0.20129431282577, -1.29207451268755) * u;
+z36 = (-0.20129431282890, -1.29207451267310) * u;
+
+pickup pencircle scaled 0.5pt;
+
+draw z0--z16 withcolor red;
+draw z0--z26 withcolor red;
+draw z0--z36 withcolor red;
+
+drawarrow z10--z11;
+drawarrow z11--z12;
+drawarrow z12--z13;
+drawarrow z13--z14;
+drawarrow z14--z15;
+drawarrow z15--z16;
+
+drawarrow z20--z21;
+drawarrow z21--z22;
+drawarrow z22--z23;
+drawarrow z23--z24;
+drawarrow z24--z25;
+drawarrow z25--z26;
+
+drawarrow z30--z31;
+drawarrow z31--z32;
+drawarrow z32--z33;
+drawarrow z33--z34;
+drawarrow z34--z35;
+drawarrow z35--z36;
+
+punkt(z10, black, 0);
+punkt(z11, black, 0);
+punkt(z12, black, 0);
+punkt(z13, black, 0);
+punkt(z14, black, 0);
+punkt(z15, black, 0);
+punkt(z16, red, 0.8pt);
+
+punkt(z20, black, 0);
+punkt(z21, black, 0);
+punkt(z22, black, 0);
+punkt(z23, black, 0);
+punkt(z24, black, 0);
+punkt(z25, black, 0);
+punkt(z26, red, 0.8pt);
+
+punkt(z30, black, 0);
+punkt(z31, black, 0);
+punkt(z32, black, 0);
+punkt(z33, black, 0);
+punkt(z34, black, 0);
+punkt(z35, black, 0);
+punkt(z36, red, 0.8pt);
+
+label.urt(btex $\hat{z}_1$ etex, z16);
+label.ulft(btex $\hat{z}_2$ etex, z26);
+label.bot(btex $\hat{z}_3$ etex, z36);
+
+label.top(btex $x$ etex, (z2 shifted (10,0)));
+label.rt(btex $y$ etex, (z4 shifted (0,10)));
+
+endfig;
+
 end
