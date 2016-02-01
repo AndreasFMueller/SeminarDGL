@@ -712,6 +712,128 @@ Die M"oglichkeit, die Jacobi-Matrix zu berechnen, wird sich im
 Abschnitt~\ref{numerik:schiess-verfahren} bei der numerischen
 L"osung von Randwertproblemen als besonders n"utzlich erweisen.
 
+F"ur die numerische Berechnung von $y(x)$ und $J(x)$ m"ussen die
+beiden Differentialgleichungen in eine einzige zusammengefasst werden.
+Wir fassen dazu die Vektoren $y(x)$ und die Matrix $J(x)$ in einen
+einzigen Vektor zusammen. 
+Wir k"onnen diese Zusammenfassung schreiben als
+\[
+Y(x)=\begin{pmatrix}y(x)\\J(x)\end{pmatrix}
+\]
+wobei wir irgend eine Methode verwenden, eine Matrix als Vektor
+anzuordnen.
+Welche Methode dazu verwendet wird ist egal, solange es immer die 
+gleiche ist.
+Zum Beispiel k"onnen die Matrixelemente zeilenweise in den Spaltenvektor
+$Y$ abegf"ullt werden, oder spaltenweise.
+In dieser Notation wird die zusammengefasste Differentialgleichung
+\begin{equation}
+\frac{d}{dx}\begin{pmatrix}\color{red}y\\\color{red}J\end{pmatrix}
+=
+\begin{pmatrix}
+f(x,{\color{red}y})\\
+F(x,{\color{red}y}) {\color{red}J}
+\end{pmatrix}
+\qquad
+\text{mit der Anfangsbedingung}
+\qquad
+Y(0)=
+\begin{pmatrix}
+y_0\\E
+\end{pmatrix},
+\end{equation}
+wobei wir die unbekannten Funktionen rot hervorgehoben haben, um die
+Abh"angigkeiten deutlicher zu machen.
+
+Wir schreiben dies noch aus f"ur den Fall $n=2$.
+In diesem Fall sind insgesamt sechs Funktionen zu bestimmen, die
+zwei Komponenten von $y$, $y_1(x)$ und $y_2(x)$, und die vier
+Komponenten von $J(x)$.
+Um daraus eine einzige Differentialgleichung zu machen, packen wir
+die sechs Funktionen in einen Vektor $Y(x)$
+\[
+Y(x)=
+\begin{pmatrix}
+y_1(x)\\
+y_2(x)\\
+J_{11}(x)\\
+J_{12}(x)\\
+J_{21}(x)\\
+J_{22}(x)
+\end{pmatrix}.
+\]
+F"ur die Ableitung der ersten zwei Komponenten verwenden wir die
+Differentialgleichung (\ref{grundlagen:jacobi-1}), f"ur die $J$-Komponenten
+aber die Differentialgleichung (\ref{grundlagen:jacobi-dgl}).
+\begin{equation}
+\frac{d}{dx}Y(x)
+=
+\frac{d}{dx}
+\begin{pmatrix}
+y_1(x)\\
+y_2(x)\\
+J_{11}(x)\\
+J_{12}(x)\\
+J_{21}(x)\\
+J_{22}(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+f_1(x,y)\\
+f_2(x,y)\\
+\displaystyle
+\frac{\partial f_1(x,y)}{\partial x_1} J_{11}
+	+\frac{\partial f_1(x,y)}{\partial x_2} J_{21}\\
+\displaystyle
+\frac{\partial f_1(x,y)}{\partial x_1} J_{12}
+	+\frac{\partial f_1(x,y)}{\partial x_2} J_{22}\\
+\displaystyle
+\frac{\partial f_2(x,y)}{\partial x_1} J_{11}
+	+\frac{\partial f_2(x,y)}{\partial x_2} J_{21}\\
+\displaystyle
+\frac{\partial f_2(x,y)}{\partial x_1} J_{12}
+	+\frac{\partial f_2(x,y)}{\partial x_2} J_{22}\\
+\end{pmatrix}
+\end{equation}
+
+\subsection{Abh"angigkeit von $x_0$}
+
+\subsection{Abh"angigkeit von Parametern}
+Im allgemeinen wird eine Differentialgleichung von Parametern abh"angen,
+so dass die L"osung nicht nur von der Anfangsbedinung, sondern auch von den
+Werten dieser Parameter abh"angen wird.
+Um dies explizit zu machen, fassen wir die Parameter in einen Vektor $c$
+zusammen, und machen die Abh"angigkeit der Differentialgleichung
+von $c$ durch ein zus"atzliches Argument der Funktion $f$ explizit:
+\[
+\frac{d}{dx}y = f(x,y,c).
+\]
+Die L"osung $y(x)$ h"angt dann zus"atzlich von der Wahl der Parameter
+ab, wir k"onnen das durch die Schreibweise $y(x,c)$ sichtbar machen.
+
+Oft sucht man dann geeignete Parameter, f"ur die die L"osung der
+Differentialgleichung bestimmte Eigenschaften hat, zum Beispiel durch
+einen bestimmten Punkt verl"auft, d.~h.~wir suchen Werte $c$ derart,
+dass $y(x_1,c)=y_1$..
+Ein besonders effizientes Verfahren zur Bestimmung solcher Parameterwerte
+ist das Newton-Verfahren, welches aber die Ableitungen
+\[
+\frac{\partial y(x,c)}{\partial c}
+=
+\begin{pmatrix}
+\displaystyle \frac{\partial y_1(x,c)}{\partial c_1}
+	&\dots
+		&\displaystyle \frac{\partial y_1(x,c)}{\partial c_n}\\
+\vdots
+	&\ddots
+		&\vdots\\
+\displaystyle \frac{\partial y_n(x,c)}{\partial c_1}
+	&\dots
+		&\displaystyle \frac{\partial y_n(x,c)}{\partial c_n}
+\end{pmatrix}
+\]
+von $y(x,c)$ nach $c$ ben"otigt.
+
 \section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
 \lhead{Analytische L"osungsverfahren}
 Nur wenige Differentialgleichungen lassen sich in geschlossener Form

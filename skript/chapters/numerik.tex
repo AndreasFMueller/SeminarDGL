@@ -1236,9 +1236,9 @@ Wenn man experimentell versucht, ein Ziel zu treffen, dann wird man
 in wiederholten Versuchen die Richtung anpassen, so dass man dem Ziel
 immer n"aher kommt.
 Der $y$-Wert zur Zeit $p/v_x$ h"angt von der Vertikalgeschwindigkeit ab,
-wir bezeichnen ihn mit $g(v_y)$.
-Man ver"andert also $v_y$, bis die Gleichung $g(v_y)=0$ erf"ullt ist.
-Um das Randwertproblem zu l"osen, muss man also die Gleichung $g(v_y)=0$
+wir bezeichnen ihn mit $h(v_y)$.
+Man ver"andert also $v_y$, bis die Gleichung $h(v_y)=0$ erf"ullt ist.
+Um das Randwertproblem zu l"osen, muss man also die Gleichung $h(v_y)=0$
 numerisch l"osen.
 
 Man kann dies zum Beispiel dadurch machen, dass man nach zwei Werten von $v_y$
@@ -1257,6 +1257,14 @@ Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
 % XXX Graphik zum Newton-Verfahren
+\begin{figure}
+\centering
+\includegraphics{chapters/images/randwert-2.pdf}
+\caption{Iteration im Newton-Verfahren. $x_{n+1}$ wird gefunden
+als Schnittpunkt der Tangente im Punkt $(x_n,f(x_n))$ (mit Steigung
+$f'(x_n)$) mit der $x$-Achse.
+\label{numerik:newton-graph}}
+\end{figure}
 
 Das Newton-Verfahren verwendet die Ableitung der Funktion $g$, um eine
 ungef"ahre L"osung $x_n$ der Gleichung $g(x)=0$ m"oglichst genau zu
@@ -1283,7 +1291,7 @@ Wir m"ussen also berechnen, wie schnell sich $y(p/v_x)$ "andert,
 wenn $v_y$ ver"andert wird.
 Dies ist die Ableitung
 \[
-g'(v_y)= \frac{\partial y}{\partial v_y},
+h'(v_y)= \frac{\partial y}{\partial v_y},
 \]
 ein Eintrag der Jacobi-Matrix.
 In Abschnitt~\ref{grundlagen:XXX} wurde gezeigt, wie man auch f"ur
@@ -1298,7 +1306,7 @@ werden.
 \item Finde numerisch die L"osung des Anfangswertproblems mit $v_y$
 als anf"angliche Vertikalgeschwindigkeit.
 Berechnet dabei auch die Jacobi-Matrix
-\item Lese die $g(v_y)$ aus der L"osung zur Zeit $p/v_x$ ab, und $g'(v_y)$
+\item Lese die $h(v_y)$ aus der L"osung zur Zeit $p/v_x$ ab, und $h'(v_y)$
 aus der Jacobi-Matrix und verwendet den Newton-Algorithmus
 (\ref{numerik:ball-newton}), um eine verbesserte Sch"atzung von $v_y$ 
 zu bekommen.
@@ -1314,7 +1322,7 @@ L"osung des gestellten Randwertproblems.
 \includegraphics{chapters/images/randwert-1.pdf}
 \caption{L"osungen des Anfangswertproblems~(\ref{numerik:ball-dgl-1}) und
 (\ref{numerik:ball-dgl-2}).
-Das Newton-Verfahren korrigiert $v_y$ derart, dass $y(v_y)=0$ wird.
+Das Newton-Verfahren korrigiert $v_y$ derart, dass $h(v_y)=0$ wird.
 So wird die L"osung des Randwertproblems (rot) gefunden.
 \label{numerik:randwert-bild}}
 \end{figure}
