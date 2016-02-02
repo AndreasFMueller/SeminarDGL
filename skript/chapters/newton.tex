@@ -130,6 +130,73 @@ in Abschnitt~\ref{section:newton:konvergenz} erkl"art wird.
 \end{beispiel}
 
 \section{Konvergenzgeschwindigkeit\label{section:newton:konvergenz}}
+Im vorangegangenen Abschnitt wird auf die besonders schnelle Konvergenz
+des Newton-Verfahrens hingewiesen: in jedem Iterationsschritt verdoppelt
+sich die Anzahl korrekter Stellen.
+Um dies zu verstehen, entwickeln wir die Funktion $f(x)$ um die
+Nullstelle $\hat{x}$ in eine Potenzreihe
+\[
+f(x)
+=
+\underbrace{f(\hat{x})}_{=0} + f'(\hat{x})(x-\hat{x})
++ \frac12 f''(\hat{x}) (x-\hat{x})^2+\dots
+=
+f'(\hat{x})(x-\hat{x}) + \frac12 f''(\hat{x}) (x-\hat{x})^2+\dots
+\]
+F"ur den Newton-Algorithmus brauchen wir die Ableitung, die wir
+nat"urlich auch als Potenzreihe entwickeln k"onnen:
+\[
+f'(x)=f'(\hat{x})+f''(\hat{x})(x-\hat{x})+\dots
+\]
+Setzen wir dies in die Iterationsformel des Newton-Verfahrens ein, erhalten
+wir einen Ausdruck f"ur den n"achsten $x$-Wert.
+Wir sind aber vor allem an der Differenz $\Delta x=x-\hat{x}$ interssiert, wir
+berechnen die neue Differenz
+\begin{align*}
+\Delta x_{\text{neu}}
+&=
+x-\frac{f(x)}{f'(x)}-\hat{x}
+=
+(x-\hat{x})-\frac{f'(\hat{x})(x-\hat{x}) + \frac12 f''(\hat{x}) (x-\hat{x})^2+\dots}{ f'(\hat{x})+f''(\hat{x})(x-\hat{x})+\dots}
+\\
+&=
+\frac{
+(x-\hat{x})(f'(\hat{x})+f''(\hat{x})(x-\hat{x})+\dots)
+-
+f'(\hat{x})(x-\hat{x}) - \frac12 f''(\hat{x}) (x-\hat{x})^2-\dots
+}{f'(\hat{x})+f''(\hat{x})(x-\hat{x})+\dots}
+\\
+&=
+\frac{\frac12f''(\hat{x})(x-\hat{x})^2+\dots}{f'(\hat{x})+f''(\hat{x})(x-\hat{x})}
+\\
+&\simeq \frac{f''(\hat{x})}{2f'(\hat{x})} \Delta x^2+\dots
+\end{align*}
+Bis auf einen Faktor ist der Fehler nach einem Iterationsschritt
+das Quadrat des Fehlers vor dem Schritt.
+War das Resultat auf $k$ Stellen genau, als der Fehler von der Gr"ossenordnung
+$10^{-k}$, dann ist der Fehler nach dem Iterationsschritt von der
+Gr"ossenordnung $(10^{-k})^2=10^{-2k}$, die Anzahl korrekter Stellen
+hat sich verdoppelt.
+Eine merkliche Abweichung von diesem Gesetz ist nur zu erwarten, wenn
+der Faktor $f''(\hat{x})/(2f'(\hat{x}))$ gross ist.
+Dies tritt vor allem dann ein, wenn der Nenner $f(\hat{x})$
+nahe bei Null ist.
+
+\begin{definition}
+Eine Folge $x_n$ mit $\lim_{n\to\infty}=\hat{x}$ heisst {\em quadratisch}
+konvergent, wenn $x_{n+1}-\hat{x} = O((x_n-\hat{x})^2)$.
+\end{definition}
+
+\begin{satz}
+Sei $\hat{x}$ eine Nullstelle der differenizierbaren Funktion $f(x)$ und
+$f'(\hat{x})\ne 0$.
+Wenn die Newton-Iterationsfolge
+\[
+x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}
+\]
+f"ur den Starwert  $x_0$ gegen $\hat{x}$ konvergiert,
+dann ist die Konvergenz quadratisch.
+\end{satz}
 
 \section{L"osung von Vektorgleichungen\label{section:newton:vektor}}
 \rhead{L"osung von Vektorgleichungen}
