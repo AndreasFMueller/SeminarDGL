@@ -3,14 +3,274 @@
 %
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
-\chapter{Lineare Differentialgleichungen\label{chapter:linear}}
+\chapter{Differentialgleichungen und lineare Algebra\label{chapter:linear}}
 \lhead{}
 \rhead{Lineare Differentialgleichungen}
 Es lohnt sich, lineare Differentialgleichungen unter Zuhilfenahme
 der linearen Algebra etwas genauer zu untersuchen.
-\section{Definition}
-\section{L"osungsmenge}
-\section{Normalformen}
-\subsection{Diagonalisierung}
-\subsection{Jordan-Normalform}
+Gel"ost werden soll das lineare Differentialgleichungssystem
+\begin{equation}
+\frac{d}{dt}x = A(t)x + f(t)\qquad x(0)=x_0
+\label{linear:gleichung}
+\end{equation}
+gel"ost werden.
+Darin ist $A(t)$ eine $n\times n$-Matrix, wir nehmen der Einfachheit
+halber an, dass die Matrixelemente $a_{kl}(t)$ von $A(t)$ differenzierbare
+Funktionen von $t$ sind.
+Die Funktion $f(t)$ hat $n$-dimensionale Vektoren als Werte.
+Falls $f(t)=0$ ist, ist die Gleichung~(\ref{linear:gleichung}) 
+homogen.
+
+\section{Konstante Koeffizienten}
+In diesem Abschnitt nehmen wir an, dass $A(t)$ konstant ist, wir schreiben
+einfach $A$ f"ur den konstanten Wert von $A(t)$.
+\subsection{Diagonalisierbare Koeffizientenmatrix}
+Besonders einfach w"are (\ref{linear:gleichung}) zu l"osen, wenn $A$
+Diagonalform h"atte,
+\[
+A=\begin{pmatrix}
+\lambda_1&         &      &         \\
+         &\lambda_2&      &         \\
+         &         &\ddots&         \\
+         &         &      &\lambda_n
+\end{pmatrix}.
+\]
+Durch Wechsel der Basis kann man diese Situation immer erreichen, wenn
+$A$ diagonalisierbar ist.
+
+In diesem Fall zerf"allt das Gleichungssystem in $n$ unabh"angige
+lineare Differentialgleichungen erster Ordnung
+\begin{align*}
+\dot{x}_1&=\lambda_1x_1 + f_1(t)\\
+\dot{x}_2&=\lambda_2x_2 + f_2(t)\\
+&\;\vdots\\
+\dot{x}_n&=\lambda_nx_n + f_n(t).
+\end{align*}
+Die homogenen Gleichungen l"assen sich sofort l"osen:
+\[
+\dot{x}_i=\lambda_ix_i
+\qquad
+\Rightarrow
+\qquad
+x_i(t)=x_{0i}e^{\lambda_it}.
+\]
+Daraus kann man die L"osung des inhomogenen Systems mit Hilfe der
+Variation der Konstanten l"osen:
+\[
+x_i(t)=C_i(t)e^{\lambda_i t}
+\qquad
+\Rightarrow
+\qquad
+\dot{x}_i(t)
+=
+\dot{C}_i(t)e^{\lambda_i t}+C_i(t)\lambda_ie^{\lambda_i t}
+=
+\lambda_i x_i(t) + \dot{C}_i(t)e^{\lambda_i t}
+\]
+Die $C_i(t)$ m"ussen also so gew"ahlt werden, dass
+$\dot{C}_i(t)=f_i(t)e^{-\lambda_i t}$, es folgt
+\[
+C_i(t)=x_{0i}+\int_0^t C_i(\tau)e^{-\lambda_i \tau}\,d\tau
+\]
+und damit die L"osung
+\[
+x_i(t)
+=
+\biggl(x_{0i}+\int_0^t C_i(\tau)e^{-\lambda_i \tau}\,d\tau\biggr)
+e^{\lambda_i t}.
+\]
+Diese L"osung hatten wir fr"uher bereits gefunden, doch wollen wir
+dies auch noch in Matrixform schreiben.
+Dazu setzen wir
+\[
+e^{At}=\begin{pmatrix}
+e^{\lambda_1 t}&               &      &               \\
+               &e^{\lambda_1 t}&      &               \\
+               &               &\ddots&               \\
+               &               &      &e^{\lambda_n t}
+\end{pmatrix}.
+\]
+Mit dieser Schreibweise kann die L"osung geschrieben werden als
+\[
+x(t)
+=
+e^{At}
+\biggl(x_0 + \int_0^t e^{-A\tau}f(\tau)\,d\tau\biggr)
+\]
+
+\subsection{Matrix-Exponentialfunktion}
+Die L"osung im vorangegangenen Abschnitt konnte mit Hilfe der
+Matrix-Exponentialfunktion besonders kompakt formuliert werden.
+Allerdings war diese nur f"ur diagonalisierbare Matrizen definiert.
+Wir k"onnten $e^A$ aber auch "uber die Potenzreihe definieren
+\[
+e^A=E+A+\frac12A+\frac1{3!}A^3+\frac1{4!} A^4+\dots
+\]
+Die Ableitung von $e^{At}$ nach $t$ ist
+\begin{align*}
+\frac{d}{dt}e^{At}
+&=
+\frac{d}{dt}\biggl(E+At+\frac1{2!}t^2A^2+\frac1{3!}t^3A^3+\dots\Biggr)
+\\
+&=
+A+tA^2+\frac12t^2A^3+\frac1{3!}t^3A^4+\dots
+\\
+&=
+\biggl(E+tA+\frac12t^2A^2+\frac1{3!}A^3+\dots\biggr)A
+=e^{tA}A=Ae^{At}
+\end{align*}
+Die Matrix-Funktion $t\mapsto X(t)=e^{At}$ erf"ullt also die
+Matrix-Differentialgleichung
+\begin{equation}
+\frac{d}{dt} X = AX,
+\label{linear:matrix-dgl}
+\end{equation}
+
+\subsection{Beliebige Koeffizientenmatrix}
+Mit der Matrix-Exponentialfunktion kann jetzt auch das homogene
+Differentialgleichungssystem gel"ost werden.
+Dazu multiplizieren wir~(\ref{linear:matrix-dgl}) auf der rechten Seite
+$x_0$ 
+\[
+\frac{d}{dt}X(t)x_0 = A X(t)x_0,
+\]
+Damit ist die Funktion
+\[
+x(t)=X(t)x_o = e^{At}x_0
+\]
+eine L"osung der homogenen Gleichung.
+
+Auch das Verfahren der Variation der Konstanten kann durchgef"uhrt werden.
+Dazu ersetzen wir $x_0$ durch einen Vektor $C(t)$, und leiten den Ansatz
+\[
+x(t)=e^{At}C(t)
+\]
+nach $t$ ab
+\[
+\frac{d}{dt}x(t)
+=
+Ae^{At}C(t) + e^{At}\dot{C}(t)
+=
+A x(t) + e^{At}\dot{C}(t)
+\]
+Damit $x(t)$ eine L"osung ist, muss gelten
+\[
+\begin{aligned}
+e^{At}\dot{C}(t)
+&=
+f(t)
+&&\text{und}
+&
+C(0)0=x_0
+\end{aligned}
+\]
+Diese Differentialgleichung kann durch Integration gel"ost werden,
+wir erhalten
+\begin{align*}
+\dot{C}(t)
+&=
+e^{-At}f(t)
+\\
+C(t)
+&=
+x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
+\end{align*}
+und damit als L"osung der inhomogenen Differentialgleichung
+\[
+x(t)
+=
+e^{At}\biggl(
+x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
+\biggr).
+\]
+Die fr"uher gefundene Formel f"ur die L"osung der Differentialgleichung
+(\ref{linear:gleichung}) f"ur den Spezialfall diagonalisierbarer 
+Matrizen gilt daher f"ur beliebige Matrizen.
+
+\section{Spezialf"alle}
+
+\section{Zeitabh"angige Koeffizienten}
+Die L"osung der Differentialgleichung~(\ref{linear:gleichung}) war
+deshalb einfach, weil wir die Matrixdifferentialgleichung
+\[
+\frac{d}{dt} X=AX
+\qquad
+\text{mit}
+\qquad
+X(0)=E
+\]
+mit der Exponentialfunktion sofort l"osen k"onnten.
+F"ur eine beliebige Funktion $A(t)$ k"onnen wir nicht mehr mit der
+Exponentialfunktion arbeiten.
+Wir k"onnen uns aber daran erinnern, dass die Exponentialfunktion
+eine L"osung einer Matrixdifferentialgleichung war.
+Wir suchen daher $X(t)$ als L"osung der Differentialgleichung
+\[
+\frac{d}{dt}X(t)=A(t)X(t)
+\qquad\text{und}\qquad
+X(0)=E.
+\]
+Die inverse Matrix $X(t)^{-1}$ kann man ebenfalls als L"osung einer
+Differentialgleichung finden.
+Die Ableitung der Beziehung
+\[
+X(t)X(t)^{-1}=E
+\]
+ist
+\[
+0
+=
+\frac{d}{dt}X(t)X(t)^{-1}
+=
+\frac{d}{dt} X(t) X(t)^{-1}
++
+X(t) \frac{d}{dt}X(t)^{-1}
+=
+A(t)X(t)X^{-1}(t)
++
+X(t) \frac{d}{dt}X(t)^{-1}
+=
+A(t)+ X(t)\frac{d}{dt}X(t)^{-1}
+\]
+Die Inverse $X(t)^{-1}$ erf"ullt daher die Differentialgleichung
+\[
+\frac{d}{dt}X(t)^{-1}= X(t)^{-1}A(t).
+\]
+Die Inverse kann also genauso als L"osung einer Differentialgleichung
+gefunden werden wie $X(t)$.
+
+Dann ist $x(t)=X(t)x_0$ wieder eine L"osung der homogenen Gleichung.
+Ausserdem k"onnen wir wieder versuchen, die L"osung der inhomogenen
+Gleichung mit Variation der Konstanten zu finden.
+Dazu setzen wir $x(t)=X(t)C(t)$ an, und berechnen die Ableitung
+\[
+\frac{d}{dt}x(t)
+=
+\dot{X}(t)C(t)+X(t)\dot{C}(t)
+=
+A(t)X(t)C(t)+X(t)\dot{C}(t)
+=
+A(t)x(t)+X(t)\dot{C}(t)
+\]
+Wieder muss $X(t)\dot{C}(t)=f(t)$ gelten, wenn $x(t)$ eine L"osung sein
+soll.
+Die Gleichung
+\[
+\frac{d}{dt}C(t)
+=
+X(t)^{-1}f(t)
+\]
+Kann durch Integration gel"ost werden:
+\[
+C(t)
+=x_0+\int_0^t X(t)^{-1}(\tau)f(\tau)\,d\tau,
+\]
+so dass die L"osung der inhomogenen Differntialgleichung
+\[
+x(t)=X(t)\biggl(x_0+\int_0^t X(\tau)^{-1} f(\tau)\,d\tau\biggr)
+\]
+wird.
+
+
+
 
