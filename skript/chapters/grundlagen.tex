@@ -607,7 +607,7 @@ F(x,y)J(x)
 J(x)=E.
 \label{grundlagen:jacobi-dgl}
 \end{equation}
-wobei $F$ die Ableitung von $F$ nach $y$ ist,
+wobei $F$ die Ableitung von $f$ nach $y$ ist,
 \[
 F(x,y)=\frac{\partial f(x,y)}{\partial y}.
 \]
@@ -797,6 +797,126 @@ f_2(x,y)\\
 \end{equation}
 
 \subsection{Abh"angigkeit von $x_0$}
+Die Differentialgleichung 
+\[
+\frac{dy}{dx}=f(x,y)
+\]
+liefert die Information, wie die L"osung $y(x)$ von $x$ abh"angt,
+die Ableitung von $y(x)$ nach $x$ wird erhalten, indem man $x$ und $y(x)$
+in die Funktion $f$ einsetzt.
+Wie "andert sich die L"osung, wenn man den Startmoment verschiebt?
+Bei einem autonomen System spielt es keine Rolle, bei welchem $x_0$
+die L"osung beginnt, bestimmend ist nur die Differenz $x-x_0$.
+In diesem Fall liefert wieder die Differentialgleichung die Antwort.
+
+Im allgemeinen Fall wirkt sich eine Verschiebung des Startwertes $x_0$
+"uber das ganze Intervall aus.
+Wir schreiben $y(x,x_0)$ um deutlich zu machen, dass die Abh"angigkeit
+der L"osungsfunktion von $x_0$ deutlich zu machen, und versuchen,
+die Ableitung von $y$ nach $x_0$ zu berechnen.
+Dazu leiten wir die Differentialgleichung
+\[
+\frac{\partial }{\partial x}y(x,x_0)
+=
+f(x,y(x,x_0)).
+\]
+nach $x_0$ ab.
+Die Ableitung nach $x$ m"ussen wir als partielle Ableitung schreiben,
+denn auf der linken Seite der Differentialgleichung steht ja nur die
+Ableitung nach $x$.
+\[
+\frac{\partial}{\partial x_0}\frac{\partial y(x,x_0)}{\partial x}
+=
+\frac{\partial f(x,y)}{\partial y}\frac{\partial y(x,x_0)}{\partial x_0}.
+\]
+Auf der linken Seite k"onnen die Ableitungen vertauscht werden,
+so erhalten wir f"ur den Vektor
+\[
+v(x)=\frac{\partial y(x,x_0)}{\partial x_0}
+\]
+die Differentialgleichung
+\begin{equation}
+\frac{\partial}{\partial x}\frac{\partial y(x,x_0)}{\partial x_0}y(x,x_0)
+=
+\frac{\partial f(x,y)}{\partial y}\frac{\partial y(x,x_0)}{\partial x_0}.
+\qquad\Rightarrow\qquad
+\frac{d}{dx}v(x) = \frac{\partial f(x,y)}{\partial y}v(x).
+\label{grundlagen:shiftdgl}
+\end{equation}
+Die Anfangsbedingung erhalten wir aus dem Fall $x=x_0$:
+\[
+v(x_0)=-f(x_0,y_0).
+\]
+
+\begin{beispiel}
+Wir untersuchen die nicht autonome Differentialgleichung
+\[
+y'=-xy^2\qquad \text{und}\qquad y(1)=1,
+\]
+d.~h.~$x_0=1$.
+Die Differentialgleichung l"asst sich mit Separation direkt l"osen,
+man findet
+\begin{align*}
+\frac{y'}{y^2}&=-x\\
+\int \frac{dy}{y^2}&=-\int x\, dx\\
+-\frac1{y}&=-\frac12x^2-\frac12C\\
+-\frac1y&=-\frac12x^2-\frac12C\\
+y&=\frac{2}{x^2+C}
+\end{align*}
+Die Anfangsbedingung $y(x_0)=y_0$ f"uhrt auf 
+\[
+y_0=\frac2{x_0^2+C}
+\qquad\Rightarrow\qquad
+C=\frac2{y_0}-x_0^2.
+\]
+Die allgemeine L"osung ist daher
+\begin{equation}
+y(x)=\frac2{x^2-x_0^2+\displaystyle\frac2{y_0}},
+\label{grundlagen:startloesung}
+\end{equation}
+insbesondere haben wir auch die Abh"angigkeit von $x_0$ gefunden.
+Schreiben wir $\xi=x-x_0$, dann k"onnen wir die Ableitung nach
+$x$ bzw.~nach $x_0$ mit Hilfe der Funktion
+\[
+g(\xi)=\frac2{\xi^2+\displaystyle\frac2{y_0}}
+\]
+auf etwas symmetrischere Art ausdr"ucken:
+\begin{align*}
+\frac{\partial y}{\partial x}
+&=
+g'(\xi)\frac{\partial\xi}{\partial x}=g'(\xi)\cdot 2x
+&
+\frac{\partial y}{\partial x_0}
+&=
+-g'(\xi)\frac{\partial\xi}{\partial x}=-g'(\xi)\cdot 2x_0
+\end{align*}
+Insbesondere k"onnen wir ablesen, dass das Verh"altnis der
+Ableitungen an den beiden Enden des Intervals $x/x_0$ ist.
+
+Wir m"ochten die Abh"angigket der L"osung $y(x)$ von $x_0$ aber auch
+noch mit der Differentialgleichung (\ref{grundlagen:shiftdgl}) berechnen.
+Durch einsetzen finden wir die Differentialgleichung
+\[
+v'=-2xy v
+\]
+F"ur $y$ m"ussen wir die L"osung (\ref{grundlagen:startloesung})
+einsetzen, auch diese Gleichung ist wieder separierbar:
+\[
+\frac{v'}{v}=-2x\cdot \frac2{x^2-x_0^2+\displaystyle\frac2{y_0}},
+\]
+Integrieren zwischen $x$ und $x_0$ auf beiden Seiten liefert
+\[
+\log v = -2\log\biggl(\frac{2}{y_0}-x_0^2+x^2\biggr)
+\]
+Setzen wir die Werten $x_0$ und $x$ ein, erhalten wir
+\[
+\log \frac{v(x)}{v(x_0)}
+=
+-2\log\frac{\frac2{y_0}-x_0^2+x^2}{\frac2{y_0}}
+=
+-2\log\frac{y_0}{y(x)}
+\]
+\end{beispiel}
 
 \subsection{Abh"angigkeit von Parametern}
 Im allgemeinen wird eine Differentialgleichung von Parametern abh"angen,
@@ -831,8 +951,36 @@ ist das Newton-Verfahren, welches aber die Ableitungen
 	&\dots
 		&\displaystyle \frac{\partial y_n(x,c)}{\partial c_n}
 \end{pmatrix}
+=C(x)
 \]
 von $y(x,c)$ nach $c$ ben"otigt.
+
+Um die Abh"angigkeit von $c$ zu berechnen, leiten wir die
+Differentialgleichung nach $c$ ab, wir erhalten 
+\[
+\frac{\partial}{\partial c} \frac{d}{dx} y(x,c)
+=
+\frac{\partial f(x,y,c)}{\partial y}\frac{\partial y}{\partial c}
++
+\frac{\partial f(x,y,c)}{\partial c}
+\]
+Wieder k"onnen auf der linken Seite die beiden Ableitungen vertauscht
+werden, so dass eine Differentialgleichung f"ur $C(x)$ entsteht:
+\begin{align*}
+\frac{d}{dx}\frac{\partial y(x,c)}{\partial c}
+&=
+\frac{\partial f(x,y,c)}{\partial y}\frac{\partial y(x,c)}{\partial c}
++
+\frac{\partial f(x,y,c)}{\partial c}
+\\
+\frac{d}{dx}C(x)
+&=
+\frac{\partial f(x,y,c)}{\partial y}C(x)
++
+\frac{\partial f(x,y,c)}{\partial c}
+\end{align*}
+Dies ist eine lineare inhomogene Differentialgleichung erster Ordnung
+f"ur die Matrix $C(x)$.
 
 \section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
 \lhead{Analytische L"osungsverfahren}
