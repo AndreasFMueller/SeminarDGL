@@ -15,6 +15,7 @@ CHAPTERS = chapters/einleitung.tex \
 	chapters/grundlagen.tex \
 	chapters/potenzreihen.tex \
 	chapters/linear.tex \
+	chapters/geometrie.tex \
 	chapters/komplex.tex \
 	chapters/numerik.tex \
 	chapters/stabilitaet.tex \
