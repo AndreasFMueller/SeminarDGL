@@ -1256,37 +1256,11 @@ Ziel gen"ugend nahe kommen.}.
 Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
-% XXX Graphik zum Newton-Verfahren
-\begin{figure}
-\centering
-\includegraphics{chapters/images/randwert-2.pdf}
-\caption{Iteration im Newton-Verfahren. $x_{n+1}$ wird gefunden
-als Schnittpunkt der Tangente im Punkt $(x_n,f(x_n))$ (mit Steigung
-$f'(x_n)$) mit der $x$-Achse.
-\label{numerik:newton-graph}}
-\end{figure}
-
-Das Newton-Verfahren verwendet die Ableitung der Funktion $g$, um eine
-ungef"ahre L"osung $x_n$ der Gleichung $g(x)=0$ m"oglichst genau zu
-korrigieren.
-W"ahre $g$ eine lineare Funktion, dann w"urde die Tangente im Punkt
-$(x_n, g(x_n))$ die $x$-Achse genau in dem Punkt $x_{n+1}$ schneiden,
-in dem $g(x_{n+1})=0$ gilt.
-F"ur $x_{n+1}$ findet man
-\begin{equation}
-x_{n+1}=x_{\mathstrut n} - \frac{g(x_n)}{g'(x_n)}
-\label{numerik:ball-newton}
-\end{equation}
-Ist die Kr"ummung des Graphen von $g$ nicht allzu gross, ist $x_{n+1}$
-zwar nicht mehr eine L"osung, aber eine sehr viel bessere Approximation
-f"ur die tats"achliche L"osung.
-Es zeigt sich, dass die Approximationsfolge $x_n$ sehr schnell konvergiert,
-die Zahl der korrekten Stellen verdoppelt sich in jedem Schritt, man
-spricht von quadratischer Konvergenz.
-
-
+Schnellere Konvergenz kann mit dem Newton-Verfahren erreicht werden,
+welches in Anhang~\ref{chapter:newton} beschrieben wird.
 F"ur die Anwendung des Newton-Verfahrens auf das Randwert-Problem
-ist die Bestimmung der Steigung der Funktion $g$ n"otig.
+ist die Bestimmung der Steigung der Funktion n"otig, die die Abweichung
+der Kurve von der Randbedingung am rechten Rand angibt.
 Wir m"ussen also berechnen, wie schnell sich $y(p/v_x)$ "andert,
 wenn $v_y$ ver"andert wird.
 Dies ist die Ableitung
@@ -1415,7 +1389,6 @@ mit 10 Stellen Genauigkeit gefunden werden kann.
 Damit ist das Randwertproblem numerisch gel"ost.
 \end{beispiel}
 
-\subsection{Finite Elemente}
 
 
 
