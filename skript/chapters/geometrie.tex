@@ -6,4 +6,702 @@
 \chapter{Geometrische Eigenschaften\label{chapter:geometrie}}
 \lhead{}
 \rhead{Geometrische Eigenschaften}
+In Kapitel~\ref{chapter:grundlagen} wurde beschrieben, wie jedes
+Differentialgleichungssystem, m"oglicherweise nach Erweiterung um eine
+explizite Zeitkoordinate, durch ein Vektorfeld ersetzt werden kann,
+und wie die L"osungen als Bahnen eines Teilchens in einem zeitlich
+unver"anderlichen Vektorfelde verstanden werden k"onnen.
+Daraus ergibt sich auch, dass das Verhalten der L"osungen einer
+Differentialgleichungen studiert werden kann, ohne dass man
+die Abh"angigkeit von $x$ im Detail kennt.
+Die Bahnen zerlegen den Raum und k"onnen sich nicht schneiden,
+so schr"ankt die Geometrie des Raumes die M"oglichkeiten f"ur das
+Verhalten der L"osung "uber lange Zeiten ein.
+Besonders ausgepr"agt sind diese Einschr"ankungen im zweidimensionalen
+Raum.
+Eine geschlossene Kurve in der Ebene unterteilt diese in zwei Bereiche,
+keine L"osung kann vom einen Bereich in den anderen f"uhren.
+
+Ein Parameter in der Differentialgleichung modifiziert das Vektorfeld,
+und kann damit Eigenschaften von L"osungen "uber lange Zeiten ver"andern.
+Zum Beispiel k"onnen periodische Bahnen sich aufl"osen und zu Spiralbahnen
+werden.
+
+Wir gehen in diesem Kapitel immer von einem autonomen System
+\[
+\frac{d}{dx}y(x)=f(y),
+\]
+wobei das Vektorfeld $f(y)$ nicht von $x$ abh"angt.
+
+%
+% Spezielle Punkte und Bahnen
+%
+\section{Spezielle Punkte und Bahnen}
+Das Verhalten der L"osungskurven "uber lange Zeiten wird wesentlich
+beeinflusst von Punkte, wo der Punkt auf der Bahn anh"alt oder sogar
+die Richtung umkehrt, und von Punkten, in die ein Punkt periodisch
+zur"uckkommt.
+
+%
+% Kritische Punkte
+%
+\subsection{Kritische Punkte}
+Wir betrachten zun"achst einen Punkt $y_0$ in dem $f(y_0)\ne 0$.
+Dann gilt $f(y)\ne 0$ auch f"ur Punkte $y$, die gen"ugend nahe an 
+$y_0$ sind.
+Eine L"osungskurve durch $y_0$ hat im Punkt $y_0$ die Tangentenrichtung
+$f(y_0)$.
+In einer gen"ugend kleinen Umgebung von $y_0$ werden sich verschiedene
+L"osungskurven nicht schneiden.
+Ein solcher Schnittpunkt w"are ein Anfangsbedingung f"ur zwei
+verschiedene L"osungen, aber der Eindeutigkeitssatz f"ur die
+L"osung einer Differentialgleichung sagt, dass es zu jeder 
+Anfangsbedingung nur eine L"osung geben kann.
+Dies bedeutet, dass in einer Umgebung des Punktes $y_0$ nichts
+spannendes passiert, die Bahnen sehen ungef"ahr aus wie in Abbildung~\ref{geometrie:parallelebahnen}.
+\begin{figure}
+\centering
+\caption{Verlauf der Bahnen eines autonomen Differentialgleichungssystems
+in der N"ahe eines Punktes $y_0$ mit $f(y_0)\ne 0$.
+\label{geometrie:parallebahnen}}
+\end{figure}
+
+Von besonderem Interesse sind daher Punkte, an denen das Vektorfeld
+verschwindet:
+
+\begin{definition}
+$y$ heisst {\em kritischer Punkt} des Vektorfeldes $f$, wenn $f(y)=0$.
+\end{definition}
+
+Dass in einem kritischen Punkt das Vektorfeld verschwindet bedeutet nicht,
+dass die Bahn nicht dar"uber hinweg fortgesetzt werden kann,
+wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Das eindimensionale Gleichungssystem
+\[
+y'=\sqrt{|y|}
+\]
+hat einen kritischen Punkt bei $y=0$.
+Die Funktion
+\begin{equation}
+y(x)=\frac14x^2\operatorname{sign}(x)
+\label{geometrie:1dimkritloesung}
+\end{equation}
+ist eine L"osungsfunktion, denn
+\begin{align*}
+y'(x)&=\frac12|x|\\
+\sqrt{\left|\frac14x^2\operatorname{sign}(x)\right|}
+&=
+\sqrt{\frac14x^2}
+=
+\frac12|x|=y'(x).
+\end{align*}
+Trotzdem erreicht $y(x)$ jeden beliebigen Punkt der $y$-Achse, denn 
+\[
+x=2\sqrt{|y|}\operatorname{sign}(y)
+\]
+ist die Umkehrfunktion von $y(x)$. 
+Die L"osungskurve bewegt sich also "uber den kritischen Punkt hinweg.
+\begin{figure}
+\centering
+\includegraphics{chapters/images/geometrie-1.pdf}
+\caption{Bahnen das Differentialgleichungssystems $y'=\sqrt{|y|}$
+k"onnen den kritischen Punkt bei $y=0$ traversieren.
+Die L"osung~(\ref{geometrie:1dimkritloesung}) ist etwas fetter rot
+eingezeichnet.
+L"osungen k"onnen aber auch beliebig lange im Punkt $y$ verweilen,
+wie die blaue Kurve illustriert.
+\label{geometrie:1dimkrit}}
+\end{figure}
+Abbildung~\ref{geometrie:1dimkrit} zeigt die Bahnen.
+Die L"osung~(\ref{geometrie:1dimkritloesung}) ist nicht die einzige.
+Andere L"osungen bestehen jeweils aus einem Ast der Kurve mit positiven
+$y$ und einem mit negativen $y$, dazwischen kann die L"osung beliebig lange
+im kritischen Punkt verweilen.
+F"ur den Punkt $y=0$ ist also der Eindeutigkeitssatz verletzt, zur
+Anfangsbedingung $y=0$ gibt es beliebig viele L"osungen.
+\end{beispiel}
+
+%
+% Linearisierung
+%
+\subsection{Linearisierung}
+In einem kritischen Punkt $y_0$ verschwinden alle Komponenten von $f(y_0)$.
+Falls $f$ stetig differenzierbar ist, k"onnen wird $f$ in einer Umgebung
+des kritischen Punktes in erster Ordnung approximieren:
+\[
+f(y)=\frac{\partial f}{\partial y}(y-y_0) + o(|y-y_0|)
+\]
+Die partielle Ableitung, die Jacobi-Matrix, ist eine $n\times n$-Matrix.
+In einer Umgebung eines kritischen Punktes ist die Gestalt der Bahnen also
+im wesentlichen durch die Jacobi-Matrix bestimmt.
+
+\begin{beispiel}
+Wir betrachten als Beispiel die eindimensionale ($n=1$) Differentialgleichung
+\[
+y'=f(y)=y,
+\]
+die in $y_0=0$ einen kritischen Punkt hat.
+Die Jacobi-Matrix ist konstant: $f'(y)=1$.
+L"osungskurven mit Anfangsbedingungen $>0$ werden daher anwachsen,
+w"ahrend L"osungskurven mit Anfangsbedingungen $<0$ abnehmen werden.
+Die L"osungskurven werden daher vom kritischen Punkt ``abgestossen''.
+
+W"ahlen wir stattdessen das System
+\[
+y'=f(y)=-y,
+\]
+dann ist die Jacobi-Matrix $f'(y)=-1$, und wir k"onnen analog schliessen,
+dass L"osungskurven immer zum kritischen Punkt hinstreben.
+\end{beispiel}
+
+\begin{beispiel}
+Das Beispiel im letzten Abschnitt verwendet
+\[
+y'=f(y)=\sqrt{|y|}
+\]
+ist im kritischen Punkt $y=0$ nicht stetig differenzierbar, daher ist
+eine lineare Approximation nicht m"oglich.
+Das fr"uher beobachtete Verhalten, dass sich L"osungskurven auf der
+einen Seite vom kritischen Punkt entfernen, auf der anderen aber ann"ahern,
+kann nur auftreten, wenn auch $f'(0)=0$ gilt, so dass wir $f$ in zweiter
+Ordnung als
+\[
+y'=f(y)=\frac12 f''(0)y^2.
+\]
+Diese Differentialgleichung hat die Funktion
+\[
+y(x)=-\frac{2}{f''(0)x+C}
+\]
+als L"osung.
+Je nach Wert von $C$ bekommen wir eine L"osung, f"ur $x>0$ anwachsen
+oder abfallen, wenigstens f"ur ein kleines Intervall.
+Die L"osung n"ahert sich dem kritischen Punkt, oder entfernt sich, je
+nachdem auf welcher Seite die L"osungskurve beginnt.
+\end{beispiel}
+
+%
+% Periodische Bahnen
+%
+\subsection{Periodische Bahnen}
+
+%
+% Zweidimensionale Systeme
+%
+\section{Zweidimensionale Systeme}
+In diesem Abschnitt betrachten wir die geometrischen Einschr"ankungen, denen
+zweidimensionale Systeme unterliegen.
+
+%
+% Bewegung in der Umgebung eines kritischen Punktes
+%
+\subsection{Bewegung in der Umgebung eines kritischen Punktes}
+Wir gehen jetzt davon aus, dass 
+\[
+y'=f(y)
+\]
+einen kritischen Punkt hat, wir k"onnen die Koordinaten immer so w"ahlen,
+dass der kritische Punkt im Nullpunkt des Koordinatensystems liegt.
+Die Bewegung in unmittelbarer Umgebung des Nullpunktes kann dann approximiert
+werden durch die Bewegung des linearisierten Systems
+\[
+y'=\frac{\partial f(0)}{\partial y}y
+\]
+Die m"oglichen Bewegungsformen in der Umgebung des kritischen Punktes
+sind also bestimmt durch die Jacobi-Matrix.
+Jede beliebige $2\times 2$-Matrix kann auch tats"achlich als Jacobi-Matrix
+vorkommen, denn das System
+$
+y'=Ay
+$
+hat die Matrix $A$ als Jacobi-Matrix.
+
+Wir interessieren uns im Moment nur f"ur eine qualitative Beschreibung
+der L"osungen, wir k"onnen also immer eine Koordinatentransformation
+vornehmen, um die Situation zu vereinfachen.
+Die gesuchte qualitative Klassifizierung von zweidimensionalen
+Differentialgleichungssystemen l"auft also auf eine Klassifizierung
+von reellen $2\times 2$-Matrizen bis auf Koordinatentransformation
+hinaus.
+
+Eine solche Klassifikation kann auf der Basis von Eigenwerten und
+Eigenvektoren erfolgen.
+Dazu ben"otigen wir eine "Ubersicht "uber die Eigenwerte einer
+Matrix
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix},
+\]
+die wir als Nullstellen des charakteristischen Polynoms bestimmen
+k"onnen.
+Das charakteristische Polynom ist
+\[
+\chi_A(\lambda)
+=
+\det(A-\lambda E)
+=
+\left|\,\begin{matrix}a-\lambda&b\\c&d-\lambda\end{matrix}\,\right|
+=
+(a-\lambda)(d-\lambda)-bc
+=
+\lambda^2-(a+b)\lambda + ad-bc,
+\]
+es ist bestimmt durch die Spur und die Determinante der Matrix
+\[
+\begin{aligned}
+\det A&=ad -bc,
+&
+\operatorname{Spur}A&=a+d
+&
+&\Rightarrow
+&
+\chi_A(\lambda)&=\lambda^2-\lambda \operatorname{Spur}A+\det A
+\end{aligned}
+\]
+Die L"osungsformel f"ur die quadratische Gleichung liefert die
+Eigenwerte
+\[
+\lambda_{1,2}
+=
+\frac{\operatorname{Spur}A}2\pm\sqrt{\Delta}
+\qquad
+\qquad
+\text{mit}\quad
+\Delta = \biggl(\frac{\operatorname{Spur}A}2\biggr)^2 - \det A
+\]
+Falls die Diskriminanten $\Delta > 0$ ist, sind die beiden Eigenwerte
+verschieden, und folglich gibt es zwei verschiedene Eigenvektoren,
+die Matrix $A$ kann diagonalisiert werden mit Diagonalelementen
+$\lambda_{1,2}$.  Das Differentialgleichungssystem zerf"allt dann
+in zwei unabh"angige eindimensionale Systeme
+\begin{align*}
+y_1'&= \lambda_1 y_1\\
+y_2'&= \lambda_2 y_2,
+\end{align*}
+die auch durch
+\begin{align*}
+y_1(x)&=y_{10} e^{\lambda_1 x}\\
+y_2(x)&=y_{20} e^{\lambda_2 x}
+\end{align*}
+sofort gel"ost werden k"onnen.
+F"ur die Diskussion der Form der L"osungskurven brauchen wir aber die
+Abh"angigkeit der beiden Koordinaten untereinander, nicht von $x$.
+Wir stellen daher $y_2$ als Funktion von $y_1$ dar:
+\[
+y_1=y_{10} e^{\lambda_1 x}
+\qquad\Rightarrow\qquad
+x=\frac1{\lambda_1}\log\frac{y_1}{y_{10}}
+\qquad\Rightarrow\qquad
+y_2
+=
+y_{20} e^{\frac{\lambda_2}{\lambda_1}\log\frac{y_1}{y_{10}}}
+=
+y_{20}\biggl(\frac{y_1}{y_{10}}\biggr)^{\frac{\lambda_2}{\lambda_1}}
+=
+Cy^{\frac{\lambda_2}{\lambda_1}}
+\]
+\begin{figure}
+\centering
+\begin{tabular}{ccc}
+\includegraphics{chapters/images/geometrie-2.pdf}&%
+\includegraphics{chapters/images/geometrie-3.pdf}&%
+\includegraphics{chapters/images/geometrie-4.pdf}\\
+$\displaystyle \frac{\lambda_2}{\lambda_1}>1$&%
+$\displaystyle \frac{\lambda_2}{\lambda_1}=1$&%
+$\displaystyle \frac{\lambda_2}{\lambda_1}<1$
+\end{tabular}
+\caption{L"osungskurven des linearisierten Systems f"ur
+$\frac{\lambda_2}{\lambda_1}>0$.
+\label{geometrie:posportraits}}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tabular}{ccc}
+\includegraphics{chapters/images/geometrie-5.pdf}&%
+\includegraphics{chapters/images/geometrie-6.pdf}&%
+\includegraphics{chapters/images/geometrie-7.pdf}\\
+$\displaystyle \frac{\lambda_2}{\lambda_1}>-1$&%
+$\displaystyle \frac{\lambda_2}{\lambda_1}=-1$&%
+$\displaystyle \frac{\lambda_2}{\lambda_1}<-1$
+\end{tabular}
+\caption{L"osungskurven des linearisierten Systems f"ur
+$\frac{\lambda_2}{\lambda_1}<0$.
+\label{geometrie:negportraits}}
+\end{figure}
+Die Gestalt der L"osungskurven sind also im Wesentlichen durch den
+Quotienten $\lambda_2/\lambda_1$ bestimmt.
+Die Abbildung~\ref{geometrie:posportraits} zeigt die L"osungskurven
+f"ur positive Werte des Quotienten, w"ahrend
+Abbildung~\ref{geometrie:negportraits} die L"osungskurven f"ur
+negative Werte des Quotienten zeigt.
+F"ur positive Werte von $\lambda_2/\lambda_1$ bewegen sich die 
+Punkte entweder immer auf den kritischen Punkt zu, oder entfernen
+sich.
+F"ur negative Werte von $\lambda_2/\lambda_1$ n"ahert sich ein
+Punkt in der N"ahe der einen Achse zun"achst immer mehr dem kritischen
+Punkt, um sich dann in Richtung der anderen Achse zu entfernen.
+
+Die Matrix $A$ muss jedoch nicht diagonalisierbar sein, wenn
+$\lambda_1=\lambda_2$.
+Wenn die Matrix nur einen Eigenvektor hat, dann kann die Matrix
+durch eine geeignete Koordinatentransformation in die Form
+\[
+\begin{pmatrix}
+\lambda&      1\\
+      0&\lambda
+\end{pmatrix}
+\]
+bringen.
+Die Differentialgleichungen lauten in diese Fall
+\begin{align*}
+y_1'&=\lambda y_1 + y_2\\
+y_2'&=\lambda y_2
+\end{align*}
+Die zweite Gleichung kann wie vorher gel"ost werden, die L"osung f"ur $y_2$
+ist
+\[
+y_2(x)=y_{20}e^{\lambda x},
+\]
+dies k"onnen wir in die erste Gleichung einsetzen, sie lautet jetzt
+\[
+y_1' = \lambda y_1 + y_{20}e^{\lambda x},
+\]
+dies ist wieder eine lineare Differentialgleichung, diesmal jedoch
+eine inhomogene. 
+Die L"osung der homogenen Gleichung ist $Ce^{\lambda x}$, die L"osung
+der inhomogenen Gleichung kann durch Variatio der Konstanten gefunden
+werden, also $y_1(x)=C(x)e^{\lambda x}$.
+Setzen wir dies in die Differentialgleichung 
+\[
+y_1'(x)
+=
+C'(x)e^{\lambda x}+C(x)\lambda e^{\lambda x}
+=
+\lambda y_1(x) + C'(x)e^{\lambda x}
+=
+\lambda y_1(x) + y_{20}e^{\lambda x}
+\]
+ein.
+Diese Gleichung kann nur erf"ullt sein, wenn
+\[
+C'(x)=y_{20}
+\qquad\Rightarrow\qquad
+C(x)=y_{20}x+y_{10},
+\]
+die L"osung der Gleichung ist also
+\[
+y(x)=\begin{pmatrix}
+y_{20}x+y_{10}\\
+y_{20}
+\end{pmatrix}e^{\lambda x}.
+\]
+\begin{figure}
+\centering
+\includegraphics{chapters/images/geometrie-8.pdf}
+\caption{L"osungskurven f"ur den Fall nicht diagonalisierbarer Jacobi-Matrix
+mit zwei gleichen Eigenwerten.
+\label{geometrie:jnf-kurven}}
+\end{figure}%
+In Abbildung~\ref{geometrie:jnf-kurven} sind die L"osungskurven dargestellt.
+F"ur $\lambda >0$ streben die L"osungskurven gegen den Nullpunkt, aber auf
+eine Art, sie im Grenzfall die $y_1$-Achse ber"uhren.
+
+Falls die Diskriminante $\Delta$ negativ ist, gibt es keine reellen
+Eigenwerte, also auch keine reellen Eigenvektoren.
+Wir k"onnen aber trotzdem eine Basis finden, in der die Geometrie
+dar Bahnkurven leichter verst"andlich ist.
+Dazu schreiben wir 
+\[
+\alpha = \frac{\operatorname{Spur}A}2=\frac{a+d}2
+\qquad
+\text{und}
+\qquad
+\beta = \sqrt{-\Delta},
+\]
+und betrachten die beiden Vektoren
+\[
+w_1 = \begin{pmatrix}0\\\beta\end{pmatrix}.
+\qquad\text{und}\qquad
+w_2 = \begin{pmatrix}b\\\alpha-a\end{pmatrix}
+\]
+Wir berechnen die Wirkung der Matrix $A$ auf diesen beiden Vektoren,
+und zerlegen jeweils das Resultat wieder in $w_1$ und $w_2$:
+\begin{align*}
+Aw_1
+&=
+\begin{pmatrix}a&b\\c&d\end{pmatrix}
+\begin{pmatrix}0\\\beta\end{pmatrix}
+=
+\begin{pmatrix}
+\beta b\\
+\beta d
+\end{pmatrix}
+=
+v
+\begin{pmatrix}0\\\beta\end{pmatrix}
++
+\beta
+\begin{pmatrix}b\\\alpha-a\end{pmatrix}
+\\
+Aw_2
+&=
+\begin{pmatrix}a&b\\c&d\end{pmatrix}
+\begin{pmatrix}b\\\alpha-a\end{pmatrix}
+=
+\begin{pmatrix}
+ab-ab+b\alpha\\
+bc-ad+\alpha d
+\end{pmatrix}
+=
+\alpha
+\begin{pmatrix}b\\\alpha-a\end{pmatrix}
++u
+\begin{pmatrix}0\\\beta\end{pmatrix}
+\end{align*}
+Wir m"ussen nur noch die Konstanten $u$ und $v$ bestimmen:
+\begin{align*}
+\beta d
+&=
+v\beta
++
+\alpha\beta
+-
+\beta a
+&&\Rightarrow&
+v
+&=
+\alpha a+d-\alpha=2\alpha-\alpha=\alpha
+\\
+-\det A +\alpha d
+&=
+\alpha^2- \alpha a+u\beta
+&&\Rightarrow&
+u\beta&=-\det A +\alpha(a+d)-\alpha^2
+=\alpha^2-\det A
+=\Delta=-\beta^2
+\end{align*}
+Aus der zweiten Gleichung folgt $ u=-\beta$.
+Damit haben wir die Wirkung der Matrix $A$ auf den Vektoren $w_1$ und $w_2$
+bestimmt, und wir k"onnen daraus die Matrix von $A$ in der Basis
+$\{w_1,w_2\}$ ablesen, wir bezeichnen sie mit $A'$
+\[
+\begin{aligned}
+Aw_1&=\alpha w_1 + \beta w_2\\
+Aw_2&=-\beta w_1 + \alpha w_2
+\end{aligned}
+\qquad\Rightarrow\qquad
+A'=\begin{pmatrix}
+\alpha&\beta\\
+-\beta&\alpha
+\end{pmatrix}
+\]
+Dies ist die gesuchte Form der Matrix, in der sich die L"osungskurven
+leichter beschreiben lassen.
+Eine L"osung daf"ur l"asst sich angeben, wenn man ber"ucksichtigt, dass
+$A'$ einer Drehmatrix "ahnelt.
+Wir vermuten daher, dass die L"osungskurve im wesentlichen den kritischen
+Punkt umkreist, m"oglicherweise mit einer "Anderung des Abstandes
+zum kritischen Punkt, und schreiben daher
+\begin{equation}
+y(x)
+=
+\begin{pmatrix}
+r_0e^{ux}\cos(vx+\delta_0)\\
+r_0e^{ux}\sin(vx+\delta_0)
+\end{pmatrix}
+=
+r_0e^{ux}
+\begin{pmatrix}
+\cos(vx+\delta_0)\\
+\sin(vx+\delta_0)
+\end{pmatrix}
+,
+\label{geometrie:rotsol}
+\end{equation}
+wobei wird $r_0$ und $\delta_0$ so w"ahlen, dass
+\[
+y_{10}=r_0\cos\delta_0
+\qquad\text{und}\qquad
+y_{20}=r_0\sin\delta_0.
+\]
+Setzen wir jetzt den Ansatz~(\ref{geometrie:rotsol}) in die
+Differentialgleichung ein, erhalten wir
+\begin{align*}
+y'(x)
+&=
+\begin{pmatrix}
+r_0ue^{ux}\cos(vx+\delta_0)-r_0e^{ux}v\sin(vx+\delta_0)\\
+r_0ue^{ux}\sin(vx+\delta_0)+r_0e^{ux}v\cos(vx+\delta_0)
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+ \alpha&\beta\\
+-\beta &\alpha
+\end{pmatrix}
+\begin{pmatrix}
+r_0e^{ux}\cos(vx+\delta_0)\\
+r_0e^{ux}\sin(vx+\delta_0)
+\end{pmatrix}
+=
+\begin{pmatrix}
+r_0e^{ux}\alpha\cos(vx+\delta_0)+r_0e^{ux}\beta\sin(vx +\delta_0)\\
+-r_0e^{ux}\beta\cos(vx+\delta_0)+r_0e^{ux}\alpha\sin(vx+\delta_0)
+\end{pmatrix}
+\end{align*}
+Diese Gleichung ist genau dann korrekt, wenn 
+\[
+u=\alpha
+\qquad\text{und}\qquad
+v=-\beta.
+\]
+Die Zahlen $\alpha$ und $\beta$ charakterisieren also wieder die L"osung.
+F"ur $\alpha < 0$ n"ahern sich die L"osungen dem kritischen Punkt, f"ur
+$\alpha>0$ entfernen sie sich.
+Die Zahl $\beta$ ist die Winkelgeschwindigkeit, mit der die L"osung
+um den kritischen Punkt rotiert.
+Die L"osungskurven sind daher Spiralen um den kritischen Punkt, sie
+sind in Abbildung~\ref{geometrie:rotkurv} dargestellt.
+\begin{figure}
+\centering
+\begin{tabular}{ccc}
+\includegraphics{chapters/images/geometrie-9.pdf}&%
+\includegraphics{chapters/images/geometrie-11.pdf}&%
+\includegraphics{chapters/images/geometrie-10.pdf}\\
+$\alpha > 0$&$\alpha = 0$&$\alpha < 0$
+\end{tabular}
+\caption{L"osungskurven des linearisierten Systems im Falle $\Delta < 0$
+sind Spiralen um den kritischen Punkt
+\label{geometrie:rotkurv}}
+\end{figure}
+
+%
+% Komplexe Eigenwerte
+%
+\subsection{Komplexe Eigenwerte}
+Die Darstellung im vorangegangenen Abschnitt war darum bem"uht,
+komplexe Zahlen zu vermeiden.
+Die Darstellung im Falle $\Delta<0$ wurde dadurch unn"otig verkompliziert,
+in diesem Abschnitt soll gezeigt werden, wie die Formeln f"ur die Vektoren
+$w_1$ und $w_2$ mit Hilfe komplexer Zahlen hergeleitet werden k"onnen.
+
+Zun"achst halten wir fest, dass im Falle $\Delta<0$ zwei konjugiert
+komplexe Eigenwerte
+$
+\lambda= \alpha + i\beta
+$
+und
+$
+\overline{\lambda}= \alpha - i\beta
+$
+existieren.
+Nehmen wir an, dass $v$ ein Eigenvektor zum Eigenwert $\lambda$ ist,
+dann ist $\overline{v}$, dessen Komponenten die konjugiert komplexen
+Komponenten von $v$ sind, ein Eigenvektor zum Eigenwert $\overline{\lambda}$.
+Grund daf"ur ist die Tatsache, dass die Matrix $A$ nur reelle Matrixelemente
+hat, also gilt
+\[
+A\overline{v}
+=
+\overline{Av}
+=
+\overline{\lambda v}=\overline{\lambda}\overline{v}.
+\]
+Der Vektor $v$ ist nat"urlich nicht geeignet f"ur eine reelle Beschreibung
+der L"osungskurven des linearisierten Systems.
+Wir konstruieren daher die Vektoren
+\begin{equation}
+\begin{aligned}
+w_1&=\frac{i}2(v-\overline v)
+&&\qquad
+&
+v&=-iw_1+w_2
+\\
+w_2&=\frac12(v+\overline v)
+&&\qquad
+&
+\overline{v}&=iw_1+w_2
+\end{aligned}
+\label{geometrie:wv}
+\end{equation}
+und untersuchen, wie die Matrix $A$ darauf wirkt:
+\begin{align*}
+Aw_1
+&=
+\frac{i}2(Av-A\overline v)
+=
+\frac{i}2(\lambda v-\overline{\lambda}\overline{v})
+\\
+Aw_2
+&=
+\frac12(Av+A\overline{v})
+=
+\frac12(\lambda v+\overline{\lambda}\overline{v}).
+\end{align*}
+Setzen wir die Darstellungen von $v$ und $\overline{v}$ durch $w_i$ aus 
+(\ref{geometrie:wv}) ein, und erhalten:
+\begin{align*}
+\frac{i}2(\lambda v-\overline{\lambda}\overline{v})
+&=
+\frac{i}2(\lambda(-iw_1+w_2) -\overline{\lambda}(iw_1+w_2))
+=
+\frac{1}2(\lambda+\overline{\lambda}) w_1
++
+\frac{i}2(\lambda-\overline{\lambda}) w_2
+=\alpha w_1-\beta w_2
+\\
+\frac12(\lambda v+\overline{\lambda}\overline{v})
+&=
+\frac12(\lambda(-iw_1+w_2)+\overline{\lambda}(iw_1+w_2))
+=
+-\frac{i}2(\lambda-\overline{\lambda}) w_1
++
+\frac12(\lambda+\overline{\lambda}) w_2.
+=\beta w_1+\alpha w_2
+\end{align*}
+Verwendet man also $\{w_1,w_2\}$ als Basis, dann bekommt die Matrix die
+Form
+\begin{equation}
+A'=\begin{pmatrix}
+\alpha&-\beta\\
+\beta &\alpha
+\end{pmatrix}
+\label{geometrie:drehmatrix}
+\end{equation}
+Auf Grund der Konstruktion haben die Vektoren $w_1$ und $w_2$ reelle
+Komponenten, $w_1$ ist der Realteil des Vektors $v$, $w_2$ ist
+der Imagin"arteil.
+Damit haben wir ein Rezept, wie wir eine Basis von reellen Vektoren
+konstruieren k"onnen, in denen das System die
+Form~(\ref{geometrie:drehmatrix}) hat.
+
+Die Komponenten eines Eigenvektors $v$ erf"ullen die Gleichung
+\[
+(a-\lambda)v_1 + bv_2=0
+\]
+eine L"osung daf"ur ist
+\[
+v=\begin{pmatrix}
+-b\\
+a-\alpha-i\beta
+\end{pmatrix},
+\]
+dessen Real- und Imagin"arteile
+\[
+\begin{pmatrix}
+-b\\a-\alpha
+\end{pmatrix}
+\qquad\text{und}\qquad
+\begin{pmatrix}
+0\\\beta
+\end{pmatrix},
+\]
+dies sind die Vektoren, die im vorangegangenen Abschnitt aus dem "Armel
+gesch"uttelt worden waren, um die Matrix des Systems in die
+Form~\ref{geometrie:drehmatrix} zu bringen.
+
+
+
+
 

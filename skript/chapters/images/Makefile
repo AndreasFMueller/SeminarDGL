@@ -3,7 +3,7 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	grundlagen numerik komplexezahlen randwert
+all:	grundlagen numerik komplexezahlen randwert geometrie
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -37,6 +37,17 @@ randwert:	$(randwert_FILES)
 $(randwert_FILES): randwert.mp
 	TEX=latex mpost randwert.mp
 	for f in randwert.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
+geometrie_FILES = geometrie-1.pdf geometrie-2.pdf geometrie-3.pdf	\
+	geometrie-4.pdf geometrie-5.pdf geometrie-6.pdf geometrie-7.pdf	\
+	geometrie-8.pdf
+geometrie:	$(geometrie_FILES)
+$(geometrie_FILES): geometrie.mp
+	TEX=latex mpost geometrie.mp
+	for f in geometrie.[0-9]*; \
 	do \
 		mptopdf $${f}; \
 	done
