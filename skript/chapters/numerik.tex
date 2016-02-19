@@ -18,7 +18,7 @@ Form gel"ost werden.
 Wir k"onnen daher nicht erwarten, dass wir die L"osungen beliebiger
 Differentialgleichungen einfach dadurch verstehen, dass wir
 L"osungsfunktionen diskutieren.
-Stattedessen bleiben uns nur die folgenden zwei M"oglichkeiten:
+Stattdessen bleiben uns nur die folgenden zwei M"oglichkeiten:
 \begin{enumerate}
 \item
 Wir l"osen die Differentialgleichung mit Hilfe eines Computers,
@@ -31,8 +31,8 @@ L"osungskurven studieren lassen, ohne dass man sie berechnet haben muss.
 Nat"urlich kann man nicht erwarten, dass eine solche Methode genaue
 Aussagen dar"uber erlaubt, wann eine L"osungskurve wo genau durchgehen
 wird.
-Es werden nur qualititative Aussagen m"oglich sein, zum Beispiel ob
-Gleichgewichtsl"osunge stabil sind, ob es periodische L"osungen gibt
+Es werden nur qualitative Aussagen m"oglich sein, zum Beispiel ob
+Gleichgewichtsl"osungen stabil sind, ob es periodische L"osungen gibt
 und ob L"osungskurven zu den periodischen L"osungen konvergieren.
 \end{enumerate}
 In diesem Kapitel entwickeln wir Methoden, Differentialgleichungen 
@@ -118,7 +118,7 @@ f"ur die N"aherung $y_k$ der Funktionswerte $y(x_k)$.
 
 
 Wir m"ochten $y(x)$ f"ur einen ganz bestimmten $x$-Wert berechnen.
-Dazu unterteilen wir das Interval $[0,x]$ in $n$ Teilschritte der
+Dazu unterteilen wir das Intervall $[0,x]$ in $n$ Teilschritte der
 Breite $x/n$, und wenden die Formel~(\ref{numerik:rekursion}) an:
 \[
 y(x)=y(x_n)=(1-\alpha h)^n y_0=\biggl(1+\frac{-\alpha x}{n}\biggr)^n y_0.
@@ -172,7 +172,7 @@ Der relative Fehler des Verfahrens ist also
 \begin{figure}
 \centering
 \includegraphics{chapters/images/numerik-3.pdf}
-\caption{Relativer Fehler des Eulerverfahrens f"ur die Differentialgleichung
+\caption{Relativer Fehler des Euler-Verfahrens f"ur die Differentialgleichung
 (\ref{numerik:expdgl}) in Abh"angigkeit von der Anzahl $k$ der Schritte.
 \label{numerik:relfehler}}
 \end{figure}%
@@ -189,7 +189,7 @@ die entsprechend viel Rechenzeit ben"otigen.
 
 Ein praktisch n"utzliches Verfahren muss also anstreben, mit einer
 sehr viel kleineren Anzahl von Schritten eine viel gr"ossere Genaugikeit
-der Approximations zu erreichen.
+der Approximation zu erreichen.
 
 \section{Fehler-Entwicklung numerischer L"osungen}
 \lhead{Fehler-Entwicklung}
@@ -249,8 +249,8 @@ Einzelschrittfehlern zu finden.
 \lhead{Einschritt-Verfahren}
 Die relativ geringe Genauigkeit des Eulerschrittes beruht darauf,
 dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
-nur f"ur das linke Ende des Intervals $[x_k, x_k+h]$ zutrifft,
-weiter rechts im Interval wird die Abweichung immer gr"osser.
+nur f"ur das linke Ende des Intervalls $[x_k, x_k+h]$ zutrifft,
+weiter rechts im Intervall wird die Abweichung immer gr"osser.
 Eine m"ogliche L"osung des Problems k"onnte darin bestehen, statt
 nur einer linearen N"aherung zus"atzliche Glieder der Taylorreihe
 \begin{equation}
@@ -305,7 +305,7 @@ Dass man hier mit einer gr"osseren Genauigkeit rechnen darf ist schon daran
 erkennbar, dass der Klammerausdruck auf der rechten Seite eine viel
 bessere Approximation von $e^{-\alpha x}$ ist also der Faktor
 $(1-\alpha h)$ im Euler-Verfahren.
-Genauer erwarten wir, dass wir hier ein kubsisches Verfahren konstruiert haben.
+Genauer erwarten wir, dass wir hier ein kubisches Verfahren konstruiert haben.
 
 \begin{table}
 \centering
@@ -326,7 +326,7 @@ $i$&$x$&$e^{-\alpha x}$&Euler&kubisch\\
 \hline
 \end{tabular}
 \caption{N"aherungswerte f"ur die L"osung $e^{-\alpha x}$ der
-Beispieldifferentialgleichung (\ref{numerik:expdgl}) nach dem Eulerverfahren
+Beispieldifferentialgleichung (\ref{numerik:expdgl}) nach dem Euler-Verfahren
 und nach dem kubischen Verfahren (\ref{numerik:kubisch}) mit einer
 Schrittweite von 0.1. Unterstrichen ist jeweils die Stellen, die nach
 Rundung auf die angegebene Anzahl stellen mit dem exakten Wert "ubereinstimmt.
@@ -334,10 +334,10 @@ Rundung auf die angegebene Anzahl stellen mit dem exakten Wert "ubereinstimmt.
 \end{table}%
 In Tabelle~\ref{numerik:euler-kubisch} werden die Resultate des
 kubischen Verfahrens denen des Euler-Verfahrens gegen"ubergestellt.
-Im ersten Schritt ist der Fehler des Eulerverfahrens kleiner als $10^{-2}$,
+Im ersten Schritt ist der Fehler des Euler-Verfahrens kleiner als $10^{-2}$,
 was einer Einheit in der zweiten Nachkommastelle entspricht.
 Der Fehler des kubischen Verfahrens ist kleiner als $10^{-6}$, eine
-Einheit in der sechsten Nachkommanstelle, ungef"ahr die von einem
+Einheit in der sechsten Nachkommastelle, ungef"ahr die von einem
 kubischen Verfahren zu erwartende Verbesserung.
 Nach zehn Rechenschritten liefert das Euler-Verfahren dank Rundung
 gerade noch eine korrekte Stelle, w"ahrend das kubische Verfahren immer noch
@@ -365,7 +365,7 @@ des Verfahrens.
 F"ur das Euler-Verfahren ist $F(x,y,h)=f(x,y)$.
 Es soll also eine Inkrement-Funktion gefunden werden, bei der $y(x+\Delta x)$
 durch $y(x) + \Delta x\cdot F(x,y,\Delta x)$ bis auf Terme h"oherer
-Ordnung approxmiert werden kann.
+Ordnung approximiert werden kann.
 
 \subsection{Quadratische Verfahren}
 Ein quadratisches Verfahren verwendet eine Inkrement-Funktion $F(x,y,h)$,
@@ -429,7 +429,7 @@ von $y(x)$ "ubereinstimmen, also mit
 \label{numerik:ytaylor}
 \end{equation}
 wobei wir f"ur $y''(x)$ die Gleichung (\ref{grundlagen:2abl}) verwendet haben.
-Durch Koeffizientenvergleich finden wir die Bedinungen
+Durch Koeffizientenvergleich finden wir die Bedingungen
 \[
 \begin{aligned}
 a+b&=1,&
@@ -455,7 +455,7 @@ y_{k+1}=y_{k}+hf\biggl(x_k+\frac{h}2,y_k+\frac{h}2 f(x_k,y_k)\biggr).
 \end{equation}
 Das Verfahren f"uhrt also erst einen halben Eulerschritt zum Punkt
 $(x_k+\frac12h,y_k+\frac{h}2f(x_k,y_k))$ durch, berechnet dort mit Hilfe
-von $f$ die Steigung, die dann f"ur einen Euler-Schritt der L"ange $h$
+von $f$ die Steigung, die dann f"ur einen Eulerschritt der L"ange $h$
 verwendet wird.u
 Daher heisst dieses Verfahren auch das {\em verbesserte Euler-Verfahren}.
 \index{Euler-Verfahren!verbessertes}
@@ -473,9 +473,9 @@ $h$ durch, mit dem man zum Punkt $(x_k+h, y_k+hf(x_k,y_k))$ gelangt.
 Dort berechnet mit mit Hilfe von $f$ die Steigung.
 Das arithmetische Mittel dieser Steigung mit der im Euler-Verfahren
 verwendeten Steigung $f(x_k,y_k)$ im Punkt $x_k$ wird dann als
-Steigung f"ur einen Euler-Schritt verwendet.z
+Steigung f"ur einen Eulerschritt verwendet.
 Statt eines einzigen Steigungswertes werden hier also zwei Steigungswerte
-von den Enden des Intervals $[x_k,x_k+1]$ gemittelt.
+von den Enden des Intervalls $[x_k,x_k+1]$ gemittelt.
 Wegen der "Ahnlichkeit dieses Vorgehens mit dem sp"ater zu besprechenden
 Runge-Kutte-Verfahren heisst diese Verfahren auch das {\em
 vereinfachte Runge-Kutta-Verfahren}.
@@ -569,7 +569,7 @@ notwendig wurde.
 
 Die Tabelle~\ref{numerik:genauigkeit} demonstriert die "uberragende
 Genauigkeit des Runge-Kutta-Verfahrens.
-Trotz der relativ grossen Schritteweite von $h=0.1$ erreicht das
+Trotz der relativ grossen Schrittweite von $h=0.1$ erreicht das
 Verfahren nach zehn Schritten eine Genauigkeit von sieben signifikanten
 Stellen.
 Da in jedem Schritt die Funktion $f$ viermal ausgewertet werden muss,
@@ -611,7 +611,7 @@ nicht mehrere wie bei den besprochenen Einschritt-Verfahren.
 Als Beispiel versuchen wir daher ein Verfahren aufzubauen, welches
 $y_{n+2}$ aus den bereits berechneten Werten $y_{n\mathstrut}$ und
 $y_{n+1}$ berechnet.
-Wir nehmben dabei an, dass $y_{n\mathstrut}$ und $y_{n+1}$ exakt
+Wir nehmen dabei an, dass $y_{n\mathstrut}$ und $y_{n+1}$ exakt
 sind.
 Der neue Datenpunkt soll mit Hilfe eines Ausdrucks der Form
 \begin{equation}
@@ -899,7 +899,7 @@ Der Anwender muss eine Implementation der Funktion $f$ zur Verf"ugung
 stellen, allerdings werden die Argument in der umgekehrten Reihenfolge
 zu der erwarte, die wir in diesem Skript bisher verwendet haben.
 F"ur die Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
-kann man sie zum Beispiel so defniieren:
+kann man sie zum Beispiel so definieren:
 \verbatiminput{chapters/examples/octave-dgl-f.m}
 
 Beim Aufruf der Funktion \texttt{lsode} muss man den {\em Namen}
@@ -961,7 +961,7 @@ berechnet mit der Funktion \texttt{lsode} von Octave.
 \subsection{GNU Scientific Library}
 W"ahrend Octave dem Benutzer die Wahl eines geeigneten Verfahrens abnimmt
 und ihm "uberhaupt wenig Kontrolle "uber den Gang der Rechnung gibt,
-kann ein Programmier durch den Einsatz der GNU Scientific Library (GSL) die
+kann ein Programmierer durch den Einsatz der GNU Scientific Library (GSL) die
 volle Kontrolle "uber alle Aspekte der Iteration erhalten.
 Der Preis ist eine wesentlich h"ohere Komplexit"at.
 Ziel dieses Abschnitts ist, ein einfaches Beispielprogramm zu
@@ -992,7 +992,7 @@ jedoch nicht ben"otigt.
 
 Die eigentliche wird von einer ``driver''-Funktion durchgef"uhrt.
 Diese sorgt im wesentlichen f"ur die Wahl der Schrittweite, verwaltet
-Datentrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
+Datenstrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
 durchf"uhren.
 Die Treiber-Funktion f"uhrt die einzelnen Schritte (im Sinne der
 in Abschnitt~\ref{section:numerik:einschritt} besprochenen
@@ -1074,29 +1074,29 @@ Schleife bewerkstelligt dies:
 10000&   0.86607968&   0.86610200&  -0.00002232\\
 \hline
 \end{tabular}
-\caption{L"osungen der Beispieldifferentialgleichg (\ref{numerik:beispieldgl})
+\caption{L"osungen der Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
 mit Hilfe der GNU Scientific Library (GSL).
 \label{numerik:gsl-resultate}}
 \end{table}
 
 Man kann die Funktion $f$ im Programm nat"urlich auch mit einem Z"ahler
-ausstatten und damit herausfinden, wieviele Aufrufe der Funktion
+ausstatten und damit herausfinden, wie viele Aufrufe der Funktion
 f"ur die numerische L"osung ben"otigt werden.
-Es stellt sich heraus, dass f"ur das erste Interval von $0$ bis $1$
+Es stellt sich heraus, dass f"ur das erste Intervall von $0$ bis $1$
 die Funktion $f$ 131 mal aufgerufen wird, hier versucht die Bibliothek
 die optimale Schrittweite $h$ zu bestimmen.
 In allen folgenden Intervallen der L"ange $1$ von $n$ bis $n+1$ werden nur
 noch jeweils 13 Aufrufe der Funktion ben"otigt.
 Verwendet man stattdessen das Runge-Kutta-Fehlberg-Verfahren,
-werden pro Interval 18 Auswertungen der Funktion $f$ ben"otigt,
+werden pro Intervall 18 Auswertungen der Funktion $f$ ben"otigt,
 und die Genauigkeit sinkt auf zwei Stellen nach dem Komma.
 
 \section{Randwertprobleme\label{section:numerik:randwertprobleme}}
 Die bisher beschriebenen Verfahren gehen von einer Anfangsbedingung
 aus, und berechnen die dadurch eindeutig festgelegte L"osungskurve.
 Randwertproblem, beschrieben in Abschnitt~\ref{section:randwertprobleme},
-verkn"pfen dagegen Werte von einzelnen Komonenten von $Y$ an den
-R"andern eines Intervals.
+verkn"upfen dagegen Werte von einzelnen Komponenten von $Y$ an den
+R"andern eines Intervalls.
 
 Wir betrachten zwei prototypische Randwertprobleme, die auch gleich
 zwei v"ollig verschiedene L"osungsverfahren motivieren.
@@ -1130,7 +1130,7 @@ und $P=(p,0)$ geht.
 
 Genau genommen ist dies nicht ein Randwertproblem wie in 
 Abschnitt~\ref{section:randwertprobleme}, denn es wird nicht verlangt,
-dass der Ball zu einer bestimmten Zeit $t$ beim Punkt $P$ eintrift.
+dass der Ball zu einer bestimmten Zeit $t$ beim Punkt $P$ eintrifft.
 Die Differentialgleichung bedeutet aber, dass die Horizontalgeschwindigkeit
 des Balls konstant ist (die horizontale Beschleunigung ist immer $0$).
 Ist $v_x$ die Horizontalgeschwindigkeit, dann erreicht der Ball zur
@@ -1195,11 +1195,11 @@ ablesen.
 Zu bestimmen ist also $v_y$ so, dass die L"osungskurve durch den Punkt
 $(p,0)$ geht.
 
-Wird statt der Horizontakomponenten der Anfangsgeschwindigkeit die
+Wird statt der Horizontalkomponenten der Anfangsgeschwindigkeit die
 gesamte Anfangsgeschwindigkeit $v_0$ vorgegeben, dann muss der
 Winkel gefunden werden, unter dem der Ball geworfen werden muss,
 um das Ziel zu trefen.
-Bei der Elevation $\alpha$ sind die Komponenten der Anfangsgeschwinigkeit
+Bei der Elevation $\alpha$ sind die Komponenten der Anfangsgeschwindigkeit
 $v_x=v_0\cos\alpha$ und $v_y=v_0\sin\alpha$. 
 Setzt man dies in die Bedingung~(\ref{numerik:ball-bedingung}) ein,
 findet man
@@ -1251,7 +1251,7 @@ Tats"achlich wird dieses Verfahren in der Artillerie verwendet.
 Der Schiesskommandant beobachtet die einschlagenden Granaten und kommandiert
 "Anderungen der Anfangs-Elevation an die Gesch"utzbatterien.
 Dabei sucht er Einschl"age, die aus seiner Perspektive vor bzw.~hinter
-dem Ziel liegen, und halbiert dann das Interval, bis die Einschl"age dem
+dem Ziel liegen, und halbiert dann das Intervall, bis die Einschl"age dem
 Ziel gen"ugend nahe kommen.}.
 Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
@@ -1271,7 +1271,7 @@ ein Eintrag der Jacobi-Matrix.
 In Abschnitt~\ref{grundlagen:XXX} wurde gezeigt, wie man auch f"ur
 die Jacobi-Matrix eine Differentialgleichung aufstellen kann, die
 man nat"urlich ebenfalls mit den fr"uher beschriebenen numerischen
-Bibliotheken lo"sen kann.
+Bibliotheken l"osen kann.
 
 Das Randwertproblem kann daher mit folgendem Algorithmus numerisch gel"ost
 werden.
@@ -1388,7 +1388,3 @@ Es zeigt sich, dass der korrekte Wert f"ur $v_y$ in drei Iterationen
 mit 10 Stellen Genauigkeit gefunden werden kann.
 Damit ist das Randwertproblem numerisch gel"ost.
 \end{beispiel}
-
-
-
-

@@ -23,7 +23,7 @@
 \usepackage{paralist}
 \usepackage{makeidx}
 \usepackage{array}
-\usepackage{hyperref}
+\usepackage[colorlinks=true]{hyperref}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
@@ -101,6 +101,8 @@
 %\addbibresource{thema/main.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
+\pgfplotsset{compat=1.12}
+\setlength{\headheight}{15pt} % fix headheight warning
 \DeclareGraphicsRule{*}{mps}{*}{}
 \begin{document}
 \pagestyle{fancy}
@@ -159,7 +161,6 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \end{center}
 \end{titlepage}
 \hypersetup{
-    colorlinks=true,
     linktoc=all,
     linkcolor=blue
 }
