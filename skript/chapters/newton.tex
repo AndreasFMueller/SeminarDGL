@@ -95,7 +95,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}=x_n-\frac{x_n^2-y}{2x_n}
 \frac12\biggl(x_n + \frac{y}{x_n}\biggr).
 \label{newton:mittel}
 \end{equation}
-Die Quaratwurzel von $y$ erf"ullt nat"urlich
+Die Quadratwurzel von $y$ erf"ullt nat"urlich
 \[
 \sqrt{y} = \frac12\biggl( \sqrt{y}+\frac{y}{\sqrt{y}}\biggr).
 \]
@@ -119,7 +119,7 @@ n&x_n\\
 6 &  1.\underline{41421356237309}\\
 \hline
 \end{tabular}
-\caption{Approxmationen von $\sqrt{2}$ mit Hilfe des Newton-Algorithmus,
+\caption{Approximationen von $\sqrt{2}$ mit Hilfe des Newton-Algorithmus,
 korrekte Stellen unterstrichen.
 Die Anzahl korrekter Stellen verdoppelt sich in jedem Schritt.
 \label{newton:sqrt2}}
@@ -150,7 +150,7 @@ f'(x)=f'(\hat{x})+f''(\hat{x})(x-\hat{x})+\dots
 \]
 Setzen wir dies in die Iterationsformel des Newton-Verfahrens ein, erhalten
 wir einen Ausdruck f"ur den n"achsten $x$-Wert.
-Wir sind aber vor allem an der Differenz $\Delta x=x-\hat{x}$ interssiert, wir
+Wir sind aber vor allem an der Differenz $\Delta x=x-\hat{x}$ interessiert, wir
 berechnen die neue Differenz
 \begin{align*}
 \Delta x_{\text{neu}}
@@ -188,7 +188,7 @@ konvergent, wenn $x_{n+1}-\hat{x} = O((x_n-\hat{x})^2)$.
 \end{definition}
 
 \begin{satz}
-Sei $\hat{x}$ eine Nullstelle der differenizierbaren Funktion $f(x)$ und
+Sei $\hat{x}$ eine Nullstelle der differenzierbaren Funktion $f(x)$ und
 $f'(\hat{x})\ne 0$.
 Wenn die Newton-Iterationsfolge
 \[
@@ -439,4 +439,3 @@ in exakter "Ubereinstimmung mit den Resultaten des Newton-Algorithmus.
 gefunden mit dem Newtonverfahren f"ur drei verschiedene Startpunkte
 \label{newton:2dgraphik}}
 \end{figure}
-
