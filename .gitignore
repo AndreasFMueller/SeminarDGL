@@ -1,0 +1,17 @@
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.pdf
+*.ilg
+*.ind
+*.idx
+*.log
+*.mpx
+*.synctex.gz
+**/*.[0-9]
+**/*.[0-9][0-9]
+**/skript-blx.bib
+**/skript.run.xml
+**/mptextmp.mp
