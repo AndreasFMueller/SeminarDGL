@@ -32,9 +32,9 @@ TEXFILES = $(SKRIPTFILES) \
 
 IMAGES =
 
-BLXFILES = skript1-blx.bbl
-#	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl \
-#	skript5-blx.bbl skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl \
+BLXFILES = skript1-blx.bbl \
+	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl \
+	skript5-blx.bbl skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl
 #	skript9-blx.bbl skript10-blx.bbl skript11-blx.bbl skript12-blx.bbl \
 #	skript13-blx.bbl skript14-blx.bbl skript15-blx.bbl skript16-blx.bbl \
 #	skript17-blx.bbl
@@ -57,27 +57,27 @@ skript.bbl:		skript.aux
 
 skript1-blx.bbl:	skript1-blx.aux
 	bibtex skript1-blx
-#
-#skript2-blx.bbl:	skript2-blx.aux
-#	bibtex skript2-blx
-#
-#skript3-blx.bbl:	skript3-blx.aux
-#	bibtex skript3-blx
-#
-#skript4-blx.bbl:	skript4-blx.aux
-#	bibtex skript4-blx
-#
-#skript5-blx.bbl:	skript5-blx.aux
-#	bibtex skript5-blx
-#
-#skript6-blx.bbl:	skript6-blx.aux
-#	bibtex skript6-blx
-#
-#skript7-blx.bbl:	skript7-blx.aux
-#	bibtex skript7-blx
-#
-#skript8-blx.bbl:	skript8-blx.aux
-#	bibtex skript8-blx
+
+skript2-blx.bbl:	skript2-blx.aux
+	bibtex skript2-blx
+
+skript3-blx.bbl:	skript3-blx.aux
+	bibtex skript3-blx
+
+skript4-blx.bbl:	skript4-blx.aux
+	bibtex skript4-blx
+
+skript5-blx.bbl:	skript5-blx.aux
+	bibtex skript5-blx
+
+skript6-blx.bbl:	skript6-blx.aux
+	bibtex skript6-blx
+
+skript7-blx.bbl:	skript7-blx.aux
+	bibtex skript7-blx
+
+skript8-blx.bbl:	skript8-blx.aux
+	bibtex skript8-blx
 #
 #skript9-blx.bbl:	skript9-blx.aux
 #	bibtex skript9-blx

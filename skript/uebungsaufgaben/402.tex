@@ -1,0 +1,41 @@
+L"osen Sie die Airy-Differentialgleichung
+\[
+y''-xy=0
+\]
+mit den Anfangsbedingung $y(0)=0$ und $y'(0)=1$.
+
+\begin{loesung}
+In der vorangegangenen Aufgabe wurde der Koeffizientenvergleich f"ur einen
+Potenzreihenansatz f"ur die Airy-Differentialgleichung bereits durchgef"uhrt,
+es wurde die Rekursionsformel
+\[
+a_{k+3}=\frac{a_k}{(k+3)(k+2)}
+\]
+gefunden.
+Nur die Koeffizienten, deren Index Rest $1$ haben bei Teilung durch $3$
+verschwinden nicht.
+Sie sind
+\begin{align*}
+a_4&=\frac1{4\cdot 3}a_1=\frac1{4\cdot 3}=\frac1{12}
+\\
+a_7&=\frac1{7\cdot 6}a_4=\frac1{7\cdot 6\cdot 4\cdot 3}=\frac1{504}
+\\
+a_{10}&=\frac1{10\cdot 9}a_7
+=
+\frac1{10\cdot 9\cdot 7\cdot 6\cdot 4\cdot 3}=\frac1{45360}
+\\
+a_{13}&=\frac1{13\cdot 12}a_{10}=
+\frac1{13\cdot 12\cdot 10\cdot 9\cdot 7\cdot 6\cdot 4\cdot 3}=\frac1{7076160}
+&\dots
+\end{align*}
+Daraus kann man jetzt die Potenzreihe ableiten:
+\begin{align*}
+y(x)
+&=
+\sum_{k=0}^\infty \frac{x^{3k+1}}{(3k+1)\cdot3k\cdot (3k-2)\cdot(3k-3)\cdot \dots 4\cdot 3}
+\\
+&=
+x + \frac1{12}x^4+\frac1{504}x^7+\frac1{45360}x^{10}+\frac1{7076160}x^{13}+\dots
+\end{align*}
+\end{loesung}
+
