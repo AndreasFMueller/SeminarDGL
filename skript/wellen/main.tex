@@ -18,7 +18,7 @@ dazu n"aher betrachtet werden.
 Als ersten L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
 kennengelernte Ansatz \ref{potenzreihen:ansatz} verwendet.
 
-Zuerst werden die Potentreihen f"ur $y$ und $y''$ aufgestellt.
+Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
 
 \begin{equation}
 	y(x)
@@ -49,6 +49,19 @@ Aus den beiden Gleichungen \ref{wellen:ersteableitung} und
 		-(ax^2+bx+c)(a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + \dotsb)
 	\end{split}
 	\label{wellen:koeffizietenvergleich}
+\end{equation}
+
+\begin{equation}
+	a_{k+2} = -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k)
+	\hspace{20pt}, a_{-2} = a_{-1} = 0
+	\label{wellen:koeffizientengleichung}
+\end{equation}
+
+\begin{equation}
+	y(x) = a_0 + a_1x 
+	-\sum_{k=0}^{\infty}\frac{1}{(k+2)(k+1)}(aa_{k-2}+ba_{k-1}+ca_k)
+	\hspace{20pt}, a_{-2} = a_{-1} = 0
+	\label{wellen:yx}
 \end{equation}
 
 \printbibliography[heading=subbibliography]
