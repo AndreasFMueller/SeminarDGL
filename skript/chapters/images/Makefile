@@ -3,7 +3,7 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	grundlagen numerik komplexezahlen randwert geometrie
+all:	grundlagen numerik komplexezahlen randwert geometrie airy
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -51,5 +51,15 @@ $(geometrie_FILES): geometrie.mp
 	do \
 		mptopdf $${f}; \
 	done
+
+airy_FILES = airy-1.pdf 
+airy:	$(airy_FILES)
+$(airy_FILES): airy.mp
+	TEX=latex mpost airy.mp
+	for f in airy.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
 
 
