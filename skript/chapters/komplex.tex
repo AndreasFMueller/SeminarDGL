@@ -734,7 +734,8 @@ Wir nehmen also an, dass sich $y(x)$ schreiben l"asst als
 \[
 y(x)=\int_\gamma e^{xz}v(z)\,dz
 \]
-f"ur eine komplex differenzierbare Funktion $v(z)$ und eine Kurve $\gamma$.
+f"ur eine komplex differenzierbare Funktion $v(z)$ und eine Kurve
+$\gamma\colon\mathbb R\to \mathbb C$.
 Setzen wir diesen Ansatz in die Airy-Differentialgleichung ein,
 erhalten wir
 \begin{align*}
@@ -745,6 +746,8 @@ man erh"alt
 \begin{align*}
 \int\gamma xe^{xz}v(z)\,dz
 &=
+\int_{-\infty}^{\infty} xe^{x\gamma(t)}v(\gamma(t))\dot\gamma(t)\,dt
+=
 \left[e^{xz}v(z)\right]_{\gamma(-\infty)}^{\gamma(\infty)}
 -\int_\gamma e^{xz}v'(z)\,dz
 \end{align*}
@@ -775,7 +778,9 @@ Dazu muss der Realteil des Exponenten f"ur jedes beliebige reelle $x$
 gegen $-\infty$ gehen, wenn $z$ gegen unendlich geht.
 In Abbildung~\ref{komplex:airy} sind die Gebiete grau eingezeichnet,
 in denen $-\frac13z^3$ negativen Realteil hat.
-Zul"assige Wege m"ussen daher ``Enden'' in den grauen Gebieten haben.
+Zul"assige Wege m"ussen daher ``Enden'' in den grauen Gebieten haben,
+d.~h.~$\gamma(t)$ muss in diesen Gebieten gegen Unendlich gehen, wenn
+$t\to\pm\infty$.
 Damit sind im wesentlichen die drei Kurven $\gamma_0$, $\gamma_+$ und
 $\gamma_-$ aus Abbildung~\ref{komplex:airy} w"ahlbar.
 
