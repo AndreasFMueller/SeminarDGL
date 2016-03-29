@@ -2,11 +2,12 @@
 \lhead{Wellen in einem Kanal}
 \begin{refsection}
 \chapterauthor{Daniela Meier und Hansruedi Patzen}
+\clearpage
 
-Das Kapitel \ref{chapter:wellen} Wellen, besch"aftigt sich mit Wellen in einem 
-parabolischen Kanal. Die dazugeh"orende Gleichung \ref{wellen:grundgleichung}, 
-mit diversen Konfigurationen f"ur die Konstanten ${a,b,c} \in \mathbb{R}$, soll 
-dazu n"aher betrachtet werden.
+Das Kapitel \ref{chapter:wellen} Wellen, besch"aftigt sich mit der Ausbreitung 
+Wellen in einem parabolischen Kanal. Die dazugeh"orende Gleichung 
+\ref{wellen:grundgleichung}, mit diversen Konfigurationen f"ur die Konstanten 
+${a,b,c} \in \mathbb{R}$, soll dazu n"aher betrachtet werden.
 
 \begin{equation}
 	y'' + (ax^2+bx+c)y
@@ -15,13 +16,15 @@ dazu n"aher betrachtet werden.
 	\label{wellen:grundgleichung}
 \end{equation}
 
-Als ersten L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
-kennengelernte Ansatz \ref{potenzreihen:ansatz} verwendet.
+Als L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
+kennengelernte Potenzreihenansatz (\ref{potenzreihen:ansatz}) verwendet.
 
 Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
 
 \begin{equation}
 	y(x)
+	=
+	\sum_{k = 0}^{\infty} a_{k}x^k
 	=
 	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
 	\label{wellen:ersteableitung}
@@ -29,6 +32,8 @@ Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
 
 \begin{equation}
 	y''(x)
+	=
+	\sum_{k = 0}^{\infty} a_{k+2}(k+1)(k+2)x^k
 	=
 	2a_2 + 3 \mathbin{\cdot} 2a_3x + 4 \mathbin{\cdot} 3a_4x^2 + 5 
 	\mathbin{\cdot} 4a_5x^3 + 6 \mathbin{\cdot} 5a_6x^4 + \dotsb
@@ -62,6 +67,19 @@ Aus den beiden Gleichungen \ref{wellen:ersteableitung} und
 	-\sum_{k=0}^{\infty}\frac{1}{(k+2)(k+1)}(aa_{k-2}+ba_{k-1}+ca_k)x^{k+2}
 	\hspace{20pt}, a_{-2} = a_{-1} = 0
 	\label{wellen:ygleichung}
+\end{equation}
+
+\begin{equation}
+	a_{k} = -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2})
+	\hspace{20pt}, k \in \mathbb{N} \backslash \{0, 1\}, a_{-2} = a_{-1} = 0
+	\label{wellen:koeffizientengleichungak}
+\end{equation}
+
+\begin{equation}
+y(x) = a_0 + a_1x 
+-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+\hspace{20pt}, a_{-2} = a_{-1} = 0
+\label{wellen:ygleichungak}
 \end{equation}
 
 \printbibliography[heading=subbibliography]
