@@ -789,6 +789,7 @@ Dann ist des It\^o-Integral von $G$
 Das It\^o-Integral hat die folgenden Eigenschaften:
 
 \begin{satz}
+\label{satz:ito-integral}
 Seien $G$ und $H$ auf $[0,T]$ quadratintegrierbare stochastische Prozesse
 und $a,b\in\mathbb R$. Dann gilt
 \begin{compactenum}
@@ -930,7 +931,7 @@ dX_2
 &=
 F_2\,dt + G_2\,dW
 \end{align*}
-hat, ist
+haben, dann ist
 \[
 d(X_1X_2)
 =
@@ -952,10 +953,234 @@ TODO
 
 \subsection{Lineare stochastische Differentialgleichungen}
 
+%
+% Partielle Differentialgleichungen
+%
+\section{Partielle Differentialgleichungen\label{section:pdgl}}
+Die It\^osche Kettenregel stellt einen Zusammenhang her zwischen der zweiten
+Ableitung von $u$ und den Werten von $u$ am Ende eines Pfades.
+In diesem Abschnitt wollen wir den Zusammenhang wie folgt konkretisieren.
+Wir werden zun"achst f"ur ein Gebiet $U$ und einen Punkt $x$ die
+Zeit $\tau_x$ definieren, zu der eine Brownsche Bewegung das Gebiet zum
+ersten Mal verl"asst.
+Nat"urlich ist $\tau_x$ eine Zufallsvariable, und damit auch $u(X(\tau_x))$,
+wobei der Pfad ist, der zur Zeit $\tau_x$ das Gebiet verl"asst.
+Dann werden wir zeigen, dass $u(x)$ der Erwartungswert von $u(X(\tau_x))$
+sein.
 
+In der Theorie der quaslinearen partiellen Differentialgleichungen erster
+Ordnung wird gezeigt, wie man die Funktionswerte der L"osungsfunktion
+dadurch bestimmen kann, dass man vom Punkt $x$ aus die Charakteristik 
+konstruiert, und den Wert der Randbedingung an dem Punkt ermittelt,
+wo die Charakteristik das Gebiet verl"asst.
+Aus diesem Wert l"asst sich dann der Wert der L"osung bestimmen.
+Brownsche Bewegungen spielen also f"ur elliptische partielle
+Differentialgleichungen eine "ahnliche Rolle wie Charakteristiken f"ur
+quasliineare partielle Differentialgleichungen erster Ordnung.
 
+\subsection{Stopzeiten}
+Wie fr"uher betrachten wir wieder einen stochastischen Prozess $X(t)$,
+der L"osung einer stochastischen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+dX(t)&=b(t,X)\,dt + B(t,X)\,dW
+\\
+X(0)&X_0
+\end{aligned}
+\label{stochastisch:stopzeitdgl}
+\end{equation}
+sein soll.
 
+\begin{definition}
+Sei $E$ eine beliebige offene oder abgeschlossene nicht leere Teilmenge
+von $\mathbb R^n$.
+Dann setzen wir
+\[
+\tau = \inf\{t\ge 0\;|\;X(t)\in E\},
+\]
+$\tau$ ist also die fr"uheste Zeit, zu der der Weg $X(t)$ die Menge $E$
+erreicht.
+\end{definition}
 
+Die charakteristische Funktion
+\[
+\chi_{[0,\tau]}(t)=\begin{cases}
+1\qquad\qquad&t\le \tau\\
+0            &t>\tau
+\end{cases}
+\]
+ist nat"urlich auch ein stochastischer Prozess, und damit auch 
+$\chi_{[0,\tau]}G$.
+Damit gelten die Regeln f"ur das It\^o-Integral aus
+Satz~\ref{satz:ito-integral} auch f"ur diesen Prozess, jetzt allerdings
+als Integrale mit oberer Grenze $\tau$ statt $T$.
+
+\begin{hilfssatz}
+Seien $G$ und $H$ auf $[0,T]$ quadratintegrierbare stochastische Prozesse
+und $a,b\in\mathbb R$
+\begin{compactenum}
+\item
+Das It\^o-Integral ist linear:
+\begin{align*}
+\int_0^\tau aG+bH\,dW
+&=
+\int_0^T a\chi_{[0,\tau]} G + b \chi_{[0,\tau]} H\,dW
+=
+a\int_0^T \chi_{[0,\tau]} G\,dW + b \int_0^T\chi_{[0,\tau]} H\,dW
+\\
+&=
+a\int_0^\tau G\,dW + b \int_0^\tau H\,dW
+\end{align*}
+\item Der Erwartungswert des It\^o-Integrals ist
+\[
+E\biggl(\int_0^\tau G\,dW\biggr)
+=
+E\biggl(\int_0^T \chi_{[0,\tau]}G\,dW\biggr)
+=
+0.
+\]
+\item Die Varianz des It\^o-Integrals ist
+\[
+E\biggl(\biggl(\int_0^\tau G\,dW\biggr)^2\biggr)
+=
+E\biggl(\biggl(\int_0^T \chi_{[0,\tau]}G\,dW\biggr)^2\biggr)
+=
+E\biggl(\int_0^T\chi_{[0,\tau]}G^2\,dt\biggr)
+=
+E\biggl(\int_0^\tau G^2\,dt\biggr).
+\]
+\end{compactenum}
+\end{hilfssatz}
+
+Die It\^o-sche Kettenregel funktioniert auch f"ur $\tau$ als obere
+Grenze f"ur die stochastischen Integrale.
+Wenn also $X$ als stochastischer Prozess eine L"osung der stochastischen
+Differentialgleichung (\ref{stochastisch:stopzeitdgl}) ist, dann gilt
+nach der der It\^o-schen Kettenregel
+\[
+du(X,t)
+=
+\frac{\partial u}{\partial t}\,dt
++
+\sum_{i=1}^n\frac{\partial u}{\partial x_i}\,dX_i
++
+\frac12\sum_{i,j=1}^n\frac{\partial^2 u}{\partial x_i\partial x_j}
+\sum_{k=1}^n b_{ik}b_{jk}\,dt.
+\]
+In integrierter Form bedeutet dies
+\[
+u(X(t),t)-u(X(0),0)
+=
+\int_0^t
+\frac{\partial u}{\partial t}
++
+\frac12\sum_{k=1}^nb_{ik}b_{jk}
+\sum_{i,j=1}^n \frac{\partial^2u}{\partial x_i\,\partial x_j} \,ds
++
+\int_0^t \operatorname{grad} u\cdot B\,dW.
+\]
+Und nat"urlich gelten diese Formeln auch dann, wenn man $t$ durch $\tau$
+ersetzt.
+
+Im Folgenden interessiert uns nur der Fall $b=0$, $b_{ik}=\delta_{ik}$
+und Funktionen $u$, die nicht von der Zeit abh"angen.
+Dann vereinfacht sich die Formel zu
+\begin{equation}
+u(X(t))-u(X(0))
+=
+\int_0^t \frac12\sum_{i=1}^n\frac{\partial^2 u}{\partial x_i^2}\,ds
+=
+\int_0^t \frac12\Delta u\,ds
+\label{stochastisch:laplaceinkrement}
+\end{equation}
+Ausserdem ist in diesem Fall $X$ nichts anderes als eine Brownsche Bewegung,
+$X=W$.
+
+\subsection{Brownsche Bewegung und der Laplace-Operator}
+Wir wenden die Formel \ref{stochastisch:laplaceinkrement} jetzt in
+zwei Beispielen an.
+
+\subsubsection{Zeit bis zum Verlassen eines Gebietes}
+F"ur das erste Beispiel sei $U$ ein beschr"anktes Gebiet in
+$\mathbb R^n$, und $u$ eine L"osung der partiellen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+-\frac12\Delta u&=1&\qquad&\text{in $U$}\\
+               u&=0&      &\text{auf $\partial U$}
+\end{aligned}
+\label{stochastisch:hittingtime}
+\end{equation}
+Wir m"ochten die L"osung $u$ dazu verwenden, die Zeit $\tau_x$ zu berechnen,
+zu der eine im Punkt $x\in U$ beginnende Brownsche Bewegung zum ersten
+Mal das Gebiet $U$ verl"asst.
+Die Formel (\ref{stochastische:laplaceinkrement}) liefert
+\[
+u(X(\tau_x))-u(X(0)) = \int_0^{\tau_x} \frac12\Delta u\,ds
+\]
+Da $u$ eine L"osung von (\ref{stochastisch:hittingtime}) ist, ist der 
+Integrand auf der rechten Seite gleich $-1$:
+\[
+u(X(\tau_x))-u(X(0)) = -\int_0^{\tau_x} \,ds
+\]
+Da der Prozess $X$ zur Zeit $\tau_x$ den Rand des Gebietes "uberquert,
+ist wegen der Randbedingung $u(X(\tau_x))=0$. 
+Zusammen erhalten wir
+\[
+-u(X(0)) = -\tau_x.
+\]
+Nun interessiert uns aber nicht der Wert der Zufallsvariablen, sondern
+nur deren Erwartungswert:
+\[
+E(\tau_x)=E(u(X(0)))=u(x).
+\]
+Die L"osung $u$ der Differentialgleichung (\ref{stochastisch:hittingtime})
+gibt die erwartete Zeit an, bis eine bei $x$ beginnende Brownsche Bewegung 
+das Gebiet $U$ verlassen hat.
+
+\subsubsection{Charakterisierung von harmonischen Funktionen}
+Sei wieder $U$ ein beschr"anktes Gebiet mit glattem Rand und
+$g$ eine stetige Funktion auf $\partial U$.
+Ausserdem sei $u$ eine harmonische Funktion in $U$ mit den Randwerten $g$, 
+also eine L"osung der partiellen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+\Delta u&=0&\qquad&\text{in $U$}\\
+       u&=g&      &\text{auf $\partial U$}
+\end{aligned}
+\label{stochastisch:harmonisch}
+\end{equation}
+Wir wollen (\ref{stochastisch:laplaceinkrement}) verwenden, die Funktion
+$u$ zu charakterisieren.
+Dazu sei wieder $\tau_x$ die Zeit, zu der eine im Punkt $x\in U$ beginnende
+Brownsche Bewegung das Gebiet $U$ verl"asst.
+Aus (\ref{stochastisch:laplaceinkrement}) folgt:
+\[
+u(X(\tau_x))-u(X(0))
+=
+\int_0^{\tau_x} \frac12\underbrace{\Delta u}_{\textstyle=0}\,ds=0.
+\]
+Zur Zeit $\tau_x$ ist $X(\tau_x)$ ein Randpunkt des Gebiets, der mit
+der Randbedingung bestimmt werden kann, es folgt:
+\[
+u(X(0)) = g(X(\tau_x)).
+\]
+Wieder interessiert uns der einzelne Wert nicht, sondern der Erwartungswert:
+\[
+u(x)=E(g(X(\tau_x))).
+\]
+Den Wert im Punkt $x$ einer harmonischen Funktion mit Randwerten $g$
+kann man wie folgt finden: man l"asst eine Brownsche Bewegung von $x$ 
+aus laufen, bis sie den Rand "uberquert, und nimmt den Mittelwert
+der derart erreichten Randwerte.
+
+Aus dieser Charakterisierung der harmonischen Funktionen kann man
+auch deren Mittelwerteigenschaft ableiten. 
+Da die Brownsche Bewegung isotrop ist, muss sich im Zentrum
+eines kugelf"ormigen Gebietes immer der gleiche Wert f"ur $u$
+ergeben, selbst wenn man eine beliebige Drehung auf die Randwerte 
+anwendet.
+Also muss der Wert von $u(x)$ der Mittelwert der Werte
+auf einer Kugel um den Punkt $x$ sein.
 
 %
 %
