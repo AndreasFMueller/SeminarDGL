@@ -31,12 +31,11 @@ y = zeros(scale * xmax, 1);
 p = zeros(scale * xmax, 1);
 for x = (0:1 / scale:xmax)
     point = a0 + a1 * x;
-    summe = 0;
     for k = (2:30)
         akminus2 = a(k + 1);
         akminus3 = a(k);
         akminus4 = a(k - 1);
-        point -= 1 / (k * (k - 1)) * (A * akminus4 + B * akminus3 + C * akminus2) * x.^k;
+        point -= 1 / (k * (k - 1)) * (A * akminus4 + B * akminus3 + C * akminus2) * x^k;
     endfor
     p(round(x * scale) + 1) = A * x^2 + B * x + C;
     y(round(x * scale) + 1) = point;
@@ -47,7 +46,7 @@ save y.dat y
 y = y(1:limit);
 p = p(1:limit);
 
-set (0, "defaultaxesfontname", "Helvetica") % this is the line to add BEFORE plotting
+set (0, "defaultaxesfontname", "Helvetica")
 hold on;
 plot(y);
 print -djpg welle.jpg;
