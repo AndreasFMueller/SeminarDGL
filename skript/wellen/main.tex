@@ -225,11 +225,23 @@ Bei der neuen $y(x)$-Gleichung \ref{wellen:ygleichungak} muss nun aber $k \in
 \end{equation}
 
 \section{Graphische L"osung}
-\includegraphics[scale=0.7]{./wellen/octave/images/welle.jpg}
-\includegraphics[scale=0.7]{./wellen/octave/images/parabel.jpg}
+
+Hier sieht man zuerst die Ursprungsparabel $x^2-1$, danach die daraus 
+entstehende Welle und schlussendlich noch eine "Uberlagerung der Parabel und 
+der Welle.
+
+\includegraphics[scale=0.6]{./wellen/octave/images/parabel.png}
+
+\includegraphics[scale=0.6]{./wellen/octave/images/welle.png}
+
+\includegraphics[scale=0.6]{./wellen/octave/images/wellewithparabel.png}
 
 \clearpage
 \section{Octave Code}
+Code zur Generierung der verschiedenen $a_k$:
 \lstinputlisting[style=Matlab]{./wellen/octave/ak.m}
+
+Code der dann die Werte von $y(x)$ generiert:
+\lstinputlisting[style=Matlab]{./wellen/octave/y.m}
 \printbibliography[heading=subbibliography]
 \end{refsection}
