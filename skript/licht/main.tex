@@ -6,6 +6,10 @@
 \printbibliography[heading=subbibliography]
 \end{refsection}
 
+%polar plot
+\usepgfplotslibrary{polar}
+
+\section{Planares Modell}
 \begin{figure}
 \centering
 \begin{tikzpicture}
@@ -30,7 +34,7 @@
   
   \end{axis}
 \end{tikzpicture}
-\caption{Skizze}
+\caption{Skizze des planaren Modells}
 \label{fig:13_1}
 \end{figure}
 
@@ -64,7 +68,8 @@ y'(x)^2 = \left( \frac{1 + \mu e^{-\sigma y}}{\varepsilon} \right)^2 - 1
 \end{equation}
 
 Nun l"osen wir die Differentialgleichung nummerisch. Dazu wurden für $\mu$ und $\sigma$
-Werte eingesetzt, bei denen die Kurve gut ersichtlich ist \ref{fig:13_2}.
+Werte eingesetzt, bei denen die Kurve gut ersichtlich ist. In der Abbildung
+\ref{fig:13_2} wurden 3 verschiedene Anfangswinkel gew''ahlt.
 
 \begin{figure}
 \centering
@@ -131,9 +136,159 @@ Werte eingesetzt, bei denen die Kurve gut ersichtlich ist \ref{fig:13_2}.
     \addlegendentry{$\alpha_0 = \frac{\pi}{6}$} 
   \end{axis}
 \end{tikzpicture}
-\caption{Nummerische Lösung der Differentialgleichung (\ref{eq:13_4})}
+\caption{Nummerische L"osung der Differentialgleichung (\ref{eq:13_4})}
 \label{fig:13_2}
 \end{figure}
+
+\section{Sph"arisches Modell}
+
+Wir beginnen erneut mit Snell's Gleichung, welche wir auf unser Sph"arischen Modells
+(Abbildung \ref{fig:13_3}) angepasst wurde: 
+
+$$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
+
+Im Dreieck $OMN$ lässt sich mit dem Sinussatz folgende Beziehung herleiten:
+$$r \sin\alpha = (r + dr) \cdot \sin\beta$$
+
+Multipliziert man nun die beiden Gleichungen, erhält man:
+\begin{equation} \label{eq:13_5}
+n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha_0
+\end{equation}
+
+Wie beim Planaren Modell ist dieses Produkt konstant. Wir suchen eine Funktion
+$r(\varphi))$, welche den Weg eines Lichtstrahls beschreibt, der am Punkt $A$ mit
+Anfangswinkel $\alpha_0$ startet (oder endet). Nun brauchen wir eine Formel f"ur $\beta$
+f"ur alle $r(\varphi)$. Hier finden Sie die Herleitung der Formel:
+
+http://www.math.usm.edu/lambers/cos702/cos702\_files/docs/annote\_figs/midsolve11.pdf
+
+\begin{equation} \label{eq:13_6}
+\tan \alpha = \frac{r}{dr/d\varphi} = \frac{r(\varphi)}{r'(\varphi)}
+\end{equation}
+
+Wir quadrieren die Gleichung \ref{eq:13_6} und l"osen nach $\sin^2(\beta)$ auf:
+
+$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} =
+\frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r(\varphi)}{r'(\varphi)} \right)^2$$
+
+\begin{equation} \label{eq:13_7}
+\Rightarrow \sin^2\alpha = \frac{1}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1}
+\end{equation}
+
+\begin{figure} 
+\centering
+\begin{tikzpicture}
+  %radial lines
+  \draw (0,0) node[above]{$O$} 
+        -- ++(0:10cm)
+        (0,0) -- ++(15:10cm)
+        (0,0) -- ++(22.5:10cm);
+  %Radius r0, r, r + dr      
+  \draw ([shift=(-5:6cm)]0,0) arc (-5:27.5:6cm) node [above] {$r_0$}
+        ([shift=(-4:8cm)]0,0) arc (-4:27.5:8cm) node [above] {$r$}
+        ([shift=(-3.8:9cm)]0,0) arc (-3.8:27.5:9cm) node [above, xshift=-0.2cm] {$r +
+        dr$};
+  %path of the light
+  \draw [thick] (0:6cm) node [above left]{A}
+        -- (15:8cm) node [above left, yshift=-0.1cm] {$M$}
+        -- (22.5:9cm) node [below right, yshift=0.1cm]{$N$}
+        -- (28:9.5cm);
+  \draw (22.5:8cm) node [above left, yshift=-0.1cm] {$H$};
+  %angles
+  \draw ([shift=(-157.5:0.8cm)]22.5:9cm) arc (-157.5:-113.2:0.8cm) node [above,
+          yshift=0.1cm]{$\beta$}
+        ([shift=(15:0.8cm)]15:8cm) arc (15:66.8:0.8cm) node [below,
+          yshift = -0.15cm, xshift=0.1cm]{$\alpha$}
+        ([shift=(22.5:0.6cm)]22.5:9cm) arc (22.5:85.9:0.6cm) node
+          [xshift=0.6cm, yshift=0.2cm]{$\alpha+d\alpha$}
+        ([shift=(0:0.8cm)]0:6cm) arc (0:50.2:0.8cm) node [below,
+          yshift=-0.14cm]{$\alpha_0$}
+        ([shift=(0:2.5cm)]0,0) arc (0:15:2.5cm) node [below left,
+          yshift=-0.15cm]{$\varphi$}
+        ([shift=(15:4.5cm)]0,0) arc (15:22.5:4.5cm) node [below left,
+          yshift=-0.12cm]{$d\varphi$};
+  %refraction rates
+  \draw (10:6cm) node[fill=white] {$n_0$}
+        (10:8cm) node[fill=white] {$n$}
+        (10:9cm) node[fill=white] {$n + dn$};
+        
+\end{tikzpicture}
+\caption{Skizze des Sph"arischen Modells}
+\label{fig:13_3}
+\end{figure}
+
+F"ur sehr kleine $d\varphi$ ist $\alpha = \beta$. Somit k"onnen wir die Gleichung
+\ref{eq:13_5} quadrieren und \ref{eq:13_7} einsetzen. 
+
+$$\frac{(n \cdot r(\varphi))^2}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1} =
+(r_0 n_0 \sin \alpha_0)^2$$
+$$\Rightarrow \frac{1}{\left(\frac{r'(\varphi)}{r(\varphi)}\right)^2+1} =
+\left(\frac{r_0 n_0 \sin\alpha_0}{n \cdot r(\varphi)}\right)^2$$
+$$\Rightarrow \left(\frac{r'(\varphi)}{r(\varphi)}\right)^2 = \left(\frac{n \cdot
+r(\varphi)}{r_0 n_0 \sin\alpha_0}\right)^2 - 1$$
+\begin{equation}
+\Rightarrow r'(\varphi)^2 = \left(\frac{n \cdot r(\varphi)^2}{r_0 n_0 \sin
+\alpha_0}\right)^2 - r(\varphi)^2
+\end{equation}
+
+Wenn nun dieselbe Approximation wie beim planaren Modell f"ur $n(r)=1 + \mu e^{-\sigma r}$
+verwendet wird, l"asst sich die Differentialgleichung nummerisch l"osen, siehe Abbildung
+\ref{fig:13_4}.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \begin{polaraxis} [scale=1.5, ticks=none, xmin=60, xmax = 180, ymin=0,
+  ymax=3, axis lines* = none, axis line style = {draw=white,line width=0.0001pt}, grid=none] \addplot
+  +[mark=none, domain=60:120, color=black, samples=360] {1};
+  
+    %0.7
+    \addplot [mark=none, thick, draw=blue] coordinates {
+      (90.00000, 1.00000) (92.14859, 1.01591) (94.29718, 1.03336) (96.44578, 1.05246) 
+      (98.59437, 1.07332) (100.74296, 1.09605) (102.89155, 1.12081) (105.04014, 1.14774) 
+      (107.18873, 1.17703) (109.33733, 1.20887) (111.48592, 1.24348) (113.63451, 1.28112) 
+      (115.78310, 1.32208) (117.93169, 1.36668) (120.08028, 1.41529) (122.22888, 1.46832) 
+      (124.37747, 1.52625) (126.52606, 1.58964) (128.67465, 1.65910) (130.82324, 1.73537) 
+      (132.97183, 1.81928) (135.12043, 1.91182) (137.26902, 2.01410) (139.41761, 2.12749) 
+      (141.56620, 2.25357) (143.71479, 2.39425) (145.86339, 2.55175) (148.01198, 2.72887) 
+      (150.16057, 2.92904) (152.30916, 3.15656) (154.45775, 3.41659) (156.60634, 3.71618) 
+      (158.75494, 4.06468) (160.90353, 4.47506) (163.05212, 4.96317) (165.20071, 5.55496) 
+      (167.34930, 6.29037) (169.49789, 7.24441) (171.64649, 8.48148) (173.79508, 10.20846)
+      (175.94367, 12.86206) };
+      
+    %0.5
+    \addplot [mark=none, thick, draw=red] coordinates {
+    (90.00000, 1.00000) (91.14592, 1.02324) (92.29183, 1.04777) (93.43775, 1.07365)
+    (94.58366, 1.10100) (95.72958, 1.12992) (96.87549, 1.16051) (98.02141, 1.19292) 
+    (99.16732, 1.22726) (100.31324, 1.26370) (101.45916, 1.30239) (102.60507, 1.34353) 
+    (103.75099, 1.38731) (104.89690, 1.43395) (106.04282, 1.48371) (107.18873, 1.53684) 
+    (108.33465, 1.59366) (109.48057, 1.65450) (110.62648, 1.71974) (111.77240, 1.78981) 
+    (112.91831, 1.86517) (114.06423, 1.94636) (115.21014, 2.03398) (116.35606, 2.12872) 
+    (117.50197, 2.23135) (118.64789, 2.34278) (119.79381, 2.46401) (120.93972, 2.59625) 
+    (122.08564, 2.74087) (123.23155, 2.89952) (124.37747, 3.07408) (125.52338, 3.26686) 
+    (126.66930, 3.48067) (127.81521, 3.71893) (128.96113, 3.98573) (130.10705, 4.28643) 
+    (131.25296, 4.62794) (132.39888, 5.01933) (133.54479, 5.47181) (134.69071, 6.00193) 
+    (135.83662, 6.63329) };
+    
+    \draw [dashed] (axis cs:90,1) -- (axis cs:90,2);
+    \draw [dashed] (axis cs:90,1) -- (axis cs:104.75,1.72);
+    \draw (axis cs:90,1.8) arc (90:123.3:8) node [below right,
+    xshift=0.1cm]{$\alpha_{0a}$};
+    
+    \draw[dashed] (axis cs:90,1) -- (axis cs:114.7, 1.82);
+    \draw (axis cs:90, 2) arc (90:139.4:10) node[above right,
+    xshift=0.1cm, yshift=0.4cm]{$\alpha_{0b}$};
+    
+  \end{polaraxis}
+\end{tikzpicture}
+\caption{Nummerische L"osung des Sph"arischen Modells mit der exponentiellen
+Approximation}
+\label{fig:13_4}
+\end{figure}
+
+
+
+
 
 
 
