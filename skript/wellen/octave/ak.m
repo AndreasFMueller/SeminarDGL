@@ -1,16 +1,13 @@
-n = 1000;
+load("./config.dat");
 
-A = 1;
-B = 0;
-C = -1;
-a = zeros(n, 1);
+a = zeros(akmax, 1);
 
 a(1) = 0; # a_{-2}
 a(2) = 0; # a_{-1}
-a(3) = 1; # a_0
-a(4) = 0; # a_1
+a(3) = a0; # a_0
+a(4) = a1; # a_1
 
-for k = (2:n-2)
+for k = (2:akmax-2)
     akminus2 = a(k + 1);
     akminus3 = a(k);
     akminus4 = a(k - 1);
@@ -18,4 +15,4 @@ for k = (2:n-2)
     a(k + 3) = ak;
 endfor
 
-save("./ak.dat", "a", "A", "B", "C");
+save("./ak.dat", "a");
