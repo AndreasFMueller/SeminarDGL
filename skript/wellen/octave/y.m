@@ -37,7 +37,7 @@ set (0, "defaultaxesfontname", "Helvetica")
 hold on;
 
 plot(xp, y);
-print -dpdflatex welle.tex;
+print -dpng welle.png;
 
 plot(xp, p);
 print -dpng wellewithparabel.png;
