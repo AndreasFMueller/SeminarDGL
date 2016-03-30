@@ -99,7 +99,8 @@ ist Mittelwert aus zwei Differenzenquotienten "uber k"urzere Intervalle,
 aber diese beiden Differenzenquotienten sind voneinander unabh"angig.
 Ein Grenzwert des Differenzenquotienten kann daher nicht existieren.
 
-Ausserdem brauchen wir Rechenregeln, wie man mit Wiener-Prozessen Funktionen
+\subsection{Eigenschaften des Wiener-Prozesses}
+Wir brauchen Rechenregeln, wie man mit Wiener-Prozessen Funktionen
 rechnen kann.
 Zum Beispiel ist $W(t)$ wegen Eigenschaft~2 normalverteilt mit Erwartungswert
 $0$ und Varianz $t$, also gilt
@@ -147,6 +148,141 @@ dass die weitere Entwicklung von $W(t)$ nach der Zeit $s$ bedeutungslos ist.
 \label{stochastisch:wiener}}
 \end{figure}
 
+\subsection{Konstruktion des Wiener-Prozesses}
+Wir m"ussen eine Konstruktion angeben, mit der wir zu einem gegebenen
+Interval $[0,T]$ eine Funktion $W(t)$ konstruieren k"onnen, die
+die Eigenschaften des Wiener-Prozesses erf"ullt.
+
+Zun"achst verlangen die Eigenschaften~1 und 2 des Wiener-Prozesses,
+dass $X(T)$ eine normalverteilte Zufallsvariable ist mit Erwartungswert
+$X(0)=0$ und Varianz $T$.
+Da $X(t)$ ausserdem stetig sein soll, verwenden wir als erste Iteration
+die lineare Funktion:
+\[
+W_1(t) = X(T)\frac{t}{T}
+\]
+Die Eigenschaft~3 verlangt, dass auch $X(T/2)$ normalverteilt ist mit
+Erwartungswert $0$ und Varianz $T/2$.
+Dies kann dadurch erreicht werden, dass wir $W_1$ durch einen 
+Polygonzug $W_2$ ersetzen, der bei $t=T/2$ einen zus"atzlichen
+Eckpunkt besitzt.
+Wir bezeichnen den Unterschied zwischen $W_2$ und $W_1$ an der
+Stelle $t=T/2$ mit
+\[
+Y=W_2(T/2)-W_1(T/2)=W_2(T/2) - W_1(T)/2.
+\]
+$Y$ muss so gew"ahlt werden, dass $W_2(T/2)$ eine normalverteilte
+Zufallsvariable mit Erwartungswert $0$ und Varianz $T/2$ wird,
+somit ist $Y$ auch normalverteilt.
+Der Erwartungswert von $Y$ ist
+\begin{align*}
+E(Y)&=E(W_2(T/2) - W_1(T)/2)=E(W_2(T/2))-E(W_1(T))/2=0,
+\end{align*}
+es ist also nur noch die Varianz $\sigma^2_Y$ w"ahlbar.
+Sie muss so gew"ahlt werden, dass $W_2(T/2)$ Varianz $T/2$
+bekommt:
+\begin{align*}
+\operatorname{var}\biggl(W_2\biggl(\frac{T}2\biggr))\biggr))
+&=
+\operatorname{var}\biggl(W_1\biggl(\frac{T}2\biggr) + Y\biggr)
+=
+\frac{\operatorname{var}(W_1)}4 + \operatorname{var}Y
+=
+\frac{T}4 +\sigma_Y^2
+\end{align*}
+Es folgt $\sigma_Y^2=\frac{T}4$.
+
+Wir m"ussen kontrollieren, ob die Inkremente unabh"angig sind.
+Dazu berechnen wir der Erwartungswert des Produktes der
+beiden Inkremente
+\begin{align*}
+W_2(T)-W_2\biggl(\frac{T}2\biggr)
+&=
+W_1(T)-\biggl(\frac{W_1(T)}2 + Y\biggr)
+=
+Y-\frac{W_1(T)}2
+\\
+W_2\biggl(\frac{T}2\biggr)-W_2(0)
+&=
+Y+
+\frac{W_1(T)}2
+\\
+\biggl(W_2(T)-W_2\biggl(\frac{T}2\biggr)\biggr)
+\biggl(W_2\biggl(\frac{T}2\biggr)-W_2(0)\biggr)
+&=
+\biggl(Y-\frac{W_1(T)}2\biggr)\biggl(Y+\frac{W_1(T)}2\biggr)
+=
+Y^2-\frac{W_1(T)^2}4
+\\
+E\biggl(
+\biggl(W_2(T)-W_2\biggl(\frac{T}2\biggr)\biggr)
+\biggl(W_2\biggl(\frac{T}2\biggr)-W_2(0)\biggr)
+\biggr)
+&=
+E(Y^2)-E\biggl(\frac{W_1(T)^2}4\biggr)
+=
+\sigma_Y^2 - \frac14\operatorname{var}(W_1(T))
+=
+0
+\end{align*}
+Somit sind die Inkremente unabh"angig.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-3.pdf}\\
+\includegraphics{chapters/images/stochastisch-4.pdf}\\
+\includegraphics{chapters/images/stochastisch-5.pdf}\\
+\includegraphics{chapters/images/stochastisch-6.pdf}\\
+\includegraphics{chapters/images/stochastisch-7.pdf}
+\caption{Schrittweise Konstruktion des Wiener-Prozesses als Grenzewert
+der Folge $W_n(t)$, $n=1,\dots,5$
+\label{stochastisch:folge1}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-8.pdf}\\
+\includegraphics{chapters/images/stochastisch-9.pdf}\\
+\includegraphics{chapters/images/stochastisch-10.pdf}\\
+\includegraphics{chapters/images/stochastisch-11.pdf}\\
+\includegraphics{chapters/images/stochastisch-12.pdf}
+\caption{Schrittweise Konstruktion des Wiener-Prozesses als Grenzewert
+der Folge $W_n(t)$, $n=6,\dots,10$
+\label{stochastisch:folge2}}
+\end{figure}
+
+Diesen Prozess k"onnen wir fortsetzen: f"ur $W_3$ nehmen wir einen
+Polygonzug mit zus"atzlichen Eckpunkten an den Stellen $T/4$ und $3T/4$.
+Die Differenz zwischen $W_3$ und $W_2$ an diesen Stellen m"ussen
+normalverteilt sein mit Erwartungswert $0$ und Varianz $T/8$.
+Auf diese Weise k"onnen wir eine Folge $W_n$ von Prozessen konstruieren,
+wie in den Abbildungen~\ref{stochastisch:folge1} und \ref{stochastisch:folge2}
+dargestellt.
+
+Dies reicht aber nicht.
+F"ur eine vollst"andige Konstruktion muss man noch die folgenden zwei
+Dinge zeigen.
+\begin{compactenum}
+\item
+Der Grenzwert existiert tats"achlich.
+Weil die einzelnen Zufallsvariablen $Y$ normalverteilt sind, k"onnen
+sie beliebig grosse Werte annehmen.
+Dies bedeutet auch, dass wir im Allgemeinen nicht davon ausgehen 
+k"onnen, dass die Folge $W_n(t)$ konvergiert.
+Zwar sind die Werte von $W_m$ an den Stellen $t_{k,n}=kT/2^{n-1}$ f"ur
+$k=0,\dots,2^{n-1}$ fest, sobald $m\ge n$.
+Zwischen diesen Werten k"onnen aber immer wieder grosse Werte auftreten,
+so dass die Folge $W_n$ weder gleichm"assig noch punktweise konvergieren
+kann.
+Die Frage der Konvergenz muss daher als Konvergenz in einer Art Mittel 
+angegangen werden.
+\item
+Die Forderung, dass die Inkremente $W(t)-W(s)$ und $W(s)-W(r)$ f"ur jedes 
+Tripel $t \ge s\ge r$ unabh"angig sein m"ussen.
+Die Konstruktion stellt nur sicher, dass dies gilt, wenn die Zeitpunkte
+des Tripels Eckpunkte der Polygonkonstruktion sind.
+\end{compactenum}
+
+%
 %
 %
 \section{Stochastische Differentialgleichungen\label{section:stochdgl}}
@@ -170,7 +306,7 @@ das formale Gleichungssystem
 \begin{align*}
 dX(t)
 &=
-b(X(t)) + B(X(t),t)dW(t)
+b(X(t)) + B(X(t),t)\,dW(t)
 \\
 X(0)
 &=
@@ -181,7 +317,7 @@ ohne zus"atzliche Definition sinnvoll.
 Am ehesten hat man eine Chance, dieser Gleichung einen Sinn zu geben,
 wenn man man integriert:
 \begin{align*}
-X(t)=x_0+\int_0^t b(X(s))\,ds + \int_0^t B(X(s), s) dW,\qquad t>0.
+X(t)=x_0+\int_0^t b(X(s))\,ds + \int_0^t B(X(s), s)\, dW,\qquad t>0.
 \end{align*}
 Das erste Integral ist ein gew"ohnliches Integral, denn wir
 gehen davon aus, dass die Funktion $X(t)$ stetig ist.
@@ -985,11 +1121,18 @@ der L"osung einer stochastischen Differentialgleichung
 \begin{aligned}
 dX(t)&=b(t,X)\,dt + B(t,X)\,dW
 \\
-X(0)&X_0
+X(0)&=X_0
 \end{aligned}
 \label{stochastisch:stopzeitdgl}
 \end{equation}
 sein soll.
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-2.pdf}
+\caption{Brownsche Bewegung in zwei Dimension und Definition der
+Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
+\label{stochastisch:pfad}}
+\end{figure}
 
 \begin{definition}
 Sei $E$ eine beliebige offene oder abgeschlossene nicht leere Teilmenge

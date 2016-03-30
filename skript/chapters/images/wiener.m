@@ -5,13 +5,16 @@
 #
 N = 2^10;
 f = zeros(N + 1, 1);
-f(N + 1) = normrnd(0, 1);
+
+sigma2 = 1;
+f(N + 1) = normrnd(0, sqrt(sigma2));
 
 delta = N;
 while (delta >= 2)
+	sigma2 = sigma2 / 2;
 	i = 0;
 	while (i < N-1)
-		d = normrnd(0, sqrt(delta / N));
+		d = normrnd(0, sqrt(sigma2 / 2));
 		f(i + 1 + delta/2) = d + (f(i + 1) + f(i + 1 + delta)) / 2;
 		i = i + delta;
 	end
@@ -30,8 +33,9 @@ fprintf(fid, "numeric minimum, maximum;\n");
 fprintf(fid, "maximum := %.4f;\n", maximum);
 fprintf(fid, "minimum := %.4f;\n", minimum);
 fprintf(fid, "path p;\n");
-fprintf(fid, "p := (0,%.4f)\n", f(1));
+fprintf(fid, "p := (0,%.4f)", f(1));
 for i = (1:N)
-	fprintf(fid, "--(%.4f,%.4f)\n", i/N, f(i+1)/scalefactor);
+	fprintf(fid, "\n--(%.4f,%.4f)\n", i/N, f(i+1)/scalefactor);
 endfor
+fprintf(fid, ";\n");
 fclose(fid);

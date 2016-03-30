@@ -64,7 +64,7 @@ $(airy_FILES): airy.mp
 
 stochastisch_FILES = stochastisch-1.pdf 
 stochastisch:	$(stochastisch_FILES)
-$(stochastisch_FILES): stochastisch.mp path.mp
+$(stochastisch_FILES): stochastisch.mp path.mp path2.mp path3.mp
 	TEX=latex mpost stochastisch.mp
 	for f in stochastisch.[0-9]*; \
 	do \
@@ -73,6 +73,12 @@ $(stochastisch_FILES): stochastisch.mp path.mp
 
 path.mp:	wiener.m
 	octave wiener.m
+
+path2.mp:	wiener2.m
+	octave wiener2.m
+
+path3.mp:	wiener3.m
+	octave wiener3.m
 
 
 
