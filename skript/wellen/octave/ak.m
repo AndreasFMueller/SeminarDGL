@@ -1,13 +1,13 @@
 load("./config.dat");
 
-a = zeros(akmax, 1);
+a = zeros(noofak, 1);
 
 a(1) = 0; # a_{-2}
 a(2) = 0; # a_{-1}
 a(3) = a0; # a_0
 a(4) = a1; # a_1
 
-for k = (2:akmax-2)
+for k = (2:noofak-2)
     akminus2 = a(k + 1);
     akminus3 = a(k);
     akminus4 = a(k - 1);

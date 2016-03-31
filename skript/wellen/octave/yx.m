@@ -22,7 +22,6 @@ save yx.dat y
 
 set (0, "defaultaxesfontname", "Helvetica")
 hold on;
-
 plot(xaxis, y, yformula);
 print -dpng wave.png;
 
@@ -30,6 +29,5 @@ plot(xaxis, p, parabolaformula);
 print -dpng wavewithparabola.png;
 
 hold off;
-
 plot(xaxis, p, parabolaformula);
 print -dpng parabola.png

@@ -1,4 +1,4 @@
-akmax = 1000;
+noofak = 1000;
 kmax = 300;
 
 xmin = 0;
@@ -52,4 +52,4 @@ endif
 parabolaformula = sprintf('2;%s%s%s   ;', afactor, bfactor, cfactor);
 yformula = sprintf('3;y(x), y(0) = %d, y''(0) = %d;', a0, a1);
 
-save("./config.dat", "akmax", "kmax", "xmin", "xmax", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1");
+save("./config.dat", "noofak", "kmax", "xmin", "xmax", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1");
