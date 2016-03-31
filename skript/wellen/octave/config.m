@@ -1,7 +1,7 @@
 noofak = 1000;
-kmax = 300;
+kmax = 200;
 
-xmin = 0;
+xmin = -8;
 xmax = 8;
 scalefactor = 100;
 
@@ -11,8 +11,6 @@ C = -1;
 
 a0 = 1; # y(0)
 a1 = 0; # y'(0)
-
-parabolaformula = '';
 
 signb = '+';
 signc = '+';
