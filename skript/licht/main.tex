@@ -50,95 +50,147 @@ Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich:
 $$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
 $$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2
 \alpha} - 1$$
+
+Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. Da
+diese Ableitung m"oglicherweise $=0$ sein kann, muss dieser Fall separat behandelt werden.
+(siehe Kapitel \ref{ch:spezialfall}) Von nun an gilt die Bedingung: $f'(x) \neq 0$.
+
 \begin{equation} \label{eq:13_2}
 \sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
 \end{equation}
 
 Nun quadrieren wir die Gleichung \ref{eq:13_1}, setzen \ref{eq:13_2} ein und l"osen
 nach $y'(x)$ auf:
-$$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon$$
 \begin{equation} \label{eq:13_3}
+n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon^2 = (n_0 \cdot \sin \alpha_0)^2
+\end{equation}
+\begin{equation} \label{eq:13_4}
 \Rightarrow y'(x)^2 = \left( \frac{n}{\varepsilon} \right)^2 - 1
 \end{equation}
 
-In einer ersten Ann"aherung approximieren wir $n(y) = 1 + \mu e^{-\sigma y}$ und erhalten
-somit die Differentialgleichung:
-\begin{equation} \label{eq:13_4}
-y'(x)^2 = \left( \frac{1 + \mu e^{-\sigma y}}{\varepsilon} \right)^2 - 1
+Nun k"onnte man die Differentialgleichung nummerisch l"osen. Das problem ist aber, dass 
+eine Differentialgleichung zweiter Ordnung vorliegt, jedoch in der Funktion die
+Anfangssteigung $y'(0)$ (in der Form von $\sin \alpha_0$) vorkommt. Dies wird in Kapitel
+\ref{ch:korrektur} genauer erkl"art.
+
+% \begin{figure}
+% \centering
+% \begin{tikzpicture}
+%   \begin{axis}[xlabel=$x$, ylabel=$y(x))$, axis lines=middle, height=5cm, width=5cm, ticks
+%   = none, legend pos = outer north east, ymin = 0, ymax = 10, xmin = 0, xmax = 10] 
+%   \addplot [mark = none, thick, draw=blue] coordinates{
+%       (0.00000, 0.00000) (0.00005, 0.00005) (0.00010, 0.00010) (0.00015, 0.00015)
+%       (0.00020, 0.00020) (0.00044, 0.00045) (0.00069, 0.00070) (0.00094, 0.00095)
+%       (0.00118, 0.00121) (0.00241, 0.00246) (0.00364, 0.00372) (0.00488, 0.00497)
+%       (0.00611, 0.00623) (0.01226, 0.01250) (0.01842, 0.01877) (0.02457, 0.02503)
+%       (0.03073, 0.03128) (0.06150, 0.06249) (0.09228, 0.09357) (0.12306, 0.12453)
+%       (0.15383, 0.15535) (0.30772, 0.30767) (0.46160, 0.45701) (0.61549, 0.60350)
+%       (0.76937, 0.74724) (1.01937, 0.97516) (1.26937, 1.19649) (1.51937, 1.41160)
+%       (1.76937, 1.62083) (2.01937, 1.82447) (2.26937, 2.02281) (2.51937, 2.21610)
+%       (2.76937, 2.40458) (3.01937, 2.58847) (3.26937, 2.76797) (3.51937, 2.94328)
+%       (3.76937, 3.11457) (4.01937, 3.28200) (4.26937, 3.44573) (4.51937, 3.60590) 
+%       (4.76937, 3.76263) (5.01937, 3.91607) (5.26937, 4.06633) (5.51937, 4.21351) 
+%       (5.76937, 4.35773) (6.01937, 4.49908) (6.26937, 4.63766) (6.51937, 4.77354) 
+%       (6.76937, 4.90683) (7.01937, 5.03760) (7.26937, 5.16591) (7.51937, 5.29185) 
+%       (7.76937, 5.41548) (8.01937, 5.53687) (8.26937, 5.65607) (8.51937, 5.77315) 
+%       (8.76937, 5.88816) (9.01937, 6.00115) (9.26937, 6.11218) (9.51937, 6.22130) 
+%       (9.76937, 6.32854) (9.82703, 6.35302) (9.88468, 6.37739) (9.94234, 6.40168) 
+%       (10.00000, 6.42586)};
+%     \addlegendentry{$\alpha_0 = \frac{\pi}{4}$}
+%       
+%     \addplot [mark = none, thick, draw=red] coordinates{
+%       (0.00000, 0.00000) (0.00008, 0.00005) (0.00017, 0.00010) (0.00025, 0.00015)
+%       (0.00034, 0.00020) (0.00076, 0.00045) (0.00119, 0.00070) (0.00161, 0.00095) 
+%       (0.00203, 0.00121) (0.00415, 0.00246) (0.00627, 0.00372) (0.00838, 0.00497) 
+%       (0.01050, 0.00622) (0.02108, 0.01249) (0.03167, 0.01874) (0.04225, 0.02499) 
+%       (0.05283, 0.03122) (0.10575, 0.06225) (0.15866, 0.09302) (0.21158, 0.12355) 
+%       (0.26450, 0.15383) (0.51450, 0.29366) (0.76450, 0.42828) (1.01450, 0.55787) 
+%       (1.26450, 0.68260) (1.51450, 0.80262) (1.76450, 0.91807) (2.01450, 1.02910) 
+%       (2.26450, 1.13583) (2.51450, 1.23837) (2.76450, 1.33684) (3.01450, 1.43133) 
+%       (3.26450, 1.52194) (3.51450, 1.60876) (3.76450, 1.69187) (4.01450, 1.77134) 
+%       (4.26450, 1.84725) (4.51450, 1.91968) (4.76450, 1.98867) (5.01450, 2.05429) 
+%       (5.26450, 2.11659) (5.51450, 2.17563) (5.76450, 2.23145) (6.01450, 2.28410) 
+%       (6.26450, 2.33362) (6.51450, 2.38004) (6.76450, 2.42341) (7.01450, 2.46375) 
+%       (7.26450, 2.50109) (7.51450, 2.53547) (7.76450, 2.56690) (8.01450, 2.59541) 
+%       (8.26450, 2.62102) (8.51450, 2.64377) (8.76450, 2.66365) (9.01450, 2.68064) 
+%       (9.26450, 2.69479) (9.44837, 2.70270) (9.63225, 2.70993) (9.81612, 2.71730) 
+%       (10.00000, 2.72226)};
+%     \addlegendentry{$\alpha_0 = \frac{\pi}{3}$}
+%     
+%     \addplot [mark = none, thick, draw=green] coordinates{
+%       (0.00000, 0.00000) (0.00003, 0.00005) (0.00006, 0.00010) (0.00009, 0.00015)
+%       (0.00012, 0.00020) (0.00026, 0.00045) (0.00041, 0.00070) (0.00055, 0.00095) 
+%       (0.00070, 0.00121) (0.00142, 0.00246) (0.00215, 0.00372) (0.00287, 0.00497) 
+%       (0.00360, 0.00623) (0.00722, 0.01250) (0.01085, 0.01877) (0.01447, 0.02504) 
+%       (0.01810, 0.03130) (0.03623, 0.06257) (0.05435, 0.09375) (0.07248, 0.12485) 
+%       (0.09061, 0.15586) (0.18125, 0.30967) (0.27189, 0.46147) (0.36253, 0.61132) 
+%       (0.45317, 0.75931) (0.70317, 1.15839) (0.95317, 1.54514) (1.20317, 1.92073) 
+%       (1.45317, 2.28617) (1.70317, 2.64234) (1.95317, 2.99002) (2.20317, 3.32991) 
+%       (2.45317, 3.66261) (2.70317, 3.98869) (2.95317, 4.30863) (3.20317, 4.62288) 
+%       (3.45317, 4.93184) (3.70317, 5.23589) (3.95317, 5.53535) (4.20317, 5.83053) 
+%       (4.45317, 6.12171) (4.70317, 6.40914) (4.95317, 6.69305) (5.20317, 6.97367) 
+%       (5.45317, 7.25120) (5.70317, 7.52581) (5.95317, 7.79767) (6.20317, 8.06696) 
+%       (6.45317, 8.33381) (6.70317, 8.59836) (6.95317, 8.86075) (7.20317, 9.12108) 
+%       (7.45317, 9.37948) (7.70317, 9.63604) (7.95317, 9.89087) (8.20317, 10.14406) 
+%       (8.45317, 10.39568) (8.70317, 10.64583) (8.95317, 10.89458) (9.20317, 11.14200) 
+%       (9.45317, 11.38816) (9.58988, 11.52226) (9.72659, 11.65601) (9.86329, 11.78942) 
+%       (10.00000, 11.92250) };
+%     \addlegendentry{$\alpha_0 = \frac{\pi}{6}$} 
+%   \end{axis}
+% \end{tikzpicture}
+% \caption{Nummerische L"osung der Differentialgleichung (\ref{eq:13_5})}
+% \label{fig:13_2}
+% \end{figure}
+
+\subsection{Korrektur der Differentialgleichung} \label{ch:korrektur}
+
+Wie in der Gleichung \ref{eq:13_3} zu erkennen ist, ist der Anfangswinkel in der
+Gleichung vorhanden. Dieser ist von der Anfangssteigung abhängig. Da jedoch die
+Differentialgleichung (aktuell) in der ersten Ordnung ist, wird die Gleichung
+\ref{eq:13_3} nach $x$ abgeleitet:
+
+$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 +
+2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
+
+Nun sind wir $\alpha_0$ losgeworden und haben die jetzt vorliegende Gleichung hat Ordnung
+2. Nun k"onnen wir den Anfangswinkel $\alpha_0$ als Steigung in den Anfangsbedingungen
+definieren. Da der ganze Term gleich 0 ist, muss der Ausdruck in den Klammern gleich 0
+sein:
+
+$$n'y'^2 + n' - n y' y'' = 0$$
+$$y''(x) = \frac{n'(y(x))}{n(y(x))} \cdot \left( y'(x) + \frac{1}{y'(x)} \right)$$
+
+Aufgrund der Kettenregel $\frac{dn}{dx} = \frac{dn}{dy} \cdot \frac{dy}{dx}$ kann man die
+Differentialgleichung weiter vereinfachen:
+
+\begin{equation} \label{eq:planar_DGL}
+y''(x) = \frac{\frac{dn}{dy}}{n(y)} \cdot \left( y'(x)^2 + 1\right)
 \end{equation}
 
-Nun l"osen wir die Differentialgleichung nummerisch. Dazu wurden für $\mu$ und $\sigma$
-Werte eingesetzt, bei denen die Kurve gut ersichtlich ist. In der Abbildung
-\ref{fig:13_2} wurden 3 verschiedene Anfangswinkel gew''ahlt.
+Als erste approximation verwenden wir $n(y) = 1 + \mu e^{-\sigma y}$ und $\frac{dn}{dy} =
+-\sigma \mu e^{-\sigma y}$.
+Somit sieht die Differentialgleichung folgendermassen aus:
 
-\begin{figure}
-\centering
-\begin{tikzpicture}
-  \begin{axis}[xlabel=$x$, ylabel=$y(x))$, axis lines=middle, height=5cm, width=5cm, ticks
-  = none, legend pos = outer north east, ymin = 0, ymax = 10, xmin = 0, xmax = 10] 
-  \addplot [mark = none, thick, draw=blue] coordinates{
-      (0.00000, 0.00000) (0.00005, 0.00005) (0.00010, 0.00010) (0.00015, 0.00015)
-      (0.00020, 0.00020) (0.00044, 0.00045) (0.00069, 0.00070) (0.00094, 0.00095)
-      (0.00118, 0.00121) (0.00241, 0.00246) (0.00364, 0.00372) (0.00488, 0.00497)
-      (0.00611, 0.00623) (0.01226, 0.01250) (0.01842, 0.01877) (0.02457, 0.02503)
-      (0.03073, 0.03128) (0.06150, 0.06249) (0.09228, 0.09357) (0.12306, 0.12453)
-      (0.15383, 0.15535) (0.30772, 0.30767) (0.46160, 0.45701) (0.61549, 0.60350)
-      (0.76937, 0.74724) (1.01937, 0.97516) (1.26937, 1.19649) (1.51937, 1.41160)
-      (1.76937, 1.62083) (2.01937, 1.82447) (2.26937, 2.02281) (2.51937, 2.21610)
-      (2.76937, 2.40458) (3.01937, 2.58847) (3.26937, 2.76797) (3.51937, 2.94328)
-      (3.76937, 3.11457) (4.01937, 3.28200) (4.26937, 3.44573) (4.51937, 3.60590) 
-      (4.76937, 3.76263) (5.01937, 3.91607) (5.26937, 4.06633) (5.51937, 4.21351) 
-      (5.76937, 4.35773) (6.01937, 4.49908) (6.26937, 4.63766) (6.51937, 4.77354) 
-      (6.76937, 4.90683) (7.01937, 5.03760) (7.26937, 5.16591) (7.51937, 5.29185) 
-      (7.76937, 5.41548) (8.01937, 5.53687) (8.26937, 5.65607) (8.51937, 5.77315) 
-      (8.76937, 5.88816) (9.01937, 6.00115) (9.26937, 6.11218) (9.51937, 6.22130) 
-      (9.76937, 6.32854) (9.82703, 6.35302) (9.88468, 6.37739) (9.94234, 6.40168) 
-      (10.00000, 6.42586)};
-    \addlegendentry{$\alpha_0 = \frac{\pi}{4}$}
-      
-    \addplot [mark = none, thick, draw=red] coordinates{
-      (0.00000, 0.00000) (0.00008, 0.00005) (0.00017, 0.00010) (0.00025, 0.00015)
-      (0.00034, 0.00020) (0.00076, 0.00045) (0.00119, 0.00070) (0.00161, 0.00095) 
-      (0.00203, 0.00121) (0.00415, 0.00246) (0.00627, 0.00372) (0.00838, 0.00497) 
-      (0.01050, 0.00622) (0.02108, 0.01249) (0.03167, 0.01874) (0.04225, 0.02499) 
-      (0.05283, 0.03122) (0.10575, 0.06225) (0.15866, 0.09302) (0.21158, 0.12355) 
-      (0.26450, 0.15383) (0.51450, 0.29366) (0.76450, 0.42828) (1.01450, 0.55787) 
-      (1.26450, 0.68260) (1.51450, 0.80262) (1.76450, 0.91807) (2.01450, 1.02910) 
-      (2.26450, 1.13583) (2.51450, 1.23837) (2.76450, 1.33684) (3.01450, 1.43133) 
-      (3.26450, 1.52194) (3.51450, 1.60876) (3.76450, 1.69187) (4.01450, 1.77134) 
-      (4.26450, 1.84725) (4.51450, 1.91968) (4.76450, 1.98867) (5.01450, 2.05429) 
-      (5.26450, 2.11659) (5.51450, 2.17563) (5.76450, 2.23145) (6.01450, 2.28410) 
-      (6.26450, 2.33362) (6.51450, 2.38004) (6.76450, 2.42341) (7.01450, 2.46375) 
-      (7.26450, 2.50109) (7.51450, 2.53547) (7.76450, 2.56690) (8.01450, 2.59541) 
-      (8.26450, 2.62102) (8.51450, 2.64377) (8.76450, 2.66365) (9.01450, 2.68064) 
-      (9.26450, 2.69479) (9.44837, 2.70270) (9.63225, 2.70993) (9.81612, 2.71730) 
-      (10.00000, 2.72226)};
-    \addlegendentry{$\alpha_0 = \frac{\pi}{3}$}
-    
-    \addplot [mark = none, thick, draw=green] coordinates{
-      (0.00000, 0.00000) (0.00003, 0.00005) (0.00006, 0.00010) (0.00009, 0.00015)
-      (0.00012, 0.00020) (0.00026, 0.00045) (0.00041, 0.00070) (0.00055, 0.00095) 
-      (0.00070, 0.00121) (0.00142, 0.00246) (0.00215, 0.00372) (0.00287, 0.00497) 
-      (0.00360, 0.00623) (0.00722, 0.01250) (0.01085, 0.01877) (0.01447, 0.02504) 
-      (0.01810, 0.03130) (0.03623, 0.06257) (0.05435, 0.09375) (0.07248, 0.12485) 
-      (0.09061, 0.15586) (0.18125, 0.30967) (0.27189, 0.46147) (0.36253, 0.61132) 
-      (0.45317, 0.75931) (0.70317, 1.15839) (0.95317, 1.54514) (1.20317, 1.92073) 
-      (1.45317, 2.28617) (1.70317, 2.64234) (1.95317, 2.99002) (2.20317, 3.32991) 
-      (2.45317, 3.66261) (2.70317, 3.98869) (2.95317, 4.30863) (3.20317, 4.62288) 
-      (3.45317, 4.93184) (3.70317, 5.23589) (3.95317, 5.53535) (4.20317, 5.83053) 
-      (4.45317, 6.12171) (4.70317, 6.40914) (4.95317, 6.69305) (5.20317, 6.97367) 
-      (5.45317, 7.25120) (5.70317, 7.52581) (5.95317, 7.79767) (6.20317, 8.06696) 
-      (6.45317, 8.33381) (6.70317, 8.59836) (6.95317, 8.86075) (7.20317, 9.12108) 
-      (7.45317, 9.37948) (7.70317, 9.63604) (7.95317, 9.89087) (8.20317, 10.14406) 
-      (8.45317, 10.39568) (8.70317, 10.64583) (8.95317, 10.89458) (9.20317, 11.14200) 
-      (9.45317, 11.38816) (9.58988, 11.52226) (9.72659, 11.65601) (9.86329, 11.78942) 
-      (10.00000, 11.92250) };
-    \addlegendentry{$\alpha_0 = \frac{\pi}{6}$} 
-  \end{axis}
-\end{tikzpicture}
-\caption{Nummerische L"osung der Differentialgleichung (\ref{eq:13_4})}
-\label{fig:13_2}
-\end{figure}
+$$y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'(x)^2 + 1
+\right)$$
+
+\subsection{Spezialfall: $y'(x) = 0$} \label{ch:spezialfall}
+
+An diesem Punkt ist die Funktion $y(x)$ konstant. In diesem planaren Modell nimmt die
+Brechzahl $n$ nur in y-Richtung zu (ist also bei konstantem $y(x)$ ebenfalls konstant).
+Aus der Gleichung \ref{eq:13_1} ist ersichtlich, dass bei konstantem $n$ sich das Licht
+nicht bricht. Deshalb wird der Spezialfall folgendermassen behandelt:
+
+$$n' (y'^2 + 1) - n y' y'' = 0$$
+
+Wie erkennbar ist, können im Fall $y'(x) = 0$ die Funktionen $y(x)$ und $y''(x)$ gewählt
+werden. Ab dem Zeitpunkt $x_0$, bei welchem gilt: $y'(x_0) = 0$, wird die Funktion $y(x)$
+folgendermassen definiert:
+
+$$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \quad 
+y(x \geq x_0) = y(x_0)$$
+
+
 
 \section{Sph"arisches Modell}
 
@@ -151,7 +203,7 @@ Im Dreieck $OMN$ lässt sich mit dem Sinussatz folgende Beziehung herleiten:
 $$r \sin\alpha = (r + dr) \cdot \sin\beta$$
 
 Multipliziert man nun die beiden Gleichungen, erhält man:
-\begin{equation} \label{eq:13_5}
+\begin{equation} \label{eq:13_6}
 n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha_0
 \end{equation}
 
@@ -162,16 +214,16 @@ f"ur alle $r(\varphi)$. Hier finden Sie die Herleitung der Formel:
 
 http://www.math.usm.edu/lambers/cos702/cos702\_files/docs/annote\_figs/midsolve11.pdf
 
-\begin{equation} \label{eq:13_6}
+\begin{equation} \label{eq:13_7}
 \tan \alpha = \frac{r}{dr/d\varphi} = \frac{r(\varphi)}{r'(\varphi)}
 \end{equation}
 
-Wir quadrieren die Gleichung \ref{eq:13_6} und l"osen nach $\sin^2(\beta)$ auf:
+Wir quadrieren die Gleichung \ref{eq:13_7} und l"osen nach $\sin^2(\beta)$ auf:
 
 $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} =
 \frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r(\varphi)}{r'(\varphi)} \right)^2$$
 
-\begin{equation} \label{eq:13_7}
+\begin{equation} \label{eq:13_8}
 \Rightarrow \sin^2\alpha = \frac{1}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1}
 \end{equation}
 
@@ -218,7 +270,7 @@ $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin
 \end{figure}
 
 F"ur sehr kleine $d\varphi$ ist $\alpha = \beta$. Somit k"onnen wir die Gleichung
-\ref{eq:13_5} quadrieren und \ref{eq:13_7} einsetzen. 
+\ref{eq:13_6} quadrieren und \ref{eq:13_8} einsetzen. 
 
 $$\frac{(n \cdot r(\varphi))^2}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1} =
 (r_0 n_0 \sin \alpha_0)^2$$
@@ -235,56 +287,56 @@ Wenn nun dieselbe Approximation wie beim planaren Modell f"ur $n(r)=1 + \mu e^{-
 verwendet wird, l"asst sich die Differentialgleichung nummerisch l"osen, siehe Abbildung
 \ref{fig:13_4}.
 
-\begin{figure}
-\centering
-\begin{tikzpicture}
-  \begin{polaraxis} [scale=1.5, ticks=none, xmin=60, xmax = 180, ymin=0,
-  ymax=3, axis lines* = none, axis line style = {draw=white,line width=0.0001pt}, grid=none] \addplot
-  +[mark=none, domain=60:120, color=black, samples=360] {1};
-  
-    %0.7
-    \addplot [mark=none, thick, draw=blue] coordinates {
-      (90.00000, 1.00000) (92.14859, 1.01591) (94.29718, 1.03336) (96.44578, 1.05246) 
-      (98.59437, 1.07332) (100.74296, 1.09605) (102.89155, 1.12081) (105.04014, 1.14774) 
-      (107.18873, 1.17703) (109.33733, 1.20887) (111.48592, 1.24348) (113.63451, 1.28112) 
-      (115.78310, 1.32208) (117.93169, 1.36668) (120.08028, 1.41529) (122.22888, 1.46832) 
-      (124.37747, 1.52625) (126.52606, 1.58964) (128.67465, 1.65910) (130.82324, 1.73537) 
-      (132.97183, 1.81928) (135.12043, 1.91182) (137.26902, 2.01410) (139.41761, 2.12749) 
-      (141.56620, 2.25357) (143.71479, 2.39425) (145.86339, 2.55175) (148.01198, 2.72887) 
-      (150.16057, 2.92904) (152.30916, 3.15656) (154.45775, 3.41659) (156.60634, 3.71618) 
-      (158.75494, 4.06468) (160.90353, 4.47506) (163.05212, 4.96317) (165.20071, 5.55496) 
-      (167.34930, 6.29037) (169.49789, 7.24441) (171.64649, 8.48148) (173.79508, 10.20846)
-      (175.94367, 12.86206) };
-      
-    %0.5
-    \addplot [mark=none, thick, draw=red] coordinates {
-    (90.00000, 1.00000) (91.14592, 1.02324) (92.29183, 1.04777) (93.43775, 1.07365)
-    (94.58366, 1.10100) (95.72958, 1.12992) (96.87549, 1.16051) (98.02141, 1.19292) 
-    (99.16732, 1.22726) (100.31324, 1.26370) (101.45916, 1.30239) (102.60507, 1.34353) 
-    (103.75099, 1.38731) (104.89690, 1.43395) (106.04282, 1.48371) (107.18873, 1.53684) 
-    (108.33465, 1.59366) (109.48057, 1.65450) (110.62648, 1.71974) (111.77240, 1.78981) 
-    (112.91831, 1.86517) (114.06423, 1.94636) (115.21014, 2.03398) (116.35606, 2.12872) 
-    (117.50197, 2.23135) (118.64789, 2.34278) (119.79381, 2.46401) (120.93972, 2.59625) 
-    (122.08564, 2.74087) (123.23155, 2.89952) (124.37747, 3.07408) (125.52338, 3.26686) 
-    (126.66930, 3.48067) (127.81521, 3.71893) (128.96113, 3.98573) (130.10705, 4.28643) 
-    (131.25296, 4.62794) (132.39888, 5.01933) (133.54479, 5.47181) (134.69071, 6.00193) 
-    (135.83662, 6.63329) };
-    
-    \draw [dashed] (axis cs:90,1) -- (axis cs:90,2);
-    \draw [dashed] (axis cs:90,1) -- (axis cs:104.75,1.72);
-    \draw (axis cs:90,1.8) arc (90:123.3:8) node [below right,
-    xshift=0.1cm]{$\alpha_{0a}$};
-    
-    \draw[dashed] (axis cs:90,1) -- (axis cs:114.7, 1.82);
-    \draw (axis cs:90, 2) arc (90:139.4:10) node[above right,
-    xshift=0.1cm, yshift=0.4cm]{$\alpha_{0b}$};
-    
-  \end{polaraxis}
-\end{tikzpicture}
-\caption{Nummerische L"osung des Sph"arischen Modells mit der exponentiellen
-Approximation}
-\label{fig:13_4}
-\end{figure}
+% \begin{figure}
+% \centering
+% \begin{tikzpicture}
+%   \begin{polaraxis} [scale=1.5, ticks=none, xmin=60, xmax = 180, ymin=0,
+%   ymax=3, axis lines* = none, axis line style = {draw=white,line width=0.0001pt}, grid=none] \addplot
+%   +[mark=none, domain=60:120, color=black, samples=360] {1};
+%   
+%     %0.7
+%     \addplot [mark=none, thick, draw=blue] coordinates {
+%       (90.00000, 1.00000) (92.14859, 1.01591) (94.29718, 1.03336) (96.44578, 1.05246) 
+%       (98.59437, 1.07332) (100.74296, 1.09605) (102.89155, 1.12081) (105.04014, 1.14774) 
+%       (107.18873, 1.17703) (109.33733, 1.20887) (111.48592, 1.24348) (113.63451, 1.28112) 
+%       (115.78310, 1.32208) (117.93169, 1.36668) (120.08028, 1.41529) (122.22888, 1.46832) 
+%       (124.37747, 1.52625) (126.52606, 1.58964) (128.67465, 1.65910) (130.82324, 1.73537) 
+%       (132.97183, 1.81928) (135.12043, 1.91182) (137.26902, 2.01410) (139.41761, 2.12749) 
+%       (141.56620, 2.25357) (143.71479, 2.39425) (145.86339, 2.55175) (148.01198, 2.72887) 
+%       (150.16057, 2.92904) (152.30916, 3.15656) (154.45775, 3.41659) (156.60634, 3.71618) 
+%       (158.75494, 4.06468) (160.90353, 4.47506) (163.05212, 4.96317) (165.20071, 5.55496) 
+%       (167.34930, 6.29037) (169.49789, 7.24441) (171.64649, 8.48148) (173.79508, 10.20846)
+%       (175.94367, 12.86206) };
+%       
+%     %0.5
+%     \addplot [mark=none, thick, draw=red] coordinates {
+%     (90.00000, 1.00000) (91.14592, 1.02324) (92.29183, 1.04777) (93.43775, 1.07365)
+%     (94.58366, 1.10100) (95.72958, 1.12992) (96.87549, 1.16051) (98.02141, 1.19292) 
+%     (99.16732, 1.22726) (100.31324, 1.26370) (101.45916, 1.30239) (102.60507, 1.34353) 
+%     (103.75099, 1.38731) (104.89690, 1.43395) (106.04282, 1.48371) (107.18873, 1.53684) 
+%     (108.33465, 1.59366) (109.48057, 1.65450) (110.62648, 1.71974) (111.77240, 1.78981) 
+%     (112.91831, 1.86517) (114.06423, 1.94636) (115.21014, 2.03398) (116.35606, 2.12872) 
+%     (117.50197, 2.23135) (118.64789, 2.34278) (119.79381, 2.46401) (120.93972, 2.59625) 
+%     (122.08564, 2.74087) (123.23155, 2.89952) (124.37747, 3.07408) (125.52338, 3.26686) 
+%     (126.66930, 3.48067) (127.81521, 3.71893) (128.96113, 3.98573) (130.10705, 4.28643) 
+%     (131.25296, 4.62794) (132.39888, 5.01933) (133.54479, 5.47181) (134.69071, 6.00193) 
+%     (135.83662, 6.63329) };
+%     
+%     \draw [dashed] (axis cs:90,1) -- (axis cs:90,2);
+%     \draw [dashed] (axis cs:90,1) -- (axis cs:104.75,1.72);
+%     \draw (axis cs:90,1.8) arc (90:123.3:8) node [below right,
+%     xshift=0.1cm]{$\alpha_{0a}$};
+%     
+%     \draw[dashed] (axis cs:90,1) -- (axis cs:114.7, 1.82);
+%     \draw (axis cs:90, 2) arc (90:139.4:10) node[above right,
+%     xshift=0.1cm, yshift=0.4cm]{$\alpha_{0b}$};
+%     
+%   \end{polaraxis}
+% \end{tikzpicture}
+% \caption{Nummerische L"osung des Sph"arischen Modells mit der exponentiellen
+% Approximation}
+% \label{fig:13_4}
+% \end{figure}
 
 
 
