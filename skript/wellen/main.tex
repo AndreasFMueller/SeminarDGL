@@ -2,20 +2,17 @@
 \lhead{Wellen in einem Kanal}
 \begin{refsection}
 \chapterauthor{Daniela Meier und Hansruedi Patzen}
-\clearpage
-
-Das Kapitel \ref{chapter:wellen} Wellen besch"aftigt sich mit Ausbreitung von 
-Wellen in einem parabolischen Kanal. Die Ausbreitung wird mittels Analyse der 
-Wellengleichung n"aher betrachtet. In einem ersten Schritt wird erkl"art, wie 
-die Gleichung\ref{wellen:grundgleichung} aus der Aufgabenstellung 
-zustandegekommen ist.
 
 \begin{equation}
-	y'' + (ax^2+bx+c)y
-	=
-	0
+	y'' + (ax^2+bx+c)y = 0
 	\label{wellen:grundgleichung}
 \end{equation}
+
+Dieses Kapitel besch"aftigt sich mit Ausbreitung von Wellen in einem 
+parabolischen Kanal. Die Ausbreitung wird mittels Analyse der Wellengleichung 
+n"aher betrachtet. In einem ersten Schritt wird erkl"art, wie die 
+Gleichung\ref{wellen:grundgleichung} aus der Aufgabenstellung zustandegekommen 
+ist.
 
 Die allgemeine Differentialgleichung der Welle lautet (gem"ass 
 \cite{wellen:smirnow2}):
@@ -46,35 +43,37 @@ vereinfacht sich dadurch zu:
 	\label{wellen:allgemeineDGLvereinfacht}
 \end{equation}
 
-Somit ist die Funktion u noch abh"angig von der Zeit $t$ und der Ortskoordinate 
+Somit ist die Funktion $u$ noch abh"angig von der Zeit $t$ und der 
+Ortskoordinate 
 $x$.
 
-\begin{equation}
+\begin{equation*}
 	u = f(x,t)
-\end{equation}
+\end{equation*}
 
 Zur L"osung der vereinfachten Wellengleichung 
 \ref{wellen:allgemeineDGLvereinfacht} wird die Theorie des Separationsansatzes 
-verwendet. Gem"ass dem Ansatz kann die Funktion $u$ in ein Produkt zweier 
-Funktionen $X(x)$ und $T(t)$ umgewandelt werden.
+verwendet. Gem"ass dem kann $u(x, t)$ in ein Produkt zweier Funktionen $X(x)$ 
+und $T(t)$ umgewandelt werden.
 
 \begin{equation}
 	u (x,t) = X(x) T(t)
 	\label{wellen:separierteFunktion}
 \end{equation}
 
-Ausgehend von der Grundgleichung der Welle 
+Ausgehend von der vereinfachten Grundgleichung der Welle 
 \ref{wellen:allgemeineDGLvereinfacht} wird die Funktion 
-\ref{wellen:separierteFunktion} auf der linken Seite zweimal partiell nach t 
-und auf der rechten Seite zweimal partiell nach x abgeleitet. Daraus resultiert:
+\ref{wellen:separierteFunktion} auf der linken Seite zweimal partiell nach $t$ 
+und auf der rechten Seite zweimal partiell nach $x$ abgeleitet. Daraus 
+resultiert:
 
 \begin{equation}
 	T''(t) X(x) = c^2 X''(x)T(t)
 \end{equation}
 
 Diese Differentialgleichung wird nun durch $T(x)X(x)$ dividiert und somit 
-werden die Variablen separiert und ein Term entsteht, welcher nur funktioniert, 
-wenn beide Seiten der Gleichung konstant sind. 
+werden die Variablen separiert und ein Term entsteht, welcher nur funktionieren 
+kann, wenn beide Seiten der Gleichung konstant sind. 
 
 \begin{equation}
 	\frac{T''(t)}{T(t)}
@@ -89,31 +88,32 @@ zweiter Ordnung.
 	T''= \lambda T(t)
 \end{equation}
 
+und
+
 \begin{equation}
-	X''=\frac{\lambda}{c^2}X(x)
+	X'' = \frac{\lambda}{c^2}X(x)
 	\label{wellen:DGLzweiterOrdnung}
 \end{equation}
 
-Bei der Problemstellung, die betrachtet wird, wird davon ausgegangen, dass die 
+Bei der betrachteten Problemstellung, wird davon ausgegangen, dass die 
 Zeit konstant ist. Aus diesem Grund wird ab hier nur weiter auf die Gleichung 
-der Funktion X(x) eingegangen. Wird die Gleichung 
-\ref{wellen:DGLzweiterOrdnung} zu Null gesetzt ergibt sich:
+der Funktion $X(x)$ eingegangen. Wird die Gleichung 
+\ref{wellen:DGLzweiterOrdnung} gleich Null gesetzt, ergibt sich:
 
 \begin{equation}
-	X''(x) -
-	\frac{\lambda}{c^2} X(x)
-	=0
+	X''(x) - \frac{\lambda}{c^2} X(x) = 0
 \end{equation}
 
 Diese Gleichung widerspiegelt die Wellengleichung, die in der Fortsetzung 
-betrachtet wird. 
+betrachtet wird.
 
-Mit dem Faktor $-\frac{\lambda}{c^2}$ k"onnen verschiedene 
+Mit dem Faktor $\frac{\lambda}{c^2}$ k"onnen verschiedene 
 Geschwindigkeitsprofile betrachtet werden. Hier wird zuerst auf den speziellen 
 Fall eines parabolischen Profils eingegangen. Die zu untersuchende 
 Differentialgleichung ergibt sich hiermit zu der am Anfang definierten 
 Gleichung \ref{wellen:grundgleichung}, mit den frei w"ahlbaren Variablen 
-${a,b,c} \in \mathbb{R}$, sowie $y(x) = a_0$ und $y'(x) = a_1$.
+${a,b,c} \in \mathbb{R}$, sowie den Anfangsbedingungen $y(0) = a_0$ und $y'(0) 
+= a_1$.
 
 \section{Potenzreihenl"osung}
 Als L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
@@ -163,7 +163,7 @@ Aus den beiden Gleichungen \ref{wellen:ersteableitung} und
 	\label{wellen:koeffizietenvergleich}
 \end{equation}
 
-Daraus resultieren nun die Resultate f"ur die verschiedenen $a_k$.
+Daraus k"onnen nun die Resultate f"ur die verschiedenen $a_k$ bestimmt werden.
 
 \begin{equation}
 	\begin{split}
@@ -236,7 +236,6 @@ der Welle.
 
 \includegraphics[scale=0.6]{./wellen/octave/images/a01a10/wavewithparabola.png}
 
-\clearpage
 \section{Octave Code}
 Code zur Einstellung der verschiedenen Konfigurationen:
 \lstinputlisting[style=Matlab]{./wellen/octave/config.m}

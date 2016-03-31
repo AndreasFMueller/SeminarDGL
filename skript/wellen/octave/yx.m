@@ -21,13 +21,18 @@ endfor
 save yx.dat y
 
 set (0, "defaultaxesfontname", "Helvetica")
-hold on;
+
 plot(xaxis, y, yformula);
+grid on;
+title 'Welle';
 print -dpng wave.png;
 
-plot(xaxis, p, parabolaformula);
+plot(xaxis, p, parabolaformula, xaxis, y, yformula);
+grid on;
+title 'Welle mit Parabel';
 print -dpng wavewithparabola.png;
 
-hold off;
 plot(xaxis, p, parabolaformula);
+grid on;
+title 'Parabel';
 print -dpng parabola.png
