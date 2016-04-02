@@ -236,7 +236,7 @@ Bei der neuen $y(x)$-Gleichung \ref{wellen:ygleichungak} muss nun aber $k \in
 Als n"achster Schritt wird die Gleichung mit verschiedenen Startangaben 
 getestet. Die Variablen, welche selber gew"ahlt werden k"onnen sind: $k_{max}, 
 a_0, 
-a_1, a, b, c$.
+a_1, a, b$ und $c$.
 
 \subsection{Variation von $k_{max}$}
 
@@ -252,7 +252,7 @@ y(x) = a_0 + a_1x
 \end{equation*}
 
 Zu Beginn werden die Startbedingungen gem"ass den Gleichungen 
-\ref{wellen:Startbedingungen1} festgelegt und das $k_{max}$ variiert.
+\ref{wellen:Startbedingungen1} festgelegt.
 
 \begin{equation}
 	\begin{split}
@@ -271,11 +271,31 @@ sich die Behauptung der kleinen Ver"anderungen als wahr herausstellt.
 
 
 \includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak30wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak60wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak90wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak120wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak150wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak180wave.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak210wave.png}
 \includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak300wave.png}
 
 Die Behauptung, dass der Wert irgendwann explodiert, ist, wie ersichtlich, 
 wahr. Der Punkt wo die Werte gegen $\infty$ gehen verschiebt sich immer mehr 
-nach rechts, zu gr"osseren $x$-Werten. 
+nach rechts, zu gr"osseren $x$-Werten. Dies wird dadurch erkl"art, dass es 
+immer l"anger geht, bis der $x^k$-Term dominiert. Je mehr der $k_{max}$-Wert 
+gesteigert wird, umso besser wird die Approximation an die Welle. Ab einer 
+gewissen Gr"osse von $k_{max}$ kann das Programm die Werte nicht mehr genau 
+bestimmen, was die unregelm"assigen Ausschl"age in den letzten zwei Grafiken 
+erkl"art.
+
+Aufgrund dieser Messungen wird $x$ f"ur die weiteren Berechnungen auf $x \in 
+[-8;8]$ und $k_{max}$ auf 180 beschr"ankt, damit die $y$-Werte nicht 
+explodieren und keine unkontrollierten Messwerte entstehen.
+
+Mit den in diesem Kapitel festgelegten Startbedingungen ergibt dies folgende 
+Grafik:
+
+\includegraphics[scale=0.7]{./wellen/octave/images/kmax/ak180-88wave.png}
 
 
 \section{Graphische L"osung}
@@ -290,14 +310,5 @@ der Welle.
 
 \includegraphics[scale=0.6]{./wellen/octave/images/a01a10/wavewithparabola.png}
 
-\section{Octave Code}
-Code zur Einstellung der verschiedenen Konfigurationen:
-\lstinputlisting[style=Matlab]{./wellen/octave/config.m}
-
-Code zur Generierung der verschiedenen $a_k$:
-\lstinputlisting[style=Matlab]{./wellen/octave/ak.m}
-
-Code der dann die Werte von $y(x)$ generiert:
-\lstinputlisting[style=Matlab]{./wellen/octave/yx.m}
 \printbibliography[heading=subbibliography]
 \end{refsection}
