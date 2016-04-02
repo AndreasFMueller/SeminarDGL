@@ -1,5 +1,6 @@
 load("./config.dat");
 load("./ak.dat");
+load("./a1.dat");
 
 y = zeros(datasize, 1);
 p = zeros(datasize, 1);

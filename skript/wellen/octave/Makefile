@@ -1,12 +1,15 @@
-.PHONY:	all, config, ak, yx, plot, clean
+.PHONY:	all, config, ak, a1, yx, plot, clean
 
-all:	config ak yx plot
+all:	config ak a1 yx plot
 
 config:
 	octave config.m
 
 ak:	config.dat ak.m
 	octave ak.m
+
+a1:	config.dat ak.dat a1.m
+	octave a1.m
 
 yx:	config.dat ak.dat yx.m
 	octave yx.m
