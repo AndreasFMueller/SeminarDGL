@@ -1,10 +1,10 @@
-noofak = 1000;
+noofak = 180;
 kmax = 180;
 
 x0 = 0;
 
-plotmin = 0;
-plotmax = 8.5;
+plotmin = -8;
+plotmax = 8;
 
 xmin = x0 + plotmin;
 xmax = x0 + plotmax;
