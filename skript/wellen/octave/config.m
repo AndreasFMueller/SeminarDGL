@@ -1,9 +1,13 @@
 noofak = 1000;
 kmax = 200;
 
-xmin = -8;
-xmax = 8;
+x0 = 8;
+
+xmin = x0 - 1;
+xmax = x0 + 8;
 scalefactor = 100;
+
+datasize = scalefactor * (xmax - xmin);
 
 A = 1;
 B = 0;
@@ -50,4 +54,4 @@ endif
 parabolaformula = sprintf('2;%s%s%s   ;', afactor, bfactor, cfactor);
 yformula = sprintf('3;y(x), y(0) = %d, y''(0) = %d;', a0, a1);
 
-save("./config.dat", "noofak", "kmax", "xmin", "xmax", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1");
+save("./config.dat", "noofak", "kmax", "x0", "xmin", "xmax", "datasize", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1");
