@@ -127,8 +127,16 @@ Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
 	\sum_{k = 0}^{\infty} a_{k}x^k
 	=
 	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
-	\label{wellen:ersteableitung}
+	\label{wellen:nullteableitung}
 \end{equation}
+
+\begin{equation*}
+	y'(x)
+	=
+	\sum_{k=0}^{\infty} a_{k+1}(k+1)x^k
+	=
+	a_1 + 2a_2x + 3a_3x^2 + 4a_4x^3 + 5a_5x^4 + 6a_6x^5+ \dotsb
+\end{equation*}
 
 \begin{equation}
 	y''(x)
@@ -140,7 +148,7 @@ Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
 	\label{wellen:zweiteableitung}
 \end{equation}
 
-Aus den beiden Gleichungen \ref{wellen:ersteableitung} und 
+Aus den beiden Gleichungen \ref{wellen:nullteableitung} und 
 \ref{wellen:zweiteableitung} kann nun der Koeffizientenvergleich 
 \ref{wellen:koeffizietenvergleich} erstellt werden.
 
@@ -191,7 +199,7 @@ Daraus k"onnen nun die Resultate f"ur die verschiedenen $a_k$ bestimmt werden.
 
 Hieraus l"asst sich nun eine allgemeine Rekursionsformel 
 \ref{wellen:koeffizientengleichung} f"ur die verschiedenen $a_k$ herauslesen. 
-Es gilt: $k \in \mathbb{N}_0$ und	$a_{k < 0} = 0$
+Es gilt: $k \in \mathbb{N}$ und	$a_{k < 0} = 0$
 
 \begin{equation}
 	a_{k+2} = -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k)
@@ -223,6 +231,47 @@ Bei der neuen $y(x)$-Gleichung \ref{wellen:ygleichungak} muss nun aber $k \in
 	-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 	\label{wellen:ygleichungak}
 \end{equation}
+
+\section{Fehlerquellen bei der Umsetzung}
+Als n"achster Schritt wird die Gleichung mit verschiedenen Startangaben 
+getestet. Die Variablen, welche selber gew"ahlt werden k"onnen sind: $k_{max}, 
+a_0, 
+a_1, a, b, c$.
+
+\subsection{Variation von $k_{max}$}
+
+Es wird davon ausgegangen, dass sich mit der Variation von $k_{max}$ bei der 
+Welle keine grossen Ver"anderungen einstellen. Die Werte werden immer ab einem 
+gewissen Punkt ins Positive oder Negative explodieren, da das $x^k$ irgendwann 
+dominiert. Mit $k_{max}$ wird die Anzahl der Summanden bezeichnet, die f"ur die 
+Berechnung der Potenzreihe verwendet werden. 
+
+\begin{equation*}
+y(x) = a_0 + a_1x 
+-\sum_{k=2}^{k_{max}}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+\end{equation*}
+
+Zu Beginn werden die Startbedingungen gem"ass den Gleichungen 
+\ref{wellen:Startbedingungen1} festgelegt und das $k_{max}$ variiert.
+
+\begin{equation}
+	\begin{split}
+		a_0 &= 1\\
+		a_1 &= 0\\
+		a &= 1\\
+		b &= 0\\
+		c &= -1
+	\end{split}
+	\label{wellen:Startbedingungen1}
+\end{equation}
+
+Auf folgenden Grafiken wird veranschaulicht, was mit der Welle passiert, wenn 
+das $k_{max}$ jeweils um 30 vergr"ossert wird. Es wird dann "uberpr"uft, ob 
+sich die Behauptung der kleinen Ver"anderungen als wahr herausstellt.
+
+
+\includegraphics[scale=0.3]{./wellen/octave/images/kmax/ak30wave.png}
+
 
 \section{Graphische L"osung}
 
