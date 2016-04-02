@@ -8,8 +8,8 @@ config:
 ak:	config.dat ak.m
 	octave ak.m
 
-a1:	config.dat ak.dat a1.m
-	octave a1.m
+a1:	config.dat ak.dat a0a1.m
+	octave a0a1.m
 
 yx:	config.dat ak.dat yx.m
 	octave yx.m

@@ -4,7 +4,7 @@ a = zeros(noofak, 1);
 
 a(1) = 0; # a_{-2}
 a(2) = 0; # a_{-1}
-a(3) = a0; # a_0
+a(3) = a0start; # a_0
 a(4) = a1start; # a_1
 
 for k = (2:noofak-2)
