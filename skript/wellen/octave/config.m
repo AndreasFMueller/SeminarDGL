@@ -1,10 +1,13 @@
 noofak = 1000;
-kmax = 200;
+kmax = 300;
 
 x0 = 0;
 
-xmin = x0 - 1;
-xmax = x0 + 8;
+plotmin = 6;
+plotmax = 9;
+
+xmin = x0 + plotmin;
+xmax = x0 + plotmax;
 scalefactor = 100;
 
 datasize = scalefactor * (xmax - xmin);
@@ -54,4 +57,9 @@ endif
 parabolaformula = sprintf('2;%s%s%s   ;', afactor, bfactor, cfactor);
 yformula = sprintf('3;y(x), y(0) = %d, y''(0) = %d;', a0, a1start);
 
-save("./config.dat", "noofak", "kmax", "x0", "xmin", "xmax", "datasize", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1start");
+kmaxname = sprintf(', k_max = %d', kmax);
+wavetitle = sprintf('Welle%s', kmaxname);
+parabolatitle = sprintf('Parabel');
+wavewithparabolatitle = sprintf('Welle mit Parabel');
+
+save("./config.dat", "noofak", "kmax", "x0", "xmin", "xmax", "datasize", "scalefactor", "A", "B", "C", "parabolaformula", "yformula", "a0", "a1start", "wavetitle", "parabolatitle", "wavewithparabolatitle");
