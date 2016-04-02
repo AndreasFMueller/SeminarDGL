@@ -7,6 +7,9 @@ xaxis = linspace(xmin, xmax, datasize + 1);
 set (0, "defaultaxesfontname", "Helvetica")
 
 plot(xaxis, y, yformula);
+axis([0, 1, -40, 40]);
+axis("auto x");
+axis("auto y");
 grid("on");
 title(wavetitle);
 print("-dpng", "wave.png");
