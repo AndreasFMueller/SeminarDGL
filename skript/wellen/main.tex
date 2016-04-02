@@ -232,13 +232,7 @@ Bei der neuen $y(x)$-Gleichung \ref{wellen:ygleichungak} muss nun aber $k \in
 	\label{wellen:ygleichungak}
 \end{equation}
 
-\section{Fehlerquellen bei der Umsetzung}
-Als n"achster Schritt wird die Gleichung mit verschiedenen Startangaben 
-getestet. Die Variablen, welche selber gew"ahlt werden k"onnen sind: $k_{max}, 
-a_0, 
-a_1, a, b$ und $c$.
-
-\subsection{Variation von \texorpdfstring{$k_{max}$}{kmax}}
+\section{Erkenntnisse bei der Variation von \texorpdfstring{$k_{max}$}{kmax}}
 
 Es wird davon ausgegangen, dass sich mit der Variation von $k_{max}$ bei der 
 Welle keine grossen Ver"anderungen einstellen. Die Werte werden immer ab einem 
@@ -251,7 +245,7 @@ y(x) = a_0 + a_1x
 -\sum_{k=2}^{k_{max}}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 \end{equation*}
 
-Zu Beginn werden die Startbedingungen gem"ass den Gleichungen 
+Es werden die Startbedingungen gem"ass den Gleichungen 
 \ref{wellen:Startbedingungen1} festgelegt.
 
 \begin{equation}
@@ -269,7 +263,7 @@ Auf folgenden Grafiken wird veranschaulicht, was mit der Welle passiert, wenn
 das $k_{max}$ jeweils um 30 vergr"ossert wird. Es wird dann "uberpr"uft, ob 
 sich die Behauptung der kleinen Ver"anderungen als wahr herausstellt.
 
-
+\noindent
 \includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak30wave.png}
 \includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak60wave.png}
 \includegraphics[scale=0.35]{./wellen/octave/images/kmax/ak90wave.png}
@@ -297,6 +291,40 @@ ergibt dies folgende Grafik:
 \begin{center}
 	\includegraphics[scale=0.5]{./wellen/octave/images/kmax/ak180-88wave.png}
 \end{center}
+
+\section{Erkenntnisse bei der Variation von \texorpdfstring{$a$}{a}, 
+\texorpdfstring{$b$}{b}, \texorpdfstring{$c$}{c}, \texorpdfstring{$a_0$}{a0} 
+und \texorpdfstring{$a_1$}{a1}}
+
+Die Anfangsbedingungen $a_0$ und $a_1$ k"onnen beliebig festgelegt werden. Da 
+sich die Wellen im betrachteten Fall um den Entwicklungspunkt $x_0=0$ bewegen, 
+beschreibt das $a_0$ den y-Achsenabschnitt und das $a_1$ die Steigung im Punkt 
+$y(0)$. Die gew"ahlten Werte von $a_0$ und $a_1$ sind jeweils in der Grafik 
+ersichtlich.
+
+Zu Beginn wird das vorgegebene, parabelf"ormige Geschwindigkeitsprofil in eine 
+Konstante umgewandelt indem $a$ und $b$ gleich $0$ gesetzt werden. Folgende 
+Gleichung wird also betrachtet:
+
+\begin{equation*}
+	y''+ cy = 0
+\end{equation*}
+
+oder
+
+\begin{equation}
+	y'' = -cy
+	\label{wellen:lineareDGL}
+\end{equation}
+
+F"ur positive Werte von c ist die L"osung dieser Gleichung 
+\ref{wellen:lineareDGL} bekanntlicherweise $C_1sin(\sqrt{c}x) + 
+C_2cos(\sqrt{c}x)$. Die Konstanten $C_1$ und $C_2$ stellen sich ein, je nach 
+dem, wie die Anfangsbedingungen $a_0$ und $a_1$ bestimmt werden. Als Beweis 
+dient folgende Grafik:
+
+
+F"ur negative Werte von c hat die Gleichung
 
 \section{Graphische L"osung}
 
