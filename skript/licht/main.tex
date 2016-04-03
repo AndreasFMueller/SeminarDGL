@@ -63,80 +63,71 @@ Durch Einsetzen der Oberen Grafik ergibt sich:
 
 Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich:
 $$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
-$$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2
-\alpha} - 1$$
+$$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
 
-Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. Da
-diese Ableitung m"oglicherweise $=0$ sein kann, muss dieser Fall separat behandelt werden.
-(siehe Kapitel \ref{ch:spezialfall}) Von nun an gilt die Bedingung: $f'(x) \neq 0$.
+Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
+Da diese Ableitung m"oglicherweise $=0$ sein kann, muss dieser Fall separat behandelt werden (siehe Kapitel \ref{ch:spezialfall}). 
+Von nun an gilt die Bedingung: $f'(x) \neq 0$.
 
 \begin{equation} \label{eq:13_2}
 \sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
 \end{equation}
 
-Nun quadrieren wir die Gleichung \ref{eq:13_1}, setzen \ref{eq:13_2} ein und l"osen
-nach $y'(x)$ auf:
+Nun quadrieren wir die Gleichung \ref{eq:13_1}, setzen \ref{eq:13_2} ein und l"osen nach $y'(x)$ auf:
+
 \begin{equation} \label{eq:13_3}
 n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon^2 = (n_0 \cdot \sin \alpha_0)^2
 \end{equation}
+
 \begin{equation} \label{eq:13_4}
 \Rightarrow y'(x)^2 = \left( \frac{n}{\varepsilon} \right)^2 - 1
 \end{equation}
 
-Nun k"onnte man die Differentialgleichung nummerisch l"osen. Das problem ist aber, dass 
-eine Differentialgleichung zweiter Ordnung vorliegt, jedoch in der Funktion die
-Anfangssteigung $y'(0)$ (in der Form von $\sin \alpha_0$) vorkommt. Dies wird in Kapitel
-\ref{ch:korrektur} genauer erkl"art.
+Nun k"onnte man die Differentialgleichung nummerisch l"osen. 
+Das problem ist aber, dass eine Differentialgleichung zweiter Ordnung vorliegt, jedoch in der Funktion die Anfangssteigung $y'(0)$ (in der Form von $\sin \alpha_0$) vorkommt. 
+Dies wird in Kapitel \ref{ch:korrektur} genauer erkl"art.
 
 \subsection{Korrektur der Differentialgleichung} \label{ch:korrektur}
 
-Wie in der Gleichung \ref{eq:13_3} zu erkennen ist, ist der Anfangswinkel in der
-Gleichung vorhanden. Dieser ist von der Anfangssteigung abh"angig. Da jedoch die
-Differentialgleichung (aktuell) in der ersten Ordnung ist, wird die Gleichung
-\ref{eq:13_3} nach $x$ abgeleitet:
+Wie in der Gleichung \ref{eq:13_3} zu erkennen ist, ist der Anfangswinkel in der Gleichung vorhanden. 
+Dieser ist von der Anfangssteigung abh"angig. 
+Da jedoch die Differentialgleichung (aktuell) in der ersten Ordnung ist, wird die Gleichung \ref{eq:13_3} nach $x$ abgeleitet:
 
-$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 +
-2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
+$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
 
-Nun sind wir $\alpha_0$ losgeworden und haben die jetzt vorliegende Gleichung hat Ordnung
-2. Nun k"onnen wir den Anfangswinkel $\alpha_0$ als Steigung in den Anfangsbedingungen
-definieren. Da der ganze Term gleich 0 ist, muss der Ausdruck in den Klammern gleich 0
-sein:
+Nun sind wir $\alpha_0$ losgeworden und haben die jetzt vorliegende Gleichung hat Ordnung 2. 
+Nun k"onnen wir den Anfangswinkel $\alpha_0$ als Steigung in den Anfangsbedingungen definieren. 
+Da der ganze Term gleich 0 ist, muss der Ausdruck in den Klammern gleich 0 sein:
 
 $$n'y'^2 + n' - n y' y'' = 0$$
 $$y''(x) = \frac{n'(y(x))}{n(y(x))} \cdot \left( y'(x) + \frac{1}{y'(x)} \right)$$
 
-Aufgrund der Kettenregel $\frac{dn}{dx} = \frac{dn}{dy} \cdot \frac{dy}{dx}$ kann man die
-Differentialgleichung weiter vereinfachen:
+Aufgrund der Kettenregel $\frac{dn}{dx} = \frac{dn}{dy} \cdot \frac{dy}{dx}$ kann man die Differentialgleichung weiter vereinfachen:
 
 \begin{equation} \label{eq:planar_DGL}
 y''(x) = \frac{\frac{dn}{dy}}{n(y)} \cdot \left( y'(x)^2 + 1\right)
 \end{equation}
 
-Als erste approximation verwenden wir $n(y) = 1 + \mu e^{-\sigma y}$ und $\frac{dn}{dy} =
--\sigma \mu e^{-\sigma y}$.
+Als erste approximation verwenden wir $n(y) = 1 + \mu e^{-\sigma y}$ und $\frac{dn}{dy} = -\sigma \mu e^{-\sigma y}$.
 Somit sieht die Differentialgleichung folgendermassen aus:
 
 \begin{equation} \label{eq:planar_DGL_n}
-y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left(
-y'(x)^2 + 1 \right)
+y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'(x)^2 + 1 \right)
 \end{equation}
 
 \subsection{Spezialfall: $y'(x) = 0$} \label{ch:spezialfall}
 
-An diesem Punkt ist die Funktion $y(x)$ konstant. In diesem planaren Modell nimmt die
-Brechzahl $n$ nur in y-Richtung zu (ist also bei konstantem $y(x)$ ebenfalls konstant).
-Aus der Gleichung \ref{eq:13_1} ist ersichtlich, dass bei konstantem $n$ sich das Licht
-nicht bricht. Deshalb wird der Spezialfall folgendermassen behandelt:
+An diesem Punkt ist die Funktion $y(x)$ konstant. 
+In diesem planaren Modell nimmt die Brechzahl $n$ nur in y-Richtung zu (ist also bei konstantem $y(x)$ ebenfalls konstant).
+Aus der Gleichung \ref{eq:13_1} ist ersichtlich, dass bei konstantem $n$ sich das Licht nicht bricht. 
+Deshalb wird der Spezialfall folgendermassen behandelt:
 
 $$n' (y'^2 + 1) - n y' y'' = 0$$
 
-Wie erkennbar ist, k"onnen im Fall $y'(x) = 0$ die Funktionen $y(x)$ und $y''(x)$ gew"ahlt
-werden. Ab dem Zeitpunkt $x_0$, bei welchem gilt: $y'(x_0) = 0$, wird die Funktion $y(x)$
-folgendermassen definiert:
+Wie erkennbar ist, k"onnen im Fall $y'(x) = 0$ die Funktionen $y(x)$ und $y''(x)$ gew"ahlt werden. 
+Ab dem Zeitpunkt $x_0$, bei welchem gilt: $y'(x_0) = 0$, wird die Funktion $y(x)$ folgendermassen definiert:
 
-$$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \quad 
-y(x \geq x_0) = y(x_0)$$
+$$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \quad  y(x \geq x_0) = y(x_0)$$
 
 
 \begin{figure}
@@ -241,23 +232,24 @@ y(x \geq x_0) = y(x_0)$$
 
 \section{Sph"arisches Modell}
 
-Wir beginnen erneut mit Snell's Gleichung, welche wir auf unser Sph"arischen Modells
-(Abbildung \ref{fig:13_3}) angepasst wurde: 
+Wir beginnen erneut mit Snell's Gleichung, welche wir auf unser Sph"arischen Modells (Abbildung \ref{fig:13_3}) angepasst wurde: 
 
 $$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
 
 Im Dreieck $OMN$ l"asst sich mit dem Sinussatz folgende Beziehung herleiten:
+
 $$r \sin\alpha = (r + dr) \cdot \sin\beta$$
 
 Multipliziert man nun die beiden Gleichungen, erh"alt man:
+
 \begin{equation} \label{eq:13_6}
 n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha_0
 \end{equation}
 
-Wie beim Planaren Modell ist dieses Produkt konstant. Wir suchen eine Funktion
-$r(\varphi))$, welche den Weg eines Lichtstrahls beschreibt, der am Punkt $A$ mit
-Anfangswinkel $\alpha_0$ startet (oder endet). Nun brauchen wir eine Formel f"ur $\beta$
-f"ur alle $r(\varphi)$. Hier finden Sie die Herleitung der Formel:
+Wie beim Planaren Modell ist dieses Produkt konstant. 
+Wir suchen eine Funktion $r(\varphi))$, welche den Weg eines Lichtstrahls beschreibt, der am Punkt $A$ mit Anfangswinkel $\alpha_0$ startet (oder endet). 
+Nun brauchen wir eine Formel f"ur $\beta$ f"ur alle $r(\varphi)$. 
+Hier finden Sie die Herleitung der Formel:
 
 http://www.math.usm.edu/lambers/cos702/cos702\_files/docs/annote\_figs/midsolve11.pdf
 
@@ -267,8 +259,7 @@ http://www.math.usm.edu/lambers/cos702/cos702\_files/docs/annote\_figs/midsolve1
 
 Wir quadrieren die Gleichung \ref{eq:13_7} und l"osen nach $\sin^2(\beta)$ auf:
 
-$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} =
-\frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r(\varphi)}{r'(\varphi)} \right)^2$$
+$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r(\varphi)}{r'(\varphi)} \right)^2$$
 
 \begin{equation} \label{eq:13_8}
 \Rightarrow \sin^2\alpha = \frac{1}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1}
@@ -316,50 +307,40 @@ $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin
 \label{fig:13_3}
 \end{figure}
 
-W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. In den folgenden
-Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$. Dieser Spezialfall wird im
-Kapitel \ref{ch:spezialfall_2} behandelt. 
+W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. 
+In den folgenden Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$. 
+Dieser Spezialfall wird im Kapitel \ref{ch:spezialfall_2} behandelt. 
 
-F"ur sehr kleine $d\varphi$ ist $\alpha = \beta$. Somit k"onnen wir die Gleichung
-\ref{eq:13_6} quadrieren und \ref{eq:13_8} einsetzen.
+F"ur sehr kleine $d\varphi$ ist $\alpha = \beta$. 
+Somit k"onnen wir die Gleichung \ref{eq:13_6} quadrieren und \ref{eq:13_8} einsetzen.
 
-$$\frac{(n \cdot r(\varphi))^2}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1} =
-(r_0 n_0 \sin \alpha_0)^2$$
+$$\frac{(n \cdot r(\varphi))^2}{\left( \frac{r'(\varphi)}{r(\varphi)} \right)^2 +1} = (r_0 n_0 \sin \alpha_0)^2$$
 
-Diese Gleichung ist eine Differentialgleichung erster Ordnung. Jedoch ist erneut der Term
-$sin^2(\alpha_0)$ vorhanden, welcher von $r'(\varphi_0)$ abhängt. Damit die DGL auch
-korrekte Anfangsbedingungen erhält, leiten wir die Gleichung nach $\varphi$ ab und
-erhalten:
+Diese Gleichung ist eine Differentialgleichung erster Ordnung. 
+Jedoch ist erneut der Term $sin^2(\alpha_0)$ vorhanden, welcher von $r'(\varphi_0)$ abhängt. 
+Damit die DGL auch korrekte Anfangsbedingungen erhält, leiten wir die Gleichung nach $\varphi$ ab und erhalten:
 
-$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) = 
-\frac{2nr (n'r `+ nr') \left( \left( \frac{r'}{r} \right)^2 +1\right) - (nr)^2 2
-\frac{r'' r - r'^2}{r}}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2}$$
-$$ = \frac{2nr}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2} \left( (n'r + nr')
-\left( \left( \frac{r'}{r} \right)^2 + 1 \right) - n \left( r'' r - r'^2 \right) \right)
-= \frac{d}{d\varphi} \left(\left( r_0 n_0 \sin \alpha_0\right)^2 \right) = 0$$
-$$\Rightarrow (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) = n \left( r''
-r - r'^2 \right)$$
+$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) =  \frac{2nr (n'r `+ nr') \left( \left( \frac{r'}{r} \right)^2 +1\right) - (nr)^2 2 \frac{r'' r - r'^2}{r}}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2}$$
+$$ = \frac{2nr}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2} \left( (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) - n \left( r'' r - r'^2 \right) \right) = \frac{d}{d\varphi} \left(\left( r_0 n_0 \sin \alpha_0\right)^2 \right) = 0$$
+$$\Rightarrow (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) = n \left( r'' r - r'^2 \right)$$
 $$\Rightarrow \frac{n'r'^2}{r} + \frac{n r'^2}{r^2} + n'r + nr' + nr'^2 = r'' r n$$
+
 \begin{equation}
-r'' = \frac{1}{r} \left( n' + r' + r'^2 \left( 1 + \frac{1}{r^2} + \frac{n'}{n r} \right)
-\right)
+r'' = \frac{1}{r} \left( n' + r' + r'^2 \left( 1 + \frac{1}{r^2} + \frac{n'}{n r} \right) \right)
 \end{equation}
 
 In dieser Herleitung wurde durch $n$ und $r$ geteilt. werden jedoch nie $= 0$ sein.
-Deshalb muss hier nicht mehr weiter Eingeschr"ankt werden. Nun wird $n'(r(\varphi))$
-genauer untersucht. Nach der Kettenregel ergibt: $\frac{dn}{d\varphi} = \frac{dn}{dr}
-\cdot \frac{dr}{d\varphi}$. Die Ableitung $\frac{dn}{dr}$ wird im Folgenden als $n'_r$
-gekennzeichnet.
+Deshalb muss hier nicht mehr weiter Eingeschr"ankt werden. 
+Nun wird $n'(r(\varphi))$ genauer untersucht. 
+Nach der Kettenregel ergibt: $\frac{dn}{d\varphi} = \frac{dn}{dr} \cdot \frac{dr}{d\varphi}$. 
+Die Ableitung $\frac{dn}{dr}$ wird im Folgenden als $n'_r$ gekennzeichnet.
 
-$$r'' = \frac{r'}{r} \left( 1 + n'_r + r' \left( 1 + \frac{1}{r^2} + \frac{n'_r r'}{n r}
-\right) \right)$$
+$$r'' = \frac{r'}{r} \left( 1 + n'_r + r' \left( 1 + \frac{1}{r^2} + \frac{n'_r r'}{n r}\right) \right)$$
 
-Nun wird die oben verwendete Approximation $n(r) = 1 + \mu e^{-\sigma r}$, $n'_r(r) =
--\sigma \mu e^{-\sigma r}$ eingesetzt:
+Nun wird die oben verwendete Approximation $n(r) = 1 + \mu e^{-\sigma r}$, $n'_r(r) = -\sigma \mu e^{-\sigma r}$ eingesetzt:
 
 \begin{equation} \label{eq:sphere_dgl_approx}
-r'' = \frac{r'}{r} \left(1 - \sigma \mu e^{-\sigma r} + r' \left( 1 + \frac{1}{r^2} -
-\frac{\sigma \mu e^{-\sigma r}}{r (1 + \mu e^{-\sigma r})} \right) \right)
+r'' = \frac{r'}{r} \left(1 - \sigma \mu e^{-\sigma r} + r' \left( 1 + \frac{1}{r^2} - \frac{\sigma \mu e^{-\sigma r}}{r (1 + \mu e^{-\sigma r})} \right) \right)
 \end{equation}
 
 
