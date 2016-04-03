@@ -3,7 +3,8 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	grundlagen numerik komplexezahlen randwert geometrie
+all:	grundlagen numerik komplexezahlen randwert geometrie airy \
+	stochastisch
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -51,5 +52,35 @@ $(geometrie_FILES): geometrie.mp
 	do \
 		mptopdf $${f}; \
 	done
+
+airy_FILES = airy-1.pdf 
+airy:	$(airy_FILES)
+$(airy_FILES): airy.mp
+	TEX=latex mpost airy.mp
+	for f in airy.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
+stochastisch_FILES = stochastisch-1.pdf 
+stochastisch:	$(stochastisch_FILES)
+$(stochastisch_FILES): stochastisch.mp path.mp path2.mp path3.mp
+	TEX=latex mpost stochastisch.mp
+	for f in stochastisch.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
+path.mp:	wiener.m
+	octave wiener.m
+
+path2.mp:	wiener2.m
+	octave wiener2.m
+
+path3.mp:	wiener3.m
+	octave wiener3.m
+
+
+
 
 

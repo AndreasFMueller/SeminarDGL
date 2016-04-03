@@ -217,9 +217,9 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \rhead{}
 \tableofcontents
 \newtheorem{satz}{Satz}[chapter]
-\newtheorem{hilfssatz}{Hilfssatz}[chapter]
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{annahme}{Annahme}[chapter]
+\newtheorem{hilfssatz}[satz]{Hilfssatz}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{annahme}[satz]{Annahme}
 \mainmatter
 \input{vorwort.tex}
 \part{Grundlagen}
@@ -235,6 +235,7 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{chapters/komplex.tex}
 \input{chapters/stabilitaet.tex}
 \input{chapters/chaos.tex}
+\input{chapters/stochastisch.tex}
 \begin{appendices}
 \input{chapters/newton.tex}
 \input{chapters/komplexezahlen.tex}
