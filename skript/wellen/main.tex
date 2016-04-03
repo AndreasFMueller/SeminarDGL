@@ -10,7 +10,10 @@
 
 Dieses Kapitel besch"aftigt sich mit Ausbreitung von Wellen in einem 
 parabolischen Kanal. Die Ausbreitung wird mittels Analyse der Wellengleichung 
-n"aher betrachtet. In einem ersten Schritt wird erkl"art, wie die 
+n"aher betrachtet.
+
+\section{Herleitung Ausgangsformel}
+In einem ersten Schritt wird erkl"art, wie die 
 Gleichung \ref{wellen:grundgleichung} aus der Aufgabenstellung zustandegekommen 
 ist.
 
@@ -302,29 +305,135 @@ beschreibt das $a_0$ den y-Achsenabschnitt und das $a_1$ die Steigung im Punkt
 $y(0)$. Die gew"ahlten Werte von $a_0$ und $a_1$ sind jeweils in der Grafik 
 ersichtlich.
 
+\subsection{Eliminierung von $a$ und $b$}
+
 Zu Beginn wird das vorgegebene, parabelf"ormige Geschwindigkeitsprofil in eine 
-Konstante umgewandelt indem $a$ und $b$ gleich $0$ gesetzt werden. Folgende 
-Gleichung wird also betrachtet:
-
-\begin{equation*}
-	y''+ cy = 0
-\end{equation*}
-
-oder
+Konstante umgewandelt indem $a$ und $b$ gleich $0$ gesetzt und somit 
+eliminiert, werden. Folgende Differentialgleichung wird also betrachtet:
 
 \begin{equation}
-	y'' = -cy
+	y''+ cy = 0.
 	\label{wellen:lineareDGL}
 \end{equation}
 
-F"ur positive Werte von c ist die L"osung dieser Gleichung 
-\ref{wellen:lineareDGL} bekanntlicherweise $C_1sin(\sqrt{c}x) + 
-C_2cos(\sqrt{c}x)$. Die Konstanten $C_1$ und $C_2$ stellen sich ein, je nach 
-dem, wie die Anfangsbedingungen $a_0$ und $a_1$ bestimmt werden. Als Beweis 
-dient folgende Grafik:
 
+F"ur positive Werte von c kann die L"osung dieser Gleichung 
+\ref{wellen:lineareDGL} mit dem charakteristischen Polynom bestimmt werden. 
+Die L"osungen des charaktrischten Polynoms
 
-F"ur negative Werte von c hat die Gleichung
+\begin{equation}
+	p(\lambda) = [(\lambda+\mu)^2+\omega^2] =0
+	\label{wellen:charakteristischesPolynom}
+\end{equation}
+
+sind
+
+\begin{equation}
+	\begin{split}
+	y_1 &= C_1e^{-\mu x}cos(\omega x) \\
+	y_1 &= C_2e^{-\mu x}sin(\omega x).
+	\end{split}
+	\label{wellen:lsgcharakteristischesPolynom}
+\end{equation}
+
+Das zur Gleichung \ref{wellen:lineareDGL} geh"orende charakteristische Polynom 
+ist gem"ass \ref{wellen:charakteristischesPolynom}
+
+\begin{equation*}
+	p(\lambda) = [\lambda^2 + c] =0.
+\end{equation*}
+
+Somit folgt die allgemeine L"osung der Differentialgleichung 
+\ref{wellen:lineareDGL} gem"ass \ref{wellen:lsgcharakteristischesPolynom}
+
+\begin{equation}
+	y(x) = C_1 cos(\sqrt{c}x) + C_2 sin(\sqrt{c}x)
+	\label{wellen:LsglineareDGL}
+\end{equation}
+
+Um die Konstanten $C_1$ und $C_2$ zu bestimmen m"ussen die Anfangsbedingungen 
+$a_0$ und $a_1$ bekannt sein. Um die Abh"angigkeit aufzuzeigen, muss zuerst die 
+erste Ableitung der L"osung \ref{wellen:LsglineareDGL} aufgestellt werden.
+
+\begin{equation}
+	y'(x)=-C_1 \sqrt{c} sin(\sqrt{c}x) + C_2 \sqrt{c} cos(\sqrt{c}x)
+\end{equation}
+
+Der Wert bei $y(0)$ ist definiert als $a_0$ und die Steigung am Punkt $y'(0)$ 
+ist das $a_1$. Setzt man $x=0$ in die L"osungsgleichung 
+\ref{wellen:LsglineareDGL} ein, k"onnen $C_1$ und $C_2$ bestimmt werden.
+
+\begin{equation}
+	\begin{split}
+		y(0) = C_1 = a_0 &\Leftrightarrow C_1 = a_0 \\
+		y'(0) = C_2 \sqrt{c} = a_1 &\Leftrightarrow C_2 = \frac{a_1}{\sqrt{c}}
+	\end{split}
+	\label{wellen:KonstantenC1C2}
+\end{equation}
+
+Setzt man diese Konstanten \ref{wellen:KonstantenC1C2} in die L"osungsgleichung 
+\ref{wellen:LsglineareDGL} 
+ein, ergibt sich die Gleichung, die sich mit den Startangaben, die definiert 
+werden, f"ur positive $c$-Werte berechnen l"asst.
+
+\begin{equation}
+	y(x) = a_0 cos(\sqrt{c}x) + \frac{a_1}{\sqrt{c}} sin(\sqrt{c}x)
+	\label{wellen:LSGleichung}
+\end{equation}
+
+In den folgenden zwei Grafiken werden die zwei Grundfunktionen von ``reinem''
+Sinus (erste Grafik) und Cosinus (zweite Grafik) aufgezeigt. Daf"ur muss 
+entweder $a_0$ oder $a_1$ gleich Null gesetzt werden.
+
+\noindent
+\includegraphics[scale=0.35]{./wellen/octave/images/grundfunktionen/sin.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/grundfunktionen/cos.png}
+
+F"ur negative Werte von c kann die L"osungsgleichung \ref{wellen:LSGleichung} 
+zwar auch verwendet werden, es entstehen aber imagin"are Faktoren durch die 
+negativen Wurzelwerten. Die imagin"are Einheit $i$ ist definiert als
+
+\begin{equation}
+	i = \sqrt{-1}.
+	\label{wellen:imaginaereEinheit}
+\end{equation}
+
+Wird dieser Wurzelwert \ref{wellen:imaginaereEinheit} bei jedem negativen Wert 
+von $c$ ausgeklammert, ergibt sich die L"osungsgleichung.
+
+\begin{equation}
+	\begin{split}
+	y(x) &= a_0 cos(i\sqrt{|c|}x) + \frac{a_1}{i\sqrt{|c|}}sin(i\sqrt{|c|}x) \\
+	\Leftrightarrow
+	y(x) &= a_0 cos(i\sqrt{|c|}x) - i\frac{a_1}{\sqrt{|c|}}sin(i\sqrt{|c|}x)
+	\end{split}	
+	\label{wellen:LSGnegcWerte}
+\end{equation}
+
+Die Definitionen vom Sinus Hyperbolicus und Cosinus Hyperbolicus lauten:
+
+\begin{equation*}
+	\begin{split}
+	sinh(x) &= \frac{1}{2} (e^x - e^{-x}) = -i sin(ix)\\
+	cosh(x) &= \frac{1}{2} (e^x + e^{-x}) = cos (ix)
+	\end{split}
+\end{equation*}
+
+Werden die Definitionen mit der L"osungsformel verglichen, ist ersichtlich, 
+dass es sich je nach Wahl von $a_0$ und $a_1$ um eine der beiden hyperbolischen 
+Funktionen handelt. Die L"osungsgleichung ergibt sich also zu
+
+\begin{equation*}
+	y(x) = a_0 cosh(\sqrt{|c|}x) + \frac{a_1}{\sqrt{|c|}}sinh(\sqrt{|c|}x)
+\end{equation*}
+
+In den folgenden zwei Grafiken wird zuerst der ``reine'' Sinus Hyperbolicus und 
+als zweites der ``reine'' Cosinus Hyperbolicus dargestellt.
+
+\noindent
+\includegraphics[scale=0.35]{./wellen/octave/images/grundfunktionen/sinh.png}
+\includegraphics[scale=0.35]{./wellen/octave/images/grundfunktionen/cosh.png}
+
 
 \section{Graphische L"osung}
 
