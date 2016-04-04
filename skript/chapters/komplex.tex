@@ -382,11 +382,64 @@ f'(g(z)) g'(z)
 f'(z)g(z)+f(z)g'(z)
 \end{align*}
 
+%
+% Analytische Funktionen
+%
+\subsection{Analytische Funktionen}
+Als wichtiges Beispiel komplex differenzierbarer Funktionen betrachten
+wir die analytischen Funktionen.
+\begin{definition}
+Eine Funktion $f\colon\mathbb C\to\mathbb C$ heisst analytisch im Punkt
+$z_0$, wenn sie in eine konvergente Potenzreihe
+\begin{equation}
+f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
+\label{komplex:freihe}
+\end{equation}
+entwickelt werden kann.
+\end{definition}
+
+Da die Ableitungsregeln f"ur komplex differenzierbare Funktionen nicht
+anders sind als die Ableitungsregeln f"ur relle Funktionen, muss gelten
+\begin{equation}
+f'(z)=\sum_{k=1}^\infty ka_k(z-z_0)^{k-1},
+\label{komplex:fpreihe}
+\end{equation}
+und es stellt sich nur die Frage, ob diese Potenzreihe ebenfalls konvergent
+ist.
+Man kann dies mit der Formel f"ur den Konvergenzradius pr"ufen.
+F"ur die Potenzreihe (\ref{komplex:freihe}) f"ur $f(z)$ liefert sie den
+Konvergenzradius
+\[
+\frac{1}{\varrho} = \limsup_{k\to\infty} \root{k}\of{|a_k|}.
+\]
+Dieselbe Formel f"ur die Reihe~(\ref{komplex:fpreihe}) liefert
+f"ur den Konvergenzradius der Ableitung $f'(z)$
+\[
+\limsup_{k\to\infty} \root{k}\of{k|a_k|}
+=
+\underbrace{\lim_{k\to\infty} \root{k}\of{k}}_{\textstyle=1}
+\cdot
+\underbrace{ \limsup_{k\to\infty} \root{k}\of{|a_k|}}_{\textstyle=1/\varrho}
+=
+\frac1{\varrho}.
+\]
+Die Reihe f"ur die Ableitung $f'(z)$ hat also den gleichen Konvergenzradius
+wie die Reihe f"ur die Funktion $f(z)$, dies gilt nat"urlich auch f"ur
+die h"oheren Ableitungen.
+
+Eine analytische Funktion ist somit beliebig oft komplex differenzierbar.
+Aus den Ableitungen kann wie bei reellen Funktionen die Taylor-Reihe
+gebildet werden, sie muss mit der Potenzreihe (\ref{komplex:freihe})
+"ubereinstimmen.
+Analytische Funktionen haben also eine konvergente Tayler-Reihe,
+\[
+f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0}{k!}(z-z_0)^k.
+\]
 
 %
 % Wegintegrale und die Cauchy-Formel
 %
-\subsection{Wegintegrale und die Cauchy-Formel}
+\subsection{Wegintegrale}
 Das Finden einer Stammfunktion, die Integration, ist die Grundtechnik,
 mit der man den "Ubergang von lokaler Information in Form von Ableitungen,
 zu globaler Information "uber reelle Funktionen vollzieht.
@@ -420,7 +473,7 @@ Theorie ergeben.
 %
 % Wegintegrale
 %
-\subsubsection{Wegintegrale}
+\subsubsection{Definition des Wegintegrals}
 Ein Weg in der komplexen Ebene ist eine Abbildung 
 \[
 \gamma\colon [a,b]\to\mathbb C: t\mapsto \gamma(t).
@@ -539,6 +592,78 @@ Funktion zwischen zwei Punkten nicht von der Wahl des Weges abh"angt,
 der die beiden Punkte verbindet.
 Dazu ist notwendig, geschlossene Wege genauer zu betrachten.
 
+%
+% Wegintegrale führen auf analytische Funktionen
+%
+\subsubsection{Wegintegrale f"uhren auf analytische Funktionen}
+Mit Wegintegralen kann man aus stetigen Funktionen neue Funktionen
+konstruieren.
+Die folgende Konstruktion liefert "uberraschenderweise immer
+analytische Funktionen.
+\begin{satz}
+\label{komplex:integralanalytisch}
+Sei $\gamma\colon [a,b]\to\mathbb C$ ein Weg in $\mathbb C$, der nicht
+durch den Nullpunkt verl"auft, und $g$ eine stetige Funktion
+auf $\gamma([a,b])$.
+Dann ist die Funktion
+\[
+f(z) = \frac1{2\pi i}\int_\gamma \frac{g(x)}{x-z}\,dx
+\]
+in einer Umgebung des Nullpunktes analytisch:
+\[
+f(z) = \sum_{k=0}^\infty c_k z^k,\qquad
+\text{mit\quad}
+c_k=\frac1{2\pi i}\int_\gamma \frac{g(x)}{x^{k+1}}\,dx.
+\]
+Der Konvergenzradius $\varrho$ dieser Reihe ist der minimale Abstand der
+Kurve $\gamma$ vom Nullpunkt.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zun"achst schreiben wir
+\begin{equation}
+\frac{1}{x-z}
+=
+\frac1x\cdot \frac{1}{1-\textstyle\frac{z}{x}}
+=
+\frac1x\cdot \sum_{k=0}^\infty \biggl(\frac{z}{x}\biggr)^k
+=
+\sum_{k=0}^\infty \frac{z^k}{x^{k+1}}.
+\label{komplex:georeihe}
+\end{equation}
+Damit k"onnen wir jetzt die Funktion $f(z)$ berechnen:
+\begin{align*}
+f(z)
+&=
+\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x-z}\,dx
+=
+\frac1{2\pi i} \int_{\gamma} \sum_{k=0}^\infty \frac{z^k}{x^{k+1}}g(x)\,dx
+\\
+&=
+\sum_{k=0}^\infty
+\underbrace{\biggl(\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x^{k+1}}\,dx\biggr)}_{\textstyle =c_k}
+z^k
+\end{align*}
+Wir m"ussen uns noch die Konvergenz dieser Reihen "uberlegen.
+Wenn $z<\varrho$ ist, dann ist 
+\[
+\biggl|\frac{z}{x}\biggr| 
+=
+\frac{|z|}{|x|}
+<1,
+\]
+so dass die geometrische Reihe (\ref{komplex:georeihe}) konvergent ist,
+daraus lesen wir ab, dass der Konvergenzradius mindestens $\varrho$
+ist.
+Gr"osser kann er allerdings auch nicht sein, da f"ur $|z|\ge \varrho$
+das Integral nicht mehr definiert sein muss.
+Nimmt man n"amlich einen Punkt von $g([a,b])$ f"ur $z$ wird der Integrand
+unendlich gross.
+\end{proof}
+
+%
+% Geschlossene Wege
+%
 \subsubsection{Geschlossene Wege}
 \begin{definition}
 Ein Weg $\gamma\colon[a,b]\to\mathbb C$ heisst {\em geschlossen}, wenn
@@ -661,9 +786,9 @@ Wir zielen dabei auf den folgenden Satz hin:
 \begin{satz}[Cauchy]
 Ist $f(z)$ eine in einem Gebiet $\Omega\subset\mathbb C$ definierte
 komplex differenzierbare Funktion, und ist $\gamma$ ein im Gebiet
-$\Omega$ auf einen Punkt zusammenziehbarer Weg, dann gilt
+$\Omega$ auf einen Punkt zusammenziehbarer geschlossener Weg, dann gilt
 \[
-\int_{\gamma}f(z)\,dz=0.
+\oint_{\gamma}f(z)\,dz=0.
 \]
 Ist insbesondere $\Omega$ {\em einfach zusammenh"angend}
 (d.~h.~jeder geschlossene Weg l"asst sich in einen Punkt zusammenziehen),
@@ -678,7 +803,7 @@ Wegintegrale in der Ebene.
 Er besagt, dass f"ur einen geschlossenen Weg $\gamma$ der in der Ebene
 das Gebiet $D$ berandet, und zwei Funktionen $L(x,y)$ und $M(x,y)$, gilt
 \[
-\int_\gamma(L\,dx + M\,dy)
+\oint_\gamma(L\,dx + M\,dy)
 =
 \int_D \biggl(\frac{\partial M}{\partial x}
 -\frac{\partial L}{\partial y}\biggr)\,dx\,dy.
@@ -712,7 +837,7 @@ Dabei haben wir auf der dritten Zeile den Satz von Green angewendet,
 und auf der letzten Zeile die Cauchy-Riemann-Differentialgleichungen.
 \end{proof}
 
-\begin{beispiel}
+\subsection{Beispiel: Airy-Differentialgleichung}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/airy-1.pdf}
@@ -816,9 +941,8 @@ i\cos\biggl(xt+\frac13t^3\biggr)-\sin\biggl(xt+\frac13t^3\biggr)\,dt
 Dabei haben wir im letzten Schritt verwendet, dass das Integral der
 ungeraden Funktion $\sin(xt+\frac13t^3)$ "uber ein symmetrisches
 Interval verschwindet.
-\end{beispiel}
 
-\subsubsection{Cauchy-Integral}
+\subsection{Die Cauchy-Integralformel}
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
 Dann ist auch die Funktion
 \[
@@ -876,37 +1000,11 @@ im Inneren eines Gebietes durch die Werte auf dem Rand bereits vollst"andig
 bestimmt.
 \end{satz}
 
-\subsubsection{Analytische Funktionen}
-Bisher haben wir Potenzreihen nur f"ur reelle Funktionen betrachtet,
-nicht f"ur komplexe Funktionen.
-Die Eigenschaften komplex differenzierbarer Funktionen gestatten
-uns jetzt aber auch, mehr "uber deren Entwickelbarkeit in Potenzreihen
-zu erfahren.
-Wir definieren daher
-
-\begin{definition}
-Eine komplexe Funktion $f(z)$ heisst im Punkt $z_0$ {\em analytisch}, wenn
-sie in eine konvergente Potenzreihe
-\[
-f(z)=\sum_{k=0}^n a_kz^k
-\]
-entwickelt werden kann.
-\end{definition}
-
-Offenbar sind analytische Funktionen im Punkt $z_0$ beliebig oft
-differenzierbar, und es gilt
-\[
-a_k=\frac{f^{(k)}(z_0)}{k!},
-\]
-die Taylorreihe von $f(z)$ ist also die urspr"ungliche Potenzreihe.
-In der reellen Analysis gibt es Funktionen, deren Taylerreihen zwar
-konvergieren, aber nicht mit der urspr"unglichen Funktion "ubereinstimmen.
-Wir m"ochten verstehen, dass dies im Komplexen nicht so ist.
-
-Sei als $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
+\subsubsection{Ableitungen und Cauchy-Formel}
+Sei $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
 nehmen wir der Einfachheit halber einen Kreis vom Radius $r$ um den Nullpunkt,
 sein Rand ist die Kurve $\gamma$.
-Durch ableiten der Cachyschen Integralformel finden wir
+Durch Ableiten der Cachyschen Integralformel finden wir
 \begin{align*}
 f(z)
 &=
@@ -936,7 +1034,7 @@ Es folgt
 Eine komplex differenzierbare Funktion ist beliebig oft differenzierbar.
 \end{satz}
 
-Es gilt aber noch mehr:
+\subsubsection{Komplex differenzierbare Funktionen sind analytisch}
 
 \begin{satz}
 Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
@@ -952,37 +1050,82 @@ a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{(z-z_0)^{k+1}}\,dz.
 \end{satz}
 
 \begin{proof}[Beweis]
-Wir m"ussen zeigen, dass die Potenzreihe
+Da $f$ komplex differenzierbar ist, gilt
 \[
-g(z)=\sum_{k=0}^na_k(z-z_0)^k
+f(z)=\frac1{2\pi i}\oint_\gamma \frac{f(\zeta)}{\zeta-z}\,d\zeta.
 \]
-im Inneren der Kreisscheibe konvergiert.
-Dazu sch"atzen wir $a_k$ mit Hilfe der Integralformel ab.
-Sei $M_\varrho$ das Maximum von $|f(z)|$ entlang eines
-Kreises vom Radius $\varrho<r$ um $z_0$.
-\[
-|a_k|
-=
-\frac1{2\pi}\biggl|\oint\frac{f(z)}{(z-z_0)^{k+1}}\,dz\biggr|
-\le
-\frac{M_\varrho}{2\pi}\frac{2\pi \varrho}{\varrho^{k+1}}
-=
-\frac{M_\varrho}{\varrho^k}
-\]
-Das Wurzelkriterium angewendet auf diese Koeffizienten liefert
-\[
-\limsup_{k\to\infty}\root{k}\of{|a_k|}
-\le
-\limsup_{k\to\infty}\frac{\root{k}\of{M_\varrho}}{\varrho}=\frac1{\varrho},
-\]
-insbesondere ist die Reihe $g(z)$ konvergent f"ur $|z-z_0|<r$.
-
-Die Differenz $h(z)=f(z)-g(z)$ ist komplex differenzierbar und sie
-verschwindet zusammen mit allen Ableitungen im Punkt $z_0$
-\[
-h^{(k)}(z_0)=0\quad\forall k\ge 0.
-\]
+In Satz~\ref{komplex:integralanalytisch} wurde gezeigt, dass $f(z)$
+analytisch ist, und dass die Koeffizienten der Potenzreihe von
+der verlangten Form sind.
 \end{proof}
 
+%
+% Analytische Fortsetzung
+%
+\section{Analytische Fortsetzung}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-1.pdf}
+\caption{Analytische Fortsetzung einer komplexen Funktion entlang einer
+Kurve $\gamma$.
+\label{komplex:fortsetzung}}
+\end{figure}
+Eine komplex differenzierbare Funktion $f(z)$ ist immer darstellbar als
+Potenzreihe, und ist daher analytisch.
+So kann zum Beispiel die Funktion $1/z$ als Potenzreihe um jeden 
+beliebigen Punkt $z_0$ entwickelt werden:
+\begin{align*}
+f(z)
+&=
+\frac1z
+=
+\frac1{z_0-(z_0-z)}
+=
+\frac1{z_0}\cdot
+\frac1{1-\frac{z_0-z}{z_0}}
+=
+\frac1{z_0}\sum_{k=0}^{\infty} \biggl(\frac{z_0-z}{z_0}\biggr)^k
+=
+\sum_{k=0}^{\infty} \frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k,
+\end{align*}
+Die Koeffizienten dieser Potenzreihe sind
+\[
+a_k=\frac{(-1)^k}{z_0^{k+1}},
+\]
+und man kann den Konvergenzradius ausrechnen:
+\[
+\frac1{\varrho}
+=
+\limsup_{k\to\infty} \root{k}\of{|a_k|} = \lim_{k\to\infty}\frac1{|z_0|^{\frac{k+1}{k}}}
+=
+\frac1{|z_0|}.
+\]
+Der Konvergenzradius ist limitiert durch die Singularit"at bei an der Stelle
+$z=0$.
+
+Es gibt also keine einzelne Potenzreihe, die die Funktion $f(z)=\frac1z$ in der
+ganzen komplexen Ebene darstellen kann.
+W"ahlt man aber einzelne Punkte $z_0$ und $z_1$ derart, dass der Kreis
+um $z_0$ mit Radius $|z_0|$ und der Kreis um $z_1$ mit Radius $|z_1|$
+"uberlappen, dann werden die beiden Potenzreihen im "Uberlappungsgebiet
+die gleichen Werte annehmen.
+
+Man k"onnte allso eine Kurve $\gamma$ in der komplexen Ebene w"ahlen,
+entlang der man in jedem Punkt die Funktion $f(z)$ in eine Potenzreihe 
+entwickelt.
+Liegen zwei Punkte nahe genug auf der Kurve $\gamma$, werden die
+Konvergenzkreise der Potenzreihen "uberlappen, und die Potenzreihen
+werden im "Uberlappungsgebiet die gleichen Werte liefern.
+
+Selbst wenn man eine Funktion $f(z)$ nur in einem Kreis um den Punkt $z_0$
+kennt, zum Beispiel durch eine Potenzreihe im Punkt $z_0$, kann man entlang
+einer Kurve, die $z_0$ mit $z_1$ verbindet, in jedem Punkt eine Potenzreihe
+finden, die mit der Potenzreihe in den Nachbarpunkten "ubereinstimmt, und
+so die Definition der Funktion entlang dieser Kurve auf ein gr"osseres
+Gebiet ausweiten, wie in Abbildung~\ref{komplex:fortsetzung} dargestellt.
+Man nennt dies die {\em analytische Fortsetzung} der Funktion $f(z)$ 
+entlange der Kurve $\gamma$.
+\index{analytische Fortsetzung}
+\index{Fortsetzung, analytische}
 
 
