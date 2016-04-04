@@ -1074,7 +1074,7 @@ Eine komplex differenzierbare Funktion $f(z)$ ist immer darstellbar als
 Potenzreihe, und ist daher analytisch.
 So kann zum Beispiel die Funktion $1/z$ als Potenzreihe um jeden 
 beliebigen Punkt $z_0$ entwickelt werden:
-\begin{align*}
+\begin{align}
 f(z)
 &=
 \frac1z
@@ -1087,7 +1087,8 @@ f(z)
 \frac1{z_0}\sum_{k=0}^{\infty} \biggl(\frac{z_0-z}{z_0}\biggr)^k
 =
 \sum_{k=0}^{\infty} \frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k,
-\end{align*}
+\label{komplex:1durchreihe}
+\end{align}
 Die Koeffizienten dieser Potenzreihe sind
 \[
 a_k=\frac{(-1)^k}{z_0^{k+1}},
@@ -1127,5 +1128,96 @@ Man nennt dies die {\em analytische Fortsetzung} der Funktion $f(z)$
 entlange der Kurve $\gamma$.
 \index{analytische Fortsetzung}
 \index{Fortsetzung, analytische}
+
+\begin{beispiel}
+Wir haben bereits gesehen, dass sich die Funktion $f(z)=1/z$ in jedem
+Punkt $z_0$ der komplexen Ebene in die Potenzreihe~\ref{komplex:1durchreihe}
+entwickeln l"asst.
+Diese Reihe l"asst sich integrieren
+\[
+F(z,z_0)
+=
+\sum_{k=0}^\infty\frac{(-1)^k}{(k+1)z_0^{k+1}}z^{k+1},
+\]
+diese Reihe ist ebenfalls auf einem Kreis vom Radius $|z_0|$ um den
+Punkt $z_0$ konvergent.
+Wir vermuten nat"urlich, dass dies eine Darstellung des nat"urlichen
+Logarithmus einer komplexen Zahl ist.
+Nat"urlich ist das immer nur auf einem Kreisgebiet m"oglich, die Reihe
+f"ur $z_=1$ ist zum Beispiel im Punkt $z=-1$ nicht konvergent.
+
+Um eine in der ganzen komplexen Ebene definierte Funktion $\log(z)$ zu
+konstruieren, m"ussen wir also eine analytische Fortsetzung aufbauen.
+Bei der Integration haben wir eine frei w"ahlbare Integrationskonstante
+$C(z_0)$, die wir so w"ahlen m"ussen, dass die Reihen im "Uberlappungsgebiet
+"ubereinstimmen:
+\[
+F(z,z_0) + C(z_0) = F(z,z_1)  + C(z_1)
+\]
+f"ur jedes $z$ im "Uberlappungsgebiet.
+Dadurch wird aber nur die Differenz $C(z_1)-C(z_0)$ der Werte festgelegt.
+Da wir "Ubereinstimmung mit der "ublichen Definition des Logarithmus
+erreichen m"ochten, k"onnen wir $C(1)=0$ festlegen.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-2.pdf}
+\caption{Analytische Fortsetzung f"ur die Funktion $\frac1z$ 
+entlang der Pfade $\gamma_+$ und $\gamma_-$
+\label{komplex:logfortsetzung}}
+\end{figure}
+Wir konstruieren jetzt die analytische Forstsetzung entlang der Kurven
+$\gamma_+$ und $\gamma_-$ wie in Abbildung~\ref{komplex:logfortsetzung}
+dargestellt.
+Um die Differenz $C(z_1)-C(z_0)$ zu bestimmen, Werten wir die Funktionen
+$F(z,z_0)$ und $F(z,z_1)$ jeweils im rot eingezeichneten Punkt aus.
+Die exakte Berechnung ist etwas m"uhsam, da es sich ja nur um ein Beispiel
+handelt, k"onnen wir die Reihen auch numerisch ausrechnen, und so die
+Differenzen bestimmen:
+\begin{align*}
+&\text{Startpunkt $z_0=1$:}& C(1)&=0             &       &       \\
+&\text{entlang $\gamma_+$:}& C(i)&= i\frac{\pi}2 & C(-1) &=  i\pi\\
+&\text{entlang $\gamma_-$:}&C(-i)&=-i\frac{\pi}2 & C(-1) &= -i\pi
+\end{align*}
+Wir stellen fest, dass die analytische Fortsetzung der Logarthmusfunktion
+entlang der Kurve $\gamma_+$ die Potenzreihe
+\[
+\log_+(z)
+=
+i\pi +\sum_{k=1}^\infty \frac{(-1)^{k+1}}{k(-1)^k}(z+1)^k
+=
+i\pi
+-
+\sum_{k=1}^\infty \frac{(z+1)^k}{k}
+\]
+ergibt, w"ahrend man entlang der  Kurve $\gamma_-$
+\[
+\log_-(z)
+=
+-i\pi +\sum_{k=1}^\infty \frac{(-1)^{k+1}}{k(-1)^k}(z+1)^k
+=
+-i\pi
+-
+\sum_{k=1}^\infty \frac{(z+1)^k}{k}
+\]
+findet.
+Die beiden analytischen Fortsetzungen entlang der Kurven $\gamma_+$ und
+$\gamma_-$ stimmen auf der negativen reellen Achse nicht "uberein,
+sie unterscheiden sich um $2\pi i$:
+\[
+\log_+(z)-\log_-(z)=2\pi i.
+\]
+\end{beispiel}
+
+Das Beispiel zeigt, dass es im Allgmeinen eine auf der ganzen komplexen
+Ebene definierte komplexe Entsprechung einer reellen Funktion nicht
+zu geben braucht.
+Dieses Ph"anomen tritt zum Beispiel auch bei der Wurzelfunktion $f(z)=\sqrt{z}$
+auf.
+Diese Funktion ist im Punkt $z=0$ nicht differenzierbar, man muss diesen
+Punkt also aus dem Definitionsbereich ausschliessen.
+F"uhrt man man analog zum Beispiel eine analytische Fortsetzung durch,
+findet man, dass sich die Werte von $f(z)$ f"ur die beiden Wege $\gamma_+$
+und $\gamma_-$ durch das Vorzeichen unterscheiden.
 
 
