@@ -22,6 +22,9 @@ auch die urspr"ungliche Differentialgleichung.
 Dies ist aber eine rein formale "Uberlegung, da die Ableitung nach einer
 komplexen Variablen noch gar nicht definiert ist.
 
+%
+% Komplex differenzierbare Funktion
+%
 \section{Komplex differenzierbare Funktionen}
 Wir betrachten in diesem Kapitel komplexwertige Funktionen,
 die ein einem Teilgebiet der komplexen Ebene definiert sind.
@@ -72,6 +75,9 @@ In dieser Sicht einer komplexen Funktion gibt es keine einzelne Zahl, die
 die Funktion einer Ableitung "ubernehmen k"onnte, die Ableitung
 ist eine $2\times 2$-Matrix.
 
+%
+% Definition der komplexen Ableitungen
+%
 \subsection{Komplexe Ableitung}
 Die Ableitung einer Funktion einer reellen Variablen wird mit Hilfe des
 Grenzwertes
@@ -158,6 +164,9 @@ an eine Funktion, komplex differenzierbare Funktionen bilden eine
 echte Teilmenge aller Funktionen, deren Real- und Imagin"arteil
 differenzierbar ist.
 
+%
+% Cauchy-Riemann-Differentialgleichungen
+%
 \subsection{Die Cauchy-Riemann-Differentialgleichungen}
 Komplexe Funktionen k"onnen nur differenzierbar sein, wenn sich die vier
 partiellen Ableitungen zu einer einzigen komplexen Zahl zusammenfassen
@@ -350,7 +359,87 @@ Wir haben die Funktion $f(z)$ bis auf eine Konstanten $ik$
 aus ihrem Realteil rekonstruiert.
 \end{beispiel}
 
-\subsection{Wegintegrale und die Cauchy-Formel}
+Die Cauchy-Riemann-Differentialgleichungen besagen auch, dass man nur
+die Ableitungen nach $x$ zu berechnen braucht, um die Ableitung $f'(x)$
+zu bestimmen.
+Die Rechenregeln f"ur die Ableitung lassen sich daher direkt auf
+komplexe Funktionen "ubertragen.
+\begin{align*}
+\frac{d}{dz}z^n
+&=
+nz^{n-1}
+\\
+\frac{d}{dz}e^z
+&=
+e^z
+\\
+\frac{d}{dz}f(g(z))
+&=
+f'(g(z)) g'(z)
+\\
+\frac{d}{dz}\bigl(f(z)g(z)\bigr)
+&=
+f'(z)g(z)+f(z)g'(z)
+\end{align*}
+
+%
+% Analytische Funktionen
+%
+\subsection{Analytische Funktionen}
+Als wichtiges Beispiel komplex differenzierbarer Funktionen betrachten
+wir die analytischen Funktionen.
+\begin{definition}
+Eine Funktion $f\colon\mathbb C\to\mathbb C$ heisst analytisch im Punkt
+$z_0$, wenn sie in eine konvergente Potenzreihe
+\begin{equation}
+f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
+\label{komplex:freihe}
+\end{equation}
+entwickelt werden kann.
+\end{definition}
+
+Da die Ableitungsregeln f"ur komplex differenzierbare Funktionen nicht
+anders sind als die Ableitungsregeln f"ur relle Funktionen, muss gelten
+\begin{equation}
+f'(z)=\sum_{k=1}^\infty ka_k(z-z_0)^{k-1},
+\label{komplex:fpreihe}
+\end{equation}
+und es stellt sich nur die Frage, ob diese Potenzreihe ebenfalls konvergent
+ist.
+Man kann dies mit der Formel f"ur den Konvergenzradius pr"ufen.
+F"ur die Potenzreihe (\ref{komplex:freihe}) f"ur $f(z)$ liefert sie den
+Konvergenzradius
+\[
+\frac{1}{\varrho} = \limsup_{k\to\infty} \root{k}\of{|a_k|}.
+\]
+Dieselbe Formel f"ur die Reihe~(\ref{komplex:fpreihe}) liefert
+f"ur den Konvergenzradius der Ableitung $f'(z)$
+\[
+\limsup_{k\to\infty} \root{k}\of{k|a_k|}
+=
+\underbrace{\lim_{k\to\infty} \root{k}\of{k}}_{\textstyle=1}
+\cdot
+\underbrace{ \limsup_{k\to\infty} \root{k}\of{|a_k|}}_{\textstyle=1/\varrho}
+=
+\frac1{\varrho}.
+\]
+Die Reihe f"ur die Ableitung $f'(z)$ hat also den gleichen Konvergenzradius
+wie die Reihe f"ur die Funktion $f(z)$, dies gilt nat"urlich auch f"ur
+die h"oheren Ableitungen.
+
+Eine analytische Funktion ist somit beliebig oft komplex differenzierbar.
+Aus den Ableitungen kann wie bei reellen Funktionen die Taylor-Reihe
+gebildet werden, sie muss mit der Potenzreihe (\ref{komplex:freihe})
+"ubereinstimmen.
+Analytische Funktionen haben also eine konvergente Tayler-Reihe,
+\[
+f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0}{k!}(z-z_0)^k.
+\]
+
+%
+% Wegintegrale und die Cauchy-Formel
+%
+\subsection{Wegintegrale}
 Das Finden einer Stammfunktion, die Integration, ist die Grundtechnik,
 mit der man den "Ubergang von lokaler Information in Form von Ableitungen,
 zu globaler Information "uber reelle Funktionen vollzieht.
@@ -381,9 +470,10 @@ von der Wahl des Weges ist.
 F"ur komplex differenzierbare Funktionen wird sich eine sehr erfolgreiche
 Theorie ergeben.
 
-% XXX Ableitungsregeln
-
-\subsubsection{Wegintegrale}
+%
+% Wegintegrale
+%
+\subsubsection{Definition des Wegintegrals}
 Ein Weg in der komplexen Ebene ist eine Abbildung 
 \[
 \gamma\colon [a,b]\to\mathbb C: t\mapsto \gamma(t).
@@ -502,6 +592,77 @@ Funktion zwischen zwei Punkten nicht von der Wahl des Weges abh"angt,
 der die beiden Punkte verbindet.
 Dazu ist notwendig, geschlossene Wege genauer zu betrachten.
 
+%
+% Wegintegrale führen auf analytische Funktionen
+%
+\subsubsection{Wegintegrale f"uhren auf analytische Funktionen}
+Mit Wegintegralen kann man aus stetigen Funktionen neue Funktionen
+konstruieren.
+Die folgende Konstruktion liefert "uberraschenderweise immer
+analytische Funktionen.
+\begin{satz}
+Sei $\gamma\colon [a,b]\to\mathbb C$ ein Weg in $\mathbb C$, der nicht
+durch den Nullpunkt verl"auft, und $g$ eine stetige Funktion
+auf $\gamma([a,b])$.
+Dann ist die Funktion
+\[
+f(z) = \frac1{2\pi i}\int_\gamma \frac{g(x)}{x-z}\,dx
+\]
+in einer Umgebung des Nullpunktes analytisch:
+\[
+f(z) = \sum_{k=0}^\infty c_k z^k,\qquad
+\text{mit\quad}
+c_k=\frac1{2\pi i}\int_\gamma \frac{g(x)}{x^{k+1}}\,dx.
+\]
+Der Konvergenzradius $\varrho$ dieser Reihe ist der minimale Abstand der
+Kurve $\gamma$ vom Nullpunkt.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zun"achst schreiben wir
+\begin{equation}
+\frac{1}{x-z}
+=
+\frac1x\cdot \frac{1}{1-\textstyle\frac{z}{x}}
+=
+\frac1x\cdot \sum_{k=0}^\infty \biggl(\frac{z}{x}\biggr)^k
+=
+\sum_{k=0}^\infty \frac{z^k}{x^{k+1}}.
+\label{komplex:georeihe}
+\end{equation}
+Damit k"onnen wir jetzt die Funktion $f(z)$ berechnen:
+\begin{align*}
+f(z)
+&=
+\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x-z}\,dx
+=
+\frac1{2\pi i} \int_{\gamma} \sum_{k=0}^\infty \frac{z^k}{x^{k+1}}g(x)\,dx
+\\
+&=
+\sum_{k=0}^\infty
+\underbrace{\biggl(\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x^{k+1}}\,dx\biggr)}_{\textstyle =c_k}
+z^k
+\end{align*}
+Wir m"ussen uns noch die Konvergenz dieser Reihen "uberlegen.
+Wenn $z<\varrho$ ist, dann ist 
+\[
+\biggl|\frac{z}{x}\biggr| 
+=
+\frac{|z|}{|x|}
+<1,
+\]
+so dass die geometrische Reihe (\ref{komplex:georeihe}) konvergent ist,
+daraus lesen wir ab, dass der Konvergenzradius mindestens $\varrho$
+ist.
+Gr"osser kann er allerdings auch nicht sein, da f"ur $|z|\ge \varrho$
+das Integral nicht mehr definiert sein muss.
+Nimmt man n"amlich einen Punkt von $g([a,b])$ f"ur $z$ wird der Integrand
+unendlich gross.
+\end{proof}
+
+%
+% Geschlossene Wege
+%
 \subsubsection{Geschlossene Wege}
 \begin{definition}
 Ein Weg $\gamma\colon[a,b]\to\mathbb C$ heisst {\em geschlossen}, wenn
@@ -624,9 +785,9 @@ Wir zielen dabei auf den folgenden Satz hin:
 \begin{satz}[Cauchy]
 Ist $f(z)$ eine in einem Gebiet $\Omega\subset\mathbb C$ definierte
 komplex differenzierbare Funktion, und ist $\gamma$ ein im Gebiet
-$\Omega$ auf einen Punkt zusammenziehbarer Weg, dann gilt
+$\Omega$ auf einen Punkt zusammenziehbarer geschlossener Weg, dann gilt
 \[
-\int_{\gamma}f(z)\,dz=0.
+\oint_{\gamma}f(z)\,dz=0.
 \]
 Ist insbesondere $\Omega$ {\em einfach zusammenh"angend}
 (d.~h.~jeder geschlossene Weg l"asst sich in einen Punkt zusammenziehen),
@@ -635,9 +796,152 @@ Weg in $\Omega$.
 \index{einfach zusammenhangend@einfach zusammenh\"angend}
 \end{satz}
 
-% XXX Wegunabh"angigkeit und Integrale über geschlossene Wege
+\begin{proof}[Beweis]
+Wir verwenden f"ur den folgenden Beweis den Satz von Green "uber
+Wegintegrale in der Ebene.
+Er besagt, dass f"ur einen geschlossenen Weg $\gamma$ der in der Ebene
+das Gebiet $D$ berandet, und zwei Funktionen $L(x,y)$ und $M(x,y)$, gilt
+\[
+\oint_\gamma(L\,dx + M\,dy)
+=
+\int_D \biggl(\frac{\partial M}{\partial x}
+-\frac{\partial L}{\partial y}\biggr)\,dx\,dy.
+\]
+Wir berechnen jetzt das Integral einer komplex differenzierbaren Funktion
+$f(z)$
+\begin{align*}
+\oint_\gamma f(z)\,dz
+&=
+\int (u(x,y)+iv(x,y))(\dot x(t)+i\dot y(t))\,dt
+\\
+&=
+\int u(x,y)\dot x(t) -v(x,y)\dot y(t)\,dt
++
+i \int u(x,y)\dot y(t)+v(x,y)\dot x(t)\,dt
+\\
+&=\oint_\gamma(u\,dx - v\,dy) + i\oint_\gamma(v\,dx + u\,dy)
+\\
+&=
+\int_D
+\underbrace{-\frac{\partial v}{\partial x}}_{\textstyle=\frac{\partial u}{\partial y}}
+-\frac{\partial u}{\partial y}
+\,dx\,dy
++i
+\int_D
+\underbrace{\frac{\partial u}{\partial x}}_{\textstyle=\frac{\partial v}{\partial y}}
+-\frac{\partial v}{\partial y}\,dx\,dy
+=0.
+\end{align*}
+Dabei haben wir auf der dritten Zeile den Satz von Green angewendet,
+und auf der letzten Zeile die Cauchy-Riemann-Differentialgleichungen.
+\end{proof}
 
-\subsubsection{Cauchy-Integral}
+\subsection{Beispiel: Airy-Differentialgleichung}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/airy-1.pdf}
+\caption{Kurven zur Berechnung der Airy-Funktionen
+\label{komplex:airy}}
+\end{figure}
+Als Beispiel soll die Airy-Differentialgleichung
+\[
+y''(x)-xy(x)=0
+\]
+gel"ost werden.
+Wir nehmen an, dass die Differentialgleichung mit der Laplace-Transformation
+gel"ost werden kann.
+Allerdings verwenden wir nicht die Integration entlang der positiven
+reellen Achse, wie das bei der traditionellen Laplace-Transformation
+"ublich ist, sondern Integration eintlang eines beliebigen Weges in
+der komplexen Ebene.
+Wir nehmen also an, dass sich $y(x)$ schreiben l"asst als
+\[
+y(x)=\int_\gamma e^{xz}v(z)\,dz
+\]
+f"ur eine komplex differenzierbare Funktion $v(z)$ und eine Kurve
+$\gamma\colon\mathbb R\to \mathbb C$.
+Setzen wir diesen Ansatz in die Airy-Differentialgleichung ein,
+erhalten wir
+\begin{align*}
+\int_\gamma z^2e^{xz}v(z)\,dz-\int\gamma xe^{xz}v(z)\,dz&=0
+\end{align*}
+Das zweite Integral kann mit partieller Integration umgeformt werden,
+man erh"alt
+\begin{align*}
+\int\gamma xe^{xz}v(z)\,dz
+&=
+\int_{-\infty}^{\infty} xe^{x\gamma(t)}v(\gamma(t))\dot\gamma(t)\,dt
+=
+\left[e^{xz}v(z)\right]_{\gamma(-\infty)}^{\gamma(\infty)}
+-\int_\gamma e^{xz}v'(z)\,dz
+\end{align*}
+Dieser Ausdruck ist nur dann sinnvoll, wenn der Weg $\gamma$ so gew"ahlt
+wird, dass die Endpunkte des Weges der Integrand beliebig klein wird,
+dies wird sp"ater die Wahl des Weges einschr"anken.
+Andererseits erhalten wir die Differentialgleichung erster Ordnung
+\begin{align*}
+\int_\gamma e^{xz}(z^2v(z)+v'(z))\,dz=0
+\qquad
+\Rightarrow
+\qquad
+v'(z)+z^2v(z)=0
+\end{align*}
+f"ur $v(z)$, die mit Separation gel"ost werden kann:
+\[
+\int \frac{dv}{v}=-\int z^2\,dz
+\qquad\Rightarrow\qquad
+v(z)=-\frac13z^3.
+\]
+Setzen wir dies in den Ansatz f"ur $y(x)$ ein, finden wir
+\[
+y(x)=\int_\gamma e^{xz-\frac13z^3}\,dz.
+\]
+Jetzt muss die Kurve $\gamma$ so gew"ahlt werden, dass das Integral
+wohldefiniert ist. 
+Dazu muss der Realteil des Exponenten f"ur jedes beliebige reelle $x$ 
+gegen $-\infty$ gehen, wenn $z$ gegen unendlich geht.
+In Abbildung~\ref{komplex:airy} sind die Gebiete grau eingezeichnet,
+in denen $-\frac13z^3$ negativen Realteil hat.
+Zul"assige Wege m"ussen daher ``Enden'' in den grauen Gebieten haben,
+d.~h.~$\gamma(t)$ muss in diesen Gebieten gegen Unendlich gehen, wenn
+$t\to\pm\infty$.
+Damit sind im wesentlichen die drei Kurven $\gamma_0$, $\gamma_+$ und
+$\gamma_-$ aus Abbildung~\ref{komplex:airy} w"ahlbar.
+
+F"ur $x\to\infty$ w"achst $e^{xz}$ im positiven grauen Teilgebiet
+"uber alle Grenzen, die Kurven $\gamma_+$ und $\gamma_-$ ergeben daher
+eine unbeschr"ankte L"osung.
+Nur die Kurve $\gamma_0$ kann ein beschr"ankte L"osung der Airy-Gleichung
+geben.
+Man nennt
+\[
+\operatorname{Ai}(x)
+=
+\frac{1}{2\pi i}\int_{\gamma_0} e^{xz-\frac13z^3}\,dz
+\]
+die Airy-Funktion.
+Auf die Wahl der Kurve $\gamma_0$ kommt es nicht an, solange sie in den
+beiden grauen Gebieten links der imagin"aren Achse enden.
+Deformiert man die Kurve $\gamma_0$ in die imagin"are Achse, erh"alt
+man daher die folgende Integraldarstellung der Airy-Funktion:
+\begin{align*}
+\operatorname{Ai}(x)
+&=
+\frac1{2\pi i}\int_{-\infty}^{\infty} e^{xit-\frac13(it)^3}i\,dt
+\\
+&=\frac{1}{2\pi i}\int_{-\infty}^{\infty} ie^{i(xt+\frac13t^3)}\,dt
+\\
+&=
+\frac{1}{2\pi i}\int_{-\infty}^{\infty}
+i\cos\biggl(xt+\frac13t^3\biggr)-\sin\biggl(xt+\frac13t^3\biggr)\,dt
+\\
+&=\frac{1}{\pi}\int_0^{\infty}\cos\biggl(xt+\frac13t^3\biggr)\,dt.
+\end{align*}
+Dabei haben wir im letzten Schritt verwendet, dass das Integral der
+ungeraden Funktion $\sin(xt+\frac13t^3)$ "uber ein symmetrisches
+Interval verschwindet.
+
+\subsection{Die Cauchy-Integralformel}
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
 Dann ist auch die Funktion
 \[
@@ -695,43 +999,17 @@ im Inneren eines Gebietes durch die Werte auf dem Rand bereits vollst"andig
 bestimmt.
 \end{satz}
 
-\subsubsection{Analytische Funktionen}
-Bisher haben wir Potenzreihen nur f"ur reelle Funktionen betrachtet,
-nicht f"ur komplexe Funktionen.
-Die Eigenschaften komplex differenzierbarer Funktionen gestatten
-uns jetzt aber auch, mehr "uber deren Entwickelbarkeit in Potenzreihen
-zu erfahren.
-Wir definieren daher
-
-\begin{definition}
-Eine komplexe Funktion $f(z)$ heisst im Punkt $z_0$ {\em analytisch}, wenn
-sie in eine konvergente Potenzreihe
-\[
-f(z)=\sum_{k=0}^n a_kz^k
-\]
-entwickelt werden kann.
-\end{definition}
-
-Offenbar sind analytische Funktionen im Punkt $z_0$ beliebig oft
-differenzierbar, und es gilt
-\[
-a_k=\frac{f^{(k)}(z_0)}{k!},
-\]
-die Taylorreihe von $f(z)$ ist also die urspr"ungliche Potenzreihe.
-In der reellen Analysis gibt es Funktionen, deren Taylerreihen zwar
-konvergieren, aber nicht mit der urspr"unglichen Funktion "ubereinstimmen.
-Wir m"ochten verstehen, dass dies im Komplexen nicht so ist.
-
-Sei als $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
+\subsubsection{Ableitungen und Cauchy-Formel}
+Sei $f(z)$ eine komplex differenzierbare Funktion, als Definitionsgebiet
 nehmen wir der Einfachheit halber einen Kreis vom Radius $r$ um den Nullpunkt,
 sein Rand ist die Kurve $\gamma$.
-Durch ableiten der Cachyschen Integralformel finden wir
+Durch Ableiten der Cachyschen Integralformel finden wir
 \begin{align*}
 f(z)
 &=
 \frac1{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{\zeta-z}\,d\zeta
 \\
-f'(zG)
+f'(z)
 &=
 \frac1{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{(\zeta-z)^2}\,d\zeta
 \\
@@ -755,25 +1033,30 @@ Es folgt
 Eine komplex differenzierbare Funktion ist beliebig oft differenzierbar.
 \end{satz}
 
-Es gilt aber noch mehr:
+\subsubsection{Komplex differenzierbare Funktionen sind analytisch}
 
 \begin{satz}
 Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
-vom Radius $r$ um den Nullpunkt definiert ist, ist analytisch.
+vom Radius $r$ um den Punkt $z_0$ definiert ist, ist analytisch.
 Ihre Potenzreihenentwicklung
 \[
-f(z)=\sum_{k=0}^na_kz^k
+f(z)=\sum_{k=0}^na_k(z-z_0)^k
 \]
 hat die Koeffizienten
 \[
-a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{z^{k+1}}\,dz.
+a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{(z-z_0)^{k+1}}\,dz.
 \]
 \end{satz}
 
 \begin{proof}[Beweis]
-Die Funktion
+Da $f$ komplex differenzierbar ist, gilt
 \[
-g(z)=\sum_{k=0}^na_kz^k
+f(z)=\frac1{2\pi i}\oint_\gamma \frac{f(\zeta)}{\zeta-z}\,d\zeta.
 \]
-ist komplex differenzierbar.
+In Satz~\ref{komplex:integralanalytisch} wurde gezeigt, dass $f(z)$
+analytisch ist, und dass die Koeffizienten der Potenzreihe von
+der verlangten Form sind.
 \end{proof}
+
+
+

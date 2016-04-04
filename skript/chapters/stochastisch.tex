@@ -1,0 +1,1337 @@
+%
+% stochastisch.tex -- Kapitel ueber stochastische Differentialgleichungen
+%
+\chapter{Stochastische Differentialgleichungen\label{chapter:stochastisch}}
+\lhead{Stochastische Differentialgleichungen}
+\rhead{}
+In vielen Anwendungen wird die Bewegung eines Systems auch von
+zuf"alligen Einfl"ussen bestimmt, die man oft auch Rauschen nennt.
+Die Natur des Rauschen bedeutet, dass aufeinanderfolgende inkremente
+v"ollig unkorreliert sind, w"ahrend Inkremente einer differenzierbaren
+Funktion voneinander abh"angig sind.
+Die L"osung einer Differentialgleichung unter Einfluss von Rauschen 
+kann daher niemals eine differenzierbare Funktion sein, und sie kann
+niemals eine L"osung der Differentialgleichung im bisher verwendeten
+Sinn sein.
+Um der Idee einen mathematischen Sinn zu geben, der auch erlaubt,
+solche Differentialgleichungen zu l"osen und in Anwendungen
+einzusetzen, muss daher zuerst gekl"art werden, was Rauschen genau ist.
+Anschliessend muss das Konzept einer Differentialgleichung so formuliert
+werden, dass es auch f"ur nicht differenzierbare Funktionen und Rauschen
+anwendbar ist.
+
+%
+% Ein Modell f"ur Rauschen
+%
+\section{Modell f"ur Rauschen: der Wiener-Prozess\label{section:wiener}}
+\rhead{Wiener-Prozess}
+Rauschen ist ein Zufallsph"anomen, die Wiederholung eines Experimentes
+wird im Allgemeinen einen anderen Verlauf ergeben.
+Der Pfad eines Teilchens $W(t)$ in Abh"angikeit ist daher ein Zufallsresultat.
+Wir brauchen daher einen Wahrscheinlichkeitsraum $\Omega$ und ein
+Wahrscheinlichkeitsmass $P$, und die Wege $W$ sind abh"angig von 
+der Durchf"uhrung $\omega\in\Omega$ des Experiments. 
+Genau genommen m"ussen wir also sagen, dass f"ur jedes $\omega\in\Omega$
+der Weg $W(\omega)$ eine Funktion
+\[
+W(\omega)\colon\mathbb R \to\mathbb R:t\mapsto W(\omega)(t)
+\]
+ist.
+Wir nennen eine solche Funktion einen {\em stochastischen Prozess}.
+\index{stochastischer Prozess}
+Im Folgenden werden wir die etwas schwerf"allige Notation etwas
+vereinfachen, und das $\omega$ weglassen.
+
+Wir m"ochten die Position eines Teilchens berechnen, dessen Geschwindigkeit
+ein solches ``Rauschen'' ist.
+Diese Position $W(t)$ ist ein stochastischer Prozess im eben erkl"arten Sinne.
+Die Brownsche Bewegung ist ein solcher Prozess, die Position $W(t)$ eines
+Teilchens unter dem Einfluss der thermischen Bewegung der Teilchen
+in einer Fl"ussigkeit als Funktion der Zeit wird eine nicht
+differenzierbare Funktion sein.
+Das beste, was wir erwarten k"onnen, ist dass die Positionsunterschiede
+\[
+W(t+\Delta t)-W(t),
+\quad
+W(t + 2\Delta t)-W(t+\Delta t),
+\quad
+W(t + 3\Delta t)-W(t+2\Delta t),\quad\dots
+\]
+voneinander unabh"angig sind, und nicht beliebig gross sind.
+Wir erwarten, dass diese Differenzen, die sich aus vielen kleinen
+St"ossen zusammensetzen, normalverteilt sind.
+Wir definieren daher
+
+\begin{definition}
+Ein stochastischer Prozess $W(t)$ heisst {\em Brownsche Bewegung} oder
+{\em Wiener Prozess}, wenn gilt
+\begin{compactenum}
+\item $W(0)=0$
+\item $W(t)-W(s)$ ist normalverteilt mit Erwartungswert $0$ und
+Varianz $t-s$, f"ur beliebige $t\ge s\ge 0$.
+\item F"ur beliebige Werte $t_i$ mit $0<t_1<t_2<\dots<t_n$, dann sind
+die Zufallsvariablen
+$W(t_1), W(t_2)-W(t_1),\dots,W(t_n)-W(t_{n-1})$ unabh"angig.
+\end{compactenum}
+\index{Brownsche Bewegung}
+\index{Wiener Prozess}
+\end{definition}
+
+A priori ist nicht klar, dass es so einen Prozess "uberhaupt gibt, wir
+m"ussen daher zeigen, dass sich eine solche Funktion konstruieren l"asst.
+Eine solche Funktion ist aber sicher nicht differenzierbar, denn
+der Differenzenquotient "uber ein Interval der L"ange $2\Delta t$
+\begin{align*}
+\frac{W(t+2\Delta)-W(t)}{2\Delta t}
+&=
+\frac{W(t+2\Delta t)-W(t+\Delta t)}{2\Delta t}
++
+\frac{W(t+\Delta t)-W(t)}{2\Delta t}
+\\
+&=
+\frac12\biggl(
+\frac{W(t+2\Delta t)-W(t+\Delta t)}{\Delta t}
++
+\frac{W(t+\Delta t)-W(t)}{\Delta t}
+\biggr)
+\end{align*}
+ist Mittelwert aus zwei Differenzenquotienten "uber k"urzere Intervalle,
+aber diese beiden Differenzenquotienten sind voneinander unabh"angig.
+Ein Grenzwert des Differenzenquotienten kann daher nicht existieren.
+
+\subsection{Eigenschaften des Wiener-Prozesses}
+Wir brauchen Rechenregeln, wie man mit Wiener-Prozessen Funktionen
+rechnen kann.
+Zum Beispiel ist $W(t)$ wegen Eigenschaft~2 normalverteilt mit Erwartungswert
+$0$ und Varianz $t$, also gilt
+\[
+E(W(t))=0,\qquad E(W(t)^2)=t,\qquad \forall\;t>0.
+\]
+Etwas weniger offensichtlich ist
+\begin{hilfssatz}
+Wenn $W(t)$ eine Brownsche Bewegung ist, dann ist
+\[
+E(W(t)W(s)) = t\wedge s = \min\{s,t\}
+\]
+f"ur beliebige $t,s\ge 0$.
+\end{hilfssatz}
+
+\begin{proof}[Beweis]
+Nehmen wir an, dass $t\ge s$, dass also $t\wedge s = s$.
+Dann k"onnen wir $E(W(t)W(s))$ berechnen
+\begin{align*}
+E(W(t)W(s))
+&=
+E((W(t)-W(s)+W(s))W(s))
+=
+E((W(t)-W(s))W(s))+E(W(s)^2)
+\end{align*}
+Eigenschaften~1 und~2 zeigen, dass $E(W(s)^2)=s$ ist.
+Eigenschaft~3 besagt, dass $W(t)-W(s)$ und $W(s)$ unabh"angig sind,
+der Erwartungswert ihres Produktes ist daher das Produkt der Erwartungswerte:
+\begin{align*}
+E(W(t)W(s))
+&=
+E((W(t)-W(s))W(s))+E(W(s)^2)
+=
+\underbrace{E(W(t)-W(s))}_{=0} \underbrace{E(W(s))}_{=0} + s
+\end{align*}
+wobei wir erneut Eigenschaft~2 verwendet haben.
+\end{proof}
+Man k"onnte diese Eigenschaft umschreiben als die Beobachtung,
+dass die weitere Entwicklung von $W(t)$ nach der Zeit $s$ bedeutungslos ist.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-1.pdf}
+\caption{Wiener-Prozess $W(t)$ in Abh"angigkeit von der Zeit
+\label{stochastisch:wiener}}
+\end{figure}
+
+\subsection{Konstruktion des Wiener-Prozesses}
+Wir m"ussen eine Konstruktion angeben, mit der wir zu einem gegebenen
+Interval $[0,T]$ eine Funktion $W(t)$ konstruieren k"onnen, die
+die Eigenschaften des Wiener-Prozesses erf"ullt.
+
+Zun"achst verlangen die Eigenschaften~1 und 2 des Wiener-Prozesses,
+dass $X(T)$ eine normalverteilte Zufallsvariable ist mit Erwartungswert
+$X(0)=0$ und Varianz $T$.
+Da $X(t)$ ausserdem stetig sein soll, verwenden wir als erste Iteration
+die lineare Funktion:
+\[
+W_1(t) = X(T)\frac{t}{T}
+\]
+Die Eigenschaft~3 verlangt, dass auch $X(T/2)$ normalverteilt ist mit
+Erwartungswert $0$ und Varianz $T/2$.
+Dies kann dadurch erreicht werden, dass wir $W_1$ durch einen 
+Polygonzug $W_2$ ersetzen, der bei $t=T/2$ einen zus"atzlichen
+Eckpunkt besitzt.
+Wir bezeichnen den Unterschied zwischen $W_2$ und $W_1$ an der
+Stelle $t=T/2$ mit
+\[
+Y=W_2(T/2)-W_1(T/2)=W_2(T/2) - W_1(T)/2.
+\]
+$Y$ muss so gew"ahlt werden, dass $W_2(T/2)$ eine normalverteilte
+Zufallsvariable mit Erwartungswert $0$ und Varianz $T/2$ wird,
+somit ist $Y$ auch normalverteilt.
+Der Erwartungswert von $Y$ ist
+\begin{align*}
+E(Y)&=E(W_2(T/2) - W_1(T)/2)=E(W_2(T/2))-E(W_1(T))/2=0,
+\end{align*}
+es ist also nur noch die Varianz $\sigma^2_Y$ w"ahlbar.
+Sie muss so gew"ahlt werden, dass $W_2(T/2)$ Varianz $T/2$
+bekommt:
+\begin{align*}
+\operatorname{var}\biggl(W_2\biggl(\frac{T}2\biggr))\biggr))
+&=
+\operatorname{var}\biggl(W_1\biggl(\frac{T}2\biggr) + Y\biggr)
+=
+\frac{\operatorname{var}(W_1)}4 + \operatorname{var}Y
+=
+\frac{T}4 +\sigma_Y^2
+\end{align*}
+Es folgt $\sigma_Y^2=\frac{T}4$.
+
+Wir m"ussen kontrollieren, ob die Inkremente unabh"angig sind.
+Dazu berechnen wir der Erwartungswert des Produktes der
+beiden Inkremente
+\begin{align*}
+W_2(T)-W_2\biggl(\frac{T}2\biggr)
+&=
+W_1(T)-\biggl(\frac{W_1(T)}2 + Y\biggr)
+=
+Y-\frac{W_1(T)}2
+\\
+W_2\biggl(\frac{T}2\biggr)-W_2(0)
+&=
+Y+
+\frac{W_1(T)}2
+\\
+\biggl(W_2(T)-W_2\biggl(\frac{T}2\biggr)\biggr)
+\biggl(W_2\biggl(\frac{T}2\biggr)-W_2(0)\biggr)
+&=
+\biggl(Y-\frac{W_1(T)}2\biggr)\biggl(Y+\frac{W_1(T)}2\biggr)
+=
+Y^2-\frac{W_1(T)^2}4
+\\
+E\biggl(
+\biggl(W_2(T)-W_2\biggl(\frac{T}2\biggr)\biggr)
+\biggl(W_2\biggl(\frac{T}2\biggr)-W_2(0)\biggr)
+\biggr)
+&=
+E(Y^2)-E\biggl(\frac{W_1(T)^2}4\biggr)
+=
+\sigma_Y^2 - \frac14\operatorname{var}(W_1(T))
+=
+0
+\end{align*}
+Somit sind die Inkremente unabh"angig.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-3.pdf}\\
+\includegraphics{chapters/images/stochastisch-4.pdf}\\
+\includegraphics{chapters/images/stochastisch-5.pdf}\\
+\includegraphics{chapters/images/stochastisch-6.pdf}\\
+\includegraphics{chapters/images/stochastisch-7.pdf}
+\caption{Schrittweise Konstruktion des Wiener-Prozesses als Grenzewert
+der Folge $W_n(t)$, $n=1,\dots,5$
+\label{stochastisch:folge1}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-8.pdf}\\
+\includegraphics{chapters/images/stochastisch-9.pdf}\\
+\includegraphics{chapters/images/stochastisch-10.pdf}\\
+\includegraphics{chapters/images/stochastisch-11.pdf}\\
+\includegraphics{chapters/images/stochastisch-12.pdf}
+\caption{Schrittweise Konstruktion des Wiener-Prozesses als Grenzewert
+der Folge $W_n(t)$, $n=6,\dots,10$
+\label{stochastisch:folge2}}
+\end{figure}
+
+Diesen Prozess k"onnen wir fortsetzen: f"ur $W_3$ nehmen wir einen
+Polygonzug mit zus"atzlichen Eckpunkten an den Stellen $T/4$ und $3T/4$.
+Die Differenz zwischen $W_3$ und $W_2$ an diesen Stellen m"ussen
+normalverteilt sein mit Erwartungswert $0$ und Varianz $T/8$.
+Auf diese Weise k"onnen wir eine Folge $W_n$ von Prozessen konstruieren,
+wie in den Abbildungen~\ref{stochastisch:folge1} und \ref{stochastisch:folge2}
+dargestellt.
+
+Dies reicht aber nicht.
+F"ur eine vollst"andige Konstruktion muss man noch die folgenden zwei
+Dinge zeigen.
+\begin{compactenum}
+\item
+Der Grenzwert existiert tats"achlich.
+Weil die einzelnen Zufallsvariablen $Y$ normalverteilt sind, k"onnen
+sie beliebig grosse Werte annehmen.
+Dies bedeutet auch, dass wir im Allgemeinen nicht davon ausgehen 
+k"onnen, dass die Folge $W_n(t)$ konvergiert.
+Zwar sind die Werte von $W_m$ an den Stellen $t_{k,n}=kT/2^{n-1}$ f"ur
+$k=0,\dots,2^{n-1}$ fest, sobald $m\ge n$.
+Zwischen diesen Werten k"onnen aber immer wieder grosse Werte auftreten,
+so dass die Folge $W_n$ weder gleichm"assig noch punktweise konvergieren
+kann.
+Die Frage der Konvergenz muss daher als Konvergenz in einer Art Mittel 
+angegangen werden.
+\item
+Die Forderung, dass die Inkremente $W(t)-W(s)$ und $W(s)-W(r)$ f"ur jedes 
+Tripel $t \ge s\ge r$ unabh"angig sein m"ussen.
+Die Konstruktion stellt nur sicher, dass dies gilt, wenn die Zeitpunkte
+des Tripels Eckpunkte der Polygonkonstruktion sind.
+\end{compactenum}
+
+%
+%
+%
+\section{Stochastische Differentialgleichungen\label{section:stochdgl}}
+\rhead{Differentialgleichungen}
+Wir m"ochten gerne eine Differentialgleichung f"ur den Zustand
+$X(t)$ eines Systems l"osen, welches von Rauschen mit beeinfluss wird.
+Eine solche Differentialgleichung k"onnten wir schreiben als
+\[
+\frac{dX(t)}{dt}
+=
+b(X(t)) + B(X(t))\frac{dW(t)}{dt}
+\]
+wobei $b$ die Rolle der Funktion $f$ aus
+Abschnitt~\ref{section:anfangswertprobleme} spielt.
+Die Ableitung von $W$ spielt die Rolle des Rauschens, wir wissen aber
+bereits, dass $W$ nicht differenzierbar sein kann, die Gleichung
+in dieser Form kann daher gar nicht sinnvoll sein.
+
+Formal kann man die Gleichung mit $dt$ multiplizieren, so dass man
+das formale Gleichungssystem
+\begin{align*}
+dX(t)
+&=
+b(X(t)) + B(X(t),t)\,dW(t)
+\\
+X(0)
+&=
+x_0
+\end{align*}
+erh"alt, aber auch in diesr Form sind die Ausdr"ucke $dX$ und $dW$ nicht
+ohne zus"atzliche Definition sinnvoll.
+Am ehesten hat man eine Chance, dieser Gleichung einen Sinn zu geben,
+wenn man man integriert:
+\begin{align*}
+X(t)=x_0+\int_0^t b(X(s))\,ds + \int_0^t B(X(s), s)\, dW,\qquad t>0.
+\end{align*}
+Das erste Integral ist ein gew"ohnliches Integral, denn wir
+gehen davon aus, dass die Funktion $X(t)$ stetig ist.
+Wenn $B=0$ ist, dann liefert diese Formel genau L"osungen der
+urspr"unglichen Differentialgleichung.
+Wir brauchen aber immer noch eine Interpretation des zweiten Integrals,
+diese werden wir in Abschnitt~\ref{subsection:stochint} geben.
+
+Nehmen wir f"ur den Moment an, dass die L"osung $X(t)$ gefunden werden
+kann, und sei $u$ eine beliebig oft differenzierbare Funktion.
+Wir erwarten, dass die Ableitung von $Y(t)=u(X(t))$ nach der
+Kettenregel
+\[
+dY = u'\,dX = u'b\,dt + u'\,dW
+\]
+sein sollte.
+Tats"achlich ist das Rauschen so stark, dass die Kr"ummung der Funktion
+$u$ bereits eine Rolle spielt.
+Bei einer gew"ohnlichen Differentialgleichung sind auf kleine Entfernungen
+die zweiten Ableitungen von $u$ vernachl"assigbar.
+Die schnellen, vom Rauschen verursachten Abweichungen f"uhren sind aber nicht
+klein, so dass die korrekte Kettenregel bei Anwesenheit von Rauschen die
+It\^o-sche Kettenregel wird, die stattdessen den Ausdruck
+\[
+dY =  \biggl(u'b + \frac12u''\biggr)\,dt + u'\,dW
+\]
+liefert.
+Der Term $\frac12u''$ ist in der klassischen Analysis nicht vorhanden.
+Wir m"ussen daher auch alle gewohnten Rechenregeln der Analysis "uberpr"ufen.
+
+\subsection{Stochastische Integrale\label{subsection:stochint}}
+Wir m"ochten eine Definition f"ur ein Integral der Form
+\[
+\int_0^T G\,dW
+\]
+f"ur zwei stochastische Prozesse $G(t)$ und $W(t)$.
+
+\subsubsection{Das Paley-Wiener-Zygmund Integral}
+F"ur differenzierbare Funktionen $g(t)$ und $w(t)$ ist klar, was 
+mit dem Integral gemeint ist:
+\[
+\int_0^T g(t)\,dw = \int_0^T g(t) w'(t)\,dt.
+\]
+Wenn $g(0)=g(T)=0$ ist, dann kann man dies mit Hilfe partieller Integration
+vereinfachen:
+\[
+\int_0^T g(t)\,dw
+=
+\int_0^T g(t) w'(t)\,dt
+=
+[g(t)w(t)]_0^T
+-
+\int_0^T g'(t) w(t)\,dt
+=
+-\int_0^T g'(t) w(t)\,dt
+\]
+Diese letzte Formel ist aber auch geeignet als Definition des Integrals
+f"ur eine brownsche Bewegung $W(t)$ an Stelle von $w(t)$.
+
+\begin{definition}
+F"ur eine stetig differenzierbare Funktion $g\colon[0,T]\to \mathbb R$ 
+mit $g(0)=g(T)=0$, setze
+\[
+\int_0^T g\,dW = -\int g'(t) W(t)\,dt.
+\]
+\end{definition}
+
+\begin{hilfssatz}
+Erwartungswert und Varianz der Zufallsvariablen
+\[
+Z=\int_0^T g\,dW
+\]
+ist
+\begin{compactenum}
+\item $E(Z)=0$
+\item $\operatorname{var}(Z)=\int_0^Tg(t)^2\,dt$
+\end{compactenum}
+\end{hilfssatz}
+
+\begin{proof}[Beweis]
+F"ur den Erwartungswert finden wir mit Hilfe der Rechenregeln f"ur den
+Erwartungswert
+\begin{align*}
+E(Z)
+&=
+E\biggl(\int_0^T g\,dW\biggr)
+=
+E\biggl(
+\int_0^T g'(t) W(t)\,dt
+\biggr)
+=
+\int_0^T g'(t) \underbrace{E(W(t))}_{=0}\,dt=0
+\end{align*}
+Die Varianz ist daher der Erwartungswert $E(Z^2)$, die wir ebenfalls unter
+Verwendung der Rechenregeln berechnen k"onnen
+\begin{align*}
+E(Z^2)
+&=
+E\biggl(\biggl(\int_0^T g\,dW\biggr)^2\biggr)
+=
+E\biggl(
+\biggl(
+\int_0^T g'(t)W(t)\,dt
+\biggr)^2
+\biggr)
+\\
+&=
+E\biggl(
+\int_0^T g'(t)W(t)\,dt
+\int_0^T g'(s)W(s)\,ds
+\biggr)
+=
+E\biggl(
+\int_0^T \int_0^T g'(t)W(t) g'(s)W(s) \,ds \,dt
+\biggr)
+\\
+&=
+\int_0^T\int_0^Tg'(t)g'(s) \underbrace{E(W(t)W(s))}_{=t\wedge s}\,ds\,dt
+\\
+&=
+\int_0^Tg'(t) \biggl(\int_0^t g'(s) s\,ds + \int_t^T g'(s)t\,ds\biggr)
+\,dt
+\\
+&=
+\int_0^T g'(t)\biggl(
+\underbrace{[g(s)s]_0^t}_{=tg(t)}-\int_0^t g(s)\,ds+t(\underbrace{g(T)}_{=0}-g(t))
+\biggr)\,dt
+\\
+&=
+\int_0^T g'(t)\biggl(-\int_0^t g(s)\,ds\biggr)\,dt
+\\
+&=
+\biggl[
+g(t)\biggl(-\int_0^t\int_0^tg(s)\,ds\biggr)
+\biggr]_0^T
++
+\int_0^Tg(t)^2\,dt
+\end{align*}
+Damit ist die Behauptung bewiesen.
+\end{proof}
+Der Hilfssatz kann dazu verwendet werden, die Definition des Integrals auf
+weitere Funktionen auszudehnen.
+Eine Folge von Funktionen $g_n$ f"uhrt auf eine Folge von Werten des
+Integrals. 
+Um daraus eine Erweiterung des Integrals zu konstruieren, m"ussen wir 
+definieren, was es heissen soll, dass die Folge $g_n$ konvergiert.
+Wir verwenden die Norm
+\[
+\|f\|_2^2=\int_0^T f(t)^2 \,dt,
+\]
+um den Abstand zwischen Funktionen zu messen.
+Eine Cauchy-Folge von Funktionen in dieser Norm ist dann eine Folge so,
+dass f"ur jedes $\varepsilon>0$ ein $N>0$ existiert, so dass aus
+$n,m>N$ folgt
+\[
+\|g_n-g_m\|_2^2=\int_0^T (g_n(t)-g_m(t))^2\,dt<\varepsilon.
+\]
+In diesem Fall gilt, dass
+\[
+E\biggl(
+\biggl(
+\int_0^T g_n\,dW
+-
+\int_0^T g_m\,dW
+\biggr)^2
+\biggr)
+=
+\int_0^T(g_m(t)-g_n(t))^2\,dt<\varepsilon
+\]
+Die Zufallsvariablen
+\[
+Z_n = \int_0^T g_n\,dW
+\]
+bildet daher eine Cauchy-Folge von quadratintegrierbaren Funktionen
+in $L^2(\Omega)$, und wir k"onnen deren Grenzwert
+\[
+\int_0^T g\,dW
+=
+\lim_{n\to\infty}\int_0^T g_n\,dW
+\]
+als den verallgemeinerten Wert f"ur das Integral einer beliebigen Funktion
+$g\in L^2([0,T])$ definieren.
+
+\subsubsection{Riemann-Summen}
+Die Verallgemeinerung des Paley-Wiener-Zygmund-Integral auf
+quadratintegrierbare Funktionen ist allerdings nicht ausreichend, um
+\[
+\int_0^T W\,dW
+\]
+zu definieren.
+Wir k"onnen aber noch weiter zur"uck gehen zur Definition des
+Riemann-Integrals, und sie verallgemeinern auf einen stochastischen
+Prozess.
+
+\begin{definition}
+Eine {\em Unterteilung} $P$ des Intevals $[0,T]$ ist eine endliche Menge
+von Teilpunkten
+\[
+P=\{ 0=t_0<t_1<t_2<\dots<t_m=T\}.
+\]
+Die {\em Maschenweite} $|P|$ der Unterteilung $P$ ist
+\[
+|P|=\max_{0\le k\le m-1}|t_{k+1\mathstrut}-t_{k\mathstrut}|.
+\]
+F"ur ein festes $0\le \lambda\le 1$ setzen wir
+\[
+\tau_k = (1-\lambda)t_{k\mathstrut}+\lambda t_{k+1\mathstrut}.
+\]
+\end{definition}
+F"ur $\lambda=0$ ist $\tau_k=t_k$, f"ur $\lambda=1$ gilt $\tau_k=t_{k+1}$.
+F"ur andere Werte von $\lambda$ ist $\tau_k$ ein Punkt im Inneren des
+Intervals $[t_k,t_{k+1}]$.
+Wie "ublich kann eine solche Unterteilung dazu verwendet werden, die 
+Riemann-Summe als Approximation des Integrals zu definieren:
+
+\begin{definition}
+Die Riemann-Summe von $W$ f"ur die Unterteilung $P$ ist
+\[
+R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
+\]
+\end{definition}
+
+\begin{hilfssatz}
+\label{stochastisch:quadrvariation}
+Sei
+\[
+P^{(n)}
+=\{0=t_0^{(n)}<t_1^{(n)}<\dots < t_{m_n}^{(n)}=T\}
+\]
+eine Folge von Unterteilungen des Intervals $[0,T]$ derart,
+dass die Maschenweite gegen $0$ strebt, dann gilt
+\[
+\lim_{n\to\infty}
+\sum_{k=0}^{m_n-1} \bigl(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\bigr)^2
+=T
+\]
+in $L^2(\Omega)$.
+\end{hilfssatz}
+
+\begin{proof}[Beweis]
+Konvergenz in $L^2(\Omega)$ bedeutet, dass der Erwartungswert der
+quadratische Abweichung gegen $0$ streibt.
+Setzen wir
+\[
+Q_n = 
+\sum_{k=0}^{m_n-1} \left(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\right)^2,
+\]
+und m"ussen untersuchen, ob $E((Q_n - T)^2)$ gegen $0$ strebt.
+Wir beginnen mit der Bemerkung, dass
+\begin{align*}
+Q_n-T
+&=
+\sum_{k=0}^{m_n-1}
+\left((W(t_{k+1}^{(n)})-W(t_{k}^{(n)}))^2 - (t_{k+1}^{(n)}-t_k^{(n)})\right).
+\end{align*}
+Die einzelnen Differenzen k"urzen wir ab als
+\begin{align*}
+Y_k
+&=
+\frac{W(t_{k+1}^{(n)})-W(t_k^{(n)})}{\sqrt{t_{k+1}^{(n)}-t_{k}^{(n)}}},
+\\
+\Delta_k
+&=
+t_{k+1}^{(n)}-t_k^{(n)}.
+\end{align*}
+F"ur $j\ne k$ sind $Y_j^{(n)}$ und $Y_{k}^{(n)}$ unabh"angig.
+Ausserdem ist $Y_k$ standardnormalverteilt, also $E(Y_k)=0$
+und $E(Y_k^2)=1$.
+Die Summanden in der Summe lassen sich damit kompakter ausdr"ucken:
+\begin{align*}
+Q_n-T
+&=
+\sum_{k=0}^{m_n-1} (Y_k^2-1) \Delta_k
+\end{align*}
+Dies k"onnen wir in $E((Q_n-T)^2)$ einsetzen:
+\begin{align*}
+E((Q_n-T)^2)
+&=
+\sum_{k=0}^{m_n-1}
+\sum_{j=0}^{m_n-1}
+E\biggl(
+(Y_k^2-1)\Delta_k
+(Y_j^2-1)\Delta_j
+\biggr)
+\end{align*}
+Die Doppelsumme kann zerlegt werden in Terme mit $j=k$ und $j\ne k$.
+
+In den Terme mit $j\ne k$ sind die $Y_k$ und $Y_j$ voneinander unabh"angig,
+der Erwartungswert des Produktes kann daher in das Produkt der Erwartungswerte
+zerlegt werden:
+\begin{align*}
+E\biggl(
+(Y_k^2-1)\Delta_k
+(Y_j^2-1)\Delta_j
+\biggr)
+&=
+E(Y_k^2-1)
+E(Y_j^2-1)
+\Delta_k
+\Delta_j
+\\
+&=
+\bigl(E(Y_k^2) -1\bigr)
+\bigl(E(Y_j^2) -1\bigr)
+\Delta_k
+\Delta_j
+=0
+\end{align*}
+Im letzten Schritt haben wir verwendet, dass $E(Y_k^2)=\operatorname{var}Y_k=1$
+ist.
+
+Die Terme mit $j=k$ sind 
+\begin{align*}
+E((Q_n-T)^2)
+&=
+\sum_{k=0}^{m_n-1} E\biggl((Y_k^2-1)^2\Delta_k^2\biggr)
+\\
+&=
+\sum_{k=0}^{m_n-1} E\bigl((Y_k^2-1)^2\bigr)\Delta_k^2
+\le 
+\biggl(\sum_{k=0}^{m_n-1} E\bigl((Y_k^2-1)^2\bigr)\Delta_k\biggr)\, |P^{(n)}|
+\end{align*}
+Im letzten Schritt haben wir einen Faktor $\Delta_k$ aus der Summe
+herausgenommen und durch die Maschenweite $|P^{(n)}|$ abgesch"atzt.
+
+Da $Y_k$ standardnormalverteilt ist, ist der Erwartungswert $E((Y_k^2-1)^2)$
+unabh"angig von $k$, wir nennen diesen Wert $C$, der genaue Wert ist
+nicht wichtig\footnote{Man kann den Wert nat"urlich wie folgt berechnen:
+\begin{align*}
+E((Y_k^2-1)^2)
+&=
+E(Y_k^4-2Y_k^2+1)
+=
+E(Y_k^4)-2E(Y_k^2)+E(1)
+=
+6-2+1=5.
+\end{align*}}.
+Damit l"asst sich die Differenz jetzt unabh"angig von $k$ absch"atzen
+\begin{align*}
+E((Q_n-T)^2)
+&
+\le
+C\biggl(\sum_{k=1}^{m_n}\Delta_k\biggr)\, |P^{(n)}|
+=CT|P^{(n)}|.
+\end{align*}
+Da die Maschenweite $|P^{(n)}|\to 0$ f"ur $n\to\infty$ folgt, dass
+$Q_n\to T$ in $L^2(\Omega)$.
+\end{proof}
+
+\begin{hilfssatz} Sei $P^{(n)}$ eine Folge von Unterteilungen des
+Intervals $[0,T]$ derart, dass die Maschenweite gegen $0$ strebt und
+sei $R_n=R(P^{(n)},\lambda)$ die zugeh"orige Riemann-Summe.
+Dann gilt
+\[
+\lim_{n\to\infty} R_n = \frac{W(T)^2}2 + \biggl(\lambda-\frac12\biggr)T
+\]
+als Funktion in $L^2(\Omega)$.
+\end{hilfssatz}
+
+\begin{proof}[Beweis]
+Wir m"ussen die Riemann-Summe
+\begin{align*}
+R_n
+&=
+\sum_{k=0}^{m_n-1}
+W(\tau_k) (W(t_{k+1}^{(n)})-W(t_k^{(n)}))
+\end{align*}
+durch Inkremente von Werten von $W(t)$ ausdr"ucken, konkret durch
+\[
+W(t_{k+1}^{(n)})-W(t_k^{(n)}),\quad
+W(t_{k+1}^{(n)})-W(\tau_k^{(n)})
+\quad \text{und} \quad
+W(\tau_k^{(n)})-W(t_k^{(n)}).
+\]
+Um herauszufinden, wie dies m"oglich sein k"onnte, k"urzen wir die Werte
+von $W$ ab durch
+\[
+a_k=W(t_k^{(n)}),\quad
+b_k=W(\tau_k^{(n)})\quad\text{und}\quad
+c_k=W(t_{k+1}^{(n)}),
+\]
+wobei wir im folgenden zur Vereinfachung der Rechnung die Indizes auch
+weglassen.
+Jetzt versuchen wir $b(c-a)$ durch andere Differenzen auszudr"ucken.
+\begin{align*}
+(b-a)^2
+&=
+b^2-2ab + a^2
+\\
+(c-a)^2
+&=
+c^2-2ac+a^2
+\\
+(c-b)(b-a)
+&=
+cb-b^2-ac+ab
+\end{align*}
+Um den Ausdruck $b(c-a)$ zu produzieren, muss der letzte Term verwendet
+werden, denn er ist der einzige, der $bc$ enth"alt.
+Dann muss aber auch der erste Term verwendet werden, um den Term $b^2$ zum
+Verschwinden  zu bringen.
+Ebenso muss der zweite Term $\frac12$-mal subtrahiert werden, damit der
+Ausdruck $ac$ wegf"allt:
+\begin{align*}
+(b-a)^2-\frac12(c-a)^2+(c-b)(b-a)
+&=
+(b^2-2ab + a^2)
+-\frac12(c^2-2ac+a^2)
++(cb-b^2-ac+ab)
+\\
+&=
+cb-ab + \frac12a^2
+-\frac12c^2
+\end{align*}
+Die quadratischen Terme sind $\frac12c_k^2=\frac12W(t_{k+1}^{(n)})^2$ und
+$\frac12a_k^2=\frac12W(t_{k}^{(n)})^2$, die sich in aufeinanderfolgenden Termen
+jeweils wegheben.
+Nur der erste und letzte Term bleibt in der Summe bestehen, was wir
+aber leicht korrigieren k"onnen.
+So finden wir daher:
+\begin{align*}
+R_n
+&=
+\sum_{k=0}^{m_n-1} (b_k-a_k)^2
+-\frac12\sum_{k=0}^{m_n-1} (c_k-a_k)^2
++\sum_{k=0}^{m_n-1} (c_k-b_k)(b_k-a_k)
+- \frac12a_0^2
++ \frac12c_{m_n-1}^2
+\end{align*}
+Die zweite Summe wurde im Hilfssatz~\ref{stochastisch:quadrvariation}
+berechnet, dort wurde gefunden, dass die Summe f"ur $n\to\infty$ gegen $T$
+konvergiert.
+Mit der gleichen Rechnung wie in \ref{stochastisch:quadrvariation}
+kann man finden, dass die zweite Summe gegen $\lambda T$ strebt.
+
+Die Inkremente in der dritten Summe sind unabh"angig voneinander, daher
+verschwinden die Erwartunsgewerte gemischter Produkte, es bleiben nur
+die Terme
+\begin{align*}
+E\biggl(\biggl(\sum_{k=0}^{m_n-1}(c_k-b_k)(b_k-a_k)\biggr)^2\biggr)
+&=
+\sum_{k=0}^{m_n-1}
+E\bigl((c_k-b_k)^2\bigr)E\bigl((b_k-a_k)^2\bigr)
+\\
+&=
+\sum_{k=0}^{m_n-1}
+E\bigl((W(t_{k+1}^{(n)})-W(\tau_k^{(n)}))^2\bigr)E\bigl((W(\tau_k^{(n)}-W(t_k^{(n)})^2\bigr)
+\\
+&=
+\sum_{k=0}^{m_n-1}
+(t_{k+1}^{(n)}-\tau_k^{(n)}) (\tau_k^{(n)}-t_k^{(n)})
+\\
+&=
+\sum_{k=0}^{m_n-1}
+(1-\lambda)(t_{k+1}^{(n)}-t_k^{(n)}) \lambda(t_{k+1}^{(n)}-t_k^{(n)})
+\\
+&\le 
+(1-\lambda)\lambda
+|P^{(n)}|
+\sum_{k=0}^{m_n-1}
+(t_{k+1}^{(n)}-t_k^{(n)})
+\le (1-\lambda)\lambda T|P^{(n})|\to 0
+\end{align*}
+f"ur $n\to\infty$.
+Damit ist gezeigt, dass die Riemann-Summe in $L^2(\Omega)$ gegen
+\[
+R_n\to
+\frac{W(T)^2}2+\biggl(\lambda-\frac12\biggr)T
+\]
+konvergiert.
+\end{proof}
+
+\subsubsection{Das It\^o-Integral}
+Ausgehend von der Riemann-Summe und den f"ur sie hergeleiteten Eigenschaften
+wollen wir jetzt ein Integral
+\[
+\int_0^T G\,dW
+\]
+f"ur eine breitere Klasse von stochastischen Prozessen $G$ definieren.
+Der erste Schritt dazu, ist das Integral f"ur Stufenprozesse zu definieren.
+
+\begin{definition}
+\index{Stufenprozess}
+Ein stochastischer Prozess $G(t)$ ist eine {\em Stufenprozess}, wenn es eine
+Unterteilung $P=\{0=t_0<t_1<\dots<t_m=T\}$ gibt derart, dass
+$G(t)=G(t_k)$ f"ur $t_k\le t<t_{k+1}$.
+\end{definition}
+
+\begin{definition}
+Ist $G$ ein Stufenprozess, dann ist das {\em It\^o-Integral} von $G$ definiert
+als
+\[
+\int_0^TG\,dW = \sum_{k=0}^{m-1}G(t_k)(W(t_{k+1})-W(t_k)).
+\]
+Das It\^o-Integral ist eine Zufallsvariable.
+\end{definition}
+
+Das It\^o-Integral hat die folgenden Eigenschaften
+\begin{hilfssatz}
+Wenn $G$ und $H$ Stufenprozesse sind und $a,b\in\mathbb R$, dann gilt
+\begin{compactenum}
+\item Das It\^o-Integral ist linear:
+\[
+\int_0^T aG+bH\,dW
+=
+a\int_0^T G\,dW + b \int_0^TH\,dW
+\]
+\item Der Erwartungswert des It\^o-Integrals ist $0$:
+\[
+E\biggl(\int_0^T G\,dW\biggr)=0.
+\]
+\item Die Varianz des It\^o-Integrals ist
+\[
+E\biggl(\biggl(\int_0^T G\,dW\biggr)^2\biggr)
+=
+E\biggl(\int_0^T G^2\,dt\biggr)
+\]
+\end{compactenum}
+\end{hilfssatz}
+
+\begin{proof}[Beweis]
+F"ur die Linearit"at verwenden wir eine Unterteilung $P$, f"ur die sowohl
+$G$ also auch $H$ ein ein Stufenprozess ist.
+Dann gilt
+\begin{align*}
+\int_0^T aG+bH\,dW
+&=
+\sum_{k=0}^{m-1} (aG(t_k)+bH(t_k))(W(t_{k+1})-W(t_k))
+\\
+&=
+a\sum_{k=0}^{m-1} G(t_k)(W(t_{k+1})-W(t_k))
++
+b\sum_{k=0}^{m-1} H(t_k)(W(t_{k+1})-W(t_k))
+\\
+&=a\int_0^TG\,dW+b\int_0^TH\,dW
+\end{align*}
+womit die Linearit"at bewiesen ist.
+
+F"ur den Erwartungswert berechnen wir mit Hilfe einer passenden Unterteilung
+\begin{align*}
+E\biggl(\int_0^T G\,dW\biggr)
+&=
+E\biggl(\sum_{k=0}^{m-1} G(t_k) (W(t_{k+1}) - W(t_k))\biggr)
+\\
+&=
+\sum_{k=0}^{m-1} E(G(t_k)) \underbrace{E(W(t_{k+1}) - W(t_k))}_{=0}=0.
+\end{align*}
+Damit ist 2.~beweisen.
+
+F"ur die Berechnung der Varianz verwendet wieder die Unabh"angigkeit der
+Inkremente:
+\begin{align*}
+E\biggl(\biggl(\int_0^T G\,dW\biggr)^2\biggr)
+&=
+E\biggl(\biggl(\sum_{k=0}^{m-1}G(t_k)(W(t_{k+1})-W(t_k))\biggr)^2\biggr)
+\\
+&=
+E\biggl(
+\sum_{k=0}^{m-1}G(t_k)(W(t_{k+1})-W(t_k))
+\sum_{j=0}^{m-1}G(t_j)(W(t_{j+1})-W(t_j))
+\biggr)
+\\
+&=
+\sum_{k=0}^{m-1}
+\sum_{j=0}^{m-1}
+E(G(t_k) G(t_j)
+(W(t_{k+1})-W(t_k))
+(W(t_{j+1})-W(t_j))
+)
+\\
+&=
+\sum_{k=0}^{m-1}
+E(G(t_k)^2) E(W(t_{k+1})-W(t_k))^2)
+\\
+&=
+\sum_{k=0}^{m-1}
+E(G(t_k)^2) (t_{k+1}-t_k)
+=
+E\biggl(
+\sum_{k=0}^{m-1}
+G(t_k)^2 (t_{k+1}-t_k)
+\biggr)
+=E\biggl(\int_0^T G(t)^2\,dt\biggr).
+\end{align*}
+Somit ist auch 3.~bewiesen.
+\end{proof}
+
+Die Bedeutung der dritten Eigenschaft besteht darin, dass eine
+Folge von Stufen-Prozessen, die $L^2(0,T)$ konvergiert, zu einer
+konvergenten Folge von It\^o-Integralen f"uhrt.
+
+\begin{definition}
+Ist $G$ ein beliebiger auf $[0,T]$ quadratintegrierbarer Prozess,
+und $G_n$ eine Folge von stochastischen Prozessen, die in $L^2([0,T])$
+gegen $G$ konvergiert.
+Dann ist des It\^o-Integral von $G$
+\[
+\int_0^T G\,dW
+=
+\
+\lim_{n\to\infty} \int_0^T G_n\,dW
+\]
+\end{definition}
+
+Das It\^o-Integral hat die folgenden Eigenschaften:
+
+\begin{satz}
+\label{satz:ito-integral}
+Seien $G$ und $H$ auf $[0,T]$ quadratintegrierbare stochastische Prozesse
+und $a,b\in\mathbb R$. Dann gilt
+\begin{compactenum}
+\item Das It\^o-Integral ist linear:
+\[
+\int_0^T aG+bH\,dW
+=
+a\int_0^TG\,dW
++
+b\int_0^TH\,dW
+\]
+\item Der Erwartungswert des It\^o-Integrals ist
+\[
+E\biggl(\int_0^T G\,dW\biggr)=0
+\]
+\item Die Varianz des It\^o-Integrals ist
+\[
+E\biggl(\biggl(\int_0^TG\,dW\biggr)^2\biggr)
+=
+E\biggl(\int_0^T G^2\,dt\biggr).
+\]
+\end{compactenum}
+\end{satz}
+
+Mit dem It\^o-Integral k"onnen wir jetzt alle Komponenten einer
+stochastischen Differentialgleichung definieren.
+Zun"achst k"onnen wir f"ur jeden auf $[0,T]$ quadratintegrierbaren Prozess $G$ 
+und f"ur jede integrierbare Funktion $F\in L^1([0,T])$ die Gr"ossen
+\begin{align*}
+\int_s^r F(t)\,dt&=\int_0^r F(t)\,dt - \int_0^s F(t)\,dt
+\\
+\int_s^r G\,dW&=\int_0^r G\,dW - \int_0^s G\,dW
+\end{align*}
+definieren.
+\begin{definition}
+Wenn $X$ ein stochastischer Prozess ist, der
+\[
+X(r)=X(s)+\int_s^rF(t)\,dt + \int_s^tG\,dW
+\]
+erf"ullt, dann sagt man $X$ habe das {\em stchastische Differential}
+\[
+dX=F\,dt + G\,dW.
+\]
+\end{definition}
+
+%
+%
+%
+\subsection{Rechenregeln}
+Bisher wissen wir nur, dass das It\^o-Integral linear ist, dies reicht
+aber nicht f"ur einen Kalk"ul, mit dem wir hoffen k"onnen,
+Differentialgleichungen zu l"osen.u
+Dazu brauchen wir mindestens noch eine Kettenregel und eine
+Produktregel.
+
+\begin{satz}[It\^o's Kettenregel]
+Falls $X$ das stochastische Differential
+\[
+dX=F\,dt + G\,dW
+\]
+hat, und falls $u\colon \mathbb R\times [0,T]\to\mathbb R$ eine
+stetig differenzierbare Funktion.
+Dann hat die Funktion $Y(t)=u(X(t), t)$ das stochastische Differential
+\begin{align*}
+du(X,t)
+&=\frac{\partial u}{\partial t}\,dt + \frac{\partial u}{\partial x}\,dX 
++\frac12\frac{\partial u^2}{\partial x^2}G^2\,dt
+\\
+&=
+\biggl(
+\frac{\partial u}{\partial t}+\frac{\partial u}{\partial x}F
++\frac12\frac{\partial^2u}{\partial x^2}G^2
+\biggr)\,dt
++
+\frac{\partial u}{\partial x}G\,dW.
+\end{align*}
+\end{satz}
+Bis auf den Term in den zweiten Ableitungen sind die Terme genau
+diejenigen, die man von der klassischen Kettenregel her erwarten
+k"onnte.
+
+\begin{beispiel}
+Potenzen eines Wiener-Prozesses.
+Sei $u(x)=x^m$ und $X=W$, $F=0$ und $G=1$.
+Also ist $Y=W^m$.
+Dann hat nach der It\^o-schen Kettenregel das stochastische Differential
+\[
+d(W^m)
+=
+\frac12m(m-1)W^{m-2}\,dt + mW^{m-1}\,dW.
+\]
+Im Spezialfall $m=2$ folgt
+\[
+dW^2 = 2W\,dW + dt.
+\]
+\end{beispiel}
+
+\begin{beispiel} Wir betrachten die Funktion
+$u(x,t)=e^{\lambda x-\frac12\lambda^2 t}$, und wie vorhin $X=W$, $F=0$
+und $G=1$.
+Es folgt
+\begin{align*}
+d\biggl(
+e^{\lambda W(t)-\frac12\lambda^2 t}
+\biggr)
+&=
+\biggl(
+-\frac12\lambda^2 e^{\lambda W-\frac12\lambda^2 t}
++
+\frac12\lambda^2 e^{\lambda W-\frac12\lambda^2 t}
+\biggr)\,dt
++
+\lambda e^{\lambda W -\frac12\lambda^2 t}\,dW
+\\
+dY&=\lambda Y\,dW
+\end{align*}
+also ist der Prozess $Y$ eine L"osung der stochastischen Differentialgleichung
+\begin{align*}
+dy&=\lambda Y\,dW
+\\
+Y(0)&=1.
+\end{align*}
+Dieses Beispiel zeigt, dass der entwickelte Kalk"ul dazu geeignet sein kann,
+stochastische Differentialgleichungen zu l"osen.
+\end{beispiel}
+
+\begin{proof}[Beweis der Kettenregel]
+TODO
+\end{proof}
+
+\begin{satz}[Produktregel von It\^o]
+Falls die Prozesse $X_1$ und $X_2$ die stochastischen Differentiale
+\begin{align*}
+dX_1
+&=
+F_1\,dt + G_1\,dW
+\\
+dX_2
+&=
+F_2\,dt + G_2\,dW
+\end{align*}
+haben, dann ist
+\[
+d(X_1X_2)
+=
+X_2\,dX_1 + X_1\,dX_2 + G_1G_2\,dt,
+\]
+dies ist die {\em It\^o-sche Produktformel}.
+\end{satz}
+
+\begin{proof}[Beweis der Produktformel]
+TODO
+\end{proof}
+
+
+\subsection{L"osungen von stochastischen Differentialgleichungen}
+
+
+
+
+
+\subsection{Lineare stochastische Differentialgleichungen}
+
+%
+% Partielle Differentialgleichungen
+%
+\section{Partielle Differentialgleichungen\label{section:pdgl}}
+Die It\^osche Kettenregel stellt einen Zusammenhang her zwischen der zweiten
+Ableitung von $u$ und den Werten von $u$ am Ende eines Pfades.
+In diesem Abschnitt wollen wir den Zusammenhang wie folgt konkretisieren.
+Wir werden zun"achst f"ur ein Gebiet $U$ und einen Punkt $x$ die
+Zeit $\tau_x$ definieren, zu der eine Brownsche Bewegung das Gebiet zum
+ersten Mal verl"asst.
+Nat"urlich ist $\tau_x$ eine Zufallsvariable, und damit auch $u(X(\tau_x))$,
+wobei der Pfad ist, der zur Zeit $\tau_x$ das Gebiet verl"asst.
+Dann werden wir zeigen, dass $u(x)$ der Erwartungswert von $u(X(\tau_x))$
+sein.
+
+In der Theorie der quaslinearen partiellen Differentialgleichungen erster
+Ordnung wird gezeigt, wie man die Funktionswerte der L"osungsfunktion
+dadurch bestimmen kann, dass man vom Punkt $x$ aus die Charakteristik 
+konstruiert, und den Wert der Randbedingung an dem Punkt ermittelt,
+wo die Charakteristik das Gebiet verl"asst.
+Aus diesem Wert l"asst sich dann der Wert der L"osung bestimmen.
+Brownsche Bewegungen spielen also f"ur elliptische partielle
+Differentialgleichungen eine "ahnliche Rolle wie Charakteristiken f"ur
+quasliineare partielle Differentialgleichungen erster Ordnung.
+
+\subsection{Stopzeiten}
+Wie fr"uher betrachten wir wieder einen stochastischen Prozess $X(t)$,
+der L"osung einer stochastischen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+dX(t)&=b(t,X)\,dt + B(t,X)\,dW
+\\
+X(0)&=X_0
+\end{aligned}
+\label{stochastisch:stopzeitdgl}
+\end{equation}
+sein soll.
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-2.pdf}
+\caption{Brownsche Bewegung in zwei Dimension und Definition der
+Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
+\label{stochastisch:pfad}}
+\end{figure}
+
+\begin{definition}
+Sei $E$ eine beliebige offene oder abgeschlossene nicht leere Teilmenge
+von $\mathbb R^n$.
+Dann setzen wir
+\[
+\tau = \inf\{t\ge 0\;|\;X(t)\in E\},
+\]
+$\tau$ ist also die fr"uheste Zeit, zu der der Weg $X(t)$ die Menge $E$
+erreicht.
+\end{definition}
+
+Die charakteristische Funktion
+\[
+\chi_{[0,\tau]}(t)=\begin{cases}
+1\qquad\qquad&t\le \tau\\
+0            &t>\tau
+\end{cases}
+\]
+ist nat"urlich auch ein stochastischer Prozess, und damit auch 
+$\chi_{[0,\tau]}G$.
+Damit gelten die Regeln f"ur das It\^o-Integral aus
+Satz~\ref{satz:ito-integral} auch f"ur diesen Prozess, jetzt allerdings
+als Integrale mit oberer Grenze $\tau$ statt $T$.
+
+\begin{hilfssatz}
+Seien $G$ und $H$ auf $[0,T]$ quadratintegrierbare stochastische Prozesse
+und $a,b\in\mathbb R$
+\begin{compactenum}
+\item
+Das It\^o-Integral ist linear:
+\begin{align*}
+\int_0^\tau aG+bH\,dW
+&=
+\int_0^T a\chi_{[0,\tau]} G + b \chi_{[0,\tau]} H\,dW
+=
+a\int_0^T \chi_{[0,\tau]} G\,dW + b \int_0^T\chi_{[0,\tau]} H\,dW
+\\
+&=
+a\int_0^\tau G\,dW + b \int_0^\tau H\,dW
+\end{align*}
+\item Der Erwartungswert des It\^o-Integrals ist
+\[
+E\biggl(\int_0^\tau G\,dW\biggr)
+=
+E\biggl(\int_0^T \chi_{[0,\tau]}G\,dW\biggr)
+=
+0.
+\]
+\item Die Varianz des It\^o-Integrals ist
+\[
+E\biggl(\biggl(\int_0^\tau G\,dW\biggr)^2\biggr)
+=
+E\biggl(\biggl(\int_0^T \chi_{[0,\tau]}G\,dW\biggr)^2\biggr)
+=
+E\biggl(\int_0^T\chi_{[0,\tau]}G^2\,dt\biggr)
+=
+E\biggl(\int_0^\tau G^2\,dt\biggr).
+\]
+\end{compactenum}
+\end{hilfssatz}
+
+Die It\^o-sche Kettenregel funktioniert auch f"ur $\tau$ als obere
+Grenze f"ur die stochastischen Integrale.
+Wenn also $X$ als stochastischer Prozess eine L"osung der stochastischen
+Differentialgleichung (\ref{stochastisch:stopzeitdgl}) ist, dann gilt
+nach der der It\^o-schen Kettenregel
+\[
+du(X,t)
+=
+\frac{\partial u}{\partial t}\,dt
++
+\sum_{i=1}^n\frac{\partial u}{\partial x_i}\,dX_i
++
+\frac12\sum_{i,j=1}^n\frac{\partial^2 u}{\partial x_i\partial x_j}
+\sum_{k=1}^n b_{ik}b_{jk}\,dt.
+\]
+In integrierter Form bedeutet dies
+\[
+u(X(t),t)-u(X(0),0)
+=
+\int_0^t
+\frac{\partial u}{\partial t}
++
+\frac12\sum_{k=1}^nb_{ik}b_{jk}
+\sum_{i,j=1}^n \frac{\partial^2u}{\partial x_i\,\partial x_j} \,ds
++
+\int_0^t \operatorname{grad} u\cdot B\,dW.
+\]
+Und nat"urlich gelten diese Formeln auch dann, wenn man $t$ durch $\tau$
+ersetzt.
+
+Im Folgenden interessiert uns nur der Fall $b=0$, $b_{ik}=\delta_{ik}$
+und Funktionen $u$, die nicht von der Zeit abh"angen.
+Dann vereinfacht sich die Formel zu
+\begin{equation}
+u(X(t))-u(X(0))
+=
+\int_0^t \frac12\sum_{i=1}^n\frac{\partial^2 u}{\partial x_i^2}\,ds
+=
+\int_0^t \frac12\Delta u\,ds
+\label{stochastisch:laplaceinkrement}
+\end{equation}
+Ausserdem ist in diesem Fall $X$ nichts anderes als eine Brownsche Bewegung,
+$X=W$.
+
+\subsection{Brownsche Bewegung und der Laplace-Operator}
+Wir wenden die Formel \ref{stochastisch:laplaceinkrement} jetzt in
+zwei Beispielen an.
+
+\subsubsection{Zeit bis zum Verlassen eines Gebietes}
+F"ur das erste Beispiel sei $U$ ein beschr"anktes Gebiet in
+$\mathbb R^n$, und $u$ eine L"osung der partiellen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+-\frac12\Delta u&=1&\qquad&\text{in $U$}\\
+               u&=0&      &\text{auf $\partial U$}
+\end{aligned}
+\label{stochastisch:hittingtime}
+\end{equation}
+Wir m"ochten die L"osung $u$ dazu verwenden, die Zeit $\tau_x$ zu berechnen,
+zu der eine im Punkt $x\in U$ beginnende Brownsche Bewegung zum ersten
+Mal das Gebiet $U$ verl"asst.
+Die Formel (\ref{stochastische:laplaceinkrement}) liefert
+\[
+u(X(\tau_x))-u(X(0)) = \int_0^{\tau_x} \frac12\Delta u\,ds
+\]
+Da $u$ eine L"osung von (\ref{stochastisch:hittingtime}) ist, ist der 
+Integrand auf der rechten Seite gleich $-1$:
+\[
+u(X(\tau_x))-u(X(0)) = -\int_0^{\tau_x} \,ds
+\]
+Da der Prozess $X$ zur Zeit $\tau_x$ den Rand des Gebietes "uberquert,
+ist wegen der Randbedingung $u(X(\tau_x))=0$. 
+Zusammen erhalten wir
+\[
+-u(X(0)) = -\tau_x.
+\]
+Nun interessiert uns aber nicht der Wert der Zufallsvariablen, sondern
+nur deren Erwartungswert:
+\[
+E(\tau_x)=E(u(X(0)))=u(x).
+\]
+Die L"osung $u$ der Differentialgleichung (\ref{stochastisch:hittingtime})
+gibt die erwartete Zeit an, bis eine bei $x$ beginnende Brownsche Bewegung 
+das Gebiet $U$ verlassen hat.
+
+\subsubsection{Charakterisierung von harmonischen Funktionen}
+Sei wieder $U$ ein beschr"anktes Gebiet mit glattem Rand und
+$g$ eine stetige Funktion auf $\partial U$.
+Ausserdem sei $u$ eine harmonische Funktion in $U$ mit den Randwerten $g$, 
+also eine L"osung der partiellen Differentialgleichung
+\begin{equation}
+\begin{aligned}
+\Delta u&=0&\qquad&\text{in $U$}\\
+       u&=g&      &\text{auf $\partial U$}
+\end{aligned}
+\label{stochastisch:harmonisch}
+\end{equation}
+Wir wollen (\ref{stochastisch:laplaceinkrement}) verwenden, die Funktion
+$u$ zu charakterisieren.
+Dazu sei wieder $\tau_x$ die Zeit, zu der eine im Punkt $x\in U$ beginnende
+Brownsche Bewegung das Gebiet $U$ verl"asst.
+Aus (\ref{stochastisch:laplaceinkrement}) folgt:
+\[
+u(X(\tau_x))-u(X(0))
+=
+\int_0^{\tau_x} \frac12\underbrace{\Delta u}_{\textstyle=0}\,ds=0.
+\]
+Zur Zeit $\tau_x$ ist $X(\tau_x)$ ein Randpunkt des Gebiets, der mit
+der Randbedingung bestimmt werden kann, es folgt:
+\[
+u(X(0)) = g(X(\tau_x)).
+\]
+Wieder interessiert uns der einzelne Wert nicht, sondern der Erwartungswert:
+\[
+u(x)=E(g(X(\tau_x))).
+\]
+Den Wert im Punkt $x$ einer harmonischen Funktion mit Randwerten $g$
+kann man wie folgt finden: man l"asst eine Brownsche Bewegung von $x$ 
+aus laufen, bis sie den Rand "uberquert, und nimmt den Mittelwert
+der derart erreichten Randwerte.
+
+Aus dieser Charakterisierung der harmonischen Funktionen kann man
+auch deren Mittelwerteigenschaft ableiten. 
+Da die Brownsche Bewegung isotrop ist, muss sich im Zentrum
+eines kugelf"ormigen Gebietes immer der gleiche Wert f"ur $u$
+ergeben, selbst wenn man eine beliebige Drehung auf die Randwerte 
+anwendet.
+Also muss der Wert von $u(x)$ der Mittelwert der Werte
+auf einer Kugel um den Punkt $x$ sein.
+
+%
+%
+%
+\section{Kalman-Filter\label{section:kalman}}
+\rhead{Kalman-Filter}
+
+
+
+
+
