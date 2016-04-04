@@ -601,6 +601,7 @@ konstruieren.
 Die folgende Konstruktion liefert "uberraschenderweise immer
 analytische Funktionen.
 \begin{satz}
+\label{komplex:integralanalytisch}
 Sei $\gamma\colon [a,b]\to\mathbb C$ ein Weg in $\mathbb C$, der nicht
 durch den Nullpunkt verl"auft, und $g$ eine stetige Funktion
 auf $\gamma([a,b])$.
@@ -1058,5 +1059,73 @@ analytisch ist, und dass die Koeffizienten der Potenzreihe von
 der verlangten Form sind.
 \end{proof}
 
+%
+% Analytische Fortsetzung
+%
+\section{Analytische Fortsetzung}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-1.pdf}
+\caption{Analytische Fortsetzung einer komplexen Funktion entlang einer
+Kurve $\gamma$.
+\label{komplex:fortsetzung}}
+\end{figure}
+Eine komplex differenzierbare Funktion $f(z)$ ist immer darstellbar als
+Potenzreihe, und ist daher analytisch.
+So kann zum Beispiel die Funktion $1/z$ als Potenzreihe um jeden 
+beliebigen Punkt $z_0$ entwickelt werden:
+\begin{align*}
+f(z)
+&=
+\frac1z
+=
+\frac1{z_0-(z_0-z)}
+=
+\frac1{z_0}\cdot
+\frac1{1-\frac{z_0-z}{z_0}}
+=
+\frac1{z_0}\sum_{k=0}^{\infty} \biggl(\frac{z_0-z}{z_0}\biggr)^k
+=
+\sum_{k=0}^{\infty} \frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k,
+\end{align*}
+Die Koeffizienten dieser Potenzreihe sind
+\[
+a_k=\frac{(-1)^k}{z_0^{k+1}},
+\]
+und man kann den Konvergenzradius ausrechnen:
+\[
+\frac1{\varrho}
+=
+\limsup_{k\to\infty} \root{k}\of{|a_k|} = \lim_{k\to\infty}\frac1{|z_0|^{\frac{k+1}{k}}}
+=
+\frac1{|z_0|}.
+\]
+Der Konvergenzradius ist limitiert durch die Singularit"at bei an der Stelle
+$z=0$.
+
+Es gibt also keine einzelne Potenzreihe, die die Funktion $f(z)=\frac1z$ in der
+ganzen komplexen Ebene darstellen kann.
+W"ahlt man aber einzelne Punkte $z_0$ und $z_1$ derart, dass der Kreis
+um $z_0$ mit Radius $|z_0|$ und der Kreis um $z_1$ mit Radius $|z_1|$
+"uberlappen, dann werden die beiden Potenzreihen im "Uberlappungsgebiet
+die gleichen Werte annehmen.
+
+Man k"onnte allso eine Kurve $\gamma$ in der komplexen Ebene w"ahlen,
+entlang der man in jedem Punkt die Funktion $f(z)$ in eine Potenzreihe 
+entwickelt.
+Liegen zwei Punkte nahe genug auf der Kurve $\gamma$, werden die
+Konvergenzkreise der Potenzreihen "uberlappen, und die Potenzreihen
+werden im "Uberlappungsgebiet die gleichen Werte liefern.
+
+Selbst wenn man eine Funktion $f(z)$ nur in einem Kreis um den Punkt $z_0$
+kennt, zum Beispiel durch eine Potenzreihe im Punkt $z_0$, kann man entlang
+einer Kurve, die $z_0$ mit $z_1$ verbindet, in jedem Punkt eine Potenzreihe
+finden, die mit der Potenzreihe in den Nachbarpunkten "ubereinstimmt, und
+so die Definition der Funktion entlang dieser Kurve auf ein gr"osseres
+Gebiet ausweiten, wie in Abbildung~\ref{komplex:fortsetzung} dargestellt.
+Man nennt dies die {\em analytische Fortsetzung} der Funktion $f(z)$ 
+entlange der Kurve $\gamma$.
+\index{analytische Fortsetzung}
+\index{Fortsetzung, analytische}
 
 
