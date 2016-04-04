@@ -3,8 +3,8 @@ kmax = 180;
 
 x0 = 0;
 
-plotmin = -8;
-plotmax = 8;
+plotmin = -4;
+plotmax = 6;
 
 xmin = x0 + plotmin;
 xmax = x0 + plotmax;
@@ -13,11 +13,11 @@ scalefactor = 100;
 datasize = scalefactor * (xmax - xmin);
 
 A = 0;
-B = 0;
-C = 2;
+B = 1;
+C = -1;
 
-a0start = 0.5; # y(0)
-a1start = 2; # y'(0)
+a0start = 1.1; # y(0)
+a1start = 1; # y'(0)
 
 signb = '+';
 signc = '+';
