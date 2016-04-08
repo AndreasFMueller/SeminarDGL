@@ -1,0 +1,79 @@
+Betrachten Sie die in der ganzen komplexen Ebene $\mathbb C$ definierte
+komplexe Funktion
+\[
+f(z)=\bar z=x-iy.
+\]
+\begin{teilaufgaben}
+\item
+Verwenden Sie die Cauchy-Riemann-Gleichungen um zu zeigen, dass diese
+Funktion nicht komplex differenzierbar ist.
+\item
+Berechnen Sie die Wegintegrale
+\[
+int_{\gamma_1}f(z)\,dz
+\qquad\text{und}\qquad
+int_{\gamma_2}f(z)\,dz
+\]
+f"ur die zwei Wege $\gamma_1(t)=1-t$ f"ur $t\in[0,2]$ und 
+$\gamma_2(t)=e^{it}$ f"ur $t\in[0,\pi]$.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Es ist $u=x$ und $v=y$ mit den Ableitungen
+\[
+\begin{aligned}
+\frac{\partial u}{\partial x}&=1,&
+\frac{\partial v}{\partial x}&=0,\\
+\frac{\partial u}{\partial y}&=0&
+\frac{\partial v}{\partial y}&=-1
+\end{aligned}
+\]
+Die Cauchy-Riemann-Gleichungen verlangen, dass
+\[
+\begin{aligned}
+\frac{\partial u}{\partial x}&=\frac{\partial v}{\partial y}
+&&\text{und}&
+\frac{\partial u}{\partial y}&=-\frac{\partial v}{\partial x}
+\\
+\Rightarrow\qquad
+1&=-1&&&0&=0
+\end{aligned}
+\]
+Die erste Gleichung ist offenbar nicht erf"ullt, also kann die Funktion
+nicht komplex differenzierbar sein.
+\item
+Die beiden Wegintegrale werden mit der Formel
+\[
+\int\gamma f(z)\,dz = \int_a^b f(\gamma(t))\cdot \dot\gamma(t)\,dt
+\]
+berechnet:
+\begin{align*}
+\int_{\gamma_1}f(z) \,dz
+&=
+\int_0^2 f(1-t)\cdot (-1)\,dt
+=
+\int_0^2 t-1\,dt
+=
+\biggl[\frac12t^2-t\biggl]_0^2
+=
+2-2=0
+\\
+\int_{\gamma_2}f(z) \,dz
+&=
+\int_0^\pi f(e^{it})\cdot ie^{it}\,dt
+=
+\int_0^\pi e^{-it}\cdot ie^{it}\,dt
+=
+\int_0^\pi \,dt
+=
+\pi
+\end{align*}
+Im Gegensatz zu einer komplex differenzierbaren Funktion ist also das
+Wegintegral einer nicht komplex differenzierbaren Funktion nicht
+unabh"angig vom Weg.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}
+
