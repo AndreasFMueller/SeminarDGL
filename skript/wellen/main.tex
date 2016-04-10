@@ -56,7 +56,7 @@ $x$.
 
 Zur L"osung der vereinfachten Wellengleichung 
 \ref{wellen:allgemeineDGLvereinfacht} wird die Theorie des Separationsansatzes 
-verwendet. Gem"ass dem kann $u(x, t)$ in ein Produkt zweier Funktionen $X(x)$ 
+angewendet. Gem"ass dem kann $u(x, t)$ in ein Produkt zweier Funktionen $X(x)$ 
 und $T(t)$ umgewandelt werden.
 
 \begin{equation}
@@ -111,8 +111,8 @@ Diese Gleichung widerspiegelt die Wellengleichung, die in der Fortsetzung
 betrachtet wird.
 
 Mit dem Faktor $\frac{\lambda}{c^2}$ k"onnen verschiedene 
-Geschwindigkeitsprofile betrachtet werden. Hier wird zuerst auf den speziellen 
-Fall eines parabolischen Profils eingegangen. Die zu untersuchende 
+Geschwindigkeitsprofile betrachtet werden. Hier wird unter anderem auf den 
+speziellen Fall eines parabolischen Profils eingegangen. Die zu untersuchende 
 Differentialgleichung ergibt sich hiermit zu der am Anfang definierten 
 Gleichung \ref{wellen:grundgleichung}, mit den frei w"ahlbaren Variablen 
 ${a,b,c} \in \mathbb{R}$, sowie den Anfangsbedingungen $y(0) = a_0$ und $y'(0) 
@@ -122,7 +122,7 @@ ${a,b,c} \in \mathbb{R}$, sowie den Anfangsbedingungen $y(0) = a_0$ und $y'(0)
 Als L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
 kennengelernte Potenzreihenansatz (\ref{potenzreihen:ansatz}) verwendet.
 
-Zuerst werden die Potenzreihen f"ur $y$ und $y''$ aufgestellt.
+Zuerst wird die Potenzreihe f"ur $y$ aufgestellt und zweimal abgeleitet.
 
 \begin{equation}
 	y(x)
@@ -221,8 +221,8 @@ aufstellen.
 Um das Programmieren dieser Formel zu vereinfachen, formt man sie am besten von 
 $a_{k+2}$ nach $a_k$ um. Damit erh"alt man die Gleichung 
 \ref{wellen:koeffizientengleichungak}.
-Bei der neuen $y(x)$-Gleichung \ref{wellen:ygleichungak} muss nun aber $k \in 
-\mathbb{N} \backslash \{0, 1\}$ gelten.
+Bei der neuen L"osungsgleichung f"ur $y(x)$ \ref{wellen:ygleichungak} muss nun 
+aber $k \in \mathbb{N} \backslash \{0, 1\}$ gelten.
 
 \begin{equation}
 	a_{k} = -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2})
@@ -282,8 +282,7 @@ nach rechts, zu gr"osseren $x$-Werten. Dies wird dadurch erkl"art, dass es
 immer l"anger geht, bis der $x^k$-Term dominiert. Je mehr der $k_{max}$-Wert 
 gesteigert wird, umso besser wird die Approximation an die Welle. Ab einer 
 gewissen Gr"osse von $k_{max}$ kann das Programm die Werte nicht mehr genau 
-bestimmen, was die unregelm"assigen Ausschl"age in den letzten zwei Grafiken 
-erkl"art.
+bestimmen, was die unregelm"assigen Ausschl"age erkl"art.
 
 Aufgrund dieser Messungen wird $x$ f"ur die weiteren Berechnungen auf $x \in 
 [-8;8]$ und $k_{max}$ auf 180 beschr"ankt, damit die $y$-Werte nicht 
@@ -538,7 +537,10 @@ und $b$ eliminieren und f"ur $c$ einen negativen Wert einsetzen w"urde. In
 diesem Bereich entsteht demzufolge gem"ass Gleichung 
 \ref{wellen:LSGhyperbolFunktion} eine hyperbolische Funktion. Welche von den 
 zwei hyperbolischen Funktionen entsteht, l"asst sich mit verschiedenen 
-Anfangsbedingungen $a_0$ und $a_1$ bestimmen.
+Anfangsbedingungen $a_0$ und $a_1$ bestimmen wie man in den folgenden Grafiken 
+sieht.
+
+GRAFIK SINH COSH
 
 Beim Schnittpunkt der Parabel mit der $x$-Achse "andert sich das Vorzeichen der 
 L"osung der Parabel und es entsteht nicht die Gleichung 
@@ -549,6 +551,16 @@ Daraus wird ersichtlich, dass sich ab diesem Punkt eine L"osung einstellt,
 welche aus einer "Uberlagerung von $\sin$ und $\cos$ ist. Daraus entsteht die 
 regelm"assige, kontinuierliche Schwingung. 
 
+
+Bei all den anderen F"allen kann das Gleiche beobachtet werden. Bei der Parabel 
+die nach oben ge"offnet ist, passiert genau das Umgekehrte. Im Innenbereich der 
+Parabel entsteht eine Schwingung und sobald die Parabel die $x$-Achse schneidet 
+wandelt sich die Schwingung in eine hyperbolische Funktion um. 4
+
+Bei den Parabeln, die die $x$-Achse im Nullpunkt ber"uhren entsteht nur eine 
+Schwingung, respektive nur eine hyperbolische Funktion, je nach Wert von a, 
+welcher angibt, ob die Parabel nach oben oder nach unten ge"offnet ist. 
+Dasselbe geschieht auch, wenn die Parabel die $x$-Achse gar nicht schneidet. 
 
 
 
