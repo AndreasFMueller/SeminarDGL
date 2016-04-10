@@ -4,6 +4,10 @@
 
 kmax = 180;
 
+krange = [kmax, kmax];
+kstep = 1;
+plotkrange = false;
+
 x0 = 0;
 
 xrange = [-8, 8];
@@ -36,6 +40,8 @@ plotrange = [-1, 1, -1, 1];
 autox = true;
 autoy = true;
 
+linecolor = 3;
+
 arglist = argv();
 
 for i = (1:nargin)
@@ -57,10 +63,12 @@ for i = (1:nargin)
         case "-xplot"
             plotrange(1) = str2num(arglist(++i){1})(1);
             plotrange(2) = str2num(arglist(i){1})(2);
+        case "-xautoplot"
             autox = str2num(arglist(++i){1});
         case "-yplot"
             plotrange(3) = str2num(arglist(++i){1})(1);
             plotrange(4) = str2num(arglist(i){1})(2);
+        case "-yautoplot"
             autoy = str2num(arglist(++i){1}); 
         case "-scalefactor"
             scalefactor = str2num(arglist(++i){1});
@@ -81,6 +89,11 @@ for i = (1:nargin)
         case "-a1range"
             a1range = str2num(arglist(++i){1});
             a1step = str2num(arglist(++i){1});
+        case "-krange"
+            krange = str2num(arglist(++i){1});
+            kstep = str2num(arglist(++i){1});
+        case "-krangeplot"
+            krangeplot = str2num(arglist(++i){1});
     endswitch
 endfor
 
@@ -141,4 +154,4 @@ wavetitle = sprintf('Welle, a=%d, b=%d, c=%d', A, B, C);
 parabolatitle = sprintf('Parabel');
 wavewithparabolatitle = sprintf('Welle mit Parabel');
 
-save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");
+save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", "krange", "kstep", "krangeplot", "linecolor", "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");
