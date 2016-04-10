@@ -1,23 +1,21 @@
 load("./config.dat");
 load("./ak.dat");
 
-y5 = a0start + a1start * 5;
+a0 = a0start + a1start * x0;
 for k = (2:kmax)
     akminus2 = a(k + 1);
     akminus3 = a(k);
     akminus4 = a(k - 1);
-    y5 += -1 / (k * (k - 1)) * (A * akminus4 + B * akminus3 + C * akminus2) * 5^k;
+    a0 += -1 / (k * (k - 1)) * (A * akminus4 + B * akminus3 + C * akminus2) * x0^k;
 endfor
 
-ys5 = a1start;
+a1 = a1start;
 for k = (1:kmax-1)
     akminus3 = a(k);
     akminus2 = a(k + 1);
     akminus1 = a(k + 2);
-    ys5 += -1 / k * (A * akminus3 + B * akminus2 + C * akminus1) * 5^k;
+    a1 += -1 / k * (A * akminus3 + B * akminus2 + C * akminus1) * x0^k;
 endfor
 
-a0 = a0start;
-a1 = a1start;
-
-save("./a0a1.dat", "a1", "a0", "y5", "ys5");
+save("./a0a1.dat", "a0", "a1");
+system("octave ak.m -a0a1 ./a0a1.dat");

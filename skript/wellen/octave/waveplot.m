@@ -2,10 +2,10 @@ load("./config.dat");
 load("./yx.dat");
 load("./parabola.dat");
 
-xaxis = linspace(xmin, xmax, datasize + 1);
+xaxis = linspace(xrange(1), xrange(2), datasize + 1);
 
 set (0, "defaultaxesfontname", "Helvetica")
-
+figure("visible","off");
 plot(xaxis, y, yformula);
 axis([0, 1, -1, 1]);
 axis("auto x");
