@@ -7,7 +7,6 @@ kmax = 180;
 x0 = 0;
 
 xrange = [-8, 8];
-yrange = [-1e308, 1e308];
 
 scalefactor = 100;
 
@@ -34,8 +33,8 @@ a1step = 1;
 
 plotrange = [-1, 1, -1, 1];
 
-autox = false;
-autoy = false;
+autox = true;
+autoy = true;
 
 arglist = argv();
 
@@ -55,15 +54,13 @@ for i = (1:nargin)
             x0 = str2num(arglist(++i){1});
         case "-xrange"
             xrange = str2num(arglist(++i){1});
-        case "-yrange"
-            yrange = str2num(arglist(++i){1});
-        case "-XPLOT"
-            plotrange(1) = str2num(arglist(++i){1});
-            plotrange(2) = str2num(arglist(++i){1});
+        case "-xplot"
+            plotrange(1) = str2num(arglist(++i){1})(1);
+            plotrange(2) = str2num(arglist(i){1})(2);
             autox = str2num(arglist(++i){1});
-        case "-YPLOT"
-            plotrange(3) = str2num(arglist(++i){1});
-            plotrange(4) = str2num(arglist(++i){1});
+        case "-yplot"
+            plotrange(3) = str2num(arglist(++i){1})(1);
+            plotrange(4) = str2num(arglist(i){1})(2);
             autoy = str2num(arglist(++i){1}); 
         case "-scalefactor"
             scalefactor = str2num(arglist(++i){1});
@@ -144,4 +141,4 @@ wavetitle = sprintf('Welle, a=%d, b=%d, c=%d', A, B, C);
 parabolatitle = sprintf('Parabel');
 wavewithparabolatitle = sprintf('Welle mit Parabel');
 
-save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "yrange", "datasize", "plotrange", "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");
+save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");

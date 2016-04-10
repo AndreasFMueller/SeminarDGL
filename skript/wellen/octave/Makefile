@@ -1,4 +1,19 @@
+A0 := 1
+A1 := 0
+A := 1
+B := 0
+C := -1
 X0 := 0
+XRANGE := '[-8, 8]'
+XPLOT := '[-8, 8]' true
+YPLOT := '[-40, 40]' true
+SCALEFACTOR := 100
+KMAX := 180
+ARANGE := '[$(A), $(A)]' 1
+BRANGE := '[$(B), $(B)]' 1
+CRANGE := '[$(C), $(C)]' 1
+A0RANGE := '[$(A0), $(A0)]' 1
+A1RANGE := '[$(A1), $(A1)]' 1
 
 
 .PHONY:	all, config, ak, a0a1, yx, plot, clean
@@ -6,7 +21,10 @@ X0 := 0
 all:	config ak a0a1 yx plot
 
 config:
-	octave config.m -x0 $(X0)
+	octave config.m -a0 $(A0) -a1 $(A1) -A $(A) -B $(B) -C $(C) -x0 $(X0) \
+       	-xrange $(XRANGE) -xplot $(XPLOT) -yplot $(YPLOT) -scalefactor $(SCALEFACTOR) \
+	-kmax $(KMAX) -arange $(ARANGE) -brange $(BRANGE) -crange $(CRANGE) \
+	-a0range $(A0RANGE) -a1range $(A1RANGE)
 
 ak:	config.dat ak.m
 	octave ak.m
