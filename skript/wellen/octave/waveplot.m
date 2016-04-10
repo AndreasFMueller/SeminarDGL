@@ -32,7 +32,7 @@ if (krangeplot)
     if (autoy)
         axis("auto y");
     endif
-    krangetitle = sprintf('Welle, kmin = %d, kmax = %d', krange(1), krange(2));
+    krangetitle = sprintf('Welle, k_min = %d, k_max = %d, Schrittlaenge: %d', krange(1), krange(2), kstep);
     title(krangetitle);
     print("-dpng", "krangewave.png");
     hold("off");
