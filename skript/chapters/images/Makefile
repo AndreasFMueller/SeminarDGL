@@ -86,7 +86,7 @@ path3.mp:	wiener3.m
 	octave wiener3.m
 
 
-komplex_FILES = komplex-1.pdf komplex-2.pdf
+komplex_FILES = komplex-1.pdf komplex-2.pdf komplex-3.pdf
 komplex:	$(komplex_FILES)
 $(komplex_FILES): komplex.mp
 	TEX=latex mpost komplex.mp
