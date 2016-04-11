@@ -194,8 +194,14 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \BODY
 \end{proof}
 }
-\NewEnviron{diskussion}{
-\begin{proof}[Diskussion]
+\NewEnviron{diskussion}{%
+\begin{proof}[Diskussion]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\NewEnviron{hinweis}{%
+\begin{proof}[Hinweis]%
 \renewcommand{\qedsymbol}{}
 \BODY
 \end{proof}

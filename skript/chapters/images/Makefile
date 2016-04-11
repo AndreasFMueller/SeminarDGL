@@ -15,7 +15,7 @@ $(grundlagen_FILES):	grundlagen.mp
 		mptopdf $${f}; \
 	done
 
-numerik_FILES = numerik-1.pdf
+numerik_FILES = numerik-1.pdf numerik-2.pdf numerik-3.pdf
 numerik:	$(numerik_FILES)
 $(numerik_FILES): numerik.mp
 	TEX=latex mpost numerik.mp
@@ -33,7 +33,7 @@ $(komplexezahlen_FILES): komplexezahlen.mp
 		mptopdf $${f}; \
 	done
 
-randwert_FILES = randwert-1.pdf
+randwert_FILES = randwert-1.pdf randwert-2.pdf randwert-3.pdf
 randwert:	$(randwert_FILES)
 $(randwert_FILES): randwert.mp
 	TEX=latex mpost randwert.mp
@@ -44,7 +44,7 @@ $(randwert_FILES): randwert.mp
 
 geometrie_FILES = geometrie-1.pdf geometrie-2.pdf geometrie-3.pdf	\
 	geometrie-4.pdf geometrie-5.pdf geometrie-6.pdf geometrie-7.pdf	\
-	geometrie-8.pdf
+	geometrie-8.pdf geometrie-9.pdf geometrie-10.pdf geometrie-11.pdf
 geometrie:	$(geometrie_FILES)
 $(geometrie_FILES): geometrie.mp
 	TEX=latex mpost geometrie.mp
@@ -62,7 +62,12 @@ $(airy_FILES): airy.mp
 		mptopdf $${f}; \
 	done
 
-stochastisch_FILES = stochastisch-1.pdf 
+stochastisch_FILES = stochastisch-1.pdf stochastisch-2.pdf stochastisch-3.pdf \
+	stochastisch-4.pdf stochastisch-5.pdf stochastisch-6.pdf \
+	stochastisch-7.pdf stochastisch-8.pdf stochastisch-9.pdf \
+	stochastisch-10.pdf stochastisch-11.pdf stochastisch-12.pdf \
+	stochastisch-13.pdf
+
 stochastisch:	$(stochastisch_FILES)
 $(stochastisch_FILES): stochastisch.mp path.mp path2.mp path3.mp
 	TEX=latex mpost stochastisch.mp
@@ -81,7 +86,7 @@ path3.mp:	wiener3.m
 	octave wiener3.m
 
 
-komplex_FILES = komplex-1.pdf 
+komplex_FILES = komplex-1.pdf komplex-2.pdf komplex-3.pdf
 komplex:	$(komplex_FILES)
 $(komplex_FILES): komplex.mp
 	TEX=latex mpost komplex.mp
