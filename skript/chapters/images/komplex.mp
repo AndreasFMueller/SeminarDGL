@@ -219,4 +219,162 @@ draw z0 withcolor white;
 
 endfig;
 
+%
+% Pfad zur Definition der Laurent-Reihe
+%
+beginfig(3)
+
+numeric u;
+u := 100;
+
+z0 = (0,0);
+z1 = (-u, 0);
+z2 = (2*u, 0);
+z3 = (0,-u);
+z4 = (0,1.7*u);
+
+numeric smallradius, largeradius;
+smallradius := 0.07 * u;
+largeradius := 1.2 * u;
+numeric w;
+w := 1.0;
+numeric outerangle;
+outerangle := angle(sqrt(largeradius*largeradius - w*w), w);
+show outerangle;
+numeric innerangle;
+innerangle := angle(sqrt(smallradius*smallradius - w*w), w);
+show innerangle;
+
+z5 = (0.6 * u, 0.4 * u);
+z6 = (largeradius, 0);
+z7 = (smallradius, 0);
+
+label(btex $\mathbb C$ etex, z1 shifted z4);
+
+path innercircle;
+innercircle := z7 rotated (360 - innerangle);
+for a = 360 - innerangle - 1 step -1 until innerangle + 1:
+	innercircle := innercircle--(z7 rotated a);
+endfor;
+innercircle := innercircle--(z7 rotated innerangle);
+
+path outercircle;
+outercircle := z6 rotated outerangle;
+for a = outerangle + 1 step 1 until 360 - outerangle - 1:
+	outercircle := outercircle--(z6 rotated a);
+endfor;
+outercircle := outercircle--(z6 rotated (360 - outerangle));
+
+path p;
+p := (outercircle--innercircle--cycle) shifted z5;
+
+fill p withcolor (1,0.95,0.95);
+
+pickup pencircle scaled 1pt;
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+z11 = (z1--z0) intersectionpoint (outercircle shifted z5);
+z12 = (z0--z2) intersectionpoint (outercircle shifted z5);
+z13 = (z3--z0) intersectionpoint (outercircle shifted z5);
+z14 = (z0--z4) intersectionpoint (outercircle shifted z5);
+
+draw z11--z12 withcolor 0.9;
+draw z13--z14 withcolor 0.9;
+
+pickup pencircle scaled 1.5pt;
+
+draw p withcolor red;
+
+pickup pencircle scaled 1pt;
+
+z8 = z5 shifted (0.3 * u, 0.5 * u);
+
+pickup pencircle scaled 5pt;
+draw z8;
+draw z5;
+pickup pencircle scaled 3pt;
+draw z8 withcolor white;
+draw z5 withcolor white;
+label.urt(btex $z$ etex, z8);
+label.llft(btex $z_0$ etex, z5 shifted (-0.05*u, -0.05*u));
+
+label.top(btex Re etex, z2 shifted (10,0));
+label.rt(btex Im etex, z4 shifted (0,10));
+
+z9 = (point 45 of outercircle) shifted z5;
+z10 = (point 270 of innercircle) shifted z5;
+
+label.urt(btex $\gamma_1$ etex, z9) withcolor red;
+label.top(btex $\gamma_2$ etex, z10) withcolor red;
+
+endfig;
+
+%
+% Wegintegral zum Satz 7.9
+%
+beginfig(4)
+
+numeric u;
+u := 60;
+
+z0 = (   0,      0);
+z1 = (-2*u,      0);
+z2 = ( 2*u,      0);
+z3 = (   0, -1.4*u);
+z4 = (   0,  1.4*u);
+
+path p;
+
+z10 = (0, -0.7 * u);
+z11 = (u, -1.4 * u);
+z15 = (1.6 * u, 0);
+z12 = (u, u);
+z13 = (-0.5 * u, u);
+z14 = (-1 * u, -u);
+z16 = (-1.5 * u, 0.2 * u);
+
+p := z16..z14..z10{dir 0}..z11..z15..z12..z13;
+pickup pencircle scaled 1.5pt;
+draw p withcolor red;
+label.ulft(btex $\gamma$ etex, point 3.5 of p) withcolor red;
+
+path q;
+q = z10;
+for a = 1 step 1 until 360:
+	q := q--(z10 rotated a);
+endfor;
+q := q--cycle;
+pickup pencircle scaled 0.5pt;
+fill q withcolor (1,0.95,0.95);
+draw q withcolor red;
+
+z5 = point 300 of q;
+drawarrow z0--z5;
+label.lrt(btex $\varrho$ etex, 0.7[z0,z5]);
+
+pickup pencircle scaled 1pt;
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+label.top(btex Re etex, z2 shifted (10,0));
+label.rt(btex Im etex, z4 shifted (0,10));
+label(btex $\mathbb C$ etex, z1 shifted z4);
+
+z6 = (0.4 * u, 0.2 * u);
+pickup pencircle scaled 4pt;
+draw z6;
+pickup pencircle scaled 3pt;
+draw z6 withcolor white;
+label.top(btex $z$ etex, z6 shifted (0,1));
+
+endfig;
+
+%
+%
+%
+%beginfig(5)
+%
+%endfig;
+
 end
