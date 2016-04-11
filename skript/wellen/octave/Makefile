@@ -43,8 +43,8 @@ a0a1:	config.dat ak.dat a0a1.m
 yx:	config.dat ak.dat yx.m
 	octave yx.m
 
-plot:	yx.dat config.dat yx.dat
-	octave waveplot.m
+plot:	yx.dat config.dat yx.dat plotter.m
+	octave plotter.m
 
 krange:
 	$(MAKE) XRANGE="'[-10, 10]'" XAUTOPLOT=true YAUTOPLOT=false KRANGE="'[30, 240]' 30" KRANGEPLOT=true

@@ -15,12 +15,14 @@ endfunction
 y = zeros(datasize, 1);
 p = zeros(datasize, 1);
 for x = (xrange(1):1 / scalefactor:xrange(2))
-    y(round((x - xrange(1)) * scalefactor) + 1) = f(x - x0, a, a0, a1, A, B, C, kmax);
-    p(round((x - xrange(1)) * scalefactor) + 1) = A * x^2 + B * x + C;
+    arrayposition = round((x - xrange(1)) * scalefactor) + 1;
+    y(arrayposition) = f(x - x0, a, a0, a1, A, B, C, kmax);
+    p(arrayposition) = A * x^2 + B * x + C;
 endfor
 
 x1val = f(x1, a, a0, a1, A, B, C, kmax);
 x2val = f(x2, a, a0, a1, A, B, C, kmax);
 
-save("yx.dat", "y", "x1val", "x2val");
-save("parabola.dat", "p");
+xaxis = linspace(xrange(1), xrange(2), datasize + 1);
+
+save("yx.dat", "y", "x1val", "x2val", "p", "xaxis");

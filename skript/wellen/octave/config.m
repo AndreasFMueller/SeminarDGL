@@ -1,12 +1,34 @@
-###
+##
+# Octave run
+##
+
+runcfg = 'octave config.m';
+runak = 'octave ak.m';
+runa0a1 = 'octave a0a1.m';
+runyx = 'octave yx.m';
+runkrangeplot = 'octave krangeplot.m';
+runwaveplot = 'octave waveplot.m';
+
+##
+# Plot settings
+##
+
+plotwave = true;
+plotkrange = false;
+
+waveplot = true;
+parabolazeroesplot = true;
+parabolaplot = true;
+a0heightplot = false;
+
+##
 # Config variables
-###
+##
 
 kmax = 180;
 
 krange = [kmax, kmax];
 kstep = 1;
-plotkrange = false;
 
 x0 = 0;
 
@@ -154,4 +176,10 @@ wavetitle = sprintf('Welle, a=%d, b=%d, c=%d', A, B, C);
 parabolatitle = sprintf('Parabel');
 wavewithparabolatitle = sprintf('Welle mit Parabel');
 
-save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", "krange", "kstep", "krangeplot", "linecolor", "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");
+save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", 
+"autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", 
+"C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", 
+"krange", "kstep", "plotkrange", "linecolor", 
+"plotwave", "parabolaplot", "waveplot", "parabolazeroesplot", "a0heightplot", 
+"runcfg", "runak", "runa0a1", "runyx", "runkrangeplot", "runwaveplot",
+"parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");
