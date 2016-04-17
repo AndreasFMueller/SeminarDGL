@@ -10,11 +10,11 @@
 *.log
 *.mpx
 *.synctex.gz
+skript/chapters/images/path*.mp
 **/*.[0-9]
 **/*.[0-9][0-9]
 **/skript-blx.bib
 **/skript.run.xml
 **/mptextmp.mp
-*.jpg
 *.dat
 *.swp
