@@ -25,7 +25,7 @@ int	f(double x, const double y[], double f[], void *params) {
 int	singlecurve(FILE *out, const char *name, double x0, double y0,
 		int direction) {
 	printf("%s: %f\n", name, y0);
-	gsl_odeiv2_system	system = { f, NULL, 2, &p0 };
+	gsl_odeiv2_system	system = { f, NULL, 1, &p0 };
 	gsl_odeiv2_driver	*driver
 		= gsl_odeiv2_driver_alloc_y_new(&system, gsl_odeiv2_step_rk8pd,
 			1e-6 * direction, 1e-6, 0.0);
@@ -54,7 +54,7 @@ end:
 
 int	centercurve(FILE *out, const char *name, double y0) {
 	printf("%s: %f\n", name, y0);
-	gsl_odeiv2_system	system = { f, NULL, 2, &p0 };
+	gsl_odeiv2_system	system = { f, NULL, 1, &p0 };
 	gsl_odeiv2_driver	*driver
 		= gsl_odeiv2_driver_alloc_y_new(&system, gsl_odeiv2_step_rk8pd,
 			-1e-6, 1e-6, 0.0);
@@ -90,7 +90,7 @@ end:
 }
 
 int	limitcurve(FILE *out, const char *name, int direction) {
-	gsl_odeiv2_system	system = { f, NULL, 2, &p0 };
+	gsl_odeiv2_system	system = { f, NULL, 1, &p0 };
 	gsl_odeiv2_driver	*driver
 		= gsl_odeiv2_driver_alloc_y_new(&system, gsl_odeiv2_step_rk8pd,
 			direction * 1e-6, 1e-6, 0.0);
