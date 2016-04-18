@@ -6,7 +6,9 @@
 N = 2^10;
 f = zeros(N + 1, 1);
 
-rand("state", 48);
+state = zeros(1, 625);
+state(1) = 47;
+rand("state", state);
 
 sigma2 = 1;
 f(N + 1) = normrnd(0, sqrt(sigma2));

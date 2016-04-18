@@ -134,13 +134,13 @@ pickup pencircle scaled 4pt;
 draw z0 withcolor red;
 pickup pencircle scaled 3pt;
 draw z0 withcolor white;
-label.llft(btex $X(0)$ etex, z0);
+label.urt(btex $X(0)$ etex, z0);
 
 pickup pencircle scaled 4pt;
 draw z10 withcolor red;
 pickup pencircle scaled 3pt;
 draw z10 withcolor white;
-label.top(btex $X(\tau)$ etex, z10);
+label.llft(btex $X(\tau)$ etex, z10);
 
 pickup pencircle scaled 4pt;
 draw z11 withcolor 0.8;
