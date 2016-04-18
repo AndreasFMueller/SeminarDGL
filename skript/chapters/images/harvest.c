@@ -3,9 +3,10 @@
  *
  * (c) 2016 Prof Dr Andreas Mueller,  Hochschule Rapperswil
  */
-#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#define __USE_XOPEN
+#include <math.h>
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_odeiv2.h>
 
@@ -62,7 +63,7 @@ int	centercurve(FILE *out, const char *name, double y0) {
 	double	x = 2.5;
 	double	y[1] = { y0 };
 	// integrate backwards to the initial value
-	int	status = gsl_odeiv2_driver_apply(driver, &x, 0, y);
+	gsl_odeiv2_driver_apply(driver, &x, 0, y);
 	gsl_odeiv2_driver_free(driver);
 	driver = gsl_odeiv2_driver_alloc_y_new(&system, gsl_odeiv2_step_rk8pd,
 			1e-6, 1e-6, 0.0);
@@ -101,7 +102,7 @@ int	limitcurve(FILE *out, const char *name, int direction) {
 	printf("integration from %f to %f: %f (%d)\n", x, xnext, y[0], status);
 	gsl_odeiv2_driver_free(driver);
 	// now use this as the initial value
-	singlecurve(out, name, 2.5 * (1 - direction), y[0], direction);
+	return singlecurve(out, name, 2.5 * (1 - direction), y[0], direction);
 }
 
 int	main(int argc, char *argv[]) {

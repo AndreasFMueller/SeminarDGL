@@ -46,13 +46,13 @@ harvest.mp:	harvest
 	./harvest
 
 harvest:	harvest.c
-	gcc -o harvest -Wall -O2 -std=c99 -g harvest.c -lgsl
+	gcc -o harvest -Wall -O2 -std=c99 -g harvest.c `pkg-config --libs gsl`
 
 cube.mp:	cube
 	./cube
 
 cube:	cube.c
-	gcc -o cube -Wall -O2 -std=c99 -g cube.c -lgsl
+	gcc -o cube -Wall -O2 -std=c99 -g cube.c `pkg-config --libs gsl`
 
 geometrie_FILES = geometrie-1.pdf geometrie-2.pdf geometrie-3.pdf	\
 	geometrie-4.pdf geometrie-5.pdf geometrie-6.pdf geometrie-7.pdf	\
