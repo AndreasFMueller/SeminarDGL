@@ -13,7 +13,7 @@ Beide entdeckten im Jahre 1927 unabh"angig voneinander die Friedmann-Lema\^{i}tr
 \left(\frac{a'}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{k c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
 \subsubsection{Herleitung der Gleichung}
-Um das Universum wird ein Raster gelegt. Die Einheit des Rasters wird durch den Skalenfaktor a ausgedr"uckt. Der Skalenfaktor ist abh"angig von der Zeit. Ver"andert sich das Raster, ver"andern sich auch die Positionen der Sterne und Galaxien.
+Um das Universum wird ein Raster gelegt. Die Einheit des Rasters wird durch den Skalenfaktor $a$ ausgedr"uckt. Der Skalenfaktor ist abh"angig von der Zeit. Ver"andert sich das Raster, ver"andern sich auch die Positionen der Sterne und Galaxien.
 %\begin{figure}
 %	\includegraphics[width = \textwidth ]{chapters/images/friedmann-1.png}
 %\end{figure}
@@ -66,7 +66,7 @@ Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steh
 \begin{equation}
 \frac{a''(t)}{a} = \frac{- 4 \pi G}{3} \rho
 \end{equation}
-\subsubsection{Numerische L"osung der Beschleunigung}
+\subsubsection{Bedeutung der Beschleunigungsgleichung}
 Setzt man f"ur die Dichte Gleichung \ref{friedmann:dichte} ein ergibt sich
 \[\frac{a''(t)}{a} = \frac{- 4 \pi G}{3} \frac{\nu}{a^3} \Rightarrow \frac{a''(t)}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
 Der erste Term auf der rechten Seite der Gleichung entspricht mehreren Konstanten, welche wir durch die Konstante $c$ ersetzen. So vereinfacht sich die Gleichung zu
@@ -74,7 +74,20 @@ Der erste Term auf der rechten Seite der Gleichung entspricht mehreren Konstante
 Die Differentialgleichung ist nichtlinear und mit MatLab nicht l"osbar. Trotzdem k"onnen wir gewisse Aussagen machen, n"amlich
 \begin{enumerate}
 	\item Die Beschleunigung wirkt der Ausdehnung des Universums entgegen. Sie ist negativ, weil $c$ eine positive Konstante ist und $a^2$  immer positiv ist. 
-	\item Eine negative Beschleunigung bedeutet aber nicht, dass das Universum implodiert.
+	\item Eine negative Beschleunigung bedeutet aber nicht, dass sich das Universum verkleinert.
 \end{enumerate}
+
+\subsubsection{Energieerhaltung}
+Die Energie der Masse $m$ besteht aus kinetischer und potentieller Energie.
+\begin{equation}
+E_m = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{x}, \qquad x = \text{Abstand zwischen der Masse M und m}
+\end{equation}
+Dabei k"onnen drei F"alle auftreten
+\begin{enumerate}
+	\item $E_m > 0 \rightarrow$ Die Masse $m$ kann nicht umkehren, der Term der kinetischen Energie "uberwiegt.
+	\item $E_m = 0 \rightarrow$ Die Masse $m$ kommt auf einer gewissen H"ohe zum Stillstand. (Escape Velocity)
+	\item $E_m < 0 \rightarrow$ Die Masse $m$ wird so stark angezogen, dass die Geschwindigkeit ihre Richtung "andert.
+\end{enumerate}
+
 \end{refsection}
 
