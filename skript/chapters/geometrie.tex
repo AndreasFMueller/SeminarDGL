@@ -328,7 +328,7 @@ Dies bedeutet, dass
 \[
 f''(y_0,b_0)\ne 0
 \qquad
-\text{and}
+\text{und}
 \qquad
 \frac{\partial f}{\partial b}(y_0, b_0)\ne 0.
 \]
@@ -343,6 +343,11 @@ Das zugeh"orige Phasenportrait ist in Abbildung~\ref{geometrie:saddle-node}
 dargestellt.
 Bei dieser Art von Bifurkation entstehen neue kritische Punkte
 paarweise, davon ist jeweils einer stabil, der andere instabil.
+Diese Art der Bifurkation heisst {\em Sattel-Knoten-}
+oder {\em Saddle-Node-Bifurkation}.
+\index{Sattel-Knoten-Bifurkation}
+\index{Saddle-Node-Bifurkation}
+
 \begin{figure}
 \centering
 \includegraphics{chapters/images/bifurkation-1.pdf}
@@ -351,11 +356,11 @@ Abh"angigkeit vom Parameter $b$.
 \label{geometrie:saddle-node}}
 \end{figure}
 
-\subsubsection{Gabel-Bifurkation}
+\subsubsection{Heugabel-Bifurkation}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/bifurkation-2.pdf}
-\caption{Phasendiagramm f"ur die Gabel-Bifurkation in Abh"angigkeit vom
+\caption{Phasendiagramm f"ur die Heugabel-Bifurkation in Abh"angigkeit vom
 Parameter $b$.
 \label{geometrie:pitchfork}}
 \end{figure}
@@ -368,13 +373,35 @@ reelle Nullstelle $y=0$.
 F"ur $b>0$ dagegen liegen die drei verschiedenen Nullstellen
 $-\sqrt{b}$, $0$  und $\sqrt{b}$.
 Das zugeh"orige Phasendiagramm ist in Abbildung~\ref{geometrie:pitchfork}
-dargestellt.
+dargestellt, diese Art von Bifurkation heisst {\em Heugabel-}
+oder {\em Pitchformk-Bifurkation}.
+\index{Heugabel-Bifurkation}
+\index{Pitchfork-Bifurkation}
 Bei dieser Art von Bifurkation werden aus einer Nullstelle deren drei.
 War die Nullstelle instabil (wie in Abbildung~\ref{geometrie:pitchfork}),
 entstehen zwei neue instabile Nullstellen, die bisherige Nullstellen 
 wird stabil.
 War die eine Nullstelle stabil, entstehen zwei stabile Nullstellen, die
 eine Nullstelle wird instabil.
+
+\subsubsection{Transkritische Bifurkation}
+Das Standard-Modell f"ur die sogenannten {\em transkritische Bifurkation} ist 
+\index{transkritische Bifurkation}
+\[
+f(y,b)=y^2+yb = y(y+b).
+\]
+F"ur $b=0$ hat dieses System einen kritischen Punkt bei $y=0$.
+Eine L"osungskurve, die bei negativem $y$ beginnt, wird immer n"aher
+an den Punkt $y=0$ herankommen.
+Liegt der Anfangswert jedoch im Gebiet $y>0$, wird sich die L"osungskurve
+immer weiter von $y=0$ entfernen.
+Der Fixpunkt bei $y=0$ ist also weder stabil noch instabil.
+
+F"ur $b\ne 0$ entsteht ein weiterer kritischer Punkt bei $y=-b$.
+Da f"ur $y\to\pm\infty$ die Funktion $y\mapsto f(y,b)$ immer positiv
+ist, ist der rechte der beiden Fixpunkte immer stabil, der
+linke immer instabil.
+
 
 %
 % Zweidimensionale Systeme
