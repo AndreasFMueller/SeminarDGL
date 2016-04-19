@@ -8,6 +8,7 @@ runa0a1 = 'octave a0a1.m';
 runyx = 'octave yx.m';
 runkrangeplot = 'octave krangeplot.m';
 runwaveplot = 'octave waveplot.m';
+runparabolaplot = 'octave parabolaplot.m';
 
 ##
 # Plot settings
@@ -15,11 +16,14 @@ runwaveplot = 'octave waveplot.m';
 
 plotwave = true;
 plotkrange = false;
+plotparabola = false;
 
 waveplot = true;
-parabolazeroesplot = true;
+parabolazerosplot = true;
 parabolaplot = true;
 a0heightplot = false;
+
+filename = "wave";
 
 ##
 # Config variables
@@ -114,8 +118,20 @@ for i = (1:nargin)
         case "-krange"
             krange = str2num(arglist(++i){1});
             kstep = str2num(arglist(++i){1});
-        case "-krangeplot"
-            krangeplot = str2num(arglist(++i){1});
+        case "-plotkrange"
+            plotkrange = str2num(arglist(++i){1});
+        case "-plotwave"
+            plotwave = str2num(arglist(++i){1});
+        case "-plotparabola"
+            plotparabola = str2num(arglist(++i){1});
+        case "-waveplot"
+            waveplot = str2num(arglist(++i){1});
+        case "-parabolazerosplot"
+            parabolazerosplot = str2num(arglist(++i){1});
+        case "-parabolaplot"
+            parabolaplot = str2num(arglist(++i){1});
+        case "-filename"
+           filename = arglist(++i){1};
     endswitch
 endfor
 
@@ -139,7 +155,7 @@ signc = '+';
 
 if (B < 0)
     signb = '';
-endif
+    endif
 
 if (C < 0)
     signc = '';
@@ -179,7 +195,7 @@ wavewithparabolatitle = sprintf('Welle mit Parabel');
 save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange", 
 "autox", "autoy", "scalefactor", "A", "arange", "astep", "B", "brange", "bstep", 
 "C", "crange", "cstep", "a0start", "a0range", "a0step", "a1start", "a1range", "a1step", 
-"krange", "kstep", "plotkrange", "linecolor", 
-"plotwave", "parabolaplot", "waveplot", "parabolazeroesplot", "a0heightplot", 
-"runcfg", "runak", "runa0a1", "runyx", "runkrangeplot", "runwaveplot",
+"krange", "kstep", "plotkrange", "linecolor", "filename", "plotparabola",
+"plotwave", "parabolaplot", "waveplot", "parabolazerosplot", "a0heightplot", 
+"runcfg", "runak", "runa0a1", "runyx", "runkrangeplot", "runwaveplot", "runparabolaplot",
 "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");

@@ -14,7 +14,7 @@ if (waveplot)
     plot(xaxis, y, yformula);
 endif
 
-if (parabolazeroesplot)
+if (parabolazerosplot)
     plot([x1, x1], [0, x1val], '1;;');
     plot([x2, x2], [0, x2val], '1;;');
 endif
@@ -32,4 +32,4 @@ if (autoy)
 endif
 grid("on");
 title(wavewithparabolatitle);
-print("-dpng", "wave.png");
+print("-dpng", sprintf('%s.png', filename));

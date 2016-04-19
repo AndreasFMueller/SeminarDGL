@@ -7,3 +7,7 @@ endif
 if (plotwave)
    system(runwaveplot);
 endif
+
+if (plotparabola)
+   system(runparabolaplot);
+endif
