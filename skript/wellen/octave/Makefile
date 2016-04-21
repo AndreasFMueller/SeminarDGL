@@ -21,14 +21,17 @@ A0RANGE := '[$(A0), $(A0)]' 1
 A1RANGE := '[$(A1), $(A1)]' 1
 KRANGE := '[$(KMAX), $(KMAX)]' 1
 KRANGEPLOT := false
-PARABOLAPLOT := false
+PARABOLAPLOT := true
 WAVEPLOT := true
+PARABOLAZEROSPLOT := true
 PLOTWAVE := true
 PLOTKRANGE := false
 PLOTPARABOLA := false
+PLOTBPARABOLA := false
 FILENAME := 'wave'
+KRANGEFRAMES := false
 
-.PHONY:	all config ak a0a1 yx plot krange parabola clean
+.PHONY:	all config ak a0a1 yx plot krange aparabola anegparabola bparabola clean
 
 all:	config ak a0a1 yx plot
 
@@ -40,7 +43,8 @@ config:
 	-a0range $(A0RANGE) -a1range $(A1RANGE) -krange $(KRANGE) \
 	-krangeplot $(KRANGEPLOT) -parabolaplot $(PARABOLAPLOT) \
 	-waveplot $(WAVEPLOT) -plotkrange $(PLOTKRANGE) -plotparabola $(PLOTPARABOLA) \
-	-plotwave $(PLOTWAVE) -filename $(FILENAME)
+	-plotwave $(PLOTWAVE) -filename $(FILENAME) -parabolazerosplot $(PARABOLAZEROSPLOT) \
+	-plotbparabola $(PLOTBPARABOLA) -krangeframes $(KRANGEFRAMES)
 
 ak:	config.dat ak.m
 	octave ak.m
@@ -55,10 +59,16 @@ plot:	yx.dat config.dat yx.dat plotter.m
 	octave plotter.m
 
 krange:
-	$(MAKE) XRANGE="'[-10, 10]'" XAUTOPLOT=true YAUTOPLOT=false KRANGE="'[30, 240]' 30" PLOTKRANGE=true
+	$(MAKE) XRANGE="'[-10, 10]'" XAUTOPLOT=true YAUTOPLOT=false KRANGE="'[2, 242]' 5" PLOTKRANGE=true PLOTWAVE=false
 
-parabola:
-	$(MAKE) ARANGE="'[1, 0]' -1/25" YAUTOPLOT=false YPLOT="'[-2, 40]'" PARABOLAPLOT=true PLOTPARABOLA=true PLOTWAVE=false
+aparabola:
+	$(MAKE) XRANGE="'[-8, 8]'" XAUTOPLOT=false ARANGE="'[1, 0]' -1/32" C=-1 YAUTOPLOT=false YPLOT="'[-25, 25]'" PARABOLAPLOT=true PLOTPARABOLA=true PLOTWAVE=false
+
+anegparabola:
+	$(MAKE) XRANGE="'[-8, 8]'" XAUTOPLOT=false ARANGE="'[-1, 0]' 1/32" C=1 YAUTOPLOT=false YPLOT="'[-25, 25]'" PARABOLAPLOT=true PLOTPARABOLA=true PLOTWAVE=false
+
+bparabola:
+	$(MAKE) XRANGE="'[-10, 10]'" XAUTOPLOT=true BRANGE="'[-8, 8]' 1" YAUTOPLOT=false YPLOT="'[-20, 20]'" PLOTBPARABOLA=true PLOTWAVE=false
 
 clean:
 	rm -f *.dat *.png

@@ -9,6 +9,7 @@ runyx = 'octave yx.m';
 runkrangeplot = 'octave krangeplot.m';
 runwaveplot = 'octave waveplot.m';
 runparabolaplot = 'octave parabolaplot.m';
+runbparabolaplot = 'octave bparabolaplot.m';
 
 ##
 # Plot settings
@@ -17,11 +18,14 @@ runparabolaplot = 'octave parabolaplot.m';
 plotwave = true;
 plotkrange = false;
 plotparabola = false;
+plotbparabola = false;
 
 waveplot = true;
 parabolazerosplot = true;
 parabolaplot = true;
 a0heightplot = false;
+
+krangeframes = false;
 
 filename = "wave";
 
@@ -124,6 +128,8 @@ for i = (1:nargin)
             plotwave = str2num(arglist(++i){1});
         case "-plotparabola"
             plotparabola = str2num(arglist(++i){1});
+        case "-plotbparabola"
+            plotbparabola = str2num(arglist(++i){1});
         case "-waveplot"
             waveplot = str2num(arglist(++i){1});
         case "-parabolazerosplot"
@@ -132,6 +138,8 @@ for i = (1:nargin)
             parabolaplot = str2num(arglist(++i){1});
         case "-filename"
            filename = arglist(++i){1};
+        case "-krangeframes"
+           krangeframes = str2num(arglist(++i){1});
     endswitch
 endfor
 
@@ -198,4 +206,5 @@ save("./config.dat", "kmax", "x0", "x1", "x2", "xrange", "datasize", "plotrange"
 "krange", "kstep", "plotkrange", "linecolor", "filename", "plotparabola",
 "plotwave", "parabolaplot", "waveplot", "parabolazerosplot", "a0heightplot", 
 "runcfg", "runak", "runa0a1", "runyx", "runkrangeplot", "runwaveplot", "runparabolaplot",
+"runbparabolaplot", "plotbparabola", "krangeframes",
 "parabolaformula", "yformula", "wavetitle", "parabolatitle", "wavewithparabolatitle");

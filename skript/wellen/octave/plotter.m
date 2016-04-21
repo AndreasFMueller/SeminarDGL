@@ -11,3 +11,7 @@ endif
 if (plotparabola)
    system(runparabolaplot);
 endif
+
+if (plotbparabola)
+   system(runbparabolaplot);
+endif
