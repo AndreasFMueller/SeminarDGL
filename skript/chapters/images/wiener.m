@@ -12,6 +12,7 @@ rand("state", state);
 
 sigma2 = 1;
 f(N + 1) = normrnd(0, sqrt(sigma2));
+sigma2 = 1/2;
 
 delta = N;
 while (delta >= 2)
