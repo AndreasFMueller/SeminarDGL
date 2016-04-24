@@ -1,7 +1,7 @@
 function [phi, r] = call_sphere_ode()
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
-    span = [0 0.8]; %angle Interval
+    span = [0 1]; %angle Interval
     r0 = 1;
     [phi,r] = ode45(@dstate, span, r0);
     polar(phi,r)
@@ -19,9 +19,12 @@ function [phi, r] = call_sphere_ode()
     end
 
     function [] = print_coord(phi, r)
+        scopy = '';
         for m = 1:size(phi)
-           fprintf('(%2.5f, %2.5f) ', ((phi(m) * 180 / pi) + 90), r(m)); 
+           fprintf('(%2.5f, %2.5f) ', (r(m)*cos(phi(m)+pi/2)),(r(m)*sin(phi(m)+pi/2))); 
+           scopy = strcat(scopy, sprintf('(%2.5f,%2.5f) ', (r(m)*cos(phi(m)+pi/2)), (r(m)*sin(phi(m)+pi/2))));
         end
+        clipboard('copy', scopy);
         fprintf('\n0');
     end
 end

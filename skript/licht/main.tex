@@ -1,3 +1,16 @@
+%externalize tikz
+\usetikzlibrary{external}
+\tikzexternalize[prefix=licht/tikz/, figure name=plot]
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\usepgfplotslibrary{fillbetween}
+
+
+\tikzset{narea/.style={/utils/exec={\pgfplotscolormapdefinemappedcolor{#1}},%
+    draw=none, fill=mapped color}}
+    
+    
 \chapter{Lichtbrechung in der Atmosph"are\label{chapter:thema}}
 \lhead{Lichtbrechung in der Atmosph"are}
 \begin{refsection}
@@ -25,10 +38,11 @@ Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilis
 Schon in der Primarschule lehr der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
 In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
 
-\section{Planares Modell}
+\section{Planares Modell} 
 \begin{figure}
 \centering
 \begin{tikzpicture}
+  \tikzsetnextfilename{planaresModell}
   \begin{axis}[xlabel=$x$, ylabel = $y$, axis lines=middle, height=5cm, width = 8cm,
   ymin=0, ymax=1.5, xmin=0, xmax=1, yticklabels={$y_0$, $y$, $y + dy$}, ytick =
   {0.2,0.5,0.7}, xtick={0.2}, xticklabel={\rlap{$x_0$}}]
@@ -93,7 +107,7 @@ Wie in der Gleichung \ref{eq:13_3} zu erkennen ist, ist der Anfangswinkel in der
 Dieser ist von der Anfangssteigung abh"angig. 
 Da jedoch die Differentialgleichung (aktuell) in der ersten Ordnung ist, wird die Gleichung \ref{eq:13_3} nach $x$ abgeleitet:
 
-$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
+$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'_r(y'^2 + 1) - n y' y'' \right) = 0$$
 
 Nun sind wir $\alpha_0$ losgeworden und haben die jetzt vorliegende Gleichung hat Ordnung 2. 
 Nun k"onnen wir den Anfangswinkel $\alpha_0$ als Steigung in den Anfangsbedingungen definieren. 
@@ -129,13 +143,17 @@ Ab dem Zeitpunkt $x_0$, bei welchem gilt: $y'(x_0) = 0$, wird die Funktion $y(x)
 
 $$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \quad  y(x \geq x_0) = y(x_0)$$
 
-
 \begin{figure}
 \centering
 \begin{tikzpicture}
-  \begin{axis}[xlabel=$x$, ylabel=$y(x))$, axis lines=middle, height=5cm, width=5cm, ticks
+  \tikzsetnextfilename{planaresModellLoesungen}
+  \begin{axis}[xlabel=$x$, ylabel=$y(x)$, axis lines=middle, height=5cm, width=5cm, ticks
   = none, legend pos = outer north east, legend style={draw=none}, ymin = 0, ymax = 10,
-  xmin = 0, xmax = 10] 
+  xmin = 0, xmax = 10, colormap={traditionalpm3d}{color=(white) color=(lGray)}, %colorbar,
+  view={0}{90}] 
+
+  \addplot3[surf, domain=-10:10, y domain=0:20 , shader=flat, samples=61] {1 + 1 * exp(-y/2)};  
+  \addlegendentry{$n(y)$}
   
   \addplot [mark = none, thick, draw=blue] coordinates{
         (0.00000,0.00000)(0.00008,0.00005)(0.00017,0.00010)(0.00025,0.00015)
@@ -146,7 +164,15 @@ $$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \q
         (0.26157,0.14852)(0.51157,0.27569)(0.76157,0.38962)(1.01157,0.49129)
         (1.26157,0.58151)(1.51157,0.66092)(1.76157,0.73009)(2.01157,0.78945)
         (2.26157,0.83938)(2.51157,0.88018)(2.76157,0.91208)(3.01157,0.93526)
-        (3.26157,0.94986)(10,0.94986) };
+        (3.26157,0.94986)(3.51157,0.95594)(3.76157,0.95354)(4.01157,0.94265)
+        (4.26157,0.92322)(4.51157,0.89512)(4.76157,0.85822)(5.01157,0.81229)
+        (5.26157,0.75706)(5.51157,0.69221)(5.76157,0.61731)(6.01157,0.53186)
+        (6.26157,0.43525)(6.51157,0.32674)(6.76157,0.20546)(7.01157,0.07031)
+        (7.26157,-0.08007)(7.51157,-0.24736)(7.76157,-0.43357)(8.01157,-0.64143)
+        (8.26157,-0.87451)(8.51157,-1.13773)(8.76157,-1.43704)(9.01157,-1.78220)
+        (9.26157,-2.18838)(9.40485,-2.45726)(9.54812,-2.76003)(9.69140,-3.10717)
+        (9.83468,-3.51505)(9.87601,-3.64716)(9.91734,-3.78722)(9.95867,-3.93632)
+        (10.00000,-4.09576)};
     \addlegendentry{$f'(0) = 0.6$}
     
     \addplot [mark = none, thick, draw=red] coordinates{
@@ -164,7 +190,9 @@ $$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \q
         (5.78491,2.76420)(6.03491,2.80844)(6.28491,2.84854)(6.53491,2.88461)
         (6.78491,2.91672)(7.03491,2.94495)(7.28491,2.96936)(7.53491,2.98999)
         (7.78491,3.00690)(8.03491,3.02011)(8.28491,3.02966)(8.53491,3.03557)
-        (8.78491,3.03784) (10, 3.03784) };
+        (8.78491,3.03784)(9.03491,3.03648)(9.28491,3.03149)(9.53491,3.02286)
+        (9.78491,3.01056)(9.83869,3.00744)(9.89246,3.00414)(9.94623,3.00068)
+        (10.00000,2.99704)};
     \addlegendentry{$f'(0) = 1$}
     
     \addplot [mark = none, thick, draw=green] coordinates{
@@ -207,21 +235,6 @@ $$y'(x_0) = 0 \longrightarrow y''(x \geq x_0) = 0, \quad y''(x \geq x_0) = 0, \q
        (10.00000,9.80340) };
     \addlegendentry{$f'(0) = 1.8$}
     
-    \addplot [mark = none, dashed, draw=blue] coordinates{
-        (3.51157,0.95594)(3.76157,0.95354)(4.01157,0.94265)
-        (4.26157,0.92322)(4.51157,0.89512)(4.76157,0.85822)(5.01157,0.81229)
-        (5.26157,0.75706)(5.51157,0.69221)(5.76157,0.61731)(6.01157,0.53186)
-        (6.26157,0.43525)(6.51157,0.32674)(6.76157,0.20546)(7.01157,0.07031)
-        (7.26157,-0.08007)(7.51157,-0.24736)(7.76157,-0.43357)(8.01157,-0.64143)
-        (8.26157,-0.87451)(8.51157,-1.13773)(8.76157,-1.43704)(9.01157,-1.78220)
-        (9.26157,-2.18838)(9.40485,-2.45726)(9.54812,-2.76003)(9.69140,-3.10717)
-        (9.83468,-3.51505)(9.87601,-3.64716)(9.91734,-3.78722)(9.95867,-3.93632)
-        (10.00000,-4.09576)};
-        
-    \addplot [mark = none, dashed, draw=red] coordinates{
-        (9.03491,3.03648)(9.28491,3.03149)(9.53491,3.02286)
-        (9.78491,3.01056)(9.83869,3.00744)(9.89246,3.00414)(9.94623,3.00068)
-        (10.00000,2.99704)};
   
   \end{axis}
 \end{tikzpicture}
@@ -268,6 +281,7 @@ $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin
 \begin{figure} 
 \centering
 \begin{tikzpicture}
+  \tikzsetnextfilename{SphaerischesModell}
   %radial lines
   \draw (0,0) node[above]{$O$} 
         -- ++(0:10cm)
@@ -320,110 +334,106 @@ Diese Gleichung ist eine Differentialgleichung erster Ordnung.
 Jedoch ist erneut der Term $sin^2(\alpha_0)$ vorhanden, welcher von $r'(\varphi_0)$ abhängt. 
 Damit die DGL auch korrekte Anfangsbedingungen erhält, leiten wir die Gleichung nach $\varphi$ ab und erhalten:
 
-$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) =  \frac{2nr (n'r `+ nr') \left( \left( \frac{r'}{r} \right)^2 +1\right) - (nr)^2 2 \frac{r'' r - r'^2}{r}}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2}$$
-$$ = \frac{2nr}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2} \left( (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) - n \left( r'' r - r'^2 \right) \right) = \frac{d}{d\varphi} \left(\left( r_0 n_0 \sin \alpha_0\right)^2 \right) = 0$$
-$$\Rightarrow (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) = n \left( r'' r - r'^2 \right)$$
-$$\Rightarrow \frac{n'r'^2}{r} + \frac{n r'^2}{r^2} + n'r + nr' + nr'^2 = r'' r n$$
+$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) =  \frac{2 r^2 n r' n'_r}{\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \left(\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\right)}{\left(\frac{r'^2}{r^2}+1\right)^2}$$
 
-\begin{equation}
-r'' = \frac{1}{r} \left( n' + r' + r'^2 \left( 1 + \frac{1}{r^2} + \frac{n'}{n r} \right) \right)
+$$\frac{2n r' r}{\frac{r'^2}{r^2}+1} \cdot \left( n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} \right) = 0$$
+
+$$\Rightarrow n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} = 0$$
+
+$$\Rightarrow n'_r r'^2  + n'_r r^2 + n r'^2 + nr^2 = n r r'' - n r'^2$$
+
+$$\Rightarrow n'_r r'^2 + n'_r r^2 + 2 n r'^2 + n r^2 = n r r''$$
+
+\begin{equation} \label{licht:eq:sphere:allg}
+\Rightarrow r'' = \frac{n'_r r'^2 + n'_r r^2 + 2 n r'^2 + n r^2}{n r}
 \end{equation}
 
-In dieser Herleitung wurde durch $n$ und $r$ geteilt. werden jedoch nie $= 0$ sein.
-Deshalb muss hier nicht mehr weiter Eingeschr"ankt werden. 
-Nun wird $n'(r(\varphi))$ genauer untersucht. 
-Nach der Kettenregel ergibt: $\frac{dn}{d\varphi} = \frac{dn}{dr} \cdot \frac{dr}{d\varphi}$. 
-Die Ableitung $\frac{dn}{dr}$ wird im Folgenden als $n'_r$ gekennzeichnet.
+Bei dieser Gleichung gilt: $n'_r = \frac{\partial n}{\partial r}$. 
 
-$$r'' = \frac{r'}{r} \left( 1 + n'_r + r' \left( 1 + \frac{1}{r^2} + \frac{n'_r r'}{n r}\right) \right)$$
-
-Nun wird die oben verwendete Approximation $n(r) = 1 + \mu e^{-\sigma r}$, $n'_r(r) = -\sigma \mu e^{-\sigma r}$ eingesetzt:
-
-\begin{equation} \label{eq:sphere_dgl_approx}
-r'' = \frac{r'}{r} \left(1 - \sigma \mu e^{-\sigma r} + r' \left( 1 + \frac{1}{r^2} - \frac{\sigma \mu e^{-\sigma r}}{r (1 + \mu e^{-\sigma r})} \right) \right)
-\end{equation}
+Nun überpr"ufen wir, ob diese Funktion auch stimmen kann. 
+Dazu werden spezielle Bedingungen in die Gleichung \ref{licht:eq:sphere:allg} eingesetzt. 
+Wenn als $n = 1$ und $n'_r = 0$ eingesetzt wird, dann wird das Licht nicht gebrochen und die Funktion soll sich wie eine Gerade verhalten. 
+Wenn diese Gleichung so simuliert wird, dann entsteht wie erwartet eine Gerade, welche sich nicht kr"ummt. 
 
 
+%$$ = \frac{2nr}{\left( \left( \frac{r'}{r} \right)^2 + 1 \right)^2} \left( (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) - n \left( r'' r - r'^2 \right) \right) = \frac{d}{d\varphi} \left(\left( r_0 n_0 \sin \alpha_0\right)^2 \right) = 0$$
+%$$\Rightarrow (n'r + nr') \left( \left( \frac{r'}{r} \right)^2 + 1 \right) = n \left( r'' r - r'^2 \right)$$
+%$$\Rightarrow \frac{n'r'^2}{r} + \frac{n r'^2}{r^2} + n'r + nr' + nr'^2 = r'' r n$$
 
-%WRONG CALCULATIONS:
-% $$\Rightarrow \frac{1}{\left(\frac{r'(\varphi)}{r(\varphi)}\right)^2+1} =
-% \left(\frac{r_0 n_0 \sin\alpha_0}{n \cdot r(\varphi)}\right)^2$$
-% $$\Rightarrow \left(\frac{r'(\varphi)}{r(\varphi)}\right)^2 = \left(\frac{n \cdot
-% r(\varphi)}{r_0 n_0 \sin\alpha_0}\right)^2 - 1$$
-% \begin{equation}
-% \Rightarrow r'(\varphi)^2 = \left(\frac{n \cdot r(\varphi)^2}{r_0 n_0 \sin
-% \alpha_0}\right)^2 - r(\varphi)^2
-% \end{equation}
-% 
-% Wenn nun dieselbe Approximation wie beim planaren Modell f"ur $n(r)=1 + \mu e^{-\sigma r}$
-% verwendet wird, l"asst sich die Differentialgleichung nummerisch l"osen, siehe Abbildung
-% \ref{fig:13_4}.
+%\begin{equation}
+%r'' = \frac{1}{r} \left( n' + r' + r'^2 \left( 1 + \frac{1}{r^2} + \frac{n'}{n r} \right) \right)
+%\end{equation}
+
+%In dieser Herleitung wurde durch $n$ und $r$ geteilt. werden jedoch nie $= 0$ sein.
+%Deshalb muss hier nicht mehr weiter Eingeschr"ankt werden. 
+%Nun wird $n'(r(\varphi))$ genauer untersucht. 
+%Nach der Kettenregel ergibt: $\frac{dn}{d\varphi} = \frac{dn}{dr} \cdot \frac{dr}{d\varphi}$. 
+%Die Ableitung $\frac{dn}{dr}$ wird im Folgenden als $n'_r$ gekennzeichnet.
+
+%$$r'' = \frac{r'}{r} \left( 1 + n'_r + r' \left( 1 + \frac{1}{r^2} + \frac{n'_r r'}{n r}\right) \right)$$
+
+%Nun wird die oben verwendete Approximation $n(r) = 1 + \mu e^{-\sigma r}$, $n'_r(r) = -\sigma \mu e^{-\sigma r}$ eingesetzt:
+
+%\begin{equation} \label{eq:sphere_dgl_approx}
+%r'' = \frac{r'}{r} \left(1 - \sigma \mu e^{-\sigma r} + r' \left( 1 + \frac{1}{r^2} - \frac{r' \sigma \mu e^{-\sigma r}}{r (1 + \mu e^{-\sigma r})} \right) \right)
+%\end{equation}
+
 
 
 % FIGURE: linear solution of wrong ODE
 \begin{figure}
 \centering
+
 \begin{tikzpicture}
-  \begin{polaraxis} [scale=1.5, ticks=none, xmin=60, xmax = 150, ymin=30,
-  ymax=180, axis lines* = none, axis line style = {draw=white,line width=0.0001pt},
-  grid=none, legend pos = north east, legend style={draw=none}] 
 
-    %alpha = 45Deg
+  \begin{axis} [
+    axis lines=none, 
+    height=6cm, 
+    width=6cm, 
+    ticks = none, 
+    legend pos = outer north east, 
+    legend style={draw=none}, 
+    ymin = 0,
+    ymax = 4,
+    xmin = -2, 
+    xmax = 2, 
+    %colorbar, 
+    colormap={traditionalpm3d}{color=(white) color=(lGray)}, %,
+    %view={0}{90}
+  ]
+  
+    
+     
+    
+    %\addplot [domain=-4:4, mark=none, draw=none, samples=101, name path=nArea4] {sqrt(4^2 - x^2)};
+    \foreach \r/\x in {
+       495/139,490/142,485/146,480/150,475/153,470/157,465/161,460/165,455/169,450/174,445/178,440/183,435/187,430/192,425/197,420/202,415/207,410/212,405/218, 400/223,395/229,390/235,385/241,380/247,375/253,370/259,365/266,360/273,355/279,350/287,345/294,340/301,335/309,330/317,325/325,320/333,315/341,310/350,305/359, 300/368,295/377,290/387,285/397,280/407,275/417,270/427,265/438,260/449,255/461,250/472,245/484,240/497,235/509,230/522,225/535,220/549,215/563,210/577,205/592, 200/607,195/622,190/638,185/654,180/670,175/687,170/705,165/723,160/741,155/760,150/779,145/799,140/819,135/839,130/861,125/882,120/905,115/928,110/951,105/975, 100/1000
+    }
+    { 
+      \edef\temp{                                                                   %name path=\n
+        \noexpand\addplot [domain=-(\r/100):(\r/100), mark=none, black, samples=101, draw=none, name path = bot] {sqrt((\r/100)^2 - x^2)};
+        \noexpand\addplot [domain=-((\r+5)/100):((\r+5)/100), mark=none, black, samples=101, draw=none, name path = top] {sqrt(((\r+5)/100)^2 - x^2)};
+        \noexpand\addplot [narea=\x, draw=none, fill=mapped color, samples=101] fill between [of=top and bot, soft clip={domain=-4:4}];
+      } 
+      \temp 
+    }            
+    %(1 + 1 * exp(-((\r/100)-1)/2))
+    
+    %r'(0)=0.5
     \addplot [mark = none, thick, color=blue] coordinates {
-      (90.00000,50.00000)(91.49972,51.55642)(92.99943,53.16195)(94.49915,54.81814)
-      (95.99887,56.52660)(97.49859,58.28896)(98.99830,60.10694)(100.49802,61.98228)
-      (101.99774,63.91679)(103.49745,65.91235)(104.99717,67.97087)(106.49689,70.09435)
-      (107.99660,72.28484)(109.49632,74.54445)(110.99604,76.87536)(112.49576,79.27982)
-      (113.99547,81.76016)(115.49519,84.31878)(116.99491,86.95815)(118.49462,89.68081)
-      (119.99434,92.48940)(121.49406,95.38664)(122.99377,98.37533)(124.49349,101.45834)
-      (125.99321,104.63868)(127.49293,107.91941)(128.99264,111.30370)(130.49236,114.79483)
-      (131.99208,118.39618)(133.49179,122.11122)(134.99151,125.94357)(136.49123,129.89691)
-      (137.99094,133.97508)(139.49066,138.18203)(140.99038,142.52182)(142.49010,146.99866)
-      (143.98981,151.61687)(145.48953,156.38093)(146.98925,161.29545)(148.48896,166.36518)
-      (149.98868,171.59504) };
-      
-    \addlegendentry{$\alpha_0 = 45^\circ$}
-    
-    \addplot [mark = none, thick, color=red] coordinates {
-      (90.00000,50.00000)(91.49972,52.50858)(92.99943,55.14366)(94.49915,57.91163)
-      (95.99887,60.81918)(97.49859,63.87336)(98.99830,67.08156)(100.49802,70.45154)
-      (101.99774,73.99147)(103.49745,77.70995)(104.99717,81.61597)(106.49689,85.71900)
-      (107.99660,90.02902)(109.49632,94.55647)(110.99604,99.31235)(112.49576,104.30819)
-      (113.99547,109.55614)(115.49519,115.06896)(116.99491,120.86003)(118.49462,126.94341)
-      (119.99434,133.33390)(121.49406,140.04706)(122.99377,147.09918)(124.49349,154.50741)
-      (125.99321,162.28978)(127.49293,170.46523)(128.99264,179.05361)(130.49236,188.07581)
-      (131.99208,197.55378)(133.49179,207.51060)(134.99151,217.97045)(136.49123,228.95875)
-      (137.99094,240.50225)(139.49066,252.62904)(140.99038,265.36857)(142.49010,278.75179)
-      (143.98981,292.81129)(145.48953,307.58128)(146.98925,323.09760)(148.48896,339.39796)
-      (149.98868,356.52204) };
-      
-    \addlegendentry{$\alpha_0 = 35^\circ$}
-    
-    \addplot[mark = none, thick, color=green] coordinates {
-      (90.00000,50.00000)(90.81615,52.57573)(91.63231,55.28349)(92.44846,58.13003)
-      (93.26461,61.12246)(94.76433,67.02688)(96.26405,73.49923)(97.76376,80.59427)
-      (99.26348,88.37223)(100.76320,96.89922)(102.26292,106.24730)(103.76263,116.49585)
-      (105.26235,127.73224)(106.76207,140.05230)(108.26178,153.56044)(109.76150,168.37161)
-      (111.26122,184.61232)(112.76093,202.42119)(114.26065,221.94924)(115.76037,243.36267)
-      (117.26009,266.84432)(118.75980,292.59455)(120.25952,320.83159)(121.75924,351.79564)
-      (123.25895,385.75098)(124.75867,422.98718)(126.25839,463.81974)(127.75811,508.59592)
-      (129.25782,557.69781)(130.75754,611.54413)(132.25726,670.59108)(133.75697,735.34081)
-      (135.25669,806.34585)(136.75641,884.21170)(138.25612,969.59804)(139.75584,1063.23102)
-      (141.25556,1165.90965)(142.75528,1278.50952)(144.25499,1401.98458)(145.75471,1537.38491)
-      (147.25443,1685.86590)(147.93799,1758.22138)(148.62155,1833.68275)(149.30512,1912.38330)
-      (149.98868,1994.46218) };
-      
-    \addlegendentry{$\alpha_0 = 20^\circ$}
-    
-    \addplot +[mark=none, domain=60:120,color=black, samples=360, thick] {50};
-    \addlegendentry{Erdoberfl"ache}
+      (0.00000,1.00000)(-0.02532,1.01247)(-0.05129,1.02487)(-0.07794,1.03721)(-0.10530,1.04950)(-0.13341,1.06173)(-0.16231,1.07391)(-0.19202,1.08604)(-0.22260,1.09811)(-0.25408,1.11013)(-0.28652,1.12209)(-0.31995,1.13399)(-0.35444,1.14581)(-0.39004,1.15756)(-0.42680,1.16922)(-0.46478,1.18077)(-0.50406,1.19221)(-0.54469,1.20351)(-0.58674,1.21465)(-0.63029,1.22560)(-0.67541,1.23633)(-0.72218,1.24681)(-0.77067,1.25700)(-0.82098,1.26686)(-0.87319,1.27634)(-0.92739,1.28539)(-0.98366,1.29394)(-1.04210,1.30193)(-1.10280,1.30929)(-1.16587,1.31595)(-1.23140,1.32181)(-1.29949,1.32680)(-1.37024,1.33079)(-1.44375,1.33370)(-1.52014,1.33541)(-1.59951,1.33579)(-1.68195,1.33471)(-1.76758,1.33204)(-1.85651,1.32761)(-1.94884,1.32128)(-2.04468,1.31287)
+    };
+        
+    %draw Earth
+    \addplot [domain=-1:1, mark=none, black, samples=101, name path=earth, thick] {sqrt(1 - x^2)};
+    \path [name path=axis, samples=360] (axis cs:-1,0)-- (axis cs:1,0);
 
-  \end{polaraxis}
+    \addplot [thick, color=black, fill=white, fill opacity=1, samples=360] fill between [of=earth and axis, soft clip={domain=-1:1}];    
+        
+  \end{axis} 
+  
 \end{tikzpicture}
-\caption{Nummerische L"osung des Sph"arischen Modells mit der exponentiellen
-Approximation (Gleichung: \ref{eq:sphere_dgl_approx})}
-\label{fig:13_4}
-\end{figure}
+
 
 
 
