@@ -1,13 +1,18 @@
 #
-# wiener.m -- simulation of wiender prozess
+# wiener.m -- simulation of Wiener prozess
 #
 # (c) 2016 Prof Andreas Müller, Hochschule Rapperswil
 #
 global N = 2^10;
 global f = zeros(N + 1, 1);
 
+state = zeros(1, 625);
+state(1) = 48;
+rand("state", state);
+
 sigma2 = 1;
 f(N + 1) = normrnd(0, sqrt(sigma2));
+sigma2 = 1/2;
 
 delta = N;
 while (delta >= 2)

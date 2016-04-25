@@ -6,9 +6,59 @@
 \chapter{Geometrische Eigenschaften\label{chapter:geometrie}}
 \lhead{}
 \rhead{Geometrische Eigenschaften}
+Die Geometrie schr"ankt die m"oglichen Bahnen eines
+Differentialgleichungssystems bereits wesentlich ein.
+In einem eindimensionalen autonomen System sind keine
+Schwingungen m"oglich, in einem zweidimensionalen
+System gibt es keine chaotischen Bewegungen.
+Ziel dieses Kapitels ist, in diese geometrische
+Denkweise einzuf"uhren.
+Das Buch \cite{skript:hirsch} f"uhrt diesen Ansatz weiter bis zu
+einer Einf"uhrung in chaotische Bewegung.
+
+\section{Autonome Systeme}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/geometrie-13.pdf}
+\caption{Entwicklung des Systems~(\ref{geometrie:harvest-equation})
+mit $a=5$ und $h=0.8$
+\label{geometrie:harvest-graph}}
+\end{figure}%
+Ein eindimensionales System k"onnen wir schreiben als
+\[
+y'=f(x,y).
+\]
+Die L"osungskurven dieses Systems k"onnen wir in einem $x$-$y$-Diagramm
+als Graphen darstellen.
+Zum Beispiel k"onnen wir die Entwicklung des Systems
+\begin{equation}
+y' = ay(1-y)-h(1+\sin 2\pi x)
+\label{geometrie:harvest-equation}
+\end{equation}
+wie in Abbildung~\ref{geometrie:harvest-graph} darstellen.
+Dieses nicht-autonome System hat zwei Grenzzyklen: 
+Anfangswerte oberhalb der roten Kurve f"uhren zu L"osungskurven, die
+sich f"ur zunehmendes $x$ der blauen Kurve ann"ahern.
+Anfangswerte unterhalb der blauen Kurve f"uhren zu L"osungskurven, die
+sich f"ur abnehmendes $x$ der roten Kurve n"ahern.
+
+Startwerte in der N"ahe der roten Kurve sind nicht stabil,
+die Entwicklung f"ur zunehmende $x$ f"uhrt den Wert immer weiter von
+der roten Kurve weg.
+Lag der Startwert unterhalb der roten Kurve, wird die L"osung gegen
+$-\infty$ divergieren.
+Alle anderen L"osungen konvergieren gegen die blaue Kurve.
+
+Offenbar ist es ziemlich schwierig, das
+System~(\ref{geometrie:harvest-equation}) "uber gr"ossere $x$-Intervalle
+zu verstehen. 
+Zum Beispiel h"angt das Verhalten davon ab, ob der Startwert zwischen den
+farbigen Kurven liegt oder ausserhalb, und diese h"angt vom Start-$x$ ab.
+
 In Kapitel~\ref{chapter:grundlagen} wurde beschrieben, wie jedes
 Differentialgleichungssystem, m"oglicherweise nach Erweiterung um eine
-explizite Zeitkoordinate, durch ein Vektorfeld ersetzt werden kann,
+explizite Zeitkoordinate, zu einem autonomen System gemacht und damit
+durch ein Vektorfeld ersetzt werden kann,
 und wie die L"osungen als Bahnen eines Teilchens in einem zeitlich
 unver"anderlichen Vektorfelde verstanden werden k"onnen.
 Daraus ergibt sich auch, dass das Verhalten der L"osungen einer
@@ -32,6 +82,12 @@ Wir gehen in diesem Kapitel immer von einem autonomen System
 \frac{d}{dx}y(x)=f(y),
 \]
 wobei das Vektorfeld $f(y)$ nicht von $x$ abh"angt.
+Uns interessieren die geometrische Eigenschaften der L"osungskurven, 
+soweit sie sich direkt aus den Eigenschaften des Vektorfeldes ableiten
+lassen.
+Insbesondere interessieren uns also spezielle Punkte des Vektorfeldes,
+zum Beispiel Nullstellen.
+
 
 %
 % Spezielle Punkte und Bahnen
@@ -58,12 +114,14 @@ verschiedene L"osungen, aber der Eindeutigkeitssatz f"ur die
 L"osung einer Differentialgleichung sagt, dass es zu jeder 
 Anfangsbedingung nur eine L"osung geben kann.
 Dies bedeutet, dass in einer Umgebung des Punktes $y_0$ nichts
-spannendes passiert, die Bahnen sehen ungef"ahr aus wie in Abbildung~\ref{geometrie:parallelebahnen}.
+spannendes passiert, die Bahnen sehen ungef"ahr aus wie in
+Abbildung~\ref{geometrie:parallelebahnen}.
 \begin{figure}
 \centering
+\includegraphics{chapters/images/geometrie-12.pdf}
 \caption{Verlauf der Bahnen eines autonomen Differentialgleichungssystems
 in der N"ahe eines Punktes $y_0$ mit $f(y_0)\ne 0$.
-\label{geometrie:parallebahnen}}
+\label{geometrie:parallelebahnen}}
 \end{figure}
 
 Von besonderem Interesse sind daher Punkte, an denen das Vektorfeld
@@ -182,28 +240,186 @@ nachdem auf welcher Seite die L"osungskurve beginnt.
 \end{beispiel}
 
 %
-% Periodische Bahnen
-%
-\subsection{Periodische Bahnen}
-TODO
-
-%
 % Eindimensionale Systeme
 %
 \section{Eindimensionale Systeme}
-TODO
+Wir untersuchen in diesem Abschnitt das Verhalten eindimensionaler autonomer
+Systeme.
+Ein solches System hat die Form
+\[
+y'=f(y),
+\]
+und kann sofort mit Hilfe von Separation der Variablen gel"ost werden:
+\[
+\int\frac{dy}{f(y)} = t+C,
+\]
+was nat"urlich nur funktioniert, wenn $f$ konstantes Vorzeichen hat.
+Daraus folgt, dass ein Startwert $y_0$, f"ur den $f(y_0)>0$ ist,
+zu einer monoton wachsenden L"osung f"uhrt, w"ahrend $f(y_0)<0$
+bedeutet, dass die L"osung monoton f"allt.
+Erf"ullt ein Startwert $f(y_0)=0$, dann ist $y(x)=y_0$ eine
+L"osung der Differentialgleichung.
+Die kritischen Punkte von $f$ strukturieren also wie erwartet die
+L"osungsmenge.
+Wir suchen eine "ubersichtliche Visualisierung dieser Beobachtung
+und wollen verstehen, wie sich die Struktur in Abh"angigkeit
+von einem Parameter in der Differentialgleichung ver"andern kann.
 
 %
 % Mögliche Phasendiagramme in einer Dimension
 %
 \subsection{Phasenportraits}
-TODO
+Seien jetzt $y_1,y_2,\dots$ Nullstellen der Funktion $f(y)$.
+Dann sind die Funktion $y(x)=y_i$ L"osungen der Differentialgleichung
+$y'=f(y)$.
+Die Bewegung zwischen den Nullstellen wird vollst"andig dominiert durch
+das Vorzeichen von $f(y)$ zwischen den Nullstellen.
+Wir k"onnen dies in einem sogenannten Phasen-Portrait visualisieren.
+Abbildung~\ref{geometrie:phasenportrait} zeigt die L"osungen der
+Differentialgleichung
+\begin{equation}
+y'=f(y)=y^3-y
+\label{geometrie:cube}
+\end{equation}
+Die Nullstellen dieser Funktion sind $-1$, $0$ und $1$.
+\begin{figure}
+\centering
+\includegraphics{chapters/images/geometrie-14.pdf}
+\caption{Fluss der Differentialgleichung~(\ref{geometrie:cube}) und
+Phasenportrait
+\label{geometrie:phasenportrait}}
+\end{figure}
+Die exakte Abh"angigkeit von $x$ ist oft nicht wichtig, entscheidend
+ist nur die Tatsache, dass Punkte im blauen Gebiet sich mit zunehmendem
+$x$ nach unten bewegen, w"ahrend Punkte im roten Gebiet sich nach
+oben bewegen.
+Diese Information wird auch durch das Phasenportrait am linken
+Rand der Abbildung~\ref{geometrie:phasenportrait} dargestellt.
+Der Vortail eines Phasenportraits gegen"uber der Darstellung
+der L"osung ist, dass sie mit einer Dimension auskommt.
 
 %
 % Mögliche Änderungen (Bifurkationen) der Phasendiagramme
 %
 \subsection{Bifurkationen}
-TODO
+Betrachten wir jetzt eine Differentialgleichung, die ausserdem von einem
+Parameter $b$ abh"angt:
+\[
+y'=f(y,b).
+\]
+Das Phasenportrait wird sich ver"andern, wenn $b$ variert, wir
+m"ochten die verschiedenen dabei m"oglichen "Uberg"ange verstehen
+k"onnen.
+Es interessiert vor allem kleine "Anderungen in der Umgebung eines
+Wertes $b_0$.
+Dabei kommt es vor allem darauf an, dass mit Nullstellen passiert, und
+welches Vorzeichen $f$ links und rechts von der Nullstelle hat.
+Wir gehen daher davon aus, dass $f$ f"ur $b_0$ an der Stelle $y=0$
+hat, dass also $a_0(b_0)=0$ ist.
+
+Wenn $a_1(b_0)\ne0$ ist, also wenn $f'(0, b_0)\ne 0$ ist, dann 
+gilt dies auch in einer Umgebung von $b_0$, und daher wird die
+Nullstelle in erster N"aherung nur verschoben:
+\[
+y_0(b) \simeq -\frac{(0,b)}{f'(0,b)},
+\]
+Das Phasenportrait erlebt also keine grundds"atzlichen "Anderung.
+
+\subsubsection{Sattel-Knoten-Bifurkation}
+Wir betrachten jetzt den Fall $f(0,b_0)=0$ und $f'(0,b_0)=0$, die Funktion
+$f$ ist f"ur $b=b_0$ quadratisch, mit einer Nullstelle im Scheitel.
+Variert $b$, wird zwar der Graph von $y\mapsto f(y,b)$ seine
+Gestalt "andern, aber er wird weiterhin "ahnlich wie eine Parabel
+aussehen.
+Etwas interessantes passiert nur, wenn der Scheitel von die horizontale
+Achse "uberquert, wenn also beim Durchgang von $b$ durch den Wert $b_0$
+die Zahl der Nullstellen von $0$ auf $2$ steigt oder umgekehrt.
+Dies bedeutet, dass 
+\[
+f''(y_0,b_0)\ne 0
+\qquad
+\text{und}
+\qquad
+\frac{\partial f}{\partial b}(y_0, b_0)\ne 0.
+\]
+Modellhaft k"onnen wir dies durch das System
+\[
+f(y,b)=y^2+b
+\]
+wiedergeben.
+Es hat f"ur $b<0$ die Nullstellen $\pm\sqrt{-b}$, f"ur $b>0$ jedoch
+keine Nullstellen.
+Das zugeh"orige Phasenportrait ist in Abbildung~\ref{geometrie:saddle-node}
+dargestellt.
+Bei dieser Art von Bifurkation entstehen neue kritische Punkte
+paarweise, davon ist jeweils einer stabil, der andere instabil.
+Diese Art der Bifurkation heisst {\em Sattel-Knoten-}
+oder {\em Saddle-Node-Bifurkation}.
+\index{Sattel-Knoten-Bifurkation}
+\index{Saddle-Node-Bifurkation}
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/bifurkation-1.pdf}
+\caption{Phasendiagramm f"ur die Sattel-Knoten-Bifurkation in
+Abh"angigkeit vom Parameter $b$.
+\label{geometrie:saddle-node}}
+\end{figure}
+
+\subsubsection{Heugabel-Bifurkation}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/bifurkation-2.pdf}
+\caption{Phasendiagramm f"ur die Heugabel-Bifurkation in Abh"angigkeit vom
+Parameter $b$.
+\label{geometrie:pitchfork}}
+\end{figure}
+Eine andere Art von Bifurkatione zeigt das Modell
+\[
+f(y,b)=y^3-by.
+\]
+F"ur $b<0$ hat die Funktion $y\mapsto f(y,b)$ nur die eine
+reelle Nullstelle $y=0$.
+F"ur $b>0$ dagegen liegen die drei verschiedenen Nullstellen
+$-\sqrt{b}$, $0$  und $\sqrt{b}$.
+Das zugeh"orige Phasendiagramm ist in Abbildung~\ref{geometrie:pitchfork}
+dargestellt, diese Art von Bifurkation heisst {\em Heugabel-}
+oder {\em Pitchformk-Bifurkation}.
+\index{Heugabel-Bifurkation}
+\index{Pitchfork-Bifurkation}
+Bei dieser Art von Bifurkation werden aus einer Nullstelle deren drei.
+War die Nullstelle instabil (wie in Abbildung~\ref{geometrie:pitchfork}),
+entstehen zwei neue instabile Nullstellen, die bisherige Nullstellen 
+wird stabil.
+War die eine Nullstelle stabil, entstehen zwei stabile Nullstellen, die
+eine Nullstelle wird instabil.
+
+\subsubsection{Transkritische Bifurkation}
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/images/bifurkation-3.pdf}
+\caption{Phasendigramm f"ur die transkritische Bifurkation in Abh"angigkeit
+vom Parameter $b$.
+\label{geometrie:transkritisch}}
+\end{figure}
+Das Standard-Modell f"ur die sogenannten {\em transkritische Bifurkation} ist 
+\index{transkritische Bifurkation}
+\[
+f(y,b)=y^2+yb = y(y+b)
+\]
+(Abbildung~\ref{geometrie:transkritisch}).
+F"ur $b=0$ hat dieses System einen kritischen Punkt bei $y=0$.
+Eine L"osungskurve, die bei negativem $y$ beginnt, wird immer n"aher
+an den Punkt $y=0$ herankommen.
+Liegt der Anfangswert jedoch im Gebiet $y>0$, wird sich die L"osungskurve
+immer weiter von $y=0$ entfernen.
+Der Fixpunkt bei $y=0$ ist also weder stabil noch instabil.
+
+F"ur $b\ne 0$ entsteht ein weiterer kritischer Punkt bei $y=-b$.
+Da f"ur $y\to\pm\infty$ die Funktion $y\mapsto f(y,b)$ immer positiv
+ist, ist der rechte der beiden Fixpunkte immer stabil, der
+linke immer instabil.
+
 
 %
 % Zweidimensionale Systeme
