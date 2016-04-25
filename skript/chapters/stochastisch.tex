@@ -746,8 +746,13 @@ So finden wir daher:
 \begin{align*}
 R_n
 &=
+\underbrace{
 \sum_{k=0}^{m_n-1} (b_k-a_k)^2
--\frac12\sum_{k=0}^{m_n-1} (c_k-a_k)^2
+}_{\textstyle\to\lambda T}
+-
+\underbrace{
+\frac12\sum_{k=0}^{m_n-1} (c_k-a_k)^2
+}_{\textstyle\to T}
 +\sum_{k=0}^{m_n-1} (c_k-b_k)(b_k-a_k)
 - \frac12a_0^2
 + \frac12c_{m_n-1}^2
@@ -1177,7 +1182,11 @@ Y(t)
 \]
 f"ur den Exponenten, dies bedeutet, dass
 \[
-dY=\underbrace{-\frac12g^2}_{\textstyle F}\,dt + \underbrace{g}_{\textstyle G}\,dW.
+dY
+=
+\underbrace{-\frac12g^2}_{\textstyle F}\,dt
++
+\underbrace{g}_{\textstyle G}\,dW.
 \]
 Wir wenden die It\^o-Kettenregel auf die Funktion
 $X(t)=u(Y(t))=e^{Y(t)}$, also $u(x)=e^x$, an.
