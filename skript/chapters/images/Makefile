@@ -107,7 +107,7 @@ $(komplex_FILES): komplex.mp
 		mptopdf $${f}; \
 	done
 
-bifurkation_FILES = bifurkation-1.pdf  bifurkation-2.pdf
+bifurkation_FILES = bifurkation-1.pdf  bifurkation-2.pdf bifurkation-3.pdf
 bifurkation:	$(bifurkation_FILES)
 $(bifurkation_FILES): bifurkation.mp
 	TEX=latex mpost bifurkation.mp

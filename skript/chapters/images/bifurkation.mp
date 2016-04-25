@@ -168,4 +168,75 @@ label.rt(btex $y$ etex, z4 shifted (0,10));
 
 endfig;
 
+%
+% transkritische Bifurkation
+%
+beginfig(3)
+
+numeric u;
+u := 100;
+
+z0 = (     0,        0);
+z1 = (-2 * u,        0);
+z2 = ( 2 * u,        0);
+z3 = (     0, -1.4 * u);
+z4 = (     0,  1.4 * u);
+
+z5 = (-2 * u,  1   * u);
+z6 = ( 2 * u, -1   * u);
+
+path p;
+p := z5--z6;
+path q;
+q := z1--z2;
+
+fill (z1 shifted z3)--(z2 shifted z3)--(z2 shifted z4)--(z1 shifted z4)--cycle
+	withcolor (1,0.95,0.95);
+fill z1--z0--z5--cycle withcolor (0.95,0.95,1);
+fill z2--z0--z6--cycle withcolor (0.95,0.95,1);
+
+pickup pencircle xscaled 1.5pt yscaled 0.1pt;
+
+for b = -1.9 step 0.2 until 0:
+	path	r;
+	r := (b * u, -1.4 * u)--(b * u, 1.4 * u);
+	path segment;
+	segment := (point 0 of r)--(b * u, 0);
+	drawarrow (point 0 of segment)--(point 0.5 of segment) withcolor red;
+	draw (point 0.5 of segment)--(point 1 of segment) withcolor red;
+	segment := (r intersectionpoint p)--(b * u, 1.4 * u);
+	drawarrow (point 0 of segment)--(point 0.5 of segment) withcolor red;
+	draw (point 0.5 of segment)--(point 1 of segment) withcolor red;
+	segment := (b * u, 0)--(r intersectionpoint p);
+	drawarrow (point 1 of segment)--(point 0.5 of segment) withcolor blue;
+	draw (point 0.5 of segment)--(point 0 of segment) withcolor blue;
+endfor;
+
+for b = 0.1 step 0.2 until 2:
+	path	r;
+	r := (b * u, -1.4 * u)--(b * u, 1.4 * u);
+	path segment;
+	segment := (b * u, 0)--(b * u, 1.4 * u);
+	drawarrow (point 0 of segment)--(point 0.5 of segment) withcolor red;
+	draw (point 0.5 of segment)--(point 1 of segment) withcolor red;
+	segment := (b * u, -1.4 * u)--(r intersectionpoint p);
+	drawarrow (point 0 of segment)--(point 0.5 of segment) withcolor red;
+	draw (point 0.5 of segment)--(point 1 of segment) withcolor red;
+	segment := (b * u, 0)--(r intersectionpoint p);
+	drawarrow (point 0 of segment)--(point 0.5 of segment) withcolor blue;
+	draw (point 0.5 of segment)--(point 1 of segment) withcolor blue;
+endfor;
+
+pickup pencircle scaled 1pt;
+
+draw p;
+
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+label.top(btex $b$ etex, z2 shifted (10,0));
+label.rt(btex $y$ etex, z4 shifted (0,10));
+
+endfig;
+
 end
