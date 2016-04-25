@@ -1609,6 +1609,7 @@ Y_1(t)\\Y_2(t)
 \frac1{\lambda}\sin\lambda(t-\tau)\\
                \cos\lambda(t-\tau)
 \end{pmatrix}\,dW.
+\label{stochastisch:harmosz-y2}
 \end{equation}
 Die erste Komponenten davon ist
 \begin{equation}
@@ -1693,7 +1694,50 @@ also zwei Komponenten.
 Die ersten drei Komponenten beschreiben den Einfluss der Anfangsbedingungen.
 Der letzte Term beschreibt die zus"atzliche Varianz, die durch
 das Rauschen in den Oszillator eingebracht wird.
-%\end{beispiel}
+
+Der Term zu den Anfangsbedingungen kann in Matrixform geschrieben
+werden:
+\begin{gather*}
+\operatorname{var}(X_0)\cos^2\lambda t
++2\operatorname{cov}(X_0,X_1)\cos\lambda t\sin\lambda t
++
+\frac{\sin^2\lambda t}{\lambda^2}\operatorname{var}(X_1)
+\qquad
+\qquad
+\qquad
+\qquad
+\\
+\qquad
+\qquad
+\qquad
+\qquad
+=
+\begin{pmatrix}
+\cos\lambda t&\frac1\lambda\sin\lambda t
+\end{pmatrix}
+\begin{pmatrix}
+\operatorname{var}(X_0)    &\operatorname{cov}(X_0,X_1)\\
+\operatorname{cov}(X_0,X_1)&\operatorname{var}(X_1)
+\end{pmatrix}
+\begin{pmatrix}
+\cos\lambda t\\
+\frac1\lambda\sin\lambda t
+\end{pmatrix}
+\end{gather*}
+Diese Form kann man auch erhalten, indem man die Kovarianzen mit Hilfe von
+\[
+\begin{pmatrix} Y_1(t)&Y_2(t) \end{pmatrix}
+\begin{pmatrix}
+Y_1(t)\\
+Y_2(t)
+\end{pmatrix}
+=
+\begin{pmatrix}
+Y_1(t)^2&Y_1(t)Y_2(t)\\
+Y_1(t)Y_2(t)&Y_2(t)^2
+\end{pmatrix}
+\]
+berechnet, und darauf die Formel~(\ref{stochastisch:harmosz-y2}) anwendet.
 
 %
 % Partielle Differentialgleichungen
