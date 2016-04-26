@@ -483,6 +483,15 @@ vereinfachte Runge-Kutta-Verfahren}.
 
 \subsection{Runge-Kutta-Verfahren\label{subsection:numerik:runge-kutta}}
 \index{Runge-Kutta-Verfahren}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/numerik-4.pdf}
+\caption{Zusammenspiel der Richtungen $k_1$ bis $k_4$ bei einem
+Einzelschritt des Runge-Kutta-Verfahrens vierter Ordnung.
+Der n"achste Punkt $y_{k+1}$ wird gem"ass
+Formel~(\ref{numerik:runge-kutta-rekursion}) berechnet.
+\label{numerik:rk-step}}
+\end{figure}
 Das {\em Runge-Kutta-Verfahren} erweitert die Inkrement-Funktion derart,
 dass der Einzelschritt bis zur f"unften Ordnung mit der Taylorreihe von
 $y(x)$ "ubereinstimmt.
@@ -502,9 +511,10 @@ k_4&=f(x_k+h, y_k+hk_3)
 und setzt diese dann zusammen, um den n"achsten Wert $y_{k+1}$
 zu berechnen:
 \begin{equation}
-y_{k+1} = y_k + \frac{h}6(k_1 + 2k_2 + 2k_3 + k_4).
+y_{k+1} = y_k + \frac{h}6(k_1 + 2k_2 + 2k_3 + k_4)
 \label{numerik:runge-kutta-rekursion}
 \end{equation}
+(Abbildung~\ref{numerik:rk-step}).
 Man kann die Formeln wie folgt interpretieren.
 Zuerst wird ein halber Eulerschritt mit der Steigung $k_1=f(x_k,y_k)$,
 durchgef"uhrt, und und am Zielpunkt die Steigung $k_2$ ermittelt.
