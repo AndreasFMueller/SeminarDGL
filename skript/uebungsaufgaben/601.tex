@@ -1,7 +1,8 @@
 Zeichnen Sie ein Phasendiagramm f"ur die Differentialgleichung
-\[
+\begin{equation}
 y'=\sin y,
-\]
+\label{601:dgl}
+\end{equation}
 finden Sie die kritischen Punkte und bestimmen Sie, welche kritischen
 Punkte stabil sind und welche instabil.
 
@@ -51,7 +52,7 @@ Wir m"ussen den Bruch auf der linken Seite nach $\cos y$ aufl"osen:
 \end{align*}
 Schreiben wir jetzt $L=e^{2\kappa}$, dann k"onnen wir den letzten
 Ausdruck umformen zu
-\[
+\begin{equation}
 \cos y
 =
 \frac{e^{-x}-e^{2\kappa}e^x}{e^{-x}+e^{2\kappa}e^x}
@@ -63,10 +64,20 @@ Ausdruck umformen zu
 -\frac{\sinh(x+\kappa)}{\cosh(x+\kappa)}
 =
 -\tanh(x+\kappa)
-\]
+\label{601:cos}
+\end{equation}
 Damit ist die L"osung
 \[
 y=\arccos(-\tanh(x+\kappa)).
 \]
+Weitere L"osungen entstehen aus den zus"atzlichen L"osungen der
+Gleichung~(\ref{601:cos}).
+Die L"osungen sind in Abbildung~\ref{601:bild} dargestellt.
+\begin{figure}
+\centering
+\includegraphics{uebungsaufgaben/601-1.pdf}
+\caption{L"osungen der Differentialgleichung~(\ref{601:dgl})
+\label{601:bild}}
+\end{figure}
 \end{diskussion}
 
