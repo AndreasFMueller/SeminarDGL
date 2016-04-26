@@ -301,7 +301,7 @@ der L"osung ist, dass sie mit einer Dimension auskommt.
 %
 % Mögliche Änderungen (Bifurkationen) der Phasendiagramme
 %
-\subsection{Bifurkationen}
+\subsection{Bifurkationen\label{geometrie:subsection:bifurkationen}}
 Betrachten wir jetzt eine Differentialgleichung, die ausserdem von einem
 Parameter $b$ abh"angt:
 \[
@@ -321,7 +321,7 @@ Wenn $a_1(b_0)\ne0$ ist, also wenn $f'(0, b_0)\ne 0$ ist, dann
 gilt dies auch in einer Umgebung von $b_0$, und daher wird die
 Nullstelle in erster N"aherung nur verschoben:
 \[
-y_0(b) \simeq -\frac{(0,b)}{f'(0,b)},
+y_0(b) \simeq -\frac{f(0,b)}{f'(0,b)},
 \]
 Das Phasenportrait erlebt also keine grundds"atzlichen "Anderung.
 
@@ -934,11 +934,127 @@ dessen Real- und Imagin"arteile
 \]
 dies sind die Vektoren, die im vorangegangenen Abschnitt aus dem "Armel
 gesch"uttelt worden waren, um die Matrix des Systems in die
-Form~\ref{geometrie:drehmatrix} zu bringen.
+Form~(\ref{geometrie:drehmatrix}) zu bringen.
 
 %
 % Hopf-Bifurkation
 %
 \subsection{Hopf-Bifurkation}
-% XXX
-TODO
+\begin{figure}
+\centering
+\includegraphics{chapters/images/hopf-1.pdf}
+\caption{Fluss f"ur $b<0$, der kritische Punkt ist stabil,
+Bahnkurven konvergieren gegen $0$.
+\label{geometrie:hopf1}}
+\end{figure}%
+\begin{figure}
+\centering
+\includegraphics{chapters/images/hopf-2.pdf}
+\caption{Fluss f"ur $b=0$, der kritische Punkt ist immer noch stabil,
+die Bahnkurven n"ahern sich jedoch nicht mehr exponentiell schnell
+dem Nullpunkt.
+\label{geometrie:hopf2}}
+\end{figure}%
+\begin{figure}
+\centering
+\includegraphics{chapters/images/hopf-3.pdf}
+\caption{Fluss f"ur $b>0$, der Nullpunkt ist nicht mehr stabil, daf"ur
+ist der Kreis mit Radius $\sqrt{b}$ eine stabile periodische Bahn (blau),
+gegen die alle Bahnkurven exponentiell schnell konvergieren.
+\label{geometrie:hopf3}}
+\end{figure}%
+\begin{figure}
+\centering
+\begin{tabular}{ccc}
+\includegraphics{chapters/images/hopf-4.pdf}&%
+\includegraphics{chapters/images/hopf-5.pdf}&%
+\includegraphics{chapters/images/hopf-6.pdf}%
+\end{tabular}
+\caption{Vorzeichen von $\dot r$ in Abh"angigkeit von $b$.
+Punkte mit $\dot r <0$ sind blau gef"arbt, Punkte mit $\dot r >0$ rot.
+\label{geometrie:hopfvorzeichen}}
+\end{figure}%
+Die in Abschnitt~\ref{geometrie:subsection:bifurkationen} untersuchten
+Bifurkationen eindimensionaler Differentialgleichungen k"onnen in
+analoger Form auch bei zweidimensionalen Differentialgleichungen auftreten.
+Sie sind jedoch immer eindimensionale Bifurkationen, die entlang der
+durch die Eigenvektoren der Linearisierung gegebenen Richtungen
+auftreten.
+
+Die h"ohere Dimensionszahl erlaubt aber auch eine Bifurkation, bei der
+ein stabiler Fixpunkt in stabil wird und einen stabilen Zyklus ``abwirft''
+(Abbildungen~\ref{geometrie:hopf1}, \ref{geometrie:hopf2} and
+\ref{geometrie:hopf3}).
+Wir betrachten dazu das System 
+\begin{equation}
+\begin{aligned}
+\dot r      &= r(b-r^2)\\
+\dot \varphi&= -1
+\end{aligned}
+\label{geometrie:hopfsystem}
+\end{equation}
+in Polarkoordinaten.
+Offenbar ist $r=0$ ein Fixpunkt.
+F"ur $b>0$ gibt es ausserdem eine periodische Bahn mit $r=\sqrt{b}$
+(Abbildung~\ref{geometrie:hopf3}).
+Wir wollen die Stabilit"at des Fixpunktes sowie der periodischen Bahn
+untersuchen.
+Die Abbildung~\ref{geometrie:hopfvorzeichen} fasst die f"ur das Bahnverhalten
+entscheidenden Vorzeichen in den drei F"allen $b<0$, $b=0$ und $b>0$
+zusammen.
+
+In Polarkoordinaten beschreibt die Gleichung f"ur $r$ eine
+Heugabel-Bifurkation.
+Der kritische Punkt $r$ ist f"ur $b<0$ stabil, er wird f"ur $b>0$
+instabil, daf"ur entstehen zwei neue stabile kritische Punkte
+$r=\pm\sqrt{b}$.
+
+Unsere bisherige Theorie zur Beurteilung von Fixpunkten ging von
+kartesischen Koordinaten aus, wir f"uhren daher die Analyse auch noch
+in kartesischen Koordinaten durch.
+Mit Hilfe von 
+\[
+\begin{aligned}
+x&=r\cos\varphi&\dot x&=\dot r\cos\varphi-r\sin\varphi\cdot\dot\varphi\\
+y&=r\sin\varphi&\dot y&=\dot r\sin\varphi+r\cos\varphi\cdot\dot\varphi
+\end{aligned}
+\]
+kann das System~(\ref{geometrie:hopfsystem}) in kartesische Koordinaten
+umgerechnet werden:
+\begin{equation}
+\begin{aligned}
+\dot x&=r(b-r^2)\frac{x}{r}+y=(b-x^2-y^2)x+y\\
+\dot y&=r(b-r^2)\frac{y}{r}-x=(b-x^2-y^2)y-x.
+\end{aligned}
+\label{geometrie:hopf-kartesisch}
+\end{equation}
+Zur Beurteilung der Stabilit"at des Nullpunktes berechnen wir die
+Jacobi-Matrix
+\[
+J(x,y)=
+\begin{pmatrix}
+b-3x^2-y^2&1-2xy\\
+-1-2xy&b-x^2-3y^2
+\end{pmatrix}
+\quad\Rightarrow\quad
+J(0,0)=\begin{pmatrix}
+b&1\\-1&b
+\end{pmatrix}.
+\]
+Die Matrix $J(0,0)$ hat das charakteristische Polynom
+\[
+(b-\lambda)^2+1=0
+\]
+mit den Nullstellen
+\[
+\lambda=b\mp i.
+\]
+Stabilit"at wird durch das Vorzeichen des Realteils der Eigenwerte
+bestimmt, wir lesen daher ab, dass der kritische Punkt $0$ stabil
+ist f"ur $b<0$ und instabil f"ur $b>0$.
+
+\section{"Ubungsaufgaben}
+\begin{uebungsaufgaben}
+\item
+\input uebungsaufgaben/601.tex
+\end{uebungsaufgaben}

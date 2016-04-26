@@ -4,7 +4,7 @@
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
 all:	grundlagen numerik komplexezahlen randwert geometrie airy \
-	stochastisch komplex bifurkation
+	stochastisch komplex bifurkation hopf
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -116,9 +116,12 @@ $(bifurkation_FILES): bifurkation.mp
 		mptopdf $${f}; \
 	done
 
-
-
-
-
-
+hopf_FILES = hopf-1.pdf  hopf-2.pdf hopf-3.pdf hopf-4.pdf hopf-5.pdf hopf-6.pdf
+hopf:	$(hopf_FILES)
+$(hopf_FILES): hopf.mp
+	TEX=latex mpost hopf.mp
+	for f in hopf.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
 
