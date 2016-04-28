@@ -186,7 +186,7 @@ f'(z)&
 \\
 f'(z)&
 =
-\lim_{y\to 0}\frac{f(z+x)-f(z)}{iy}
+\lim_{y\to 0}\frac{f(z+iy)-f(z)}{iy}
 =
 \frac1{i}
 \frac{\partial u}{\partial y}+\frac{\partial v}{\partial y}
@@ -201,7 +201,7 @@ Es folgt also
 \begin{satz}
 \label{komplex:satz:cauchy-riemann}
 Real- und Imagin"arteil $u(x,y)$ und $v(x,y)$ einer
-komplexe Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
+komplex differenzierbaren Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
 erf"ullen die Cauchy-Riemannschen Differentialgleichungen
 \index{Cauchy-Riemann-Differentialgleichungen}
 \begin{equation}
@@ -1077,6 +1077,9 @@ i\cos\biggl(xt+\frac13t^3\biggr)-\sin\biggl(xt+\frac13t^3\biggr)\,dt
 Dabei haben wir im letzten Schritt verwendet, dass das Integral der
 ungeraden Funktion $\sin(xt+\frac13t^3)$ "uber ein symmetrisches
 Interval verschwindet.
+
+Weitere Information "uber die Airy-Funktionen sind in \cite{skript:airy}
+zusammengefasst.
 
 \subsection{Die Cauchy-Integralformel}
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
