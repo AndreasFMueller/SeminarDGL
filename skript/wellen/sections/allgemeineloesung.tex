@@ -57,7 +57,8 @@ ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemein} eingesetzt:
 
 \begin{equation*}
 \begin{split}
-	y(x) &= a_0+a_1x-\sum_{k=2}^{\infty} \frac{1}{k(k-1)} (-1) a_{k-2-1} x^k
+	y(x) &= a_0+a_1x-\sum_{k=2}^{\infty} \frac{1}{k(k-1)} ((-1) a_{k-2-1} + 0 
+	a_{k-2-0}) x^k
 	\\
 	&= a_0+a_1x+\sum_{k=2}^{\infty} \frac{1}{k(k-1)} a_{k-3} x^k,
 	\qquad a_{k < 0} = 0
@@ -66,7 +67,9 @@ ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemein} eingesetzt:
 
 Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
 
-%TODO Grafik!
+\begin{center}
+	\includegraphics[scale=0.53]{./wellen/images/allgemein/n1.png}
+\end{center}
 
 \subsection{Beispiel: $n = 4$}
 
@@ -92,5 +95,5 @@ Auch hier kann man Graphisch die "Uberg"ange zwischen $\sin$ und $\cos$ bei
 positiven und $\sinh$ und $\cosh$ bei negativen Polynoml"osungen klar erkennen.
 
 \begin{center}
-	\includegraphics[scale=0.7]{./wellen/images/allgemein/wave.png}
+	\includegraphics[scale=0.55]{./wellen/images/allgemein/n4.png}
 \end{center}
