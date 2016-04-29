@@ -1,0 +1,105 @@
+\section{Herleitung Ausgangsformel}
+In einem ersten Schritt wird erkl"art, wie die 
+Gleichung \ref{wellen:grundgleichung} aus der Aufgabenstellung zustandegekommen 
+ist.
+
+Die allgemeine Differentialgleichung der Welle lautet (gem"ass 
+\cite{wellen:smirnow2}):
+
+\begin{equation*}
+	\frac{\partial^2 u}{\partial t^2}
+	=
+	c^2
+	\left(
+		\frac{\partial^2 u}{\partial x^2} 
+		+ \frac{\partial^2 u}{\partial y^2} 
+		+ \frac{\partial^2 u}{\partial z^2}
+	\right)
+	\label{wellen:allgemeineDGL}
+\end{equation*}
+
+Da in der ausgew"ahlten Problemstellung nur eine zweidimensionale Welle 
+betrachtet wird, fallen die y- und die z-Koordinate weg. Die Gleichung 
+vereinfacht sich dadurch zu:
+
+\begin{equation}
+	\frac{\partial^2 u}{\partial t^2}
+	=
+	c^2
+	\left(
+		\frac{\partial^2 u}{\partial x^2} 
+	\right)
+	\label{wellen:allgemeineDGLvereinfacht}
+\end{equation}
+
+Somit ist die Funktion $u$ noch abh"angig von der Zeit $t$ und der 
+Ortskoordinate 
+$x$.
+
+\begin{equation*}
+	u = f(x,t)
+\end{equation*}
+
+Zur L"osung der vereinfachten Wellengleichung 
+\ref{wellen:allgemeineDGLvereinfacht} wird die Theorie des Separationsansatzes 
+angewendet. Gem"ass dem kann $u(x, t)$ in ein Produkt zweier Funktionen $X(x)$ 
+und $T(t)$ umgewandelt werden.
+
+\begin{equation}
+	u (x,t) = X(x) T(t)
+	\label{wellen:separierteFunktion}
+\end{equation}
+
+Ausgehend von der vereinfachten Grundgleichung der Welle 
+\ref{wellen:allgemeineDGLvereinfacht} wird die Funktion 
+\ref{wellen:separierteFunktion} auf der linken Seite zweimal partiell nach $t$ 
+und auf der rechten Seite zweimal partiell nach $x$ abgeleitet. Daraus 
+resultiert:
+
+\begin{equation}
+	T''(t) X(x) = c^2 X''(x)T(t)
+\end{equation}
+
+Diese Differentialgleichung wird nun durch $T(x)X(x)$ dividiert und somit 
+werden die Variablen separiert und ein Term entsteht, welcher nur funktionieren 
+kann, wenn beide Seiten der Gleichung konstant sind. 
+
+\begin{equation*}
+	\frac{T''(t)}{T(t)}
+	=
+	c^2 \frac{X''(x)}{X(x)} = \text{konstant} = \lambda
+\end{equation*}
+
+Aus dieser Gleichung entstehen nun zwei l"osbare Differentialgleichungen 
+zweiter Ordnung.
+
+\begin{equation*}
+	T''= \lambda T(t)
+\end{equation*}
+
+und
+
+\begin{equation}
+	X'' = \frac{\lambda}{c^2}X(x)
+	\label{wellen:DGLzweiterOrdnung}
+\end{equation}
+
+Bei der betrachteten Problemstellung, wird davon ausgegangen, dass die 
+Zeit konstant ist. Aus diesem Grund wird ab hier nur weiter auf die Gleichung 
+der Funktion $X(x)$ eingegangen. Wird die Gleichung 
+\ref{wellen:DGLzweiterOrdnung} gleich Null gesetzt, ergibt sich:
+
+\begin{equation*}
+	X''(x) - \frac{\lambda}{c^2} X(x) = 0
+\end{equation*}
+
+Diese Gleichung widerspiegelt die Wellengleichung, die in der Fortsetzung 
+betrachtet wird.
+
+Mit dem Faktor $\frac{\lambda}{c^2}$ k"onnen verschiedene 
+Geschwindigkeitsprofile betrachtet werden. Hier wird unter anderem auf den 
+speziellen Fall eines parabolischen Profils eingegangen. Die zu untersuchende 
+Differentialgleichung ergibt sich hiermit zu der am Anfang definierten 
+Gleichung \ref{wellen:grundgleichung}, mit den frei w"ahlbaren Variablen 
+${a,b,c} \in \mathbb{R}$, sowie den Anfangsbedingungen $y(0) = a_0$ und $y'(0) 
+= a_1$.

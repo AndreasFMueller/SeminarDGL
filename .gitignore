@@ -11,6 +11,10 @@
 *.mpx
 *.synctex.gz
 skript/chapters/images/path*.mp
+skript/chapters/images/cube
+skript/chapters/images/cube.mp
+skript/chapters/images/harvest
+skript/chapters/images/harvest.mp
 **/*.[0-9]
 **/*.[0-9][0-9]
 **/skript-blx.bib
