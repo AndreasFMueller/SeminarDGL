@@ -426,12 +426,255 @@ linke immer instabil.
 %
 \section{Zweidimensionale Systeme}
 In diesem Abschnitt betrachten wir die geometrischen Einschr"ankungen, denen
-zweidimensionale Systeme unterliegen.
+zweidimensionale autonome Systeme unterliegen.
+Wieder sind Punkte von besonderem Interesse, in denen $f$ verschwindet.
+Bei eindimensionalen Systemen teilen solche Punkte den $y$-Bereich in
+verschiedene Intervall, in denen die Bewegung nur in jeweils
+eine Richtung erfolgen kann, damit ist es leicht zu entscheiden,
+ob ein solcher kritischer Punkt stabil oder instabil ist.
+In zwei Dimensionen legen die Punkte alleine den Charakter noch nicht
+fest, insbesondere ist es ja auch m"oglich, dass eine Bahn einen solche
+Punkt umschliesst.
+
+\subsection{Nullklinen}
+Kritische Punkte von $f$ sind solche, in denen beide Komponenten
+des Vektors $f(y)$ verschwinden.
+Die Gleichungen
+\[
+f_1(y)=0
+\qquad\text{und}\qquad
+f_2(y)=0
+\]
+beschreiben zwei Kurvenscharen in der Ebene, die sogenannten 
+{\em Nullklinen}.
+\index{Nullkline}
+Die Schnittpunkte von Nullklinen sind die kritischen Punkte.
+
+Da auf einer Nullkline jeweils eine der Komponenten von $f(y)$ verschwindet,
+schneiden L"osungskurven Nullklinen immer entweder horizontal oder
+vertikal.
+Ausserdem trennen die Nullklinen Gebiete unterschiedlicher Bewegungsrichtung
+entlang einer Achse. 
+Die Nullkline $f_1(y)=0$ trennt Gebiete, in denen sich eine L"osungskurve
+nach rechts (zu gr"osseren $y_1$ hin) bewegt ($f_1(y)>0$) von Gebieten,
+in denen sich die L"osungskurve nach links ($f_1(y)<0$) bewegt.
+Desgleichen trennt die Nullkline $f_2(y)=0$ Gebiete mit Bewegung ``nach oben''
+von Gebieten mit Bewegung ``nach unten''.
+Allein aus dieser Information kann man sich bereits ein recht gutes
+qualitives Bild "uber den Verlauf der L"osungen verschaffen, wie wir
+im Folgenden an zwei Beispiel illustrieren wollen.
+
+\begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-1.pdf}
+\caption{Nullklinen der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
+die $y_1$-Nullklinen in rot, die $y_2$-Nullklinen in blau.
+Kritische Punkte sind die Schnittpunkte verschiedenfarbiger Nullklinen.
+\label{geometrie:nullklinen1}}
+\end{figure}
+Wir betrachten das nichtlineare System 
+\begin{equation}
+\frac{d}{dx} \begin{pmatrix}y_1\\y_2\end{pmatrix}
+=
+\begin{pmatrix}
+2y_1\biggl(1-\displaystyle\frac{y_1}2\biggr)-3y_1y_2\\
+y_2(1-y_2)-y_1y_2
+\end{pmatrix}.
+\label{geometrie:nullklinen-dgl1}
+\end{equation}
+Die direkte L"osung ist ziemlich aussichtslos, wir versuchen daher mit
+Hilfe der Nullklinen ein qualitatives Bild
+(Abbildung~\ref{geometrie:nullklinen1}) zu erhalten.
+
+Die $y_2$-Nullkline hat die Gleichung
+\[
+0=y_2(1-y_2)-y_1y_2=y_2(1-y_2-y_1)
+\qquad\Rightarrow\qquad
+y_2=0
+\quad\text{oder}\quad
+y_1+y_2=1.
+\]
+L"osungskurven schneiden also die beiden Geraden $y_2=0$ (die $y_1$-Achse)
+und $y_1+y_2=1$ horizontal.
+Da die $y_1$-Achse bereits horizontal ist, bedeutet dies, dass sich die
+L"osungskurven der $y_1$-Achse anschmiegen.
+
+Die $y_1$-Nullkline hat die Gleichung
+\[
+0=2y_1\biggl(1-\frac{y_1}2\biggr)-3y_1y_2=y_1(2-y_1-3y_2),
+\qquad\Rightarrow\qquad
+y_1=0
+\quad\text{oder}\quad
+y_1+3y_2=2.
+\]
+Wir schliessen wieder, dass die L"osungskurven die $y_2$-Achse und
+die Gerade $y_1+3y_2=3$ vertikal schneiden.
+Da die $y_2$-Achse schon vertikal ist, m"ussen sich auch dort
+die L"osungskurven anschmiegen.
+
+Wir k"onnen aus den Nullklinen auch die kritischen Punkte ableiten.
+Da sind zun"achst die Punkte auf den Achsen, also zum Beispiel
+der Schnittpunkt der $y_2$-Nullkline $y_2=0$ mit der $y_1$-Nullkline
+$y_1+3y_2=2$, also $(2,0)$, oder der Schnittpunkt der
+$y_1$-Nullkline $y_1=0$ mit der $y_2$-Nullkline $y_1+y_2=0$, also $(0,1)$.
+Ausserdem ist nat"urlich $(0,0)$ ein kritischer Punkt.
+ein vierter kritischer Punkt entsteht als Schnittpunkt
+der $y_1$-Nullkline $y_1+3y_2=2$ mit der $y_2$-Nullkline $y_1+y_2=1$,
+also als L"osung des linearen Gleichungssystems
+\[
+\begin{linsys}{2}
+y_1&+&3y_2&=&2\\
+y_1&+& y_2&=1.
+\end{linsys}
+\]
+Es hat die L"osung $(\frac23,\frac13)$, die kritischen Punkte sind also
+\[
+(0,0),\quad
+(2,0),\quad
+(0,1)\quad\text{und}\quad
+\biggl(\frac23,\frac13\biggr).
+\]
+
+An den aus den Nullklinen l"asst sich auch die Bewegungsrichtung der
+der L"osungen im Bezug auf die kritischen Punkte ablesen.
+Aus dem Gebiet oben rechts und unten links in der N"ahe des Ursprungs
+bewegen sich die L"osungen zun"achst auf den kritischen Punkt
+bei $(\frac12,\frac12)$ zu, weichen dann aber ab in Richtung auf die
+kritischen Punkte $(0,1)$ und $(2,0)$.
+Die krtischen Punkte $(0,0)$ und $(\frac12,\frac12)$ sind also
+instabil, w"ahrend $(2,0)$ und $(0,1)$ stabil sind.
+Dies wird auch von dem genaueren Vektorfeld in
+Abbildung~\ref{geometrie:nullklinen1} best"atigt.
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-2.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
+es best"atigt die Resultate der qualitiativen Diskussion aus
+Abbildung~\ref{geometrie:nullklinen1}.
+\label{geometrie:nullklinen-fluss}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-3.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+in einer Umgebung des instabilen kritischen Punktes $(\frac12,\frac12)$.
+\label{geometrie:nullklinen-instabil}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-4.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+in einer Umgebung des stabilen kritischen Punktes $(2,0)$.
+\label{geometrie:nullklinen-stabil}}
+\end{figure}
+In Abschnitt~\label{geometrie:umgebung-kritisch} wird gezeigt, dass man 
+die Bewegung in der Umgebung eines kritischen Punktes mit Hilfe der
+Eigenwerte der Ableitungen klassifizieren kann.
+Die Ableitungen, also die Jacobi-Matrix von $f$ ist
+\[
+\frac{\partial f}{\partial y}
+=
+\frac{\partial}{\partial y}
+\begin{pmatrix}
+2y_1-y_1^2-3y_1y_2\\
+y_2-y_2^2-y_1y_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+2-2y_1-3y_2 & -3y_1\\
+-y_2        &1-2y_2-y_1
+\end{pmatrix}
+\]
+In den vier kritischen Punkten finden wir die folgenden Matrizen und
+Eigenwerte
+\begin{align*}
+&(0,0)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}2&0\\0&1\end{pmatrix}
+		&&\lambda_1=2,\;\lambda_2=1\\
+&(2,0)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-2&-6\\0&-1\end{pmatrix}
+		&&\lambda_1=-2,\;\lambda_2=-1\\
+&(0,1)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-1&0\\-1&-1\end{pmatrix}
+		&&\lambda_1=-1,\;\lambda_2=-1\\
+&\textstyle(\frac12,\frac12)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-\frac12&-\frac32\\-\frac12&-\frac12\end{pmatrix}
+		&&\lambda_1=\frac{\sqrt{3}-1}2,\;\lambda_2=-\frac{\sqrt{3}+1}2
+\end{align*}
+Nur bei den Punktein $(2,0)$ und $(0,1)$ sind beide Eigenwerte negativ,
+nur diese beiden Punkte sind stabil, wie bereits die  Diskussion der
+Nullklinen gezeigt hat.
+\end{beispiel}
+
+\begin{beispiel}
+Das {\em Fitzhugh-Nagumo-Modell} wird verwendet, um das Verhalten eines Neurons
+zu simulieren.
+\index{Fitzhugh-Nagumo-Modell}
+Es verwendet das Differentialgleichungssystem
+\begin{align*}
+    \dot v&= v-\frac13v^3-w\\
+\tau\dot w&= v-a-bw.
+\end{align*}
+Wir versuchen uns wieder mit Hilfe der Nullklinen ein Bild von den
+L"osungskurven zu verschaffen.
+Die $v$-Nullkline hat die Gleichung
+\[
+0=v-\frac13v^3-w
+\qquad\Rightarrow\qquad
+w=v-\frac13v^3 = v(1-{\textstyle\frac1{\sqrt{3}}}v)(1+{\textstyle\frac1{\sqrt{3}}}v)
+\]
+Diese kubische Parabel hat im Nullpunkt die Steigung $1$.
+Die $w$-Nullkline ist die Gerade
+\[
+0=v-a-bw
+\qquad\Rightarrow\qquad
+v=bw+a
+\qquad\Rightarrow\qquad
+w = \frac{v-a}{b}.
+\]
+Wenn die Steigung $1/b$ dieser Geraden gr"osser als $1$ ist, dann schneidet
+die Gerade die kubische Parabel nur in einem Punkt, es gibt dann nur
+einen kritischen Punkt.
+Ist die Steigung $1/b<1$, gibt es f"ur nicht zu grosses $|a|$ drei
+Schnittpunkte.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-5.pdf}
+\caption{Nullklinen des Fitzhugh-Nagumo-Modells bei nur einem kritischen Punkt,
+$a=-0.8$, $b=0.9$.
+\label{geometrie:nullklinen-fh-1}}
+\end{figure}
+In Abbildung~\ref{geometrie:nullklinen-fh-1} sind die Nullklinen des
+Fitzhugh-Nagumo-Modells dargestellt mit nur einem kritischen Punkt dargestellt.
+Die L"osungskurven bewegen sich in Spiralen im Gegenurzeigersinn
+um den Fixpunkt herum.
+In diesem Fall erlauben die Nullklinen keine abschliessende Beurteilung
+der Stabilit"at des Fixpunktes.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-6.pdf}
+\caption{Nullklinen des Fitzhugh-Nagumo-Modells mit drei kritischen Punkten,
+$b=4$, $a=0$.
+\label{geometrie:nullklinen-fh-2}}
+\end{figure}
+In Abbildung~\ref{geometrie:nullklinen-fh-2} sind die Nullklinen des
+Fitzhugh-Nagumo-Modells dargstellt mit drei kritschen Punkten.
+Man kann sofort ablesen, dass $(0,0)$ ein instabiler kritischer Punkt ist.
+Die L"osungskurven, die von diesem Punkt abgesteossen werden, n"ahern sich
+einem der beiden anderen kritischen Punkte und bewegen sich
+in einer Spirale um diesen Punkt herum.
+Da sich die L"osungskurven nicht schneiden d"urfen kann man folgern,
+dass die beiden anderen kritschen Punkte stabil sein m"ussen,
+die L"osungskurven werden sich ihnen in Spiralbahnen n"ahern.
+\end{beispiel}
 
 %
 % Bewegung in der Umgebung eines kritischen Punktes
 %
-\subsection{Bewegung in der Umgebung eines kritischen Punktes}
+\subsection{Bewegung in der Umgebung eines kritischen Punktes\label{geometrie:umgebung-kritisch}}
 Wir gehen jetzt davon aus, dass 
 \[
 y'=f(y)
