@@ -481,6 +481,28 @@ die $y_1$-Nullklinen in rot, die $y_2$-Nullklinen in blau.
 Kritische Punkte sind die Schnittpunkte verschiedenfarbiger Nullklinen.
 \label{geometrie:nullklinen1}}
 \end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-2.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
+es best"atigt die Resultate der qualitiativen Diskussion aus
+Abbildung~\ref{geometrie:nullklinen1}.
+\label{geometrie:nullklinen-fluss}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-3.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+in einer Umgebung des instabilen kritischen Punktes $(\frac12,\frac12)$.
+\label{geometrie:nullklinen-instabil}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-4.pdf}
+\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+in einer Umgebung des stabilen kritischen Punktes $(2,0)$.
+\label{geometrie:nullklinen-stabil}}
+\end{figure}
 Wir betrachten das nichtlineare System 
 \begin{equation}
 \frac{d}{dx} \begin{pmatrix}y_1\\y_2\end{pmatrix}
@@ -557,28 +579,6 @@ Die kritischen Punkte $(0,0)$ und $(\frac12,\frac12)$ sind also
 instabil, w"ahrend $(2,0)$ und $(0,1)$ stabil sind.
 Dies wird auch von dem genaueren Vektorfeld in
 Abbildung~\ref{geometrie:nullklinen-fluss} best"atigt.
-\begin{figure}
-\centering
-\includegraphics{chapters/images/nullklinen-2.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
-es best"atigt die Resultate der qualitiativen Diskussion aus
-Abbildung~\ref{geometrie:nullklinen1}.
-\label{geometrie:nullklinen-fluss}}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics{chapters/images/nullklinen-3.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
-in einer Umgebung des instabilen kritischen Punktes $(\frac12,\frac12)$.
-\label{geometrie:nullklinen-instabil}}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics{chapters/images/nullklinen-4.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
-in einer Umgebung des stabilen kritischen Punktes $(2,0)$.
-\label{geometrie:nullklinen-stabil}}
-\end{figure}
 In Abschnitt~\ref{geometrie:umgebung-kritisch} wird gezeigt, dass man 
 die Bewegung in der Umgebung eines kritischen Punktes mit Hilfe der
 Eigenwerte der Ableitungen klassifizieren kann.
@@ -589,6 +589,20 @@ Eigenwerte der Ableitungen klassifizieren kann.
 Das {\em Fitzhugh-Nagumo-Modell} wird verwendet, um das Verhalten eines Neurons
 zu simulieren.
 \index{Fitzhugh-Nagumo-Modell}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-5.pdf}
+\caption{Nullklinen des Fitzhugh-Nagumo-Modells bei nur einem kritischen Punkt,
+$a=-0.8$, $b=0.9$.
+\label{geometrie:nullklinen-fh-1}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/nullklinen-6.pdf}
+\caption{Nullklinen des Fitzhugh-Nagumo-Modells mit drei kritischen Punkten,
+$b=4$, $a=0$.
+\label{geometrie:nullklinen-fh-2}}
+\end{figure}
 Es verwendet das Differentialgleichungssystem
 \begin{equation}
 \begin{aligned}
@@ -620,13 +634,6 @@ einen kritischen Punkt.
 Ist die Steigung $1/b<1$, gibt es f"ur nicht zu grosses $|a|$ drei
 Schnittpunkte.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/images/nullklinen-5.pdf}
-\caption{Nullklinen des Fitzhugh-Nagumo-Modells bei nur einem kritischen Punkt,
-$a=-0.8$, $b=0.9$.
-\label{geometrie:nullklinen-fh-1}}
-\end{figure}
 In Abbildung~\ref{geometrie:nullklinen-fh-1} sind die Nullklinen des
 Fitzhugh-Nagumo-Modells mit nur einem kritischen Punkt dargestellt.
 Die L"osungskurven bewegen sich in Spiralen im Gegenurzeigersinn
@@ -638,13 +645,6 @@ Abschnitt erkl"art wird, erm"oglicht die Entscheidung, und wird in
 der Fortsetzung dieses Beispiels auf Seite~\pageref{geometrie:fh-fortsetzung}
 durchgef"uhrt.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/images/nullklinen-6.pdf}
-\caption{Nullklinen des Fitzhugh-Nagumo-Modells mit drei kritischen Punkten,
-$b=4$, $a=0$.
-\label{geometrie:nullklinen-fh-2}}
-\end{figure}
 In Abbildung~\ref{geometrie:nullklinen-fh-2} sind die Nullklinen des
 Fitzhugh-Nagumo-Modells dargstellt mit drei kritschen Punkten.
 Man kann sofort ablesen, dass $(0,0)$ ein instabiler kritischer Punkt ist.
@@ -1353,6 +1353,8 @@ Die h"ohere Dimensionszahl erlaubt aber auch eine Bifurkation, bei der
 ein stabiler Fixpunkt in stabil wird und einen stabilen Zyklus ``abwirft''
 (Abbildungen~\ref{geometrie:hopf1}, \ref{geometrie:hopf2} and
 \ref{geometrie:hopf3}).
+Sie heisst die Hopf-Bifurkation.
+\index{Hopf-Bifurkation}
 Wir betrachten dazu das System 
 \begin{equation}
 \begin{aligned}

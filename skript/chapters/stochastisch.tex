@@ -354,6 +354,7 @@ Der Term $\frac12u''$ ist in der klassischen Analysis nicht vorhanden.
 Wir m"ussen daher auch alle gewohnten Rechenregeln der Analysis "uberpr"ufen.
 
 \subsection{Stochastische Integrale\label{subsection:stochint}}
+\index{stochastisches Integral}
 Wir m"ochten eine Definition f"ur ein Integral der Form
 \[
 \int_0^T G\,dW
@@ -361,6 +362,7 @@ Wir m"ochten eine Definition f"ur ein Integral der Form
 f"ur zwei stochastische Prozesse $G(t)$ und $W(t)$.
 
 \subsubsection{Das Paley-Wiener-Zygmund Integral}
+\index{Paley-Wiener-Zygmund Integral}
 F"ur differenzierbare Funktionen $g(t)$ und $w(t)$ ist klar, was 
 mit dem Integral gemeint ist:
 \[
@@ -543,6 +545,7 @@ Die Riemann-Summe von $W$ f"ur die Unterteilung $P$ ist
 \[
 R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 \]
+\index{Riemann-Summe}
 \end{definition}
 
 \begin{hilfssatz}
@@ -550,7 +553,8 @@ R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 Sei
 \[
 P^{(n)}
-=\{0=t_0^{(n)}<t_1^{(n)}<\dots < t_{m_n}^{(n)}=T\}
+=
+\{0=t_0^{(n)}<t_1^{(n)}<\dots < t_{m_n}^{(n)}=T\}
 \]
 eine Folge von Unterteilungen des Intervals $[0,T]$ derart,
 dass die Maschenweite gegen $0$ strebt, dann gilt
@@ -567,7 +571,8 @@ Konvergenz in $L^2(\Omega)$ bedeutet, dass der Erwartungswert der
 quadratische Abweichung gegen $0$ streibt.
 Setzen wir
 \[
-Q_n = 
+Q_n
+= 
 \sum_{k=0}^{m_n-1} \left(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\right)^2,
 \]
 und m"ussen untersuchen, ob $E((Q_n - T)^2)$ gegen $0$ strebt.
@@ -920,6 +925,7 @@ Folge von Stufen-Prozessen, die $L^2(0,T)$ konvergiert, zu einer
 konvergenten Folge von It\^o-Integralen f"uhrt.
 
 \begin{definition}
+\index{It\^o-Integral}
 Ist $G$ ein beliebiger auf $[0,T]$ quadratintegrierbarer Prozess,
 und $G_n$ eine Folge von stochastischen Prozessen, die in $L^2([0,T])$
 gegen $G$ konvergiert.
@@ -992,6 +998,7 @@ Dazu brauchen wir mindestens noch eine Kettenregel und eine
 Produktregel.
 
 \begin{satz}[It\^o's Kettenregel]
+\index{It\^o-Kettenregel}
 Falls $X$ das stochastische Differential
 \[
 dX=F\,dt + G\,dW
@@ -1067,6 +1074,8 @@ TODO
 \end{proof}
 
 \begin{satz}[Produktregel von It\^o]
+\index{It\^o-Produktregel}
+\index{Produktregel von It\^o}
 Falls die Prozesse $X_1$ und $X_2$ die stochastischen Differentiale
 \begin{align*}
 dX_1
