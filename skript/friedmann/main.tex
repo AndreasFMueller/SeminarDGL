@@ -13,20 +13,20 @@ Beide entdeckten im Jahre 1927 unabhängig voneinander die Friedmann-Lema\^{i}tr
 \left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{k c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
 \subsubsection{Herleitung der Gleichung}
-Um das Universum wird ein Raster gelegt. Die Einheit des Rasters wird durch den Skalenfaktor $a$ ausgedrückt. Der Skalenfaktor ist abhängig von der Zeit. Verändert sich das Raster, verändern sich auch die Positionen der Sterne und Galaxien.
+Um an das Problem heranzugehen führen wir ein Koordinatensystem ein, welches sich mit der relativen Bewegung der Galaxien mitbewegt. Somit sind die Galaxien wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den Skalenfaktor $a$ ausgedrückt und ist eine Funktion der Zeit. Verändert sich das Raster, verändern sich auch die Positionen der Sterne und Galaxien.
 %\begin{figure}
 %	\includegraphics[width = \textwidth ]{chapters/images/friedmann-1.png}
 %\end{figure}
-Die Distanz zwischen Punkt A und Punkt B entspricht 
+Die Distanz zwischen zwei Punkten A und B entspricht 
 \begin{equation}
 D_{AB} = \sqrt{a^2(t)\Delta_{AB}x^2 + a^2(t)\Delta_{AB}y^2 + a^2(t)\Delta_{AB}z^2} = a(t) \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
 \end{equation}
-F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte voneinander wegbewegen, gilt 
+F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte relativ zueinander bewegen, gilt 
 \begin{equation}
 v_{AB} = \dfrac{dD_{ab}}{dt} 
 	   = \dot{a} \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
 \end{equation}
-Dabei sieht man, dass sich der Abstand in x-, y- und z-Richtung nicht ver\"{a}ndert hat und konstant bleibt. Um von diesem Abstand wegzukommen, wird die Geschwindigkeit durch die Distanz geteilt.
+Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl  des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
 \begin{equation}
 \frac{v_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
 \label{friedmann:geschwindigkeit}
@@ -37,32 +37,36 @@ Dabei sieht man, dass sich der Abstand in x-, y- und z-Richtung nicht ver\"{a}nd
 	\frac{\dot{a}}{a} = H
 	\]
 \end{satz}
-Wir gehen von einem homogenen Universum aus, was bedeutet, dass die Masse gleich verteilt ist. Die Masse im Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist 
+Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Damit schreiben wir, die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist
 \begin{equation}
 M_{xyz} = \nu \Delta x \Delta y \Delta z
 \end{equation}
-wobei $\nu$ eine Konstante ist. Sie beschreibt die Masse im Würfel für eine bestimmte Grösse. Das Volumen des Würfels ist bekanntlich 
+Der Parameter $\nu$ beschreibt die Masse in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
 \begin{equation}
 V_{xyz} = a^3 \Delta x \Delta y \Delta z
 \end{equation}
-Die Dichte im Würfel ist  
+und folglich kann die Massendichte geschrieben werden als
 \begin{equation}
 \rho = \frac{M_{xyz}}{V_{xyz}} = \frac{\nu}{a^3}
 \label{friedmann:dichte}
 \end{equation}
 \subsubsection{Beschleunigung des Skalenfaktors}
-Setzt man eine Masse M in den Ursprung des Skalenfaktor-Koordinatensystems, gelten folgende physikalische Regeln für die Masse m 
+Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der Masse m im Abstand D zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit Radius D. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
+Für Abstand D, Geschwindigkeit v und Beschleunigung A schreiben wir:
 \[D =  a \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}  = a R\]
 \[v = \dot{a} R\]
 \[A = \ddot{a} R\]
-\[V = \frac{4 \pi }{3} R^3\]
-D steht für die Distanz zwischen m und M, v für die Geschwindigkeit, A für die Beschleunigung und V für das Volumen der Kugel mit Radius R. Newton hat bewiesen, dass alle Masse innerhalb der Kugel mit Radius D im Ursprung als Punktmasse M angenommen werden kann. Die Masse ausserhalb der Kugel hat keine Einwirkung. Daraus ergibt sich die Gravitationskraft
+
+und für das Volumen V der Kugel
+\[V = \frac{4 \pi }{3} a^3 R^3\]
+
+Gemäss Newton ergibt sich die Gravitationskraft aus
 \begin{equation}
 F_G = -\frac{m M G}{D^2}
 \end{equation}
 Da die Gravitationskraft zwecks Vereinfachung des Modells als einzige Kraft eingesehen wird, gilt für die Beschleunigung mit 
 \[F = m A\]
-\[A = - \frac{M G}{D^2} = \ddot{a} R \Rightarrow a''(t) = \frac{- M G}{a^2 R^3} \Rightarrow\ \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \Rightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V}\]
+\[A = - \frac{M G}{D^2} = \ddot{a} R \Rightarrow \ddot{a} = \frac{- M G}{a^2 R^3} \Rightarrow\ \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \Rightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V}\]
 Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steht. Damit vereinfacht sich die Beschleunigung zu
 \begin{equation}
 \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \rho
@@ -70,12 +74,13 @@ Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steh
 \subsubsection{Bedeutung der Beschleunigungsgleichung}
 Setzt man für die Dichte Gleichung \ref{friedmann:dichte} ein ergibt sich
 \[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\nu}{a^3} \Rightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
-Der erste Term auf der rechten Seite der Gleichung entspricht mehreren Konstanten, welche wir durch die Konstante $c$ ersetzen. So vereinfacht sich die Gleichung zu
-\[\frac{\ddot{a}}{a} = \frac{c}{a^3} \Rightarrow \ddot{a} = \frac{c}{a^2}\]
+Durch geschickte Wahl des Skalenfaktors kann $\nu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
+\[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \Rightarrow \ddot{a} = \frac{-1}{a^2}\]
 Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
 \begin{enumerate}
-	\item Die Beschleunigung wirkt der Ausdehnung des Universums entgegen. Sie ist negativ, weil $c$ eine negative Konstante ist  und $a^2$  immer positiv ist. 
-	\item Eine negative Beschleunigung bedeutet aber nicht, dass sich das Universum verkleinert.
+	\item Die negative Beschleunigung wirkt der Ausdehnung des Universums entgegen. 
+	\item Statisches Universum ist nicht möglich für $\rho \neq 0$.
+	\item Die Formel hängt nicht vom Ort R ab, was bedeutet das unser Ansatz mit dem Beobachter im Ursprung legitim war.
 \end{enumerate}
 
 \subsubsection{Energieerhaltung}
@@ -97,5 +102,24 @@ Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radi
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho
 \end{equation}
-\end{refsection}
+Mit \[\rho = \frac{\nu}{a^3}\]
+\begin{equation}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}
+\end{equation}
+Vereinfacht
+\begin{equation}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}
+\end{equation}
 
+\subsubsection{Lösung der Differentialgleichung}
+Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
+\[ \dot{a} = \frac{1}{\sqrt{a}} \]
+\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Rightarrow \frac{dt}{da} = \sqrt{a} \]
+\[ t = \frac{2}{3} a^{3/2} \Rightarrow a = \frac{3}{2} t^{2/3} \]
+Wir vernachlässigen der Vorfaktor und schreiben das wichtige Resultat
+\begin{equation}
+a = t^{2/3}
+\end{equation}
+
+	
+\end{refsection}
