@@ -4,8 +4,8 @@
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
 \chapter{Numerische L"osung\label{chapter:numerik}}
-\lhead{}
-\rhead{Numerische L"osung}
+\rhead{}
+\lhead{Numerische L"osung}
 \index{Numerische Loesung@Numerische L\"osung}
 Im Kapitel~\ref{chapter:grundlagen} waren wir in der Lage, f"ur einige
 einfache Differentialgleichungen eine L"osung in geschlossener Form
@@ -39,7 +39,7 @@ In diesem Kapitel entwickeln wir Methoden, Differentialgleichungen
 numerisch zu l"osen.
 
 \section{Grundprinzip}
-\lhead{Grundprinzip}
+\rhead{Grundprinzip}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/numerik-2.pdf}
@@ -192,7 +192,7 @@ sehr viel kleineren Anzahl von Schritten eine viel gr"ossere Genaugikeit
 der Approximation zu erreichen.
 
 \section{Fehler-Entwicklung numerischer L"osungen}
-\lhead{Fehler-Entwicklung}
+\rhead{Fehler-Entwicklung}
 Wir betrachten wieder die Differentialgleichung~(\ref{numerik:eulerdgl})
 und versuchen, den Fehler eines N"aherungsverfahrens zu bestimmen,
 welches Schritte der Gr"osse $h$ durchf"uhrt, um den Wert $y(x)$
@@ -246,7 +246,7 @@ berechnebare Approximationen der Funktion mit m"oglichst geringen
 Einzelschrittfehlern zu finden.
 
 \section{Einschritt-Verfahren\label{section:numerik:einschritt}}
-\lhead{Einschritt-Verfahren}
+\rhead{Einschritt-Verfahren}
 Die relativ geringe Genauigkeit des Eulerschrittes beruht darauf,
 dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
 nur f"ur das linke Ende des Intervalls $[x_k, x_k+h]$ zutrifft,
@@ -517,7 +517,7 @@ y_{k+1} = y_k + \frac{h}6(k_1 + 2k_2 + 2k_3 + k_4)
 (Abbildung~\ref{numerik:rk-step}).
 Man kann die Formeln wie folgt interpretieren.
 Zuerst wird ein halber Eulerschritt mit der Steigung $k_1=f(x_k,y_k)$,
-durchgef"uhrt, und und am Zielpunkt die Steigung $k_2$ ermittelt.
+durchgef"uhrt, und am Zielpunkt die Steigung $k_2$ ermittelt.
 Mit dieser Steigung wird dann erneut ein halber Schritt von $(x_k,y_k)$
 aus durchgef"uhrt, und am Zielpunkt erneut die Steigung $k_3$ ermittelt.
 Damit f"uhrt man einen ganzen Schritt aus, an dessen Zielpunkt man die
@@ -597,7 +597,7 @@ anderes als das Runge-Kutta-Verfahren zu verwenden.
 
 
 \section{Mehrschritt-Verfahren}
-\lhead{Mehrschritt-Verfahren}
+\rhead{Mehrschritt-Verfahren}
 In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
 um die Inkrement-Funktion f"ur einen einzigen Schritt zu bestimmen.
 Das Ziel dabei war, $y(x+h)$ in "Ubereinstimmung mit der Taylorreihe
@@ -867,6 +867,7 @@ zu den von $\lambda_+$ herr"uhrenden L"osungen in dritter Ordnung keine
 Rolle.
 
 \section{Software}
+\rhead{Software}
 Die im letzten Abschnitt entwickelten numerischen Verfahren zur L"osung
 einer Differentialgleichung kommen ausschliesslich mit Auswertungen der
 Funktion $f$ aus, die Ableitungen der Funktion $f$ m"ussen nicht bekannt
@@ -1102,6 +1103,7 @@ werden pro Intervall 18 Auswertungen der Funktion $f$ ben"otigt,
 und die Genauigkeit sinkt auf zwei Stellen nach dem Komma.
 
 \section{Randwertprobleme\label{section:numerik:randwertprobleme}}
+\rhead{Randwertproblem}
 Die bisher beschriebenen Verfahren gehen von einer Anfangsbedingung
 aus, und berechnen die dadurch eindeutig festgelegte L"osungskurve.
 Randwertproblem, beschrieben in Abschnitt~\ref{section:randwertprobleme},
