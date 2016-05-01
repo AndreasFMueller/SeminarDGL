@@ -96,9 +96,9 @@ zum Beispiel Nullstellen.
 \section{Spezielle Punkte und Bahnen}
 \rhead{Spezielle Punkte und Bahnen}
 Das Verhalten der L"osungskurven "uber lange Zeiten wird wesentlich
-beeinflusst von Punkte, wo der Punkt auf der Bahn anh"alt oder sogar
-die Richtung umkehrt, und von Punkten, in die ein Punkt periodisch
-zur"uckkommt.
+beeinflusst von Punkten, in denen die Bewegung auf der Bahn
+zum Stillstand kommt oder sogar die Richtung umkehrt, und von Punkten,
+in die ein Punkt periodisch zur"uckkehrt.
 
 %
 % Kritische Punkte
@@ -116,7 +116,7 @@ verschiedene L"osungen, aber der Eindeutigkeitssatz f"ur die
 L"osung einer Differentialgleichung sagt, dass es zu jeder 
 Anfangsbedingung nur eine L"osung geben kann.
 Dies bedeutet, dass in einer Umgebung des Punktes $y_0$ nichts
-spannendes passiert, die Bahnen sehen ungef"ahr aus wie in
+Spannendes passiert, die Bahnen sehen ungef"ahr aus wie in
 Abbildung~\ref{geometrie:parallelebahnen}.
 \begin{figure}
 \centering
@@ -126,7 +126,7 @@ in der N"ahe eines Punktes $y_0$ mit $f(y_0)\ne 0$.
 \label{geometrie:parallelebahnen}}
 \end{figure}
 
-Von besonderem Interesse sind daher Punkte, an denen das Vektorfeld
+Von besonderem Interesse sind daher Punkte, in denen das Vektorfeld
 verschwindet:
 
 \begin{definition}
@@ -189,11 +189,14 @@ Anfangsbedingung $y=0$ gibt es beliebig viele L"osungen.
 \subsection{Linearisierung}
 In einem kritischen Punkt $y_0$ verschwinden alle Komponenten von $f(y_0)$.
 Falls $f$ stetig differenzierbar ist, k"onnen wird $f$ in einer Umgebung
-des kritischen Punktes in erster Ordnung approximieren:
+des kritischen Punktes in erster Ordnung mit Hilfe der Ableitung
+approximieren:
 \[
 f(y)=\frac{\partial f}{\partial y}(y-y_0) + o(|y-y_0|)
 \]
-Die partielle Ableitung, die Jacobi-Matrix, ist eine $n\times n$-Matrix.
+Die partielle Ableitung bezeichnet im mehrdimensionalen Fall
+die Jacobi-Matrix, sie ist die $n\times n$-Matrix bestehend aus allen
+partiellen Ableitungen der Komponenten von $f$ nach den Variablen $y_i$.
 In einer Umgebung eines kritischen Punktes ist die Gestalt der Bahnen also
 im wesentlichen durch die Jacobi-Matrix bestimmt.
 
@@ -247,10 +250,11 @@ nachdem auf welcher Seite die L"osungskurve beginnt.
 \section{Eindimensionale Systeme}
 \rhead{Eindimensionale Systeme}
 Wir untersuchen in diesem Abschnitt das Verhalten eindimensionaler autonomer
-Systeme.
+Systeme, und konzentrieren uns dabei auf Eigenschaften, die allein
+auf Grund der geringen Dimension erschliessen lassen.
 Ein solches System hat die Form
 \[
-y'=f(y),
+y'=f(y),\quad y\in\mathbb R
 \]
 und kann sofort mit Hilfe von Separation der Variablen gel"ost werden:
 \[
@@ -528,28 +532,31 @@ der $y_1$-Nullkline $y_1+3y_2=2$ mit der $y_2$-Nullkline $y_1+y_2=1$,
 also als L"osung des linearen Gleichungssystems
 \[
 \begin{linsys}{2}
-y_1&+&3y_2&=&2\\
-y_1&+& y_2&=1.
+y_1&+&3y_2&=&2\phantom{.}\\
+y_1&+& y_2&=&1,
 \end{linsys}
 \]
-Es hat die L"osung $(\frac23,\frac13)$, die kritischen Punkte sind also
-\[
+es hat die L"osung $(\frac12,\frac12)$.
+Die kritischen Punkte sind also
+\begin{equation}
 (0,0),\quad
 (2,0),\quad
 (0,1)\quad\text{und}\quad
-\biggl(\frac23,\frac13\biggr).
-\]
+\biggl(\frac12,\frac12\biggr).
+\label{geometrie:nullklinen-krit}
+\end{equation}
 
 An den aus den Nullklinen l"asst sich auch die Bewegungsrichtung der
-der L"osungen im Bezug auf die kritischen Punkte ablesen.
+L"osungen im Bezug auf die kritischen Punkte ablesen.
+\label{geometrie:nullklinen-stabilitaet}
 Aus dem Gebiet oben rechts und unten links in der N"ahe des Ursprungs
 bewegen sich die L"osungen zun"achst auf den kritischen Punkt
 bei $(\frac12,\frac12)$ zu, weichen dann aber ab in Richtung auf die
-kritischen Punkte $(0,1)$ und $(2,0)$.
-Die krtischen Punkte $(0,0)$ und $(\frac12,\frac12)$ sind also
+kritischen Punkte $(0,1)$ und $(2,0)$ zu.
+Die kritischen Punkte $(0,0)$ und $(\frac12,\frac12)$ sind also
 instabil, w"ahrend $(2,0)$ und $(0,1)$ stabil sind.
 Dies wird auch von dem genaueren Vektorfeld in
-Abbildung~\ref{geometrie:nullklinen1} best"atigt.
+Abbildung~\ref{geometrie:nullklinen-fluss} best"atigt.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/nullklinen-2.pdf}
@@ -572,55 +579,25 @@ in einer Umgebung des instabilen kritischen Punktes $(\frac12,\frac12)$.
 in einer Umgebung des stabilen kritischen Punktes $(2,0)$.
 \label{geometrie:nullklinen-stabil}}
 \end{figure}
-In Abschnitt~\label{geometrie:umgebung-kritisch} wird gezeigt, dass man 
+In Abschnitt~\ref{geometrie:umgebung-kritisch} wird gezeigt, dass man 
 die Bewegung in der Umgebung eines kritischen Punktes mit Hilfe der
 Eigenwerte der Ableitungen klassifizieren kann.
-Die Ableitungen, also die Jacobi-Matrix von $f$ ist
-\[
-\frac{\partial f}{\partial y}
-=
-\frac{\partial}{\partial y}
-\begin{pmatrix}
-2y_1-y_1^2-3y_1y_2\\
-y_2-y_2^2-y_1y_2
-\end{pmatrix}
-=
-\begin{pmatrix}
-2-2y_1-3y_2 & -3y_1\\
--y_2        &1-2y_2-y_1
-\end{pmatrix}
-\]
-In den vier kritischen Punkten finden wir die folgenden Matrizen und
-Eigenwerte
-\begin{align*}
-&(0,0)
-	&\frac{\partial f}{\partial y}&=\begin{pmatrix}2&0\\0&1\end{pmatrix}
-		&&\lambda_1=2,\;\lambda_2=1\\
-&(2,0)
-	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-2&-6\\0&-1\end{pmatrix}
-		&&\lambda_1=-2,\;\lambda_2=-1\\
-&(0,1)
-	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-1&0\\-1&-1\end{pmatrix}
-		&&\lambda_1=-1,\;\lambda_2=-1\\
-&\textstyle(\frac12,\frac12)
-	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-\frac12&-\frac32\\-\frac12&-\frac12\end{pmatrix}
-		&&\lambda_1=\frac{\sqrt{3}-1}2,\;\lambda_2=-\frac{\sqrt{3}+1}2
-\end{align*}
-Nur bei den Punktein $(2,0)$ und $(0,1)$ sind beide Eigenwerte negativ,
-nur diese beiden Punkte sind stabil, wie bereits die  Diskussion der
-Nullklinen gezeigt hat.
 \end{beispiel}
+
 
 \begin{beispiel}
 Das {\em Fitzhugh-Nagumo-Modell} wird verwendet, um das Verhalten eines Neurons
 zu simulieren.
 \index{Fitzhugh-Nagumo-Modell}
 Es verwendet das Differentialgleichungssystem
-\begin{align*}
+\begin{equation}
+\begin{aligned}
     \dot v&= v-\frac13v^3-w\\
 \tau\dot w&= v-a-bw.
-\end{align*}
-Wir versuchen uns wieder mit Hilfe der Nullklinen ein Bild von den
+\end{aligned}
+\label{geometrie:fitzhugh-dgl}
+\end{equation}
+Wir versuchen, uns wieder mit Hilfe der Nullklinen ein Bild von den
 L"osungskurven zu verschaffen.
 Die $v$-Nullkline hat die Gleichung
 \[
@@ -651,11 +628,15 @@ $a=-0.8$, $b=0.9$.
 \label{geometrie:nullklinen-fh-1}}
 \end{figure}
 In Abbildung~\ref{geometrie:nullklinen-fh-1} sind die Nullklinen des
-Fitzhugh-Nagumo-Modells dargestellt mit nur einem kritischen Punkt dargestellt.
+Fitzhugh-Nagumo-Modells mit nur einem kritischen Punkt dargestellt.
 Die L"osungskurven bewegen sich in Spiralen im Gegenurzeigersinn
 um den Fixpunkt herum.
 In diesem Fall erlauben die Nullklinen keine abschliessende Beurteilung
 der Stabilit"at des Fixpunktes.
+Die Untersuchung der Eigenwerte der Jacobi-Matrix, die im nächsten
+Abschnitt erkl"art wird, erm"oglicht die Entscheidung, und wird in
+der Fortsetzung dieses Beispiels auf Seite~\pageref{geometrie:fh-fortsetzung}
+durchgef"uhrt.
 
 \begin{figure}
 \centering
@@ -667,18 +648,20 @@ $b=4$, $a=0$.
 In Abbildung~\ref{geometrie:nullklinen-fh-2} sind die Nullklinen des
 Fitzhugh-Nagumo-Modells dargstellt mit drei kritschen Punkten.
 Man kann sofort ablesen, dass $(0,0)$ ein instabiler kritischer Punkt ist.
-Die L"osungskurven, die von diesem Punkt abgesteossen werden, n"ahern sich
+Die L"osungskurven, die von diesem Punkt abgestossen werden, n"ahern sich
 einem der beiden anderen kritischen Punkte und bewegen sich
 in einer Spirale um diesen Punkt herum.
 Da sich die L"osungskurven nicht schneiden d"urfen kann man folgern,
 dass die beiden anderen kritschen Punkte stabil sein m"ussen,
 die L"osungskurven werden sich ihnen in Spiralbahnen n"ahern.
+\label{geometrie:fh-diskussion}
 \end{beispiel}
 
 %
 % Bewegung in der Umgebung eines kritischen Punktes
 %
-\subsection{Bewegung in der Umgebung eines kritischen Punktes\label{geometrie:umgebung-kritisch}}
+\subsection{Bewegung in der Umgebung eines kritischen Punktes
+\label{geometrie:umgebung-kritisch}}
 Wir gehen jetzt davon aus, dass 
 \[
 y'=f(y)
@@ -1058,6 +1041,48 @@ sind Spiralen um den kritischen Punkt
 \label{geometrie:rotkurv}}
 \end{figure}
 
+\begin{beispiel}
+Wir kehren nochmals zum Beispiel~(\ref{geometrie:nullklinen-dgl1})
+von Seite~\pageref{geometrie:nullklinen-dgl1} zur"uck.
+Die kritischen Punkte wurden in (\ref{geometrie:nullklinen-krit}) bereits
+zusammengestellt.
+Die Ableitung von $f$, also die Jacobi-Matrix, ist
+\[
+\frac{\partial f}{\partial y}
+=
+\frac{\partial}{\partial y}
+\begin{pmatrix}
+2y_1-y_1^2-3y_1y_2\\
+y_2-y_2^2-y_1y_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+2-2y_1-3y_2 & -3y_1\\
+-y_2        &1-2y_2-y_1
+\end{pmatrix}
+\]
+In den vier kritischen Punkten finden wir die folgenden Matrizen und
+Eigenwerte
+\begin{align*}
+&(0,0)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}2&0\\0&1\end{pmatrix}
+		&&\lambda_1=2,\;\lambda_2=1\\
+&(2,0)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-2&-6\\0&-1\end{pmatrix}
+		&&\lambda_1=-2,\;\lambda_2=-1\\
+&(0,1)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-1&0\\-1&-1\end{pmatrix}
+		&&\lambda_1=-1,\;\lambda_2=-1\\
+&\textstyle(\frac12,\frac12)
+	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-\frac12&-\frac32\\-\frac12&-\frac12\end{pmatrix}
+		&&\lambda_1=\frac{\sqrt{3}-1}2,\;\lambda_2=-\frac{\sqrt{3}+1}2
+\end{align*}
+Nur bei den Punktein $(2,0)$ und $(0,1)$ sind beide Eigenwerte negativ,
+nur diese beiden Punkte sind stabil, wie bereits die  Diskussion der
+Nullklinen auf Seite~\pageref{geometrie:nullklinen-stabilitaet}
+gezeigt hat.
+\end{beispiel}
+
 %
 % Komplexe Eigenwerte
 %
@@ -1183,6 +1208,102 @@ dies sind die Vektoren, die im vorangegangenen Abschnitt aus dem "Armel
 gesch"uttelt worden waren, um die Matrix des Systems in die
 Form~(\ref{geometrie:drehmatrix}) zu bringen.
 
+\begin{beispiel}
+\label{geometrie:fh-fortsetzung}
+Wir wenden obige Analyse auf das
+Fitzhugh-Nagumo-Modell~(\ref{geometrie:fitzhugh-dgl}) von
+Seite~\pageref{geometrie:fitzhugh-dgl} an.
+Um die Diskussion etwas zu vereinfachen, untersuchen wir nur den Fall
+$\tau = 1$.
+Wir m"ussen die Jacobi-Matrix in einem kritischen Punkt bestimmen, sie ist
+\begin{equation}
+J=
+\begin{pmatrix}
+1-v^2 &  -1 \\
+  1   &  -b
+\end{pmatrix}.
+\end{equation}
+Das charakteristische Polynom ist
+\begin{align*}
+\det(J-\lambda E)
+&=
+\left|
+\begin{matrix}
+1-v^2-\lambda&-1\\
+1&-b-\lambda
+\end{matrix}
+\right|
+\\
+&=
+(1-v^2-\lambda)(-b-\lambda)+1
+\\
+&=
+(\lambda+v^2-1)(\lambda+b)+1
+\\
+&=
+\lambda^2 + (\underbrace{v^2 + b - 1}_{\textstyle p})\lambda
++ \underbrace{b(v^2 - 1)+1}_{\textstyle q}.
+\end{align*}
+Es hat die Nullstellen
+\begin{equation}
+\lambda_{1,2}
+=
+-\frac{p}{2}\pm\sqrt{\frac{p^2}4-q}
+=
+-\frac{v^2+b-1}2\pm\sqrt{\frac{(v^2+b-1)^2}4-b(v^2-1)-1}.
+\label{geometrie:fn-eigenwerte}
+\end{equation}
+Der erste Term in der Wurzel ist das Quadrat des Terms vor der Wurzel.
+Ohne $q$ in der Wurzel g"abe es einen Eigenwert mit dem gleichen Vorzeichen
+wie $p$, der andere ist $0$.
+Die Vorzeichen von $p$ und $q$ bestimmen also weitgehen, ob ein 
+kritischer Punkt stabil oder instabil ist.
+
+\begin{enumerate}
+\item
+Wenn $q<0$ ist, dann ist die Wurzel gr"osser als $p/2$, die beiden
+Eigenwerte haben verschiedenes Vorzeichen, und der kritische Punkt
+ist instabil unabh"angig vom Vorzeichen von $p$. 
+Dieser Fall tritt ein, wenn 
+\[
+b(v^2 -1) + 1 < 0
+\qquad\Rightarrow\qquad
+1-\frac1b > v^2.
+\]
+F"ur $b<1$ wird die linke Seite negativ, dann kann dieser Fall also gar nicht
+eintreten.
+\item
+Ist $q>0$ und von gen"ugend grossem absolutem Betrag,
+dann wird der Radikand negativ, beide Eigenwerte
+sind komplex und der kritische Punkt ist genau dann stabil, wenn $p>0$ ist.
+Ist $q>0$, aber nicht von gen"ugend grossem absolutem Betrag, dann
+bleibt der Radikand positiv.
+In diesem Fall haben beide Eigenwerte das gleiche Vorzeichen wie $p$,
+auch in diesem Fall hat man also Stabilit"at genau dann, wenn $p>0$ ist.
+\end{enumerate}
+Wir k"onnen die Resultate der obigen Diskussion in der folgenden
+Entscheidungstabelle zusammenfassen:
+\begin{center}
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}|l|}
+\hline
+q=b(v^2-1)+1 & p= v^2 + b -1 &           \\
+\hline
+     <0      &               &  instabil \\
+     >0      &       <0      &  instabil \\
+     >0      &       >0      &  stabil   \\
+\hline
+\end{tabular}
+\end{center}
+
+F"ur $b>1$ und $a=0$ ist $(0,0)$ ein kritischer Punkt, und es gilt $q=-b+1<0$
+und $p=b-1>0$, wir sind daher im Fall~1, der Ursprung ist instabil.
+Es ist aber auch $p=v^2+b-1>v^2\ge 0$, der Fall $p<0$ kann also 
+gar nicht eintreten, ein solcher kritischer Punkt muss also immer
+stabil sein.
+Dies deckt sich mit den Resultaten der Diskussion von
+Seite~\pageref{geometrie:fh-diskussion}.
+\end{beispiel}
+
 %
 % Hopf-Bifurkation
 %
@@ -1259,15 +1380,17 @@ $r=\pm\sqrt{b}$.
 Unsere bisherige Theorie zur Beurteilung von Fixpunkten ging von
 kartesischen Koordinaten aus, wir f"uhren daher die Analyse auch noch
 in kartesischen Koordinaten durch.
-Mit Hilfe von 
+Die Umrechnungsformeln von Polarkoordinaten in kartesische Koordinaten
+und ihre Ableitungen
 \[
 \begin{aligned}
-x&=r\cos\varphi&\dot x&=\dot r\cos\varphi-r\sin\varphi\cdot\dot\varphi\\
-y&=r\sin\varphi&\dot y&=\dot r\sin\varphi+r\cos\varphi\cdot\dot\varphi
+x&=r\cos\varphi&&\qquad&\dot x&=\dot r\cos\varphi-r\sin\varphi\cdot\dot\varphi\\
+y&=r\sin\varphi&&\qquad&\dot y&=\dot r\sin\varphi+r\cos\varphi\cdot\dot\varphi
 \end{aligned}
 \]
-kann das System~(\ref{geometrie:hopfsystem}) in kartesische Koordinaten
-umgerechnet werden:
+erlauben uns,
+das System~(\ref{geometrie:hopfsystem}) in kartesische Koordinaten
+umzurechnen:
 \begin{equation}
 \begin{aligned}
 \dot x&=r(b-r^2)\frac{x}{r}+y=(b-x^2-y^2)x+y\\
