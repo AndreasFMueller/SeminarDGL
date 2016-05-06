@@ -124,4 +124,5 @@ $(hopf_FILES): hopf.mp
 	do \
 		mptopdf $${f}; \
 	done
-
+clean:
+	rm -f *.bbl *.aux *.log *.out *.pdf

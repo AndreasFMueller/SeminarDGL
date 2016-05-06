@@ -40,7 +40,7 @@ BLXFILES = skript1-blx.bbl \
 #	skript17-blx.bbl
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
-			$(BLXFILES)
+			$(BLXFILES) kreis/main.tex
 	pdflatex skript.tex
 	bibtex skript
 
@@ -107,4 +107,4 @@ skript8-blx.bbl:	skript8-blx.aux
 #	bibtex skript17-blx
 
 clean:
-	rm -f *.bbl *.aux *.log *.out
+	rm -f *.bbl *.aux *.log *.out *.pdf
