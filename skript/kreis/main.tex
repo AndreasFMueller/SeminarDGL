@@ -95,7 +95,7 @@ Gleiche Summenzeichen zusammenfassen:
 \end{align*}
 Nun muss man eine Indexgleichung für die Unbekannte $\sigma$ aufstellen, um diese zu bestimmen.
 Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
-% @todo text schreiben der sinnfoll ist
+@todo{text schreiben der sinnfoll ist}
 \begin{align*}
 	\left[ \sigma \cdot \left( \sigma -1 \right) + \sigma - n^2 \right] \cdot a_0 &= 0 && \left| :a_0 \right. \\
 	\sigma \cdot \left( \sigma -1 \right) + \sigma - n^2 &= 0 && \left| \text{Ausmultiplizieren} \right. \\
@@ -168,7 +168,7 @@ Als n\"achstes fasst man alles in eine einzige Summe zusammen und vereinfacht di
 \end{align*}
 Weil $r \neq 0$ sein muss, muss $ \left( 2 \cdot n \cdot k + k^2 \right) \cdot a_k + a_{k - 2} = 0$ sein.
 Nun kann man eine Rekursion der Koeffizienten $a_k$ berechnen.
-\begin{align*}
+\begin{align}
 	a_k
 	=
 	\frac
@@ -177,8 +177,69 @@ Nun kann man eine Rekursion der Koeffizienten $a_k$ berechnen.
 	}{
 		k \cdot \left( 2 \cdot n + k \right)	
 	}
+	\label{eq:bessel_koeffreq}
+\end{align}
+Da $k \geq 0$ sein muss, sind nur gerade Koeffizienten m\"oglich. Somit kann man f\"ur $k$ nun $2k$ in die Gleichung \ref{eq:bessel_koeffreq} einsetzen und erh\"alt:
+\begin{align*}
+	a_{2k}
+	&=
+	\frac
+	{
+		-a_{2k - 2}
+	}{
+		2k \cdot \left( 2 \cdot n + 2k \right)	
+	} \\
+	&=
+	\frac
+	{
+		-a_{2k - 2}
+	}{
+		4k \cdot \left( n + k \right)	
+	} \\
+	&=
+	\frac
+	{
+		-a_0
+	}{
+		4^k \cdot {k}! \cdot {\left( n + k \right)}!
+	} \\
+	&=
+	\frac
+	{
+		-a_0
+	}{
+		2^{2k} \cdot {k}! \cdot {\left( n + k \right)}!
+	}
 \end{align*}
+Setzt man nun f\"ur $a_0 = \frac{1}{2^n \cdot {n}!}$ ein, so bekommt man die @todo{guter text zusammenschreiben}
+\begin{align}
+	J_n \left( r \right)
+	&= \nonumber
+	\sum_{k=0} ^{\infty}
+	\frac
+	{
+		\left( - 1 \right) ^k \cdot r ^{2k+n}
+	}{
+		2^{2k+n} \cdot {k}! \cdot { \left( k + n \right) }!
+	} \\
+	&=
+	\sum_{k=0} ^{\infty}
+	\frac
+	{
+		\left( - 1 \right) ^k \cdot 
+		\frac
+		{
+			r ^{2k+n}
+		}{
+			2^{2k+n}
+		}
+	}{
+		{k}! \cdot { \left( k + n \right) }!
+	}
+	\label{eq:bessel_summenformel}
+\end{align}
 
+@todo{Plot einf\"ugen von Besselfunktion}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
