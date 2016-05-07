@@ -354,6 +354,7 @@ Der Term $\frac12u''$ ist in der klassischen Analysis nicht vorhanden.
 Wir m"ussen daher auch alle gewohnten Rechenregeln der Analysis "uberpr"ufen.
 
 \subsection{Stochastische Integrale\label{subsection:stochint}}
+\index{stochastisches Integral}
 Wir m"ochten eine Definition f"ur ein Integral der Form
 \[
 \int_0^T G\,dW
@@ -361,6 +362,7 @@ Wir m"ochten eine Definition f"ur ein Integral der Form
 f"ur zwei stochastische Prozesse $G(t)$ und $W(t)$.
 
 \subsubsection{Das Paley-Wiener-Zygmund Integral}
+\index{Paley-Wiener-Zygmund Integral}
 F"ur differenzierbare Funktionen $g(t)$ und $w(t)$ ist klar, was 
 mit dem Integral gemeint ist:
 \[
@@ -543,6 +545,7 @@ Die Riemann-Summe von $W$ f"ur die Unterteilung $P$ ist
 \[
 R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 \]
+\index{Riemann-Summe}
 \end{definition}
 
 \begin{hilfssatz}
@@ -550,7 +553,8 @@ R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 Sei
 \[
 P^{(n)}
-=\{0=t_0^{(n)}<t_1^{(n)}<\dots < t_{m_n}^{(n)}=T\}
+=
+\{0=t_0^{(n)}<t_1^{(n)}<\dots < t_{m_n}^{(n)}=T\}
 \]
 eine Folge von Unterteilungen des Intervals $[0,T]$ derart,
 dass die Maschenweite gegen $0$ strebt, dann gilt
@@ -567,7 +571,8 @@ Konvergenz in $L^2(\Omega)$ bedeutet, dass der Erwartungswert der
 quadratische Abweichung gegen $0$ streibt.
 Setzen wir
 \[
-Q_n = 
+Q_n
+= 
 \sum_{k=0}^{m_n-1} \left(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\right)^2,
 \]
 und m"ussen untersuchen, ob $E((Q_n - T)^2)$ gegen $0$ strebt.
@@ -920,6 +925,7 @@ Folge von Stufen-Prozessen, die $L^2(0,T)$ konvergiert, zu einer
 konvergenten Folge von It\^o-Integralen f"uhrt.
 
 \begin{definition}
+\index{It\^o-Integral}
 Ist $G$ ein beliebiger auf $[0,T]$ quadratintegrierbarer Prozess,
 und $G_n$ eine Folge von stochastischen Prozessen, die in $L^2([0,T])$
 gegen $G$ konvergiert.
@@ -975,7 +981,7 @@ Wenn $X$ ein stochastischer Prozess ist, der
 \[
 X(r)=X(s)+\int_s^rF(t)\,dt + \int_s^tG\,dW
 \]
-erf"ullt, dann sagt man $X$ habe das {\em stchastische Differential}
+erf"ullt, dann sagt man $X$ habe das {\em stochastische Differential}
 \[
 dX=F\,dt + G\,dW.
 \]
@@ -992,6 +998,7 @@ Dazu brauchen wir mindestens noch eine Kettenregel und eine
 Produktregel.
 
 \begin{satz}[It\^o's Kettenregel]
+\index{It\^o-Kettenregel}
 Falls $X$ das stochastische Differential
 \[
 dX=F\,dt + G\,dW
@@ -1062,11 +1069,9 @@ Dieses Beispiel zeigt, dass der entwickelte Kalk"ul dazu geeignet sein kann,
 stochastische Differentialgleichungen zu l"osen.
 \end{beispiel}
 
-\begin{proof}[Beweis der Kettenregel]
-TODO
-\end{proof}
-
 \begin{satz}[Produktregel von It\^o]
+\index{It\^o-Produktregel}
+\index{Produktregel von It\^o}
 Falls die Prozesse $X_1$ und $X_2$ die stochastischen Differentiale
 \begin{align*}
 dX_1
@@ -1078,16 +1083,226 @@ dX_2
 F_2\,dt + G_2\,dW
 \end{align*}
 haben, dann ist
-\[
+\begin{equation}
 d(X_1X_2)
 =
 X_2\,dX_1 + X_1\,dX_2 + G_1G_2\,dt,
-\]
+\label{stochastisch:ito-produkt}
+\end{equation}
 dies ist die {\em It\^o-sche Produktformel}.
 \end{satz}
 
+F"ur den Beweis der Kettenregel brauchen wir die Produktregel, wir geben
+daher zuerst einen Beweis f"ur die Produktregel an.
+
 \begin{proof}[Beweis der Produktformel]
-TODO
+Die integrierte Form der Produktregel besagt, dass 
+\begin{equation}
+X_1(r)X_2(r)-X_1(0)X_2(0)
+=
+\int_0^r X_2\,dX_1 + \int_0^r X_1\,dX_2 + \int_0^r G_1G_2\,dt
+\label{stochastisch:ito-produkt-integriert}
+\end{equation}
+diese m"ussen wir nachrechnen.
+Wir nehmen an der Einfachheit halber an, dass $X_1(0)=X_2(0)=0$ ist.
+
+1.~Wir nehmen zus"atzlich an, dass die Funktion $G_i$ und $F_i$ nicht von
+der Zeit abh"angen.
+Dies bedeutet, dass sich die stochastische Differentialgleichung
+$dX_i=F_i\,dt+G_i\,dW$ integrieren l"asst:
+\[
+X_i(t) = \int_0^t F_i\,d\tau + G_i\int_0^r dW =  F_it+G_iW(t).
+\]
+Diese Bedingung werden wir im zweiten Schritt wieder aufheben.
+Wir berechnen die rechte Seite der integrierten
+Produktregel~(\ref{stochastisch:ito-produkt-integriert}):
+\begin{align*}
+\int_0^r X_2\,dX_1 + X_1\,dX_2 + G_1G_2\,dt
+&=
+\int_0^rX_1F_2+X_2F_1\,dt + \int_0^r X_1G_2+X_2G_1\,dW + \int_0^r G_1G_2\,dt
+\\
+&=
+\int_0^r(F_1t+G_1W)F_2+(F_2t+G_2W)F_1\,dt
+\\
+&\qquad
++ \int_0^r (F_1t+G_1W)G_2+(F_2t+G_2W)G_1\,dW + \int_0^r G_1G_2\,dt
+\\
+&=F_1F_2r^2+(G_1F_2+G_2F_1)\underbrace{\biggl(\int_0^rW\,dt + \int_0^rt\,dW\biggr)}_{\textstyle = rW(r)}
+\\
+&\qquad
++G_1G_2\cdot \underbrace{2\int_0^r W\,dW}_{\textstyle W(r)^2-r}
++ G_1G_2\underbrace{\int_0^r\,dt}_{\textstyle =r}
+\\
+&= 
+F_1F_2r^2 + (G_1F_2+G_2F_1)rW(r) + G_1G_2W(r)^2
+\\
+&= 
+F_1r\cdot F_2r + F_2r\cdot G_1W(r)+F_1r\cdot G_2W(r) + G_1W(r)\cdot G_2W(r)
+\\
+&= 
+(F_1r + G_1W(r))\cdot(F_2r +  G_2W(r))
+=
+X_1(r) \cdot X_2(r).
+\end{align*}
+Dies ist die linke Seite von (\ref{stochastisch:ito-produkt-integriert}), die
+damit f"ur diesen Spezialfall bewiesen ist.
+
+2.~Wir ersetzen jetzt die Konstanten $G_i$ und $F_i$ durch Stufenprozesse.
+Es gibt eine Unterteilung des Intervals $[0,T]$ so, dass die Prozesse $G_i$
+und $F_i$ in jedem Teilinterval konstant sind.
+In jedem solchen Teilinterval gilt daher die Ito-Produktformel, und damit
+auch f"ur das ganze Interval.
+
+3.~Im allgemeinen Fall k"onnen wir die Prozesse $G_i$ und $F_i$ mit Hilfe
+einer Formel von Stufenprozessen $G_i^n$ und $F_i^n$ approximieren.
+Wir k"onnen zus"atzlich fordern, dass
+\[
+E\biggl(\int_0^T |F_i^n-F_i|\,dt\biggr)\to 0
+\qquad\text{und}\qquad
+E\biggl(\int_0^T (G_i^n-G_i)^2\,dt\biggr)\to 0,
+\]
+was wir weiter unten brauchen.
+Es gibt nach dem zweiten Schritt eine Folge von Prozessen $X_i^n$ mit
+\[
+X_i^n(t) = X_i(0) + \int_0^t F_i^n\,d\tau + \int_0^t G_i^n\,dW,
+\]
+f"ur die jeweils die Produktregel gilt.
+\begin{align*}
+X_i^n(r)X_i^n(r)-X_i^n(s)X_i^n(s)
+&=
+\int_0^r X_2^n\,dX_1^n+\int_0^r X_1^n\,dX_2^n + \int_0^r G_1^nG_2^n\,dW
+\\
+&=
+\int_0^r X_2^nF_1^n\,dt
++
+\int_0^r X_2^nG_1^n\,dW
++
+\int_0^r X_1^nF_2^n\,dt
++
+\int_0^r X_1^nG_2^n\,dW
++
+\int_0^r G_1^nG_2^n\,dW
+\\
+\intertext{Der Grenz"ubergang $n\to\infty$ f"uhrt auf}
+X_i(r)X_i(r)-X_i(s)X_i(s)
+&=
+\int_0^r X_2F_1\,dt
++
+\int_0^r X_2G_1\,dW
++
+\int_0^r X_1F_2\,dt
++
+\int_0^r X_1G_2\,dW
++
+\int_0^r G_1G_2\,dW
+\end{align*}
+Damit ist die Produktformel bewiesen.
+\end{proof}
+
+\begin{proof}[Beweis der Kettenregel]
+Der Beweis der Kettenregel verwendet, dass die Funktion $u(x,t)$ durch
+Polynome approximiert werden kann.
+Wir m"ussen also zun"achst die Kettenregel f"ur Polynome in $x$ beweisen,
+und dann mit Hilfe eines Grenz"ubergangs mit approximierenden Polynomen
+den allgemeinen Fall gewinnen.
+
+1. Sei $u(x)=x^m$, wir behaupten, dass
+\[
+d(X^m)=mX^{m-1}\,dX + \frac12m(m-1)X^{m-2}G^2\,dt,
+\]
+dies ist die It\^o-Produktformel f"ur $u(x)=x^m$.
+Wir beweisen diese Formel durch vollst"andige Induktion.
+F"ur $m=0$ ist sie trivialerweise korrekt.
+Wir nehmen daher an, dass Sie f"ur $m-1$ gilt, dass also
+\begin{align*}
+d(X^{m-1})
+&=
+(m-1)X^{m-2}\,dX + \frac12(m-1)(m-2)X^{m-3}G^2\,dt
+\\
+&=
+(m-1)X^{m-2}F\,dt + (m-1)X^{m-2}G\,dW + \frac12(m-1)(m-2)X^{m-3}G^2\,dt.
+\end{align*}
+Dies wenden jetzt die Produktregel auf $X^m = XX^{m-1}$ an.
+F"ur $X_1=X$ ist $G_1=G$, und $X_2=X^{m-1}$ und
+\[
+G_2
+=
+(m-1)X^{m-2}G
+\]
+\begin{align*}
+d(X^m)
+&=
+d(XX^{m-1})
+=
+X\,d(X^{m-1}) + X^{m-1}\,dX +G_1G_2\,dt
+\\
+&=
+X\biggl( (m-1)X^{m-2}\,dX + \frac12(m-1)(m-2)X^{m-3}G^2\,dt\biggr)
++
+X^{m-1}\,dX
++
+(m-1)X^{m-2}G^2\,dt
+\\
+&=
+mX^{m-1}\,dX
++\biggl(\frac12(m-2)+1\biggr)(m-1)X^{m-2}G^2\,dt
+\\
+&=
+mX^{m-1}\,dX +\frac12m(m-1)X^{m-2}G^2\,dt,
+\end{align*}
+damit ist der Induktionsschritt vollzogen.
+
+Wegen der Linearit"at der Ableitung ist die Kettenregel damit
+f"ur beliebige Polynome in $x$ bewiesen.
+
+2.~Wir approximieren die Funktion $u(x,t)$ jetzt als Produkt
+$u(x,t)=f(x)g(t)$, wobei $f(x)$ und $g(t)$ Polynome sein sollen.
+Dann gilt
+\begin{align*}
+d(u(X,t))
+&=
+d(f(X)g)
+=
+f(X)\,dg + g\,df(X)
+\\
+&=
+f(X)g'\,dt + g\biggl(f'(X)\,dX + \frac12 f''(X)G^2\,dt\biggr)
+\\
+&=
+\frac{\partial u}{\partial t}\,dt
++
+\frac{\partial u}{\partial x}\,dX
++
+\frac12\frac{\partial^2u}{\partial x^2}G^2\,dt.
+\end{align*}
+Die It\^o-Kettenregel ist damit gezeigt f"ur ein Produkt von Polynomen.
+
+3.~Sei jetzt $u^n$ eine Folge von Polynomen wie im zweiten Schritt,
+so dass $u^n$ sowie die Ableitungen gegen $u$ gleichm"assig konvergieren:
+\[
+u^n\to u,
+\qquad
+\frac{\partial u^n}{\partial t} \to \frac{\partial u}{\partial t},
+\qquad
+\frac{\partial u^n}{\partial x} \to \frac{\partial u}{\partial x},
+\qquad
+\frac{\partial^2 u^n}{\partial x^2} \to \frac{\partial^2 u}{\partial x^2}.
+\]
+F"ur jedes $u^n$ gilt die It\^o-Kettenregel:
+\[
+u^n(X(r),r)-u^n(X(0),0)
+=
+\int_0^r
+\frac{\partial u^n}{\partial t}
++
+\frac{\partial u^n}{\partial x}F
++
+\frac12 \frac{\partial^2 u^n}{\partial x^2}G^2\,dt
++
+\int_0^r\frac{\partial u^n}{\partial x}G\,dW,
+\]
+durch Grenz"ubergang $n\to \infty$ erhalten wir daraus die allgemeine
+Form der It\^o-Kettenregel.
 \end{proof}
 
 %
@@ -1752,6 +1967,7 @@ berechnet, und darauf die Formel~(\ref{stochastisch:harmosz-y2}) anwendet.
 % Partielle Differentialgleichungen
 %
 \section{Partielle Differentialgleichungen\label{section:pdgl}}
+\rhead{Partielle Differentialgleichungen}
 Die It\^osche Kettenregel stellt einen Zusammenhang her zwischen der zweiten
 Ableitung von $u$ und den Werten von $u$ am Ende eines Pfades.
 In diesem Abschnitt wollen wir den Zusammenhang wie folgt konkretisieren.
