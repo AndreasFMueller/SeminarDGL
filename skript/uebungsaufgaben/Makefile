@@ -3,7 +3,7 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	exercise path 601
+all:	exercise path 601 602 603
 
 exercise_FILES = exercise-1.pdf
 exercise: $(exercise_FILES)
@@ -32,4 +32,22 @@ $(601_FILES):	601.mp
 	for i in 1; \
 	do \
 		mptopdf 601.$${i}; \
+	done
+
+602_FILES = 602-1.pdf
+602:	$(602_FILES)
+$(602_FILES):	602.mp
+	TEX=latex mpost 602.mp
+	for i in 1; \
+	do \
+		mptopdf 602.$${i}; \
+	done
+
+603_FILES = 603-1.pdf
+603:	$(603_FILES)
+$(603_FILES):	603.mp
+	TEX=latex mpost 603.mp
+	for i in 1; \
+	do \
+		mptopdf 603.$${i}; \
 	done
