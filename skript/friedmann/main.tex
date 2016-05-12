@@ -37,7 +37,7 @@ Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fi
 	\frac{\dot{a}}{a} = H
 	\]
 \end{satz}
-Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Damit schreiben wir, die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist
+Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist somit
 \begin{equation}
 M_{xyz} = \nu \Delta x \Delta y \Delta z
 \end{equation}
@@ -51,8 +51,8 @@ und folglich kann die Massendichte geschrieben werden als
 \label{friedmann:dichte}
 \end{equation}
 \subsubsection{Beschleunigung des Skalenfaktors}
-Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der Masse m im Abstand D zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit Radius D. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
-Für Abstand D, Geschwindigkeit v und Beschleunigung A schreiben wir:
+Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
+Für \textbf{Abstand} \textit{D}, \textbf{Geschwindigkeit} \textit{v} und \textbf{Beschleunigung} \textit{A} schreiben wir:
 \[D =  a \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}  = a R\]
 \[v = \dot{a} R\]
 \[A = \ddot{a} R\]
@@ -84,42 +84,67 @@ Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem
 \end{enumerate}
 
 \subsubsection{Energieerhaltung}
-Die Energie der Masse $m$ besteht aus kinetischer und potentieller Energie.
+Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden betrachten wir die radiale Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit.\\
+Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
 \begin{equation}
-E_m = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{x}, \qquad x = \text{Abstand zwischen der Masse M und m}
+E_{ges} = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{x}, \qquad x = \text{Abstand zwischen der Masse M und m}
 \end{equation}
-Dabei können drei Fälle auftreten, nämlich
+Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten.\\
+Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen,nämlich
 \begin{enumerate}
-	\item $E_m > 0 \rightarrow$ Die Masse $m$ kann nicht umkehren, der Term der kinetischen Energie überwiegt.
-	\item $E_m = 0 \rightarrow$ Die Masse $m$ nähert sich asymptotisch  der Geschwindigkeit null, bleibt aber nie stehen. (Escape Velocity)
-	\item $E_m < 0 \rightarrow$ Die Masse $m$ wird so stark angezogen, dass die Geschwindigkeit ihre Richtung ändert.
+	\item $E_{ges} > 0 \rightarrow$ Eine Masse $m$ entflieht der Schwerkraft.
+	\item $E_{ges} = 0 \rightarrow$ Eine Masse $m$ nähert sich asymptotisch  der Geschwindigkeit null, bleibt aber nie stehen. (Fluchtgeschwindigkeit)
+	\item $E_{ges} < 0 \rightarrow$ Eine Masse $m$ wird so stark angezogen, dass die Geschwindigkeit ihre Richtung ändert.
 \end{enumerate}
-Wir setzen $E_m = 0$ und formulieren um. Danach wenden wir die kosmologischen Gesetze unseres "'Raster-Universum"' an, indem wir $v$ und $D$ einsetzen. (Querverweis einfügen)
-\[\frac{m v^2}{2} = \frac{m M G}{x} \qquad| *\frac{2}{m} \qquad \Rightarrow {v^2} = \frac{2 M G}{x}\]
-\[\left( \dot{a} R\right)^2 = \frac{2 M G}{a R}\] 
-\[\dot{a}^2 R^2= \frac{2 M G}{a R} \Rightarrow \frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} \Rightarrow \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} \] %Schritte einzeln auflisten
+Nennen wir die Gesamtenergie eine Konstante \textit{c} und formen die Gleichung um.
+\[\frac{m v^2}{2} - \frac{m M G}{x} = c_1 \qquad| *\frac{2}{m} \qquad \]
+\[{v^2} - \frac{2 M G}{x} = \frac{2c_1}{m} = c_2
+\:  \Rightarrow \: \left( \dot{a} R\right)^2 = \frac{2 M G}{a R} + c_2\] 
+\[\frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} + \frac{c_2}{a^2 R^2} \: \Rightarrow \: \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{c_2}{a^2 R^2} \] %Schritte einzeln auflisten
 Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ und das Kugelvolumen $V$. Es gilt wieder Gleichung \ref{friedmann:dichte}. Daraus resultiert die vereinfachte Differentialgleichung 
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{c_2}{a^2 R^2}
 \end{equation}
 Mit \[\rho = \frac{\nu}{a^3}\]
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3} + \frac{c_2}{a^2 R^2}
 \end{equation}
 Vereinfacht
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}
 \end{equation}
 
-\subsubsection{Lösung der Differentialgleichung}
-Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
-\[ \dot{a} = \frac{1}{\sqrt{a}} \]
-\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Rightarrow \frac{dt}{da} = \sqrt{a} \]
-\[ t = \frac{2}{3} a^{3/2} \Rightarrow a = \frac{3}{2} t^{2/3} \]
-Wir vernachlässigen der Vorfaktor und schreiben das wichtige Resultat
-\begin{equation}
-a = t^{2/3}
-\end{equation}
+\subsubsection{Diskussion der Differentialgleichung}
+Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Universums und kann positiv, negativ oder null sein.
+\begin{enumerate}
+	\item Beginnen wir mit dem einfachsten Fall und setzen $c = 0$.
+	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}\]
+	Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
+	\[ \dot{a} = \frac{1}{\sqrt{a}} \]
+	\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Rightarrow \frac{dt}{da} = \sqrt{a} \]
+	\[ t = \frac{2}{3} a^{3/2} \Rightarrow a = \frac{3}{2} t^{2/3} \]
+	Wir vernachlässigen der Vorfaktor und schreiben das wichtige Resultat
+	\begin{equation}
+	a = t^{2/3}
+	\end{equation}
+	
+	\item Für den zweiten Fall ist $c > 0$.
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}\]
+	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert. Das kleine Universum verhält sich also wie für $c = 0$. Für ein grosses \textit{a} schreiben wir
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{c}{a^2} \: \Rightarrow \:	\dot{a}^2 = c \: \Rightarrow \: \dot{a} = \sqrt{c_1} = c_2\]
+	\begin{equation}
+	a = c*t
+	\end{equation}
+	
+	\item Als letztes soll $c < 0$ sein
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|c|}{a^2} \: \Rightarrow \: \dot{a}^2 = \frac{1}{a} - |c|\]
+	\begin{equation}
+	\dot{a} = \pm \sqrt{\frac{1}{a} - |c|}
+	\end{equation}
+	Anhand des Phasendiagramms erkennt man die Lösung dieser Differentialgleichung. Es beschreibt ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
+\end{enumerate}
 
+\subsection{Redshift}
+Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen.
 	
 \end{refsection}
