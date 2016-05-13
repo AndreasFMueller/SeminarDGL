@@ -4,6 +4,7 @@
 
 %used for drawing n(r)-Area
 \definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
 \usepgfplotslibrary{fillbetween}
 
 \usepackage{subcaption}
@@ -120,7 +121,7 @@ y''(x) = \frac{\frac{\partial n}{\partial y}}{n(y)} \cdot \left( y'(x)^2 + 1\rig
 \end{equation}
 
 \subsection{Verifikation}
-Um zu "uberpr"ufen, ob unser Modell plausibel ist, setzen wir verschiedene Funktionen für $n(y)$ ein. 
+Um zu "uberpr"ufen, ob unser Modell plausibel ist, setzen wir verschiedene Funktionen fur $n(y)$ ein. 
 
 Wenn die Brechzahl konstant ist (das Heisst $n'(y) = 0$), dann sollte sich der Lichtstrahl nicht mehr brechen und auf einer Geraden weiterfahren. 
 Wenn man nun $n'(y)=0$ in die Gleichung \ref{eq:planar_DGL} einsetzt, erhält man: 
@@ -245,7 +246,7 @@ TODO: weitere Simiulationen von verschiedenen Brechzahlen
 
 In diesem Modell ist die Brechzahl $n$ nur von $y$ abhängig. 
 Falls die Funktion nun die Steigung $f'(x) = 0$ hat, dann "andert sich die Brechzahl in Richtung des Lichtstrahls nicht mehr.
-Dies würde bedeuten, dass sich der Lichtstrahl nicht weiter krümmt. 
+Dies w"urde bedeuten, dass sich der Lichtstrahl nicht weiter kr"ummt. 
 
 In der Realit"at gibt es in der Luft immer Unregelm"assigkeiten. 
 Betrachten wir das Beispiel der Abbildung \ref{fig:planares_modell1}. 
@@ -366,7 +367,7 @@ $$\Rightarrow n'_r r'^2 + n'_r r^2 + 2 n r'^2 + n r^2 = n r r''$$
 Anmerkung: Bei dieser Gleichung gilt: $n'_r = \frac{\partial n}{\partial r}$. 
 
 \subsection{Verifikation}
-Wie zuvor beim planaren Modell setzen wir verschiedene Funtionen für $n(r)$ ein, und beurteilen die Resultate. 
+Wie zuvor beim planaren Modell setzen wir verschiedene Funtionen f"ur $n(r)$ ein, und beurteilen die Resultate. 
 Als erstes untersuchen wir die Funktion $n(r) = 1, n'(r) = 0$. 
 Bei diesem Beispiel hat das Material "uberall dieselbe Brechzahl.
 Die Nummerischen L"osungen sollten alle (bez"uglich den karteischen Koordinaten) linear ansteigen und sich nicht kr"ummen. 
@@ -424,7 +425,7 @@ TODO: Gleichung mit exponentieller Approximation der Athmosph"are.
     zmin = 1,
     zmax = 2,
     %colorbar, 
-    colormap={traditionalpm3d}{color=(white) color=(lGray)},
+    colormap={traditionalpm3d}{color=(white) color=(llGray) color=(lGray) color=(lGray)},
     view={0}{90}
   ]  
     \addplot3[surf, domain=-4:4, y domain=0:4, shader=flat, samples=61] {1 + 1 * exp(-(sqrt(x^2+y^2)-1)/2)};  
@@ -465,7 +466,8 @@ Setzen wir nun diese Bedingungen in die Gleichung ein, erhalten wir:
 $$n'_r + n = 0 \quad \Rightarrow \quad n'_r(r) = -n(r)$$
 
 Dies ist nun ebenfalls eine Differentialgleichung, welche die L"osung $n(r) = C \cdot e^{-r}$ hat.
-Da diese L"osung die Bedingung $n(r) \geq 1$ nicht erf"ullt, gibt es keine m"ogliche Verteilung der Brechzahlen, bei der auf jeder H"ohe der waagrechte Lichtstrahl zu einem Kreis wird. 
+Alle diese L"osungen haben die Eigenschaft, dass man bei dieser Verteilung der Brechzahl ein waagerechter Lichtstrahl auf jeder H"ohe in einen geschlossenen Kreis gebrochen wird.
+Da diese L"osung die Bedingung $n(r) \geq 1$ jedoch nicht erf"ullt, gibt es keine m"ogliche Verteilung der Brechzahlen, bei der auf jeder H"ohe der waagrechte Lichtstrahl zu einem Kreis wird. 
 Jedoch ist es m"oglich, dass diese Bedingung auf genau einer H"ohe zutrifft. 
 Wir untersuchen wieder die Funktion $n(r) = 1 + \mu \cdot e^{-\sigma (r-r_0)}$, $n'(r) = -\mu \sigma \cdot e^{-\sigma (r-r_0)}$.
 
@@ -473,7 +475,7 @@ $$\mu \sigma \cdot e^{-\sigma (r-r_0)} = 1 + \mu \cdot e^{-\sigma (r-r_0)} \quad
 
 $$\mu = \frac{e^{\sigma (r-r_0)}}{\sigma - 1}$$
 
-Wenn wir $r = r_0$ und $\sigma = 2$ festhalten, ergibt sich für $\mu = 1$. 
+Wenn wir $r = r_0$ und $\sigma = 2$ festhalten, ergibt sich f"ur $\mu = 1$. 
 Auch die Simulation best"atigt, dass in diesem Fall das Licht in einem Kreis gebrochen wird.
 Jedoch ist eine solch extreme Athmosph"are nicht realistisch. 
 Es braucht also ein anderes Modell, mit dem man diesen Effekt erzeugen kann.
@@ -488,3 +490,41 @@ Nun l"osen wir die obere Bedingung $-n'_r = n $, wenn $r < r_0$:
 $$2\mu \cdot (r_0 - r) = 1 + \mu(r_0 - r)^2$$
 
 Wenn wir nun f"ur $(r_0 - r) = 1$ einsetzen, erhalten wir $\mu = 1$. 
+Bei der Simulation mit diesen Bedingungen ist ersichtlich, dass in einen Kreis gebrochen wird. 
+
+\begin{figure}
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \centering
+
+    \begin{tikzpicture}
+      \begin{axis} [
+        axis lines=none, 
+        width=6cm, 
+        height=6cm,
+        ticks = none, 
+        xmin = -2,
+        xmax = 2,
+        ymin = -2,
+        ymax = 2,
+        zmin = 1,
+        zmax = 3,
+        axis equal,
+        colormap={traditionalpm3d}{color=(white) color=(lGray) color=(lGray) color=(lGray) color=(lGray) color=(lGray)},
+        %colorbar,
+        view={0}{90}
+      ]
+        \addplot3[surf, domain=-2:2, y domain=-2:2, shader=flat, samples=61] {1 + 1 * exp(-(sqrt(x^2+y^2)-1)*2)};  
+        \addplot[mark = none, thick, draw=red] coordinates {
+          (0.00000,1.00000)(-0.15643,0.98769)(-0.30902,0.95106)(-0.45399,0.89101)(-0.58779,0.80902)(-0.70711,0.70711)(-0.80902,0.58779)(-0.89101,0.45399)(-0.95106,0.30902)(-0.98769,0.15643)(-1.00000,0.00000)(-0.98769,-0.15643)(-0.95106,-0.30902)(-0.89101,-0.45399)(-0.80902,-0.58779)(-0.70711,-0.70711)(-0.58779,-0.80902)(-0.45399,-0.89101)(-0.30902,-0.95106)(-0.15643,-0.98769)(-0.00000,-1.00000)(0.15643,-0.98769)(0.30902,-0.95106)(0.45399,-0.89101)(0.58779,-0.80902)(0.70711,-0.70711)(0.80902,-0.58779)(0.89101,-0.45399)(0.95106,-0.30902)(0.98769,-0.15643)(1.00000,-0.00000)(0.98769,0.15643)(0.95106,0.30902)(0.89101,0.45399)(0.80902,0.58779)(0.70711,0.70711)(0.58779,0.80902)(0.45399,0.89101)(0.30902,0.95106)(0.15643,0.98769)(0.00000,1.00000)
+        };
+    
+      \end{axis}
+    \end{tikzpicture}    
+    \captionof{figure}{Nummersiche L"osung mit $n(r) = 1 + \mu e^{-\sigma (r - r_0)}$ mit $r(0) = r_0$, $r'(0) = 0$, $\sigma = 2$, $\mu = 1$}
+    \label{fig:sphere_special1}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+    \centering
+  \end{minipage}
+\end{figure}
