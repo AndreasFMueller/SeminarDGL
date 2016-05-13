@@ -1454,23 +1454,25 @@ y_p(x)=\sum_{i=1}^n A_i(x)y_i(x)
 eine partiklu"are L"osung ist.
 Dazu setzen wir den Ansatz f"ur $y_p(x)$ in die Differentialgleichung
 ein und erhalten
-\begin{align*}
+\begin{align}
 \sum_{i=1}^n\biggl(
 A'_i(x)y_i(x) + A_i(x)y_i'(x)
 +
 A_i(x)f(x)\cdot y_i(x)\biggr)
-&=g
-(x)
+&=
+g(x)
+\notag
 \\
 \sum_{i=1}^n\biggl(
 A_i'(x)y_i(x) + A_i\bigl(\underbrace{y_i'(x)+f(x)y_i(x)}_{=0}\bigr)
 \biggr)
 &=
 g(x)
+\notag
 \\
 A_i'(x)y_i(x)&=g(x).
 \label{grundlagen:agl}
-\end{align*}
+\end{align}
 In dieser Schreibweise ist nicht so klar, wie man die Koeffizienten
 $A_i(x)$ bestimmen k"onnte.
 Die Koeffizienten bilden einen Spaltenvektor, den wir mit

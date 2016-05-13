@@ -75,12 +75,14 @@ if ymaximum < 0.5:
 	ymaximum := 0.5;
 fi;
 
+% compute the common scale factor
 numeric u, v;
-u := 360 / (xmaximum - xminimum);
-v := 240 / (ymaximum - yminimum);
+u := 360 / (xmaximum - xminimum + 0.2);
+v := 240 / (ymaximum - yminimum + 0.2);
 if u < v:
 	u := v;
 fi;
+
 numeric b;
 b = 1.05;
 numeric pscale;
@@ -91,39 +93,60 @@ z0 = (0,0);
 
 path q;
 
-z1 = ( b * xminimum * u, 0);
-z2 = ( b * xmaximum * u, 0);
-z3 = ( 0, b * yminimum * u);
-z4 = ( 0, b * ymaximum * u);
+z1 = ( xminimum * u - 20, 0);
+z2 = ( xmaximum * u + 20, 0);
+z3 = ( 0, yminimum * u - 20);
+z4 = ( 0, ymaximum * u + 20);
+
+z10 = (0.9 * xminimum + 0.1, 0.9 * yminimum + 0.1);
+z11 = (0.9 * xmaximum - 0.1, 0.9 * yminimum + 0.1);
+z12 = (0.9 * xmaximum - 0.1, 0.9 * ymaximum - 0.1);
+z13 = (0.9 * xminimum + 0.1, 0.9 * ymaximum - 0.1);
+
+%
+%    .  z25 ----  z24  .
+%  z26  z13 ----- z12  z23
+%   |    |         |    |
+%   |    |         |    |
+%  z27  z10 ----- z11  z22
+%    .  z20 ----- z21  .
+%
+z20 = z10 scaled u shifted (  0,-20);
+z21 = z11 scaled u shifted (  0,-20);
+z22 = z11 scaled u shifted ( 20,  0);
+z23 = z12 scaled u shifted ( 20,  0);
+z24 = z12 scaled u shifted (  0, 20);
+z25 = z13 scaled u shifted (  0, 20);
+z26 = z13 scaled u shifted (-20,  0);
+z27 = z10 scaled u shifted (-20,  0);
 
 label.top(btex $x$ etex, z2 shifted (10,0));
 label.rt(btex $y$ etex, z4 shifted (0,10));
 
-q :=   		   (0.9 * xmaximum, 0.8 * ymaximum){dir 90}
-	..{dir 180}(0.8 * xmaximum, 0.9 * ymaximum)
-	--         (0.8 * xminimum, 0.9 * ymaximum){dir 180}
-	..{dir -90}(0.9 * xminimum, 0.8 * ymaximum)
-	--         (0.9 * xminimum, 0.8 * yminimum){dir -90}
-	..{dir   0}(0.8 * xminimum, 0.9 * yminimum)
-	--         (0.8 * xmaximum, 0.9 * yminimum){dir 0}
-	..{dir  90}(0.9 * xmaximum, 0.8 * yminimum)--cycle;
+q :=      z21{dir   0}..{dir  90}z22
+        --z23{dir  90}..{dir 180}z24
+        --z25{dir 180}..{dir -90}z26
+        --z27{dir -90}..{dir   0}z20--cycle;
 
-fill (xminimum,yminimum)--(xmaximum,yminimum)--(xmaximum,ymaximum)
-	--(xminimum,ymaximum)--cycle scaled (b * u) withcolor 0.97;
-fill q scaled u withcolor 1;
+fill      (xminimum - 0.1, yminimum - 0.1)
+	--(xmaximum + 0.1, yminimum - 0.1)
+	--(xmaximum + 0.1, ymaximum + 0.1)
+	--(xminimum - 0.1, ymaximum + 0.1)--cycle scaled u withcolor 0.97;
+
+fill q withcolor 1;
 
 pickup pencircle scaled 1pt;
 drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
 drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
 
-(t0, t1) = p intersectiontimes q;
-z10 = (p intersectionpoint q) scaled u;
-z11 = point length p of p scaled u;
+(t0, t1) = p scaled u intersectiontimes q;
+z30 = point t1 of q;
+z31 = point length p of p scaled u;
 pickup pencircle scaled 4pt;
-draw z10 withcolor red;
+draw z30 withcolor red;
 
 pickup pencircle scaled 1.5pt;
-draw q scaled u;
+draw q;
 
 pickup pencircle scaled 1pt;
 
@@ -134,19 +157,19 @@ pickup pencircle scaled 4pt;
 draw z0 withcolor red;
 pickup pencircle scaled 3pt;
 draw z0 withcolor white;
-label.llft(btex $X(0)$ etex, z0);
+label.urt(btex $X(0)$ etex, z0);
 
 pickup pencircle scaled 4pt;
-draw z10 withcolor red;
+draw z30 withcolor red;
 pickup pencircle scaled 3pt;
-draw z10 withcolor white;
-label.top(btex $X(\tau)$ etex, z10);
+draw z30 withcolor white;
+label.llft(btex $X(\tau)$ etex, z30);
 
 pickup pencircle scaled 4pt;
-draw z11 withcolor 0.8;
+draw z31 withcolor 0.8;
 pickup pencircle scaled 3pt;
-draw z11 withcolor white;
-label.lrt(btex $X(T)$ etex, z11);
+draw z31 withcolor white;
+label.lrt(btex $X(T)$ etex, z31);
 
 endfig;
 
@@ -191,7 +214,7 @@ if m = 2:
 	z10 = point 1 of p xscaled u yscaled v;
 	z11 = point 0.5 of pprevious xscaled u yscaled v;
 	label.rt(btex $Y$ etex, 0.5[z10,z11]);
-	label.bot(btex $W_2(T/2)$ etex, z10);
+	label.top(btex $W_2(T/2)$ etex, z10);
 fi;
 
 endfig;

@@ -4,7 +4,7 @@
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
 all:	grundlagen numerik komplexezahlen randwert geometrie airy \
-	stochastisch komplex
+	stochastisch komplex bifurkation
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -42,11 +42,23 @@ $(randwert_FILES): randwert.mp
 		mptopdf $${f}; \
 	done
 
+harvest.mp:	harvest
+	./harvest
+
+harvest:	harvest.c
+	gcc -o harvest -Wall -O2 -std=c99 -g harvest.c `pkg-config --libs gsl`
+
+cube.mp:	cube
+	./cube
+
+cube:	cube.c
+	gcc -o cube -Wall -O2 -std=c99 -g cube.c `pkg-config --libs gsl`
+
 geometrie_FILES = geometrie-1.pdf geometrie-2.pdf geometrie-3.pdf	\
 	geometrie-4.pdf geometrie-5.pdf geometrie-6.pdf geometrie-7.pdf	\
 	geometrie-8.pdf geometrie-9.pdf geometrie-10.pdf geometrie-11.pdf
 geometrie:	$(geometrie_FILES)
-$(geometrie_FILES): geometrie.mp
+$(geometrie_FILES): geometrie.mp harvest.mp cube.mp
 	TEX=latex mpost geometrie.mp
 	for f in geometrie.[0-9]*; \
 	do \
@@ -94,6 +106,18 @@ $(komplex_FILES): komplex.mp
 	do \
 		mptopdf $${f}; \
 	done
+
+bifurkation_FILES = bifurkation-1.pdf  bifurkation-2.pdf bifurkation-3.pdf
+bifurkation:	$(bifurkation_FILES)
+$(bifurkation_FILES): bifurkation.mp
+	TEX=latex mpost bifurkation.mp
+	for f in bifurkation.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
+
+
+
 
 
 
