@@ -1,58 +1,60 @@
 \section{Allgemeines Polynom}
-Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
-allgemein geltende L"osung f"ur diese Art Differentialgleichungen zu 
-erstellen.
 
-Hierzu wird das anf"angliche Polynom $ax^2 + bx + c$ mit dem allgemeinen Polynom
+\begin{equation}
+	y''+\sum_{i=0}^{n}\lambda_ix^i y=0, \quad n \ge 0
+	\label{wellen:allgemeinesproblem}
+\end{equation}
+
+Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
+allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen 
+zu erstellen.
+
+Hierzu wird die anf"angliche Parabel $ax^2 + bx + c$ mit dem allgemeinen Polynom
 
 \begin{equation*}
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
 	\ge 0
 \end{equation*}
-ersetzt, was dann folgende Gleichung liefert:
+ersetzt.
 
-\begin{equation*}
-	y''+\sum_{i=0}^{n}\lambda_ix^i y=0, \quad n \ge 0
-\end{equation*}
-
-Aufgrund der zweiten Ableitung von $y$, ist bekannt, dass f"ur die 
-verschiedenen $a_k$ eine Abh"angigkeit "uber jeweils zwei Elemente besteht. 
-Zus"atzlich erh"oht sich diese um den Grad des zu untersuchenden Polynoms. 
-Die $a_k$ eines Polynoms $n$-ten Grades lassen sich also wie folgt berechnen:
+Bei der neuen Problemstellung handelt es sich immernoch um eine 
+Differentialgleichungen zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
+mindestens zwei zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht sich 
+diese jeweils um den Polynomkoeffizientenindex. Daraus folgt nun
 
 \begin{equation*}
 	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i)}\lambda_i, \quad n \ge 0, 
 	a_{k-2-i < 0} =  0.
 \end{equation*}
+f"ur ein Polynom $n$-ten Grades.
 
-Eingesetzt in die bereits bekannte L"osungsgleichung ergibt sich nun:
+Die Potenzreihenl"osung f"ur \ref{wellen:allgemeinesproblem} lautet somit:
 \begin{equation}
 	y(x) = a_0 + a_1x - \sum_{k=2}^{\infty}\frac{1}{k(k-1)}\sum_{i=0}^{n}
 	\lambda_ia_{k-2-i}x^k, \quad n \ge 0, a_{k < 0} = 0
-	\label{wellen:allgemein}
+	\label{wellen:allgemeineloesung}
 \end{equation}
 
 \subsection{Schlussfolgerungen}
 
-Mit der Formel \ref{wellen:allgemein} gibt es nun ein einfaches Werkzeug mit 
-dem man durch einfaches Einsetzen die Potenzreihenl"osung f"ur diese Art von 
-Differentialgleichungen erh"alt.
+Mit der Formel \ref{wellen:allgemeineloesung} gibt es nun ein einfaches 
+Werkzeug mit dem man allein durch Einsetzen die Potenzreihenl"osung f"ur 
+diese Art von Differentialgleichungen erh"alt.
 
-Diese Formel erlaubt es aber auch noch weitere Schlüsse zu ziehen. So kann man 
-nun direkt aus der Form des gegebenen Polynoms ablesen, wie sich die 
-Differentialgleichung jeweils für die verschiedenen L"osungen des gegebenen 
-Polynoms verhalten wird. Soll heissen, positive L"osungen f"uhren zu einer 
-Wellenform, die $\sin$ und $\cos$ enthalten. Negative L"osungen liefern 
-hingegen eine Kombination aus $\sinh$ und $\cosh$.
+Sie erlaubt es uns aber auch noch weitere Schl"usse zu ziehen. So kann man 
+nun direkt aus der Form der L"osung des gegebenen Polynoms ablesen, wie sich 
+die Differentialgleichung verhalten wird. Soll heissen, positive L"osungen 
+f"uhren zu einer Wellenform, die $\sin$ und $\cos$ enthalten. Negative 
+L"osungen liefern hingegen eine Kombination aus $\sinh$ und $\cosh$.
 
 \subsection{Beispiel: $n = 1$, Airy-Differentialgleichung}
-Die Airy-Differentialgleichung
+Die bereits bekannte Airy-Differentialgleichung
 \begin{align*}
-	y''+(ax+b)y &= 0, \qquad a = -1, b = 0 \\
-	\Leftrightarrow	\qquad \qquad y''-xy &= 0
+	y''-xy = 0
 \end{align*}
-ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemein} eingesetzt:
+ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemeineloesung} 
+eingesetzt:
 
 \begin{equation*}
 \begin{split}
@@ -67,7 +69,7 @@ ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemein} eingesetzt:
 Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
 
 \begin{center}
-	\includegraphics[scale=0.53]{./wellen/images/allgemein/n1.png}
+	\includegraphics[scale=0.65]{./wellen/images/allgemein/n1.png}
 \end{center}
 
 \subsection{Beispiel: $n = 4$}
@@ -92,5 +94,5 @@ Auch hier kann man graphisch die "Uberg"ange zwischen $\sin$ und $\cos$ bei
 positiven und $\sinh$ und $\cosh$ bei negativen Polynoml"osungen klar erkennen.
 
 \begin{center}
-	\includegraphics[scale=0.55]{./wellen/images/allgemein/n4.png}
+	\includegraphics[scale=0.65]{./wellen/images/allgemein/n4.png}
 \end{center}

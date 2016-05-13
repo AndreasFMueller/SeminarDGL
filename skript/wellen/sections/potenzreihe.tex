@@ -66,7 +66,7 @@ mit Hilfe einer Tabelle gemacht.
 	\label{wellen:koeffizietenvergleichtabelle}
 \end{equation}
 
-Die verschiebung der verschiedenen $a_k$ in der Tabelle 
+Die Verschiebung der verschiedenen $a_k$ in der Tabelle 
 \ref{wellen:koeffizietenvergleichtabelle} kann einfach erkl"art werden. 
 Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um zwei nach 
 links geschoben. Eine weitere Verschiebung gibt es wegen des Polynomgrades.
@@ -79,23 +79,22 @@ $cx^0$ vorhanden ist. Somit lassen sich die jeweiligen $a_k$ und ihre
 Abh"angigkeiten direkt aus den jeweiligen Spalten ablesen.
 
 Aus den in der Tabelle berechneten $a_k$ l"asst sich nun eine allgemeine 
-Rekursionsformel \ref{wellen:koeffizientengleichung} herauslesen. 
+Rekursionsformel
 
-\begin{equation}
+\begin{equation*}
 	\begin{split}
 		a_{k+2} &= -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k) \\
 		\Leftrightarrow \qquad
 		a_k &= -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2}), \qquad k \in 
-		\mathbb{Z} \setminus \{0, 1\}, a_{k<0} = 0
+		\mathbb{N} \setminus \{0, 1\}, a_{k<0} = 0
 	\end{split}
-	\label{wellen:koeffizientengleichung}
-\end{equation}
+\end{equation*}
+herauslesen. 
 
-Daraus kann nun die L"osungsgleichung \ref{wellen:ygleichung} f"ur $y$ 
-aufgestellt werden.
-
+Daraus kann nun die L"osungsgleichung
 \begin{equation}
 	y(x) = a_0 + a_1x 
 	-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 	\label{wellen:ygleichung}
 \end{equation}
+aufgestellt werden.
