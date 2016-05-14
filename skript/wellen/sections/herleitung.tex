@@ -1,11 +1,6 @@
 \section{Herleitung Ausgangsformel}
-In einem ersten Schritt wird erkl"art, wie die 
-Gleichung \ref{eq:wellen:grundgleichung} aus der Aufgabenstellung 
-zustandegekommen 
-ist.
-
-Die allgemeine Differentialgleichung der Welle lautet (gem"ass 
-\cite{wellen:smirnow2}):
+Gem"ass \cite{wellen:smirnow2}, lautet die allgemeine Differentialgleichung der 
+Welle:
 
 \begin{equation*}
 	\frac{\partial^2 u}{\partial t^2}
@@ -19,9 +14,9 @@ Die allgemeine Differentialgleichung der Welle lautet (gem"ass
 	\label{eq:wellen:allgemeineDGL}
 \end{equation*}
 
-Da in der ausgew"ahlten Problemstellung nur eine zweidimensionale Welle 
-betrachtet wird, fallen die y- und die z-Koordinate weg. Die Gleichung 
-vereinfacht sich dadurch zu:
+Da es sich in der ausgew"ahlten Problemstellung nur eine zweidimensionale Welle 
+handelt, fallen die y- und z-Koordinate weg. Die Gleichung vereinfacht sich 
+dadurch zu:
 
 \begin{equation}
 	\frac{\partial^2 u}{\partial t^2}
@@ -33,39 +28,28 @@ vereinfacht sich dadurch zu:
 	\label{eq:wellen:allgemeineDGLvereinfacht}
 \end{equation}
 
-Somit ist die Funktion $u$ noch abh"angig von der Zeit $t$ und der 
-Ortskoordinate 
-$x$.
-
-\begin{equation*}
-	u = f(x,t)
-\end{equation*}
-
 Zur L"osung der vereinfachten Wellengleichung 
-\ref{eq:wellen:allgemeineDGLvereinfacht} wird die Theorie des 
-Separationsansatzes 
-angewendet. Gem"ass dem kann $u(x, t)$ in ein Produkt zweier Funktionen $X(x)$ 
-und $T(t)$ umgewandelt werden.
+\ref{eq:wellen:allgemeineDGLvereinfacht} wird nun die Theorie des 
+Separationsansatzes angewendet. Gem"ass dieser kann die von der Zeit $t$ und 
+der Ortskoordinate $x$ abh"angigen Funktion $u(x,t)$ in ein Produkt 
+zweier Funktionen $X(x)$ und $T(t)$ umgewandelt werden.
 
 \begin{equation}
 	u (x,t) = X(x) T(t)
 	\label{eq:wellen:separierteFunktion}
 \end{equation}
 
-Ausgehend von der vereinfachten Grundgleichung der Welle 
-\ref{eq:wellen:allgemeineDGLvereinfacht} wird die Funktion 
+Ausgehend \ref{eq:wellen:allgemeineDGLvereinfacht} wird die Funktion 
 \ref{eq:wellen:separierteFunktion} auf der linken Seite zweimal partiell nach 
-$t$ 
-und auf der rechten Seite zweimal partiell nach $x$ abgeleitet. Daraus 
-resultiert:
+$t$ und auf der rechten Seite zweimal partiell nach $x$ abgeleitet:
 
-\begin{equation}
+\begin{equation*}
 	T''(t) X(x) = c^2 X''(x)T(t)
-\end{equation}
+\end{equation*}
 
-Diese Differentialgleichung wird nun durch $T(x)X(x)$ dividiert und somit 
-werden die Variablen separiert und ein Term entsteht, welcher nur funktionieren 
-kann, wenn beide Seiten der Gleichung konstant sind. 
+Nach einer Division durch $T(x)X(x)$ sind die Variablen separiert. Der neu 
+entstandene Term kann nur dann funktionieren, wenn beide Seiten der Gleichung 
+konstant sind.
 
 \begin{equation*}
 	\frac{T''(t)}{T(t)}
@@ -73,31 +57,23 @@ kann, wenn beide Seiten der Gleichung konstant sind.
 	c^2 \frac{X''(x)}{X(x)} = \text{konstant} = \lambda
 \end{equation*}
 
-Aus dieser Gleichung entstehen nun zwei l"osbare Differentialgleichungen 
-zweiter Ordnung.
+Es folgen nun also zwei l"osbare Differentialgleichungen zweiter Ordnung:
 
-\begin{equation*}
-	T''= \lambda T(t)
-\end{equation*}
-
-und
-
-\begin{equation}
-	X'' = \frac{\lambda}{c^2}X(x)
-	\label{eq:wellen:DGLzweiterOrdnung}
-\end{equation}
+\begin{align*}
+	T'' &= \lambda T(t) \\
+	X'' &= \frac{\lambda}{c^2}X(x).
+\end{align*}
 
 Bei der betrachteten Problemstellung, wird davon ausgegangen, dass die 
-Zeit konstant ist. Aus diesem Grund wird ab hier nur weiter auf die Gleichung 
-der Funktion $X(x)$ eingegangen. Wird die Gleichung 
-\ref{eq:wellen:DGLzweiterOrdnung} gleich Null gesetzt, ergibt sich:
+Zeit konstant ist. Aus diesem Grund wird ab hier nur noch auf die Gleichung 
+der Funktion $X(x)$ weiter eingegangen.
+
+Die Gleichung
 
 \begin{equation*}
 	X''(x) - \frac{\lambda}{c^2} X(x) = 0
 \end{equation*}
-
-Diese Gleichung widerspiegelt die Wellengleichung, die in der Fortsetzung 
-betrachtet wird.
+widerspiegelt die Wellengleichung, die in der Fortsetzung betrachtet wird.
 
 Mit dem Faktor $\frac{\lambda}{c^2}$ k"onnen verschiedene 
 Geschwindigkeitsprofile betrachtet werden. Hier wird unter anderem auf den 

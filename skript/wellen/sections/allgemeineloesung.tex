@@ -64,13 +64,13 @@ Pseudocode f"ur die allgemeine Potenzreihenl"osung dieser Differentialgleichung
 			\State $k \gets 2$
 			\State $\text{sum} \gets a_0 + a_1x$
 			\For{$k \le k_{\text{max}}$}
-				\State $i \gets 0$
 				\State $\text{aksum} \gets 0$
+				\State $i \gets 0$
 				\For{$i \le n$}
 					\State $\text{aksum} \gets \text{aksum}+\lambda_i a_{k-2-i}$
 					\State $i \gets i + 1$
 				\EndFor
-				\State $a_k \gets -\frac{1}{k(k-1)} \cdot \text{aksum}$
+				\State $a_k \gets -\cfrac{1}{k(k-1)} \cdot \text{aksum}$
 				\State $\text{sum} \gets \text{sum} + a_k x^k$
 				\State $k \gets k + 1$
 			\EndFor
