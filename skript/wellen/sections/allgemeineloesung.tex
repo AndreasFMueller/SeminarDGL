@@ -1,4 +1,4 @@
-\section{Allgemeines Polynom}
+\section{Allgemeine Potenzreihenl"osung}
 
 \begin{equation}
 	y''+\sum_{i=0}^{n}\lambda_ix^i y=0, \quad n \ge 0
@@ -10,7 +10,6 @@ allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen
 zu erstellen.
 
 Hierzu wird die anf"angliche Parabel $ax^2 + bx + c$ mit dem allgemeinen Polynom
-
 \begin{equation*}
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
@@ -22,7 +21,6 @@ Bei der neuen Problemstellung handelt es sich immernoch um eine
 Differentialgleichungen zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
 mindestens zwei zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht sich 
 diese jeweils um den Polynomkoeffizientenindex. Daraus folgt nun
-
 \begin{equation*}
 	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i)}\lambda_i, \quad n \ge 0, 
 	a_{k-2-i < 0} =  0.
@@ -48,13 +46,55 @@ die Differentialgleichung verhalten wird. Soll heissen, positive L"osungen
 f"uhren zu einer Wellenform, die $\sin$ und $\cos$ enthalten. Negative 
 L"osungen liefern hingegen eine Kombination aus $\sinh$ und $\cosh$.
 
+\subsection{Berechnungsaufwand}
+Der Pseudocodes \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
+"Anderungen an die neue L"osung angepasst werden. Es ergibt sich somit der 
+Pseudocode f"ur die allgemeine Potenzreihenl"osung dieser Differentialgleichung 
+\ref{alg:wellen:allgemeinepotenzreihenrechnung}.
+
+\begin{algorithm}
+	\floatname{algorithm}{Pseudocode}
+	\begin{algorithmic}[1]
+		\State $i \gets 1$
+		\State $a_{k<0} \gets 0$
+		\State $a_0 \gets y(0)$
+		\State $a_1 \gets y'(0)$
+		\State $x \gets x_{\text{min}}$
+		\For{$x \le x_{\text{max}}$}
+			\State $k \gets 2$
+			\State $\text{sum} \gets a_0 + a_1x$
+			\For{$k \le k_{\text{max}}$}
+				\State $i \gets 0$
+				\State $\text{aksum} \gets 0$
+				\For{$i \le n$}
+					\State $\text{aksum} \gets \text{aksum}+\lambda_i a_{k-2-i}$
+					\State $i \gets i + 1$
+				\EndFor
+				\State $a_k \gets -\frac{1}{k(k-1)} \cdot \text{aksum}$
+				\State $\text{sum} \gets \text{sum} + a_k x^k$
+				\State $k \gets k + 1$
+			\EndFor
+			\State $x \gets x + x_{\text{step}}$
+		\EndFor
+	\end{algorithmic}
+	\caption{Allgemeine Potenzreihenberechnung} 
+	\label{alg:wellen:allgemeinepotenzreihenrechnung}
+\end{algorithm}
+
+Der allgemeine Algorithmus hat also eine Laufzeit von
+\begin{equation*}
+\mathcal{O}\left(nk_{\text{max}}\frac{x_{\text{max}}-x_{\text{min}}} 
+{x_{\text{step}}}\right),
+\end{equation*}
+wobei $n$ dem Grad des gegebenen Polynoms entspricht.
+
 \subsection{Beispiel: $n = 1$, Airy-Differentialgleichung}
 Die bereits bekannte Airy-Differentialgleichung
 \begin{align*}
 	y''-xy = 0
 \end{align*}
 ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemeineloesung} 
-eingesetzt:
+eingesetzt
 
 \begin{equation*}
 \begin{split}
@@ -62,9 +102,10 @@ eingesetzt:
 	a_{k-2-0}) x^k
 	\\
 	&= a_0+a_1x+\sum_{k=2}^{\infty} \frac{1}{k(k-1)} a_{k-3} x^k,
-	\qquad a_{k < 0} = 0
+	\qquad a_{k < 0} = 0,
 \end{split}
 \end{equation*}
+was sich mit den bereits bekannten L"osung deckt.
 
 Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
 

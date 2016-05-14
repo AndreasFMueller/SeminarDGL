@@ -48,12 +48,13 @@ Die Berechnung von Potenzreihenl"osung im Intervall
 $[x_{\text{min}},x_{\text{max}}]$ kann "ausserst lange dauern. Auch hier kann
 muss Anzahl Berechnungen, in diesem Fall die Aufl"osung des Plots,
 eingeschr"ankt werden. Eine genauere Absch"atzung kann mit Hilfe des
-Pseudocodes \ref{alg:potenzreihenrechnungpc} gemacht werden.
+Pseudocodes \ref{alg:wellen:potenzreihenrechnung} gemacht werden.
 
 \begin{algorithm}
 	\floatname{algorithm}{Pseudocode}
 	\begin{algorithmic}[1]
-		\State $a_{k < 0} \gets 0$
+		\State $a_{-2} \gets 0$
+		\State $a_{-1} \gets 0$
 		\State $a_0 \gets y(0)$
 		\State $a_1 \gets y'(0)$
 		\State $k \gets 2$
@@ -62,17 +63,20 @@ Pseudocodes \ref{alg:potenzreihenrechnungpc} gemacht werden.
 			\State $k \gets 2$
 			\State $\text{sum} \gets a_0 + a_1x$
 			\For{$k \le k_{\text{max}}$}
-				\State $\text{sum} \gets \text{sum} + -\frac{1}{k(k-1)} 
-				(aa_{k-4}+ba_{k-3}+ca_{k-2}) x^k$
+				\State $a_k \gets -\frac{1}{k(k-1)}			
+				(aa_{k-4}+ba_{k-3}+ca_{k-2})$
+				\State $\text{sum} \gets \text{sum} + a_k x^k$
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
 		\EndFor
 	\end{algorithmic}
-	\caption{Wellen Potenzreihenberechnung}\label{alg:potenzreihenrechnungpc}
+	\caption{Wellen Potenzreihenberechnung} 
+	\label{alg:wellen:potenzreihenrechnung}
 \end{algorithm}
 
 Der Algorithmus hat also eine Laufzeit von
 \begin{equation*}
-	\mathcal{O}\left(k_{\text{max}}\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}\right)
+	\mathcal{O}\left(k_{\text{max}}\frac{x_{\text{max}}-x_{\text{min}}} 
+	{x_{\text{step}}}\right).
 \end{equation*}
