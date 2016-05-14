@@ -6,7 +6,7 @@
 all:	subdirs skript.pdf
 
 subdirs:
-	for d in chapters uebungsaufgaben; \
+	for d in chapters uebungsaufgaben wellen kreis; \
 	do \
 		cd $${d}; make; cd ..; \
 	done
