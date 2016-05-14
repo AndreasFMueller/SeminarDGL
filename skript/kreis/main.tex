@@ -43,7 +43,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\item eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur
 	\item die Besselfunktion mit ganzzahlige Parametern \ref{eq:bessel_summenformel}.
-	\item Allgemeine Besselfunktion
+	\item Allgemeine Besselfunktion \ref{eq:bessel_summenformel:allgemein}
 \end{enumerate}
 
 
@@ -74,6 +74,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^{k - 2}	
 \end{align*}
+\subsection*{Potenzreihen in Differenzialgleichung einsetzen}
 %Nun kann man die Potenzreihen in die Differenzialgleichung \ref{eq:bessel_dgl} einsetzen und bekommt dann:
 \begin{align*}
 	\varrho \, \left( \varrho - 1 \right) \, r^{\varrho}
@@ -92,7 +93,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
 	+\\
 	r^{\varrho}
-	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
+	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
 	-
 	n^2 \, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
@@ -122,14 +123,15 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+ \\
 	r^{\varrho}
-	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
+	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
 	= & \, 0
 \end{align*}
+\subsection*{Indexgleichung f\"ur $\varrho$}
 %Nun muss man eine Indexgleichung für die Unbekannte $\varrho$ aufstellen, um diese zu bestimmen.
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
 \begin{align*}
-	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 && \left| :a_0 \right. \\
+%	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 && \left| :a_0 \right. \\
 	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 && \left| \text{Ausmultiplizieren} \right. \\
 	\varrho ^2 - \varrho + \varrho -n^2 &= 0 && \left| \text{Vereinfachen} \right.\\
 	\varrho ^2 - n^2 &= 0 && \left| +n^2 \right.\\
@@ -162,7 +164,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+ \\
 	r^{n}
-	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
+	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
 	= & \, 0
 \end{align*}
 %Als n\"achstes fasst man alles in eine einzige Summe zusammen und vereinfacht diese:
@@ -285,9 +287,30 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}
 	\label{eq:bessel_summenformel}
 \end{align}
-
 %	Die Gleichung ist für ganzzahlige Koeffizienten.
 %	Übergang zu Gammafunktion erläutern für allgemeine Formel
+$\Gamma \left( \alpha \right) = {\left( \alpha - 1 \right) }!$
+\begin{align}
+	J_{\pm n} \left( r \right)
+	&=
+	\sum_{k=0} ^{\infty}
+	\frac
+	{
+		\left( - 1 \right) ^k \, 
+		\left(		
+		\frac
+		{
+			r
+		}{
+			2
+		} \right) ^{2k+n}
+	}{
+		{k}! \, \Gamma \left( k + n + 1 \right)
+	}
+	\label{eq:bessel_summenformel:allgemein}
+\end{align}
+
+
 
 \begin{figure}
 	\includegraphics[scale=0.75]{kreis/besselfunction.png}
