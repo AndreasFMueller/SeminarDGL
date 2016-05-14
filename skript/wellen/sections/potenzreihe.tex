@@ -10,14 +10,14 @@ Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet.
 	\sum_{k = 0}^{\infty} a_{k}x^k
 	=
 	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
-	\label{wellen:nullteableitung}
+	\label{eq:wellen:nullteableitung}
 	\\
 	y'(x)
 	&=
 	\sum_{k=0}^{\infty} a_{k+1}(k+1)x^k
 	=
 	a_1 + 2a_2x + 3a_3x^2 + 4a_4x^3 + 5a_5x^4 + 6a_6x^5+ \dotsb
-	\label{wellen:ersteableitung}
+	\label{eq:wellen:ersteableitung}
 	\\
 	y''(x)
 	&=
@@ -25,11 +25,12 @@ Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet.
 	=
 	2a_2 + 3 \mathbin{\cdot} 2a_3x + 4 \mathbin{\cdot} 3a_4x^2 + 5 
 	\mathbin{\cdot} 4a_5x^3 + 6 \mathbin{\cdot} 5a_6x^4 + \dotsb
-	\label{wellen:zweiteableitung}
+	\label{eq:wellen:zweiteableitung}
 \end{align}
 
-Aus den beiden Gleichungen \ref{wellen:nullteableitung} und
-\ref{wellen:zweiteableitung} und dem Umstellen der Anfangsgleichung in die Form
+Aus den beiden Gleichungen \ref{eq:wellen:nullteableitung} und
+\ref{eq:wellen:zweiteableitung} und dem Umstellen der Anfangsgleichung in die 
+Form
 \begin{equation*}
 	y'' = -(ax^2+bx+c)y
 \end{equation*}
@@ -63,11 +64,11 @@ mit Hilfe einer Tabelle gemacht.
 	& & a_4 = -\frac{1}{4 \cdot 3}(aa_0+ba_1+ca_2),
 	& \dots
 	\end{array}
-	\label{wellen:koeffizietenvergleichtabelle}
+	\label{eq:wellen:koeffizietenvergleichtabelle}
 \end{equation}
 
 Die Verschiebung der verschiedenen $a_k$ in der Tabelle 
-\ref{wellen:koeffizietenvergleichtabelle} kann einfach erkl"art werden. 
+\ref{eq:wellen:koeffizietenvergleichtabelle} kann einfach erkl"art werden. 
 Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um zwei nach 
 links geschoben. Eine weitere Verschiebung gibt es wegen des Polynomgrades.
 
@@ -95,6 +96,6 @@ Daraus kann nun die L"osungsgleichung
 \begin{equation}
 	y(x) = a_0 + a_1x 
 	-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
-	\label{wellen:ygleichung}
+	\label{eq:wellen:ygleichung}
 \end{equation}
 aufgestellt werden.

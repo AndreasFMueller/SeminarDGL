@@ -23,3 +23,5 @@ skript/chapters/images/harvest.mp
 *.dat
 *.swp
 *.png
+
+!skript/chapters/substitute.png

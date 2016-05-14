@@ -5,3 +5,6 @@
 #
 all:
 	cd images && make
+
+clean:
+	cd images && make clean

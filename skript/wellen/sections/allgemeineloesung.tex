@@ -2,7 +2,7 @@
 
 \begin{equation}
 	y''+\sum_{i=0}^{n}\lambda_ix^i y=0, \quad n \ge 0
-	\label{wellen:allgemeinesproblem}
+	\label{eq:wellen:allgemeinesproblem}
 \end{equation}
 
 Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
@@ -27,16 +27,16 @@ diese jeweils um den Polynomkoeffizientenindex. Daraus folgt nun
 \end{equation*}
 f"ur ein Polynom $n$-ten Grades.
 
-Die Potenzreihenl"osung f"ur \ref{wellen:allgemeinesproblem} lautet somit:
+Die Potenzreihenl"osung f"ur \ref{eq:wellen:allgemeinesproblem} lautet somit:
 \begin{equation}
 	y(x) = a_0 + a_1x - \sum_{k=2}^{\infty}\frac{1}{k(k-1)}\sum_{i=0}^{n}
 	\lambda_ia_{k-2-i}x^k, \quad n \ge 0, a_{k < 0} = 0
-	\label{wellen:allgemeineloesung}
+	\label{eq:wellen:allgemeineloesung}
 \end{equation}
 
 \subsection{Schlussfolgerungen}
 
-Mit der Formel \ref{wellen:allgemeineloesung} gibt es nun ein einfaches 
+Mit der Formel \ref{eq:wellen:allgemeineloesung} gibt es nun ein einfaches 
 Werkzeug mit dem man allein durch Einsetzen die Potenzreihenl"osung f"ur 
 diese Art von Differentialgleichungen erh"alt.
 
@@ -88,12 +88,13 @@ Der allgemeine Algorithmus hat also eine Laufzeit von
 \end{equation*}
 wobei $n$ dem Grad des gegebenen Polynoms entspricht.
 
-\subsection{Beispiel: $n = 1$, Airy-Differentialgleichung}
+\subsection{Beispiel: \texorpdfstring{$n = 1$}{n = 1}, 
+Airy-Differentialgleichung}
 Die bereits bekannte Airy-Differentialgleichung
 \begin{align*}
 	y''-xy = 0
 \end{align*}
-ergibt nun in die allgemeine L"osungsformel \ref{wellen:allgemeineloesung} 
+ergibt nun in die allgemeine L"osungsformel \ref{eq:wellen:allgemeineloesung} 
 eingesetzt
 
 \begin{equation*}
@@ -113,7 +114,7 @@ Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
 	\includegraphics[scale=0.65]{./wellen/images/allgemein/n1.png}
 \end{center}
 
-\subsection{Beispiel: $n = 4$}
+\subsection{Beispiel: \texorpdfstring{$n = 4$}{n = 4}}
 
 Auch ein Polynom 4-ten Grades stellt kein Problem dar. Die 
 Differentialgleichung:
