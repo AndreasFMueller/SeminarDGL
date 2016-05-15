@@ -19,8 +19,8 @@ ersetzt.
 
 Bei der neuen Problemstellung handelt es sich immernoch um eine 
 Differentialgleichungen zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
-mindestens zwei zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht sich 
-diese jeweils um den Polynomkoeffizientenindex. Daraus folgt nun
+mindestens zwei Elementen zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht 
+sich diese jeweils um den Polynomkoeffizientenindex. Daraus folgt nun
 \begin{equation*}
 	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i)}\lambda_i, \quad n \ge 0, 
 	a_{k-2-i < 0} =  0.
@@ -37,7 +37,7 @@ Die Potenzreihenl"osung f"ur \ref{eq:wellen:allgemeinesproblem} lautet somit:
 \subsection{Schlussfolgerungen}
 
 Mit der Formel \ref{eq:wellen:allgemeineloesung} gibt es nun ein einfaches 
-Werkzeug mit dem man allein durch Einsetzen die Potenzreihenl"osung f"ur 
+Werkzeug mit dem man, allein durch Einsetzen, die Potenzreihenl"osung f"ur 
 diese Art von Differentialgleichungen erh"alt.
 
 Sie erlaubt es uns aber auch noch weitere Schl"usse zu ziehen. So kann man 
@@ -47,10 +47,10 @@ f"uhren zu einer Wellenform, die $\sin$ und $\cos$ enthalten. Negative
 L"osungen liefern hingegen eine Kombination aus $\sinh$ und $\cosh$.
 
 \subsection{Berechnungsaufwand}
-Der Pseudocodes \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
+Der Pseudocode \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
 "Anderungen an die neue L"osung angepasst werden. Es ergibt sich somit der 
-Pseudocode f"ur die allgemeine Potenzreihenl"osung dieser Differentialgleichung 
-\ref{alg:wellen:allgemeinepotenzreihenrechnung}.
+Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnung} f"ur die allgemeine 
+Potenzreihenl"osung dieser Differentialgleichung.
 
 \begin{algorithm}
 	\floatname{algorithm}{Pseudocode}
@@ -116,7 +116,7 @@ Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
 
 \subsection{Beispiel: \texorpdfstring{$n = 4$}{n = 4}}
 
-Auch ein Polynom 4-ten Grades stellt kein Problem dar. Die 
+Auch ein Polynom 4-ten Grades stellt kein Problem mehr dar. Die 
 Differentialgleichung:
 
 \begin{equation*}

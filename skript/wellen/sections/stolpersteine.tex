@@ -1,9 +1,9 @@
 \section{Stolpersteine}
 
-Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge die 
+Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
 beachtet werden m"ussen. Von besonderer Signifikanz sind vor allem die 
 Genauigkeit der L"osungen f"ur die jeweilien $x$, sowie der nat"urlich auch die 
-Zeit die f"ur die Berechnung ben"otigt wird.
+Zeit, welche f"ur die Berechnung ben"otigt wird.
 
 
 \subsection{Genauigkeit}
@@ -12,23 +12,23 @@ Gem"ass
 	y(x) = a_0 + a_1x 
 	-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 \end{equation*}
-m"usste man f"ur jedens $x$ eine unendliche Anzahl Additionen ausf"uhren. Was 
-aber bedeuted, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
-dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anknen.
+m"usste man f"ur jedes $x$ eine unendliche Anzahl Additionen ausf"uhren. Was 
+aber bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
+dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken.
 
 \begin{equation*}
 	y(x) = a_0 + a_1x 
 	-\sum_{k=2}^{k_{\text{max}}}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 \end{equation*}
 
-Das hat aber weitreichende Folgen. So wird je nach $k_{\text{max}}$ fr"uher 
+Das hat aber weitreichende Folgen. So werden je nach $k_{\text{max}}$ fr"uher 
 oder sp"ater die L"osungswerte gegen $\infty$ oder $-\infty$ gehen. Das liegt 
 daran, dass der Term $(x - x_0)^k$ einer finiten Reihe um die 
 Entwicklungsstelle $x_0$, je weiter sie sich von diesem entfernen, gegen"uber 
 den $a_k$ beginnen wird zu dominieren.
 
-Die folgende Graphik zeigt auf wie die L"osung der Gleichung 
-\ref{eq:wellen:grundgleichung} mit verschiedenen $k_{\text{max}}$ aussieht.
+Die folgende Graphik zeigt auf, wie sich die L"osung der Gleichung 
+\ref{eq:wellen:grundgleichung} mit verschiedenen $k_{\text{max}}$ entwickelt.
 
 \begin{center}
 	\includegraphics[scale=0.65]{./wellen/images/kmax/krangewaveeven.png}
@@ -39,7 +39,7 @@ $x^k$ dominiert sich weiter von $x_0$ entfernt. Es taucht noch ein weiteres
 Ph"anomen auf. Da die Werte von $a_k$ immer kleiner werden und die von $x^k$ 
 immer gr"osser, kommt der Rechner irgendwann an seine Grenzen und beginnt 
 unbrauchbare Resultate zu liefern. Diese Ungenauigkeit ist durch die bin"are 
-Repräsentation von Dezimalzahlen und den limitierungen der verschiedenen 
+Repr"asentation von Dezimalzahlen und den Limitierungen der verschiedenen 
 Datentypen wie \texttt{double} oder \texttt{float} in einem Rechnersystem 
 gegeben.
 
