@@ -1,209 +1,136 @@
 \section{Parametervariation}
+\label{sec:wellen:parametervariation}
 
 Die Anfangsbedingungen $a_0$ und $a_1$ k"onnen beliebig festgelegt werden. Da 
 sich die Wellen im betrachteten Fall um den Entwicklungspunkt $x_0=0$ bewegen, 
 beschreibt das $a_0$ den y-Achsenabschnitt und das $a_1$ die Steigung im Punkt 
-$y(0)$. Die gew"ahlten Werte von $a_0$ und $a_1$ sind jeweils in der Grafik 
-ersichtlich.
+$y(0)$.
 
-\subsection{Eliminierung von \texorpdfstring{$a$}{a} und 
-\texorpdfstring{$b$}{b}}
-\label{subsec:wellen:Eliminierungab}
+\subsection{Bedeutung von \texorpdfstring{$a$}{a}, \texorpdfstring{$b$}{b} und 
+\texorpdfstring{$c$}{c}}
+Die drei Parameter $a$, $b$ und $c$ haben jeweils unterschiedliche Auswirkungen 
+auf die Parabel. So kann mit $a$ der Schnittpunkt mit der $x$-Achse und mit $c$ 
+derjenige mit der $y$-Achse festgelegt werden. $b$ hingegen verschiebt die 
+ganze Parabel in verschiedene Richtungen. Da diese Eigenschaft f"ur das 
+gegebene Modell nicht relevant ist, wird grunds"atzlich
+\begin{equation*}
+	b = 0
+\end{equation*}
+gesetzt.
 
-Zu Beginn wird das vorgegebene, parabelf"ormige Geschwindigkeitsprofil 
-n"aherungsweise in eine Konstante umgewandelt indem $a$ verschwindend klein 
-gew"ahlt wird und $b$ gleich $0$ gesetzt wird. Die beiden Variablen werden also 
-eliminiert und folgende Differentialgleichung wird betrachtet:
+\subsection{Lineare Differentialgleichung}
+\label{subsec:wellen:linearedifferntialgleichung}
 
+Indem $a$ verschwindend klein gew"ahlt wird, entsteht
 \begin{equation}
 	y''+ cy = 0.
 	\label{eq:wellen:lineareDGL}
 \end{equation}
 
-
-F"ur positive Werte von c kann die L"osung dieser Gleichung 
-\ref{eq:wellen:lineareDGL} mit dem charakteristischen Polynom bestimmt werden. 
-Die L"osungen des charakteristischen Polynoms
-
-\begin{equation}
-	p(\lambda) = [(\lambda+\mu)^2+\omega^2] =0
-	\label{eq:wellen:charakteristischesPolynom}
-\end{equation}
-
-sind
-
-\begin{equation}
-	\begin{split}
-	y_1 &= C_1e^{-\mu x}\cos(\omega x) \\
-	y_1 &= C_2e^{-\mu x}\sin(\omega x).
-	\end{split}
-	\label{eq:wellen:lsgcharakteristischesPolynom}
-\end{equation}
-
-Das zur Gleichung \ref{eq:wellen:lineareDGL} geh"orende charakteristische 
-Polynom 
-ist gem"ass \ref{eq:wellen:charakteristischesPolynom}
-
+Diese lineare Differentialgleichung kann mit Hilfe des charakteristischen 
+Polynoms
 \begin{equation*}
-	p(\lambda) = [\lambda^2 + c] =0.
+	p(\lambda) = [(\lambda+\mu)^2+\omega^2] = 0
 \end{equation*}
+dessen L"osungen
+\begin{equation*}
+\begin{split}
+	y_1 &= C_1e^{-\mu x}\cos(\omega x) \\
+	y_2 &= C_2e^{-\mu x}\sin(\omega x)
+\end{split}
+\end{equation*}
+sind, gel"ost werden.
 
-Somit folgt die allgemeine L"osung der Differentialgleichung 
-\ref{eq:wellen:lineareDGL} gem"ass \ref{eq:wellen:lsgcharakteristischesPolynom}
-
+Angewandt auf die Gleichung \ref{eq:wellen:lineareDGL} ergibt sich nun zu
+\begin{equation*}
+\begin{split}
+	p(\lambda) &= [(\lambda+0)^2+\sqrt{c}^2] = 0 \\
+	\Leftrightarrow p(\lambda) &= [\lambda^2+c] = 0,
+\end{split}
+\end{equation*}
+was uns nun
 \begin{equation}
-	y(x) = C_1 \cos(\sqrt{c}x) + C_2 \sin(\sqrt{c}x)
-	\label{eq:wellen:LsglineareDGL}
+y(x) = C_1 \cos(\sqrt{c}x) + C_2 \sin(\sqrt{c}x)
+\label{eq:wellen:lsglineareDGL}
 \end{equation}
+als L"osung ergibt.
 
 Um die Konstanten $C_1$ und $C_2$ zu bestimmen m"ussen die Anfangsbedingungen 
-$a_0$ und $a_1$ bekannt sein. Um die Abh"angigkeit aufzuzeigen, muss zuerst die 
-erste Ableitung der L"osung \ref{eq:wellen:LsglineareDGL} aufgestellt werden.
+$a_0$ und $a_1$ bekannt sein. Damit die Abh"angigkeit auf gezeigt werden kann, 
+wird zuerst die erste Ableitung der L"osung \ref{eq:wellen:lsglineareDGL} 
+aufgestellt werden.
 
 \begin{equation}
 	y'(x)=-C_1 \sqrt{c} \sin(\sqrt{c}x) + C_2 \sqrt{c} \cos(\sqrt{c}x)
 \end{equation}
 
-Der Wert bei $y(0)$ ist definiert als $a_0$ und die Steigung am Punkt $y'(0)$ 
-ist das $a_1$. Setzt man $x=0$ in die L"osungsgleichung 
-\ref{eq:wellen:LsglineareDGL} ein, k"onnen $C_1$ und $C_2$ bestimmt werden.
-
+Die werte von $y(0)$ und $y'(0)$ sind jeweils durch $a_0$ beziehungsweise $a_1$ 
+gegeben. Setzt man nun $x = 0$ ein, ergibt sich f"ur $C_1$ und $C_2$
 \begin{equation}
 	\begin{split}
 		y(0) = C_1 = a_0 &\Leftrightarrow C_1 = a_0 \\
-		y'(0) = C_2 \sqrt{c} = a_1 &\Leftrightarrow C_2 = \frac{a_1}{\sqrt{c}}
+		y'(0) = C_2 \sqrt{c} = a_1 &\Leftrightarrow C_2 = \frac{a_1}{\sqrt{c}}.
 	\end{split}
-	\label{eq:wellen:KonstantenC1C2}
 \end{equation}
 
-Setzt man diese Konstanten \ref{eq:wellen:KonstantenC1C2} in die 
-L"osungsgleichung \ref{eq:wellen:LsglineareDGL} 
-ein, ergibt sich die Gleichung, die sich mit den Startangaben, die definiert 
-werden, f"ur positive $c$-Werte berechnen l"asst.
-
+Eingesetzt in \ref{eq:wellen:lsglineareDGL} erhalten wir nun
+\begin{equation*}
+	y(x) = a_0 \cos(\sqrt{c}x) + \frac{a_1}{\sqrt{c}} \sin(\sqrt{c}x), \qquad c 
+	> 0
+\end{equation*}
+und
 \begin{equation}
-	y(x) = a_0 \cos(\sqrt{c}x) + \frac{a_1}{\sqrt{c}} \sin(\sqrt{c}x)
-	\label{eq:wellen:LSGleichung}
+\begin{split}
+	y(x) &= a_0 \cos(i\sqrt{|c|}x) + \frac{a_1}{i\sqrt{|c|}}\sin(i\sqrt{|c|}x), 
+	\qquad c < 0\\
+	\Leftrightarrow
+	y(x) &= a_0 \cos(i\sqrt{|c|}x) - i\frac{a_1}{\sqrt{|c|}}\sin(i\sqrt{|c|}x)\\
+	\Leftrightarrow
+	y(x) &= a_0 \cosh(\sqrt{|c|}x) + \frac{a_1}{\sqrt{|c|}}\sinh(\sqrt{|c|}x).
+\end{split}	
 \end{equation}
+Der letzte Umformungsschritt ergibt sich aus der Definition von $\cosh$ und 
+$\sinh$:
+\begin{equation*}
+\begin{split}
+	\sinh(x) &= \frac{1}{2} (e^x - e^{-x}) = -i \sin(ix)\\
+	\cosh(x) &= \frac{1}{2} (e^x + e^{-x}) = \cos (ix)
+\end{split}
+\end{equation*}
 
-In den folgenden zwei Grafiken werden die zwei Grundfunktionen von ``reinem''
-Sinus (erste Grafik) und Cosinus (zweite Grafik) aufgezeigt. Daf"ur muss 
-entweder $a_0$ oder $a_1$ gleich Null gesetzt werden.
+Die gefundenen L"osungen k"onnen auch graphisch best"atigt werden. Sei es f"ur 
+positve $c$ in Form von $\sin$ und $\cos$:
 
 \noindent
 \includegraphics[scale=0.35]{./wellen/images/basicfunctions/sin.png}
 \includegraphics[scale=0.35]{./wellen/images/basicfunctions/cos.png}
 
-F"ur negative Werte von c kann die L"osungsgleichung 
-\ref{eq:wellen:LSGleichung} zwar auch verwendet werden, es entstehen aber 
-imagin"are Faktoren durch die negativen Wurzelwerten. Die imagin"are Einheit 
-$i$ ist definiert als
-
-\begin{equation}
-	i = \sqrt{-1}.
-	\label{eq:wellen:imaginaereEinheit}
-\end{equation}
-
-Wird dieser Wurzelwert \ref{eq:wellen:imaginaereEinheit} bei jedem negativen 
-Wert 
-von $c$ ausgeklammert, ergibt sich die L"osungsgleichung.
-
-\begin{equation}
-	\begin{split}
-	y(x) &= a_0 \cos(i\sqrt{|c|}x) + \frac{a_1}{i\sqrt{|c|}}\sin(i\sqrt{|c|}x) 
-	\\
-	\Leftrightarrow
-	y(x) &= a_0 \cos(i\sqrt{|c|}x) - i\frac{a_1}{\sqrt{|c|}}\sin(i\sqrt{|c|}x)
-	\end{split}	
-	\label{eq:wellen:LSGnegcWerte}
-\end{equation}
-
-Die Definitionen vom Sinus Hyperbolicus und Cosinus Hyperbolicus lauten:
-
-\begin{equation*}
-	\begin{split}
-	\sinh(x) &= \frac{1}{2} (e^x - e^{-x}) = -i \sin(ix)\\
-	\cosh(x) &= \frac{1}{2} (e^x + e^{-x}) = \cos (ix)
-	\end{split}
-\end{equation*}
-
-Werden die Definitionen mit der L"osungsformel verglichen, ist ersichtlich, 
-dass es sich je nach Wahl von $a_0$ und $a_1$ um eine der beiden hyperbolischen 
-Funktionen handelt. Die L"osungsgleichung ergibt sich also zu
-
-\begin{equation}
-	y(x) = a_0 \cosh(\sqrt{|c|}x) + \frac{a_1}{\sqrt{|c|}}\sinh(\sqrt{|c|}x)
-	\label{eq:wellen:LSGhyperbolFunktion}
-\end{equation}
-
-In den folgenden zwei Grafiken wird zuerst der ``reine'' Sinus Hyperbolicus und 
-als zweites der ``reine'' Cosinus Hyperbolicus dargestellt.
+oder $\sinh$ und $\cosh$ f"ur negative $c$:
 
 \noindent
 \includegraphics[scale=0.35]{./wellen/images/basicfunctions/sinh.png}
 \includegraphics[scale=0.35]{./wellen/images/basicfunctions/cosh.png}
 
-\subsection{Variation von \texorpdfstring{$b$}{b}}
-
-Als Zweites werden die Variablen $a$, $c$ und die Anfangsbedingungen 
-festgehalten und nur das $b$ ver"andert. Um aufzuzeigen, was sich dabei 
-ver"andert, braucht es nur die Parabelgleichung.
-
-\begin{equation*}
-	y(x) = ax^2 + bx + c
-\end{equation*}
-
-BILD VERSCH. PARABELN
-
-Der Faktor $b$ bezweckt n"amlich, wie man in der Grafik sieht, in der Parabel 
-nur eine Verschiebung in Richtung der $x$-Achse. Diese Verschiebung bedeutet in 
-der betrachteten Problemstellung nur, dass sich die Schnittpunkte mit der 
-$x$-Achse verschieben. Was dies bedeutet wird in einem sp"ateren Abschnitt 
-erkl"art. Was aber aus der Variation mit $b$ herausgeht ist, dass wir die 
-dadurch ver"anderten Eigenschaften auch mit der Variation von $c$ oder von 
-$a_0$ aufzeigen k"onnen. Aus diesem Grund wird die Variabel $b$ in Fortsetzung 
-immer gleich 0 gesetzt und damit vernachl"assigt. 
-
-Die neue zu betrachtende Differentialgleichung ergibt sich damit zu:
-
-\begin{equation} 
-	y'' + (ax^2 +c)y = 0
-	\label{eq:wellen:DGLzubetrachten}
-\end{equation}
-
 \subsection{Variation von \texorpdfstring{$c$}{c}}
-\label{subsec:wellen:Variationc}
-
-Als N"achstes wird untersucht, welche Auswirkungen die Variation vom 
-Koeffizienten $c$ hat, wenn $a$ vorhanden ist und nicht gegen 0 geht aber 
-trotzdem festgehalten wird. $a$ wird in der folgenden Betrachtung gleich 1 
-gesetzt.
-
-Der Koeffizient $c$ beschreibt den Schnittpunkt der Parabel mit der $y$-Achse 
-und somit die Verschiebung in $y$-Richtung. Diese Verschiebung kann nicht, wie 
-die Verschiebung in Richtung der $x$-Achse mit dem Koeffizienten $b$, 
-vernachl"assigt werden. Grund daf"ur ist, dass die Wellenform vom Schnittpunkt 
-der Parabel mit der $x$-Achse abh"angt. 
+\label{subsec:wellen:variationc}
 
 \noindent
 \includegraphics[scale=0.35]{./wellen/images/varc/cneg1.png}
 \includegraphics[scale=0.35]{./wellen/images/varc/cneg2.png}
 
-In den zwei Grafiken werden die 
-Parabeln mit zwei unterschiedlichen $y$-Achsenabst"anden und deren aus der 
-Differentialgleichung \ref{eq:wellen:DGLzubetrachten} entstehende Welle 
-gezeigt. 
-Es wird deutlich, dass es nicht die gleiche Welle gibt und dass sich beim 
-Schnittpunkt der Parabel mit der $x$-Achse eine "Anderung einstellt. Dieses 
-Ph"anomen wird im n"achsten Kapitel \ref{sec:wellen:DiskussionWellenform} 
-erkl"art. 
+In den zwei Graphiken werden die Parabeln mit zwei unterschiedlichen $c$ und 
+deren aus der Gleichung \ref{eq:wellen:grundgleichung} entstehende Welle 
+gezeigt. Es wird deutlich, dass es nicht die gleiche Welle gibt und dass sich 
+beim Schnittpunkt der Parabel mit der $x$-Achse eine "Anderung einstellt.
 
 \subsection{Variation von \texorpdfstring{$a$}{a}}
-\label{subsec:wellen:Variationa}
+\label{subsec:wellen:variationa}
 
-Zum Schluss wird der Koeffizient $a$ variiert, was zur Folge hat, dass die 
-Parabel schl"anker oder enger wird. Dadurch verschiebt sich auch der 
-Schnittpunkt der Parabel mit der $x$-Achse und somit auch der Umschlagspunkt, 
-der im Kapitel \ref{subsec:wellen:Variationc} schon ersichtlich war. 
+\noindent
+\includegraphics[scale=0.35]{./wellen/images/vara/ahalbe.png}
+\includegraphics[scale=0.35]{./wellen/images/vara/aviertel.png}
 
-...
+In den zwei Graphiken werden die Parabeln mit zwei unterschiedlichen $a$ und 
+deren aus der Gleichung \ref{eq:wellen:grundgleichung} entstehende Welle 
+gezeigt. Hier wird es noch deutlicher, dass sich bei den Nullstellen der 
+Parabel eine "Anderung einstellt.
