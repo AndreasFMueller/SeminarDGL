@@ -1,0 +1,80 @@
+L"osen Sie die Airy-Differentialgleichung
+\[
+y''-xy=0
+\]
+mit den Anfangsbedingung $y(0)=1$ und $y'(0)=0$.
+
+\begin{loesung}
+Wir verwenden einen Potenzreihenansatz
+\[
+y(x)=\sum_{k=0}^\infty a_kx^k,
+\]
+aus der Anfangsbedingung k"onnen wir bereits die Werte von $a_0$ und
+$a_1$ ablesen:
+\begin{align*}
+a_0&=y(0)&
+a_1&=y'(0).
+\end{align*}
+Wir setzen die Funktion und ihre Ableitungen
+\begin{align*}
+y(x)&=a_0+a_1x+a_2x^2+a_3x^3+\dots+a_kx^k+\dots
+\\
+y'(x)&=a_1+2a_2x+3a_3x^2+4a_4x^3+\dots+ka_kx^{k-1}+\dots
+\\
+y''(x)&=2a_2+2\cdot 3a_3x + 3\cdot 4d_4x^2+\dots +k(k-1)a_kx^{k-2}+\dots
+\end{align*}
+in die Differentialgleichung ein.
+Damit der Koeffizientenvergleich effizient von statten gehen kann,
+m"ussen wir die rechten Seiten so schreiben, dass die gleichen Potenzen
+von $x$ auftreten:
+\begin{align*}
+y''(x)
+&=
+\sum_{k=0}^\infty (k+2)(k+1)a_{k+2}x^k
+\\
+xy(x)
+&=
+\sum_{k=1}^\infty a_{k-1}x^k
+\end{align*}
+Den Koeffizienten $k=0$ werden wir gesondert behandeln m"ussen.
+Eingesetzt in die Differentialgleichung erhalten wir
+\[
+y''(x)-xy(x)
+=
+a_2 + \sum_{k=1}^\infty \bigl((k+2)(k+1)a_{k+2}-a_{k-1}\bigr)x^k=
+\]
+Alle Koeffizienten m"ussen verschwinden, insbesondere folgt $a_2=0$,
+die ersten drei Koeffizienten sind damit vollst"andig bestimmt.
+
+Die h"oheren Koeffizienten erf"ullen die Gleichung
+\[
+a_{k+3}=\frac{a_k}{(k+3)(k+2)}.
+\]
+Insbesonderen bestimmt $a_0$ alle Koeffizienten, deren Index durch
+drei teilbar ist, und $a_1$ bestimmt alle Koeffizienten, deren Index
+Rest $1$ hat bei Teilung durch drei.
+Wegen $a_2$ verschwinden alle "ubrigen Koeffizienten.
+
+F"ur die gegebene Anfangsbedingung ist $a_1=0$, und damit kommen in der
+resultierenden Reihe nur Term in $x^3$ vor.
+Die Koeffizienten sind
+\begin{align*}
+a_3&=\frac1{3\cdot 2}a_0=\frac1{3\cdot 2}=\frac16\\
+a_6&=\frac1{6\cdot 5}a_3=\frac1{6\cdot 5\cdot 3\cdot 2}=\frac1{180}\\
+a_9&=\frac1{9\cdot 8}a_6=\frac1{9\cdot 8\cdot 6\cdot 5\cdot 3\cdot 2}=\frac1{12960}\\
+a_{12}&=\frac1{12\cdot 11}a_9=\frac1{12\cdot 11\cdot 9\cdot 8\cdot 6\cdot 5\cdot 3\cdot 2}=\frac1{1710720}
+\\
+&\dots
+\end{align*}
+Daraus kann man jetzt die Potenzreihe ableiten:
+\begin{align*}
+y(x)
+&=
+\sum_{k=0}^\infty \frac{x^{3k}}{3k\cdot(3k-1)\cdot (3k-3)\cdot(3k-4)\cdot \dots 3\cdot 2}
+\\
+&=
+1 + \frac16x^3+\frac1{180}x^6+\frac1{12960}x^9+\frac1{1710720}x^{12}+\dots
+\qedhere
+\end{align*}
+\end{loesung}
+

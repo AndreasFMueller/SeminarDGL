@@ -4,8 +4,8 @@
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
 \chapter{Potenzreihen-Methode\label{chapter:potenzreihen}}
-\lhead{}
-\rhead{Potenzreihen-Methode}
+\rhead{}
+\lhead{Potenzreihen-Methode}
 Die meisten Differentialgleichungen k"onnen nicht in geschlossener
 Form gel"ost werden.
 Viele davon sind aber von generischer Bedeutung, sie treten
@@ -27,6 +27,7 @@ Bessel-Funktionen damit verstanden werden k"onnen.
 
 \section{Analytische L"osungen
 \label{section:potenzreihen:analytisch}}
+\rhead{Analytische L"osungen}
 Wir setzen daher die L"osung in Form einer Potenzreihe als
 \begin{equation}
 y(x)
@@ -58,6 +59,7 @@ y''(x)
 
 \section{Trigonometrische Funktionen
 \label{section:potenzreihen:trigo}}
+\rhead{Trigonometrische Funktionen}
 Die trigonometrischen Funktionen $\sin x$ und $\cos x$ sind L"osungen
 der Schwingungsdifferentialgleichung
 \begin{equation}
@@ -111,6 +113,7 @@ die bekannten Taylor-Reihenentwicklungen der trigonometrischen Funktionen.
 
 \section{Verallgemeinerte Potenzreihen
 \label{section:potenzreihen:verallgemeinert}}
+\rhead{Verallgemeinerte Potenzreihen}
 Viele Differentialgleichungen in der Anwendungen sind von der Form
 \begin{equation}
 x^2y''+p(x)xy'+q(x)y=0,
@@ -155,6 +158,7 @@ Potenzreihe in $x$ geschrieben werden kann, denn eine solche
 L"osung w"urde beliebige Ableitungen im Punkt $x=0$ haben, was 
 die Differentialgleichung nicht garantieren kann.
 
+\subsection{Verallgemeinerter Ansatz und Indexgleichung}
 Setzt man $y(x)$ als Potenzreihe der Form~(\ref{potenzreihen:ansatz}) an,
 dann beginnt die Potenzreihe von $x^2y''$ mit dem Term $a_2x^2$,
 und $xy'$ beginnt mit $a_1x$.
@@ -320,6 +324,15 @@ ein weiterer Koeffizient $a_k$ von $0$ verschieden sein, und zwar genau
 dann, wenn $-p_0-(2\varrho-1)$ ganzzahlig ist.
 \end{beispiel}
 
+\subsection{Doppelte Nullstellen\label{potenzreihen:doppeltens}}
+Wenn die Indexgleichung~(\ref{potenzreihen:indexgleichung}) nur eine 
+Nullstelle hat, dann kann das eben skizzierte Verfahren auch nur eine
+Potenzreihe liefern, obwohl wir bei einer Differentialgleichung
+zweiter Ordnung zwei linear unabh"angige L"osungen erwarten.
+Es muss daher noch eine weitere L"osung geben, allerdings kann diese
+nicht die Form einer verallgemeinerten Potenzreihe haben, sonst h"atte
+das Verfahren diese gefunden.
+
 \subsection{Bessel-Gleichung}
 Die Besselsche Differentialgleichung
 \begin{equation}
@@ -347,3 +360,101 @@ $J_n(x)$ und $J_{-n}(x)$ haben, die in der Form
 J_{\pm n}(x)=x^{\pm n}\sum_{k=0}^\infty a_kx^k,\qquad a_0=1
 \]
 geschrieben werden k"onnen.
+Die Funktionen $J_n(x)$ heissen {\em Bessel-Funktionen (erster Art)}.
+\index{Bessel-Funktionen erster Art}
+\index{Bessel-Funktionen}
+
+Im Fallle $n=0$ hat die
+Indexgleichung~(\ref{potenzreihen:bessel-indexgleichung}) eine doppelte
+Nullstelle, es gibt dann nur einzige verallgemeinerte Potenzreihe
+$J_0(x)$ als L"osung.
+Nach der Motivation in Abschnitt~\ref{potenzreihen:doppeltens} erwarten
+wir eine weitere L"osung mit einem $\log(x)$-Term.
+Wir konstruieren daher den neuen Ansatz
+\begin{equation}
+y(x)
+=
+\beta J_0(x)\log(x)+\beta_0+\beta_1x+\beta_2x^2+\beta_3x^3+\dots
+\label{potenzreihen:k0ansatz}
+\end{equation}
+Davon brauchen wir die Ableitungen, 
+\begin{align*}
+y'(x)
+&=
+\beta J_0'(x)\log(x) + \beta J_0(x)\frac1x+\beta_1+2\beta_2x+3\beta_3x^2+\dots
+\\
+y''(x)
+&=
+\beta J_0''(x)\log(x) + 2\beta J_0'(x)\frac1x-\beta J_0(x)\frac1{x^2} + 2\beta_2 + 3\cdot 2\beta_3 x + 4\cdot 3\beta_4 x^2+\dots
+\end{align*}
+Die Nenner machen uns keine Sorgen, denn in der Differentialgleichung werden
+die Funktionen mit Potenzen von $x$ multipliziert, die die Nenner zum
+Verschwinden bringen werden.
+Die Schwierigkeit ist eher, den Logarithmus-Term zum Verschwinden zu bringen.
+Wir setzen die Funktionen daher in die Differentialgleichung ein:
+\begin{align*}
+0
+&=
+x^2y''(x)+xy'(x)+x^2y(x)
+\\
+&=
+\beta x^2J_0''(x)\log(x) + 2x\beta J_0'(x)-\beta J_0(x) + 2\beta_2x^2 + 3\cdot 2\beta_3 x^3 + 4\cdot 3\beta_4 x^4+\dots
+\\
+&\phantom{=}+
+\beta xJ_0'(x)\log(x) + \beta J_0(x)+\beta_1x+2\beta_2x^2+3\beta_3x^4+\dots
+\\
+&\phantom{=}+
+\beta x^2J_0(x)\log(x)+\beta_0x^2+\beta_1x^3 +\beta_2x^4+\beta_3x^5+\dots
+\\
+&=
+\beta(x^2J_0''(x)+xJ_0'(x)+x^2J_0(x))\log(x)
++
+\text{Potenzreihe in $x$}
+\end{align*}
+Der Klammerausdruck in der letzten Zeile ist gerade die Besselsche
+Differentialgleichung, und da $J_0(x)$ eine L"osung derselben ist,
+verschwindet er.
+Damit ist gezeigt, dass die Logarithmus-Terme herausfallen, und mit dem
+"ublichen Verfahren des Koeffizientenvergleichs die Koeffizienten
+$\beta_k$ einer L"osung bestimmt werden k"onnen.
+
+Setzt man zudem $\beta=1$, kann man die L"osung explizit ermitteln, die
+etwas langeweilige Rechnung ergibt
+\begin{align*}
+K_0(x)
+&=
+J_0(x)\log(x)
++
+\frac{x^2}{2^2}
+-
+\frac{x^4}{2^2\cdot 4^2}\biggl(1+\frac12\biggr)
++
+\frac{x^6}{2^2\cdot 4^2\cdot 6^2}\biggl(1+\frac12+\frac13\biggr)
+\\
+&\qquad
+-
+\frac{x^8}{2^2\cdot 4^2\cdot 6^2\cdot 8^2}\biggl(1+\frac12+\frac13+\frac14\biggr)
++
+\dots
+\label{potenzreihen:k0}
+\\
+&=
+J_0(x)\log(x)
+-\sum_{l=1}^\infty (-1)^k\frac{x^{2k}}{(k!\cdot 2^k)^2}\sum_{i=1}^k\frac1s
+\end{align*}
+Dies ist die Bessel-Funktion 0-ter Ordnung und {\em zweiter Art} (siehe auch
+\index{Bessselfunktion zweiter Art}
+\cite{skript:smirnow2}).
+
+\section{"Ubungsaufgaben}
+\rhead{"Ubungsaufgaben}
+\begin{uebungsaufgaben}
+\item
+\input uebungsaufgaben/401.tex
+\item
+\input uebungsaufgaben/402.tex
+\end{uebungsaufgaben}
+
+
+
+

@@ -129,31 +129,21 @@ Differentialgleichungen%
 Leitung: Andreas M"uller\\
 \vspace{40pt}
 \Large
-Luca~Aquino,
-Aaron~Betschart,
-Adrian~Borboa,
-Reto~Christen %,
+Reto~Christen,
 Kevin~Cina,
 Andri~Hartmann,
-Pascal~Horat,
-Matthias~Kn"opfel %,
-Simon~Mauchle,
+Pascal~Horat %,
+Matthias~Kn"opfel,
+Stefan Kull,
 Daniela~Meier,
-David~Meister,
 Max~Obrist %,
 Hansruedi~Patzen,
 Benjamin~R"aber,
-Andreas~R"ust,
 Simon~Schaefer %,
 Tibor~Schneider,
 Tobias~Schuler,
 Roy~Seitz,
-Nicolas~Stieger %,
-Philipp~Strahm,
-Martin~Stypinski,
-Mathias~Vetsch,
-Manuel~Walser %,
-Marco~Zollinger
+Martin~Stypinski
 \end{flushright}
 \vspace*{\stretch{2}}
 \begin{center}
@@ -204,8 +194,14 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \BODY
 \end{proof}
 }
-\NewEnviron{diskussion}{
-\begin{proof}[Diskussion]
+\NewEnviron{diskussion}{%
+\begin{proof}[Diskussion]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\NewEnviron{hinweis}{%
+\begin{proof}[Hinweis]%
 \renewcommand{\qedsymbol}{}
 \BODY
 \end{proof}
@@ -227,9 +223,10 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \rhead{}
 \tableofcontents
 \newtheorem{satz}{Satz}[chapter]
-\newtheorem{hilfssatz}{Hilfssatz}[chapter]
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{annahme}{Annahme}[chapter]
+\newtheorem{hilfssatz}[satz]{Hilfssatz}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{annahme}[satz]{Annahme}
+\renewcommand{\floatpagefraction}{0.75}
 \mainmatter
 \input{vorwort.tex}
 \part{Grundlagen}
@@ -243,8 +240,9 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{chapters/linear.tex}
 \input{chapters/geometrie.tex}
 \input{chapters/komplex.tex}
-\input{chapters/stabilitaet.tex}
-\input{chapters/chaos.tex}
+%\input{chapters/stabilitaet.tex}
+%\input{chapters/chaos.tex}
+\input{chapters/stochastisch.tex}
 \begin{appendices}
 \input{chapters/newton.tex}
 \input{chapters/komplexezahlen.tex}
@@ -263,7 +261,14 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{uebersicht.tex}
 \def\chapterauthor#1{{\large #1}\bigskip\bigskip}
 % Artikel
-\input{thema/main.tex}
+\input{wellen/main.tex}
+\input{kreis/main.tex}
+\input{schrittlaenge/main.tex}
+\input{licht/main.tex}
+\input{sir/main.tex}
+\input{friedmann/main.tex}
+\input{komplex/main.tex}
+\input{trafo/main.tex}
 \vfill
 \pagebreak
 \input{thema/Spannungsverteilung.tex}
