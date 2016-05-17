@@ -9,7 +9,7 @@ Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine
 allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen 
 zu erstellen.
 
-Hierzu wird die anf"angliche Parabel $ax^2 + bx + c$ mit dem allgemeinen Polynom
+Hierzu wird das anf"angliche Profil $ax^2 + bx + c$ mit dem allgemeinen Polynom
 \begin{equation*}
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
@@ -36,7 +36,7 @@ Die Potenzreihenl"osung f"ur \ref{eq:wellen:allgemeinesproblem} lautet somit:
 
 \subsection{Schlussfolgerungen}
 
-Mit der Formel \ref{eq:wellen:allgemeineloesung} gibt es nun ein einfaches 
+Mit der Formel (\ref{eq:wellen:allgemeineloesung}) gibt es nun ein einfaches 
 Werkzeug mit dem man, allein durch Einsetzen, die Potenzreihenl"osung f"ur 
 diese Art von Differentialgleichungen erh"alt.
 
@@ -47,10 +47,10 @@ f"uhren zu einer Wellenform, die $\sin$ und $\cos$ enthalten. Negative
 L"osungen liefern hingegen eine Kombination aus $\sinh$ und $\cosh$.
 
 \subsection{Berechnungsaufwand}
-Der Pseudocode \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
+Der Pseudocode (\ref{alg:wellen:potenzreihenrechnung}) kann mit kleinen 
 "Anderungen an die neue L"osung angepasst werden. Es ergibt sich somit der 
-Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnung} f"ur die allgemeine 
-Potenzreihenl"osung dieser Differentialgleichung.
+Pseudocode (\ref{alg:wellen:allgemeinepotenzreihenrechnung}) f"ur die 
+allgemeine Potenzreihenl"osung dieser Differentialgleichung.
 
 \begin{algorithm}
 	\floatname{algorithm}{Pseudocode}
@@ -94,7 +94,7 @@ Die bereits bekannte Airy-Differentialgleichung
 \begin{align*}
 	y''-xy = 0
 \end{align*}
-ergibt nun in die allgemeine L"osungsformel \ref{eq:wellen:allgemeineloesung} 
+ergibt nun in die allgemeine L"osungsformel (\ref{eq:wellen:allgemeineloesung}) 
 eingesetzt
 
 \begin{equation*}
@@ -108,11 +108,14 @@ eingesetzt
 \end{equation*}
 was sich mit den bereits bekannten L"osung deckt.
 
-Graphisch betrachtet werden die genannten Konsequenzen deutlich erkennbar:
+Abbildung (\ref{fig:wellen:airy-dgl}) zeigt die genannten Konsequenzen deutlich 
+auf.
 
-\begin{center}
+\begin{figure}
 	\includegraphics[scale=0.65]{./wellen/images/allgemein/n1.png}
-\end{center}
+	\caption{L"osung Airy-Differentialgleichung}
+	\label{fig:wellen:airy-dgl}
+\end{figure}
 
 \subsection{Beispiel: \texorpdfstring{$n = 4$}{n = 4}}
 
@@ -132,9 +135,12 @@ ergibt nach dem Einsetzen:
 	ca_{k-4} + da_{k-3} +ea_{k-2})x^k, \qquad a_{k<0} = 0
 \end{align*}
 
-Auch hier kann man graphisch die "Uberg"ange zwischen $\sin$ und $\cos$ bei 
-positiven und $\sinh$ und $\cosh$ bei negativen Polynoml"osungen klar erkennen.
+Auch hier können wir in der Abbildung (\ref{fig:wellen:poly4-dgl}) die 
+"Uberg"ange zwischen $\sin$ und $\cos$ bei positiven und $\sinh$ und $\cosh$ 
+bei negativen Polynoml"osungen klar erkennen.
 
-\begin{center}
+\begin{figure}
 	\includegraphics[scale=0.65]{./wellen/images/allgemein/n4.png}
-\end{center}
+	\caption{L"osung Polynom 4-ten Grades}
+	\label{fig:wellen:poly4-dgl}
+\end{figure}

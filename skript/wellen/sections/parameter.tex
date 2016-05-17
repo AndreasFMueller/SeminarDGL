@@ -9,10 +9,10 @@ $y(0)$.
 \subsection{Bedeutung von \texorpdfstring{$a$}{a}, \texorpdfstring{$b$}{b} und 
 \texorpdfstring{$c$}{c}}
 Die drei Parameter $a$, $b$ und $c$ haben jeweils unterschiedliche Auswirkungen 
-auf die Parabel. So kann mit $a$ der Schnittpunkt mit der $x$-Achse und mit $c$ 
-derjenige mit der $y$-Achse festgelegt werden. $b$ hingegen verschiebt die 
-ganze Parabel in verschiedene Richtungen. Da diese Eigenschaft f"ur das 
-gegebene Modell nicht relevant ist, wird grunds"atzlich
+auf das parabolische Profil. So kann mit $a$ der Schnittpunkt mit der $x$-Achse 
+und mit $c$ derjenige mit der $y$-Achse festgelegt werden. $b$ hingegen 
+verschiebt das Profil lediglich in verschiedene Richtungen. Da diese 
+Eigenschaft f"ur das gegebene Modell nicht relevant ist, wird grunds"atzlich
 \begin{equation*}
 	b = 0
 \end{equation*}
@@ -57,7 +57,7 @@ als L"osung ergibt.
 
 Um die Konstanten $C_1$ und $C_2$ zu bestimmen m"ussen die Anfangsbedingungen 
 $a_0$ und $a_1$ bekannt sein. Damit die Abh"angigkeit auf gezeigt werden kann, 
-wird zuerst die erste Ableitung der L"osung \ref{eq:wellen:loesunglinearedgl} 
+wird zuerst die erste Ableitung der L"osung (\ref{eq:wellen:loesunglinearedgl}) 
 aufgestellt werden.
 
 \begin{equation}
@@ -73,58 +73,70 @@ gegeben. Setzt man nun $x = 0$ ein, ergibt sich f"ur $C_1$ und $C_2$
 	\end{split}
 \end{equation}
 
-Eingesetzt in \ref{eq:wellen:loesunglinearedgl} erhalten wir nun
+Eingesetzt in die L"osungsgleichung(\ref{eq:wellen:loesunglinearedgl}) erhalten 
+wir nun
 \begin{equation*}
 	y(x) = a_0 \cos(\sqrt{c}x) + \frac{a_1}{\sqrt{c}} \sin(\sqrt{c}x), \qquad c 
 	> 0
 \end{equation*}
 und
 \begin{equation}
-\begin{split}
-	y(x) &= a_0 \cos(i\sqrt{|c|}x) + \frac{a_1}{i\sqrt{|c|}}\sin(i\sqrt{|c|}x), 
-	\qquad c < 0\\
-	\Leftrightarrow
-	y(x) &= a_0 \cos(i\sqrt{|c|}x) - i\frac{a_1}{\sqrt{|c|}}\sin(i\sqrt{|c|}x)\\
-	\Leftrightarrow
-	y(x) &= a_0 \cosh(\sqrt{|c|}x) + \frac{a_1}{\sqrt{|c|}}\sinh(\sqrt{|c|}x).
-\end{split}	
+	\begin{split}
+		y(x) &= a_0 \cos(i\sqrt{|c|}x) + 
+		\frac{a_1}{i\sqrt{|c|}}\sin(i\sqrt{|c|}x), \qquad c < 0\\
+		\Leftrightarrow
+		y(x) &= a_0 \cos(i\sqrt{|c|}x) - 
+		i\frac{a_1}{\sqrt{|c|}}\sin(i\sqrt{|c|}x)\\
+		\Leftrightarrow
+		y(x) &= a_0 \cosh(\sqrt{|c|}x) + 
+		\frac{a_1}{\sqrt{|c|}}\sinh(\sqrt{|c|}x).
+	\end{split}	
 \end{equation}
 Der letzte Umformungsschritt ergibt sich aus der Definition von $\cosh$ und 
 $\sinh$:
 \begin{equation*}
-\begin{split}
-	\sinh(x) &= \frac{1}{2} (e^x - e^{-x}) = -i \sin(ix)\\
-	\cosh(x) &= \frac{1}{2} (e^x + e^{-x}) = \cos (ix)
-\end{split}
+	\begin{split}
+		\sinh(x) &= \frac{1}{2} (e^x - e^{-x}) = -i \sin(ix)\\
+		\cosh(x) &= \frac{1}{2} (e^x + e^{-x}) = \cos (ix)
+	\end{split}
 \end{equation*}
 
 Die gefundenen L"osungen k"onnen auch graphisch best"atigt werden. Sei es f"ur 
-positve $c$ in Form von $\sin$ und $\cos$:
+positve $c$ in der Abbildung \ref{fig:wellen:sinh-cosh} oder f"ur negative $c$ 
+in Abbildung \ref{fig:wellen:sin-cos}.
 
-\noindent
-\includegraphics[scale=0.35]{./wellen/images/basicfunctions/sin.png}
-\includegraphics[scale=0.35]{./wellen/images/basicfunctions/cos.png}
+\begin{figure}
+	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/sin.png}
+	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/cos.png}
+	\caption{$\sin$ (l.) und $\cos$ (r.)}
+	\label{fig:wellen:sin-cos}
+\end{figure}
 
-oder $\sinh$ und $\cosh$ f"ur negative $c$:
+\begin{figure}
+	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/sinh.png}
+	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/cosh.png}
+	\caption{$\sinh$ (l.) und $\cosh$ (r.)}
+	\label{fig:wellen:sinh-cosh}
+\end{figure}
 
-\noindent
-\includegraphics[scale=0.35]{./wellen/images/basicfunctions/sinh.png}
-\includegraphics[scale=0.35]{./wellen/images/basicfunctions/cosh.png}
+\subsection{Unterschiedliche Profile}
+\label{subsec:wellen:profilformen}
 
-\subsection{Parabelformen}
-\label{subsec:wellen:parabelformen}
+\begin{figure}
+	\includegraphics[scale=0.35]{./wellen/images/varc/cneg1.png}
+	\includegraphics[scale=0.35]{./wellen/images/varc/cneg2.png}
+	\caption{Wellenform bei ge"andertem $c$}
+	\label{fig:wellen:variablec}
+\end{figure}
 
-Wenn nur $c$ angepasst wird erhalten wir:
+\begin{figure}
+	\includegraphics[scale=0.35]{./wellen/images/vara/ahalbe.png}
+	\includegraphics[scale=0.35]{./wellen/images/vara/aviertel.png}
+	\caption{Wellenform bei ge"andertem $a$}
+	\label{fig:wellen:variablea}
+\end{figure}
 
-\noindent
-\includegraphics[scale=0.35]{./wellen/images/varc/cneg1.png}
-\includegraphics[scale=0.35]{./wellen/images/varc/cneg2.png}
-
-Wenn nur $a$ angepasst wird erhalten wir:
-
-\noindent
-\includegraphics[scale=0.35]{./wellen/images/vara/ahalbe.png}
-\includegraphics[scale=0.35]{./wellen/images/vara/aviertel.png}
-
-Obwohl die Wellenformen alle "ahnlich sind, stellen wir fest, dass es bei den 
-jeweiligen Nullstellen der Parabel eine gr"ossere Ver"anderung gibt.
+Obwohl die Wellenformen bei Variablem $c$ (Abbildung 
+\ref{fig:wellen:variablec}) und $a$ (Abbildung \ref{fig:wellen:variablea}) 
+alle "ahnlich sind, stellen wir fest, dass es bei den 
+jeweiligen Nullstellen des Profiles eine gr"ossere Ver"anderung gibt.
