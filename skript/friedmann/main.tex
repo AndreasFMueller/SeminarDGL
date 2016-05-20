@@ -104,11 +104,13 @@ Nennen wir die Gesamtenergie eine Konstante \textit{c} und formen die Gleichung 
 Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ und das Kugelvolumen $V$. Es gilt wieder Gleichung \ref{friedmann:dichte}. Daraus resultiert die vereinfachte Differentialgleichung 
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{c_2}{a^2 R^2}
+\label{friedmann:EnergieerhaltungUniversum}
 \end{equation}
+\ref{friedmann:EnergieerhaltungUniversum}
 Mit \[\rho = \frac{\nu}{a^3}\]
-\begin{equation}
+\[
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3} + \frac{c_2}{a^2 R^2}
-\end{equation}
+\]
 Vereinfacht
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}
@@ -155,7 +157,7 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 
 \begin{figure}
 	\centering
-	\includegraphics[width  = \textwidth]{chapters/images/friedmannGleichung.jpg}
+	\includegraphics[width  =  \textwidth]{chapters/images/friedmann_ode45.pdf}
 	\caption{Verhalten des Universums in Abhängigkeit von der Zeit $t$
 		\label{friedmann:friedmannGleichung}}
 \end{figure}%
@@ -163,4 +165,32 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 \subsection{Redshift}
 Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen.
 	
+	
+\subsection{Strahlung und dunkle Materie}
+Bisher wurde nur baryonische Materie betrachtet. Tatsächlich ist im Universum aber auch Strahlung vorhanden. Die Energie eines Photons ist 
+\begin{equation}
+E_{str} = \frac{h c}{\lambda}
+\end{equation}
+wobei $h$ die \textbf{Planksche Konstante}, $c$ die \textbf{Lichtgeschwindigkeit} und $\lambda$ die \textbf{Wellenlänge} des Photons ist.
+Die Energie eines Photons verändert sich im geschlossenen Raum umgekehrt proportional zum Skalenfaktor a. Je grösser das Universum wird, desto grösser wird die Wellenlänge des Photons und desto kleiner wird die Energie des Photons. Für die Dichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz.
+\begin{equation}
+\rho_{str} = \frac{\nu}{a^4}
+\end{equation}
+In die Gleichung der Energieerhaltung des Universums setzen wir $\rho_{str}$ ein.
+\[
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^4} + \frac{c_2}{a^2 R^2}
+\]
+Vereinfacht
+\[
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4} + \frac{c}{a^2} \Rightarrow \dot{a} = \sqrt{\frac{1}{a^2} + c}
+\]
+
+Wiederum ist die Differentialgleichung nicht elementar lösbar. Trotzdem können wir sagen, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert.
+
+Setzen wir die Gesamtenergie des Universums $c$ gleich null, findet sich die Lösung	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4}\]
+Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
+\[ \dot{a} = \frac{1}{a} \]
+\[\frac{da}{dt} =\frac{1}{a} \Rightarrow \frac{dt}{da} = a \]
+\[ t = \frac{1}{2} a^{2} \Rightarrow a = \sqrt{2} \quad t^{1/2} \]
+
 \end{refsection}
