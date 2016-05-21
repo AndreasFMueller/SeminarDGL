@@ -23,12 +23,12 @@ D_{AB} = \sqrt{a^2(t)\Delta_{AB}x^2 + a^2(t)\Delta_{AB}y^2 + a^2(t)\Delta_{AB}z^
 \end{equation}
 F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte relativ zueinander bewegen, gilt 
 \begin{equation}
-v_{AB} = \dfrac{dD_{ab}}{dt} 
+\varv_{AB} = \dfrac{dD_{ab}}{dt} 
 	   = \dot{a} \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
 \end{equation}
 Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl  des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
 \begin{equation}
-\frac{v_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
+\frac{\varv_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
 \label{friedmann:geschwindigkeit}
 \end{equation}
 \begin{satz} [Hubble-Konstante]
@@ -54,7 +54,7 @@ und folglich kann die Massendichte geschrieben werden als
 Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
 Für \textbf{Abstand} \textit{D}, \textbf{Geschwindigkeit} \textit{v} und \textbf{Beschleunigung} \textit{A} schreiben wir:
 \[D =  a \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}  = a R\]
-\[v = \dot{a} R\]
+\[\varv = \dot{a} R\]
 \[A = \ddot{a} R\]
 
 und für das Volumen V der Kugel
@@ -66,16 +66,16 @@ F_G = -\frac{m M G}{D^2}
 \end{equation}
 Da die Gravitationskraft zwecks Vereinfachung des Modells als einzige Kraft eingesehen wird, gilt für die Beschleunigung mit 
 \[F = m A\]
-\[A = - \frac{M G}{D^2} = \ddot{a} R \Rightarrow \ddot{a} = \frac{- M G}{a^2 R^3} \Rightarrow\ \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \Rightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V}\]
+\[A = - \frac{M G}{D^2} = \ddot{a} R \Leftrightarrow \ddot{a} = \frac{- M G}{a^2 R^3} \Leftrightarrow\ \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \Leftrightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V}\]
 Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steht. Damit vereinfacht sich die Beschleunigung zu
 \begin{equation}
 \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \rho
 \end{equation}
 \subsubsection{Bedeutung der Beschleunigungsgleichung}
 Setzt man für die Dichte Gleichung \ref{friedmann:dichte} ein ergibt sich
-\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\nu}{a^3} \Rightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
+\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\nu}{a^3} \Leftrightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
 Durch geschickte Wahl des Skalenfaktors kann $\nu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
-\[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \Rightarrow \ddot{a} = \frac{-1}{a^2}\]
+\[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \Leftrightarrow \ddot{a} = \frac{-1}{a^2}\]
 Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
 \begin{enumerate}
 	\item Die negative Beschleunigung wirkt der Ausdehnung des Universums entgegen. 
@@ -87,7 +87,7 @@ Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem
 Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden betrachten wir die radiale Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit.\\
 Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
 \begin{equation}
-E_{ges} = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
+E_{ges} = E_{kin} - E_{pot} =  \frac{m \varv^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
 \end{equation}
 Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten.\\
 Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen,nämlich
@@ -97,10 +97,10 @@ Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte
 	\item $E_{ges} < 0 \rightarrow$ Eine Masse $m$ wird so stark angezogen, dass die Geschwindigkeit ihre Richtung ändert.
 \end{enumerate}
 Nennen wir die Gesamtenergie eine Konstante \textit{c} und formen die Gleichung um.
-\[\frac{m v^2}{2} - \frac{m M G}{x} = c_1 \qquad| *\frac{2}{m} \qquad \]
-\[{v^2} - \frac{2 M G}{x} = \frac{2c_1}{m} = c_2
-\:  \Rightarrow \: \left( \dot{a} R\right)^2 = \frac{2 M G}{a R} + c_2\] 
-\[\frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} + \frac{c_2}{a^2 R^2} \: \Rightarrow \: \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{c_2}{a^2 R^2} \] %Schritte einzeln auflisten
+\[\frac{m \varv^2}{2} - \frac{m M G}{x} = c_1 \qquad| *\frac{2}{m} \qquad \]
+\[{\varv^2} - \frac{2 M G}{x} = \frac{2c_1}{m} = c_2
+\:  \Leftrightarrow \: \left( \dot{a} R\right)^2 = \frac{2 M G}{a R} + c_2\] 
+\[\frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} + \frac{c_2}{a^2 R^2} \: \Leftrightarrow \: \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{c_2}{a^2 R^2} \] %Schritte einzeln auflisten
 Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ und das Kugelvolumen $V$. Es gilt wieder Gleichung \ref{friedmann:dichte}. Daraus resultiert die vereinfachte Differentialgleichung 
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{c_2}{a^2 R^2}
@@ -123,7 +123,7 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}\]
 	Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
 	\[ \dot{a} = \frac{1}{\sqrt{a}} \]
-	\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Rightarrow \frac{dt}{da} = \sqrt{a} \]
+	\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Leftrightarrow \frac{dt}{da} = \sqrt{a} \]
 	\[ t = \frac{2}{3} a^{3/2} \Rightarrow a = \frac{3}{2} t^{2/3} \]
 	Wir vernachlässigen der Vorfaktor und schreiben das wichtige Resultat
 	\begin{equation}
@@ -133,13 +133,13 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 	\item Für den zweiten Fall ist $c > 0$.
 	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}\]
 	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert. Das kleine Universum verhält sich also wie für $c = 0$. Für ein grosses \textit{a} schreiben wir
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{c}{a^2} \: \Rightarrow \:	\dot{a}^2 = c \: \Rightarrow \: \dot{a} = \sqrt{c_1} = c_2\]
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{c}{a^2} \: \Leftrightarrow \:	\dot{a}^2 = c \: \Leftrightarrow \: \dot{a} = \sqrt{c_1} = c_2\]
 	\begin{equation}
 	a = c*t
 	\end{equation}
 	
 	\item Als letztes soll $c < 0$ sein
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|c|}{a^2} \: \Rightarrow \: \dot{a}^2 = \frac{1}{a} - |c|\]
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|c|}{a^2} \: \Leftrightarrow \: \dot{a}^2 = \frac{1}{a} - |c|\]
 	\begin{equation}
 	\dot{a} = \pm \sqrt{\frac{1}{a} - |c|}
 	\end{equation}
@@ -182,7 +182,7 @@ In die Gleichung der Energieerhaltung des Universums setzen wir $\rho_{str}$ ein
 \]
 Vereinfacht
 \[
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4} + \frac{c}{a^2} \Rightarrow \dot{a} = \sqrt{\frac{1}{a^2} + c}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4} + \frac{c}{a^2} \Leftrightarrow \dot{a} = \sqrt{\frac{1}{a^2} + c}
 \]
 
 Wiederum ist die Differentialgleichung nicht elementar lösbar. Trotzdem können wir sagen, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert.
@@ -190,7 +190,7 @@ Wiederum ist die Differentialgleichung nicht elementar lösbar. Trotzdem können
 Setzen wir die Gesamtenergie des Universums $c$ gleich null, findet sich die Lösung	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4}\]
 Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
 \[ \dot{a} = \frac{1}{a} \]
-\[\frac{da}{dt} =\frac{1}{a} \Rightarrow \frac{dt}{da} = a \]
+\[\frac{da}{dt} =\frac{1}{a} \Leftrightarrow \frac{dt}{da} = a \]
 \[ t = \frac{1}{2} a^{2} \Rightarrow a = \sqrt{2} \quad t^{1/2} \]
 
 \end{refsection}
