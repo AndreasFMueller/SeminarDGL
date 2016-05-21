@@ -10,7 +10,7 @@ Seit langem stellte man sich die Frage, was das Universum ist und wie es sich ve
 \subsection{Alexander Friedmann und Georges Lema\^{i}tre}
 Beide entdeckten im Jahre 1927 unabhängig voneinander die Friedmann-Lema\^{i}tre-Gleichung. Diese beschreibt das Verhalten des Universums seit dem Urknall. 
 \begin{equation}
-\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{k c^2}{a^2} + \frac{\Lambda c^2}{3}
+\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
 \subsubsection{Herleitung der Gleichung}
 Um an das Problem heranzugehen führen wir ein Koordinatensystem ein, welches sich mit der relativen Bewegung der Galaxien mitbewegt. Somit sind die Galaxien wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den Skalenfaktor $a$ ausgedrückt und ist eine Funktion der Zeit. Verändert sich das Raster, verändern sich auch die Positionen der Sterne und Galaxien.
@@ -41,7 +41,7 @@ Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Di
 \begin{equation}
 M_{xyz} = \nu \Delta x \Delta y \Delta z
 \end{equation}
-Der Parameter $\nu$ beschreibt die Masse in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
+Der Parameter $\nu$ beschreibt die Massendichte in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
 \begin{equation}
 V_{xyz} = a^3 \Delta x \Delta y \Delta z
 \end{equation}
@@ -58,7 +58,7 @@ Für \textbf{Abstand} \textit{D}, \textbf{Geschwindigkeit} \textit{v} und \textb
 \[A = \ddot{a} R\]
 
 und für das Volumen V der Kugel
-\[V = \frac{4 \pi }{3} a^3 R^3\]
+\[V_{Kugel} = \frac{4 \pi }{3} a^3 R^3\]
 
 Gemäss Newton ergibt sich die Gravitationskraft aus
 \begin{equation}
@@ -87,7 +87,7 @@ Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem
 Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden betrachten wir die radiale Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit.\\
 Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
 \begin{equation}
-E_{ges} = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{x}, \qquad x = \text{Abstand zwischen der Masse M und m}
+E_{ges} = E_{kin} - E_{pot} =  \frac{m v^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
 \end{equation}
 Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten.\\
 Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen,nämlich
