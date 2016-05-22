@@ -1,0 +1,42 @@
+Eine genauere Absch"atzung kann mit Hilfe des Pseudocodes 
+(\ref{alg:wellen:potenzreihenrechnung}) gemacht werden.
+
+\begin{algorithm}
+	\floatname{algorithm}{Pseudocode}
+	\begin{algorithmic}[1]
+		\State $a_{-2} \gets 0$
+		\State $a_{-1} \gets 0$
+		\State $a_0 \gets y(0)$
+		\State $a_1 \gets y'(0)$
+		\State $k \gets 2$
+		\State $x \gets x_{\text{min}}$
+		\For{$x \le x_{\text{max}}$}
+			\State $k \gets 2$
+			\State $s_{\text{pot}} \gets a_0 + a_1x$
+			\For{$k \le k_{\text{max}}$}
+				\State $a_k \gets -\cfrac{1}{k(k-1)}			
+				(aa_{k-4}+ba_{k-3}+ca_{k-2})$
+				\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
+				\State $k \gets k + 1$
+			\EndFor
+			\State $x \gets x + x_{\text{step}}$
+		\EndFor
+	\end{algorithmic}
+	\caption{Wellen Potenzreihenberechnung} 
+	\label{alg:wellen:potenzreihenrechnung}
+\end{algorithm}
+
+Der Algorithmus hat also eine Laufzeit von
+\begin{equation*}
+	\mathcal{O}
+	\left(
+		k_{\text{max}}\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+	\right)
+\end{equation*}
+und einen Speicherverbrauch von
+\begin{equation*}
+	\mathcal{O}
+	\left(
+	1
+	\right).
+\end{equation*}

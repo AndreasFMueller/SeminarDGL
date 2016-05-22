@@ -1,26 +1,4 @@
-\section{Parametervariation}
-\label{sec:wellen:parametervariation}
-
-Die Anfangsbedingungen $a_0$ und $a_1$ k"onnen beliebig festgelegt werden. Da 
-sich die Wellen im betrachteten Fall um den Entwicklungspunkt $x_0=0$ bewegen, 
-beschreibt das $a_0$ den y-Achsenabschnitt und das $a_1$ die Steigung im Punkt 
-$y(0)$.
-
-\subsection{Bedeutung von \texorpdfstring{$a$}{a}, \texorpdfstring{$b$}{b} und 
-\texorpdfstring{$c$}{c}}
-Die drei Parameter $a$, $b$ und $c$ haben jeweils unterschiedliche Auswirkungen 
-auf das parabolische Profil. So kann mit $a$ der Schnittpunkt mit der $x$-Achse 
-und mit $c$ derjenige mit der $y$-Achse festgelegt werden. $b$ hingegen 
-verschiebt das Profil lediglich in verschiedene Richtungen. Da diese 
-Eigenschaft f"ur das gegebene Modell nicht relevant ist, wird grunds"atzlich
-\begin{equation*}
-	b = 0
-\end{equation*}
-gesetzt.
-
-\subsection{Lineare Differentialgleichung}
-\label{subsec:wellen:linearedifferntialgleichung}
-
+\subsection{\texorpdfstring{$y''+cy = 0$}{y''+cy = 0}}
 Indem $a$ verschwindend klein gew"ahlt wird, entsteht
 \begin{equation}
 	y''+ cy = 0.
@@ -34,24 +12,24 @@ Polynoms
 \end{equation*}
 dessen L"osungen
 \begin{equation*}
-\begin{split}
-	y_1 &= C_1e^{-\mu x}\cos(\omega x) \\
-	y_2 &= C_2e^{-\mu x}\sin(\omega x)
-\end{split}
+	\begin{split}
+		y_1 &= C_1e^{-\mu x}\cos(\omega x) \\
+		y_2 &= C_2e^{-\mu x}\sin(\omega x)
+	\end{split}
 \end{equation*}
 sind, gel"ost werden.
 
 Angewandt auf die Gleichung \ref{eq:wellen:lineareDGL} ergibt sich nun zu
 \begin{equation*}
-\begin{split}
-	p(\lambda) &= [(\lambda+0)^2+\sqrt{c}^2] = 0 \\
-	\Leftrightarrow p(\lambda) &= [\lambda^2+c] = 0,
-\end{split}
+	\begin{split}
+		p(\lambda) &= [(\lambda+0)^2+\sqrt{c}^2] = 0 \\
+		\Leftrightarrow p(\lambda) &= [\lambda^2+c] = 0,
+	\end{split}
 \end{equation*}
 was uns nun
 \begin{equation}
-y(x) = C_1 \cos(\sqrt{c}x) + C_2 \sin(\sqrt{c}x)
-\label{eq:wellen:loesunglinearedgl}
+	y(x) = C_1 \cos(\sqrt{c}x) + C_2 \sin(\sqrt{c}x)
+	\label{eq:wellen:loesunglinearedgl}
 \end{equation}
 als L"osung ergibt.
 
@@ -106,8 +84,8 @@ positve $c$ in der Abbildung \ref{fig:wellen:sinh-cosh} oder f"ur negative $c$
 in Abbildung \ref{fig:wellen:sin-cos}.
 
 \begin{figure}
-	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/sin.png}
-	\includegraphics[scale=0.35]{./wellen/images/basicfunctions/cos.png}
+	\includegraphics[width=0.5\hsize]{./wellen/images/basicfunctions/sin.png}
+	\includegraphics[width=0.5\hsize]{./wellen/images/basicfunctions/cos.png}
 	\caption{$\sin$ (l.) und $\cos$ (r.)}
 	\label{fig:wellen:sin-cos}
 \end{figure}
@@ -118,25 +96,3 @@ in Abbildung \ref{fig:wellen:sin-cos}.
 	\caption{$\sinh$ (l.) und $\cosh$ (r.)}
 	\label{fig:wellen:sinh-cosh}
 \end{figure}
-
-\subsection{Unterschiedliche Profile}
-\label{subsec:wellen:profilformen}
-
-\begin{figure}
-	\includegraphics[scale=0.35]{./wellen/images/varc/cneg1.png}
-	\includegraphics[scale=0.35]{./wellen/images/varc/cneg2.png}
-	\caption{Wellenform bei ge"andertem $c$}
-	\label{fig:wellen:variablec}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[scale=0.35]{./wellen/images/vara/ahalbe.png}
-	\includegraphics[scale=0.35]{./wellen/images/vara/aviertel.png}
-	\caption{Wellenform bei ge"andertem $a$}
-	\label{fig:wellen:variablea}
-\end{figure}
-
-Obwohl die Wellenformen bei Variablem $c$ (Abbildung 
-\ref{fig:wellen:variablec}) und $a$ (Abbildung \ref{fig:wellen:variablea}) 
-alle "ahnlich sind, stellen wir fest, dass es bei den 
-jeweiligen Nullstellen des Profiles eine gr"ossere Ver"anderung gibt.
