@@ -15,16 +15,18 @@ function [ delta ] = getDelta( phi,r )
     l = length(phi);
     
     if (phi(l)>pi/2)
-        angleEnd = pi + (atan( (f(l) * cos(phi(l)) + df(l)*sin(phi(l)) )/(-f(l)*sin(phi(l)) + df(l)*cos(phi(l))) ));
+        angleEnd = 180 + (atand( (f(l) * cos(phi(l)) + df(l)*sin(phi(l)) )/(-f(l)*sin(phi(l)) + df(l)*cos(phi(l))) ));
     else
-        angleEnd = (atan( (f(l) * cos(phi(l)) + df(l)*sin(phi(l)) )/(-f(l)*sin(phi(l)) + df(l)*cos(phi(l))) ));
+        angleEnd = (atand( (f(l) * cos(phi(l)) + df(l)*sin(phi(l)) )/(-f(l)*sin(phi(l)) + df(l)*cos(phi(l))) ));
     end
-    angleStart = (atan( (f(1) * cos(phi(1)) + df(1)*sin(phi(1)) )/(-f(1)*sin(phi(1)) + df(1)*cos(phi(1))) ));
+    angleStart = (atand( (f(1) * cos(phi(1)) + df(1)*sin(phi(1)) )/(-f(1)*sin(phi(1)) + df(1)*cos(phi(1))) ));
     
     angleStart
     angleEnd
+    l
     
-    delta = (180/pi)*(angleEnd-angleStart);
+    delta = angleEnd-angleStart;
+    delta
     
 end
 

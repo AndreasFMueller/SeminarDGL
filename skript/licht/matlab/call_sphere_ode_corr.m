@@ -3,15 +3,17 @@ function [phi, r] = call_sphere_ode_corr(dr0, phimax)
 %   Detailed explanation goes here
     
     mu = 2.93e-4; %2.93e-4
-    sigma = 1000/7; %1000/7
+    sigma = 1000/4; %1000/7
     radius = 6.371; %6.371
     initial = [radius, dr0];
     span = [0, phimax];
+    %options = odeset('RelTol',1.e-10,'AbsTol',1.e-12, 'InitialStep',1e-24);
     %options = odeset('RelTol',1.e-8,'AbsTol',1.e-10);
+    %options = odeset('InitialStep',1e-24);
     options = odeset();
     [phi, r] = ode45(@ode, span, initial, options); %45
     print_coord(phi, r(:,1));
-    getDelta(phi,r)
+    getDelta(phi,r);
     polar(phi, r(:,1));
     
     function dr = ode(phi, r)
@@ -46,7 +48,7 @@ function [phi, r] = call_sphere_ode_corr(dr0, phimax)
         scopy = '';
         for m = 1:size(phi)
            %fprintf('(%4.0f, %4.0f) ', (r(m)*cos(phi(m)+pi/2)),(r(m)*sin(phi(m)+pi/2))); 
-           scopy = strcat(scopy, sprintf('(%2.4f,%2.4f) ', (r(m)*cos(phi(m)+pi/2)), (r(m)*sin(phi(m)+pi/2))));
+           scopy = strcat(scopy, sprintf('(%2.4f,%2.4f) ', (r(m)*cos(phi(m))), (r(m)*sin(phi(m)))));
         end
         clipboard('copy', scopy);
         fprintf('\n0');
