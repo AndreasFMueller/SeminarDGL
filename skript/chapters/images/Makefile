@@ -4,7 +4,7 @@
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
 all:	grundlagen numerik komplexezahlen randwert geometrie airy \
-	stochastisch komplex bifurkation
+	stochastisch komplex bifurkation hopf nullklinen
 
 grundlagen_FILES = grundlagen-1.pdf
 grundlagen:	$(grundlagen_FILES)
@@ -15,7 +15,7 @@ $(grundlagen_FILES):	grundlagen.mp
 		mptopdf $${f}; \
 	done
 
-numerik_FILES = numerik-1.pdf numerik-2.pdf numerik-3.pdf
+numerik_FILES = numerik-1.pdf numerik-2.pdf numerik-3.pdf numerik-4.pdf
 numerik:	$(numerik_FILES)
 $(numerik_FILES): numerik.mp
 	TEX=latex mpost numerik.mp
@@ -116,9 +116,24 @@ $(bifurkation_FILES): bifurkation.mp
 		mptopdf $${f}; \
 	done
 
+hopf_FILES = hopf-1.pdf hopf-2.pdf hopf-3.pdf hopf-4.pdf hopf-5.pdf hopf-6.pdf
+hopf:	$(hopf_FILES)
+$(hopf_FILES): hopf.mp
+	TEX=latex mpost hopf.mp
+	for f in hopf.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
 
+nullklinen_FILES = nullklinen-1.pdf
+nullklinen:	$(nullklinen_FILES)
+$(nullklinen_FILES): nullklinen.mp
+	TEX=latex mpost nullklinen.mp
+	for f in nullklinen.[0-9]*; \
+	do \
+		mptopdf $${f}; \
+	done
 
-
-
-
-
+clean:
+	find . -type f -regex '.*\.[0-9]+' -delete
+	rm -f *.pdf *.log *.mpx harvest harvest.mp cube cube.mp path*.mp mptextmp.mp
