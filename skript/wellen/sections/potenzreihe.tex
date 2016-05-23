@@ -1,0 +1,102 @@
+\section{Potenzreihenl"osung}
+Als L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
+kennengelernte Potenzreihenansatz verwendet.
+
+Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet.
+
+\begin{align}
+	y(x)
+	&=
+	\sum_{k = 0}^{\infty} a_{k}x^k
+	=
+	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
+	\label{eq:wellen:nullteableitung}
+	\\
+	y'(x)
+	&=
+	\sum_{k=0}^{\infty} a_{k+1}(k+1)x^k
+	=
+	a_1 + 2a_2x + 3a_3x^2 + 4a_4x^3 + 5a_5x^4 + 6a_6x^5+ \dotsb
+	\label{eq:wellen:ersteableitung}
+	\\
+	y''(x)
+	&=
+	\sum_{k = 0}^{\infty} a_{k+2}(k+1)(k+2)x^k
+	=
+	2a_2 + 3 \mathbin{\cdot} 2a_3x + 4 \mathbin{\cdot} 3a_4x^2 + 5 
+	\mathbin{\cdot} 4a_5x^3 + 6 \mathbin{\cdot} 5a_6x^4 + \dotsb
+	\label{eq:wellen:zweiteableitung}
+\end{align}
+ 
+Aus den beiden Gleichungen \ref{eq:wellen:nullteableitung} und
+\ref{eq:wellen:zweiteableitung} und dem Umstellen der Anfangsgleichung in die 
+Form
+\begin{equation*}
+	y'' = -(ax^2+bx+c)y
+\end{equation*}
+kann nun der Koeffizientenvergleich erstellt werden. 
+
+Statt die Koeffizienten einfach reihenweise aufzustellen, wird der Vergleich 
+mit Hilfe einer Tabelle gemacht.
+
+\begin{equation}
+	\begin{array}{r c r | c r | c r | c r c}
+	y(x) & = &
+	a_0 & + & a_1x & + & a_2x^2 & + \dotsb
+	\\
+	\hline&&&&&&&\\[-2ex]
+	y''(x) & = &
+	2\cdot1 a_2 & + & 3\cdot2 a_3x & + & 4\cdot3 a_4x^2 & + \dotsb
+	\\
+	& = &
+	& & & + &- aa_0x^2 & + \dotsb
+	\\
+	& &
+	& &- ba_0x & + &- ba_1x^2 & + \dotsb
+	\\
+	& &
+	-ca_0 & + &- ca_1x & + &- ca_2x^2 & + \dotsb
+	\\
+	\hline&&&&&&&\\[-2ex]
+	& &
+	a_2 = -\frac{1}{2 \cdot 1}ca_0,
+	& & a_3 = -\frac{1}{3 \cdot 2}(ba_0+c_a1),
+	& & a_4 = -\frac{1}{4 \cdot 3}(aa_0+ba_1+ca_2),
+	& \dots
+	\end{array}
+	\label{eq:wellen:koeffizietenvergleichtabelle}
+\end{equation}
+
+Die Verschiebung der verschiedenen $a_k$ in der Tabelle 
+\ref{eq:wellen:koeffizietenvergleichtabelle} kann einfach erkl"art werden. 
+Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um zwei nach 
+links geschoben. Eine weitere Verschiebung gibt es wegen des Polynomgrades 
+$x^2$.
+
+Da die $a$-Summanden mindestens die Form $ax^2$ haben, verschiebt sich die 
+dritte Zeile um zwei nach rechts. Die $b$-Summanden haben mindestens die Form 
+$bx^1$, daher die Verschiebung der vierten Zeile um eins nach rechts. Einzig 
+die f"unfte Zeile mit den $c$ wird nicht verschoben, da es mindestens als 
+$cx^0$ vorhanden ist. Somit lassen sich die jeweiligen $a_k$ und ihre 
+Abh"angigkeiten direkt aus den jeweiligen Spalten ablesen.
+
+Aus den in der Tabelle berechneten $a_k$ l"asst sich nun eine allgemeine 
+Rekursionsformel
+
+\begin{equation*}
+	\begin{split}
+		a_{k+2} &= -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k) \\
+		\Leftrightarrow \qquad
+		a_k &= -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2}), \qquad k \in 
+		\mathbb{N} \setminus \{0, 1\}, a_{k<0} = 0
+	\end{split}
+\end{equation*}
+herauslesen. 
+
+Daraus kann die L"osungsgleichung
+\begin{equation}
+	y(x) = a_0 + a_1x 
+	-\sum_{k=2}^{\infty}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+	\label{eq:wellen:ygleichung}
+\end{equation}
+aufgestellt werden.
