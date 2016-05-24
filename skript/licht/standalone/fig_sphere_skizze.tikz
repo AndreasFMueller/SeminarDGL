@@ -1,0 +1,73 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{
+  ring shading/.code args={from #1 at #2 to #3 at #4}{
+    \def\colin{#1}
+    \def\radin{#2}
+    \def\colout{#3}
+    \def\radout{#4}
+    \pgfmathsetmacro{\proportion}{\radin/\radout}
+    \pgfmathsetmacro{\outer}{.8818cm}
+    \pgfmathsetmacro{\inner}{.8818cm*\proportion}
+    \pgfmathsetmacro{\innerlow}{\inner-0.01pt}
+    \pgfdeclareradialshading{ring}{\pgfpoint{0cm}{0cm}}%
+    {
+      color(0pt)=(white);
+      color(\innerlow)=(white);
+      color(\inner)=(#1);
+      color(\outer)=(#3)
+    }
+    \pgfkeysalso{/tikz/shading=ring}
+  },
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+  %radial lines
+  \draw (0,0) node[above]{$O$} 
+        -- ++(0:10cm)
+        (0,0) -- ++(15:10cm)
+        (0,0) -- ++(22.5:10cm);
+  %Radius r0, r, r + dr      
+  \draw ([shift=(-5:6cm)]0,0) arc (-5:27.5:6cm) node [above] {$r_0$}
+        ([shift=(-4:8cm)]0,0) arc (-4:27.5:8cm) node [above] {$r$}
+        ([shift=(-3.8:9cm)]0,0) arc (-3.8:27.5:9cm) node [above, xshift=-0.2cm] {$r +
+        dr$};
+  %path of the light
+  \draw [thick] (0:6cm) node [above left]{A}
+        -- (15:8cm) node [above left, yshift=-0.1cm] {$M$}
+        -- (22.5:9cm) node [below right, yshift=0.1cm]{$N$}
+        -- (28:9.5cm);
+  \draw (22.5:8cm) node [above left, yshift=-0.1cm] {$H$};
+  \draw (15:9cm) node[below right] {$P$};
+  %angles
+  \draw ([shift=(-157.5:0.8cm)]22.5:9cm) arc (-157.5:-113.2:0.8cm) node [above,
+          yshift=0.1cm]{$\beta$}
+        ([shift=(15:0.8cm)]15:8cm) arc (15:66.8:0.8cm) node [below,
+          yshift = -0.15cm, xshift=0.1cm]{$\alpha$}
+        ([shift=(22.5:0.6cm)]22.5:9cm) arc (22.5:85.9:0.6cm) node
+          [xshift=0.6cm, yshift=0.2cm]{$\alpha+d\alpha$}
+        ([shift=(0:0.8cm)]0:6cm) arc (0:50.2:0.8cm) node [below,
+          yshift=-0.14cm]{$\alpha_0$}
+        ([shift=(0:2.5cm)]0,0) arc (0:15:2.5cm) node [below left,
+          yshift=-0.15cm]{$\varphi$}
+        ([shift=(15:4.5cm)]0,0) arc (15:22.5:4.5cm) node [below left,
+          yshift=-0.12cm]{$d\varphi$};
+  %refraction rates
+  \draw (10:6cm) node[fill=white] {$n_0$}
+        (10:8cm) node[fill=white] {$n$}
+        (10:9cm) node[fill=white] {$n + dn$};
+        
+\end{tikzpicture}
+
+\end{document}

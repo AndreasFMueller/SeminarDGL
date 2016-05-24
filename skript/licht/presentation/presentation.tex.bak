@@ -60,9 +60,8 @@
 %title informations
 \title[Licht] % (optional, only for long titles)
 {Lichtbrechung an der Athmosphäre}
-%\author[Schaefer, Schneider] % (optional, for multiple authors)
-%{Simon Sch"afer \and Tibor Schneider}
-\author[Tibor Schneider] {Tibor Schneider}
+\author[Schaefer, Schneider] % (optional, for multiple authors)
+{Simon Sch"afer \and Tibor Schneider}
 \institute[hsr] % (optional)
 {
   HSR Hochschule f"ur Technik Rapperswil

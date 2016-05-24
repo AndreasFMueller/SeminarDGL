@@ -1,0 +1,71 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{
+  ring shading/.code args={from #1 at #2 to #3 at #4}{
+    \def\colin{#1}
+    \def\radin{#2}
+    \def\colout{#3}
+    \def\radout{#4}
+    \pgfmathsetmacro{\proportion}{\radin/\radout}
+    \pgfmathsetmacro{\outer}{.8818cm}
+    \pgfmathsetmacro{\inner}{.8818cm*\proportion}
+    \pgfmathsetmacro{\innerlow}{\inner-0.01pt}
+    \pgfdeclareradialshading{ring}{\pgfpoint{0cm}{0cm}}%
+    {
+      color(0pt)=(white);
+      color(\innerlow)=(white);
+      color(\inner)=(#1);
+      color(\outer)=(#3)
+    }
+    \pgfkeysalso{/tikz/shading=ring}
+  },
+}
+
+\begin{document}
+
+    \begin{tikzpicture}
+        \begin{axis} [
+          axis lines=none, 
+          width=6cm, 
+          axis equal,
+          ticks = none,  
+          legend style={at={(1.1,0.5)}, anchor=west, draw=none}, 
+          ymin = -3,
+          ymax = 3,
+          xmin = -3, 
+          xmax = 3, 
+          zmin = 1,
+          zmax = 2,
+          %colorbar, 
+          colormap={traditionalpm3d}{color=(white) color=(lGray) color=(lGray) color=(lGray) color=(lGray) color=(lGray)},
+          view={0}{90}
+        ]  
+          \addplot3[surf, domain=-3:3, y domain=-3:3, shader=flat, samples=81, forget plot] {1 + 1 * exp(-(2*sqrt(x^2+y^2)-1))};  
+          %\addlegendentry{$n(r)$};
+          %f'(0)=0
+          \addplot [mark = none, thick, color=blue] coordinates {
+            (0.00000,1.00000)(-0.15643,0.98769)(-0.30902,0.95106)(-0.45399,0.89101)(-0.58779,0.80902)(-0.70711,0.70711)(-0.80902,0.58779)(-0.89101,0.45399)(-0.95106,0.30902)(-0.98769,0.15643)(-1.00000,0.00000)(-0.98769,-0.15643)(-0.95106,-0.30902)(-0.89101,-0.45399)(-0.80902,-0.58779)(-0.70711,-0.70711)(-0.58779,-0.80902)(-0.45399,-0.89101)(-0.30902,-0.95106)(-0.15643,-0.98769)(-0.00000,-1.00000)(0.15643,-0.98769)(0.30902,-0.95106)(0.45399,-0.89101)(0.58779,-0.80902)(0.70711,-0.70711)(0.80902,-0.58779)(0.89101,-0.45399)(0.95106,-0.30902)(0.98769,-0.15643)(1.00000,-0.00000)(0.98769,0.15643)(0.95106,0.30902)(0.89101,0.45399)(0.80902,0.58779)(0.70711,0.70711)(0.58779,0.80902)(0.45399,0.89101)(0.30902,0.95106)(0.15643,0.98769)(0.00000,1.00000)
+          };
+          \addlegendentry{$r'(0) = 0$};
+          
+          %f'(0)=0.01
+          \addplot [mark = none, thick, color=red] coordinates {
+            (0.00000,1.00000)(-0.12980,0.99286)(-0.25776,0.96893)(-0.38171,0.92862)(-0.49959,0.87255)(-0.60942,0.80165)(-0.70937,0.71707)(-0.79777,0.62017)(-0.87315,0.51253)(-0.93426,0.39588)(-0.98008,0.27209)(-1.00983,0.14313)(-1.02298,0.01104)(-1.01929,-0.12208)(-0.99875,-0.25418)(-0.96162,-0.38319)(-0.90837,-0.50715)(-0.83973,-0.62418)(-0.75662,-0.73250)(-0.66013,-0.83051)(-0.55152,-0.91676)(-0.43215,-0.98999)(-0.30348,-1.04909)(-0.16700,-1.09320)(-0.02422,-1.12159)(0.12339,-1.13373)(0.27444,-1.12923)(0.42765,-1.10781)(0.58193,-1.06927)(0.73643,-1.01342)(0.89054,-0.93996)(1.04407,-0.84843)(1.19734,-0.73804)(1.35138,-0.60737)(1.50773,-0.45385)(1.66973,-0.27355)(1.84298,-0.05971)(1.96559,0.10267)(2.09982,0.28898)(2.25133,0.50660)(2.42853,0.76699)(2.53821,0.93037)(2.66132,1.11504)(2.80161,1.32643)(2.96417,1.57197)
+          };
+          \addlegendentry{$r'(0) = 0.01$};
+
+          \draw [fill=black] (axis cs:0,1) circle (1pt);           
+          
+          \end{axis}   
+      \end{tikzpicture} 
+
+\end{document}
