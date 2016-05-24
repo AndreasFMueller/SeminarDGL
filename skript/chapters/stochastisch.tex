@@ -388,7 +388,7 @@ f"ur eine brownsche Bewegung $W(t)$ an Stelle von $w(t)$.
 F"ur eine stetig differenzierbare Funktion $g\colon[0,T]\to \mathbb R$ 
 mit $g(0)=g(T)=0$, setze
 \[
-\int_0^T g\,dW = -\int g'(t) W(t)\,dt.
+\int_0^T g\,dW = -\int_0^T g'(t) W(t)\,dt.
 \]
 \end{definition}
 
@@ -541,7 +541,7 @@ Wie "ublich kann eine solche Unterteilung dazu verwendet werden, die
 Riemann-Summe als Approximation des Integrals zu definieren:
 
 \begin{definition}
-Die Riemann-Summe von $W$ f"ur die Unterteilung $P$ ist
+Die Riemann-Summe von f"ur $\int W\,dW$ und die Unterteilung $P$ ist
 \[
 R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 \]
@@ -619,10 +619,10 @@ In den Terme mit $j\ne k$ sind die $Y_k$ und $Y_j$ voneinander unabh"angig,
 der Erwartungswert des Produktes kann daher in das Produkt der Erwartungswerte
 zerlegt werden:
 \begin{align*}
-E\biggl(
+E\left(
 (Y_k^2-1)\Delta_k
 (Y_j^2-1)\Delta_j
-\biggr)
+\right)
 &=
 E(Y_k^2-1)
 E(Y_j^2-1)
@@ -677,7 +677,9 @@ Da die Maschenweite $|P^{(n)}|\to 0$ f"ur $n\to\infty$ folgt, dass
 $Q_n\to T$ in $L^2(\Omega)$.
 \end{proof}
 
-\begin{hilfssatz} Sei $P^{(n)}$ eine Folge von Unterteilungen des
+\begin{hilfssatz}
+\label{stochastisch:intwdw}
+Sei $P^{(n)}$ eine Folge von Unterteilungen des
 Intervals $[0,T]$ derart, dass die Maschenweite gegen $0$ strebt und
 sei $R_n=R(P^{(n)},\lambda)$ die zugeh"orige Riemann-Summe.
 Dann gilt
@@ -766,7 +768,7 @@ Die zweite Summe wurde im Hilfssatz~\ref{stochastisch:quadrvariation}
 berechnet, dort wurde gefunden, dass die Summe f"ur $n\to\infty$ gegen $T$
 konvergiert.
 Mit der gleichen Rechnung wie in \ref{stochastisch:quadrvariation}
-kann man finden, dass die zweite Summe gegen $\lambda T$ strebt.
+kann man finden, dass die erste Summe gegen $\lambda T$ strebt.
 
 Die Inkremente in der dritten Summe sind unabh"angig voneinander, daher
 verschwinden die Erwartunsgewerte gemischter Produkte, es bleiben nur
@@ -938,6 +940,24 @@ Dann ist des It\^o-Integral von $G$
 \]
 \end{definition}
 
+\begin{beispiel}
+Wir haben die Riemann-Summe f"ur $G=W$ bereits in
+Hilfssatz~\ref{stochastisch:intwdw} berechnet, daher k"onnen wir jetzt
+das It\^o-Integral angeben:
+\[
+\int_0^t W\,dW
+=
+\frac12 W(t)^2 -\frac{t}2.
+\]
+In differentieller Form:
+\[
+d(W^2)
+=
+2W\,dW + t.
+\]
+Dies ist ein Spezialfall der sp"ater zu untersuchenden It\^o-Produktregel.
+\end{beispiel}
+
 Das It\^o-Integral hat die folgenden Eigenschaften:
 
 \begin{satz}
@@ -1038,6 +1058,8 @@ Im Spezialfall $m=2$ folgt
 \[
 dW^2 = 2W\,dW + dt.
 \]
+Dies haben wir schon als Resultat von
+Hilfssatz~\ref{stochastisch:intwdw} gefunden.
 \end{beispiel}
 
 \begin{beispiel} Wir betrachten die Funktion
@@ -1061,7 +1083,7 @@ dY&=\lambda Y\,dW
 \end{align*}
 also ist der Prozess $Y$ eine L"osung der stochastischen Differentialgleichung
 \begin{align*}
-dy&=\lambda Y\,dW
+dY&=\lambda Y\,dW
 \\
 Y(0)&=1.
 \end{align*}
@@ -1319,64 +1341,64 @@ Sei $g$ eine stetige Funktionen, man finde eine L"osung der
 Differenzialgleichung
 \begin{equation}
 \begin{aligned}
-dX&=gX\,dW\\
-X(0)&=1.
+dY&=gY\,dW\\
+Y(0)&=1.
 \end{aligned}
 \label{stochastisch:beispiel1-dgl}
 \end{equation}
 Man beachte, dass ohne den stochastischen Einfluss nur noch die Gleichung
-$dX=0$ "ubrig bleibt, in diesem Fall ist also $X$ einfach nur eine
-Konstante, $X(t)=1$.
+$dY=0$ "ubrig bleibt, in diesem Fall ist also $Y$ einfach nur eine
+Konstante, $Y(t)=1$.
 Wir k"onnen aber auch nicht erwarten, dass der Erwartungswert der
-L"osung durch die L"osung $X(t)=1$ gegeben ist.
+L"osung durch die L"osung $Y(t)=1$ gegeben ist.
 Die Gleichung ist zwar linear, aber die Wirkung der stochastischen
-Schwankungen ist proportional zum aktuellen Wert von $X$.
+Schwankungen ist proportional zum aktuellen Wert von $Y$.
 
 W"are $W$ einfach nur eine differenzierbare Funktion, dann w"urde die
 Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}) zu der
 gew"ohnlichen Differentialgleichung
 \begin{align*}
-\frac{\dot X}{X} &= g\dot W,
+\frac{\dot Y}{Y} &= g\dot W,
 \\
 \intertext{die durch direkte Integration gel"ost werden kann:}
-\frac{d}{dt}\log X&= g(t) \dot W(t)
+\frac{d}{dt}\log Y&= g(t) \dot W(t)
 \\
-\log X(t)&=\int_0^t g(\tau)\dot W(\tau)\,d\tau,
+\log Y(t)&=\int_0^t g(\tau)\dot W(\tau)\,d\tau,
 \\
-X(t)&=e^{\int_0^t g(\tau)\dot W(\tau)\,d\tau}.
+Y(t)&=e^{\int_0^t g(\tau)\dot W(\tau)\,d\tau}.
 \end{align*}
 Daraus k"onnte man ableiten, dass f"ur einen Wiener-Prozess $W$ die L"osung
 \[
-X(t)=e^{\int_0^t g\,dW}
+Y(t)=e^{\int_0^t g\,dW}
 \]
 sein m"usste.
 Um dies zu kontrollieren, schreiben wir 
 \[
-Y(t)=\int_0^t g\,dW
+X(t)=\int_0^t g\,dW
 \qquad\Rightarrow\qquad
-dY = g\,dW = \underbrace{0}_{\textstyle F}\,dt
+dX = g\,dW = \underbrace{0}_{\textstyle F}\,dt
 +
 \underbrace{g}_{\textstyle G}\,dW
 \]
-f"ur das Integral im Exponenten, und beachten, dass $X(t)=e^{Y(t)}$.
+f"ur das Integral im Exponenten, und beachten, dass $Y(t)=e^{X(t)}$.
 Wir haben die Funktionen $F$ und $G$ wie in der Formulierung der
 It\^o-Kettenregel gew"ahlt.
 
-Um zu kontrollieren, ob $X(t)$ tats"achlich die L"osung der
+Um zu kontrollieren, ob $Y(t)$ tats"achlich die L"osung der
 Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}), m"ussen wir
-also $e^{Y(t)}$ ableiten, dazu ist die It\^o-Kettenregel zu verwenden,
-denn $X(t)=u(Y(t))$ mit $u(x)=e^x$.
+also $e^{X(t)}$ ableiten, dazu ist die It\^o-Kettenregel zu verwenden,
+denn $Y(t)=u(X(t))$ mit $u(x)=e^x$.
 Die It\^o-Kettenregel ergibt:
 \begin{align*}
-dX
+dY
 &=
 \biggl( u'F+\frac12u''G^2 \biggr)\,dt + u' G\,dW
 \\
 &=
-\underbrace{e^Y}_{\textstyle X}\biggl(\frac12g^2\,dt + g\,dW\biggr)
+\underbrace{e^X}_{\textstyle Y}\biggl(\frac12g^2\,dt + g\,dW\biggr)
 \\
 &=
-\frac12g^2X\,dt + gX\,dW
+\frac12g^2Y\,dt + gY\,dW
 \end{align*}
 Offensichtlich ist das weit davon entfernt, die L"osung der
 Differentialgleichung zu sein.
@@ -1386,36 +1408,36 @@ beigesteuert wird, ist zu viel.
 Um den Term der zweiten Ableitungen wieder los zu werden, versuchen wir
 den Ansatz
 \begin{equation}
-X(t) = e^{-\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW}.
+Y(t) = e^{-\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW}.
 \label{stochastisch:beispiel1-lsg}
 \end{equation}
 Um dies nachzupr"ufen schreiben wir wieder 
 \[
-Y(t)
+X(t)
 =
 -\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW
 \]
 f"ur den Exponenten, dies bedeutet, dass
 \[
-dY
+dX
 =
 \underbrace{-\frac12g^2}_{\textstyle F}\,dt
 +
 \underbrace{g}_{\textstyle G}\,dW.
 \]
 Wir wenden die It\^o-Kettenregel auf die Funktion
-$X(t)=u(Y(t))=e^{Y(t)}$, also $u(x)=e^x$, an.
+$Y(t)=u(X(t))=e^{X(t)}$, also $u(x)=e^x$, an.
 \begin{align*}
-dX
+dY
 &=
 \biggl( u'F + \frac12u''G^2\biggr)\,dt + u'G\,dW
 \\
 &=
 \underbrace{\biggl(-\frac12 g^2 + \frac12 g^2\biggr)}_{\textstyle=0}\,dt
 +
-\underbrace{e^Y}_{\textstyle X}g\,dW
+\underbrace{e^X}_{\textstyle Y}g\,dW
 \\
-&=gX\,dW.
+&=gY\,dW.
 \end{align*}
 Damit haben wir nachgewiesen, dass~(\ref{stochastisch:beispiel1-lsg})
 die L"osung der stochastischen
@@ -1425,15 +1447,16 @@ Da $g^2\ge 0$ ist, ist das Integral von $g^2$ im Exponenten
 immer positiv, somit ist $X(t)$ immer um einen Faktor $\le1$ 
 kleiner als die urspr"unglich vermutete L"osung:
 \[
-X(t)
+Y(t)
 =
-\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\textstyle \le 1}\cdot e^{\int_0^tg\,dW}.
+\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\textstyle \le 1}
+\cdot e^{\int_0^tg\,dW}.
 \]
 Im Spezialfall $g=1$ ist finden wir, dass
 \[
-X(t)=e^{-\frac12t}e^{W(t)}=e^{W(t)-\frac12t}
+Y(t)=e^{-\frac12t}e^{W(t)}=e^{W(t)-\frac12t}
 \]
-die L"osung der Differentialgleichung $dX=X\,dW$ ist.
+die L"osung der Differentialgleichung $dY=Y\,dW$ ist.
 
 \subsubsection{Lineare stochastische Differentialgleichung}
 Die allgemeinste lineare stochastische Differentialgleichung hat die Form
@@ -1713,7 +1736,7 @@ wieder durch zwei gekoppelte Gleichungen erster Ordnung:
 \dot Y_1&=Y_2,                &&&Y_1(0)&=X_0, \\
 \dot Y_2&=-\lambda^2 Y_1-bY_2,&&&Y_2(0)&=X_1.
 \end{aligned}
-\label{stochastsich:harmosz-dgl1}
+\label{stochastisch:harmosz-dgl1}
 \end{equation}
 In dieser Form k"onnen wir jetzt in der Form eines Systems stochastischer
 Differentialgleichungen formulieren:
@@ -1990,6 +2013,13 @@ Differentialgleichungen eine "ahnliche Rolle wie Charakteristiken f"ur
 quasliineare partielle Differentialgleichungen erster Ordnung.
 
 \subsection{Stopzeiten}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-2.pdf}
+\caption{Brownsche Bewegung in zwei Dimension und Definition der
+Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
+\label{stochastisch:pfad}}
+\end{figure}%
 Wie fr"uher betrachten wir wieder einen stochastischen Prozess $X(t)$,
 der L"osung einer stochastischen Differentialgleichung
 \begin{equation}
@@ -2001,13 +2031,6 @@ X(0)&=X_0
 \label{stochastisch:stopzeitdgl}
 \end{equation}
 sein soll.
-\begin{figure}
-\centering
-\includegraphics{chapters/images/stochastisch-2.pdf}
-\caption{Brownsche Bewegung in zwei Dimension und Definition der
-Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
-\label{stochastisch:pfad}}
-\end{figure}
 
 \begin{definition}
 Sei $E$ eine beliebige offene oder abgeschlossene nicht leere Teilmenge
@@ -2200,12 +2223,7 @@ anwendet.
 Also muss der Wert von $u(x)$ der Mittelwert der Werte
 auf einer Kugel um den Punkt $x$ sein.
 
-%
-%
-%
-\section{Kalman-Filter\label{section:kalman}}
-\rhead{Kalman-Filter}
-
+\input{chapters/kalman.tex}
 
 
 

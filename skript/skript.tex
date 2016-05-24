@@ -18,7 +18,7 @@
 \usepackage{textcomp}
 \usepackage[all]{xy}
 \usepackage{txfonts}
-\usepackage{alltt}
+\usepackage{alltt} 
 \usepackage{verbatim}
 \usepackage{paralist}
 \usepackage{makeidx}
@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
 %\usepackage{pgfmath}
 \usepackage{placeins}
 \usepackage{subfigure}
@@ -41,6 +42,7 @@
 \usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit}
 \usetikzlibrary{patterns,decorations.pathreplacing}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
 \usepackage[europeanvoltages,
             europeancurrents,
             europeanresistors,   % rectangular shape
@@ -244,8 +246,8 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{chapters/linear.tex}
 \input{chapters/geometrie.tex}
 \input{chapters/komplex.tex}
-%\input{chapters/stabilitaet.tex}
-%\input{chapters/chaos.tex}
+\input{chapters/stabilitaet.tex}
+\input{chapters/chaos.tex}
 \input{chapters/stochastisch.tex}
 \begin{appendices}
 \input{chapters/newton.tex}
@@ -268,7 +270,7 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{wellen/main.tex}
 \input{kreis/main.tex}
 \input{schrittlaenge/main.tex}
-\input{licht/main.tex}
+%\input{licht/main.tex}
 \input{sir/main.tex}
 \input{friedmann/main.tex}
 \input{komplex/main.tex}
