@@ -413,5 +413,6 @@ Die Vergleichsgr"osse $\Delta \alpha$, welche aus der Simulation resultiert, zei
 
 \begin{figure}
   \centering
-  \includegraphics[scale=1]{licht/s}
+  \includegraphics[scale=1]{licht/standalone/fig_real_comparison.pdf}t
+  \caption{TODO: Beschreibung hinzufügen. \label{fig:real_comparison}}
 \end{figure}
