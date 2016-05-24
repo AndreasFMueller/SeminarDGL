@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
 %\usepackage{pgfmath}
 \usepackage{placeins}
 \usepackage{subfigure}
@@ -41,6 +42,7 @@
 \usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit}
 \usetikzlibrary{patterns,decorations.pathreplacing}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
 \usepackage[europeanvoltages,
             europeancurrents,
             europeanresistors,   % rectangular shape
@@ -108,6 +110,7 @@
 %\pgfplotsset{compat=1.12}
 \setlength{\headheight}{15pt} % fix headheight warning
 \DeclareGraphicsRule{*}{mps}{*}{}
+\AtBeginDocument{blubb}
 \begin{document}
 \pagestyle{fancy}
 \frontmatter
