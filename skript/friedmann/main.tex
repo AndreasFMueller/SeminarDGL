@@ -166,13 +166,26 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen.
 	
 	
-\subsection{Strahlung und dunkle Materie}
-Bisher wurde nur baryonische Materie betrachtet. Tatsächlich ist im Universum aber auch Strahlung vorhanden. Die Energie eines Photons ist 
+\section{Relativistischer Ansatz}
+Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einstein's eine wesentliche Rolle bei der Beschreibung des Kosmos.
+Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "normaler", sogenannter baryonisch sichtbarer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
+Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
 \begin{equation}
-E_{str} = \frac{h c}{\lambda}
+\left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
+\label{friedmann:Einstein}
 \end{equation}
+
+\subsection{Energiedichte}
+Wie wir wissen, existiert im Weltall nicht nur sichtbare, sondern auch dunkle Materie und Strahlung. Dunkle Materie verhält sich in Bezug auf die gravitative Wirkung ähnlich wie sichtbare Materie, und deshalb wird im weiteren nicht weiter darauf eingegangen.
+Anders verhält es sich mit der kosmischen Strahlung in Bezug auf die Dynamik des Kosmos. Wir schreiben
+
+
+\[ E_{str} = \frac{h c}{\lambda} \]
+
 wobei $h$ die \textbf{Planksche Konstante}, $c$ die \textbf{Lichtgeschwindigkeit} und $\lambda$ die \textbf{Wellenlänge} des Photons ist.
-Die Energie eines Photons verändert sich im geschlossenen Raum umgekehrt proportional zum Skalenfaktor a. Je grösser das Universum wird, desto grösser wird die Wellenlänge des Photons und desto kleiner wird die Energie des Photons. Für die Dichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz.
+Nun ist die Energie der Strahlung (z.B. eines Photons) in einem sich ausdehnenden Universum nicht konstant, sondern ändert sich mit der Zeit. 
+Denn, vergrössert sich die Raumzeit während der Laufzeit um einen Faktor n, so geschieht dies auch mit der Wellenlänge des Strahls.
+Das bedeutet, dass die Energie eines Photons umgekehrt proportional zum Skalenfaktor a ist. Für die Energiedichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz.
 \begin{equation}
 \rho_{str} = \frac{\nu}{a^4}
 \end{equation}
@@ -192,5 +205,23 @@ Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit 
 \[ \dot{a} = \frac{1}{a} \]
 \[\frac{da}{dt} =\frac{1}{a} \Leftrightarrow \frac{dt}{da} = a \]
 \[ t = \frac{1}{2} a^{2} \Rightarrow a = \sqrt{2} \quad t^{1/2} \]
+
+
+\subsection{Geometrie des Raumes}
+Wie wir zu beginn des Abschnitts erwähnt haben, muss die  linke Seite der Gleichung \ref{friedmann:Einstein} etwas mit der Geometrie des Raumes zu tun haben.
+
+\begin{align*}
+&\frac{\dot{a}}{a} \quad \text{ist die Hubble-Konstante und beschreibt die Ausdehnung des Raumes. Das heisst}\\
+&c \quad \text{muss die Krümmung des Raumes widergeben.
+Wir benennen die Konstante um zu}\\
+-&\kappa \quad \text{und schreiben die Gleichung neu:}
+\end{align*}
+
+\[ \left(\frac{\dot{a}}{a} \right)^2 + \frac{\kappa}{a^2} = \frac{8 \pi G}{3} \rho  \]
+
+\begin{equation}
+\left(\frac{\dot{a}}{a} \right)^2  = \frac{8 \pi G}{3} \rho  - \frac{\kappa}{a^2}
+\end{equation}
+
 
 \end{refsection}
