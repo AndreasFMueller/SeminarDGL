@@ -26,9 +26,13 @@ hold off;
 legend([l1, l2 , l3(1)], ' c > 0', ' c = 0', ' c < 0', 'Location','northwest');
 title('Expansion of the Universe without radiation and dark matter')
 
+
 set(gca,'XTickLabel',[]) %Nummern x-Achse ausblenden
 set(gca,'YTickLabel',[]) %Nummern y-Achse ausblenden
+xlabel('Time t');
+ylabel('Scalefactor a');
 
 print(f, '-dpdf','friedmann_ordinary_matter.pdf');
+print(f, '-dpng','friedmann_ordinary_matter.png');
 
 

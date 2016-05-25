@@ -37,7 +37,7 @@ for i = 0:0.5:1
 end
 
 print(f, '-dpdf','phasendiagramm.pdf');
-print(f, '-dpng','phasendiagramm.png');
+print(f, '-dpng','phasendiagramm.eps');
 
 
 
