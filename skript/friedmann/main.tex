@@ -84,13 +84,11 @@ Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem
 \end{enumerate}
 
 \subsubsection{Energieerhaltung}
-Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden betrachten wir die radiale Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit.\\
-Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
+Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden betrachten wir die radiale Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit. Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
 \begin{equation}
 E_{ges} = E_{kin} - E_{pot} =  \frac{m \varv^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
 \end{equation}
-Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten.\\
-Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen,nämlich
+Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten. Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen, nämlich
 \begin{enumerate}
 	\item $E_{ges} > 0 \rightarrow$ Eine Masse $m$ entflieht der Schwerkraft.
 	\item $E_{ges} = 0 \rightarrow$ Eine Masse $m$ nähert sich asymptotisch  der Geschwindigkeit null, bleibt aber nie stehen. (Fluchtgeschwindigkeit)
@@ -101,13 +99,12 @@ Nennen wir die Gesamtenergie eine Konstante \textit{c} und formen die Gleichung 
 \[{\varv^2} - \frac{2 M G}{x} = \frac{2c_1}{m} = c_2
 \:  \Leftrightarrow \: \left( \dot{a} R\right)^2 = \frac{2 M G}{a R} + c_2\] 
 \[\frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} + \frac{c_2}{a^2 R^2} \: \Leftrightarrow \: \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{c_2}{a^2 R^2} \] %Schritte einzeln auflisten
-Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ und das Kugelvolumen $V$. Es gilt wieder Gleichung \ref{friedmann:dichte}. Daraus resultiert die vereinfachte Differentialgleichung 
+Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ dividiert durch das Kugelvolumen $V$, was der Dichte entspricht. Daraus resultiert die vereinfachte Differentialgleichung 
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{c_2}{a^2 R^2}
 \label{friedmann:EnergieerhaltungUniversum}
 \end{equation}
-\ref{friedmann:EnergieerhaltungUniversum}
-Mit \[\rho = \frac{\nu}{a^3}\]
+Mit \ref{friedmann:dichte}
 \[
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3} + \frac{c_2}{a^2 R^2}
 \]
@@ -143,7 +140,7 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 	\begin{equation}
 	\dot{a} = \pm \sqrt{\frac{1}{a} - |c|}
 	\end{equation}
-	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung dieser Differentialgleichung. Solange $c \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $c < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
+	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Differentialgleichungen. Solange $c \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $c < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
 	
 \end{enumerate}
 
@@ -165,8 +162,9 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 
 
 \subsection{Redshift}
-Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen.
-	
+Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen. Die Ausbreitungsgeschwindigkeit wird mit der Hubble-Konstante angegeben und beträgt heute 
+	\[ H_0 = H(t_0) \approx (74.3 \pm 2.1) \frac{km}{s Mpc}\]
+, wobei $t_0$ für das heutige Weltalter steht.	
 	
 \section{Relativistischer Ansatz}
 Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einstein's eine wesentliche Rolle bei der Beschreibung des Kosmos.
