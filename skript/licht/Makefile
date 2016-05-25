@@ -9,3 +9,7 @@ $(TIKZDIR)/%.pdf: $(TIKZDIR)/%.tikz
 
 .PHONY : FORCE_MAKE
 all : ${PDFTIKZ_FILES}
+
+clean:
+	cd $(TIKZDIR)
+	rm -f *.pdf *.aux *.log

@@ -6,7 +6,7 @@
 all:	subdirs skript.pdf
 
 subdirs:
-	for d in chapters uebungsaufgaben wellen kreis; \
+	for d in chapters uebungsaufgaben wellen kreis licht; \
 	do \
 		cd $${d}; make; cd ..; \
 	done
@@ -111,7 +111,7 @@ clean:	cleansubdir
 		*.ilg *.toc *.synctex.gz
 
 cleansubdir:
-	for d in chapters uebungsaufgaben wellen kreis; \
+	for d in chapters uebungsaufgaben wellen kreis licht; \
 	do \
 		cd $${d}; make clean; cd ..; \
 	done

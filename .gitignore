@@ -22,6 +22,7 @@ skript/chapters/images/harvest.mp
 **/mptextmp.mp
 *.dat
 *.swp
+*.bak
 #*.png
 
 skript/kreis/besselfunction.png
