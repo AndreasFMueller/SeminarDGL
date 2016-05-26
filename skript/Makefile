@@ -5,7 +5,7 @@
 #
 all:	subdirs skript.pdf
 
-SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis
+SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis licht
 
 subdirs:
 	for d in $(SUBDIRECTORIES); \
