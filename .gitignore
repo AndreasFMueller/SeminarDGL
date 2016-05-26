@@ -1,4 +1,5 @@
 *.aux
+*.auxlock
 *.bbl
 *.blg
 *.dvi
