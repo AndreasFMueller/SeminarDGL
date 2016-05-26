@@ -7,12 +7,12 @@
 Seit langem stellte man sich die Frage, was das Universum ist und wie es sich verhält. Als 1912 Albert Einstein die Relativitätstheorie herleitete, konnten gewisse Fragen beantwortet werden.
 %\subsection{Kosmologische Rotverschiebung}
 %Die Kosmologische Rotverschiebung ist nicht zu verwechseln mit dem Dopplereffekt. Grund daf\"{u}r ist, dass sich die Galaxien nicht in der Raumzeit voneinander entfernen, sondern sich der Raum ausdehnt. 
-\subsection{Alexander Friedmann und Georges Lema\^{i}tre}
+\section{Alexander Friedmann und Georges Lema\^{i}tre}
 Beide entdeckten im Jahre 1927 unabhängig voneinander die Friedmann-Lema\^{i}tre-Gleichung. Diese beschreibt das Verhalten des Universums seit dem Urknall. 
 \begin{equation}
 \left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
-\subsubsection{Herleitung der Gleichung}
+\section{Newtonscher Ansatz}
 Um an das Problem heranzugehen führen wir ein Koordinatensystem ein, welches sich mit der relativen Bewegung der Galaxien mitbewegt. Somit sind die Galaxien wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den Skalenfaktor $a$ ausgedrückt und ist eine Funktion der Zeit. Verändert sich das Raster, verändern sich auch die Positionen der Sterne und Galaxien.
 %\begin{figure}
 %	\includegraphics[width = \textwidth ]{chapters/images/friedmann-1.png}
@@ -159,16 +159,10 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 %	\caption{Verhalten des Universums in Abhängigkeit von der Zeit $t$
 %		\label{friedmann:friedmannGleichung}}
 %\end{figure}%
-
-
-\subsection{Redshift}
-Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen. Die Ausbreitungsgeschwindigkeit wird mit der Hubble-Konstante angegeben und beträgt heute 
-	\[ H_0 = H(t_0) \approx (74.3 \pm 2.1) \frac{km}{s Mpc}\]
-, wobei $t_0$ für das heutige Weltalter steht.	
 	
 \section{Relativistischer Ansatz}
 Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einstein's eine wesentliche Rolle bei der Beschreibung des Kosmos.
-Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "normaler", sogenannter baryonisch sichtbarer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
+Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "gewöhnlicher", sogenannter baryonischer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
 Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
@@ -209,19 +203,35 @@ Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit 
 
 \subsection{Geometrie des Raumes}
 Wie wir zu beginn des Abschnitts erwähnt haben, muss die  linke Seite der Gleichung \ref{friedmann:Einstein} etwas mit der Geometrie des Raumes zu tun haben.
+Der erste Term ist die Hubble-Konstante und beschreibt die Ausdehnung des Raumes. Das heisst
+$c$ muss die Krümmung des Raumes wiedergeben.
+Wir benennen die Konstante um zu
+$-\kappa$ und schreiben die Gleichung neu:
 
-\begin{align*}
-&\frac{\dot{a}}{a} \quad \text{ist die Hubble-Konstante und beschreibt die Ausdehnung des Raumes. Das heisst}\\
-&c \quad \text{muss die Krümmung des Raumes wiedergeben.
-Wir benennen die Konstante um zu}\\
--&\kappa \quad \text{und schreiben die Gleichung neu:}
-\end{align*}
 
 \[ \left(\frac{\dot{a}}{a} \right)^2 + \frac{\kappa}{a^2} = \frac{8 \pi G}{3} \rho  \]
 
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2  = \frac{8 \pi G}{3} \rho  - \frac{\kappa}{a^2}
 \end{equation}
+\begin{table}[h]
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}c<{$}|}
+\hline
+\kappa&Geometrie&Winkelsumme\: \Delta\\
+\hline
++1 & \text{Elliptisch} & > 180^\circ\\
+0  & \text{Euklidisch} & =180^\circ\\
+-1 & \text{Hyperbolisch} & <180^\circ\\
+\hline	
+\end{tabular}
+\caption{Bedeutung von $\kappa$ für die Geometrie des Raumes}
+\end{table} \linebreak
+Die Krümmung des Raumes kann durch Messen von Winkelsummen im Dreieck bestimmt werden.
 
+\subsection{Redshift}
+Es stellt sich die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit feststellen lässt. Dabei nutzt man die Erkenntnis, dass sich die Wellenlänge von Licht, welches sich durch einen ausdehnenden Raum bewegt, mit dehnt und somit ein anderes Farbspektrum erhält. Diese Verschiebung der Wellenlänge ins Rot nennt man in der Kosmologie Rotverschiebung. Daraus kann man nun die Ausdehnung des Raums während der Zeit, die das Licht reist, ausrechnen. Die Ausbreitungsgeschwindigkeit wird mit der Hubble-Konstante angegeben und beträgt heute 
+\[ H_0 = H(t_0) \approx (74.3 \pm 2.1) \frac{km}{s}\frac{1}{Mpc}\]
+, wobei $t_0$ für das heutige Weltalter steht.	
 
 \end{refsection}
