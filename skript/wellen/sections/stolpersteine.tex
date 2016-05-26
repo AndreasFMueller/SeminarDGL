@@ -2,8 +2,8 @@
 
 Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
 beachtet werden m"ussen. Von besonderer Signifikanz sind vor allem die 
-Genauigkeit der L"osungen f"ur die jeweilien $x$, sowie der nat"urlich auch die 
-Zeit, welche f"ur die Berechnung ben"otigt wird.
+Genauigkeit der L"osungen f"ur die jeweiligen $x$, sowie der nat"urlich auch 
+die Zeit, welche f"ur die Berechnung ben"otigt wird.
 
 
 \subsubsection{Genauigkeit}
@@ -22,13 +22,9 @@ dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken.
 \end{equation*}
 
 Das hat aber weitreichende Folgen. So werden je nach $k_{\text{max}}$ fr"uher 
-oder sp"ater die L"osungswerte gegen $\infty$ oder $-\infty$ gehen. Das liegt 
-daran, dass der Term $(x - x_0)^k$ einer finiten Reihe um die 
-Entwicklungsstelle $x_0$, je weiter sie sich von diesem entfernen, gegen"uber 
-den $a_k$ beginnen wird zu dominieren.
-
-Die Abbildung (\ref{fig:wellen:variablekmax}) zeigt auf, wie sich die L"osung 
-der Titelgleichung mit verschiedenen $k_{\text{max}}$ entwickelt.
+oder sp"ater die L"osungswerte gegen $+\infty$ oder $-\infty$ gehen. Das liegt 
+daran, dass der Term $x^k$ einer finiten Reihe gegen"uber den $a_k$ beginnen 
+wird zu dominieren.
 
 \begin{figure}
 	\includegraphics[scale=0.65]{./wellen/images/kmax/krangewaveeven.png}
@@ -36,10 +32,12 @@ der Titelgleichung mit verschiedenen $k_{\text{max}}$ entwickelt.
 	\label{fig:wellen:variablekmax}
 \end{figure}
 
-Es ist leicht zu erkennen, das mit gr"osser werdenen $k$ auch der Punkt an dem 
-$x^k$ dominiert sich weiter von $x_0$ entfernt. Es taucht noch ein weiteres 
-Ph"anomen auf. Da die Werte von $a_k$ immer kleiner werden und die von $x^k$ 
-immer gr"osser, kommt der Rechner irgendwann an seine Grenzen und beginnt 
+Die Abbildung (\ref{fig:wellen:variablekmax}) zeigt auf, wie sich die L"osung 
+der Titelgleichung mit verschiedenen $k_{\text{max}}$ entwickelt. Es ist leicht 
+zu erkennen, dass mit gr"osser werdenden $k$ auch der Punkt, an dem $x^k$ 
+dominiert, sich weiter von $x_0$ entfernt. Es taucht noch ein weiteres 
+Ph"anomen auf. Da die Werte von $a_k$ immer kleiner werden und die von 
+$x^k$ immer gr"osser, kommt der Rechner irgendwann an seine Grenzen und beginnt 
 unbrauchbare Resultate zu liefern. Diese Ungenauigkeit ist durch die bin"are 
 Repr"asentation von Dezimalzahlen und den Limitierungen der verschiedenen 
 Datentypen wie \texttt{double} oder \texttt{float} in einem Rechnersystem 

@@ -1,6 +1,8 @@
-\subsection{Potenzreihenl"osung}
-Als L"osungsansatz wird der im Kapitel \ref{chapter:potenzreihen} 
-kennengelernte Potenzreihenansatz verwendet.
+\subsection{\texorpdfstring{$y(x) = \sum_{k = 0}^{\infty} a_{k}x^k$}{y(x) = 
+summe k = 0 bis unendlich ak xk}}
+
+Als L"osungsansatz f"ur die Differentialgleichung wird der im Kapitel 
+\ref{chapter:potenzreihen} kennengelernte Potenzreihenansatz verwendet.
 
 Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet.
 
@@ -34,10 +36,11 @@ Form
 \begin{equation*}
 	y'' = -(ax^2+bx+c)y
 \end{equation*}
-kann nun der Koeffizientenvergleich erstellt werden. 
+kann der Koeffizientenvergleich erstellt werden. 
 
 Statt die Koeffizienten einfach reihenweise aufzustellen, wird der Vergleich 
-mit Hilfe einer Tabelle gemacht.
+mit Hilfe einer Tabelle gemacht. Dies schafft auch bei komplizierten und langen 
+Termen eine gute "Ubersicht.
 
 \begin{equation}
 	\begin{array}{r c r | c r | c r | c r c}
@@ -68,19 +71,17 @@ mit Hilfe einer Tabelle gemacht.
 \end{equation}
 
 Die Verschiebung der verschiedenen $a_k$ in der Gleichungstabelle 
-(\ref{eq:wellen:koeffizietenvergleichtabelle}) kann einfach erkl"art werden. 
-Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um zwei nach 
-links geschoben. Eine weitere Verschiebung gibt es wegen des Polynomgrades 
-$x^2$.
+(\ref{eq:wellen:koeffizietenvergleichtabelle}) kann folgendermassen erkl"art 
+werden. Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um 
+zwei nach links geschoben. Eine weitere Verschiebung gibt es aufgrund des 
+Polynomgrades $x^2$. Da die $a$-Summanden mindestens die Form $ax^2$ haben, 
+verschiebt sich die dritte Zeile um zwei nach rechts. Die $b$-Summanden haben 
+mindestens die Form $bx^1$, daher die Verschiebung der vierten Zeile um eins 
+nach rechts. Einzig die f"unfte Zeile mit den $c$ wird nicht verschoben, da es 
+mindestens als $cx^0$ vorhanden ist. Somit lassen sich die jeweiligen $a_k$ und 
+ihre Abh"angigkeiten direkt aus den jeweiligen Spalten ablesen.
 
-Da die $a$-Summanden mindestens die Form $ax^2$ haben, verschiebt sich die 
-dritte Zeile um zwei nach rechts. Die $b$-Summanden haben mindestens die Form 
-$bx^1$, daher die Verschiebung der vierten Zeile um eins nach rechts. Einzig 
-die f"unfte Zeile mit den $c$ wird nicht verschoben, da es mindestens als 
-$cx^0$ vorhanden ist. Somit lassen sich die jeweiligen $a_k$ und ihre 
-Abh"angigkeiten direkt aus den jeweiligen Spalten ablesen.
-
-Aus den in der Tabelle berechneten $a_k$ l"asst sich nun eine allgemeine 
+Aus den in der Tabelle berechneten $a_k$ l"asst sich eine allgemeine 
 Rekursionsformel
 
 \begin{equation*}

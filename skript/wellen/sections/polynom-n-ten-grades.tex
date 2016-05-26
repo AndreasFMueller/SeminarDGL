@@ -1,18 +1,10 @@
 \section{\texorpdfstring{$p(x) = \sum_{i=0}^{n}\lambda_ix^i$}{p(x) = summe i = 
-0 
-bis n lambdai xi}}
-
-\begin{equation}
-	y''+\sum_{i=0}^{n}\lambda_ix^i y=0, \quad n \ge 0
-	\label{eq:wellen:allgemeinesproblem}
-\end{equation}
+0 bis n lambdai xi}}
 
 Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
 allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen 
-zu erstellen.
-
-Hierzu wird das anf"angliche Profil $ax^2 + bx + c$ mit dem allgemeinen Polynom 
-$n$-ten Grades
+zu erstellen. Hierzu wird das anf"angliche Profil $ax^2 + bx + c$ mit dem 
+allgemeinen Polynom $n$-ten Grades
 \begin{equation*}
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
@@ -20,7 +12,7 @@ $n$-ten Grades
 \end{equation*}
 ersetzt.
 
-Bei der neuen Problemstellung handelt es sich immernoch um eine 
+Bei der neuen Problemstellung handelt es sich immer noch um eine 
 Differentialgleichungen zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
 mindestens zwei Elementen zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht 
 sich diese jeweils um den Index $i$. Daraus folgt nun
@@ -44,7 +36,7 @@ f"uhren zu einer Wellenform, die $\sin$ und $\cos$ enthalten. Negative
 L"osungen liefern hingegen eine Kombination aus $\sinh$ und $\cosh$.
 
 \subsubsection{Berechnungsaufwand}
-Der Pseudocode (\ref{alg:wellen:potenzreihenrechnung}) kann mit kleinen 
+Der Pseudocode \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
 "Anderungen an die neue L"osung angepasst werden. 
 
 \input{./wellen/sections/algorithms/alg-allgemein.tex}
