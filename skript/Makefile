@@ -43,13 +43,13 @@ BLXFILES = skript1-blx.bbl \
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
 			$(BLXFILES)
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
 	bibtex skript
 
 skript.ind:	skript.tex $(TEXFILES)
 	touch skript.ind
 	cd chapters && make
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
 	makeindex skript.idx
 
 # References
