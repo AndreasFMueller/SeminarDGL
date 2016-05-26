@@ -101,7 +101,7 @@ Damit ergibt sich folgendes Gleichungssystem zweiter Ordnung:
 Um die L"osung der Differentialgleichung bei bestimmten Anfangsbedingungen zu berechnen, muss diese in einem bestimmten Format dem L"osungsalgorithmus übergeben werden.
 In diesem Fall wird das Mathematikprogramm MatLab verwendet. 
 "Ubliche Solver in MatLab verlangen Differentialgleichungssysteme mit Differentialgleichungen erster Ordnung.
-Aus diesem Grund muss die Ordnung der beiden Gleichungen (\ref{eq:kompSchreibwEins}) und (\ref{eq:kompSchreibwZwei}) reduziert werden.
+Aus diesem Grund muss die Ordnung der beiden Gleichungen (\ref{eq:kompSchreibwEins}) und (\ref{eq:kompSchreibwZwei}) reduziert werden. 
 \begin{equation}
 \frac{d}{dt} \begin{pmatrix}
 s_x \\ 
@@ -134,7 +134,7 @@ s_{y1}\\
 -\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
 \end{pmatrix}
 \end{equation}
-Weil in MatLab (abgeleitet von Matrix Laboratory) alles mit Matrizen und Vektoren gerechnet wird, werden die Variablen entsprechend substituiert. So wird $s_x$ zu $z_1$, $s_y$ zu $z_2$, $s_{x1}$ zu $z_3$ und $s_{y1}$ zu $z_4$.
+Weil MatLab (abgeleitet von Matrix Laboratory) bevorzugt mit Matrizen und Vektoren rechnet, werden die Variablen entsprechend substituiert. So wird $s_x$ zu $z_1$, $s_y$ zu $z_2$, $s_{x1}$ zu $z_3$ und $s_{y1}$ zu $z_4$.
 \begin{equation}\label{eq:zustandsraumdarst}
 \frac{d \vec{z}}{dt}=\frac{d}{dt} \begin{pmatrix}
 z_1 \\ 
@@ -167,6 +167,14 @@ function dz = planets(t, z)
       
 end
 \end{lstlisting}
+
+Bild von optimaler Lösung
+
+Fixstep
+
+Problematik Schrittlänge
+
+myOde
 
 
 
