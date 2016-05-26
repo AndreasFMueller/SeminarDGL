@@ -26,3 +26,6 @@ skript/chapters/images/harvest.mp
 
 skript/kreis/besselfunction.png
 !skript/chapters/substitute.png
+
+#tikz pdf-images
+!skript/licht/standalone/*.pdf
