@@ -5,8 +5,10 @@
 #
 all:	subdirs skript.pdf
 
+SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis
+
 subdirs:
-	for d in chapters uebungsaufgaben wellen kreis; \
+	for d in $(SUBDIRECTORIES); \
 	do \
 		cd $${d}; make; cd ..; \
 	done
@@ -108,10 +110,10 @@ skript8-blx.bbl:	skript8-blx.aux
 
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
-		*.ilg *.toc *.synctex.gz
+		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib
 
 cleansubdir:
-	for d in chapters uebungsaufgaben wellen kreis; \
+	for d in $(SUBDIRECTORIES); \
 	do \
 		cd $${d}; make clean; cd ..; \
 	done

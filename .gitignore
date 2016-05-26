@@ -17,12 +17,12 @@ skript/chapters/images/harvest
 skript/chapters/images/harvest.mp
 **/*.[0-9]
 **/*.[0-9][0-9]
-**/skript-blx.bib
-**/skript.run.xml
+**/*-blx.bib
+**/*.run.xml
 **/mptextmp.mp
 *.dat
 *.swp
-#*.png
+*.bak
 
 skript/kreis/besselfunction.png
 !skript/chapters/substitute.png
