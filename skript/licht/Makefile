@@ -11,5 +11,5 @@ $(TIKZDIR)/%.pdf: $(TIKZDIR)/%.tikz
 all : ${PDFTIKZ_FILES}
 
 clean:
-	cd $(TIKZDIR)
+	cd $(TIKZDIR); \
 	rm -f *.pdf *.aux *.log

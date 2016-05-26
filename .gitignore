@@ -1,6 +1,7 @@
 *.aux
 *.bbl
 *.blg
+*.dvi
 *.out
 *.toc
 *.pdf
@@ -28,4 +29,4 @@ skript/kreis/besselfunction.png
 !skript/chapters/substitute.png
 
 #tikz pdf-images
-!skript/licht/standalone/*.pdf
+#!skript/licht/standalone/*.pdf

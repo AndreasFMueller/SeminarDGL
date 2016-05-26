@@ -110,7 +110,7 @@ skript8-blx.bbl:	skript8-blx.aux
 
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
-		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib
+		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib *.dvi
 
 cleansubdir:
 	for d in $(SUBDIRECTORIES); \
