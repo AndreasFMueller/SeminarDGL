@@ -20,6 +20,7 @@ Eine genauere Absch"atzung kann mit Hilfe des Pseudocodes
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
+			\State $y(x) \gets s_{\text{pot}}$
 		\EndFor
 	\end{algorithmic}
 	\caption{Wellen Potenzreihenberechnung} 
@@ -37,6 +38,6 @@ und einen Speicherverbrauch von
 \begin{equation*}
 	\mathcal{O}
 	\left(
-	1
+		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
 	\right).
 \end{equation*}

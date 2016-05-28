@@ -27,6 +27,7 @@
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
+			\State $y(x) \gets s_{\text{pot}}$
 		\EndFor
 	\end{algorithmic}
 	\caption{Allgemeine Potenzreihenberechnung (Alternative)} 
@@ -55,6 +56,7 @@ mit einem Speicherverbrauch von
 \begin{equation*}
 	\mathcal{O}
 	\left(
-		\max(n, k_{\text{max}})
+		\max(n, k_{\text{max}}) + 
+		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
 	\right).
 \end{equation*}

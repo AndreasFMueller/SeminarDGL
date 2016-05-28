@@ -7,18 +7,19 @@
 		\State $a_1 \gets y'(0)$
 		\State $k \gets 2$
 		\For{$k \le k_{\text{max}}$}
-		\State $a_k \gets -\cfrac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2})$
-		\State $k \gets k + 1$
+			\State $a_k \gets -\cfrac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2})$
+			\State $k \gets k + 1$
 		\EndFor
 		\State $x \gets x_{\text{min}}$
 		\For{$x \le x_{\text{max}}$}
-		\State $k \gets 2$
-		\State $s_{\text{pot}} \gets a_0 + a_1x$
-		\For{$k \le k_{\text{max}}$}
-		\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
-		\State $k \gets k + 1$
-		\EndFor
-		\State $x \gets x + x_{\text{step}}$
+			\State $k \gets 2$
+			\State $s_{\text{pot}} \gets a_0 + a_1x$
+			\For{$k \le k_{\text{max}}$}
+				\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
+				\State $k \gets k + 1$
+			\EndFor
+			\State $x \gets x + x_{\text{step}}$
+			\State $y(x) \gets s_{\text{pot}}$
 		\EndFor
 	\end{algorithmic}
 	\caption{Wellen Potenzreihenberechnung (Alternative)}
@@ -46,6 +47,7 @@ und einen Speicherverbrauch von
 \begin{equation*}
 	\mathcal{O}
 	\left(
-		k_{\text{max}}
+		k_{\text{max}} + 
+		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
 	\right).
 \end{equation*}
