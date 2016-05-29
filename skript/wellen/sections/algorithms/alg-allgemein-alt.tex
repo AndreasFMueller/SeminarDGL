@@ -58,5 +58,10 @@ mit einem Speicherverbrauch von
 		\max(n, k_{\text{max}})
 	\right).
 \end{equation*}
-Um die gewonnen Erkenntnisse zu pr"asentieren, werden zwei Beispiele 
-aufgezeigt: Die Airy-Differentialgleichung und ein Polynom 4.Grades.
+
+Eine Implementation mit \texttt{octave} hat gezeigt dieser alternative 
+Algorithmus (Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnungalt}) 
+fast 10-Mal schneller ist. Dies liegt neben der zus"atzlichen inneren Schlaufe 
+auch vor allem daran, dass beim anderen Algorithmus mit \texttt{modulo} 
+gerechnet werden musste um den Speicherverbrauch zu optimieren, was 
+zus"atzlichen Rechenaufwand bedeutet.
