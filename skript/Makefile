@@ -5,8 +5,10 @@
 #
 all:	subdirs skript.pdf
 
+SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis licht
+
 subdirs:
-	for d in chapters uebungsaufgaben wellen kreis licht; \
+	for d in $(SUBDIRECTORIES); \
 	do \
 		cd $${d}; make; cd ..; \
 	done
@@ -41,13 +43,13 @@ BLXFILES = skript1-blx.bbl \
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
 			$(BLXFILES)
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
 	bibtex skript
 
 skript.ind:	skript.tex $(TEXFILES)
 	touch skript.ind
 	cd chapters && make
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
 	makeindex skript.idx
 
 # References
@@ -108,10 +110,10 @@ skript8-blx.bbl:	skript8-blx.aux
 
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
-		*.ilg *.toc *.synctex.gz
+		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib *.dvi
 
 cleansubdir:
-	for d in chapters uebungsaufgaben wellen kreis licht; \
+	for d in $(SUBDIRECTORIES); \
 	do \
 		cd $${d}; make clean; cd ..; \
 	done
