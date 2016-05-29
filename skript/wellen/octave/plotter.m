@@ -4,16 +4,19 @@ help_message = { "Use the following parameters to configure the output:",
 "\t-din",
 "\t\tSet the input data file to load.",
 "\t-dout",
-"\t\tSet the output file to print to. (.esp format)",
+"\t\tSet the output file to print to. (.esp format, default: wave.eps)",
 "\t-kmax",
 "\t\tPath for the different k_max wave file. (Format: path/kmax-num.dat)",
+"\t-n4",
+"\t\tPath for the 2-grade and 4-grade comparsion.",
 "\t-h",
 "\t\tShow this help message." };
 
 file_loaded = false;
 
-filename = 'wave';
+filename = 'wave.eps';
 kmaxpath = '';
+n4path = '';
 
 arglist = argv();
 
@@ -26,6 +29,8 @@ for i = (1:nargin)
 		filename = arglist(++i){1};
 	case "-kmax"
 		kmaxpath = arglist(++i){1};
+	case "-n4"
+		n4path = arglist(++i){1};
 	case "-h"
 		for i = (1:length(help_message))
 			printf('%s\n', help_message{i});
@@ -34,7 +39,7 @@ for i = (1:nargin)
 	endswitch
 endfor
 
-if (!file_loaded && isempty(kmaxpath))
+if (!file_loaded && isempty(kmaxpath) && isempty(n4path))
 	printf('No valid data found. Use "-din filename" to load data to plot.');
 	exit(-1)
 endif
@@ -50,6 +55,13 @@ if (!isempty(kmaxpath))
 		load(sprintf('%s/kmax-%d.dat', kmaxpath, i));
 		plot(x, y, sprintf('%d;;', mod(count++, 6)));
 	endfor
+elseif (!isempty(n4path))
+	load(sprintf('%s/n2.dat', n4path));
+	plot(x, y, sprintf('%d;y(x), n = 2;', 3));
+	plot(x, p, sprintf('%d;p(x), n = 2;', 5));
+	load(sprintf('%s/n4.dat', n4path));
+	plot(x, y, sprintf('%d;y(x), n = 4;', 1));
+	plot(x, p, sprintf('%d;p(x), n = 4;', 4));
 else
 	plot(x, y, '3;y(x);');
 	plot(x, p, '2;p(x);');
