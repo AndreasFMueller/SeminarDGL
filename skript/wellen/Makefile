@@ -46,9 +46,6 @@ n4:	n2
 	$(OCTAVE) ./octave/yx.m -polynom "1/3.75^4x^4+0x^3+-1/3x^2+0x+5" -dout "$(IMAGEPATH)/n4.dat" \
 		-kmax 300 -a0 -1 -a1 0
 	$(OCTAVE) ./octave/plotter.m -fout "$(IMAGEPATH)/n4.eps" -n4 "$(IMAGEPATH)"
-#	$(OCTAVE) ./octave/yx.m -polynom "1/4^2x^4+0x^3+-1.5x^2+0x+5.5" -dout "$(IMAGEPATH).dat" \
-#		-xmin -6 -xmax 6 -ymin -15 -ymax 15 -a0 -2 -a1 0 -kmax 300
-#	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 sin:	
 	$(OCTAVE) ./octave/yx.m -polynom "1" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10 \
@@ -84,7 +81,7 @@ vara1:
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 vara2:
-	$(OCTAVE) ./octave/yx.m -polynom "1/2^2+0x+-0" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
+	$(OCTAVE) ./octave/yx.m -polynom "1/4^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 varc1:
