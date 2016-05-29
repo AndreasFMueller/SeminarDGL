@@ -12,21 +12,20 @@
 		\EndFor
 		\State $x \gets x_{\text{min}}$
 		\For{$x \le x_{\text{max}}$}
-			\State $k \gets 2$
 			\State $s_{\text{pot}} \gets a_0 + a_1x$
+			\State $k \gets 2$
 			\For{$k \le k_{\text{max}}$}
 				\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
-			\State $y(x) \gets s_{\text{pot}}$
 		\EndFor
 	\end{algorithmic}
 	\caption{Wellen Potenzreihenberechnung (Alternative)}
 	\label{alg:wellen:potenzreihenrechnungalt}
 \end{algorithm}
 
-Nat"urlich kann man die $a_k$ auch bereits vorg"angig berrechnen. Was uns zum 
+Die $a_k$ k"onnen auch bereits vorg"angig berrechnet werden. Was uns zum 
 Pseudocode \ref{alg:wellen:potenzreihenrechnungalt} f"uhrt. Dieser 
 alternative Algorithmus hat eine Laufzeit von
 \begin{equation*}
@@ -43,11 +42,11 @@ alternative Algorithmus hat eine Laufzeit von
 		\right)
 	\right),
 \end{equation*}
-und einen Speicherverbrauch von
+und da alle $a_k$ von $a_{-2}$bis $k_{\text{max}}$ bereits vorberechnet werden 
+einen Speicherverbrauch von
 \begin{equation*}
 	\mathcal{O}
 	\left(
-		k_{\text{max}} + 
-		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+		k_{\text{max}}
 	\right).
 \end{equation*}

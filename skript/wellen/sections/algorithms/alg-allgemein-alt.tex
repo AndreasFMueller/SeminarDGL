@@ -20,14 +20,13 @@
 		\EndFor
 		\State $x \gets x_{\text{min}}$
 		\For{$x \le x_{\text{max}}$}
-			\State $k \gets 2$
 			\State $s_{\text{pot}} \gets a_0 + a_1x$
+			\State $k \gets 2$
 			\For{$k \le k_{\text{max}}$}
 				\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
-			\State $y(x) \gets s_{\text{pot}}$
 		\EndFor
 	\end{algorithmic}
 	\caption{Allgemeine Potenzreihenberechnung (Alternative)} 
@@ -56,10 +55,8 @@ mit einem Speicherverbrauch von
 \begin{equation*}
 	\mathcal{O}
 	\left(
-		\max(n, k_{\text{max}}) + 
-		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+		\max(n, k_{\text{max}})
 	\right).
 \end{equation*}
-
 Um die gewonnen Erkenntnisse zu pr"asentieren, werden zwei Beispiele 
 aufgezeigt: Die Airy-Differentialgleichung und ein Polynom 4.Grades.
