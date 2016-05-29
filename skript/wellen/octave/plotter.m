@@ -65,6 +65,10 @@ elseif (!isempty(n4path))
 else
 	plot(x, y, '3;y(x);');
 	plot(x, p, '2;p(x);');
+	if (!isempty(n2zeros))
+		plot([n2zeros(1), n2zeros(1)], [0, n2zeros(3)], '1;;');
+		plot([n2zeros(2), n2zeros(2)], [0, n2zeros(4)], '1;;');
+	endif
 endif
 
 axis([x_min, x_max, y_min, y_max]);

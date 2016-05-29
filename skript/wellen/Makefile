@@ -77,19 +77,23 @@ kmax:
 	$(OCTAVE) ./octave/plotter.m -fout "$(IMAGEPATH).eps" -kmax "./images/kmax"
 
 vara1:
-	$(OCTAVE) ./octave/yx.m -polynom "1/2^1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
+	$(OCTAVE) ./octave/yx.m -polynom "1/2^1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
+		-calczerosn2 true
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 vara2:
-	$(OCTAVE) ./octave/yx.m -polynom "1/2^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
+	$(OCTAVE) ./octave/yx.m -polynom "1/2^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
+		-calczerosn2 true
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 varc1:
-	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
+	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
+		-calczerosn2 true
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 varc2:
-	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-2" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5
+	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-2" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
+		-calczerosn2 true
 	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
 
 createsubdirs:	
