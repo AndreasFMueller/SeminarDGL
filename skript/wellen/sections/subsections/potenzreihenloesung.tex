@@ -11,12 +11,13 @@ Als L"osungsansatz f"ur die Differentialgleichung wird der im Kapitel
 Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet, da 
 in der Formel die zweite Ableitung vorkommt:
 
-\begin{align*}
+\begin{align}
 	y(x)
 	&=
 	\sum_{k = 0}^{\infty} a_{k}x^k
 	=
 	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
+	\label{eq:wellen:nullteableitung}
 	\\
 	y'(x)
 	&=
@@ -30,7 +31,8 @@ in der Formel die zweite Ableitung vorkommt:
 	=
 	2a_2 + 3 \mathbin{\cdot} 2a_3x + 4 \mathbin{\cdot} 3a_4x^2 + 5 
 	\mathbin{\cdot} 4a_5x^3 + 6 \mathbin{\cdot} 5a_6x^4 + \dotsb
-\end{align*}
+	\label{eq:wellen:zweiteableitung}
+\end{align}
  
 Aus den beiden Gleichungen (\ref{eq:wellen:nullteableitung}) und
 (\ref{eq:wellen:zweiteableitung}) und dem Umstellen der Anfangsgleichung in die 

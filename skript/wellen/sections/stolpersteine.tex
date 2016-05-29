@@ -10,7 +10,8 @@ welche f"ur die Berechnung ben"otigt wird.
 Gem"ass
 \begin{equation*}
 	y(x) = a_0 + a_1x 
-	-\sum_{k=2}^{\textcolor{red}{\infty}}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+	-\sum_{k=2}^{\textcolor{red}{\infty}}\frac{1}{k(k-1)} 
+	(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 \end{equation*}
 m"usste man f"ur jedes $x$ eine unendliche Anzahl Additionen ausf"uhren, was 
 aber bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
@@ -18,7 +19,8 @@ dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken.
 
 \begin{equation*}
 	y(x) = a_0 + a_1x 
-	-\sum_{k=2}^{\textcolor{red}{k_{\text{max}}}}\frac{1}{k(k-1)}(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+	-\sum_{k=2}^{\textcolor{red}{k_{\text{max}}}}\frac{1}{k(k-1)} 
+	(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
 \end{equation*}
 
 Das hat aber weitreichende Folgen: So werden je nach $k_{\text{max}}$ fr"uher 
@@ -27,7 +29,7 @@ liegt, dass der Term $x^k$ einer finiten Reihe gegen"uber den $a_k$ beginnen
 wird zu dominieren.
 
 \begin{figure}
-	\includegraphics[scale=0.65]{./wellen/images/kmax/krangewaveeven.png}
+	\includegraphics[scale=0.65]{./wellen/images/kmax/kmax.pdf}
 	\caption{Auswirkung unterschiedlicher $k_{\text{max}}$ auf Wellenform}
 	\label{fig:wellen:variablekmax}
 \end{figure}
