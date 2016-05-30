@@ -72,6 +72,8 @@ else
 endif
 
 axis([x_min, x_max, y_min, y_max]);
+xlabel("x");
+ylabel("y(x)");
 print("-depsc2", filename);
 
 toc();

@@ -1,100 +1,60 @@
 WHICH := which
-CAT := $(shell $(WHICH) cat)
 RM := $(shell $(WHICH) rm) -rf
-FIND := $(shell $(WHICH) find)
-GREP := $(shell $(WHICH) egrep)
 MAKE := $(shell $(WHICH) make)
 MKDIR := $(shell $(WHICH) mkdir) -p
-MOVE := $(shell $(WHICH) mv)
 EPSTOPDF := $(shell $(WHICH) epstopdf)
 OCTAVE := $(shell $(WHICH) octave)
 CD := cd
 ECHO := @printf
 
 IMAGEPATH := 
+FILENAME :=
+OPTIONS :=
+PLOTOPTIONS :=
 
-EPSEXTENSION := '.eps$$'
+.PHONY: all plots plot dataonly plotonly kmax n4 clean
 
-EPSFILES := $(FIND) . | $(GREP) $(EPSEXTENSION)
+all:	createsubdirs
+	$(MAKE) plots
 
-.PHONY: all n1 n4 sin sinh cos cosh kmax vara1 vara2 varc1 varc2 createsubdirs clean
-
-all:	createsubdirs subdirs
-	@$(foreach file, $(shell $(EPSFILES)), $(EPSTOPDF) $(file);)
-
-subdirs:
-	$(MAKE) n1 IMAGEPATH='./images/allgemein/n1'
+plots:
+	$(MAKE) plot IMAGEPATH='./images/allgemein' FILENAME='n1' OPTIONS='-polynom "-1x+0" -xmin -10 -xmax 10' PLOTOPTIONS='-din "./images/allgemein/n1.dat"'
+	$(MAKE) plot IMAGEPATH='./images/basicfunctions' FILENAME='sin' OPTIONS='-polynom "1" -xmin -10 -xmax 10 -ymin -2 -ymax 2 -a0 0 -a1 1' PLOTOPTIONS='-din "./images/basicfunctions/sin.dat"'
+	$(MAKE) plot IMAGEPATH='./images/basicfunctions' FILENAME='sinh' OPTIONS='-polynom "-1" -xmin -10 -xmax 10 -ymin -40 -ymax 40 -a0 0 -a1 1' PLOTOPTIONS='-din "./images/basicfunctions/sinh.dat"'
+	$(MAKE) plot IMAGEPATH='./images/basicfunctions' FILENAME='cos' OPTIONS='-polynom "1" -xmin -10 -xmax 10 -ymin -2 -ymax 2 -a0 1 -a1 0' PLOTOPTIONS='-din "./images/basicfunctions/cos.dat"'
+	$(MAKE) plot IMAGEPATH='./images/basicfunctions' FILENAME='cosh' OPTIONS='-polynom "-1" -xmin -10 -xmax 10 -ymin -40 -ymax 40 -a0 1 -a1 0' PLOTOPTIONS='-din "./images/basicfunctions/cosh.dat"'
+	$(MAKE) plot IMAGEPATH='./images/vara' FILENAME='vara1' OPTIONS='-polynom "1/2^1x^2+0x+-1" -ymin -5 -ymax 5 -calczerosn2 true' PLOTOPTIONS='-din "./images/vara/vara1.dat"'
+	$(MAKE) plot IMAGEPATH='./images/vara' FILENAME='vara2' OPTIONS='-polynom "1/2^2x^2+0x+-1" -ymin -5 -ymax 5 -calczerosn2 true' PLOTOPTIONS='-din "./images/vara/vara2.dat"'
+	$(MAKE) plot IMAGEPATH='./images/varc' FILENAME='varc1' OPTIONS='-polynom "1x^2+0x+-1" -ymin -5 -ymax 5 -calczerosn2 true' PLOTOPTIONS='-din "./images/varc/varc1.dat"'
+	$(MAKE) plot IMAGEPATH='./images/varc' FILENAME='varc2' OPTIONS='-polynom "1x^2+0x+-2" -ymin -5 -ymax 5 -calczerosn2 true' PLOTOPTIONS='-din "./images/varc/varc2.dat"'
+	$(MAKE) kmax IMAGEPATH='./images/kmax' FILENAME='kmax' 
 	$(MAKE) n4 IMAGEPATH='./images/allgemein'
-	$(MAKE) sin IMAGEPATH='./images/basicfunctions/sin'
-	$(MAKE) sinh IMAGEPATH='./images/basicfunctions/sinh'
-	$(MAKE) cos IMAGEPATH='./images/basicfunctions/cos'
-	$(MAKE) cosh IMAGEPATH='./images/basicfunctions/cosh'
-	$(MAKE) kmax IMAGEPATH='./images/kmax/kmax'
-	$(MAKE) vara1 IMAGEPATH='./images/vara/vara1'
-	$(MAKE) vara2 IMAGEPATH='./images/vara/vara2'
-	$(MAKE) varc1 IMAGEPATH='./images/varc/varc1'
-	$(MAKE) varc2 IMAGEPATH='./images/varc/varc2'
 
-n1:
-	$(OCTAVE) ./octave/yx.m -polynom "-1x+0" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
+$(IMAGEPATH)/$(FILENAME).dat:
+	$(OCTAVE) ./octave/yx.m -dout "$(IMAGEPATH)/$(FILENAME).dat" $(OPTIONS)
 
-n2:
-	$(OCTAVE) ./octave/yx.m -polynom "-1/3x^2+0x+5" -dout "$(IMAGEPATH)/n2.dat" -kmax 300 -a0 -1 -a1 0
+$(IMAGEPATH)/$(FILENAME).eps:
+	$(OCTAVE) ./octave/plotter.m -fout "$(IMAGEPATH)/$(FILENAME).eps" $(PLOTOPTIONS)
 
-n4:	n2
-	$(OCTAVE) ./octave/yx.m -polynom "1/3.75^4x^4+0x^3+-1/3x^2+0x+5" -dout "$(IMAGEPATH)/n4.dat" \
-		-kmax 300 -a0 -1 -a1 0
-	$(OCTAVE) ./octave/plotter.m -fout "$(IMAGEPATH)/n4.eps" -n4 "$(IMAGEPATH)"
+plot:	$(IMAGEPATH)/$(FILENAME).dat $(IMAGEPATH)/$(FILENAME).eps
+	$(EPSTOPDF) $(IMAGEPATH)/$(FILENAME).eps
 
-sin:	
-	$(OCTAVE) ./octave/yx.m -polynom "1" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10 \
-		-ymin -2 -ymax 2 -a0 0 -a1 1
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
+dataonly:	$(IMAGEPATH)/$(FILENAME).dat
 
-sinh:
-	$(OCTAVE) ./octave/yx.m -polynom "-1" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10 \
-		-ymin -40 -ymax 40 -a0 0 -a1 1
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
-
-cos:
-	$(OCTAVE) ./octave/yx.m -polynom "1" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10 \
-		-ymin -2 -ymax 2 -a0 1 -a1 0
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
-
-cosh:
-	$(OCTAVE) ./octave/yx.m -polynom "-1" -dout "$(IMAGEPATH).dat" -xmin -10 -xmax 10 \
-		-ymin -40 -ymax 40 -a0 1 -a1 0
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
+plotonly:	$(IMAGEPATH)/$(FILENAME).eps
+	$(EPSTOPDF) $(IMAGEPATH)/$(FILENAME).eps
 
 kmax:
 	number=30 ; \
 	while [[ $$number -le 240 ]] ; do \
-		$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-1" -dout "$(IMAGEPATH)-$$number.dat" \
-		-xmin -10 -xmax 10 -ymin -40 -ymax 40 -kmax $$number; \
+		$(MAKE) dataonly FILENAME="$(FILENAME)-$$number" OPTIONS="-polynom "1x^2+0x+-1" -xmin -10 -xmax 10 -ymin -40 -ymax 40 -kmax $$number"; \
 		((number = number + 30)) ; \
 	done
-	$(OCTAVE) ./octave/plotter.m -fout "$(IMAGEPATH).eps" -kmax "./images/kmax"
+	$(MAKE) plotonly PLOTOPTIONS='-kmax "$(IMAGEPATH)"'
 
-vara1:
-	$(OCTAVE) ./octave/yx.m -polynom "1/2^1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
-		-calczerosn2 true
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
-
-vara2:
-	$(OCTAVE) ./octave/yx.m -polynom "1/2^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
-		-calczerosn2 true
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
-
-varc1:
-	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-1" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
-		-calczerosn2 true
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
-
-varc2:
-	$(OCTAVE) ./octave/yx.m -polynom "1x^2+0x+-2" -dout "$(IMAGEPATH).dat" -ymin -5 -ymax 5 \
-		-calczerosn2 true
-	$(OCTAVE) ./octave/plotter.m -din "$(IMAGEPATH).dat" -fout "$(IMAGEPATH).eps"
+n4:
+	$(MAKE) dataonly FILENAME='n2' OPTIONS='-polynom "-1/3x^2+0x+5" -kmax 300 -a0 -1 -a1 0'
+	$(MAKE) plot FILENAME='n4' OPTIONS='-polynom "1/3.75^4x^4+0x^3+-1/3x^2+0x+5" -kmax 300 -a0 -1 -a1 0' PLOTOPTIONS='-n4 "$(IMAGEPATH)"'
 
 createsubdirs:	
 	$(MKDIR) ./images/allgemein ./images/basicfunctions ./images/kmax ./images/vara ./images/varc
