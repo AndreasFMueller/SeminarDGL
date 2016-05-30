@@ -42,20 +42,38 @@
 \section{Einleitung}
 Der Blick an den Nachthimmel fasziniert uns Menschen schon seit Jahrtausenden. "Ahnlich der Frage "uber das Leben nach dem Tod wurden damit ganze Religionen und Kulturen begr"undet beziehungsweise zugrunde gerichtet. 
 "Uber die Jahrhunderte wuchs die Einsicht, wenn auch nicht stetig und leider auch nicht strikt monoton, dass eine genauere Vermessung des Nachthimmels, die Astrometrie, wenigstens physikalische Grundlagen zur Diskussion betragen kann. 
-W"ahrend Galileo Galilei noch mit blossem Auge und einem besseren Flaschenboden den Nachhimmel beobachtete (TODO: QUELLE), nutzte T. Brahe bereits ein XXX Teleskop (TODO: QUELLE). 
-Beide beobachteten die Bewegungen der Planeten unseres Sonnensystems und nahmen die Positionen entfernterer Sterne, Galaxien und anderen Objekten als sogenannte Fixsterne als konstant an. 
-W"ahrend die Nasa und andere noch daran t"ufteln einen Menschen auf unseren n"achsten Nachbarplaneten zu bugsieren, sind unsere Blicke und v.a. unsere Neugier bereits Milliarden von Lichtjahren "uber unser Sonnensystem hinaus ins Weltall gerichtet. 
+Schon Galileo Galilei beobachtete mit seinem Teleskop den Nachthimmel um seine Aussagen über die Bewegung der Erde um die Sonne zu belegen.
+Er beobachtete die Bewegungen der Planeten unseres Sonnensystems und nahm die Positionen entfernterer Sterne, Galaxien und anderen Objekten als sogenannte Fixsterne als konstant an. 
+W"ahrend die Nasa und andere noch daran t"ufteln einen Menschen auf unseren n"achsten Nachbarplaneten zu bugsieren, sind unsere Blicke und vor allem unsere Neugier bereits Milliarden von Lichtjahren "uber unser Sonnensystem hinaus ins Weltall gerichtet. 
 Die ehemaligen Fixsterne sind zu dynamischen Konstallationen erstaunlicher Ph"anomene geworden.
 Neue Technologien der Sensorik erz"ahlen uns von der materiellen Zusammensetzung leuchtender Gaswolken. 
 Gewaltige Pulsare werden zu Meilensteinen intergalaktischen Kartographie. 
 Die Bewegung und die unfassbaren Distanzen ganzer Galaxien von unserem Heimatplaneten geben uns sogar die M"oglichkeit in der Zeit zur"uck zu blicken.
-Die Gr"osse unseres Universums  erlaubt es sogar Annahmen "uber das Schicksal unseres eigenen Sonnensystems zu treffen, indem wir andere Systeme beobachten. 
+Die Gr"osse unseres Universums  erlaubt es sogar Analogien des Schicksals unseres eigenen Sonnensystems zu finden, indem wir andere Systeme beobachten. 
 Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine hohe Pr"azision bei der Konstruktion der verwendeten Messinstrumente sowie ein tiefes Verst"andnis aller mo"glichen Effekte, die unseren Blick in die Tiefe des Weltalls beeinflussen. 
 Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten (TODO: QUELLE), die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
-Schon in der Primarschule lehr der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
+Schon in der Primarschule lehrt der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
 In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
 
+\section{Allgemeine Problemstellung}
+Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl''ache aus, welches das Licht eines entfernten Sternes einf''angt. 
+Wir vernachl''assigen s''amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und besch''anken uns auf die Betrachtung der durch die Atmosp''are der Erde verursachte Brechung.
+Die Lufth''ulle unseres Planeten und ihre physikalischen Eigenschaften k''onnen beliebig komplex modelliert werden. 
+Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das Planare und das Sph''arische Modell.
+Wir m''ochten die Resultate der dazugeh''origen Simulationen untereinander vergleichen k''onnen. 
+Wir definieren daf''ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
+
+\begin{figure}
+  \centering
+  \includegraphics{licht/standalone/fig_delta_alpha.pdf}
+  \caption{Skizze des Mass der Kr"ummung $\Delta \alpha$. \label{fig:skizze_mass}}
+\end{figure}
+
 \section{Planares Modell} 
+
+Das planare Modell vernachl''assigt die Kr''ummung der Erdoberfl''ache und betrachtet die Atmosph''are als Abfolge von Luftschichten mit verschiedenen Brechungsindices. 
+Der Brechungsindex einer Luftschicht ist dabei nur von der H''ohe ``uber Boden ab''angig und innerhalb einer Schicht konstant.
+
 \begin{figure}
 \centering
 \includegraphics{licht/standalone/fig_planar_skizze.pdf}
@@ -63,8 +81,7 @@ In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth 
 \label{fig:13_1}
 \end{figure}
 
-
-F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir von Snell's Law aus: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$.
+F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir vom Snelliusschen Brechungsgesetz aus: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$.
 Mit der in der Abbildung \ref{fig:13_1} verwendeten Notation:
 
 \begin{equation} \label{eq:13_1}
@@ -76,7 +93,7 @@ $$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
 $$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
 
 Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
-Da dies m"oglicherweise gleich Null sein kann, muss dieser Fall separat behandelt werden (siehe Kapitel \ref{ch:spezialfall}). 
+Da dies m"oglicherweise gleich Null sein kann, muss dieser Fall separat behandelt werden (siehe Abschnitt \ref{ch:spezialfall}). 
 Von nun an gilt die Bedingung: $y'(x) \neq 0$.
 
 \begin{equation} \label{eq:13_2}
@@ -104,16 +121,6 @@ $$y''(x) = \frac{n'_y}{n} \cdot \left( y' + \frac{1}{y'} \right)$$
 \begin{equation} \label{eq:planar_DGL}
 y''(x) = \frac{n'_y}{n} \cdot \left( y'^2 + 1\right)
 \end{equation}
-
-\subsection{Vergleichsgr"osse $\Delta \alpha$}
-Um die Resultate vergleichen zu k"onnen, brauchen wir ein Mass f"ur die Brechung. 
-Wir definieren $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). Diese Gr"osse wird sowie im Planaren, als auch im Sph"arischen Modell verwendet. 
-
-\begin{figure}
-  \centering
-  \includegraphics{licht/standalone/fig_delta_alpha.pdf}
-  \caption{Skizze des Mass der Kr"ummung $\Delta \alpha$. \label{fig:skizze_mass}}
-\end{figure}
 
 
 \subsection{Verifikation}
