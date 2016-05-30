@@ -59,7 +59,7 @@ In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth 
 Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl''ache aus, welches das Licht eines entfernten Sternes einf''angt. 
 Wir vernachl''assigen s''amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und besch''anken uns auf die Betrachtung der durch die Atmosp''are der Erde verursachte Brechung.
 Die Lufth''ulle unseres Planeten und ihre physikalischen Eigenschaften k''onnen beliebig komplex modelliert werden. 
-Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das Planare und das Sph''arische Modell.
+Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das Sph''arische Modell.
 Wir m''ochten die Resultate der dazugeh''origen Simulationen untereinander vergleichen k''onnen. 
 Wir definieren daf''ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
 
@@ -81,7 +81,9 @@ Der Brechungsindex einer Luftschicht ist dabei nur von der H''ohe ``uber Boden a
 \label{fig:13_1}
 \end{figure}
 
-F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir vom Snelliusschen Brechungsgesetz aus: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$.
+F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir vom Brechungsgesetz von Snellius aus, welches Ein- und Ausfallswinkel in Beziehung zu den konstanten Brechungsindices zweier homogenen Medien setzt: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$
+Wir m"ochten nun modellieren, dass es nicht einen haupts"achlichen, sondern viele kleine "Uberg"ange von einem Brechungsindex zum n"achsten gibt. 
+
 Mit der in der Abbildung \ref{fig:13_1} verwendeten Notation:
 
 \begin{equation} \label{eq:13_1}
@@ -182,7 +184,7 @@ Wie in der Abbildung \ref{fig:planares_modell1} an der blauen Kurve mit $f'(0) =
 
 \section{Sph"arisches Modell}
 
-Wir beginnen erneut mit Snell's Law, welche wir auf unser Sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepasst wurde: 
+Wir beginnen erneut mit Snell's Law, welche wir auf unser sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepasst wurde: 
 
 $$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
 
@@ -198,7 +200,7 @@ n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha
 \end{equation}
 
 Somit sind nicht mehr zwei verschiedene Winkel in der Formel vorhanden.
-Wie beim Planaren Modell ist dieses Produkt konstant.  
+Wie beim planaren Modell ist dieses Produkt konstant.  
 Aus dem Dreieck $MNP$ kann folgende Beziehung hergeleitet werden:
 
 $$\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{dr} = \frac{r}{r'}$$
@@ -214,7 +216,7 @@ $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin
 \begin{figure} 
 \centering
 \includegraphics[scale=1]{licht/standalone/fig_sphere_skizze.pdf}
-\caption{Skizze des Sph"arischen Modells. \label{fig:sphere_skizze}}
+\caption{Skizze des sph"arischen Modells. \label{fig:sphere_skizze}}
 \end{figure}
 
 W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. 
@@ -261,7 +263,7 @@ Nun setzen wir dies in die Differentialgleichung \ref{eq:sphere_allg} ein und be
 \begin{figure}
 \centering
 \includegraphics[scale=1]{licht/standalone/fig_sphere_simulation_vacuum.pdf}
-\captionof{figure}{L"osung des Sph"arischen Modells mit $n(r) = 1$. \label{fig:sphaerisches_modell1}}
+\captionof{figure}{L"osung des sph"arischen Modells mit $n(r) = 1$. \label{fig:sphaerisches_modell1}}
 \end{figure}
 
 \begin{figure}
@@ -404,7 +406,7 @@ Um $\sigma$ abzusch"atzen, wird in der Abbildung \ref{fig:athmosphere_profile} F
 Die H"ohe bei 36.8\% der Maximaldichte (Dichte auf Meeresh"ohe) entspricht $\sigma$. 
 Somit wird $\sigma \approx 9 * 10^3$.
 
-Mit diesen Parametern l"asst sich die erneut die L"osung zum Sph"arischen Modell nummerisch Berechnen. 
+Mit diesen Parametern l"asst sich die erneut die L"osung zum sph"arischen Modell nummerisch Berechnen. 
 Aufgrund der Parameter erwarten wir eine sehr schwache Kr"ummung. 
 Dies kann man auch an der Abbildung \ref{fig:sphere_real} erkennen. 
 Die Vergleichsgr"osse $\Delta \alpha$, welche aus der Simulation resultiert, zeigt erneut, dass der Lichtstrahl st"arker gebrochen wird, wenn er horizontal eintrifft. 
