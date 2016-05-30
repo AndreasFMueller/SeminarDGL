@@ -1,6 +1,8 @@
 *.aux
+*.auxlock
 *.bbl
 *.blg
+*.dvi
 *.out
 *.toc
 *.pdf
@@ -17,16 +19,19 @@ skript/chapters/images/harvest
 skript/chapters/images/harvest.mp
 **/*.[0-9]
 **/*.[0-9][0-9]
-**/skript-blx.bib
-**/skript.run.xml
+**/*-blx.bib
+**/*.run.xml
 **/mptextmp.mp
 *.dat
 *.swp
 *.bak
-#*.png
+*.eps
+*.project
+*.texlipse
 
 skript/kreis/besselfunction.png
 !skript/chapters/substitute.png
 
 #tikz pdf-images
-!skript/licht/standalone/*.pdf
+#recreated on every make
+#!skript/licht/standalone/*.pdf
