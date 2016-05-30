@@ -18,7 +18,7 @@
 \usepackage{textcomp}
 \usepackage[all]{xy}
 \usepackage{txfonts}
-\usepackage{alltt}
+\usepackage{alltt} 
 \usepackage{verbatim}
 \usepackage{paralist}
 \usepackage{makeidx}
@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
 %\usepackage{pgfmath}
 \usepackage{placeins}
 \usepackage{subfigure}
@@ -42,6 +43,7 @@
 \usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit}
 \usetikzlibrary{patterns,decorations.pathreplacing}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
 \usepackage[europeanvoltages,
             europeancurrents,
             europeanresistors,   % rectangular shape
@@ -55,6 +57,10 @@
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usetikzlibrary{arrows}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
 \usepackage{listings}
 \lstdefinestyle{Matlab}{
   numbers=left,
@@ -195,8 +201,14 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \BODY
 \end{proof}
 }
-\NewEnviron{diskussion}{
-\begin{proof}[Diskussion]
+\NewEnviron{diskussion}{%
+\begin{proof}[Diskussion]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\NewEnviron{hinweis}{%
+\begin{proof}[Hinweis]%
 \renewcommand{\qedsymbol}{}
 \BODY
 \end{proof}
@@ -221,6 +233,7 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \newtheorem{hilfssatz}[satz]{Hilfssatz}
 \newtheorem{definition}[satz]{Definition}
 \newtheorem{annahme}[satz]{Annahme}
+\renewcommand{\floatpagefraction}{0.75}
 \mainmatter
 \input{vorwort.tex}
 \part{Grundlagen}

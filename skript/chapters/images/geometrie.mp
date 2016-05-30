@@ -288,4 +288,202 @@ beginfig(11)
 	label.rt(btex $y_2$ etex, (0,u+10));
 endfig;
 
+%
+% 
+%
+beginfig(12)
+
+numeric u;
+u := 100;
+
+z0 = (0,0);
+
+path p;
+p := (-3, mexp(-3 * 256));
+
+for v = -2.9 step 0.1 until 2:
+	p := p--(v, mexp(v * 256));
+endfor;
+
+pickup pencircle scaled 1pt;
+
+for s = -400 step 20 until 400:
+	draw p scaled u shifted (s, 0);
+endfor;
+
+z1 = (-100,30);
+z2 = ( 100,30);
+z3 = ( 100,170);
+z4 = (-100,170);
+
+z5 = (   0, 100);
+
+pickup pencircle scaled 1pt;
+draw p scaled u withcolor red;
+
+path border;
+border = z1--z2--z3--z4--cycle;
+
+clip currentpicture to border;
+
+pickup pencircle scaled 4pt;
+draw z5 withcolor red;
+pickup pencircle scaled 3pt;
+draw z5 withcolor white;
+
+label.ulft(btex $y_0$ etex, z5) withcolor red;
+
+endfig;
+
+input harvest.mp;
+%
+% periodische Bahnen
+%
+beginfig(13)
+
+numeric u;
+u := 75;
+
+pickup pencircle scaled 1pt;
+
+draw patha scaled u;
+draw pathb scaled u;
+draw pathc scaled u;
+draw pathd scaled u;
+draw pathe scaled u;
+
+draw pathf scaled u;
+draw pathg scaled u;
+draw pathh scaled u;
+
+draw pathi scaled u;
+draw pathj scaled u;
+draw pathk scaled u;
+draw pathl scaled u;
+draw pathm scaled u;
+
+draw pathn scaled u;
+draw patho scaled u;
+draw pathp scaled u;
+
+draw pathq scaled u;
+draw pathr scaled u;
+draw paths scaled u;
+draw patht scaled u;
+draw pathu scaled u;
+draw pathv scaled u;
+draw pathw scaled u;
+
+pickup pencircle scaled 1.5pt;
+draw pathx scaled u withcolor red;
+draw pathy scaled u withcolor blue;
+
+z0 = (    0,       0);
+z1 = (5 * u,       0);
+z2 = (    0,-0.5 * u);
+z3 = (    0, 1.5 * u);
+
+path border;
+border = (0,-0.5)--(5,-0.5)--(5,1.5)--(0,1.5)--cycle;
+clip currentpicture to border scaled u;
+
+pickup pencircle scaled 1.0pt;
+
+drawarrow (z0 shifted (-10,0))--(z1 shifted (10,0));
+drawarrow (z2 shifted (0,-10))--(z3 shifted (0,10));
+
+label.top(btex $x$ etex, z1 shifted (10,0));
+label.rt(btex $y$ etex, z3 shifted (0,10));
+
+endfig;
+
+input cube.mp;
+%
+% Phasendiagramm fuer ein kubisches f
+%
+beginfig(14)
+
+numeric u;
+u := 80;
+
+z0 = (0,0);
+z1 = (-2.0 * u,        0);
+z2 = ( 2.0 * u,        0);
+z3 = (       0, -1.6 * u);
+z4 = (       0,  1.6 * u);
+
+z5 = (       0,        u);
+z6 = (       0,       -u);
+
+fill z1--z2--(z2 shifted z5)--(z1 shifted z5)--cycle withcolor (0.95,0.95,1);
+fill z1--z2--(z2 shifted z6)--(z1 shifted z6)--cycle withcolor (1,0.95,0.95);
+fill (z1 shifted z5)--(z2 shifted z5)--(z2 shifted z4)--(z1 shifted z4)--cycle withcolor (1,0.95,0.95);
+fill (z1 shifted z6)--(z2 shifted z6)--(z2 shifted z3)--(z1 shifted z3)--cycle withcolor (0.95,0.95,1);
+
+label.ulft(btex $1$ etex, z2 shifted z5);
+label.llft(btex $-1$ etex, z2 shifted z6);
+
+pickup pencircle scaled 1.5pt;
+
+draw patha scaled u withcolor blue;
+draw pathb scaled u withcolor blue;
+draw pathc scaled u withcolor blue;
+draw pathd scaled u withcolor red;
+draw pathe scaled u withcolor red;
+draw pathf scaled u withcolor red;
+draw pathg scaled u withcolor red;
+draw pathh scaled u withcolor red;
+draw pathi scaled u withcolor blue;
+draw pathj scaled u withcolor blue;
+draw pathk scaled u withcolor blue;
+draw pathl scaled u withcolor blue;
+draw pathm scaled u withcolor blue;
+draw pathn scaled u withcolor red;
+draw patho scaled u withcolor red;
+draw pathp scaled u withcolor red;
+
+path border;
+border = (z1 shifted z3)--(z2 shifted z3)--(z2 shifted z4)--(z1 shifted z4)--cycle;
+clip currentpicture to border;
+
+pickup pencircle scaled 1pt;
+
+draw (z1 shifted z5 shifted (-55,0))--(z2 shifted z5) withcolor black;
+draw (z1 shifted z6 shifted (-55,0))--(z2 shifted z6) withcolor black;
+
+z10 = (-2 * u - 50, -1.4 * u);
+z11 = (-2 * u - 50,  1.4 * u);
+z12 = (-2 * u - 50, 0);
+
+pickup pencircle xscaled 2pt yscaled 0.1pt;
+
+drawarrow (z12 shifted (0, u))--(z12 shifted (0, 0.5 * u)) withcolor blue;
+drawarrow (z12 shifted (0,-u))--(z12 shifted (0,-0.5 * u)) withcolor red;
+draw (z12 shifted (0, 0.5 * u))--z12 withcolor blue;
+draw z12--(z12 shifted (0,-0.5 * u)) withcolor red;
+drawarrow (z12 shifted (0,u))--(z12 shifted (0,1.3 * u)) withcolor red;
+draw (z12 shifted (0,1.3 * u))--(z12 shifted (0,1.6*u)) withcolor red;
+drawarrow (z12 shifted (0,-u))--(z12 shifted (0,-1.3 * u)) withcolor blue;
+draw (z12 shifted (0,-1.3 * u))--(z12 shifted (0,-1.6*u)) withcolor blue;
+
+label.top(btex Phasenportrait etex, z0) rotated 90 shifted z12 shifted (-5,0);
+label.top(btex $x$ etex, z2 shifted (10,0));
+label.rt(btex $y$ etex, z4 shifted (0,10));
+
+pickup pencircle scaled 1pt;
+
+drawarrow (z1 shifted (-55,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+pickup pencircle scaled 3pt;
+draw z12 shifted z5;
+draw z12 shifted z6;
+draw z12;
+
+label.urt(btex $1$ etex, z12 shifted z5);
+label.urt(btex $0$ etex, z12);
+label.urt(btex $-1$ etex, z12 shifted z6);
+
+endfig;
+
 end

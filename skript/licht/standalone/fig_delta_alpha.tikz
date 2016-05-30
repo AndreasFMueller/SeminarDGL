@@ -1,0 +1,43 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{
+  ring shading/.code args={from #1 at #2 to #3 at #4}{
+    \def\colin{#1}
+    \def\radin{#2}
+    \def\colout{#3}
+    \def\radout{#4}
+    \pgfmathsetmacro{\proportion}{\radin/\radout}
+    \pgfmathsetmacro{\outer}{.8818cm}
+    \pgfmathsetmacro{\inner}{.8818cm*\proportion}
+    \pgfmathsetmacro{\innerlow}{\inner-0.01pt}
+    \pgfdeclareradialshading{ring}{\pgfpoint{0cm}{0cm}}%
+    {
+      color(0pt)=(white);
+      color(\innerlow)=(white);
+      color(\inner)=(#1);
+      color(\outer)=(#3)
+    }
+    \pgfkeysalso{/tikz/shading=ring}
+  },
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw [thick] (60:1) arc (60:120:1);
+    \draw [blue, thick] plot [smooth] coordinates {(0.00000,1.00000)(-0.02913,1.01430)(-0.05912,1.02850)(-0.09001,1.04260)(-0.12186,1.05660)(-0.15622,1.07112)(-0.19174,1.08553)(-0.22848,1.09983)(-0.26652,1.11403)(-0.30594,1.12812)(-0.34683,1.14210)(-0.38928,1.15598)(-0.43341,1.16975)(-0.47931,1.18342)(-0.52714,1.19699)(-0.57702,1.21047)(-0.62912,1.22384)(-0.68363,1.23713)(-0.74072,1.25033)(-0.80064,1.26345)(-0.86364,1.27649)(-0.93000,1.28947)(-1.00004,1.30239)(-1.07415,1.31527)(-1.15276,1.32813)(-1.23636,1.34098)(-1.32554,1.35386)(-1.42096,1.36679)(-1.52345,1.37982)(-1.63395,1.39301)(-1.75359,1.40640)(-1.88375,1.42009)(-2.02615,1.43419)(-2.18287,1.44884)(-2.35647,1.46418)(-2.55025,1.48045)(-2.76851,1.49798)(-3.02833,1.51805)};
+    \draw [dashed] (0,1) -- ++(153.43:2);
+    \draw [dashed] (-3.02833,1.51805) -- ++(-4.417:3);
+    \draw (133.356:2.6056) arc (153.43:175.583:1.3) node [above right, yshift=-0.5mm] {$\Delta \alpha$}; 
+\end{tikzpicture}
+
+\end{document}

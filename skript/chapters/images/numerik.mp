@@ -179,4 +179,123 @@ label.top(btex $k$ etex, z1 shifted (5,0));
 
 endfig;
 
+%
+% Runge-Kutta-Verfahren
+%
+beginfig(4)
+
+def f(expr z) =
+	(ypart z, -xpart z)
+enddef;
+
+numeric u;
+u := 300;
+
+z0 = (        0,        0);
+z1 = (-0.15 * u,        0);
+z2 = ( 0.80 * u,        0);
+z3 = (        0, 0.60 * u);
+z4 = (        0, 1.10 * u);
+
+def halfcircle(expr z, w) =
+	path p;
+	p := z rotated 90;
+	for a = 89 step -1 until -90:
+		p := p--(z rotated a);
+	endfor;
+	pickup pencircle scaled w;
+	draw p withcolor red;
+enddef;
+
+for r = 0.1 step 0.025 until 1.5:
+	halfcircle((0, u * r), 0.3pt);
+endfor;
+halfcircle((0,u), 1pt);
+
+clip currentpicture to (z1 shifted z3)--(z2 shifted z3)--(z2 shifted z4)--(z1 shifted z4)--cycle;
+
+numeric h;
+h := 0.75;
+numeric hh;
+hh := 0.2;
+z10 = (0,1) rotated 3;
+               z20 = z10;       z30 = z20;
+z11 = f(z30);  z21 = z10 + hh * z11; z31 = z20 + 0.5 * h * z11;
+z12 = f(z31);  z22 = z10 + hh * z12; z32 = z20 + 0.5 * h * z12;
+z13 = f(z32);  z23 = z10 + hh * z13; z33 = z20 +       h * z13;
+z14 = f(z33);  z24 = z10 + hh * z14;
+
+z40 = (z11 + 2 * z12 + 2 * z13 + z14);
+z35 = z10 + z40 * h/6;
+
+draw (z10--z35) scaled u withcolor green;
+
+draw      (z20--z31) scaled u withcolor 0.9;
+drawarrow (z20--z21) scaled u; label.top(btex $k_1$ etex, z21 scaled u);
+
+draw      (z20--z32) scaled u withcolor 0.9;
+drawarrow (z20--z22) scaled u; label.top(btex $k_2$ etex, z22 scaled u);
+
+draw      (z20--z33) scaled u withcolor 0.9;
+drawarrow (z20--z23) scaled u; label.bot(btex $k_3$ etex, z23 scaled u);
+
+drawarrow (z20--z24) scaled u; label.bot(btex $k_4$ etex, z24 scaled u);
+%drawarrow (z20--z23) scaled u; label.top(btex $k_3$ etex, z23 scaled u);
+%drawarrow (z20--z24) scaled u; label.top(btex $k_4$ etex, z24 scaled u);
+
+z51 = f(z31);
+drawarrow (z31--(z31 shifted (hh * z51))) scaled u
+	withcolor blue;
+label.urt(btex $k_2$ etex, z31 shifted (hh * z51) scaled u) withcolor blue;
+
+z52 = f(z32);
+drawarrow (z32--(z32 shifted (hh * z52))) scaled u
+	withcolor blue;
+label.urt(btex $k_3$ etex, z32 shifted (hh * z52) scaled u) withcolor blue;
+
+z53 = f(z33);
+drawarrow (z33--(z33 shifted (hh * z53))) scaled u
+	withcolor blue;
+label.urt(btex $k_4$ etex, z33 shifted (hh * z53) scaled u) withcolor blue;
+
+label.top(btex $y_k$ etex, z10 scaled u);
+label.urt(btex $y_{k+1}$ etex, z35 scaled u);
+
+label.urt(btex $y_k + \frac{h}2k_1$ etex, z31 scaled u);
+label.urt(btex $y_k + \frac{h}2k_2$ etex, z32 scaled u);
+label.llft(btex $y_k + hk_3$ etex, z33 scaled u);
+
+pickup pencircle scaled 4pt;
+
+draw z10 scaled u;
+draw z31 scaled u;
+draw z32 scaled u;
+draw z33 scaled u;
+%draw z20 scaled u;
+%draw z31 scaled u;
+%draw z32 scaled u;
+%draw z33 scaled u;
+
+draw z35 scaled u withcolor green;
+
+pickup pencircle scaled 2.5pt;
+
+draw z10 scaled u withcolor white;
+draw z31 scaled u withcolor white;
+draw z32 scaled u withcolor white;
+draw z33 scaled u withcolor white;
+%draw z20 scaled u withcolor white;
+%draw z31 scaled u withcolor white;
+%draw z32 scaled u withcolor white;
+%draw z33 scaled u withcolor white;
+
+draw z35 scaled u withcolor white;
+
+pickup pencircle scaled 1pt;
+
+%drawarrow (z0 shifted (-10,0))--(z1 shifted (10,0));
+%drawarrow (z0 shifted (0,-10))--(z2 shifted (0,10));
+
+endfig;
+
 end

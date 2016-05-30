@@ -5,10 +5,10 @@
 %
 \chapter{Grundlagen der Theorie der gew"ohnlichen Differentialgleichungen
 \label{chapter:grundlagen}}
-\lhead{}
-\rhead{Grundlagen}
+\rhead{}
+\lhead{Grundlagen}
 \section{Differentialgleichungen\label{section:differentialgleichungen}}
-\lhead{Differentialgleichungen}
+\rhead{Differentialgleichungen}
 Eine gew"ohnliche Differentialgleichung f"ur eine reellwertige
 Funktion $y(x)$ stellt einen Zusammenhang her zwischen der Funktion
 und ihren Ableitungen.
@@ -983,7 +983,7 @@ Dies ist eine lineare inhomogene Differentialgleichung erster Ordnung
 f"ur die Matrix $C(x)$.
 
 \section{Analytische L"osungsverfahren\label{section:analytischeverfahren}}
-\lhead{Analytische L"osungsverfahren}
+\rhead{Analytische L"osungsverfahren}
 Nur wenige Differentialgleichungen lassen sich in geschlossener Form
 l"osen, weshalb wird in Kapitel~\ref{chapter:numerik} Methoden zur
 numerischen L"osung studieren werden.
@@ -1294,7 +1294,7 @@ aus den L"osungen der homogenen Differentialgleichung dadurch gewinnen
 l"asst, dass man die Amplituden von $x$ abh"angig macht.
 Wir erwarten daher die partikul"are L"osung in der Form
 \[
-y_p(x)=A_1(x)y_1(x)+A_2y_2(x)
+y_p(x)=A_1(x)y_1(x)+A_2(x)y_2(x)
 \]
 mit noch zu bestimmenden Funktionen $A_1(x)$ und $A_2(x)$.
 In den folgenden Rechnungen lassen wir das Argument der K"urze und Lesbarkeit
@@ -1454,23 +1454,25 @@ y_p(x)=\sum_{i=1}^n A_i(x)y_i(x)
 eine partiklu"are L"osung ist.
 Dazu setzen wir den Ansatz f"ur $y_p(x)$ in die Differentialgleichung
 ein und erhalten
-\begin{align*}
+\begin{align}
 \sum_{i=1}^n\biggl(
 A'_i(x)y_i(x) + A_i(x)y_i'(x)
 +
 A_i(x)f(x)\cdot y_i(x)\biggr)
-&=g
-(x)
+&=
+g(x)
+\notag
 \\
 \sum_{i=1}^n\biggl(
 A_i'(x)y_i(x) + A_i\bigl(\underbrace{y_i'(x)+f(x)y_i(x)}_{=0}\bigr)
 \biggr)
 &=
 g(x)
+\notag
 \\
 A_i'(x)y_i(x)&=g(x).
 \label{grundlagen:agl}
-\end{align*}
+\end{align}
 In dieser Schreibweise ist nicht so klar, wie man die Koeffizienten
 $A_i(x)$ bestimmen k"onnte.
 Die Koeffizienten bilden einen Spaltenvektor, den wir mit
@@ -1611,6 +1613,7 @@ Amplitude nimmt mit zunehmendem $\omega$ immer mehr ab.
 \end{beispiel}
 
 \section{Lokal-Global-"Ubergang}
+\rhead{Lokal-Global-"Ubergang}
 Eine Differentialgleichung beschreibt einen Zusammenhang zwischen
 lokale Eigenschaften einer Funktion, also Eigenschaften, die in einer
 beliebig kleine Umgebung eines Wertes $x$ der unabh"angigen Variablen

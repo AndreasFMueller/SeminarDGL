@@ -4,8 +4,8 @@
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
 \chapter{Differentialgleichungen und lineare Algebra\label{chapter:linear}}
-\lhead{}
-\rhead{Lineare Differentialgleichungen}
+\rhead{}
+\lhead{Lineare Differentialgleichungen}
 Es lohnt sich, lineare Differentialgleichungen unter Zuhilfenahme
 der linearen Algebra etwas genauer zu untersuchen.
 Gel"ost werden soll das lineare Differentialgleichungssystem
@@ -22,6 +22,7 @@ Falls $f(t)=0$ ist, ist die Gleichung~(\ref{linear:gleichung})
 homogen.
 
 \section{Konstante Koeffizienten}
+\rhead{Konstante Koeffizienten}
 In diesem Abschnitt nehmen wir an, dass $A(t)$ konstant ist, wir schreiben
 einfach $A$ f"ur den konstanten Wert von $A(t)$.
 \subsection{Diagonalisierbare Koeffizientenmatrix}
@@ -681,7 +682,136 @@ y(x)=e^{-\sigma x}(1+\sigma x)y(0) + e^{-\sigma x}xy'(0)
 zu Anfangsbedingungen $y(0)$ und $y'(0)$.
 \end{beispiel}
 
+\subsection{Harmonischer Oszillator\label{linear:harmosz}}
+Ein ged"ampfter harmonischer Oszillator wird durch die lineare
+Differentialgleichung
+\begin{equation}
+\ddot X=-\lambda^2 X-b\dot X,\qquad X(0)=X_0,\qquad \dot X(0)=X_1.
+\label{linear:harmosz-dgl2}
+\end{equation}
+zweiter Ordnung beschrieben.
+Als Differentialgleichungssystem erster Ordnung geschrieben wird dies zu
+\begin{equation}
+\begin{aligned}
+y_1'&=y_2,                              &&&y_1(0)&=x_0, \\
+y_2'&=-\lambda^2 y_1-by_2 + \sigma w(x),&&&y_2(0)&=x_1.
+\end{aligned}
+\label{stochastsich:harmosz-dgl1}
+\end{equation}
+
+Wie bei den gew"ohnlichen Differentialgleichungen k"onnen wir diese
+Gleichung einfacher l"osen, wenn wir sie in Matrixform schreiben:
+\begin{equation}
+\frac{d}{dx} \begin{pmatrix}y_1\\y_2\end{pmatrix}
+=
+\underbrace{
+\begin{pmatrix}
+         0& 1\\
+-\lambda^2&-b
+\end{pmatrix}}_{\textstyle=D}
+\begin{pmatrix}y_1\\y_2\end{pmatrix}
++
+\begin{pmatrix}
+0\\\sigma
+\end{pmatrix}w(x)
+\end{equation}
+Die L"osung wird dann
+\begin{equation}
+\begin{pmatrix}
+y_1(x)\\y_2(x)
+\end{pmatrix}
+=
+e^{Dx}\begin{pmatrix}x_0\\x_1\end{pmatrix}
++
+\sigma \int_0^x e^{D(x-\xi)}\begin{pmatrix}0\\\sigma\end{pmatrix}w(\xi)\,d\xi.
+\label{linear:harmosz-explsg}
+\end{equation}
+
+\begin{beispiel}
+Wir berechnen die L"osung f"ur den Spezialfall $b=0$.
+Die Matrix $D$ ist
+\[
+D=\begin{pmatrix}
+0&1\\-\lambda^2&0
+\end{pmatrix}.
+\]
+Die Matrix $e^{Dx}$ kann durch Diagonalisierung berechnet werden.
+Die Transformationsmatrix
+\[
+T
+=
+\begin{pmatrix}
+1&1\\
+i\lambda&-i\lambda
+\end{pmatrix},
+\qquad
+T^{-1}
+=
+\frac12
+\begin{pmatrix}
+1& 1/i\lambda\\
+1&-1/i\lambda
+\end{pmatrix}
+\]
+bringt die Matrix $D$ in Diagonalform:
+\[
+T^{-1}DT
+=
+\begin{pmatrix}
+i\lambda&        0\\
+        &-i\lambda
+\end{pmatrix}.
+\]
+Daraus kann man jetzt die Exponentialfunktion berechnen:
+\begin{align*}
+T^{-1}e^{Dx}T
+&=
+\begin{pmatrix}
+\cos\lambda x+i\sin\lambda x&              0             \\
+              0             &\cos\lambda x-i\sin\lambda x
+\end{pmatrix}
+\\
+\Rightarrow\qquad\qquad
+e^{Dx}
+&=
+\begin{pmatrix}
+                \cos\lambda x&\frac1{\lambda}\sin\lambda x\\
+-\frac1{\lambda}\sin\lambda x&               \cos\lambda x
+\end{pmatrix}
+\end{align*}
+Daraus k"onnen wir jetzt die L"osung mit der
+Formel~(\ref{linear:harmosz-explsg}) ablesen:
+\begin{equation}
+\begin{pmatrix}
+y_1(x)\\y_2(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+                \cos\lambda x&\frac1{\lambda}\sin\lambda x\\
+-\frac1{\lambda}\sin\lambda x&               \cos\lambda x
+\end{pmatrix}
+\begin{pmatrix}x_0\\x_1\end{pmatrix}
++
+\sigma\int_0^t
+\begin{pmatrix}
+\frac1{\lambda}\sin\lambda(t-\tau)\\
+               \cos\lambda(t-\tau)
+\end{pmatrix}\,dW.
+\end{equation}
+Die erste Komponenten davon ist
+\begin{equation}
+y_1(x)
+=
+x_0\cos\lambda x+\frac{x_1}{\lambda}\sin\lambda x
++
+\frac{\sigma}{\lambda}\int_0^x\sin\lambda(x-\xi)w(\xi)\,d\xi,
+\label{linear:harmosz-y}
+\end{equation}
+die L"osung der Differentialgleichung.
+\end{beispiel}
+
 \section{Zeitabh"angige Koeffizienten}
+\rhead{Zeitabh"angige Koeffizienten}
 Die L"osung der Differentialgleichung~(\ref{linear:gleichung}) war
 deshalb einfach, weil wir die Matrixdifferentialgleichung
 \[

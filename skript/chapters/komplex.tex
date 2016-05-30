@@ -4,8 +4,8 @@
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
 \chapter{Komplexe Differentialgleichungen\label{chapter:komplexeanalysis}}
-\lhead{}
-\rhead{Komplexe Differentialgleichungen}
+\rhead{}
+\lhead{Komplexe Differentialgleichungen}
 Die bisher betrachteten Differentialgleichungen waren immer f"ur
 $x\in\mathbb R$ definiert.
 Bei der L"osung mit Hilfe von Potenzreihen haben wir L"osungsfunktionen
@@ -26,6 +26,7 @@ komplexen Variablen noch gar nicht definiert ist.
 % Komplex differenzierbare Funktion
 %
 \section{Komplex differenzierbare Funktionen}
+\rhead{Komplex differenzierbare Funktionen}
 Wir betrachten in diesem Kapitel komplexwertige Funktionen,
 die ein einem Teilgebiet der komplexen Ebene definiert sind.
 Ein {\em Gebiet} ist eine offene Teilmenge $\Omega\subset \mathbb C$.
@@ -186,7 +187,7 @@ f'(z)&
 \\
 f'(z)&
 =
-\lim_{y\to 0}\frac{f(z+x)-f(z)}{iy}
+\lim_{y\to 0}\frac{f(z+iy)-f(z)}{iy}
 =
 \frac1{i}
 \frac{\partial u}{\partial y}+\frac{\partial v}{\partial y}
@@ -201,7 +202,7 @@ Es folgt also
 \begin{satz}
 \label{komplex:satz:cauchy-riemann}
 Real- und Imagin"arteil $u(x,y)$ und $v(x,y)$ einer
-komplexe Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
+komplex differenzierbaren Funktion $f(z)$ mit $f(x+iy)=u(x,y)+iv(x,y)$
 erf"ullen die Cauchy-Riemannschen Differentialgleichungen
 \index{Cauchy-Riemann-Differentialgleichungen}
 \begin{equation}
@@ -439,7 +440,7 @@ f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0}{k!}(z-z_0)^k.
 %
 % Wegintegrale und die Cauchy-Formel
 %
-\subsection{Wegintegrale}
+\subsection{Wegintegrale\label{subsection:wegintegrale}}
 Das Finden einer Stammfunktion, die Integration, ist die Grundtechnik,
 mit der man den "Ubergang von lokaler Information in Form von Ableitungen,
 zu globaler Information "uber reelle Funktionen vollzieht.
@@ -540,7 +541,7 @@ Wir verwenden die Definition des Wegintegrals
 &=
 \int_a^b f(\gamma_1(t))\,\gamma_1'(t)\,dt
 =
-\int_c^d f(\gamma_1(t(s))\,\underbrace{\gamma_1'(t(s)) t'(s)}_{\textstyle
+\int_c^d f(\gamma_1(t(s))\,\underbrace{\gamma_1'(t(s)) t'(s)}_{\displaystyle
 =\frac{d}{ds}\gamma_1(t(s))}\,ds
 \\
 &=
@@ -596,14 +597,22 @@ Dazu ist notwendig, geschlossene Wege genauer zu betrachten.
 % Wegintegrale führen auf analytische Funktionen
 %
 \subsubsection{Wegintegrale f"uhren auf analytische Funktionen}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-4.pdf}
+\caption{Pfad und Konvergenzradius f"ur den Nachweis, dass Wegintegrale
+auf analytische Funktionen f"uhren (Satz~\ref{komplex:integralanalytisch})
+\label{komplex:integralanalytischpfad}}
+\end{figure}
 Mit Wegintegralen kann man aus stetigen Funktionen neue Funktionen
 konstruieren.
 Die folgende Konstruktion liefert "uberraschenderweise immer
 analytische Funktionen.
 \begin{satz}
+\label{komplex:integralanalytisch}
 Sei $\gamma\colon [a,b]\to\mathbb C$ ein Weg in $\mathbb C$, der nicht
 durch den Nullpunkt verl"auft, und $g$ eine stetige Funktion
-auf $\gamma([a,b])$.
+auf $\gamma([a,b])$ (Abbildung~\ref{komplex:integralanalytischpfad}).
 Dann ist die Funktion
 \[
 f(z) = \frac1{2\pi i}\int_\gamma \frac{g(x)}{x-z}\,dx
@@ -623,7 +632,7 @@ Zun"achst schreiben wir
 \begin{equation}
 \frac{1}{x-z}
 =
-\frac1x\cdot \frac{1}{1-\textstyle\frac{z}{x}}
+\frac1x\cdot \frac{1}{1-\displaystyle\frac{z}{x}}
 =
 \frac1x\cdot \sum_{k=0}^\infty \biggl(\frac{z}{x}\biggr)^k
 =
@@ -637,11 +646,12 @@ f(z)
 \frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x-z}\,dx
 =
 \frac1{2\pi i} \int_{\gamma} \sum_{k=0}^\infty \frac{z^k}{x^{k+1}}g(x)\,dx
-\\
-&=
+=
 \sum_{k=0}^\infty
 \underbrace{\biggl(\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x^{k+1}}\,dx\biggr)}_{\textstyle =c_k}
 z^k
+=
+\sum_{k=0}^\infty c_kz^k.
 \end{align*}
 Wir m"ussen uns noch die Konvergenz dieser Reihen "uberlegen.
 Wenn $z<\varrho$ ist, dann ist 
@@ -659,6 +669,134 @@ das Integral nicht mehr definiert sein muss.
 Nimmt man n"amlich einen Punkt von $g([a,b])$ f"ur $z$ wird der Integrand
 unendlich gross.
 \end{proof}
+
+Der Satz~\ref{komplex:integralanalytisch} ist nur f"ur Potenzreihen
+im Punkt $0$ formuliert, was im Wesentlichen durch die
+Umformung~(\ref{komplex:georeihe}) bedingt war.
+Man kann dies aber auch als Potenzreihe
+\[
+\frac1{x-z}
+=
+\frac1{x-z_0-(z-z_0)}
+=
+\frac1{x-z_0}\cdot\frac{1-\frac{z-z_0}{x-z_0}}
+=
+\frac1{x-z_0}\sum_{k=0}^\infty\biggl(Ò\frac{z-z_0}{x-z_0}\biggr)^k
+=
+\sum_{k=0}^\infty\frac1{(x-z_0)^{k+1}}(z-z_0)^k
+\]
+im Punkt $z_0$ ausdr"ucken.
+Man bekommt dann die Potenzreihe
+\[
+f(z) = \sum_{k=1}^\infty c_k(z-z_0)^k,\qquad
+\text{mit}\quad
+c_k=\frac1{2\pi i}\oint_\gamma\frac{g(x)}{(x-z_0)^{k+1}}\,dx
+\]
+f"ur das Wegintegral.
+
+\subsubsection{Laurent-Reihen}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-3.pdf}
+\caption{Pfad zur Herleitung der Laurent-Reihe einer Funktion $f(z)$
+mit einer Singularit"at $z_0$.
+\label{komplex:laurentpfad}}
+\end{figure}%
+In Satz~\ref{komplex:integralanalytisch} konnten wir eine Potenzreihe f"ur
+solche $z$ konstruieren, deren Betrag kleiner ist als der kleinste Abstand
+der Kurve $\gamma$ vom Ursprung.
+Dies war notwendig, weil in~(\ref{komplex:georeihe}) die geometrische Reihe
+nur konvergiert, wenn der Quotient $<1$ ist.
+Wenn die Funktion $f(z)$ jedoch eine Singularit"at im Punkt $z_0$ hat, dann
+kann es nicht m"oglich sein, die Funktion mit einer Potenzreihe zu
+beschreiben.
+
+Wir verwenden daher den speziellen Pfad in Abbildung~\ref{komplex:laurentpfad}.
+Er f"uhrt in einem grossen Kreis $\gamma_1$ um den Punkt $z_0$ herum,
+dann folgt ein zur $x$-Achse paralleler Abschnitt, der bis zum kleinen
+Kreis $\gamma_2$ f"uhrt.
+Nach Durchlaufen des kleinen Kreises $\gamma_2$ im Uhrzeigersinn folgt wieder
+ein zur $x$-Achse paralleles St"uck zur"uck zum grossen Kreis.
+Da die geraden St"ucke zweimal in entgegegengesetzer Richtung durchlaufen
+werden, heben sie sich weg.
+Ein Wegintegral entlang $\gamma$ zerf"allt daher in eine Differenz
+\[
+\oint_\gamma\dots\,dz
+=
+\oint_{\gamma_1}\dots\,dz
+-
+\oint_{\gamma_2}\dots\,dz
+\]
+von Wegintegralen entlang $\gamma_1$ und $\gamma_2$.
+
+Der "aussere Pfad $\gamma_1$ gibt wie in Satz~\ref{komplex:integralanalytisch}
+Anlass zu einer Potenzreihe in $(z-z_0)$.
+Der innere Pfad $\gamma_2$ kann aber nicht so behandelt werden, da $z$ immer
+weiter von $z_0$ entfernt als die Punkte auf $\gamma_2$.
+Allerdings ist $|x/z| < 1$ f"ur Punkte auf $\gamma_2$, wir m"ussen daher
+die geometrische Reihe auf $x/z$ anwenden:
+\begin{align*}
+\frac{1}{x-z}
+&=
+\frac{1}{x-z_0-(z-z_0)}
+=
+\frac{1}{z-z_0}
+\cdot
+\frac{1}{\displaystyle\frac{x-z_0}{z-z_0}-1}
+=
+-\sum_{k=0}^\infty \frac{(x-z_0)^k}{(z-z_0)^{k+1}}.
+\end{align*}
+Das Integral entlang der Kurve $\gamma_2$ kann also als Reihe in $1/(z-z_0)$
+entwickelt werden:
+\begin{align*}
+f_2(z)
+&=
+\frac{1}{2\pi i}\int_{\gamma_2} \frac{g(x)}{x-z}\,dx
+=
+\frac{1}{2\pi i}\int_{\gamma_2}\sum_{k=0}^\infty
+\frac{(x-z_0)^k}{(z-z_0)^{k+1}}\,dx
+\\
+&=
+\sum_{k=0}^\infty
+\biggl(
+\underbrace{\frac1{2\pi i}\int_{\gamma_2} (x-z_0)^kg(x)\,dx
+}_{\textstyle =d_{k+1}}
+\biggr)
+\frac1{(z-z_0)^{k+1}}
+=\sum_{k=1}^\infty \frac{d_k}{(z-z_0)^k}.
+\end{align*}
+Zusammen mit der vom Integral entlang $\gamma_1$ herr"uhrenden Reihe finden
+wir den Satz
+\begin{satz}
+\label{komplex:laurentreihe}
+Ist $g(z)$ eine entlang der Kurve $\gamma$ wie in
+Abbildung~\ref{komplex:laurentpfad} definierte stetige Funktion, dann gilt
+\[
+f(z)=\frac1{2\pi i}\oint_{\gamma} \frac{f(x)}{x-z}\,dx
+=
+\sum_{k=0}^{\infty} c_k(z-z_0)^k-\sum_{k=1}^\infty \frac{d_k}{(z-z_0)^k},
+\]
+wobei die Koeffizienten $c_k$ und $d_k$ gegeben sind durch
+\[
+\begin{aligned}
+c_k&=\frac1{2\pi i}\oint_{\gamma_1} \frac{g(x)}{x-z_0}\,dx
+&&
+\text{und}
+&
+d_k&=\frac1{2\pi i}\oint_{\gamma_2} g(x)x^{k-1}\,dx.
+\end{aligned}
+\]
+\end{satz}
+
+\begin{definition}
+Eine Reihe der Form
+\[
+\sum_{k=-\infty}^\infty a_k(z-z_0)^k
+\]
+heisst {\em Laurent-Reihe }
+im Punkt $z_0$.
+\end{definition}
+
 
 %
 % Geschlossene Wege
@@ -905,7 +1043,7 @@ in denen $-\frac13z^3$ negativen Realteil hat.
 Zul"assige Wege m"ussen daher ``Enden'' in den grauen Gebieten haben,
 d.~h.~$\gamma(t)$ muss in diesen Gebieten gegen Unendlich gehen, wenn
 $t\to\pm\infty$.
-Damit sind im wesentlichen die drei Kurven $\gamma_0$, $\gamma_+$ und
+Damit sind im Wesentlichen die drei Kurven $\gamma_0$, $\gamma_+$ und
 $\gamma_-$ aus Abbildung~\ref{komplex:airy} w"ahlbar.
 
 F"ur $x\to\infty$ w"achst $e^{xz}$ im positiven grauen Teilgebiet
@@ -940,6 +1078,9 @@ i\cos\biggl(xt+\frac13t^3\biggr)-\sin\biggl(xt+\frac13t^3\biggr)\,dt
 Dabei haben wir im letzten Schritt verwendet, dass das Integral der
 ungeraden Funktion $\sin(xt+\frac13t^3)$ "uber ein symmetrisches
 Interval verschwindet.
+
+Weitere Information "uber die Airy-Funktionen sind in \cite{skript:airy}
+zusammengefasst.
 
 \subsection{Die Cauchy-Integralformel}
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
@@ -1034,6 +1175,12 @@ Eine komplex differenzierbare Funktion ist beliebig oft differenzierbar.
 \end{satz}
 
 \subsubsection{Komplex differenzierbare Funktionen sind analytisch}
+Wir haben fr"uher gesehen, dass Wegintegrale auf analytische Funktionen
+f"uhren.
+Andererseits zeigt das Cauchy-Integral, dass komplex differenzierbare
+Funktionen durch genau die Integrale bestimmt sind, die in den
+Reihenentwicklungen in Satz~\ref{komplex:integralanalytisch} auftraten.
+Diese Resultate k"onnen wir im folgenden Satz zusammenfassen.
 
 \begin{satz}
 Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
@@ -1044,7 +1191,8 @@ f(z)=\sum_{k=0}^na_k(z-z_0)^k
 \]
 hat die Koeffizienten
 \[
-a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{(z-z_0)^{k+1}}\,dz.
+a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{(z-z_0)^{k+1}}\,dz,\quad
+k\ge 0
 \]
 \end{satz}
 
@@ -1058,5 +1206,259 @@ analytisch ist, und dass die Koeffizienten der Potenzreihe von
 der verlangten Form sind.
 \end{proof}
 
+F"ur eine komplexe Funktion, die im Punkt $z_0$ eine Singularit"at hat,
+also in einer Umgebung von $z_0$ ohne den Punkt $z_0$ definiert ist,
+k"onnen wir das Resultat aus Satz~\ref{komplex:laurentreihe} verwenden,
+und zum folgenden analogen Resultat gelangen:
 
+\begin{satz}
+Eine komplex differenzierbare Funktion $f(z)$, die in einer Kreisscheibe
+vom Radius $r$ um den Punkt $z_0$ mit Ausnahme des Punktes $z_0$
+definiert ist, kann in eine konvergente Laurent-Reihe
+\[
+f(z)=\sum_{k=-\infty}^{\infty} c_k(z-z_0)^k
+\]
+entwickelt werden, deren Koeffizienten durch
+\[
+c_k = \frac1{2\pi i}\oint\gamma \frac{f(\zeta)}{(z-z_0)^{k+1}}\,d\zeta,\qquad k\in\mathbb Z
+\]
+gegeben sind.
+\end{satz}
+
+%
+% Analytische Fortsetzung
+%
+\section{Analytische Fortsetzung}
+\rhead{Analytische Fortsetzung}
+\subsection{Analytische Fortsetzung mit Potenzreihen}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-1.pdf}
+\caption{Analytische Fortsetzung einer komplexen Funktion entlang einer
+Kurve $\gamma$.
+\label{komplex:fortsetzung}}
+\end{figure}
+Eine komplex differenzierbare Funktion $f(z)$ ist immer darstellbar als
+Potenzreihe, und ist daher analytisch.
+So kann zum Beispiel die Funktion $1/z$ als Potenzreihe um jeden 
+beliebigen Punkt $z_0$ entwickelt werden:
+\begin{align}
+f(z)
+&=
+\frac1z
+=
+\frac1{z_0-(z_0-z)}
+=
+\frac1{z_0}\cdot
+\frac1{1-\displaystyle\frac{z_0-z}{z_0}}
+=
+\frac1{z_0}\sum_{k=0}^{\infty} \biggl(\frac{z_0-z}{z_0}\biggr)^k
+=
+\sum_{k=0}^{\infty} \frac{(-1)^k}{z_0^{k+1}} (z-z_0)^k,
+\label{komplex:1durchreihe}
+\end{align}
+Die Koeffizienten dieser Potenzreihe sind
+\[
+a_k=\frac{(-1)^k}{z_0^{k+1}},
+\]
+und man kann den Konvergenzradius ausrechnen:
+\[
+\frac1{\varrho}
+=
+\limsup_{k\to\infty} \root{k}\of{|a_k|} = \lim_{k\to\infty}\frac1{|z_0|^{\frac{k+1}{k}}}
+=
+\frac1{|z_0|}.
+\]
+Der Konvergenzradius ist limitiert durch die Singularit"at bei an der Stelle
+$z=0$.
+
+Es gibt also keine einzelne Potenzreihe, die die Funktion $f(z)=\frac1z$ in der
+ganzen komplexen Ebene darstellen kann.
+W"ahlt man aber einzelne Punkte $z_0$ und $z_1$ derart, dass der Kreis
+um $z_0$ mit Radius $|z_0|$ und der Kreis um $z_1$ mit Radius $|z_1|$
+"uberlappen, dann werden die beiden Potenzreihen im "Uberlappungsgebiet
+die gleichen Werte annehmen.
+
+Man k"onnte allso eine Kurve $\gamma$ in der komplexen Ebene w"ahlen,
+entlang der man in jedem Punkt die Funktion $f(z)$ in eine Potenzreihe 
+entwickelt.
+Liegen zwei Punkte nahe genug auf der Kurve $\gamma$, werden die
+Konvergenzkreise der Potenzreihen "uberlappen, und die Potenzreihen
+werden im "Uberlappungsgebiet die gleichen Werte liefern.
+
+Selbst wenn man eine Funktion $f(z)$ nur in einem Kreis um den Punkt $z_0$
+kennt, zum Beispiel durch eine Potenzreihe im Punkt $z_0$, kann man entlang
+einer Kurve, die $z_0$ mit $z_1$ verbindet, in jedem Punkt eine Potenzreihe
+finden, die mit der Potenzreihe in den Nachbarpunkten "ubereinstimmt, und
+so die Definition der Funktion entlang dieser Kurve auf ein gr"osseres
+Gebiet ausweiten, wie in Abbildung~\ref{komplex:fortsetzung} dargestellt.
+Man nennt dies die {\em analytische Fortsetzung} der Funktion $f(z)$ 
+entlange der Kurve $\gamma$.
+\index{analytische Fortsetzung}
+\index{Fortsetzung, analytische}
+
+\begin{beispiel}
+Wir haben bereits gesehen, dass sich die Funktion $f(z)=1/z$ in jedem
+Punkt $z_0$ der komplexen Ebene in die Potenzreihe~\ref{komplex:1durchreihe}
+entwickeln l"asst.
+Diese Reihe l"asst sich integrieren
+\[
+F(z,z_0)
+=
+\sum_{k=0}^\infty\frac{(-1)^k}{(k+1)z_0^{k+1}}z^{k+1},
+\]
+diese Reihe ist ebenfalls auf einem Kreis vom Radius $|z_0|$ um den
+Punkt $z_0$ konvergent.
+Wir vermuten nat"urlich, dass dies eine Darstellung des nat"urlichen
+Logarithmus einer komplexen Zahl ist.
+Nat"urlich ist das immer nur auf einem Kreisgebiet m"oglich, die Reihe
+f"ur $z_=1$ ist zum Beispiel im Punkt $z=-1$ nicht konvergent.
+
+Um eine in der ganzen komplexen Ebene definierte Funktion $\log(z)$ zu
+konstruieren, m"ussen wir also eine analytische Fortsetzung aufbauen.
+Bei der Integration haben wir eine frei w"ahlbare Integrationskonstante
+$C(z_0)$, die wir so w"ahlen m"ussen, dass die Reihen im "Uberlappungsgebiet
+"ubereinstimmen:
+\[
+F(z,z_0) + C(z_0) = F(z,z_1)  + C(z_1)
+\]
+f"ur jedes $z$ im "Uberlappungsgebiet.
+Dadurch wird aber nur die Differenz $C(z_1)-C(z_0)$ der Werte festgelegt.
+Da wir "Ubereinstimmung mit der "ublichen Definition des Logarithmus
+erreichen m"ochten, k"onnen wir $C(1)=0$ festlegen.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-2.pdf}
+\caption{Analytische Fortsetzung f"ur die Funktion $\frac1z$ 
+entlang der Pfade $\gamma_+$ und $\gamma_-$
+\label{komplex:logfortsetzung}}
+\end{figure}
+Wir konstruieren jetzt die analytische Forstsetzung entlang der Kurven
+$\gamma_+$ und $\gamma_-$ wie in Abbildung~\ref{komplex:logfortsetzung}
+dargestellt.
+Um die Differenz $C(z_1)-C(z_0)$ zu bestimmen, Werten wir die Funktionen
+$F(z,z_0)$ und $F(z,z_1)$ jeweils im rot eingezeichneten Punkt aus.
+Die exakte Berechnung ist etwas m"uhsam, da es sich ja nur um ein Beispiel
+handelt, k"onnen wir die Reihen auch numerisch ausrechnen, und so die
+Differenzen bestimmen:
+\begin{align*}
+&\text{Startpunkt $z_0=1$:}& C(1)&=0             &       &       \\
+&\text{entlang $\gamma_+$:}& C(i)&= i\frac{\pi}2 & C(-1) &=  i\pi\\
+&\text{entlang $\gamma_-$:}&C(-i)&=-i\frac{\pi}2 & C(-1) &= -i\pi
+\end{align*}
+Wir stellen fest, dass die analytische Fortsetzung der Logarthmusfunktion
+entlang der Kurve $\gamma_+$ die Potenzreihe
+\[
+\log_+(z)
+=
+i\pi +\sum_{k=1}^\infty \frac{(-1)^{k+1}}{k(-1)^k}(z+1)^k
+=
+i\pi
+-
+\sum_{k=1}^\infty \frac{(z+1)^k}{k}
+\]
+ergibt, w"ahrend man entlang der  Kurve $\gamma_-$
+\[
+\log_-(z)
+=
+-i\pi +\sum_{k=1}^\infty \frac{(-1)^{k+1}}{k(-1)^k}(z+1)^k
+=
+-i\pi
+-
+\sum_{k=1}^\infty \frac{(z+1)^k}{k}
+\]
+findet.
+Die beiden analytischen Fortsetzungen entlang der Kurven $\gamma_+$ und
+$\gamma_-$ stimmen auf der negativen reellen Achse nicht "uberein,
+sie unterscheiden sich um $2\pi i$:
+\[
+\log_+(z)-\log_-(z)=2\pi i.
+\]
+\end{beispiel}
+
+Das Beispiel zeigt, dass es im Allgmeinen eine auf der ganzen komplexen
+Ebene definierte komplexe Entsprechung einer reellen Funktion nicht
+zu geben braucht.
+Dieses Ph"anomen tritt zum Beispiel auch bei der Wurzelfunktion $f(z)=\sqrt{z}$
+auf.
+Diese Funktion ist im Punkt $z=0$ nicht differenzierbar, man muss diesen
+Punkt also aus dem Definitionsbereich ausschliessen.
+F"uhrt man man analog zum Beispiel eine analytische Fortsetzung durch,
+findet man, dass sich die Werte von $f(z)$ f"ur die beiden Wege $\gamma_+$
+und $\gamma_-$ durch das Vorzeichen unterscheiden.
+
+\subsection{Analytische Fortsetzung mit Differentialgleichungen}
+In Abschnitt~\ref{subsection:wegintegrale} wurde gezeigt, wie Wegintegrale
+Stammfunktionen komplexer Funktionen liefern k"onnen.
+Im vorangegangenen Abschnitt wurde untersucht, wie komplex differenzierbare
+Funktionen mit Hilfe von analytischer Fortsetzung entlang einer Kurve
+ausgedehnt werden kann.
+
+Sei $f(z)$ eine komplex differenzierbare Funktion.
+In jedem beliebigen Punkt des Definitionsbereichs k"onnen wir $f(z)$
+in eine Potenzreihe entwickeln, und nat"urlich auch termweise integrieren.
+Es gibt also in jedem Punkt $z_0$ des Definitionsbereichs eine
+Funktion $F_{z_0}(z)$, die $F'_{z_0}(z)=f(z)$ erf"ullt.
+Durch analytische Fortsetzung entlang einer Kurve $\gamma$ k"onnen
+wir eine komplex differenzierbare Funktion $f(z)$ finden, die in einer
+Umgebung der Kurve $F'(z)=f(z)$ erf"ullt.
+
+Sei andererseits $\gamma\colon[a,b]\to\mathbb C$ eine Kurve in $\mathbb C$.
+Dann k"onnen wir die Werte der Stammfunktion im Punkt $\gamma(b)$ durch
+\[
+F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(z)\,dz
+\]
+berechnen.
+
+\begin{beispiel}
+Wir bestimmen die Stammfunktion von $f(z)=1/z$.
+Entlang der reellen Achse weiss man bereits, dass die Stammfunktion
+der nat"urliche Logarithmus ist, also $F(x)=\log x$.
+Um diese Stammfunktion auf $\mathbb C$ auszudehnen, verwenden wir einen
+kreisf"ormigen Pfad von der reellen Achse bis zum Punkt $z$.
+Liegt $z$ in der oberen Halbebene, w"ahlen wir einen Pfad in der
+oberen Halbebene, und umgekehrt.
+Wir k"onnen die Zahl $z$ in Polarkoordinaten darstellen als $z=re^{i\varphi}$.
+Ein Pfad von der reellen Achse kann mit
+\[
+\gamma\colon [0,1]\to\mathbb C: t\mapsto re^{it\varphi}
+\]
+parametrisiert werden.
+Der Zuwachs der Stammfunktion entlang dieses Pfades ist
+\[
+F(z)-F(r)
+=
+\int_\gamma\frac1z\,dz
+=
+\int_0^1 \frac1{e^{it\varphi}}i\varphi e^{it\varphi}\,dt
+=
+i\varphi \int_0^1\,dt
+=
+i\varphi.
+\]
+Der Wert der Stammfunktion am Anfang der Kurve ist $\log r$, somit
+folgt, dass
+\[
+\log z = \log r + i\varphi.
+\qedhere
+\]
+\end{beispiel}
+
+\section{"Ubungsaufgaben}
+\rhead{"Ubungsaufgaben}
+\begin{uebungsaufgaben}
+\item
+\input uebungsaufgaben/701.tex
+\item
+\input uebungsaufgaben/702.tex
+\item
+\input uebungsaufgaben/703.tex
+\item
+\input uebungsaufgaben/704.tex
+\item
+\input uebungsaufgaben/705.tex
+\item
+\input uebungsaufgaben/706.tex
+\end{uebungsaufgaben}
 

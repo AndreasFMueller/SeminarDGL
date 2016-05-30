@@ -1,0 +1,106 @@
+\subsection{\texorpdfstring{$y(x) = \sum_{k = 0}^{\infty} a_{k}x^k$}{y(x) = 
+summe k = 0 bis unendlich ak xk}}
+\label{subsec:wellen:Potenzreihenansatz}
+
+Als n"achstes gehen wir zur"uck auf das parabolische Kanalprofil und suchen 
+L"osungen f"ur die Differentialgleichung.
+
+Als L"osungsansatz f"ur die Differentialgleichung wird der im Kapitel 
+\ref{chapter:potenzreihen} kennengelernte Potenzreihenansatz angewendet.
+
+Zuerst wird die Potenzreihe f"ur $y(x)$ aufgestellt und zweimal abgeleitet, da 
+in der Formel die zweite Ableitung vorkommt:
+
+\begin{align}
+	y(x)
+	&=
+	\sum_{k = 0}^{\infty} a_{k}x^k
+	=
+	a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + \dotsb
+	\label{eq:wellen:nullteableitung}
+	\\
+	y'(x)
+	&=
+	\sum_{k=0}^{\infty} a_{k+1}(k+1)x^k
+	=
+	a_1 + 2a_2x + 3a_3x^2 + 4a_4x^3 + 5a_5x^4 + 6a_6x^5+ \dotsb
+	\\
+	y''(x)
+	&=
+	\sum_{k = 0}^{\infty} a_{k+2}(k+1)(k+2)x^k
+	=
+	2a_2 + 3 \mathbin{\cdot} 2a_3x + 4 \mathbin{\cdot} 3a_4x^2 + 5 
+	\mathbin{\cdot} 4a_5x^3 + 6 \mathbin{\cdot} 5a_6x^4 + \dotsb
+	\label{eq:wellen:zweiteableitung}
+\end{align}
+ 
+Aus den beiden Gleichungen (\ref{eq:wellen:nullteableitung}) und
+(\ref{eq:wellen:zweiteableitung}) und dem Umstellen der Anfangsgleichung in die 
+Form
+\begin{equation*}
+	y'' = -(ax^2+bx+c)y
+\end{equation*}
+kann der Koeffizientenvergleich erstellt und L"osungen f"ur die $a_k$ gefunden 
+werden. 
+
+Statt die Koeffizienten reihenweise aufzustellen, wird der Vergleich 
+mit Hilfe einer Tabelle gemacht. Dies schafft auch bei komplizierten und langen 
+Termen eine gute "Ubersicht.
+
+\begin{equation}
+	\begin{array}{r c r | c r | c r | c r c}
+	y(x) & = &
+	a_0 & + & a_1x & + & a_2x^2 & + \dotsb
+	\\
+	\hline&&&&&&&\\[-2ex]
+	y''(x) & = &
+	2\cdot1 a_2 & + & 3\cdot2 a_3x & + & 4\cdot3 a_4x^2 & + \dotsb
+	\\
+	& = &
+	& & & + &- aa_0x^2 & + \dotsb
+	\\
+	& &
+	& + &- ba_0x & + &- ba_1x^2 & + \dotsb
+	\\
+	& + &
+	-ca_0 & + &- ca_1x & + &- ca_2x^2 & + \dotsb
+	\\
+	\hline&&&&&&&\\[-2ex]
+	& &
+	a_2 = -\frac{1}{2 \cdot 1}ca_0,
+	& & a_3 = -\frac{1}{3 \cdot 2}(ba_0+ca_1),
+	& & a_4 = -\frac{1}{4 \cdot 3}(aa_0+ba_1+ca_2),
+	& \dots
+	\end{array}
+	\label{eq:wellen:koeffizietenvergleichtabelle}
+\end{equation}
+
+Mit Hilfe dieser Darstellungsform kann auf den ersten Blick in die zweite 
+Tabellenzeile erkennt werden, welche $a_k$ von welchem anderen abh"angen. So 
+sieht man beispielsweise in der ersten Tabellenspalte und der zweiten 
+Tabellenzeile sofort, dass $a_2$ nur von $a_0$ abh"angig ist.
+
+Die Verschiebung der verschiedenen $a_k$ in der Gleichungstabelle 
+(\ref{eq:wellen:koeffizietenvergleichtabelle}) kann folgendermassen erkl"art 
+werden: Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um 
+zwei Einheiten nach links geschoben. Die n"achste Verschiebung gibt es aufgrund 
+des Polynomgrades $x^2$. Da die $a$-Summanden mindestens die Form $ax^2$ haben, 
+verschiebt sich die dritte Zeile um zwei Einheiten nach rechts. Die 
+$b$-Summanden haben mindestens die Form $bx^1$, daher die Verschiebung der 
+vierten Zeile um eine Einheit nach rechts. Einzig die f"unfte Zeile mit den 
+$c$-Summanden wird nicht verschoben, da es nur mindestens als $cx^0$ vorhanden 
+ist. Somit lassen sich die jeweiligen $a_k$ und 
+ihre Abh"angigkeiten direkt aus den jeweiligen Spalten ablesen.
+
+Aus den in der Tabelle berechneten $a_k$ l"asst sich eine allgemeine 
+Rekursionsformel
+
+\begin{equation*}
+	\begin{split}
+		a_{k+2} &= -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k) \\
+		\Leftrightarrow \qquad
+		a_k &= -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2}), \qquad k \in 
+		\mathbb{N} \setminus \{0, 1\}, a_{k<0} = 0
+	\end{split}
+\end{equation*}
+aufstellen.
