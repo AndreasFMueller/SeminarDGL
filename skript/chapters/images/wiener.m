@@ -1,7 +1,7 @@
 #
 # wiener.m -- simulation of wiender prozess
 #
-# (c) 2016 Prof Andreas Müller, Hochschule Rapperswil
+#�(c) 2016 Prof Andreas Müller, Hochschule Rapperswil
 #
 N = 2^10;
 f = zeros(N + 1, 1);
