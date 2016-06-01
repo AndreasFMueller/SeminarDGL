@@ -1,1 +1,20 @@
-blah
+\section{Einleitung}
+
+In diesem Kapitel möchten wir ein Problem aufgreiffen, welches wir bei der Bessel'schen Differentialgleichung
+$$ z^2w''+zw'+(z^2 - \nu^2)w=0$$
+angetroffen haben. Wir fanden Lösungen der Form 
+$$J_\nu(z)=z^\varrho\sum_{k=0}^{\infty}a_kz^k.$$
+Die Indexgleichung lieferte $\varrho=\pm\nu.$
+Im Falle von ganzzahligen $\nu\in\mathbb{Z}\setminus\{0\}$ erhielten wir zwar zwei Lösungen, allerdings war die zweite Lösung linear abhängig von der ersten $$J_\nu(z) = J_{-\nu}(-z).$$
+Im Falle von $\nu=0$ erhielten wir sogar nur eine Lösung $(\varrho=0)$. Eine Differentialgleichung 2. Ordnung besitzt aber stets genau zwei linear unabhängige Lösungen. Wo also steckt die zweite Lösung?
+
+\subsection{Laurent-Reihe und Analytische Fortsetzung}
+Wir werden in diesem Kapitel Zwei Werkzeuge verwenden. Die analytischen Fortsetzung (Siehe \ref{komplex:fortsetzung}) und die Laurent-Reihe
+$$\mathcal{L}(z)=\sum_{k=-\infty}^{\infty}a_kz^k.$$
+
+Wichtig hierbei ist, dass eine Funktion genau dann als Laurent-Reihe dargestellt werden kann, wenn die analytische Fortsetzung dieser Funktion nicht auf neue Lösungen führt. Die analytische Fortsetzung liefert genau dann eine neue Funktion, wenn durch den gewählten Weg eine logarithmische Singularität eingeschlossen wird. 
+
+Setzt man in der Besselgleichung $\nu=0$ und dividiert die ganze Gleichung durch $z^2$, so resultiert
+$$ w''+\frac{1}{z}w'+w=0$$.
+Dieses $\frac{1}{z}$ beim einfach abgeleiteten Term führt in der Lösung zu einer logarithmischen Singularität. ($\int\frac{1}{z}dz = \log z.$)
+Die Besselfunktion mit $\nu=0$ besitzt im Ursprung also genau eine solche Singularität, die in der analytischen Fortsetzung zu neuen Lösungen führt.
