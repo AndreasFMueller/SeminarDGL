@@ -1,72 +1,83 @@
+\section{Diagonalisierbarer Fall}
 %Matrix Diagonalisierbar
 Ist die Matrix A diagonalisierbar, gilt:
 $$
 \begin{matrix}
-w_1 \, \sk \, \lambda_1 w_1  \\
-w_2 \, \sk \, \lambda_2 w_2
+w_1 \sk \lambda_1 w_1  \\
+w_2 \sk \lambda_2 w_2
 \end{matrix}
 $$
-Der Faktor $\lambda_{1,2}$ muss kompensiert werden, damit die L"osung als Laurent-Reihe dargestellt werden kann. Dazu wird folgende Funktion verwendet: 
+Damit die Funktion als Laurent-Reihe dargestellt werden kann, muss der Faktor $\lambda_{1,2}$ kompensiert werden. Betrachten wir folgende Zahl
+$$\varrho_{1,2} = \frac{1}{2\pi i}\log(\lambda_{1,2}$$
+und bilden damit die Funktion
 $$
-(z-z_0)^{\varrho_{1,2}} \, \text{mit} \, \varrho_{1,2} = \frac{1}{2\pi i}log(\lambda_{1,2})
+z^{\varrho_{1,2}}.
 $$
-Es wird noch eine kleine Umformung vorgenommen:
+Um genauer zu verstehen, was mit dieser Funktion bei der analytischen Fortsetzung geschiet, soll folgende aquivalente Form betrachtet werden
 $$
-(z-z_0)^{\varrho_{1,2}} = e^{log((z-z_0)^{\varrho_{1,2}})} = e^{\varrho_{1,2} log((z-z_0))}
+z^{\varrho_{1,2}} = e^{\log(z^{\varrho_{1,2}})} = e^{\varrho_{1,2} \log(z)}
 $$                                 
-Diese Funtion wird nun analytisch fortgesetzt:
+Diese Funtion wird nun analytisch fortgesetzt. Die Exponentialfunktion geht in sich selbst über, der Logarithmus transformiert sich wie früher erläutert in $\log z\sk \log z + 2\pi i$, und es folgt
 $$
-e^{\varrho_{1,2} log((z-z_0))} \, \sk \,	  e^{\varrho_{1,2} (log((z-z_0)) + 2\pi i)}
-= e^{\varrho_{1,2} log((z-z_0))}  e^{2\pi i\frac{1}{2\pi i}log(\lambda_{1,2})}
-= (z-z_0)^{\varrho_{1,2}}  \lambda_{1,2}
+e^{\varrho_{1,2} \log(z)} \sk e^{\varrho_{1,2} (\log(z) + 2\pi i)}
+= e^{\varrho_{1,2} \log(z)}  e^{2\pi i\varrho_{1,2})}
+% cancel hier verwendet
+= z^{\varrho_{1,2}}  e^{\cancel{2\pi i}\frac{1}{\cancel{2\pi i}}\log(\lambda_{1,2})} 
+= z^{\varrho_{1,2}}  \lambda_{1,2}
 $$
-Die Funktion $(z-z_0)^{\varrho_{1,2}}$ wird also beim Umfahren der Singularit"at ebenfalls mit dem Faktor $\lambda_{1,2}$ multipliziert. Nun wird das Verh"altnis $\frac{w_{1,2}}{(z-z_0)^{\varrho_{1,2}}}$ untersucht:
+Die Funktion $z^{\varrho_{1,2}}$ wird also beim Umfahren der Singularit"at ebenfalls mit dem Faktor $\lambda_{1,2}$ multipliziert. Nun wird das Verh"altnis $\frac{w_{1,2}}{z^{\varrho_{1,2}}}$ untersucht:
 $$
-\frac{w_{1,2}}{(z-z_0)^{\varrho_{1,2}}} \, \sk \, \frac{\lambda_{1,2} w_{1,2}}{\lambda_{1,2}(z-z_0)^{\varrho_{1,2}}} = \frac{w_{1,2}}{(z-z_0)^{\varrho_{1,2}}}
+\frac{w_{1,2}}{z^{\varrho_{1,2}}} \sk \frac{\cancel{\lambda_{1,2}} w_{1,2}}{\cancel{\lambda_{1,2}}z^{\varrho_{1,2}}} = \frac{w_{1,2}}{z^{\varrho_{1,2}}}
 $$
-Die Funktion $\frac{w_{1,2}}{(z-z_0)^{\varrho_{1,2}}}$ ist also eindeutig und kann deshalb als Laurent-Reihe dargestellt werden.
+Durch die Funktion $z'\varrho$ ist es also gelungen, eine eindeutige Funktion zu finden, respektive einen konstanten Faktoren zu kompensieren. Die Funktion $\frac{w_{1,2}}{z^{\varrho_{1,2}}}$ wird durch die analytische Fortsetzung nicht verändert und kann als Laurent-Reihe dargestellt werden.
 $$
-\frac{w_{1,2}}{(z-z_0)^{\varrho_{1,2}}} = \mathcal{L}_{1,2}(z)
+\frac{w_{1,2}}{z^{\varrho_{1,2}}} = \mathcal{L}_{1,2}(z)
 $$
 Daraus folgt:
 $$
 \begin{matrix}
-w_1 = (z-z_0)^{\varrho_1} \mathcal{L}_1(z-z_0) \\
-w_2 = (z-z_0)^{\varrho_2} \mathcal{L}_2(z-z_0)
+w_1 = z^{\varrho_1} \mathcal{L}_1(z) \\
+w_2 = z^{\varrho_2} \mathcal{L}_2(z)
 \end{matrix}
 $$
 Ist also die Matrix A diagonalisierbar, k"onnen zwei L"osungen dieser Form gefunden werden.
 
+\section{Nicht diagonalisierbarer Fall}
 %Matrix nicht diagonalisierbar
 Ist die Matrix A nicht diagonalisierbar, gilt:
 $$
 \begin{array}{l}
-w_1 \, \sk \, \lambda w_1 \\
-w_2 \, \sk \, \lambda w_2 + w_1
+w_1 \sk \lambda w_1 \\
+w_2 \sk \lambda w_2 + w_1
 \end{array}
 $$
-Nun bilden wir das Verh"altnis $\frac{w_2}{w_1}$
+Die Gleichung für $w_1$ ist also identisch mit derjenigen aus dem diagonalisierbaren Fall, und auch die Lösung lässt sich in gleicher Weise finden. Für die zweite Lösung funktioniert das nicht.
+
+Nun betrachten wir das Verh"altnis $\frac{w_2}{w_1}$
 $$
-\frac{w_2}{w_1} \, \sk \, \frac{\lambda w_2}{\lambda w_1} = \frac{w_2}{2_1} + \frac{1}{\lambda}
+\frac{w_2}{w_1} \sk \frac{\lambda w_2+w_1}{\lambda w_1} = \frac{w_2}{w_1} + \frac{1}{\lambda}
 $$
-Diesmal muss also ein Summand, kein Faktor kompensiert werden. Gemacht wird dies mit der Funktion
+Hier muss anstelle eines Faktors einen Summanden kompensiert werden. Gemacht wird dies mit der Funktion
 $$
-\frac{1}{2\pi i\lambda} log(z-z_0) \, \sk \, \frac{1}{2\pi i\lambda} log(z-z_0)
-+  \frac{1}{\lambda}
+\frac{1}{2\pi i\lambda} \log(z) 
+\sk \frac{1}{2\pi i\lambda} (\log(z) + 2\pi i) 
+=\frac{1}{2\pi i\lambda} \log(z)+  \frac{1}{\lambda}
 $$
-Nun wird die Differenz dieser beiden Funktionen gebildet:
+Wird die Differenz dieser beiden Funktionen gebildet, folgt daraus
 $$
-\frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} log(z-z_0) \, \sk \, \frac{w_2}{w_1} +\frac{1}{\lambda} - (\frac{1}{2\pi i\lambda} log(z-z_0) + \frac{1}{\lambda}) = \frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} log(z-z_0) = \mathcal{L}_2(z-z_0)
+\frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} \log(z) 
+\sk \frac{w_2}{w_1} +\cancel{\frac{1}{\lambda}} - \left(\frac{1}{2\pi i\lambda} \log(z) + \cancel{\frac{1}{\lambda}}\right) 
+= \frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} \log(z).
 $$
-Umformen nach $w_2$ ergibt:
+Dieser Term wird durch die analytische Fortsetzung nicht verändert und kann folglich als Laurent-Reihe dargestellt werden. Mit $a=\frac{1}{2\pi i\lambda}$ folgt
+$$\frac{w_2}{w_1} - a\log(z) =\mathcal{L}_2'(z)$$
+Um die Lösung $w_2$ zu erhalten, muss lediglich umgeformt werden
 $$
-w_2 = \mathcal{L}_2(z-z_0) w_1 +\frac{1}{2\pi i\lambda} w_1 log(z-z_0) =  \mathcal{L}_2(z-z_0)\mathcal{L}_1(z-z_0)(z-z_0)^\varrho - a w_1 log(z-z_0) \, \text{mit} \, a=\frac{1}{2\pi i\lambda}
+w_2 = \mathcal{L}_2'(z) w_1 +a w_1 \log(z) 
+= \mathcal{L}_2'(z)\mathcal{L}_1(z)z^\varrho + a w_1 \log(z)
 $$
-Eine Laurent-Reihe multipliziert mit einer anderen Laurent-Reihe gibt wieder eine Laurent-Reihe. Damit ergibt sich:
+Eine letzte Vereinfachung ergibt sich aus der Multiplikation der Laurent-Reihen $\mathcal{L}_1$ und $\mathcal{L}_2'$. Die Multiplikation zweier Potenzreihen führt wieder auf eine Potenzreihe, also $\mathcal{L}_1 \mathcal{L}_2'=\mathcal{L}_2$ und folglich
 $$
-\begin{array}{l}
-w_1 = (z-z_0)^{\varrho} \mathcal{L}_1(z-z_0) \\
-w_2 = (z-z_0)^\varrho\mathcal{L}_3(z-z_0) - a w_1 log(z-z_0)
-\end{array}
+w_2 = z^\varrho\mathcal{L}_2(z) + a w_1 \log(z)
 $$
-Ist also die Matrix A nicht diagonalisierbar, findet man eine L"osung wie im diagonalisierbaren Fall und eine zweite L"osung, welche die erste L"osung und einen Logarithmus-Term beinhaltet.
+Die zweite Lösung findet sich also als Kombination einer Laurent-Reihe multipliziert mit $z^\varrho$ und der ersten Lösung mal den Logarithmus.
