@@ -10,9 +10,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="9.4227877mm"
-   height="8.4666672mm"
-   viewBox="0 0 33.38783 30.000002"
+   width="12mm"
+   height="9mm"
+   viewBox="0 0 42.519685 31.889764"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -41,8 +41,8 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1440"
-     inkscape:window-height="900"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -66,30 +66,30 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-0.06821018,-1022.2939)">
+     transform="translate(-0.06821018,-1020.4041)">
     <ellipse
-       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="Kreis"
        inkscape:label="Kreis"
        ry="14.577493"
        rx="14.577492"
-       cy="1037.2939"
-       cx="15.06821" />
+       cy="1036.4733"
+       cx="20.624048" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="7.0095429"
-       y="1008.2441"
+       x="12.770541"
+       y="1007.4526"
        id="text4158"
        sodipodi:linespacing="100%"
        transform="scale(0.96438833,1.0369267)"><tspan
          sodipodi:role="line"
          id="tspan4160"
-         x="7.0095429"
-         y="1008.2441">A</tspan></text>
+         x="12.770541"
+         y="1007.4526">A</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 25.874843,1039.1888 2.5402,-7.4278 6.160825,5.2292"
+       d="m 31.430682,1038.368 2.5402,-7.4278 6.160825,5.2292"
        id="path4180"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
