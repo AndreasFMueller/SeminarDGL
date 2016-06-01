@@ -4,7 +4,7 @@
 \begin{refsection}
 \chapterauthor{Andri Hartmann und Tobias Schuler}
 \printbibliography[heading=subbibliography]
-
+\epstopdfsetup{outdir=./} %Sonst koennen keine Grafiken von eps-to-pdf konvertiert werden
 \lhead{Einleitung zur Friedmann-Gleichung}
 \rhead{}
 \begin{quote}
@@ -15,22 +15,22 @@ In diesem Kapitel möchten wir euch helfen, gemäss dem oben erwähnten Zitat, d
 %Das Universum ist ein sehr komplexes Gebilde. Wir versuchten, so gut es ging, uns mit der ganzen Materie auseinanderzusetzen. Dabei mussten wir feststellen, das "`Unwissen"' manchmal die bessere Variante als "`Verstehen"' ist. Versucht man die Friedmann-Gleichung mit all ihren Facetten zu verstehen, stösst man schnell auf Begriffe wie Tensoren, Allgemeine Relativitätstheorie, dunkle Energie usw. Diese Begriffe stellen Hürden dar, die mit unserem Wissen nur selten zu überwinden sind. Aufgeben war aber nie eine Option. "`Wir müssen unser Vorstellungsvermögen ausdehnen und nicht das Universum unserer Vorstellung anpassen"', wie Sir Francis sagt. Mit dieser Einstellung konnten wir sehr viel Neues über das Universum lernen. Wir hoffen, dass wir euch im folgenden Kapitel unsere neugewonnenen Erkenntnisse zeigen  und euch die Friedmann-Gleichung näher bringen können.
 
 \section{Vorgeschichte}
-Mit der Formulierung der Allgemeinen Relativitätstheorie durch Albert Einstein, war es erstmals möglich,
+Mit der Formulierung der Allgemeinen Relativitätstheorie durch Albert Einstein war es erstmals möglich,
 sich seriös Gedanken über die Geschichte des
 Universums zu machen. An dieses Problem haben sich anfangs der 20er Jahre bekannte Wissenschaftler wie Einstein, deSitter, Friedmann und Lemaitre gemacht.
 Zu dieser Zeit gab es wenig bis keine experimentellen Daten, die Aussagen über Geometrie oder Dynamik des Weltalls hätten treffen können. So kam es, das unter den führenden Astronomen das Bild eines statischen Universums grosse Empathie erhielt.
-\\
+
 Durch die Entdeckung der Fluchtbewegungen von Galaxien mithilfe der kosmologischen Rotverschiebungen gelang es 1929 dem US-amerikanischen Astronomen Edwin Hubble, die damalige Vorstellung eines statischen Kosmos zu widerlegen. Diese Entdeckung hatte zur Folge, dass man jetzt ein Modell mit einem sich veränderndem Weltradius brauchte.
 \pagebreak
 \section{Skalenfaktor a}
 Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensionales Koordinatensystem ein, welches sich mit der relativen Bewegung von Galaxien mitbewegen kann. In einem solchen System besitzen die Objekte fixe Koordinaten und sind somit wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den {\em Skalenfaktor} $a$ ausgedrückt und ist eine Funktion der Zeit. Dehnt sich das Universum mit der Zeit aus, dehnt sich auch das Raster aus.
-\begin{center}
-\begin{tabular}{ll} \hline
-	Hier kommt das Bild \\ 
-	des Koordinatensystems rein.. \\
-\hline
-\end{tabular}
-\end{center}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann}
+	\caption{Raster ums Universum für zwei verschiedene Skalenfaktor}
+	\label{friedmann:friedmannRaster}
+\end{figure}%
 
 \section{Mathematische Beziehungen im Koordinatensystem}
 Die Distanz zwischen zwei Punkten A und B entspricht 
