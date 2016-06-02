@@ -12,8 +12,6 @@
 \end{quote}
 In diesem Kapitel möchten wir euch helfen, gemäss dem oben erwähnten Zitat, das Bild des Weltalls fassen zu vermögen. Um dies zu tun, werden wir versuchen, das Gebilde, welches wir Universum nennen, unter Zuhilfenahme der physikalischen Gesetze in einen mathematischen Kontext zu bringen.
 
-%Das Universum ist ein sehr komplexes Gebilde. Wir versuchten, so gut es ging, uns mit der ganzen Materie auseinanderzusetzen. Dabei mussten wir feststellen, das "`Unwissen"' manchmal die bessere Variante als "`Verstehen"' ist. Versucht man die Friedmann-Gleichung mit all ihren Facetten zu verstehen, stösst man schnell auf Begriffe wie Tensoren, Allgemeine Relativitätstheorie, dunkle Energie usw. Diese Begriffe stellen Hürden dar, die mit unserem Wissen nur selten zu überwinden sind. Aufgeben war aber nie eine Option. "`Wir müssen unser Vorstellungsvermögen ausdehnen und nicht das Universum unserer Vorstellung anpassen"', wie Sir Francis sagt. Mit dieser Einstellung konnten wir sehr viel Neues über das Universum lernen. Wir hoffen, dass wir euch im folgenden Kapitel unsere neugewonnenen Erkenntnisse zeigen  und euch die Friedmann-Gleichung näher bringen können.
-
 \section{Vorgeschichte}
 Mit der Formulierung der Allgemeinen Relativitätstheorie durch Albert Einstein war es erstmals möglich,
 sich seriös Gedanken über die Geschichte des
@@ -42,7 +40,7 @@ F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte relativ zueinander b
 \varv_{AB} = \dfrac{dD_{ab}}{dt} 
 = \dot{a} \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
 \end{equation}
-Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl  des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
+Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
 \begin{equation}
 \frac{\varv_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
 \label{friedmann:geschwindigkeit}
@@ -90,11 +88,11 @@ Wir lösen die Gleichung für beide verbleibenden Terme auf
 \begin{enumerate}
 	\item $\kappa = 0$ 
 		\begin{align*}
-			\left(\frac{\dot{a}}{a}\right) ^2 &= \frac{\Lambda c^2}{3}  \qquad &| \cdot a^2\\
-			\dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3} \qquad &|\sqrt{...}\\
-			\dot{a} &= \sqrt{\frac{\Lambda c^2}{3}} a \qquad &|\sqrt{\frac{\Lambda c^2}{3}} := E\\
-			\dot{a} &= E \cdot a \qquad &|\int ... dt \\
-			a &= e^{\frac{1}{E} t}  &\\
+			\left(\frac{\dot{a}}{a}\right) ^2 &= \frac{\Lambda c^2}{3}  &| \cdot a^2 \\
+			\dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3}  &|\sqrt{...}\\
+			\dot{a} &= \sqrt{\frac{\Lambda c^2}{3}} a &|\sqrt{\frac{\Lambda c^2}{3}} := E\\
+			\dot{a} &= E \cdot a &|\int ... dt \\
+			a &= e^{E \cdot t}  \\
 		\end{align*}
 		
 	\item $\Lambda = 0$ 
@@ -104,15 +102,21 @@ Wir lösen die Gleichung für beide verbleibenden Terme auf
 			\dot{a} &= \sqrt{- \kappa} c \qquad &|\int ... dt\\
 			a &= \sqrt{- \kappa} c \cdot t  \\
 		\end{align*}
+		%Wenn linke Seite positiv sein muss, kann Kappa nur negativ oder null sein. Einstein wollte jedoch statisch, geschlossenes Universum, darum der \Lambda-Term
 \end{enumerate}
 
-\subsection{Diskussion des Dichteterms}
-Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung \ref{friedmann:friedmannRaster} zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir \ref{friedmann:dichte} ein. 
+\subsection{Universum mit Masse}
+Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}\]
 Weiter können wir $\nu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3}\]
-\section{Herleitung der Differential-Gleichung}
-\subsection{Newtonscher Ansatz}
+
+\subsection*{Diskussion der Lösungen}
+Tobias
+\subsection{Herleitung der Differential-Gleichung}
+Tobias
+\subsubsection{Newtonscher Ansatz}
+Tobias
 Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
 Für \textbf{Abstand} \textit{D}, \textbf{Geschwindigkeit} \textit{v} und \textbf{Beschleunigung} \textit{A} schreiben wir:
 \[D =  a \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}  = a R\]
@@ -223,14 +227,6 @@ Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Univ
 %		\label{friedmann:friedmannGleichung}}
 %\end{figure}%
 	
-\subsection{Relativistischer Ansatz}
-Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einsteins eine wesentliche Rolle bei der Beschreibung des Kosmos.
-Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "gewöhnlicher", sogenannter baryonischer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
-Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
-\begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
-\label{friedmann:Einstein}
-\end{equation}
 
 \subsection*{Energiedichte}
 Wie wir wissen, existiert im Weltall nicht nur sichtbare, sondern auch dunkle Materie und Strahlung. Dunkle Materie verhält sich in Bezug auf die gravitative Wirkung ähnlich wie sichtbare Materie, und deshalb wird im Folgenden nicht weiter darauf eingegangen.
@@ -265,6 +261,16 @@ Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit 
 \[ t = \frac{1}{2} a^{2} \Rightarrow a = \sqrt{2} \quad t^{1/2} \]
 
 Analog zum Newtonschen Ansatz verhält sich das Universum für einen dominierenden zweiten Term gemäss Gleichung \ref{friedmann:LoesungZweiterTerm}.
+
+\subsection{Relativistischer Ansatz}
+Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einsteins eine wesentliche Rolle bei der Beschreibung des Kosmos.
+Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "gewöhnlicher", sogenannter baryonischer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
+Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
+\begin{equation}
+\left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
+\label{friedmann:Einstein}
+\end{equation}
+
 
 
 \subsection*{Geometrie des Raumes}
