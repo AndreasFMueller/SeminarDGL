@@ -4,7 +4,7 @@
 \begin{refsection}
 \chapterauthor{Andri Hartmann und Tobias Schuler}
 \printbibliography[heading=subbibliography]
-\epstopdfsetup{outdir=./} %Sonst koennen keine Grafiken von eps-to-pdf konvertiert werden
+%\epstopdfsetup{outdir=./} %Sonst koennen keine Grafiken von eps-to-pdf konvertiert werden
 \lhead{Einleitung zur Friedmann-Gleichung}
 \rhead{}
 \begin{quote}
@@ -20,25 +20,25 @@ Zu dieser Zeit gab es wenig bis keine experimentellen Daten, die Aussagen über 
 
 Durch die Entdeckung der Fluchtbewegungen von Galaxien mithilfe der kosmologischen Rotverschiebungen gelang es 1929 dem US-amerikanischen Astronomen Edwin Hubble, die damalige Vorstellung eines statischen Kosmos zu widerlegen. Diese Entdeckung hatte zur Folge, dass man jetzt ein Modell mit einem sich veränderndem Weltradius brauchte.
 \pagebreak
-\section{Skalenfaktor a}
+\section{Skalenfaktor a\label{Section:Skalenfaktor}}
 Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensionales Koordinatensystem ein, welches sich mit der relativen Bewegung von Galaxien mitbewegen kann. In einem solchen System besitzen die Objekte fixe Koordinaten und sind somit wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den {\em Skalenfaktor} $a$ ausgedrückt und ist eine Funktion der Zeit. Ein zweidimensionales Raster ist in Abbildung \ref{friedmann:friedmannRaster} zu sehen. Die drei Kreise stellen Galaxien dar. Die Linie zwischen der roten und blauen Galaxie zeigt den Abstand. Dehnt sich nun das Universum aus, dehnt sich das Raster mit, wie auf dem zweiten Plot zu sehen ist. Die Grösse der Galaxien und die Position auf dem Raster bleiben gleich, der Abstand zwischen den Galaxien hat sich aber verändert. 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann}
-	\caption{Raster ums Universum für zwei verschiedene Skalenfaktoren}
-	\label{friedmann:friedmannRaster}
-\end{figure}%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann}
+%	\caption{Raster ums Universum für zwei verschiedene Skalenfaktoren}
+%	\label{friedmann:friedmannRaster}
+%\end{figure}%
 
 \subsection{Mathematische Beziehungen im Koordinatensystem}
 Die Distanz zwischen zwei Punkten A und B entspricht 
 \begin{equation}
-D_{AB} = \sqrt{a^2(t)\Delta_{AB}x^2 + a^2(t)\Delta_{AB}y^2 + a^2(t)\Delta_{AB}z^2} = a(t) \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
+D_{AB}(t)\, = \sqrt{a^2(t)\Delta_{AB}\,x^2 + a^2(t)\Delta_{AB}\,y^2 + a^2(t)\Delta_{AB}\,z^2}\, =\, a(t) \sqrt{\Delta_{AB}\,x^2 + \Delta_{AB}\,y^2 + \Delta_{AB}\,z^2}
 \end{equation}
 F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte relativ zueinander bewegen, gilt 
 \begin{equation}
-\varv_{AB} = \dfrac{dD_{ab}}{dt} 
-= \dot{a} \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
+\varv_{AB}(t) = \dfrac{dD_{ab}}{dt} 
+= \dot{a}(t) \sqrt{\Delta_{AB}\,x^2 + \Delta_{AB}\,y^2 + \Delta_{AB}\,z^2}
 \end{equation}
 Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
 \begin{equation}
@@ -51,11 +51,17 @@ Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fi
 %	\frac{\dot{a}}{a} = H
 %	\]
 %\end{satz}
-Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist somit
+\begin{satz}[Kosmologisches Prinzip]
+\label{Prinzip:kosmologisches Prinzip}
+Das kosmologische Prinzip besagt, dass auf einer grossen Längenskala kein Ort im Universum gegenüber einem anderen ausgezeichnet ist. Diese Annahme bedingt zwei Eigenschaften, Isotropie und Homogenität.\\
+Isotropie  bezeichnet die Unabhängigkeit einer Eigenschaft von der Richtung.
+Homogenität bezeichnet die Gleichheit einer physikalischen Eigenschaft über die gesamte Ausdehnung eines Systems.
+\end{satz}
+Gemäss Satz (\ref{Prinzip:kosmologisches Prinzip}) und der Eigenschaft unseres Koordinatensystems, Kap.(\ref{Section:Skalenfaktor}), bleibt die Masse in einem Einheitskubik konstant über die Zeit. Somit ist die Masse $M$ in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ 
 \begin{equation}
-M_{xyz} = \nu \Delta x \Delta y \Delta z
+M_{xyz} = \nu \, \Delta x \, \Delta y \, \Delta z
 \end{equation}
-Der Parameter $\nu$ beschreibt die Massendichte in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
+Der Parameter $\nu$ beschreibt die Massendichte in einem Einheitsquader und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
 \begin{equation}
 V_{xyz} = a^3 \Delta x \Delta y \Delta z
 \end{equation}
@@ -82,37 +88,60 @@ Bevor wir beginnen, die Gleichung herzuleiten, können wir schon jetzt verschied
 
 \subsection{Masseloses Universum}
 %Sie könnten zum Beispiel könnten zum Beispiel mit einem leeren Universum beginnen (rho = 0), und die Gleichung einfach mal für den zweiten und dritten Term lösen. Rein mathematisch, ohne die Physik schon zu untersuchen. Hier können Sie den Trick mit der zusätzlichen Ableitung?? erklären. Damit zeigen Sie schon mal, dass die Gleichung eine Vielzahl spannender Lösungen hat.
-Setzen wir $\rho = 0$ und , entspricht dies einem masselosen Universum.  Wir schreiben die Gleichung ohne den ersten Term
+Setzen wir $\rho = 0$, entspricht dies einem masselosen Universum.  Wir schreiben die Gleichung ohne den ersten Term
 \[\left(\frac{\dot{a}}{a}\right) ^2 = - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}\]
-Wir lösen die Gleichung für beide verbleibenden Terme auf
+Nun sind noch zwei Terme übrig. Separiert man sie, findet man eine Lösung wie folgt
 \begin{enumerate}
 	\item $\kappa = 0$ 
 		\begin{align*}
-			\left(\frac{\dot{a}}{a}\right) ^2 &= \frac{\Lambda c^2}{3}  &| \cdot a^2 \\
-			\dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3}  &|\sqrt{...}\\
-			\dot{a} &= \sqrt{\frac{\Lambda c^2}{3}} a &|\sqrt{\frac{\Lambda c^2}{3}} := E\\
-			\dot{a} &= E \cdot a &|\int ... dt \\
-			a &= e^{E \cdot t}  \\
+			\left(\frac{\dot{a}}{a}\right) ^2 &= \frac{\Lambda c^2}{3}  &&| \cdot a^2 \\
+			\dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3}  &&|\sqrt{...}\\
+			\dot{a} &= \sqrt{\frac{\Lambda c^2}{3}} a &&|\sqrt{\frac{\Lambda c^2}{3}} := E \ge 0 \, (!)\\
+			\dot{a} &= E \cdot a &&|\int ...\, dt \\
 		\end{align*}
+		
+	\begin{equation}\label{friedmann:Lambda}
+		\boxed{a = e^{E \cdot t}}
+	\end{equation}
+	
+		 
+Mit $\kappa = 0$ gibt es zwei mögliche Ausprägungen für das Universum, entweder ist $E = 0$ oder $E > 0$. Im ersten Fall wäre das Universum statisch und wäre für alle Zeit gerade so gross wie der Skalenfaktor. Im zweiten Fall würde sich das Universum exponentiell ausdehnen.
 		
 	\item $\Lambda = 0$ 
 		\begin{align*}
-			\left(\frac{\dot{a}}{a}\right) ^2 &= - \frac{\kappa c^2}{a^2}  \qquad &| \cdot a^2\\
-			\dot{a} ^2 &= - \kappa c^2 \qquad &|\sqrt{...}\\
-			\dot{a} &= \sqrt{- \kappa} c \qquad &|\int ... dt\\
-			a &= \sqrt{- \kappa} c \cdot t  \\
+			\left(\frac{\dot{a}}{a}\right) ^2 &= - \frac{\kappa c^2}{a^2}  \qquad &&| \cdot a^2\\
+			\dot{a} ^2 &= - \kappa \, c^2 \qquad &&|\sqrt{...}\\
+			\dot{a} &= \sqrt{- \kappa}\, c \qquad &&|\int ...\, dt\\
 		\end{align*}
-		%Wenn linke Seite positiv sein muss, kann Kappa nur negativ oder null sein. Einstein wollte jedoch statisch, geschlossenes Universum, darum der \Lambda-Term
+		\begin{equation}	\label{friedmann:Kappa}
+			\boxed{a = \sqrt{- \kappa}\, c \cdot t}
+		\end{equation} 
+		
+Auch hier gibt es zwei mögliche Ausprägungen. Wie vorhin könnte $\kappa = 0$ sein, oder $\kappa < 0$. In diesem Fall würde das bedeuten, es entsteht entweder kein Raum, da der Skalenfaktor $a$ nie anwächst, oder aber das Universum wächst linear mit der Zeit an.
+	
 \end{enumerate}
 
 \subsection{Universum mit Masse}
-Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
+Wie vorhin schon angedeutet, steht $\rho$ für die Massendichte im Universum. Ist das Universum massenlos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}\]
 Weiter können wir $\nu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
-\[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3}\]
+\[ 
+\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3} \qquad \Leftrightarrow \qquad
+\dot{a}^2 = \frac{1}{a} 
+\]
+\begin{equation}\label{friedmann:Masse}
+\boxed{\dot{a} = \frac{1}{\sqrt{a}}}
+\end{equation}
+
 
 \subsection*{Diskussion der Lösungen}
-Tobias
+Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir gewisse Aussagen über Dominanz der einzelnen Terme machen.
+\begin{align*}
+\left(\frac{\dot{a}}{a}\right) ^2 =\;\frac{8 \pi G}{3} \rho\; &- \;\frac{\kappa c^2}{a^2}\; + \;\frac{\Lambda c^2}{3} \\
+\left(\frac{\dot{a}}{a}\right) ^2 = \;\frac{1}{a^3}\; &-\;\frac{\kappa c^2}{a^2}\; +\; \frac{\Lambda c^2}{3}
+\end{align*}
+Für kleine Werte von $a$ wird der erste Term dominieren, für mittlere Werte von $a$ der Zweite, und für grosse Werte dominiert der letzte Term. Das heisst, die Lösungen setzen sich in zeitlicher Reihenfolge wie folgt an:
+Gleichung (\ref{friedmann:Masse}) dominiert zu Beginn, dann mischt sich Gleichung (\ref{friedmann:Kappa}) ins Spiel, und am Schluss dominiert Gleichung (\ref{friedmann:Lambda}) über das Schicksal des Universums.
 \subsection{Herleitung der Differential-Gleichung}
 Tobias
 \subsubsection{Newtonscher Ansatz}
