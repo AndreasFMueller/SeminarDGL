@@ -17,22 +17,22 @@ In diesem Kapitel möchten wir euch helfen, gemäss dem oben erwähnten Zitat, d
 \section{Vorgeschichte}
 Mit der Formulierung der Allgemeinen Relativitätstheorie durch Albert Einstein war es erstmals möglich,
 sich seriös Gedanken über die Geschichte des
-Universums zu machen. An dieses Problem haben sich anfangs der 20er Jahre bekannte Wissenschaftler wie Einstein, deSitter, Friedmann und Lemaitre gemacht.
+Universums zu machen. An dieses Problem haben sich anfangs der 20er Jahre bekannte Wissenschaftler wie Einstein, deSitter, Friedmann und Lemaitre gemacht. 
 Zu dieser Zeit gab es wenig bis keine experimentellen Daten, die Aussagen über Geometrie oder Dynamik des Weltalls hätten treffen können. So kam es, das unter den führenden Astronomen das Bild eines statischen Universums grosse Empathie erhielt.
 
 Durch die Entdeckung der Fluchtbewegungen von Galaxien mithilfe der kosmologischen Rotverschiebungen gelang es 1929 dem US-amerikanischen Astronomen Edwin Hubble, die damalige Vorstellung eines statischen Kosmos zu widerlegen. Diese Entdeckung hatte zur Folge, dass man jetzt ein Modell mit einem sich veränderndem Weltradius brauchte.
 \pagebreak
 \section{Skalenfaktor a}
-Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensionales Koordinatensystem ein, welches sich mit der relativen Bewegung von Galaxien mitbewegen kann. In einem solchen System besitzen die Objekte fixe Koordinaten und sind somit wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den {\em Skalenfaktor} $a$ ausgedrückt und ist eine Funktion der Zeit. Dehnt sich das Universum mit der Zeit aus, dehnt sich auch das Raster aus.
+Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensionales Koordinatensystem ein, welches sich mit der relativen Bewegung von Galaxien mitbewegen kann. In einem solchen System besitzen die Objekte fixe Koordinaten und sind somit wie in einem Raster eingefroren. Die Einheit des Rasters wird durch den {\em Skalenfaktor} $a$ ausgedrückt und ist eine Funktion der Zeit. Ein zweidimensionales Raster ist in Abbildung \ref{friedmann:friedmannRaster} zu sehen. Die drei Kreise stellen Galaxien dar. Die Linie zwischen der roten und blauen Galaxie zeigt den Abstand. Dehnt sich nun das Universum aus, dehnt sich das Raster mit, wie auf dem zweiten Plot zu sehen ist. Die Grösse der Galaxien und die Position auf dem Raster bleiben gleich, der Abstand zwischen den Galaxien hat sich aber verändert. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann}
-	\caption{Raster ums Universum für zwei verschiedene Skalenfaktor}
+	\caption{Raster ums Universum für zwei verschiedene Skalenfaktoren}
 	\label{friedmann:friedmannRaster}
 \end{figure}%
 
-\section{Mathematische Beziehungen im Koordinatensystem}
+\subsection{Mathematische Beziehungen im Koordinatensystem}
 Die Distanz zwischen zwei Punkten A und B entspricht 
 \begin{equation}
 D_{AB} = \sqrt{a^2(t)\Delta_{AB}x^2 + a^2(t)\Delta_{AB}y^2 + a^2(t)\Delta_{AB}z^2} = a(t) \sqrt{\Delta_{AB}x^2 + \Delta_{AB}y^2 + \Delta_{AB}z^2}
@@ -47,12 +47,12 @@ Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fi
 \frac{\varv_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
 \label{friedmann:geschwindigkeit}
 \end{equation}
-\begin{satz} [Hubble-Konstante]
-	Die Ableitung des Skalenfaktors dividiert durch den Skalenfaktor entspricht der Hubble-Konstante.
-	\[
-	\frac{\dot{a}}{a} = H
-	\]
-\end{satz}
+%\begin{satz} [Hubble-Konstante]
+%	Die Ableitung des Skalenfaktors dividiert durch den Skalenfaktor entspricht der Hubble-Konstante.
+%	\[
+%	\frac{\dot{a}}{a} = H
+%	\]
+%\end{satz}
 Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist somit
 \begin{equation}
 M_{xyz} = \nu \Delta x \Delta y \Delta z
@@ -67,7 +67,7 @@ und folglich kann die Massendichte geschrieben werden als
 \label{friedmann:dichte}
 \end{equation}
 
-Es stellt sich nun die spannende Frage: Wie ändert sich der Skalenfaktor mit der Zeit? Und eben diese Frage wurde durch die Friedmann-Lema\^{i}tre Diff-Gleichung beantwortet.
+Es stellt sich nun die spannende Frage: Wie ändert sich der Skalenfaktor mit der Zeit? Und eben diese Frage wird mit der Friedmann-Lema\^{i}tre Differentialgleichung beantwortet.
 
 
 %\section{Expansion des Universums}
@@ -78,12 +78,39 @@ Die sogenannte Friedmann-Lema\^{i}tre-Gleichung beschreibt das Verhalten des Uni
 \begin{equation}
 \left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
-\subsection*{Lösungen der Gleichung für verschiedene Parameter}
-Bevor wir beginnen, die Gleichung herzuleiten, können wir schon jetzt verschiedene Lösungen für unterschiedliche Parameterwerte diskutieren. Das hilft uns später beim  rekonstruieren der Geschichte des Universums.
 
-\subsection{Masseloses Universum ($\rho = 0$)}
-\subsection{Flaches Universum ($\kappa = 0$)}
+%\subsection*{Lösungen der Gleichung für verschiedene Parameter}
+Bevor wir beginnen, die Gleichung herzuleiten, können wir schon jetzt verschiedene Lösungen für unterschiedliche Parameterwerte diskutieren. Das hilft uns später beim Rekonstruieren der Geschichte des Universums.
 
+\subsection{Masseloses Universum}
+%Sie könnten zum Beispiel könnten zum Beispiel mit einem leeren Universum beginnen (rho = 0), und die Gleichung einfach mal für den zweiten und dritten Term lösen. Rein mathematisch, ohne die Physik schon zu untersuchen. Hier können Sie den Trick mit der zusätzlichen Ableitung?? erklären. Damit zeigen Sie schon mal, dass die Gleichung eine Vielzahl spannender Lösungen hat.
+Setzen wir $\rho = 0$ und , entspricht dies einem masselosen Universum.  Wir schreiben die Gleichung ohne den ersten Term
+\[\left(\frac{\dot{a}}{a}\right) ^2 = - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}\]
+Wir lösen die Gleichung für beide verbleibenden Terme auf
+\begin{enumerate}
+	\item $\kappa = 0$ 
+		\begin{align*}
+			\left(\frac{\dot{a}}{a}\right) ^2 &= \frac{\Lambda c^2}{3}  \qquad &| \cdot a^2\\
+			\dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3} \qquad &|\sqrt{...}\\
+			\dot{a} &= \sqrt{\frac{\Lambda c^2}{3}} a \qquad &|\sqrt{\frac{\Lambda c^2}{3}} := E\\
+			\dot{a} &= E \cdot a \qquad &|\int ... dt \\
+			a &= e^{\frac{1}{E} t}  &\\
+		\end{align*}
+		
+	\item $\Lambda = 0$ 
+		\begin{align*}
+			\left(\frac{\dot{a}}{a}\right) ^2 &= - \frac{\kappa c^2}{a^2}  \qquad &| \cdot a^2\\
+			\dot{a} ^2 &= - \kappa c^2 \qquad &|\sqrt{...}\\
+			\dot{a} &= \sqrt{- \kappa} c \qquad &|\int ... dt\\
+			a &= \sqrt{- \kappa} c \cdot t  \\
+		\end{align*}
+\end{enumerate}
+
+\subsection{Diskussion des Dichteterms}
+Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung \ref{friedmann:friedmannRaster} zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir \ref{friedmann:dichte} ein. 
+\[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}\]
+Weiter können wir $\nu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
+\[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3}\]
 \section{Herleitung der Differential-Gleichung}
 \subsection{Newtonscher Ansatz}
 Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
