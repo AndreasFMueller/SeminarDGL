@@ -30,7 +30,7 @@ Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensi
 %	\label{friedmann:friedmannRaster}
 %\end{figure}%
 
-\subsection{Mathematische Beziehungen im Koordinatensystem}
+\subsection{Mathematische Beziehungen im Koordinatensystem \label{friedmann:Beziehungen im Koordinatensystem}}
 Die Distanz zwischen zwei Punkten A und B entspricht 
 \begin{equation}
 D_{AB}(t)\, = \sqrt{a^2(t)\Delta_{AB}\,x^2 + a^2(t)\Delta_{AB}\,y^2 + a^2(t)\Delta_{AB}\,z^2}\, =\, a(t) \sqrt{\Delta_{AB}\,x^2 + \Delta_{AB}\,y^2 + \Delta_{AB}\,z^2}
@@ -125,43 +125,42 @@ Auch hier gibt es zwei mögliche Ausprägungen. Wie vorhin könnte $\kappa = 0$ 
 Wie vorhin schon angedeutet, steht $\rho$ für die Massendichte im Universum. Ist das Universum massenlos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}\]
 Weiter können wir $\nu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
-\[ 
-\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3} \qquad \Leftrightarrow \qquad
-\dot{a}^2 = \frac{1}{a} 
-\]
-\begin{equation}\label{friedmann:Masse}
-\boxed{\dot{a} = \frac{1}{\sqrt{a}}}
+
+\begin{align*}
+\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3} \quad &\Leftrightarrow \quad \dot{a}^2 = \frac{1}{a} \\
+\frac{da}{dt} = \frac{1}{\sqrt{a}} \quad &\Leftrightarrow \quad
+\frac{dt}{da} = \sqrt{a} \\
+\int 1 \, dt = \int \sqrt{a}\, da  \quad &\Leftrightarrow \quad
+t = \frac{2}{3}\, a{^\frac{3}{2}}
+\end{align*}
+\begin{equation} \label{friedmann:Masse}
+\boxed{a = \frac{3}{2}\, t^{\frac{2}{3}}}
 \end{equation}
 
 
 \subsection*{Diskussion der Lösungen}
-Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir gewisse Aussagen über Dominanz der einzelnen Terme machen.
+Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir herauslesen, welcher Term bei einer gegebenen Grösse $a$ dominierend war.
 \begin{align*}
 \left(\frac{\dot{a}}{a}\right) ^2 =\;\frac{8 \pi G}{3} \rho\; &- \;\frac{\kappa c^2}{a^2}\; + \;\frac{\Lambda c^2}{3} \\
 \left(\frac{\dot{a}}{a}\right) ^2 = \;\frac{1}{a^3}\; &-\;\frac{\kappa c^2}{a^2}\; +\; \frac{\Lambda c^2}{3}
 \end{align*}
-Für kleine Werte von $a$ wird der erste Term dominieren, für mittlere Werte von $a$ der Zweite, und für grosse Werte dominiert der letzte Term. Das heisst, die Lösungen setzen sich in zeitlicher Reihenfolge wie folgt an:
-Gleichung (\ref{friedmann:Masse}) dominiert zu Beginn, dann mischt sich Gleichung (\ref{friedmann:Kappa}) ins Spiel, und am Schluss dominiert Gleichung (\ref{friedmann:Lambda}) über das Schicksal des Universums.
+Für kleine Werte von $a$ wird der erste Term dominieren, für mittlere Werte von $a$ der Zweite, und für grosse Werte dominiert der letzte Term. Das heisst, die Lösungen setzen sich in zeitlicher Reihenfolge wie folgt zusammen:
+Gleichung (\ref{friedmann:Masse})  dominiert zu Beginn, dann mischt sich Gleichung (\ref{friedmann:Kappa}) ins Spiel, und am Schluss dominiert Gleichung (\ref{friedmann:Lambda}) über das Schicksal des Universums.
 \subsection{Herleitung der Differential-Gleichung}
-Tobias
+Im folgenden Abschnitt versuchen wir die Bedeutung der einzelnen Terme physikalisch zu hinterlegen. Das ist nicht immer ganz einfach, denn die Differential-Gleichung wurde unter anderem mithilfe der Einstein'schen Feldgleichungen hergeleitet worden. In diesem Kapitel werden wir aber nicht so weit gehen, trotzdem können wir einige interessante Relationen mithilfe der klassischen Physik herleiten.
 \subsubsection{Newtonscher Ansatz}
-Tobias
 Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
-Für \textbf{Abstand} \textit{D}, \textbf{Geschwindigkeit} \textit{v} und \textbf{Beschleunigung} \textit{A} schreiben wir:
-\[D =  a \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}  = a R\]
-\[\varv = \dot{a} R\]
-\[A = \ddot{a} R\]
-
+Im folgenden Abschnitt werden die in Kap.(\ref{friedmann:Beziehungen im Koordinatensystem}) hergeleiteten Formeln angewendet. Einfachheitshalber schreiben wir für den Abstand im Grid
+\[ \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2} := R \]
 und für das Volumen V der Kugel
-\[V_{Kugel} = \frac{4 \pi }{3} a^3 R^3\]
-
+\[V_\text{Kugel} = \frac{4 \pi }{3} a^3 R^3\]
 Gemäss Newton ergibt sich die Gravitationskraft aus
 \begin{equation}
 F_G = -\frac{m M G}{D^2}
 \end{equation}
 Da die Gravitationskraft zwecks Vereinfachung des Modells als einzige Kraft eingesehen wird, gilt für die Beschleunigung mit 
 \[F = m A\]
-\[A = - \frac{M G}{D^2} = \ddot{a} R \Leftrightarrow \ddot{a} = \frac{- M G}{a^2 R^3} \Leftrightarrow\ \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \Leftrightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V}\]
+\[A = - \frac{M G}{D^2} = \ddot{a} R \quad\Leftrightarrow\quad \ddot{a} = \frac{- M G}{a^2 R^3} \quad\Leftrightarrow\quad \frac{\ddot{a}}{a} = \frac{-\frac{4 \pi }{3} M G}{\frac{4 \pi}{3}a^3 R^3} \quad\Leftrightarrow\quad \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{M}{V_\text{Kugel}}\]
 Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steht. Damit vereinfacht sich die Beschleunigung zu
 \begin{equation}
 \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \rho
