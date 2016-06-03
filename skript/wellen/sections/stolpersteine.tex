@@ -2,7 +2,7 @@
 
 Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
 beachtet werden m"ussen. Von besonderer Bedeutung sind die Genauigkeit der 
-L"osungen f"ur die jeweiligen $x$, sowie der auch die Zeit, welche f"ur die 
+L"osungen f"ur die jeweiligen $x$, sowie die Zeit, welche f"ur die 
 Berechnung ben"otigt wird.
 
 \subsubsection{Genauigkeit}
@@ -16,14 +16,13 @@ dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken.
 \begin{equation*}
 	y(x) = \sum_{k=0}^{\textcolor{red}{k_{\text{max}}}}a_kx^k
 \end{equation*}
-
 Das hat aber weitreichende Folgen: So werden je nach $k_{\text{max}}$ fr"uher 
 oder sp"ater die L"osungswerte gegen $+\infty$ oder $-\infty$ gehen, was daran 
 liegt, dass der Term $x^k$ einer endlichen Reihe gegen"uber den $a_k$ zu 
 dominieren beginnen wird.
 
 \begin{figure}
-	\includegraphics[scale=0.65]{./wellen/images/kmax/kmax.pdf}
+	\includegraphics[width=1\hsize]{./wellen/images/kmax/kmax.pdf}
 	\caption{Auswirkung unterschiedlicher $k_{\text{max}}$ auf Wellenform}
 	\label{fig:wellen:variablekmax}
 \end{figure}
@@ -37,11 +36,9 @@ und die von $x^k$ immer gr"osser, kommt der Rechner irgendwann an seine Grenzen
 und beginnt unbrauchbare Resultate zu liefern. Diese Ungenauigkeit ist durch 
 die bin"are Darstellung von Dezimalzahlen und den Limitierungen der 
 verschiedenen Datentypen wie \texttt{double} oder \texttt{float} in einem 
-Rechnersystem gegeben.
-
-Diese Schwierigkeiten beschr"anken sich nicht nur auf die in diesem Kapitel 
-besprochenen Probleme, sondern sind inh"arent zu allen Berechnungsaufgaben die 
-mit Computern ausgef"uhrt werden.
+Rechnersystem gegeben. Diese Schwierigkeiten beschr"anken sich nicht nur auf 
+die in diesem Kapitel besprochenen Probleme, sondern sind inh"arent zu allen 
+Berechnungsaufgaben die mit Computern ausgef"uhrt werden.
 
 \subsubsection{Berechnungszeit}
 
