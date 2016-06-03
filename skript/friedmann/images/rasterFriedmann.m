@@ -43,7 +43,7 @@ line([galaxieA(1) galaxieB(1)], [galaxieA(2) galaxieB(2)], 'LineWidth', 2, 'Colo
 x_arrow = [1 2];
 y_arrow = [-4.5 -4.5];
 line(x_arrow, y_arrow, 'Color', 'k','LineWidth', 2);
-text(1.3, y_arrow(1) + 0.5, 'a', 'FontSize', 15);
+text(1.3, y_arrow(1) + 0.5, 'a(t_0) = a', 'FontSize', 15);
 hold off;
 axis off;
 
@@ -69,7 +69,7 @@ scatter(scale*galaxieC(1), scale*galaxieC(2), 500, 'fill', 'g');
 line(scale*[galaxieA(1) galaxieB(1)], scale*[galaxieA(2) galaxieB(2)], 'LineWidth', 2, 'Color', 'k', 'LineStyle', '--');
 
 line(scale*x_arrow, y_arrow, 'Color', 'k','LineWidth', 2);
-text(2.1, y_arrow(1) + 0.5, 'ã = 1.5a', 'FontSize', 15);
+text(2.1, y_arrow(1) + 0.5, 'a(t_1) = 1.5a', 'FontSize', 15);
 
 hold off;  
 axis off;

@@ -25,7 +25,7 @@ Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensi
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann}
+	\includegraphics[width  = \textwidth]{friedmann/images/rasterFriedmann.pdf}
 	\caption{Raster ums Universum für zwei verschiedene Skalenfaktoren}
 	\label{friedmann:friedmannRaster}
 \end{figure}%
@@ -53,15 +53,15 @@ Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fi
 %\end{satz}
 Das kosmologische Prinzip besagt, dass das Universum isotrop und homogen ist. Die Masse in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ ist somit
 \begin{equation}
-M_{xyz} = \nu \Delta x \Delta y \Delta z
+M_{xyz} = \mu \Delta x \Delta y \Delta z
 \end{equation}
-Der Parameter $\nu$ beschreibt die Massendichte in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
+Der Parameter $\mu$ beschreibt die Massendichte in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich 
 \begin{equation}
 V_{xyz} = a^3 \Delta x \Delta y \Delta z
 \end{equation}
 und folglich kann die Massendichte geschrieben werden als
 \begin{equation}
-\rho = \frac{M_{xyz}}{V_{xyz}} = \frac{\nu}{a^3}
+\rho = \frac{M_{xyz}}{V_{xyz}} = \frac{\mu}{a^3}
 \label{friedmann:dichte}
 \end{equation}
 
@@ -107,10 +107,17 @@ Wir lösen die Gleichung für beide verbleibenden Terme auf
 
 \subsection{Universum mit Masse}
 Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
-\[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3}\]
-Weiter können wir $\nu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
+\[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\mu}{a^3}\]
+Weiter können wir $\mu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{1}{a^3}\]
-
+Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
+\begin{align*}
+	\dot{a} &= \frac{1}{\sqrt{a}} \\
+	\frac{da}{dt} &=\frac{1}{\sqrt{a}} \\
+	\frac{dt}{da} &= \sqrt{a} \\
+	t &= \frac{2}{3} a^{3/2} \\
+	a &= \frac{3}{2} t^{2/3} \\
+\end{align*}
 \subsection*{Diskussion der Lösungen}
 Tobias
 \subsection{Herleitung der Differential-Gleichung}
