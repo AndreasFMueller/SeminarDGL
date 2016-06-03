@@ -7,12 +7,12 @@
 			\State $a_{-1} \gets 0$
 			\State $a_0 \gets y(0)$
 			\State $a_1 \gets y'(0)$
-			\State $s_{\text{pot}} \gets a_0 + a_1x$
+			\State $s_{\text{series}} \gets a_0 + a_1x$
 			\State $k \gets 2$
 			\For{$k \le k_{\text{max}}$}
 				\State $a_k \gets -\cfrac{1}{k(k-1)}			
 				(aa_{k-4}+ba_{k-3}+ca_{k-2})$
-				\State $s_{\text{pot}} \gets s_{\text{pot}} + a_k x^k$
+				\State $s_{\text{series}} \gets s_{\text{series}} + a_k x^k$
 				\State $k \gets k + 1$
 			\EndFor
 			\State $x \gets x + x_{\text{step}}$
@@ -22,10 +22,12 @@
 	\label{alg:wellen:potenzreihenrechnung}
 \end{algorithm}
 
-Eine genauere Absch"atzung kann mit Hilfe des Pseudocodes 
-\ref{alg:wellen:potenzreihenrechnung} gemacht werden.
-
-Der Algorithmus hat also eine Laufzeit von
+Die Berechnung von Potenzreihenl"osung im Intervall
+$[x_{\text{min}},x_{\text{max}}]$ kann "ausserst lange dauern. Auch hier muss 
+Anzahl Berechnungen, in diesem Fall die Aufl"osung des Plots, eingeschr"ankt 
+werden. Eine genauere Absch"atzung kann mit Hilfe des Pseudocodes 
+\ref{alg:wellen:potenzreihenrechnung} gemacht werden. Der Algorithmus hat also 
+eine Laufzeit von
 \begin{equation*}
 	O
 	\left(
