@@ -32,16 +32,17 @@ Um ein dynamisches Universum beschreiben zu können, führen wir ein dreidimensi
 Die Distanz zwischen zwei Punkten A und B entspricht 
 \begin{equation}
 D_{AB}(t)\, = \sqrt{a^2(t)\Delta_{AB}\,x^2 + a^2(t)\Delta_{AB}\,y^2 + a^2(t)\Delta_{AB}\,z^2}\, =\, a(t) \sqrt{\Delta_{AB}\,x^2 + \Delta_{AB}\,y^2 + \Delta_{AB}\,z^2}
+\label{friedmann:Abstand}
 \end{equation}
 F\"{u}r die Geschwindigkeit, mit der sich die beiden Punkte relativ zueinander bewegen, gilt 
 \begin{equation}
-\varv_{AB}(t) = \dfrac{dD_{ab}}{dt} 
+v_{AB}(t) = \dfrac{dD_{ab}}{dt} 
 = \dot{a}(t) \sqrt{\Delta_{AB}\,x^2 + \Delta_{AB}\,y^2 + \Delta_{AB}\,z^2}
+\label{friedmann:geschwindigkeit}
 \end{equation}
 Um nun Aussagen über die Dynamik des Universums zu machen, die nicht von der fiktiven Wahl des Skalenfaktors abhängen, teilen wir die Geschwindigkeit durch den Skalenfaktor $a$.
 \begin{equation}
-\frac{\varv_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
-\label{friedmann:geschwindigkeit}
+\frac{v_{AB} }{D_{AB}} = \frac{\dot{a}}{a}
 \end{equation}
 %\begin{satz} [Hubble-Konstante]
 %	Die Ableitung des Skalenfaktors dividiert durch den Skalenfaktor entspricht der Hubble-Konstante.
@@ -55,11 +56,11 @@ Das kosmologische Prinzip besagt, dass auf einer grossen Längenskala kein Ort i
 \end{satz}
 Gemäss Satz (\ref{Prinzip:kosmologisches Prinzip}) und der Eigenschaft unseres Koordinatensystems, Kap.(\ref{Section:Skalenfaktor}), bleibt die Masse in einem Einheitskubik konstant über die Zeit. Somit ist die Masse $M$ in einem Würfel mit Dimension $\Delta x$, $\Delta y$ und $\Delta z$ 
 \begin{equation}
-M_{xyz} = \mu \Delta x \Delta y \Delta z
+M_{xyz} = \mu \,\Delta x \,\Delta y \,\Delta z
 \end{equation}
 Der Parameter $\mu$ beschreibt die Massendichte in einem Einheitsquadrant und ist somit von der Wahl von $a$ abhängig, jedoch konstant über die Zeit. Das Volumen des Würfels ist bekanntlich
 \begin{equation}
-V_{xyz} = a^3 \Delta x \Delta y \Delta z
+V_{xyz} = a^3 \,\Delta x \,\Delta y \,\Delta z
 \end{equation}
 und folglich kann die Massendichte geschrieben werden als
 \begin{equation}
@@ -78,7 +79,7 @@ Die sogenannte Friedmann-Lema\^{i}tre-Gleichung beschreibt das Verhalten des Uni
 %\subsection*{Lösungen der Gleichung für verschiedene Parameter}
 Bevor wir beginnen, die Gleichung herzuleiten, können wir schon jetzt verschiedene Lösungen für unterschiedliche Parameterwerte diskutieren. Das hilft uns später beim Rekonstruieren der Geschichte des Universums.
 
-\subsection{Masseloses Universum}
+\subsection{Masseloses Universum \label{friedmann:masselosesUniversum}}
 %Sie könnten zum Beispiel könnten zum Beispiel mit einem leeren Universum beginnen (rho = 0), und die Gleichung einfach mal für den zweiten und dritten Term lösen. Rein mathematisch, ohne die Physik schon zu untersuchen. Hier können Sie den Trick mit der zusätzlichen Ableitung?? erklären. Damit zeigen Sie schon mal, dass die Gleichung eine Vielzahl spannender Lösungen hat.
 Setzen wir $\rho = 0$, entspricht dies einem masselosen Universum.  Wir schreiben die Gleichung ohne den ersten Term
 \[\left(\frac{\dot{a}}{a}\right) ^2 = - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}\]
@@ -110,7 +111,7 @@ Auch hier gibt es zwei mögliche Ausprägungen. Wie vorhin könnte $\kappa = 0$ 
 	
 \end{enumerate}
 
-\subsection{Universum mit Masse}
+\subsection{Universum mit Masse \label{friedmann:UniversumMitMasse}} 
 Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist das Universum masselos, ist die Dichte null. Gehen wir aber davon aus, dass im Universum Materie vorhanden ist, findet man eine weitere Lösung der Differentialgleichung. Zu beachten ist, dass die Dichte abhängig von der Ausdehnung ist. Als Gedankenstütze kann man sich eine geschlossene Box gefüllt mit einem homogenen Gas vorstellen. Vergrössert sich die Box nun wie sich das Universum ausdehnt, nimmt die Dichte ab solange kein Gas hinzugefügt wird. Dies ist auch in Abbildung (\ref{friedmann:friedmannRaster}) zu sehen. Das Raster ist im zweiten Plot grösser geworden, die Masse im Raster hat aber nicht zugenommen. Die Ausdehnung geschieht in einem dreidimensionalen System kubisch, die Massendichte muss also kubisch abnehmen. Damit die Gleichung lösbar ist, vernachlässigen wir den $\Lambda$- und $\kappa$-Term. Für die Dichte setzen wir (\ref{friedmann:dichte}) ein. 
 \[\left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \frac{\mu}{a^3}\]
 Weiter können wir $\mu$ so wählen, dass sich der konstante Term als eins schreiben lässt.
@@ -141,7 +142,7 @@ Gleichung (\ref{friedmann:Masse})  dominiert zu Beginn, dann mischt sich Gleichu
 \subsection{Herleitung der Differential-Gleichung}
 Im folgenden Abschnitt versuchen wir die Bedeutung der einzelnen Terme physikalisch zu hinterlegen. Das ist nicht immer ganz einfach, denn die Differential-Gleichung wurde unter anderem mithilfe der Einstein'schen Feldgleichungen hergeleitet worden. In diesem Kapitel werden wir aber nicht so weit gehen, trotzdem können wir einige interessante Relationen mithilfe der klassischen Physik herleiten.
 \subsubsection{Newtonscher Ansatz}
-Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der \textbf{Masse} $m$ im \textbf{Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit \textbf{Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
+Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der {\em Masse} $m$ im {\em Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit {\em Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
 Im folgenden Abschnitt werden die in Kap.(\ref{friedmann:Beziehungen im Koordinatensystem}) hergeleiteten Formeln angewendet. Einfachheitshalber schreiben wir für den Abstand im Grid
 \[ \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2} := R \]
 und für das Volumen V der Kugel
@@ -158,11 +159,11 @@ Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steh
 \frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \rho
 \end{equation}
 \subsubsection{Bedeutung der Beschleunigungsgleichung}
-Setzt man für die Dichte Gleichung \ref{friedmann:dichte} ein ergibt sich
-\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\nu}{a^3} \Leftrightarrow \frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
+Setzt man für die Dichte Gleichung (\ref{friedmann:dichte}) ein ergibt sich
+\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\mu}{a^3} \quad\Leftrightarrow \quad\frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
 Durch geschickte Wahl des Skalenfaktors kann $\nu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
 \[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \Leftrightarrow \ddot{a} = \frac{-1}{a^2}\]
-Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
+Die Differentialgleichung ist nichtlinear  und nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
 \begin{enumerate}
 	\item Die negative Beschleunigung wirkt der Ausdehnung des Universums entgegen. 
 	\item Statisches Universum ist nicht möglich für $\rho \neq 0$.
@@ -170,9 +171,9 @@ Die Differentialgleichung ist nichtlinear und mit MatLab nicht lösbar. Trotzdem
 \end{enumerate}
 
 \subsubsection{Energieerhaltung}
-Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden befassen wir uns mit der radialen Ausdehnung des Universums aus einem Ursprung heraus (BIG BANG). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit. Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
+Da wir versuchen, das Universum als ein physikalisches System zu beschreiben, muss auch hier der bedeutsame Satz der Energieerhaltung gelten. Im folgenden befassen wir uns mit der radialen Ausdehnung des Universums aus einem Ursprung heraus (Big Bang). Das Universum kann bei der Entstehung mit verschiedenen Gesamtenergien initialisiert werden, abhängig von der Dichte der Materie und ihrer Fluchtgeschwindigkeit. Betrachten wir für den Anfang die Beziehung zwischen kinetischer und potentieller Energie.
 \begin{equation}
-E_{ges} = E_{kin} - E_{pot} =  \frac{m \varv^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
+E_{\text{ges}} = E_{\text{kin}} - E_{\text{pot}} =  \frac{m v^2}{2} - \frac{m M G }{D}, \qquad D = \text{Abstand zwischen der Masse M und m}
 \end{equation}
 Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser Gleichung hinzufügen müssen. Doch beginnen wir in kleinen Schritten. Die Gesamtenergie kann nun drei wesentliche, für die Dynamik interessante Werte annehmen, nämlich
 \begin{enumerate}
@@ -180,60 +181,53 @@ Wir werden später noch andere Formen von Energie kennenlernen, die wir dieser G
 	\item $E_{ges} = 0 \rightarrow$ Eine Masse $m$ nähert sich asymptotisch  der Geschwindigkeit null, bleibt aber nie stehen. (Fluchtgeschwindigkeit)
 	\item $E_{ges} < 0 \rightarrow$ Eine Masse $m$ wird so stark angezogen, dass die Geschwindigkeit ihre Richtung ändert.
 \end{enumerate}
-Nennen wir die Gesamtenergie eine Konstante \textit{c} und formen die Gleichung um.
-\[\frac{m \varv^2}{2} - \frac{m M G}{x} = c_1 \qquad| *\frac{2}{m} \qquad \]
-\[{\varv^2} - \frac{2 M G}{x} = \frac{2c_1}{m} = c_2
-\:  \Leftrightarrow \: \left( \dot{a} R\right)^2 = \frac{2 M G}{a R} + c_2\] 
-\[\frac{\dot{a}^2}{a^2} = \frac{2 M G}{a^3 R^3} + \frac{c_2}{a^2 R^2} \: \Leftrightarrow \: \left(\frac{\dot{a}}{a} \right)^2 = \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{c_2}{a^2 R^2} \] %Schritte einzeln auflisten
+Nennen wir die Gesamtenergie eine Konstante $E$ und formen die Gleichung um.
+
+\begin{align*}
+	\frac{m v^2}{2} - \frac{m M G}{x} &= E_1 &&| \cdot\frac{2}{m} \\ 
+	v^2 - \frac{2 M G}{x} &= \frac{2E_1}{m} = E_2\\	
+\end{align*}
+Wir setzen (\ref{friedmann:geschwindigkeit}) und (\ref{friedmann:Abstand}) ein.
+\begin{align*}
+	\left( \dot{a} \, R\right)^2 &= \frac{2 M G}{a\,R} + E_2 &&| \cdot \frac{1}{a^2}\\
+	\frac{\dot{a}^2}{a^2} &= \frac{2 M G}{a^3 R^3} + \frac{E_2}{a^2 R^2} \\
+	\left(\frac{\dot{a}}{a} \right)^2 &= \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{E_2}{a^2 R^2}
+\end{align*}
 Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radius $R$ dividiert durch das Kugelvolumen $V$, was der Dichte entspricht. Daraus resultiert die vereinfachte Differentialgleichung 
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{c_2}{a^2 R^2}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \rho + \frac{E_2}{a^2 R^2}
 \label{friedmann:EnergieerhaltungUniversum}
 \end{equation}
-Mit \ref{friedmann:dichte}
-\[
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^3} + \frac{c_2}{a^2 R^2}
-\]
-Vereinfacht
+Mit (\ref{friedmann:dichte})
+\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\mu}{a^3} + \frac{E_2}{a^2 R^2} \\\]
+Wir wählen die Konstanten $\mu$ und $R$ so, dass die Gleichung folgendermassen vereinfacht wird.
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}
+\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}
 \end{equation}
 
 \subsubsection{Diskussion der Differentialgleichung}
-Wir erinnern uns, die Konstante \textit{c} steht für die Gesamtenergie des Universums und kann positiv, negativ oder null sein.
+Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums und kann positiv, negativ oder null sein.
 \begin{enumerate}
-	\item Beginnen wir mit dem einfachsten Fall und setzen $c = 0$.
+	\item Beginnen wir mit dem einfachsten Fall und setzen $E = 0$.
 	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}\]
-	Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
-	\[ \dot{a} = \frac{1}{\sqrt{a}} \]
-	\[\frac{da}{dt} =\frac{1}{\sqrt{a}} \Leftrightarrow \frac{dt}{da} = \sqrt{a} \]
-	\[ t = \frac{2}{3} a^{3/2} \Rightarrow a = \frac{3}{2} t^{2/3} \]
-	Wir vernachlässigen der Vorfaktor und schreiben das wichtige Resultat
-	\begin{equation}
-	a = t^{2/3}
-	\end{equation}
+	Diese Gleichung wurde im Kapitel (\ref{friedmann:UniversumMitMasse}) schon gelöst. Ist die Gesamtenergie $E$ null, dehnt sich das Universum gemäss Gleichung (\ref{friedmann:Masse}) aus. Je grösser also das Universum wird, desto kleiner wird die Geschwindigkeit der Ausdehnung.
+	\[\lim_{x\to\infty} \dot{a}(t) = 0\]
+	\item Für den zweiten Fall ist $E > 0$.
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}\]
+	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für {\em kleine} $a$s der {\em erste} Term dominiert, während der {\em zweite} Term für {\em grosse} $a$s dominiert. Das kleine Universum verhält sich also wie für $c = 0$. Das grosse Universum hingegen verhält sich wie das massenlose Universum in (\ref{friedmann:masselosesUniversum}) mit $\Lambda = 0$.  
 	
-	\item Für den zweiten Fall ist $c > 0$.
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{c}{a^2}\]
-	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert. Das kleine Universum verhält sich also wie für $c = 0$. Für ein grosses \textit{a} schreiben wir
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{c}{a^2} \: \Leftrightarrow \:	\dot{a}^2 = c \: \Leftrightarrow \: \dot{a} = \sqrt{c_1} = c_2\]
+	\item Als letztes soll $E < 0$ sein
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|E|}{a^2} \qquad \Leftrightarrow \qquad \dot{a}^2 = \frac{1}{a} - |E|\]
 	\begin{equation}
-	a = c*t
-	\label{friedmann:LoesungZweiterTerm}
+	\dot{a} = \pm \sqrt{\frac{1}{a} - |E|}
 	\end{equation}
-	
-	\item Als letztes soll $c < 0$ sein
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|c|}{a^2} \: \Leftrightarrow \: \dot{a}^2 = \frac{1}{a} - |c|\]
-	\begin{equation}
-	\dot{a} = \pm \sqrt{\frac{1}{a} - |c|}
-	\end{equation}
-	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Differentialgleichungen. Solange $c \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $c < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
+	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Differentialgleichungen. Solange $E \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $E < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
 	
 \end{enumerate}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width  = \textwidth]{friedmann/images/phasendiagramm.png}
+	\includegraphics[width  = \textwidth]{friedmann/images/phasendiagramm.pdf}
 	\caption{Phasenportrait in Abhängigkeit der Gesamtenergie c
 		\label{friedmann:phasenportrait}}
 \end{figure}%
