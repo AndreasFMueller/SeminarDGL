@@ -36,8 +36,7 @@ for i = 0:0.5:1
     quiver(i,0,0,10,1, 'color' , 'r', 'LineWidth', 1.5);
 end
 
-print(f, '-dpdf','phasendiagramm.pdf');
-print(f, '-dpng','phasendiagramm.png');
+print(f, '-depsc','phasendiagramm.eps');
 
 
 
