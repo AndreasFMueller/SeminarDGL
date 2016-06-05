@@ -38,43 +38,44 @@ Form
 \end{equation*}
 kann der Koeffizientenvergleich erstellt und L"osungen f"ur die $a_k$ gefunden 
 werden. Statt die Koeffizienten reihenweise aufzustellen, wird der Vergleich 
-mit Hilfe einer Tabelle gemacht. Dies schafft auch bei komplizierten und langen 
-Termen eine gute "Ubersicht.
-\begin{equation}
-	\begin{array}{r c r | c r | c r | c r c}
-	y(x) & = &
-	a_0 & + & a_1x & + & a_2x^2 & + \dotsb
-	\\
-	\hline&&&&&&&\\[-2ex]
-	y''(x) & = &
-	2\cdot1 a_2 & + & 3\cdot2 a_3x & + & 4\cdot3 a_4x^2 & + \dotsb
-	\\
-	& = &
-	& & & + &- aa_0x^2 & + \dotsb
-	\\
-	& &
-	& + &- ba_0x & + &- ba_1x^2 & + \dotsb
-	\\
-	& + &
-	-ca_0 & + &- ca_1x & + &- ca_2x^2 & + \dotsb
-	\\
-	\hline&&&&&&&\\[-2ex]
-	& &
-	a_2 = -\frac{1}{2 \cdot 1}ca_0,
-	& & a_3 = -\frac{1}{3 \cdot 2}(ba_0+ca_1),
-	& & a_4 = -\frac{1}{4 \cdot 3}(aa_0+ba_1+ca_2),
-	& \dots
-	\end{array}
-	\label{eq:wellen:koeffizietenvergleichtabelle}
-\end{equation}
+mit Hilfe der Tabelle \ref{tab:wellen:koeffizietenvergleichtabelle} gemacht. 
+Dies schafft auch bei komplizierten und langen Termen eine gute "Ubersicht und 
+man kann auf den ersten Blick erkennen, welche $a_k$ von welchen anderen 
+abh"angen.
 
-Mit Hilfe dieser Darstellungsform kann auf den ersten Blick in die zweite 
-Tabellenzeile erkennt werden, welche $a_k$ von welchen anderen abh"angen. So 
-sieht man beispielsweise in der ersten Tabellenspalte und der zweiten 
-Tabellenzeile sofort, dass $a_2$ nur von $a_0$ abh"angig ist.
+\begin{table}
+	\centering
+	\begin{equation*}
+		\begin{array}{r c r | c r | c r | c r c}
+		y(x) & = &
+		a_0 & + & a_1x & + & a_2x^2 & + \dotsb
+		\\
+		\hline&&&&&&&\\[-2ex]
+		y''(x) & = &
+		2\cdot1 a_2 & + & 3\cdot2 a_3x & + & 4\cdot3 a_4x^2 & + \dotsb
+		\\
+		& = &
+		& & & + &- aa_0x^2 & + \dotsb
+		\\
+		& &
+		& + &- ba_0x & + &- ba_1x^2 & + \dotsb
+		\\
+		& + &
+		-ca_0 & + &- ca_1x & + &- ca_2x^2 & + \dotsb
+		\\
+		\hline&&&&&&&\\[-2ex]
+		& &
+		a_2 = -\frac{1}{2 \cdot 1}ca_0
+		& & a_3 = -\frac{1}{3 \cdot 2}(ba_0+ca_1)
+		& & a_4 = -\frac{1}{4 \cdot 3}(aa_0+ba_1+ca_2)
+		& \dots
+		\end{array}
+	\end{equation*}
+	\caption{Koeffizientenvergleich mittels Hilfstabelle.}
+	\label{tab:wellen:koeffizietenvergleichtabelle}
+\end{table}
 
-Die Verschiebung der verschiedenen $a_k$ in der Gleichungstabelle 
-(\ref{eq:wellen:koeffizietenvergleichtabelle}) kann folgendermassen erkl"art 
+Die Verschiebung der verschiedenen $a_k$ k"onnen folgendermassen erkl"art 
 werden: Aufgrund der zweiten Ableitung werden die $a_k$ der zweiten Zeile um 
 zwei Einheiten nach links geschoben. Die n"achste Verschiebung gibt es aufgrund 
 des Polynomgrades. Da die Terme mit den Koeffizienten $a$ mindestens die Form 
