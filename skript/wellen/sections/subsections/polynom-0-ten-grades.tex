@@ -1,6 +1,7 @@
 \subsection{\texorpdfstring{$y''+cy = 0$}{y''+cy = 0}}
 Zuerst gehen wir für die Grundlage nochmals einen kleinen Schritt weg vom 
-parabolsichen Kanalprofil. Indem $a$ verschwindend klein gew"ahlt wird, entsteht
+parabolsichen Kanalprofil. Indem $a$ verschwindend klein gew"ahlt wird, ergibt 
+sich
 \begin{equation}
 	y''+ cy = 0.
 	\label{eq:wellen:lineareDGL}
@@ -55,7 +56,7 @@ gegeben. Setzt man $x = 0$ ein, ergibt sich f"ur $C_1$ und $C_2$
 	\end{split}
 \end{equation}
 Eingesetzt in die L"osungsgleichung (\ref{eq:wellen:loesunglineareDGL}) 
-erhalten wir
+erhalten wir mittels Fallunterscheidung $c > 0$ und $c < 0$
 \begin{equation*}
 	y(x) = a_0 \cos(\sqrt{c}x) + \frac{a_1}{\sqrt{c}} \sin(\sqrt{c}x), \qquad c 
 	> 0
@@ -77,14 +78,14 @@ Der letzte Umformungsschritt ergibt sich aus der Definition von Cosinus
 Hyperbolicus und Sinus Hyperbolicus:
 \begin{equation*}
 	\begin{split}
-		\sinh(x) &= -i \sin(ix)\\
-		\cosh(x) &= \cos (ix)
+		\sinh(x) &= -i \sin(ix),\\
+		\cosh(x) &= \cos (ix).
 	\end{split}
 \end{equation*}
 
 Die gefundenen L"osungen k"onnen auch graphisch best"atigt werden, sei es f"ur 
-positve $c$ in der Abbildung \ref{fig:wellen:sinh-cosh} oder f"ur negative $c$ 
-in Abbildung \ref{fig:wellen:sin-cos}.
+positve $c$ in der Abbildung \ref{fig:wellen:sin-cos} oder f"ur negative $c$ 
+in Abbildung \ref{fig:wellen:sinh-cosh}.
 
 \begin{figure}
 	\includegraphics[width=0.51\hsize]{./wellen/images/basicfunctions/sin.pdf}
