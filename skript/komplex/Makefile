@@ -6,3 +6,6 @@
 operator-1.pdf:	operator.mp
 	TEX=latex mpost operator.mp
 	mptopdf operator.1
+
+clean:
+	rm -f operator-1.pdf operator.1 *.log *.mpx
