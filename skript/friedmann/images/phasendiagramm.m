@@ -18,12 +18,12 @@ xlabel('Skalenfaktor a');
 ylabel('f(a)');
 for i = -1:1:1
     plot(a, 1./a + i, 'LineWidth', 3);
-    text(5,1/5 + i + 0.4, num2str(i, '\b c = %d'), 'Fontsize', 15);
+    text(5,1/5 + i + 0.4, num2str(i, '\b E = %d'), 'Fontsize', 15);
 end
 
 subplot(1,2,2);
 title('Phasendiagramm');
-xlabel('Massenenergie c');
+xlabel('Gesamtenergie E');
 ylabel('Skalenfaktor a');
 axis([c(1), 1,0, 10]);
 text(-4.8, 1, 'Maximales a \rightarrow',  'Fontsize', 15)
