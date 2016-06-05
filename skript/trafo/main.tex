@@ -1,59 +1,59 @@
 \chapter{Spannungsverteilung in luftgek"uhlten Transformatoren\label{chapter:thema}}
-\lhead{Spannungsverteilung in luftgekühlten Transformatoren}
+\lhead{Spannungsverteilung in luftgek"uhlten Transformatoren}
 \begin{refsection}
 \chapterauthor{Reto Christen}
 
 \section{Einleitung}
 
-Heutzutage werden elektronische Betriebsmittel mittels CAD-Programme berechnet und ausgelegt. Dies ermöglicht eine einfache und kostengünstige Entwicklung sowie Herstellung, da der erste Prototyp die Erwartungen meistens bereits erfüllt. Die Lösungen von CAD-Programmen, was nichts anderes als Lösungen von partiellen oder gewöhnlichen Differentialgleichungen sind, ergeben neue Herausforderungen, wie beispielsweise in der Numerik. 
+Heutzutage werden elektronische Betriebsmittel mittels CAD-Programme berechnet und ausgelegt. Dies erm"oglicht eine einfache und kosteng"unstige Entwicklung sowie Herstellung, da der erste Prototyp die Erwartungen meistens bereits erf"ullt. Die L"osungen von CAD-Programmen, was nichts anderes als L"osungen von partiellen oder gew"ohnlichen Differentialgleichungen sind, ergeben neue Herausforderungen, wie beispielsweise in der Numerik. 
 
-In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und schlussendlich gelöst.
+In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und schlussendlich gel"ost.
 
 \section{Problemstellung}
 
-Luftgekühlte Transformatoren sind im Gegensatz zu ölgekühlten Transformatoren eher gefährdet Teilentladungen oder gar Durchschläge zu haben. Dies liegt daran, dass die Isolationsfestigkeit von Luft wesentlich schlechter als in Öl ist. Da ein luftgekühlter Transformator im Gegensatz zu einem ölgekühlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschläge und grösstenteils auch Teilentladungen verhindert werden können. 
+Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Isolationsfestigkeit von Luft wesentlich schlechter als in Öl ist. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
 
-Früher wurde ein Transformator oder allgemein ein elektronisches Betriebsmittel nach Erfahrungen gebaut. Dabei war es Gang und Gäbe, dass es mehrere Prototypen brauchte, bis die ersten Spannungsprüfungen bestanden werden konnten. Deshalb sind CAD-Simulationen wesentlich schneller und vor allem kostengünstiger. Das Ziel soll es sein, der Transformator möglichst genau darzustellen und dessen Spannungsverteilung zu berechnen, denn die Spannung und die Geometrie zusammen ergeben das elektrische Feld, welches schlussendlich zu Durchschlägen oder Teilentladungen führt.
+Fr"uher wurde ein Transformator oder allgemein ein elektronisches Betriebsmittel nach Erfahrungen gebaut. Dabei war es Gang und G"abe, dass es mehrere Prototypen brauchte, bis die ersten Spannungspr"ufungen bestanden werden konnten. Deshalb sind CAD-Simulationen wesentlich schneller und vor allem kosteng"unstiger. Das Ziel soll es sein, der Transformator m"oglichst genau darzustellen und dessen Spannungsverteilung zu berechnen, denn die Spannung und die Geometrie zusammen ergeben das elektrische Feld, welches schlussendlich zu Durchschl"agen oder Teilentladungen f"uhrt.
 
-An der Hochschule für Technik Rapperswil wurde am Institut für Energietechnik eine Methode entwickelt, wie ein Blitzstoss Spannungsimpuls möglichst genau simuliert werden kann \cite{trafo:BILImpulse}. Dies Methode funktioniert sehr gut für Leistungstransformatoren und konnte mit Messungen auch verifiziert werden. 
-Will dieses Prinzip aber auf Instrumententransformatoren angewendet werden, ergibt die wesentlich höhere Anzahl von Wicklungen und deren engeren Lagen nummerische Probleme im Lösungsverfahren. 
+An der Hochschule f"ur Technik Rapperswil wurde am Institut f"ur Energietechnik eine Methode entwickelt, wie ein Blitzstoss Spannungsimpuls m"oglichst genau simuliert werden kann \cite{trafo:BILImpulse}. Dies Methode funktioniert sehr gut f"ur Leistungstransformatoren und konnte mit Messungen auch verifiziert werden. 
+Will dieses Prinzip aber auf Instrumententransformatoren angewendet werden, ergibt die wesentlich h"ohere Anzahl von Wicklungen und deren engeren Lagen nummerische Probleme im L"osungsverfahren. 
 
-Diese Probleme werden nun Schrittweise behandelt und bestmöglich gelöst. 
+Diese Probleme werden nun Schrittweise behandelt und bestm"oglich gel"ost. 
 
 
 \subsection{Ersatzschaltbild}
-Ein Transformator, ob öl- oder luftgekühlt, kann prinzipiell mit dem Ersatzschaltbild \ref{trafo:einfaches_ESB} dargestellt werden. Dies macht Sinn, wenn der Transformator als Ganzes dargestellt werden will. Da bei diesem Problem aber die inneren Spannungen relevant sind, kann dieses bereits bekannte Ersatzschaltbild nicht verwendet werden. Es gilt nun, ein neues und genaueres Ersatzschaltbild zu finden. 
+Ein Transformator, ob "ol- oder luftgek"uhlt, kann prinzipiell mit dem Ersatzschaltbild \ref{trafo:einfaches_ESB} dargestellt werden. Dies macht Sinn, wenn der Transformator als Ganzes dargestellt werden will. Da bei diesem Problem aber die inneren Spannungen relevant sind, kann dieses bereits bekannte Ersatzschaltbild nicht verwendet werden. Es gilt nun, ein neues und genaueres Ersatzschaltbild zu finden. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{trafo/Einfaches_ESB.png}
-	\caption[Einfach Ersatzschaltbild für einen Transformator]{Einfach Ersatzschaltbild für einen Transformator.}
+	\caption[Einfach Ersatzschaltbild f"ur einen Transformator]{Einfach Ersatzschaltbild f"ur einen Transformator.}
 	\label{trafo:einfaches_ESB}
 \end{figure}
 
-Ein Ansatz ist es, jede Wicklung einzeln zu modellieren. Pro Windung wird ein elektrischer Widerstand sowie Induktivität in Serie geschaltet. Ebenfalls müssen die Kapazitäten sowie die Leitfähigkeiten gegenüber Masse und den übrigen Windungen berücksichtigt werden \cite{trafo:BILImpulse}. 
+Ein Ansatz ist es, jede Wicklung einzeln zu modellieren. Pro Windung wird ein elektrischer Widerstand sowie Induktivit"at in Serie geschaltet. Ebenfalls m"ussen die Kapazit"aten sowie die Leitf"ahigkeiten gegen"uber Masse und den "ubrigen Windungen ber"ucksichtigt werden \cite{trafo:BILImpulse}. 
 
-Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} dargestellt. Als Beispiel wird ein kleines Transformator Beispiel, bestehend aus 4 Windungen, verwendet. Mit Messungen an Testtransformatoren zeigte sich, das ab ca. 20 Windungen die Simulationen mit diesem Ersatzschaltbild sehr genau übereinstimmen. 
+Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} dargestellt. Als Beispiel wird ein kleines Transformator Beispiel, bestehend aus 4 Windungen, verwendet. Mit Messungen an Testtransformatoren zeigte sich, das ab ca. 20 Windungen die Simulationen mit diesem Ersatzschaltbild sehr genau "ubereinstimmen. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{trafo/Trafo_Modell.pdf}
-	\caption[Erweitertes Ersatzschaltbild für einen Transformator]{Erweitertes Ersatzschaltbild für einen Transformator mit 4 Wicklungen. Die Leitwerte zwischen den Wicklungen und gegenüber Masse sind auf Grund der Übersichtlichkeit weggelassen worden. Die grünen Pfeile stellen die Mitkopplung der Spulen dar. }
+	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die Leitwerte zwischen den Wicklungen und gegen"uber Masse sind auf Grund der Übersichtlichkeit weggelassen worden. Die gr"unen Pfeile stellen die Mitkopplung der Spulen dar. }
 	\label{trafo:erweitertes_ESB}
 \end{figure}
 
-Damit die Werte der einzelnen Elementen ermittelt werden können, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD Programm notwendig. Alle Wicklungen abgesehen einer werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivitäten sowie Kapazitäten gegenüber allen anderen Wicklungen ermittelt.
+Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD Programm notwendig. Alle Wicklungen abgesehen einer werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Wicklungen ermittelt.
 
 
-\section{Mathematische Lösung}
+\section{Mathematische L"osung}
 \subsection{Differentialgleichung}
 
-Es gilt nun eine Differentialgleichung für das gefundene Ersatzschaltbild aufzustellen. Mittels dem Maschensatz (blaue Pfeile) und der Knotenpunktregel (rote Punkte) können die Differentialgleichungen pro Wicklung aufgestellt werden (dargestellt in \ref{trafo:orig}).
+Es gilt nun eine Differentialgleichung f"ur das gefundene Ersatzschaltbild aufzustellen. Mittels dem Maschensatz (blaue Pfeile) und der Knotenpunktregel (rote Punkte) k"onnen die Differentialgleichungen pro Wicklung aufgestellt werden (dargestellt in \ref{trafo:orig}).
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{trafo/orig_trafo.pdf}
-	\caption[Erweitertes Ersatzschaltbild für einen Transformator mit Maschensatz und Knotenpunkt]{Erweitertes Ersatzschaltbild für einen Transformator mit 4 Wicklungen. Die blaue Pfeilen stellen den Maschensatz und die roten Punkte den Knotenpunktregel dar.}
+	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator mit Maschensatz und Knotenpunkt]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die blaue Pfeilen stellen den Maschensatz und die roten Punkte den Knotenpunktregel dar.}
 	\label{trafo:orig}
 \end{figure}
 
@@ -68,7 +68,7 @@ und
 \end{equation}
 geschrieben werden. 
 
-Mit etwas Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gewählt. Der Vektor $E$ ist der Störterm, sprich in diesem Falle der Blitzstoss, des Systemes.
+Mit etwas Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm, sprich in diesem Falle der Blitzstoss, des Systemes.
 
 {\footnotesize 
 \begin{align}
@@ -139,7 +139,7 @@ Mit etwas Umformungen kann der ganze Transformator als System mehreren Different
 		
 
 
-Die Matrix $M$ ist eine symmetrische Matrix, welches für weitere Berechnungen wesentliche Vorteile mit sich bringt. Die Matrix $N$ ist fast symmetrisch. Wenn der Maschensatz jedoch in die andere Richtung wie in Abbildung \ref{trafo:orig} angewendet wird, lässt sich auch diese Matrix mit fast keinem Aufwand symmetrisch machen. Dies ist für dieses Beispiel zwar nicht nötig, trotzdem kann es für andere Lösungsansätze von Vorteil sein. Aus der Gleichung \ref{trafo:DGL} wird nun 
+Die Matrix $M$ ist eine symmetrische Matrix, welches f"ur weitere Berechnungen wesentliche Vorteile mit sich bringt. Die Matrix $N$ ist fast symmetrisch. Wenn der Maschensatz jedoch in die andere Richtung wie in Abbildung \ref{trafo:orig} angewendet wird, l"asst sich auch diese Matrix mit fast keinem Aufwand symmetrisch machen. Dies ist f"ur dieses Beispiel zwar nicht n"otig, trotzdem kann es f"ur andere L"osungsans"atze von Vorteil sein. Aus der Gleichung \ref{trafo:DGL} wird nun 
 
 {\footnotesize 
 \begin{align}
@@ -208,7 +208,7 @@ Die Matrix $M$ ist eine symmetrische Matrix, welches für weitere Berechnungen w
 \end{align}
 }
 
-Dieses System mehrere Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas übersichtlicher darstellen lässt. 
+Dieses System mehrere Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas "ubersichtlicher darstellen l"asst. 
 
 \begin{equation}
 	M \cdot \dot x = N \cdot x + E
@@ -220,22 +220,71 @@ Wird die Massenmatrix $M$ auf die rechte Seite der Gleichung \ref{trafo:matrices
 \begin{equation}
 	\dot{x} = M^{-1} \cdot N \cdot x + M^{-1} \cdot E = A \cdot x + B
 \end{equation}
-welches die allgemein bekannte und auch lösbare Zustandsraumdarstellung \index{Zustandsraumdarstellung} ist (engl. state space).
+welches die allgemein bekannte und auch l"osbare Zustandsraumdarstellung \index{Zustandsraumdarstellung} ist (engl. state space).
 
-Das Problem scheint bereits gelöst zu sein, insofern sich die Massenmatrix \textbf{M} invertieren lässt. In der Theorie wäre dies tatsächlich auch machbar, jedoch sehr aufwändig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die Lösung und kann somit mit diesem Ansatz nicht gelöst werden.
+Das Problem scheint bereits gel"ost zu sein, insofern sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
 
-Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ möglichst rechenzeitschonend invertiert und die Eigenwerte der Inversion im Griff hat. 
+Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst rechenzeit-schonend invertiert und die Eigenwerte der Inversion im Griff hat. 
 
 
 \subsection{Singular Value Decomposition (SVD) \index{Singular Value Decomposition}}
 
-\subsection{Exaktes Lösungsverfahren}
+\subsection{Exaktes L"osungsverfahren}
 
 \subsection{Schrittweite und Fehlerterm}
 
 \subsection{Optimierungen}
 
-\section{Anwendung der gefundenen Lösungen}
+Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Einen grossen Optimierungsschritt ist bereits beim Übergang von der $ode45$- zur exakten L"osung passiert. Es kann jedoch immer noch etwas mehr gemach werden. 
+
+Der wesentliche Tei der Berechnung, welche beeinflusst werden kann, ist die \textit{for}-Schleife. Diese wird so viel mal durchlaufen, wie es Schritte hat. Deshalb soll das Ziel sein, m"oglichst wenig in dieser Schleife zu berechnen. 
+
+\subsubsection{Exponentialfunktion der Eigenwerte}
+Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{-\Lambda \cdot \Delta t}$, welche bei jedem Zeitschritt mit der neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, hält sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen). 
+
+\subsubsection{Lineare Interpolation}
+Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels Umformungen in die Darstellung 
+
+\begin{equation*}
+	y_1 = y_0 \cdot e^{\lambda \cdot \Delta t} + f_0 \underbrace{\left(\left(\frac{e^{\lambda \cdot \Delta t}}{\lambda} - \frac{e^{\lambda \cdot \Delta t}}{\Delta t \cdot \lambda ^2}\right) + \frac{1}{\Delta t \cdot \lambda^2}\right)}_{a_0} + f_1 \underbrace{\left(\frac{e^{\lambda \cdot \Delta t}}{\Delta t \cdot \lambda^2} - \frac{1}{\lambda} - \frac{1}{\Delta t \cdot \lambda^2}\right)}_{a_1}
+\end{equation*} 
+
+gebracht werden. Die Konstanten $a_0$ und $a_1$ können wiederum vor der Schleife einmal berechnet werden. 
+
+\subsubsection{Vergleich}
+
+
+
+\section{Anwendung der gefundenen L"osungen}
+
+Schlussendlich k"onnen die gefundenen L"osungen wieder in das CAD-Modell eingelesen werden, damit das elektrische Feld simuliert werden kann. Somit kann festgestellt werden, wo sich Schwachstellen im Transformator befinden und allenfalls verbessert werden.
+
+Interessant ist nat"urlich immer der gr"osste Spannungsunterschied zwischen benachbarten Wicklungen. In diesem Beispiel ist dies zwischen dem Layer 1 und 2 zwischen Wicklung 6 und 118.
+
+Diese L"osung wurde bereits in Abbildung \ref{trafo:loesung} pr"asentiert. Das elektrische Feld beim Zeitpunkt der gr"ossten Spannungsdifferenz ist in Abbildung \ref{trafo:E-Field} und \ref{trafo:E-FieldZoom} dargestellt. 
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.8\textwidth]{trafo/BIL_VoltageTrans.pdf}
+	\caption{Elektrisches Feld zwischen den ersten paar Layern.}
+	\label{trafo:E-Field}
+\end{figure}
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.8\textwidth]{trafo/VoltageTrans.pdf}
+	\caption{Elektrisches Feld zwischen Windung 6 und 118.}
+	\label{trafo:E-FieldZoom}
+\end{figure}
+
+Da die Herstellung von Transformatoren nie optimal ablaufen, k"onnen sich auch Luftblasen im Epoxidharz bilden. Diese Luftblasen verst"arken das elektische Feld zus"atzlich und schw"achen somit den Transformator im Fehlerfall. Ein m"ogliches Szenario ist in Abbildung \ref{trafo:E-FieldBubble} pr"asentiert. 
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.8\textwidth]{trafo/VoltageTrans_bubble_turn6_10u_9u.pdf}
+	\caption{Elektrische Feld zwischen Wicklung 6 und 118 mit simulierter Luftblase (Lunker).}
+	\label{trafo:E-FieldBubble}
+\end{figure}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
