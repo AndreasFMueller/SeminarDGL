@@ -67,7 +67,6 @@ und folglich kann die Massendichte geschrieben werden als
 \rho = \frac{M_{xyz}}{V_{xyz}} = \frac{\mu}{a^3}
 \label{friedmann:dichte}
 \end{equation}
-
 Es stellt sich nun die spannende Frage: Wie ändert sich der Skalenfaktor mit der Zeit? Und eben diese Frage wird mit der Friedmann-Lema\^{i}tre Differentialgleichung beantwortet.
 
 \section{Alexander Friedmann und Georges Lema\^{i}tre}
@@ -75,8 +74,6 @@ Die sogenannte Friedmann-Lema\^{i}tre-Gleichung beschreibt das Verhalten des Uni
 \begin{equation}
 \left(\frac{\dot{a}}{a}\right) ^2 = \frac{8 \pi G}{3} \rho - \frac{\kappa c^2}{a^2} + \frac{\Lambda c^2}{3}
 \end{equation}
-
-%\subsection*{Lösungen der Gleichung für verschiedene Parameter}
 Bevor wir beginnen, die Gleichung herzuleiten, können wir schon jetzt verschiedene Lösungen für unterschiedliche Parameterwerte diskutieren. Das hilft uns später beim Rekonstruieren der Geschichte des Universums.
 
 \subsection{Masseloses Universum \label{friedmann:masselosesUniversum}}
@@ -162,7 +159,7 @@ Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steh
 Setzt man für die Dichte Gleichung (\ref{friedmann:dichte}) ein ergibt sich
 \[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\mu}{a^3} \quad\Leftrightarrow \quad\frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
 Durch geschickte Wahl des Skalenfaktors kann $\nu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
-\[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \Leftrightarrow \ddot{a} = \frac{-1}{a^2}\]
+\[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \qquad\Leftrightarrow\qquad \ddot{a} = \frac{-1}{a^2}\]
 Die Differentialgleichung ist nichtlinear  und nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
 \begin{enumerate}
 	\item Die negative Beschleunigung wirkt der Ausdehnung des Universums entgegen. 
@@ -200,7 +197,7 @@ Auf der rechten Seite der Gleichung erscheint jetzt die Masse der Kugel mit Radi
 \end{equation}
 Mit (\ref{friedmann:dichte})
 \[\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\mu}{a^3} + \frac{E_2}{a^2 R^2} \\\]
-Wir wählen die Konstanten $\mu$ und $R$ so, dass die Gleichung folgendermassen vereinfacht wird.
+Wir wählen die Konstanten $\mu$ und $R$ so, dass die Gleichung folgendermassen vereinfacht wird:
 \begin{equation}
 \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}
 \end{equation}
@@ -214,14 +211,14 @@ Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums 
 	\[\lim_{x\to\infty} \dot{a}(t) = 0\]
 	\item Für den zweiten Fall ist $E > 0$.
 	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}\]
-	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für {\em kleine} $a$s der {\em erste} Term dominiert, während der {\em zweite} Term für {\em grosse} $a$s dominiert. Das kleine Universum verhält sich also wie für $c = 0$. Das grosse Universum hingegen verhält sich wie das massenlose Universum in (\ref{friedmann:masselosesUniversum}) mit $\Lambda = 0$.  
+	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für {\em kleine} $a$'s der {\em erste} Term dominiert, während der {\em zweite} Term für {\em grosse} $a$'s dominiert. Das kleine Universum verhält sich also wie für $E = 0$. Das grosse Universum hingegen verhält sich wie das massenlose Universum in (\ref{friedmann:masselosesUniversum}) mit $\Lambda = 0$.  
 	
 	\item Als letztes soll $E < 0$ sein
 	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|E|}{a^2} \qquad \Leftrightarrow \qquad \dot{a}^2 = \frac{1}{a} - |E|\]
 	\begin{equation}
 	\dot{a} = \pm \sqrt{\frac{1}{a} - |E|}
 	\end{equation}
-	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Differentialgleichungen. Solange $E \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $E < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
+	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Fälle. Solange $E \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $E < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
 	
 \end{enumerate}
 
@@ -232,96 +229,92 @@ Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums 
 		\label{friedmann:phasenportrait}}
 \end{figure}%
 
-%In \ref{friedmann:friedmannGleichung} sind die Differentialgleichungen in Abhängigkeit von c in MatLab numerisch aufgelöst werden. 
-%
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width =  \textwidth]{friedmann/images/friedmann_ordinary_matter.png}
-%	\caption{Verhalten des Universums in Abhängigkeit von der Zeit $t$
-%		\label{friedmann:friedmannGleichung}}
-%\end{figure}%
-	
-
 \subsection*{Energiedichte}
 Wie wir wissen, existiert im Weltall nicht nur sichtbare, sondern auch dunkle Materie und Strahlung. Dunkle Materie verhält sich in Bezug auf die gravitative Wirkung ähnlich wie sichtbare Materie, und deshalb wird im Folgenden nicht weiter darauf eingegangen.
 Anders verhält es sich mit der kosmischen Strahlung in Bezug auf die Dynamik des Kosmos. Wir schreiben
-
-
 \[ E_{str} = \frac{h c}{\lambda} \]
-
-wobei $h$ die \textbf{Planksche Konstante}, $c$ die \textbf{Lichtgeschwindigkeit} und $\lambda$ die \textbf{Wellenlänge} des Photons ist.
+wobei $h$ die {\em Planksche Konstante}, $c$ die {\em Lichtgeschwindigkeit} und $\lambda$ die {\em Wellenlänge} des Photons ist.
 Nun ist die Energie der Strahlung (z.B. eines Photons) in einem sich ausdehnenden Universum nicht konstant, sondern ändert sich mit der Zeit. 
-Denn, vergrössert sich die Raumzeit während der Laufzeit um einen Faktor n, so geschieht dies auch mit der Wellenlänge des Strahls.
-Das bedeutet, dass die Energie eines Photons umgekehrt proportional zum Skalenfaktor a ist. Für die Energiedichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz.
+Denn, vergrössert sich die Raumzeit während der Laufzeit um einen Faktor n, so geschieht dies auch mit der Wellenlänge des Strahls. Das bedeutet, dass die Energie eines Photons umgekehrt proportional zum Skalenfaktor $a$ ist. Für die Energiedichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz.
 \begin{equation}
-\rho_{str} = \frac{\nu}{a^4}
+\rho_{str} = \frac{\mu_{\text{str}}}{a^4}
 \end{equation}
-In die Gleichung der Energieerhaltung des Universums setzen wir $\rho_{str}$ ein.
-\[
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\nu}{a^4} + \frac{c_2}{a^2 R^2}
-\]
-Vereinfacht
-\[
-\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4} + \frac{c}{a^2} \Leftrightarrow \dot{a} = \sqrt{\frac{1}{a^2} + c}
-\]
-
-Wiederum ist die Differentialgleichung nicht elementar lösbar. Trotzdem können wir sagen, dass für \textbf{kleine} \textit{a's} der \textbf{erste} Term dominiert, während der \textbf{zweite} Term für \textbf{grosse} \textit{a's} dominiert.
-
-
-Setzen wir die Gesamtenergie des Universums $c$ gleich null, findet sich die neue Gleichung	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4}\]
+In die Gleichung der Energieerhaltung des Universums (\ref{friedmann:EnergieerhaltungUniversum}) setzen wir $\rho_{str}$ ein.
+\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{8 \pi G}{3} \frac{\mu_{\text{str}}}{a^4} + \frac{E_2}{a^2 R^2}\]
+Wir wählen die Konstanten $\mu_{\text{str}}$ und $R$ so, dass die Gleichung vereinfacht wird zu
+\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4} + \frac{E}{a^2} \Leftrightarrow \dot{a} = \sqrt{\frac{1}{a^2} + E}\]
+Wiederum ist die Differentialgleichung nicht elementar lösbar. Trotzdem können wir sagen, dass für {\em kleine} $a$'s der erste Term dominiert, während der zweite Term für {\em grosse} $a$'s dominiert. Setzen wir die Gesamtenergie des Universums $E$ gleich null, findet sich die neue Gleichung für den dominierenden erster Term.	
+\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^4}\]
 Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit $a$.
-\[ \dot{a} = \frac{1}{a} \]
-\[\frac{da}{dt} =\frac{1}{a} \Leftrightarrow \frac{dt}{da} = a \]
-\[ t = \frac{1}{2} a^{2} \Rightarrow a = \sqrt{2} \quad t^{1/2} \]
+\begin{align}
+	\nonumber\dot{a} &= \frac{1}{a} \\
+	\nonumber\frac{da}{dt} &=\frac{1}{a} \\
+	\nonumber\frac{dt}{da} &= a\\
+	\nonumber t &= \frac{1}{2} a^{2}\\
+	a &= \sqrt{2}\,t^{1/2} 
+\end{align}
+Analog zum Newtonschen Ansatz verhält sich das Universum für einen dominierenden zweiten Term gemäss Gleichung (\ref{friedmann:Kappa}). 
+Im Vergleich mit dem Universum, bei der die gewöhnliche Materie dominiert, ist vor allem zu Beginn ein Unterschied auszumachen. Die Strahlung lässt das Universum am Anfang viel schneller expandieren.(\ref{friedmann:strahlungMaterie}) 
 
-Analog zum Newtonschen Ansatz verhält sich das Universum für einen dominierenden zweiten Term gemäss Gleichung \ref{friedmann:LoesungZweiterTerm}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width  = 0.8\textwidth]{friedmann/images/strahlungMaterie.pdf}
+	\caption{Strahlung und Materie im Vergleich
+		\label{friedmann:strahlungMaterie}}
+\end{figure}
 
-\subsection{Relativistischer Ansatz}
-Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einsteins eine wesentliche Rolle bei der Beschreibung des Kosmos.
-Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "gewöhnlicher", sogenannter baryonischer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
-Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
+\subsection{Geometrie des Raumes}
+Die bisher gemachten Überlegungen berücksichtigen nur die klassische oder newtonsche Physik, tatsächlich spielen die relativistischen Gesetze Einsteins eine wesentliche Rolle bei der Beschreibung des Universums. Einsteins Gesetze ändern die Gleichung (\ref{friedmann:EnergieerhaltungUniversum}) folgendermassen:  
 \begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
-\label{friedmann:Einstein}
+	\left(\frac{\dot{a}}{a}\right) ^2 = \;\frac{8 \pi G}{3} \rho \; -\;\frac{\kappa c^2}{a^2}
 \end{equation}
-
-
-
-\subsection*{Geometrie des Raumes}
-Wie wir zu beginn des Abschnitts erwähnt haben, muss die  linke Seite der Gleichung \ref{friedmann:Einstein} etwas mit der Geometrie des Raumes zu tun haben.
-Der erste Term ist die Hubble-Konstante und beschreibt die Ausdehnung des Raumes. Das heisst
-$c$ muss die Krümmung des Raumes wiedergeben.
-Wir benennen die Konstante um zu
-$-\kappa$ und schreiben die Gleichung neu:
-
-
-\[ \left(\frac{\dot{a}}{a} \right)^2 + \frac{\kappa}{a^2} = \frac{8 \pi G}{3} \rho  \]
-
-\begin{equation}
-\left(\frac{\dot{a}}{a} \right)^2  = \frac{8 \pi G}{3} \rho  - \frac{\kappa}{a^2}
-\end{equation}
+Der $\kappa$-Parameter beschreibt die Krümmung des Raumes (\ref{friedmann:GeometrieDesRaumes}).\footnote{Die Krümmung des Raumes kann durch Messen von Winkelsummen im Dreieck bestimmt werden.}  
 \begin{table}[h]
 \centering
 \begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}c<{$}|}
 \hline
-\kappa&Geometrie&Winkelsumme\: \Delta\\
+\kappa&\text{Geometrie}&\text{Winkelsumme}\: \Delta\\
 \hline
 +1 & \text{Elliptisch} & > 180^\circ\\
 0  & \text{Euklidisch} & =180^\circ\\
 -1 & \text{Hyperbolisch} & <180^\circ\\
 \hline	
 \end{tabular}
-\caption{Bedeutung von $\kappa$ für die Geometrie des Raumes}
-\end{table} \linebreak
-Die Krümmung des Raumes kann durch Messen von Winkelsummen im Dreieck bestimmt werden.
+\caption{Bedeutung von $\kappa$ für die Geometrie des Raumes\label{friedmann:GeometrieDesRaumes}}
+\end{table}
+Mathematisch gesehen hat der $\kappa$-Term abgesehen vom Vorzeichen die gleiche Bedeutung wie die Gesamtenergie des Universums,die im Kapitel \ref{friedmann:EnergieerhaltungUniversum} behandelt wurde, nämlich:
+\begin{itemize}
+	\item $\kappa = 0$ : Das Universum dehnt sich immer mehr aus. Die Geschwindigkeit der Ausdehnung nähert sich asymptotisch dem Wert null. 
+	\item $\kappa = - 1$ : Das Universum verhält sich zuerst, als ob $\kappa$ null wäre. Danach breitet es sich linear aus. Die Geschwindigkeit ist dabei für alle Zeit konstant.
+ 	\item $\kappa = + 1$ : Das Universum wird grösser und grösser. Die Zunahme nimmt aber immer mehr ab, bis die Geschwindigkeit null wird. Dann fällt es wieder in sich zusammen. Wir sprechen von einem Big-Crunch. 
+\end{itemize}
 
-\subsection{kosmologische Rotverschiebung z}
-Es stellt sich nun die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit, also die Hubble-Konstante, feststellen lässt. Dabei nutzt man die Eigenschaft der Strahlung, dass sich die Wellenlänge proportional mit dem Raum mitdehnt. Diese Verschiebung der Wellenlänge in den roten Spektralbereich nennt man in der Kosmologie die \textit{kosmologische Rotverschiebung z}. Sie ersetzt oft die Angabe von Entfernungen, weil z einfacher zu bestimmen ist, als die tatsächliche Entfernung des kosmologischen Objekts. 
-Kennt man nun die exakte Entfernung zu einem Objekt, kann zusammen mit dem \textit{Hubble-Gesetz} die Hubble-Konstante $H_0$ berechnet werden. Die Linearität des Hubble-Gesetz gilt jedoch nur bis zu einer Rotverschiebung von $z \sim 0.1$.
+Zusammengefasst ist zu sagen, dass ein statisches Universum ohne zusätzlichen Term nicht möglich ist. Damit kommen wir zur Frage, was der letzte Term bedeutet.
 
-\[ cz = H_0 \, D \qquad \qquad \textbf{(Hubble-Gesetz)} \]
-\[c = \text{Lichtgeschw. ; } H_0 = \text{Hubble-Konstante ; } D = \text{Distanz} \]
-Der momentane Wert der Hubble-Konstante, den man in verschiedenen Literaturen nachschlagen kann, ist:
-\[ H_0 = H(t_0) \approx (74.3 \pm 2.1) \frac{km}{s}\frac{1}{Mpc}\]
+\subsection{Dunkle Energie}
+In der Einleitung haben wir geschrieben, dass die Astronomen zuerst von einem statischem Universum ausgingen. Ein statisches Universum ist mit den bisherigen Gesetzen von Newton und Einstein aber nicht möglich. Aus diesem Grund führte Einstein in seinen Feldgleichungen den $\Lambda$-Term ein, welcher zum $\Lambda$-Term in der Friedmann-Gleichung führt. In erster Linie wurde der $\Lambda$-Term also gebraucht, um ein statisches Universum zu bekommen. Heute hat der Term aber eine andere Bedeutung und kann nicht vernachlässigt werden. Man hat den Effekt gemessen, dass das Universum nicht nur linear zunimmt, sondern einen exponentiellen Anstieg verzeichnet. Genau diese exponentielle Lösung resultiert aus dem $\Lambda$-Term. Wir wissen nicht, was es ist, darum nennen wir es Dunkle Energie. Wir können aber sagen, dass diese dunkle Energie antigravitativ wirken muss.
+%Im vorhergehenden Abschnitt haben wir die Bedeutung der Massendichte "gewöhnlicher", sogenannter baryonischer Masse kennengelernt. Im relativistischen Ansatz geht es nun darum, die Geometrie des Raumes mit den Energiedichten in einen Zusammenhang zu bringen.
+%Die bereits hergeleitete Formel können wir so umschreiben, dass die linke Seite etwas mit der Geometrie des Raumes zu tun hat, während die rechte Seite die Energiedichte repräsentiert.
+%\begin{equation}
+%\left(\frac{\dot{a}}{a} \right)^2 - \frac{c}{a^2} = \frac{8 \pi G}{3} \rho 
+%\label{friedmann:Einstein}
+%\end{equation}
+%Wie wir zu beginn des Abschnitts erwähnt haben, muss die  linke Seite der Gleichung \ref{friedmann:Einstein} etwas mit der Geometrie des Raumes zu tun haben.
+%Der erste Term ist die Hubble-Konstante und beschreibt die Ausdehnung des Raumes. Das heisst
+%$c$ muss die Krümmung des Raumes wiedergeben.
+%Wir benennen die Konstante um zu
+%$-\kappa$ und schreiben die Gleichung neu:
+%\[ \left(\frac{\dot{a}}{a} \right)^2 + \frac{\kappa}{a^2} = \frac{8 \pi G}{3} \rho  \]
+%\begin{equation}
+%\left(\frac{\dot{a}}{a} \right)^2  = \frac{8 \pi G}{3} \rho  - \frac{\kappa}{a^2}
+%\end{equation}
+%\subsection{kosmologische Rotverschiebung z}
+%Es stellt sich nun die Frage, wie sich die momentane Ausbreitungsgeschwindigkeit, also die Hubble-Konstante, feststellen lässt. Dabei nutzt man die Eigenschaft der Strahlung, dass sich die Wellenlänge proportional mit dem Raum mitdehnt. Diese Verschiebung der Wellenlänge in den roten Spektralbereich nennt man in der Kosmologie die \textit{kosmologische Rotverschiebung z}. Sie ersetzt oft die Angabe von Entfernungen, weil z einfacher zu bestimmen ist, als die tatsächliche Entfernung des kosmologischen Objekts. 
+%Kennt man nun die exakte Entfernung zu einem Objekt, kann zusammen mit dem \textit{Hubble-Gesetz} die Hubble-Konstante $H_0$ berechnet werden. Die Linearität des Hubble-Gesetz gilt jedoch nur bis zu einer Rotverschiebung von $z \sim 0.1$.
+%
+%\[ cz = H_0 \, D \qquad \qquad \textbf{(Hubble-Gesetz)} \]
+%\[c = \text{Lichtgeschw. ; } H_0 = \text{Hubble-Konstante ; } D = \text{Distanz} \]
+%Der momentane Wert der Hubble-Konstante, den man in verschiedenen Literaturen nachschlagen kann, ist:
+%\[ H_0 = H(t_0) \approx (74.3 \pm 2.1) \frac{km}{s}\frac{1}{Mpc}\]
 
 \end{refsection}
