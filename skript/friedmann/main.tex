@@ -123,21 +123,23 @@ Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit 
 \end{align}
 
 \subsection*{Diskussion der Lösungen}
-Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir herauslesen, welcher Term bei einer gegebenen Grösse $a$ dominierend war.
+Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir herauslesen, welcher Term bei einer gegebenen Grösse $a$ dominiert.
 \begin{align*}
 \left(\frac{\dot{a}}{a}\right) ^2 =\;\frac{8 \pi G}{3} \rho\; &- \;\frac{\kappa c^2}{a^2}\; + \;\frac{\Lambda c^2}{3} \\
 \left(\frac{\dot{a}}{a}\right) ^2 = \;\frac{8 \pi G}{3} \frac{\mu}{a^3}\; &-\;\frac{\kappa c^2}{a^2}\; +\; \frac{\Lambda c^2}{3}
 \end{align*}
 Für kleine Werte von $a$ wird der erste Term dominieren, für mittlere Werte von $a$ der Zweite, und für grosse Werte dominiert der letzte Term. Das heisst, die Lösungen setzen sich in zeitlicher Reihenfolge wie folgt zusammen:
-Gleichung (\ref{friedmann:Masse})  dominiert zu Beginn, dann mischt sich Gleichung (\ref{friedmann:Kappa}) ins Spiel, und am Schluss dominiert Gleichung (\ref{friedmann:Lambda}) über das Schicksal des Universums. In Abbildung (\ref{friedmann:mathematischFriedmann}) ist die numerische Lösung der Differentialgleichung mit allen Termen eingezeichnet. Anhand des Verlaufs der Kurve ist die entsprechende Lösung des jeweiligen Terms auszumachen.\footnote{Für $\kappa$ wurde eine negative Zahl eingesetzt. Der Fall $\kappa = 0$ vernachlässigen wir, da die Lösung nur aus (\ref{friedmann:Masse}) und (\ref{friedmann:Lambda}) besteht.}
+Gleichung (\ref{friedmann:Masse})  dominiert zu Beginn, dann mischt sich Gleichung (\ref{friedmann:Kappa}) ins Spiel, und am Schluss dominiert Gleichung (\ref{friedmann:Lambda}) über das Schicksal des Universums. In Abbildung (\ref{friedmann:mathematischFriedmann}) ist die numerische Lösung der Differentialgleichung mit allen Termen eingezeichnet.
+Zu bemerken ist, dass die Abbildung in erster Linie als qualitative Anschauung zu betrachten ist, da wir die Parameter zur einfacheren Betrachtung angepasst haben. Ohnehin führen diese Anpassungen aber nicht zu einer falschen Vorstellung der Bedeutsamkeit der Terme, da diese nur die Vorfaktoren, nicht aber die Potenzen beeinflussen. 
+\footnote{Für $\kappa$ wurde eine negative Zahl eingesetzt. Der Fall $\kappa = 0$ vernachlässigen wir, da die Lösung nur aus (\ref{friedmann:Masse}) und (\ref{friedmann:Lambda}) besteht.}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.8\textwidth]{friedmann/images/mathematischFriedmann.pdf}
 	\caption{Mathematische Bedeutung für die Ausbreitung des Universums der einzelnen Terme}
 	\label{friedmann:mathematischFriedmann}
 \end{figure}%
-\subsection{Herleitung der Differential-Gleichung}
-Im folgenden Abschnitt versuchen wir die Bedeutung der einzelnen Terme physikalisch zu hinterlegen. Das ist nicht immer ganz einfach, denn die Differential-Gleichung wurde unter anderem mithilfe der Einstein'schen Feldgleichungen hergeleitet worden. In diesem Kapitel werden wir aber nicht so weit gehen, trotzdem können wir einige interessante Relationen mithilfe der klassischen Physik herleiten.
+\subsection{Herleitung der Differentialgleichung}
+Im folgenden Abschnitt versuchen wir die Bedeutung der einzelnen Terme physikalisch zu hinterlegen. Das ist nicht immer ganz einfach, denn die Differentialgleichung wurde unter anderem mithilfe der Einsteinschen Feldgleichungen hergeleitet worden. In diesem Kapitel werden wir aber nicht so weit gehen, trotzdem können wir einige interessante Relationen mithilfe der klassischen Physik herleiten.
 \subsubsection{Newtonscher Ansatz}
 Um die relative Beschleunigung zweier Punkte im Universum zu beschreiben, wird von folgendem Ansatz ausgegangen: Ein Beobachter befindet sich im Ursprung des Koordinatensystems und ist in Ruhe. Um nun die Kraft auf einen Körper der {\em Masse} $m$ im {\em Abstand} $D$ zu berechnen, denkt man sich eine Kugelschale um den Ursprung mit {\em Radius} $D$. Die Kraft auf den Körper verhält sich wie die Punktmasse aller  einzelnen Körper in der Kugel im Ursprung gedacht.
 Im folgenden Abschnitt werden die in Kap.(\ref{friedmann:Beziehungen im Koordinatensystem}) hergeleiteten Formeln angewendet. Einfachheitshalber schreiben wir für den Abstand im Grid
@@ -157,8 +159,8 @@ Die Gleichung wurde so angepasst, dass oben die Masse und unten das Volumen steh
 \end{equation}
 \subsubsection{Bedeutung der Beschleunigungsgleichung}
 Setzt man für die Dichte Gleichung (\ref{friedmann:dichte}) ein ergibt sich
-\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\mu}{a^3} \quad\Leftrightarrow \quad\frac{\ddot{a}}{a} = \frac{- 4 \pi G \nu}{3} \frac{1}{a^3}\]
-Durch geschickte Wahl des Skalenfaktors kann $\nu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
+\[\frac{\ddot{a}}{a} = \frac{- 4 \pi G}{3} \frac{\mu}{a^3} \]
+Durch geschickte Wahl des Skalenfaktors kann $\mu$ den konstanten Term auf der rechten Seite gegen 1 streben lassen. So vereinfacht sich die Gleichung zu
 \[\frac{\ddot{a}}{a} = \frac{-1}{a^3} \qquad\Leftrightarrow\qquad \ddot{a} = \frac{-1}{a^2}\]
 Die Differentialgleichung ist nichtlinear  und nicht lösbar. Trotzdem können wir gewisse Aussagen machen, nämlich
 \begin{enumerate}
@@ -186,7 +188,7 @@ Nennen wir die Gesamtenergie eine Konstante $E$ und formen die Gleichung um.
 \end{align*}
 Wir setzen (\ref{friedmann:geschwindigkeit}) und (\ref{friedmann:Abstand}) ein.
 \begin{align*}
-	\left( \dot{a} \, R\right)^2 &= \frac{2 M G}{a\,R} + E_2 &&| \cdot \frac{1}{a^2}\\
+	\left( \dot{a} \, R\right)^2 &= \frac{2 M G}{a\,R} + E_2 &&| \cdot \frac{1}{a^2\,R^2}\\
 	\frac{\dot{a}^2}{a^2} &= \frac{2 M G}{a^3 R^3} + \frac{E_2}{a^2 R^2} \\
 	\left(\frac{\dot{a}}{a} \right)^2 &= \frac{\frac{4 \pi}{3}2 M G}{\frac{4 \pi}{3} a^3 R^3} + \frac{E_2}{a^2 R^2}
 \end{align*}
@@ -208,7 +210,7 @@ Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums 
 	\item Beginnen wir mit dem einfachsten Fall und setzen $E = 0$.
 	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}\]
 	Diese Gleichung wurde im Kapitel (\ref{friedmann:UniversumMitMasse}) schon gelöst. Ist die Gesamtenergie $E$ null, dehnt sich das Universum gemäss Gleichung (\ref{friedmann:Masse}) aus. Je grösser also das Universum wird, desto kleiner wird die Geschwindigkeit der Ausdehnung.
-	\[\lim_{x\to\infty} \dot{a}(t) = 0\]
+	\[\lim_{t\to\infty} \dot{a}(t) = 0\]
 	\item Für den zweiten Fall ist $E > 0$.
 	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}\]
 	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für {\em kleine} $a$'s der {\em erste} Term dominiert, während der {\em zweite} Term für {\em grosse} $a$'s dominiert. Das kleine Universum verhält sich also wie für $E = 0$. Das grosse Universum hingegen verhält sich wie das massenlose Universum in (\ref{friedmann:masselosesUniversum}) mit $\Lambda = 0$.  
@@ -218,7 +220,7 @@ Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums 
 	\begin{equation}
 	\dot{a} = \pm \sqrt{\frac{1}{a} - |E|}
 	\end{equation}
-	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Fälle. Solange $E \geq 0$ dehnt sich das Universum unbeschränkt aus. Ist $E < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
+	Anhand des Phasendiagramms \ref{friedmann:phasenportrait} erkennt man die Lösung der drei Fälle. Solange $E \geq 0$ ist, dehnt sich das Universum unbeschränkt aus. Ist $E < 0$ dehnt sich das Universum bis zu einem gewissen Punkt aus. An diesem Punkt ist die Ausdehnungsgeschwindigkeit null. Danach beschreibt die Kurve ein in sich zusammenfallendes Universum, auch Big-Crunch genannt.
 	
 \end{enumerate}
 
@@ -254,7 +256,7 @@ Um die Gleichung zu lösen, ziehen wir die Quadratwurzel und multiplizieren mit 
 	a &= \sqrt{2}\,t^{1/2} 
 \end{align}
 Analog zum Newtonschen Ansatz verhält sich das Universum für einen dominierenden zweiten Term gemäss Gleichung (\ref{friedmann:Kappa}). 
-Im Vergleich mit dem Universum, bei der die gewöhnliche Materie dominiert, ist vor allem zu Beginn ein Unterschied auszumachen. Die Strahlung lässt das Universum am Anfang viel schneller expandieren.(\ref{friedmann:strahlungMaterie}) 
+Im Vergleich mit dem Universum, bei der die gewöhnliche Materie dominiert, ist vor allem zu Beginn ein Unterschied auszumachen. Die Strahlung lässt das Universum am Anfang viel schneller expandieren, siehe Abb. (\ref{friedmann:strahlungMaterie}) 
 
 \begin{figure}[h]
 	\centering
