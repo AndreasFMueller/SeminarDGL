@@ -1388,7 +1388,8 @@ F"uhrt man man analog zum Beispiel eine analytische Fortsetzung durch,
 findet man, dass sich die Werte von $f(z)$ f"ur die beiden Wege $\gamma_+$
 und $\gamma_-$ durch das Vorzeichen unterscheiden.
 
-\subsection{Analytische Fortsetzung mit Differentialgleichungen}
+\subsection{Analytische Fortsetzung mit Differentialgleichungen
+\label{komplex:analytische-fortsetzung-dgl}}
 In Abschnitt~\ref{subsection:wegintegrale} wurde gezeigt, wie Wegintegrale
 Stammfunktionen komplexer Funktionen liefern k"onnen.
 Im vorangegangenen Abschnitt wurde untersucht, wie komplex differenzierbare
@@ -1412,6 +1413,16 @@ F(\gamma(b)) = F(\gamma(a))+\int_\gamma f(z)\,dz
 berechnen.
 
 \begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/komplex-5.pdf}
+\caption{Analytische Fortsetzung des Logarithmus als L"osung der
+Differentialgleichung $y'=\frac1z$.
+Bei einem Umlauf um den Nullpunkt nimmt der Wert von $y(z)$ um
+$2\pi i$ zu.
+\label{komplex:analytische-fortsetzung-log}
+}
+\end{figure}
 Wir bestimmen die Stammfunktion von $f(z)=1/z$.
 Entlang der reellen Achse weiss man bereits, dass die Stammfunktion
 der nat"urliche Logarithmus ist, also $F(x)=\log x$.
@@ -1440,9 +1451,9 @@ i\varphi.
 Der Wert der Stammfunktion am Anfang der Kurve ist $\log r$, somit
 folgt, dass
 \[
-\log z = \log r + i\varphi.
-\qedhere
+\log z = \log r + i\varphi
 \]
+(Abbildung~\ref{komplex:analytische-fortsetzung-log}).
 \end{beispiel}
 
 \section{"Ubungsaufgaben}
