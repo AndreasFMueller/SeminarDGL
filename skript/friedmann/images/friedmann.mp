@@ -13,6 +13,9 @@ verbatimtex
 \begin{document}
 etex;
 
+%
+% Erklärung des Skalenfaktors und seiner Wirkung auf Volumen und Dichte
+%
 beginfig(1)
 
 numeric a, A;
@@ -131,6 +134,98 @@ scalefactor(z6, z7);
 
 label.top(btex $a(t_0) = a$ etex, z5);
 label.top(btex $a(t_1) = 1.5a$ etex, z8);
+
+endfig;
+
+%
+% Ausdehnung des Universums und einzelne Terme
+%
+beginfig(2)
+
+
+
+endfig;
+
+%
+% Strahlungsdominiertes und Materiedominiertes Universum
+%
+beginfig(3)
+
+numeric u, v;
+u := 150;
+v := 100;
+
+z0 = (0,0);
+z1 = (1.5 * u, 0);
+z2 = (0, 2 * v);
+
+pickup pencircle scaled 1pt;
+
+drawarrow (z0 shifted (-10,0))--(z1 shifted (10,0));
+drawarrow (z0 shifted (0,-10))--(z2 shifted (0,10));
+
+for x = 0.5 step 0.5 until 1.6:
+	draw (x * u, -2)--(x * u, 2);
+endfor;
+label.bot(btex $0.5$ etex, (0.5 * u, -2));
+label.bot(btex $1.0$ etex, (1.0 * u, -2));
+label.bot(btex $1.5$ etex, (1.5 * u, -2));
+for y = 0.2 step 0.2 until 2.1:
+	draw (-2, y * v)--(2, y * v);
+endfor;
+label.lft(btex $0.2$ etex, (-2, 0.2 * v));
+label.lft(btex $0.4$ etex, (-2, 0.4 * v));
+label.lft(btex $0.6$ etex, (-2, 0.6 * v));
+label.lft(btex $0.8$ etex, (-2, 0.8 * v));
+label.lft(btex $1.0$ etex, (-2, 1.0 * v));
+label.lft(btex $1.2$ etex, (-2, 1.2 * v));
+label.lft(btex $1.4$ etex, (-2, 1.4 * v));
+label.lft(btex $1.6$ etex, (-2, 1.6 * v));
+label.lft(btex $1.8$ etex, (-2, 1.8 * v));
+label.lft(btex $2.0$ etex, (-2, 2.0 * v));
+
+label.top(btex $t$ etex, z1 shifted (10,0));
+label.lft(btex  $a$ etex, z2 shifted (0,10));
+
+%h1 = plot(t1, 3/2*t1.^(2/3), 'LineWidth', 4, 'color', 'b');
+vardef blau(expr t) =
+	(1.5 * mexp(mlog(t) * 2 / 3))
+enddef;
+vardef blaupunkt(expr t) =
+	(t * u, blau(t) * v)
+enddef;
+%h2 = plot(t1, sqrt(2*t1), 'LineWidth', 4, 'color', 'g');
+vardef gruen(expr t) =
+	sqrt(2 * t)
+enddef;
+vardef gruenpunkt(expr t) =
+	(t * u, gruen(t) * v)
+enddef;
+path p, q;
+p := (0,0);
+q := (0,0);
+for t = 0.005 step 0.01 until 1.5:
+	p := p--blaupunkt(t);
+	q := q--gruenpunkt(t);
+endfor;
+p := p--blaupunkt(1.5);
+q := q--gruenpunkt(1.5);
+
+pickup pencircle scaled 1.5pt;
+
+draw p withcolor blue;
+draw q withcolor green;
+
+pickup pencircle scaled 0.5pt;
+z3 = (1 * u, 1.8 * v);
+label.lft(btex gew\"ohnliche Materie dominiert etex, z3);
+z4 = blaupunkt(1.2);
+draw z3--z4 withcolor blue;
+
+z5 = (1.25 * u, v);
+label.bot(btex Strahlung dominiert etex, z5);
+z6 = gruenpunkt(1.25);
+draw z5--z6 withcolor green;
 
 endfig;
 
