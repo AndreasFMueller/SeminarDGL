@@ -275,6 +275,14 @@ draw z5--z6 withcolor green;
 
 endfig;
 
+%
+% Big Crunch Szenario
+%
+
+beginfig(4)
+
+endfig;
+
 end
 
 
