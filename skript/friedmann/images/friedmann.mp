@@ -142,7 +142,53 @@ endfig;
 %
 beginfig(2)
 
+numeric u, v;
+u := 15;
+v := 10;
 
+z0 = (0,0);
+z1 = (20 * u, 0);
+z2 = (0, 24.2 * v);
+
+pickup pencircle scaled 1pt;
+drawarrow (z0 shifted (-10,0))--(z1 shifted (10,0));
+drawarrow (z0 shifted (0,-10))--(z2 shifted (0,10));
+
+for x = 1 step 1 until 20:
+	draw (x * u, -2)--(x * u, 2);
+endfor;
+for y = 1 step 1 until 24:
+	draw (-2, y * v)--(2, y * v);
+endfor;
+
+label.top(btex $t$ etex, z1 shifted (10,0));
+label.lft(btex $a$ etex, z2 shifted (0,10));
+
+input universe.mp;
+
+draw p dashed evenly;
+
+pickup pencircle scaled 2pt;
+draw (p cutafter (point 100 of p)) withcolor red;
+draw ((p cutbefore (point 200 of p)) cutafter (point 600 of p)) withcolor green;
+draw (p cutbefore (point 1400 of p)) withcolor blue;
+
+pickup pencircle scaled 0.5pt;
+
+z3 = point 50 of p;
+z4 = (3 * u, 1 * v);
+draw z3--z4 withcolor red;
+label.rt(btex Gleichung (16.10) etex, z4);
+
+z5 = point 400 of p;
+z6 = (6 * u, 4 * v);
+draw z5--z6 withcolor green;
+label.rt(btex Gleichung (16.9) etex, z6);
+
+z7 = (point 1700 of p);
+z8 = (17 * u, 12 * v);
+draw z7--z8 withcolor blue;
+label.bot(btex Gleichung (16.8) etex, z8);
 
 endfig;
 
