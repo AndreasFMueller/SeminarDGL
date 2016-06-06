@@ -15,3 +15,10 @@
 **/skript-blx.bib
 **/skript.run.xml
 **/mptextmp.mp
+
+!.gitignore
+!/skript/trafo/BIL_VoltageTrans.pdf
+!/skript/trafo/orig_trafo.pdf
+!/skript/trafo/Trafo_Modell.pdf
+!/skript/trafo/VoltageTrans.pdf
+!/skript/trafo/VoltageTrans_bubble_turn6_10u_9u.pdf
