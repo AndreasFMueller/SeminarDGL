@@ -6,6 +6,7 @@ allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen
 zu erstellen. Hierzu wird das anf"angliche parabolische Profil $ax^2 + bx + c$ 
 durch das allgemeine Polynomprofil $n$-ten Grades
 \begin{equation*}
+	p(x) =
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
 	\ge 0
@@ -17,7 +18,7 @@ Differentialgleichung zweiter Ordnung. Es bleibt also eine Abh"angigkeit von
 mindestens zwei Elementen zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht 
 sich diese jeweils um den Index $i$ aufgrund der Verschiebung der $a_k$ nach 
 rechts, wie im Abschnitt \ref{subsec:wellen:Potenzreihenansatz} gezeigt wurde. 
-Daraus folgt
+Daraus folgt die Rekursionsformel
 \begin{equation}
 	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i}\lambda_i, \quad n \ge 0, 
 	a_{k-2-i < 0} =  0
@@ -35,8 +36,8 @@ Sie erlaubt es uns zudem auch noch weitere Schl"usse zu ziehen. Man kann direkt
 aus der Form der L"osung des gegebenen Polynomprofils ablesen, wie sich die 
 Differentialgleichung verhalten wird. Soll heissen, positive L"osungen 
 f"uhren zu einer Wellenform, die Sinus und Cosinus enthalten, negative 
-L"osungen liefern hingegen eine Form aus Sinus Hyperbolicus und Cosinus 
-Hyperbolicus.
+L"osungen liefern hingegen eine exponentielle Form aus Sinus Hyperbolicus und 
+Cosinus Hyperbolicus.
 
 \subsubsection{Berechnungsaufwand}
 
