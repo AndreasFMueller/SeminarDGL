@@ -26,7 +26,7 @@ Ein Transformator, ob "ol- oder luftgek"uhlt, kann prinzipiell mit dem Ersatzsch
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{trafo/Einfaches_ESB.png}
+	\includegraphics[width=0.5\textwidth]{./trafo/images/Einfaches_ESB.png}
 	\caption[Einfach Ersatzschaltbild f"ur einen Transformator]{Einfach Ersatzschaltbild f"ur einen Transformator.}
 	\label{trafo:einfaches_ESB}
 \end{figure}
@@ -37,7 +37,7 @@ Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} darges
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{trafo/Trafo_Modell.pdf}
+	\includegraphics[width=0.8\textwidth]{./trafo/images/Trafo_Modell.pdf}
 	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die Leitwerte zwischen den Wicklungen und gegen"uber Masse sind auf Grund der Übersichtlichkeit weggelassen worden. Die gr"unen Pfeile stellen die Mitkopplung der Spulen dar. }
 	\label{trafo:erweitertes_ESB}
 \end{figure}
@@ -52,7 +52,7 @@ Es gilt nun eine Differentialgleichung f"ur das gefundene Ersatzschaltbild aufzu
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{trafo/orig_trafo.pdf}
+	\includegraphics[width=0.8\textwidth]{./trafo/images/orig_trafo.pdf}
 	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator mit Maschensatz und Knotenpunkt]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die blaue Pfeilen stellen den Maschensatz und die roten Punkte den Knotenpunktregel dar.}
 	\label{trafo:orig}
 \end{figure}
@@ -224,10 +224,62 @@ welches die allgemein bekannte und auch l"osbare Zustandsraumdarstellung \index{
 
 Das Problem scheint bereits gel"ost zu sein, insofern sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
 
-Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst rechenzeit-schonend invertiert und die Eigenwerte der Inversion im Griff hat. 
+Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst Rechenzeit-schonend invertiert und die Eigenwerte der Inversion im Griff hat. 
 
 
 \subsection{Singular Value Decomposition (SVD) \index{Singular Value Decomposition}}
+Eine M"oglichkeit stellt die Singular Value Decomposition, auf Deutsch Singul"arwertzerlegung, dar. Ohne Gedanken "uber die Dimensionen der Matrix $M$ zu verlieren, wird der SVD-Satz verwendet \cite{trafo:Watkins}. 
+
+\begin{satz}
+	\label{trafo:SVDTheorem}
+	(\textit{SVD Theorem}) Sei $M\in \mathbb{R}^{n \times m}$ eine besetzte Matrix mit Rang $r$. Dann kann $M$ als Produkt von
+	\begin{equation}
+		M = USV^\top
+	\end{equation} 
+	geschrieben werden, wenn $U \in \mathbb{R}^{n \times n}$ und $V \in \mathbb{R}^{m \times m}$ orthogonal sind und $S \in \mathbb{R}^{n \times m}$ eine rechteckige Diagonalmatrix ist 
+	\begin{equation*}
+		S = \left( 
+			\begin{array}{ccc|ccc}
+				\lambda_1 &          &          &        & \vdots &        \\
+				& \ddots   &          & \cdots & 0      & \cdots \\
+				&          & \lambda_r &        & \vdots &        \\
+				\hline
+				&  \vdots  &          &        & \vdots &        \\
+				\cdots   &  0       & \cdots   & \cdots & 0      & \cdots \\
+				&  \vdots  &          &        & \vdots &   \\				
+				\end{array}
+			\right) 
+			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_r > 0. 
+	\end{equation*}
+\end{satz}
+F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf die Fachliteratur verwiesen.
+
+Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotationen, es sind dies die Matrizen $U$ und $V^\top$, und einer Streckung durch die Diagonalmatrix $S$. Dieser Vorgang ist in Abbildung \ref{trafo:SVDFig} dargestellt. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{./trafo/images/svd.png}
+	\caption{Grafische Darstellung der Singul"arwertzerlegung \cite{trafo:SVDWiki}.}
+	\label{trafo:SVDFig}
+\end{figure}
+
+Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die beiden Matrizen $U$ und $V$ im Betrag identisch. Falls die Eigenwerte der der Matrix $M$ alle dasselbe Vorzeichen besitzen, sind die Matrizen $U$ und $V$ gar identisch. Weil ein Transformator rein logisch gesehen unbedingt eine D"ampfung, sprich alle Eigenwerte negativ, haben muss, gilt $U = V$. Dies kann auch nummerisch verifiziert werden.
+
+Ebenfalls wird die quadratische Diagonalmatrix $S$ wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
+\begin{equation*}
+	S = \left( 
+			\begin{array}{cccccc}
+				\lambda_1 & & & & & \\
+				& \ddots & & & &  \\
+				& & \lambda_{tol} & & & \\
+				& & & 0 & & \\
+				& & & & \ddots & \\
+				& & & & & 0 \\				
+				\end{array}
+			\right) 
+			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{tol} > 0. 
+\end{equation*}
+
 
 \subsection{Exaktes L"osungsverfahren}
 
@@ -237,10 +289,10 @@ Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichs
 
 Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Einen grossen Optimierungsschritt ist bereits beim Übergang von der $ode45$- zur exakten L"osung passiert. Es kann jedoch immer noch etwas mehr gemach werden. 
 
-Der wesentliche Tei der Berechnung, welche beeinflusst werden kann, ist die \textit{for}-Schleife. Diese wird so viel mal durchlaufen, wie es Schritte hat. Deshalb soll das Ziel sein, m"oglichst wenig in dieser Schleife zu berechnen. 
+Der wesentliche Teil der Berechnung, welche beeinflusst werden kann, ist die \textit{for}-Schleife. Diese wird so viel mal durchlaufen, wie es Schritte hat. Deshalb soll das Ziel sein, m"oglichst wenig in dieser Schleife zu berechnen. 
 
 \subsubsection{Exponentialfunktion der Eigenwerte}
-Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{-\Lambda \cdot \Delta t}$, welche bei jedem Zeitschritt mit der neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, hält sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen). 
+Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{-\Lambda \cdot \Delta t}$, welche bei jedem Zeitschritt mit der neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, h"alt sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen). 
 
 \subsubsection{Lineare Interpolation}
 Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels Umformungen in die Darstellung 
@@ -249,11 +301,39 @@ Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels
 	y_1 = y_0 \cdot e^{\lambda \cdot \Delta t} + f_0 \underbrace{\left(\left(\frac{e^{\lambda \cdot \Delta t}}{\lambda} - \frac{e^{\lambda \cdot \Delta t}}{\Delta t \cdot \lambda ^2}\right) + \frac{1}{\Delta t \cdot \lambda^2}\right)}_{a_0} + f_1 \underbrace{\left(\frac{e^{\lambda \cdot \Delta t}}{\Delta t \cdot \lambda^2} - \frac{1}{\lambda} - \frac{1}{\Delta t \cdot \lambda^2}\right)}_{a_1}
 \end{equation*} 
 
-gebracht werden. Die Konstanten $a_0$ und $a_1$ können wiederum vor der Schleife einmal berechnet werden. 
+gebracht werden. Die Konstanten $a_0$ und $a_1$ k"onnen wiederum vor der Schleife einmal berechnet werden. 
+
+Die lineare Interpolation kann jetzt als 
+\begin{equation*}
+	y_1 = y_0 \cdot e^{\lambda \cdot \Delta t} + a_0 \cdot f_0 + a_1 \cdot f_1
+\end{equation*}
+geschrieben werden. 
+
+Da sich bei diesem Problem nur die Eingangspannung "andert, ist die Ver"anderung vom transformiertem Vektor $f_0$ zu $f_1$ f"ur alle Elemente die selbe Zahl $f$. Die Interpolation kann noch etwas einfacher als
+\begin{equation*}
+	y_1 = y_0 \cdot e^{\lambda \cdot \Delta t} + (a_0 + f \cdot  a_1) \cdot f_0
+\end{equation*}
+geschrieben werden, wenn $f$ die Differenz der zwei Vektoren $f_0$ und $f_1$ ist. 
+
+\subsubsection{Implementation}
+Der Matlab-Code kann jetzt folgendermassen geschrieben werden.
+
+{\scriptsize \lstinputlisting{./trafo/code/compact.m}}
 
 \subsubsection{Vergleich}
 
+Um die Performance zu testen, wird eine sehr schlechte Implementation gew"ahlt, welche eine lineare Interpolation besitzt. Im Gegensatz zum soeben gezeigten Code werden in dieser schlechten Variante allerdings alle Konstante in der \textit{for}-Schleife berechnet. Jeder einzelner Zeitschritt dauert in der Berechnung ca. \SI{130}{ms}. 
 
+Als Vergleich wird die schnellste Optimierung verwendet (Matlab-Code von oben). Die Berechnungszeit f"ur jeden einzelnen Zeitschritt konnte bis auf \SI{35}{\mu \second} reduziert werden. 
+
+Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logarithmischen Grafik. Die Optimierungsversuche haben sich auch in der Praxis als hervorragend erwiesen.
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=0.8\textwidth]{./trafo/images/Optimierung.eps}
+	\caption{Unterschied zwischen einer sehr schlechten und einer guter Implementierung.}
+	\label{trafo:Optimierung}
+\end{figure}
 
 \section{Anwendung der gefundenen L"osungen}
 
@@ -265,26 +345,29 @@ Diese L"osung wurde bereits in Abbildung \ref{trafo:loesung} pr"asentiert. Das e
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.8\textwidth]{trafo/BIL_VoltageTrans.pdf}
+	\includegraphics[width=\textwidth]{./trafo/images/BIL_VoltageTrans.pdf}
 	\caption{Elektrisches Feld zwischen den ersten paar Layern.}
 	\label{trafo:E-Field}
 \end{figure}
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.8\textwidth]{trafo/VoltageTrans.pdf}
+	\includegraphics[width=\textwidth]{./trafo/images/VoltageTrans.pdf}
 	\caption{Elektrisches Feld zwischen Windung 6 und 118.}
 	\label{trafo:E-FieldZoom}
 \end{figure}
 
-Da die Herstellung von Transformatoren nie optimal ablaufen, k"onnen sich auch Luftblasen im Epoxidharz bilden. Diese Luftblasen verst"arken das elektische Feld zus"atzlich und schw"achen somit den Transformator im Fehlerfall. Ein m"ogliches Szenario ist in Abbildung \ref{trafo:E-FieldBubble} pr"asentiert. 
+Da die Herstellung von Transformatoren nie optimal ablaufen, k"onnen sich auch Luftblasen im Epoxidharz bilden. Diese Luftblasen, auch Lunker genannt, verst"arken das elektrische Feld zus"atzlich und schw"achen somit den Transformator im Fehlerfall. Ein m"ogliches Szenario ist in Abbildung \ref{trafo:E-FieldBubble} pr"asentiert. 
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.8\textwidth]{trafo/VoltageTrans_bubble_turn6_10u_9u.pdf}
+	\includegraphics[width=\textwidth]{./trafo/images/VoltageTrans_bubble_turn6_10u_9u.pdf}
 	\caption{Elektrische Feld zwischen Wicklung 6 und 118 mit simulierter Luftblase (Lunker).}
 	\label{trafo:E-FieldBubble}
 \end{figure}
+
+\subsection{Schlussfolgerung}
+Das Problem kann erfolgreich formuliert werden und automatisiert werden. Mit mathematischen Hilfsmitteln ist es auch m"oglich grosse Matrizen zu berechnen.
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
