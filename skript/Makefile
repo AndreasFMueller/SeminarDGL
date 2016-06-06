@@ -6,7 +6,7 @@
 all:	subdirs skript.pdf
 
 SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis licht \
-		 komplex
+		 komplex friedmann
 
 subdirs:
 	for d in $(SUBDIRECTORIES); \
