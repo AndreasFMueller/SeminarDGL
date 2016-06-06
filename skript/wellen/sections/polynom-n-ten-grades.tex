@@ -4,8 +4,7 @@
 Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
 allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen 
 zu erstellen. Hierzu wird das anf"angliche parabolische Profil $ax^2 + bx + c$ 
-mit dem 
-allgemeinen Polynom $n$-ten Grades
+durch das allgemeine Polynom $n$-ten Grades
 \begin{equation*}
 	\lambda_nx^n + \lambda_{n-1}x^{n-1} + \lambda_{n-2}x^{n-2} + \dotsb + 
 	\lambda_2x^2 + \lambda_1x + \lambda_0 = \sum_{i=0}^{n}\lambda_ix^i, \quad n 
@@ -14,21 +13,21 @@ allgemeinen Polynom $n$-ten Grades
 ersetzt.
 
 Bei der neuen Problemstellung handelt es sich immer noch um eine 
-Differentialgleichungen zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
+Differentialgleichung zweiter Ordnung. Es bleibt also eine Abh"angigkeit von 
 mindestens zwei Elementen zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht 
 sich diese jeweils um den Index $i$ aufgrund der Verschiebung der $a_k$ nach 
 rechts, wie im Abschnitt \ref{subsec:wellen:Potenzreihenansatz} gezeigt wurde. 
-Daraus folgt nun
+Daraus folgt
 \begin{equation}
-	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i)}\lambda_i, \quad n \ge 0, 
-	a_{k-2-i < 0} =  0.
+	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i}\lambda_i, \quad n \ge 0, 
+	a_{k-2-i < 0} =  0
 	\label{eq:wellen:allgemeineak}
 \end{equation}
 f"ur ein Polynom $n$-ten Grades.
 
 \subsubsection{Schlussfolgerungen}
 
-Mit der Formel (\ref{eq:wellen:allgemeineak}) gibt es nun ein einfaches 
+Mit der Formel (\ref{eq:wellen:allgemeineak}) gibt es ein einfaches 
 Werkzeug mit dem man, allein durch Einsetzen der Parameter, die Koeffizienten 
 der Potenzreihenl"osung f"ur diese Art von Differentialgleichungen erh"alt.
 
@@ -40,8 +39,6 @@ L"osungen liefern hingegen eine Kombination aus Sinus Hyperbolicus und Cosinus
 Hyperbolicus.
 
 \subsubsection{Berechnungsaufwand}
-Der Pseudocode \ref{alg:wellen:potenzreihenrechnung} kann mit kleinen 
-"Anderungen an die neue L"osung angepasst werden. 
 
 \input{./wellen/sections/algorithms/alg-allgemein.tex}
 
