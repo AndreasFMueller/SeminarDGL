@@ -12,7 +12,7 @@ Um genauer zu verstehen, was mit dieser Funktion bei der analytischen Fortsetzun
 $$
 z^{\varrho_j} = e^{\log(z^{\varrho_j})} = e^{\varrho_j \log(z)}
 $$
-betrachtet werden. Diese Funktion wird nun analytisch fortgesetzt. Die Exponentialfunktion geht in sich selbst über, der Logarithmus transformiert sich wie früher erläutert in $\log z\sk \log z + 2\pi i$, und es folgt
+betrachtet werden. Diese Funktion wird nun analytisch fortgesetzt. Die Exponentialfunktion geht in sich selbst über, der Logarithmus transformiert sich wie früher erläutert in $\sk\log(z) = \log(z) + 2\pi i$, und es folgt
 $$
 \sk e^{\varrho_j \log(z)} 
 = e^{\varrho_j (\log(z) + 2\pi i)}
@@ -25,7 +25,7 @@ $$
 \sk \frac{w_j}{z^{\varrho_j}} 
 = \frac{\lambda_j w_j}{\lambda_jz^{\varrho_j}} = \frac{w_j}{z^{\varrho_j}}
 $$
-Durch die Funktion $z'\varrho_j$ ist es also gelungen, eine eindeutige Funktion zu finden, respektive einen konstanten Faktoren zu kompensieren. Die Funktion $\frac{w_j}{z^{\varrho_j}}$ wird durch die analytische Fortsetzung nicht verändert und kann als Laurent-Reihe dargestellt werden.
+Durch die Funktion $z^\varrho_j$ ist es also gelungen, eine eindeutige Funktion zu finden, respektive einen konstanten Faktoren zu kompensieren. Die Funktion $\frac{w_j}{z^{\varrho_j}}$ wird durch die analytische Fortsetzung nicht verändert und kann als Laurent-Reihe dargestellt werden.
 $$
 \frac{w_j}{z^{\varrho_j}} = \mathcal{L}_j(z)
 $$
@@ -47,11 +47,11 @@ $$
 \sk w_2 = \lambda w_2 + w_1
 \end{array}
 $$
-Die Gleichung für $w_1$ ist also identisch mit derjenigen aus dem diagonalisierbaren Fall, und auch die Lösung lässt sich in gleicher Weise finden. Für die zweite Lösung funktioniert das nicht. Nun betrachten wir das Verh"altnis $\frac{w_2}{w_1}$
+Die Gleichung für $w_1$ ist also identisch mit derjenigen aus dem diagonalisierbaren Fall, und auch die erste Lösung lässt sich in gleicher Weise finden. Für die zweite Lösung funktioniert das nicht. Nun betrachten wir das Verh"altnis $\frac{w_2}{w_1}$
 $$
 \sk \frac{w_2}{w_1} = \frac{\lambda w_2+w_1}{\lambda w_1} = \frac{w_2}{w_1} + \frac{1}{\lambda}
 $$
-Hier muss anstelle eines Faktors einen Summanden kompensiert werden. Gemacht wird dies mit der Funktion
+Hier muss anstelle eines Faktors ein Summand kompensiert werden. Gemacht wird dies mit der Funktion
 $$ \frac{1}{2\pi i\lambda} \log(z)$$
 $$\sk \frac{1}{2\pi i\lambda} \log(z) 
 = \frac{1}{2\pi i\lambda} (\log(z) + 2\pi i) 

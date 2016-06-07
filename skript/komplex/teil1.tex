@@ -13,7 +13,7 @@ Bei der Analyse dieses Problems ist es nicht wichtig, welche Differentialgleichu
 
 
 \subsection{Benötigte Werkzeuge}
-Wir werden in diesem Kapitel verschiedene Werkzeuge verwenden. Insbesondere die analytischen Fortsetzung (siehe \ref{komplex:fortsetzung}) und die Laurent-Reihen
+Wir werden in diesem Kapitel verschiedene Werkzeuge verwenden. Insbesondere die analytische Fortsetzung (siehe \ref{komplex:fortsetzung}) und die Laurent-Reihen
 $$\mathcal{L}(z)=\sum_{k=-\infty}^{\infty}a_k(z-z_0)^k.$$
 
 Die analytische Fortsetzung $f^+$ einer Funktion $f$ entlang eines geschlossenen Weges $\gamma$ in positiver Drehrichtung wird in diesem Kapitel sehr oft verwendet. Wir definieren deshalb folgenden Operator:
@@ -22,12 +22,12 @@ Er soll folgendermassen gelesen werden:, wenn man $f(z)$ einmal entlang eines ge
 Dies ist illustriert in Abbildung \ref{komplex:analytische-fortsetzung-log}.
 
 \subsection{Analythische Fortsetzung und Singularitäten}
-Ist das Gebiet $B$, welches durch $\gamma$ eingeschlossen wird einfach zusammenhängend, oder besitzt es Singularitäten vom Typ $z^{-n}$, so ist diese Funktion überall in diesem Gebiet als endliche Laurent-Reihe darstellbar und eindeutig. Umgekehrt gilt, dass die Analytische Fortsetzung einer Laurent-Reihge entlang eines geschlossenen Weges wieder auf dieselbe Laurent-Reihe führt. Laurent-Reihen sind eindeutig.
+Ist das Gebiet $B$, welches durch $\gamma$ eingeschlossen wird, einfach zusammenhängend, oder besitzt es Singularitäten vom Typ $z^{-n}$, so ist diese Funktion überall in diesem Gebiet als endliche Laurent-Reihe darstellbar und eindeutig. Umgekehrt gilt, dass die Analytische Fortsetzung einer Laurent-Reihe entlang eines geschlossenen Weges wieder auf dieselbe Laurent-Reihe führt. Laurent-Reihen sind eindeutig.
 
 Besitzt dieses Gebiet $B$ allerdings eine (oder mehrere) logarithmische Singularitäten, so findet sich einerseits keine endliche Laurent-Reihe, und andererseits ist die Funktion nach der analytischen Fortsetzung nicht mehr eindeutig. Letzteres folgt aus der Mehrdeutigkeit des Logarithmus
-$$\log z = \log|z| + \arg z + 2k\pi i\forall k\in\mathbb{Z}.$$
+$$\log z = \log|z| + \arg z + 2k\pi i\,\forall\, k\in\mathbb{Z}.$$
 Betrachten wir beispielhaft eine Funktion mit einer solchen Singularität, den Logarithmus selbst, so sehen wir 
-$$\log z\sk \log z + 2\pi i.$$
+$$\sk\log z = \log z + 2\pi i.$$
 Funktionen, die logarithmische Singularitäten beinhalten, sind also nicht als reine Laurent-Reihen darstellbar.
 
 Laurent-Reihen sind jedoch sowohl nummerisch als auch analytisch von Vorteil, da sie oftmals einfacher zu berechnen und handhaben sind. Es wäre also schön, wenn es eine Darstellung ähnlich den Laurent-Reihen gäbe, die auch mit Funktionen klar kommt, die logarithmische Singularitäten beinhalten.
@@ -42,11 +42,13 @@ Die Besselfunktion mit $\nu=0$ besitzt im Ursprung also genau eine solche Singul
 Wir wissen, dass es zwei linear unabhängige Lösungen geben muss. Wenn diese Lösungen existieren, dann können wir sie auch analytisch fortsetzen und schauen, was passiert.
 $$\begin{pmatrix}
 w_1 \\ w_2
-\end{pmatrix}=w\sk w^+=\begin{pmatrix}
+\end{pmatrix}=w
+$$
+$$ \sk w = w^+=\begin{pmatrix}
 w_1^+\\ w_2^+
 \end{pmatrix}
 $$
-Die analythische Fortsetzung linear unabhängiger Lösungen $w$ führt dabei stets auf neue, linear unabhängige Lösungen $w^+$. Da diese neuen Lösungen untereinander linear unabhängig sind, und eine DGL 2. Ordnung insgesammt nur zwei linear unabhängige Lösungen besitzt, muss eine Abhängigkeit in Form von 
+Die analytische Fortsetzung linear unabhängiger Lösungen $w$ führt dabei stets auf neue, linear unabhängige Lösungen $w^+$. Da diese neuen L"osungen untereinander linear unabhängig sind, und eine DGL 2. Ordnung insgesamt nur zwei linear unabhängige Lösungen besitzt, muss eine Abhängigkeit in Form von 
 $$ w^+=Aw$$
 existieren. Insbesondere ist die Matrix 
 $$A = \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{pmatrix}$$
