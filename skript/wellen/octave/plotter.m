@@ -59,22 +59,22 @@ if (!isempty(kmaxpath))
 	count = 4;
 	for i = (240:-30:30)
 		load(sprintf('%s/kmax-%d.dat', kmaxpath, i));
-		plot(x, y, sprintf('%d;;', mod(count--, 6)), 'linewidth', 1);
+		plot(x, y, sprintf('%d;;', mod(count--, 6)));
 	endfor
 elseif (!isempty(n4path))
 	load(sprintf('%s/n2.dat', n4path));
-	plot(x, p, sprintf('%d;p(x), n = 2;', 5), 'linewidth', 1);
-	plot(x, y, sprintf('%d;y(x), n = 2;', 3), 'linewidth', 1);
+	plot(x, p, sprintf('%d;p(x), n = 2;', 5));
+	plot(x, y, sprintf('%d;y(x), n = 2;', 3));
 	load(sprintf('%s/n4.dat', n4path));
-	plot(x, p, sprintf('%d;p(x), n = 4;', 4), 'linewidth', 1);
-	plot(x, y, sprintf('%d;y(x), n = 4;', 1), 'linewidth', 1);
+	plot(x, p, sprintf('%d;p(x), n = 4;', 4));
+	plot(x, y, sprintf('%d;y(x), n = 4;', 1));
 else
 	if (!isempty(n2zeros))
-		plot([n2zeros(1), n2zeros(1)], [0, n2zeros(3)], '1;;', 'linewidth', 1);
-		plot([n2zeros(2), n2zeros(2)], [0, n2zeros(4)], '1;;', 'linewidth', 1);
+		plot([n2zeros(1), n2zeros(1)], [0, n2zeros(3)], '1;;');
+		plot([n2zeros(2), n2zeros(2)], [0, n2zeros(4)], '1;;');
 	endif
-	plot(x, p, '2;p(x);', 'linewidth', 1);
-	plot(x, y, '3;y(x);', 'linewidth', 1);
+	plot(x, p, '2;p(x);');
+	plot(x, y, '3;y(x);');
 endif
 
 axis([x_min, x_max, y_min, y_max]);
