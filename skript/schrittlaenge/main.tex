@@ -8,14 +8,19 @@
 \section{Problemstellung}
 \rhead{Problemstellung}
 
-Mit den numerischen Verfahren wird die L"osung schrittweise konstruiert, was bei \glqq engen Kurven\grqq~zu Problemen f"uhren kann.
-Im schlimmsten Fall verpasst die L"osung die Kurve ganz.
-Wenn man aber immer nur ganz kleine Schritte macht, dauert die Berechnung der L"osung sehr lange, vor allem auf \glqq geraden Strecken\grqq~wird unn"otig Rechenzeit verschwendet.
 
-M"ogliche Fragestellungen: mit welchen Kriterien steuert man die Anpassung der Schrittl"ange?
-Wie "andert sich die Genauigkeit der L"osung?
-Weniger unn"otige Rechenschritte reduzieren auch die Gefahr von Rundungsfehlern, die das Resultat verf"alschen k"onnen, kann man diesen Effekt messen?
-Wie kann man den Tradeoff zwischen Rechenaufwand und Genauigkeit beziffern oder visualisieren?
+Beim numerischen Lösen einer Differentialgleichung wird ein Wert aus dem vorangegangenen berechnet.
+Nun muss entschieden werden, zu welchem Zeitpunkt ein solcher Wert berechnet werden soll.
+Ist der Berechnungszeitpunkt vom vorangegangenen zum aktuellen Wert zu weit voneinander entfernt, kann dass bei engen Kurven zu grossen Fehlern führen.
+Diese Fehler können sich nun von Schritt zu Schritt fortpflanzen, sodass die Lösungskurve schlussendlich keine Ähnlichkeit mit der exakten Kurve zeigt.
+
+Als Konsequenz kann nun einfach die Schrittweite kleiner gewählt werden.
+Somit werden die Fehler pro berechnetem Wert kleiner und darum die Lösungskurve genauer.
+Dies hat aber zur Folge, dass viel mehr Werte berechnet werden müssen, was mehr Rechenaufwand mit sich bringt.
+So wird vor allem auf Kurvenabschnitten mit geringer Richtungsänderung unn"otig Rechenzeit verschwendet.
+
+Das Ziel dieser Arbeit ist nun, verschiedene Methoden zu entwerfen, welche die Schrittlänge je nach Gegebenheit anpassen können. 
+Die entwickelten Methoden werden an einem Beispielproblem getestet und nach vorbestimmten Kriterien untereinander verglichen.
 
 
 \section{Beispiel}
@@ -28,7 +33,7 @@ Um die Schrittl"angenproblematik zu erl"autern, wird ein geeignetes Beispiel ben
 \item Das Konzept der Schrittl"angensteuerung und dessen Vorteile sollten damit auf einfache Weise visualisiert werden k"onnen.
 \end{itemize}
 Auf Grund diesen Voraussetzungen wurde als Beispielproblem das allgemein bekannte \em Zweik"orperproblem\em~gew"ahlt.
-Bei diesem Problem geht es darum, das Verhalten zweier K"orper, welche ohne "aussere Einflüsse miteinander wechselwirken, zu berechnen. 
+Bei diesem Problem geht es darum, das Verhalten zweier K"orper, welche ohne "aussere Einfl"usse miteinander wechselwirken, zu berechnen. 
 Die Berechnungen werden zur Vereinfachung nach den Gesetzen und Axiomen von Newton vorgenommen, das heisst die relativistischen Effekte gem"ass Einstein werden ausser Acht gelassen.
 Ausserdem wird von Massepunkten ausgegangen.
 Damit gilt nach dem Newtonschen Gravitionsgesetz folgende Gleichung:
@@ -46,7 +51,7 @@ Auf die momentane Beschleunigung umgeformt gilt somit:
 a=\frac{G m}{r^2} \label{eq:beschleunigungSkalar}
 \end{equation}
 F"ur die weitere Betrachtung ist es sinnvoll in mehreren Dimensionen zu rechnen.
-Aus diesem Grund erfährt die Formel nun ein Upgrade zur Vektorrechnung.
+Aus diesem Grund erf"ahrt die Formel nun ein Upgrade zur Vektorrechnung.
 Jeder K"orper $k$ hat eine bestimmte Position welche durch seinen Ortsvektor $\vec{s_k}$ beschrieben wird.
 Der Abstand zwischen zwei K"orpern $K_1$ und $K_2$ ist damit die Differenz der beiden Ortsvektoren  $\vec{s_1}$ und $\vec{s_2}$:
 \begin{equation} \label{eq:abstand}
@@ -98,7 +103,7 @@ Damit ergibt sich folgendes Gleichungssystem zweiter Ordnung:
 \begin{equation} \label{eq:kompSchreibwZwei}
 \frac{d^2s_y}{dt^2}=-\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
 \end{equation}
-Um die L"osung der Differentialgleichung bei bestimmten Anfangsbedingungen zu berechnen, muss diese in einem bestimmten Format dem L"osungsalgorithmus übergeben werden.
+Um die L"osung der Differentialgleichung bei bestimmten Anfangsbedingungen zu berechnen, muss diese in einem bestimmten Format dem L"osungsalgorithmus "ubergeben werden.
 In diesem Fall wird das Mathematikprogramm MatLab verwendet. 
 "Ubliche Solver in MatLab verlangen Differentialgleichungssysteme mit Differentialgleichungen erster Ordnung.
 Aus diesem Grund muss die Ordnung der beiden Gleichungen (\ref{eq:kompSchreibwEins}) und (\ref{eq:kompSchreibwZwei}) reduziert werden. 
@@ -168,11 +173,11 @@ function dz = planets(t, z)
 end
 \end{lstlisting}
 
-Bild von optimaler Lösung
+Bild von optimaler L"osung
 
 Fixstep
 
-Problematik Schrittlänge
+Problematik Schrittl"ange
 
 myOde
 
