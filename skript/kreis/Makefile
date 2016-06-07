@@ -1,7 +1,8 @@
-all:	besselfunction.png
+besselfunction.pdf: besselfunction.tex besselfunction_koeffizienten.m besselfunction-inc.pdf
+	pdflatex besselfunction.tex
 
-besselfunction.png:	besselfunction_koeffizienten.m
-	octave besselfunction_koeffizienten.m 
+besselfunction.tex: besselfunction_koeffizienten.m
+	octave besselfunction_koeffizienten.m
 
 clean:
-	rm -f *.png
+	rm besselfunction.* besselfunction-inc.pdf
