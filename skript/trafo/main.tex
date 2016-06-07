@@ -235,6 +235,7 @@ Eine M"oglichkeit stellt die Singular Value Decomposition, auf Deutsch Singul"ar
 	(\textit{SVD Theorem}) Sei $M\in \mathbb{R}^{n \times m}$ eine besetzte Matrix mit Rang $r$. Dann kann $M$ als Produkt von
 	\begin{equation}
 		M = USV^\top
+		\label{trafo:svd}
 	\end{equation} 
 	geschrieben werden, wenn $U \in \mathbb{R}^{n \times n}$ und $V \in \mathbb{R}^{m \times m}$ orthogonal sind und $S \in \mathbb{R}^{n \times m}$ eine rechteckige Diagonalmatrix ist 
 	\begin{equation*}
@@ -252,9 +253,49 @@ Eine M"oglichkeit stellt die Singular Value Decomposition, auf Deutsch Singul"ar
 			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_r > 0. 
 	\end{equation*}
 \end{satz}
-F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf die Fachliteratur verwiesen.
+F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf die Fachliteratur verwiesen \cite{trafo:Watkins}.
 
 Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotationen, es sind dies die Matrizen $U$ und $V^\top$, und einer Streckung durch die Diagonalmatrix $S$. Dieser Vorgang ist in Abbildung \ref{trafo:SVDFig} dargestellt. 
+
+Die Matrix $U$ besitzt in der Senkrechte Eigenvektoren
+\begin{equation*}
+	\left( 
+		\begin{array}{cccc}
+		& & & \\
+		u_1 & u_2 & \dots & u_n  \\
+		& & & 			
+		\end{array}
+	\right) 
+\end{equation*}
+und lässt sich mit 
+\begin{equation*}
+	M M^\top = U S \underbrace{V^\top V}_{E} S^\top U^\top = U \underbrace{S S^\top}_{S^2} U
+\end{equation*}
+berechnen und anschliessend auflösen \cite{tafo:Watkins}.
+
+Die Matrix $V$ besitzt in der Vertikale Eigenvektoren
+\begin{equation*}
+	\left( 
+		\begin{array}{ccc}
+		& v_1^\top & \\
+		& v_2^\top & \\
+		& \vdots & \\
+		&  v_m^\top & \\			
+		\end{array}
+	\right) 
+\end{equation*}
+und lässt sich mit 
+\begin{equation*}
+	M^\top M = V S^\top \underbrace{U^\top U}_{E} S V^\top = V \underbrace{S^\top S}_{S^2} V^\top 
+\end{equation*}
+berechnen und anschliessend auflösen \cite{trafo:Watkins}.
+
+Als etwas schnellere Alternative kann auch die Berechnung aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
+\begin{align*}
+	M^\top &= V \underbrace{S^\top}_{S} U^\top\\
+	S^{-1} M^\top &= V U^\top\\
+	V &= S^{-1} M^\top \left(U^\top\right) = S^{-1} M^\top U
+\end{align*}
 
 \begin{figure}
 	\centering
@@ -265,7 +306,8 @@ Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotati
 
 Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die beiden Matrizen $U$ und $V$ im Betrag identisch. Falls die Eigenwerte der der Matrix $M$ alle dasselbe Vorzeichen besitzen, sind die Matrizen $U$ und $V$ gar identisch. Weil ein Transformator rein logisch gesehen unbedingt eine D"ampfung, sprich alle Eigenwerte negativ, haben muss, gilt $U = V$. Dies kann auch nummerisch verifiziert werden.
 
-Ebenfalls wird die quadratische Diagonalmatrix $S$ wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
+\subsubsection{Unterdrückung von unerwünschten Eigenwerte}
+Die quadratische Diagonalmatrix $S$ wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
 \begin{equation*}
 	S = \left( 
 			\begin{array}{cccccc}
@@ -280,6 +322,48 @@ Ebenfalls wird die quadratische Diagonalmatrix $S$ wegen der symmetrischen Matri
 			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{tol} > 0. 
 \end{equation*}
 
+\subsubsection{Inversion}
+Als weiteres gilt es eine einfache 'Inversion' der Matrix $M$ zu finden. Bis anhin wurde die Singulärwertzerlegung angewendet, in der Annahme, dass schlussendlich eine Vereinfachung der Inversion möglich sei. Die Inversion zeigt tatsächlich, dass sich einiges vereinfachen lässt.
+\begin{equation*}
+	M^{-1} = \left(USV^\top\right)^{-1} = \left(V^\top\right)^{-1} \cdot S^{-1} \cdot U^{-1}
+\end{equation*}
+Da die Matrizen $U$ und $V$ symmetrisch sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung nun auch als 
+\begin{equation*}
+	M^{-1} = V \cdot S^{-1} \cdot U^\top
+\end{equation*}
+geschrieben werden.
+
+Dies ist wesentlich schneller zu Berechnen als die Inverse Matrix von $M$, da lediglich die Diagonalmatrix invertiert werden muss.
+
+\subsubsection{Implementation}
+Die Implementation in Matlab lässt sich sehr kompakt und elegant darstellen. Wie soeben erklärt werden zu kleine Eigenwerte auf Null gesetzt und anschliessend die Inversion berechnet. 
+
+{\scriptsize \lstinputlisting{./trafo/code/svd.m}}
+
+\subsubsection{Resultate}
+Damit der Wert der Toleranz bestimmt werden kann, müssen ein paar Testlösungen erstellt werden. Als Lösungsverfahren wurde das etwas langsame jedoch möglichst genaues nummerisches Verfahren \textit{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lässt sich der Unterschied der gewählten Toleranz sehr gut zu erkennen. Wenn die Toleranz $10^{-11}$ und $10^{-12}$ gewählt wird, lässt sich das Problem lösen, jedoch ist das Verhalten des Systems erfahrungsgemäss nicht ganz realistisch. Die Lösung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tatsächlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die Lösung und ist somit nicht mehr brauchbar.
+
+	\begin{figure}
+	    \centering
+	    \begin{minipage}{.5\textwidth}
+	        \centering
+	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd11.png}
+	    \end{minipage}%
+	    \begin{minipage}{.5\textwidth}
+	        \centering
+	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd12.png}
+	    \end{minipage}
+		\begin{minipage}{.5\textwidth}
+	        \centering
+	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd13.png}
+	    \end{minipage}%
+	    \begin{minipage}{.5\textwidth}
+	        \centering
+	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd14.png}
+	    \end{minipage}
+	    \caption{Numerische Berechnungen mit verschiedenen Toleranzen. }
+	    \label{trafo:SVDTol}
+	\end{figure}
 
 \subsection{Exaktes L"osungsverfahren}
 
@@ -322,15 +406,15 @@ Der Matlab-Code kann jetzt folgendermassen geschrieben werden.
 
 \subsubsection{Vergleich}
 
-Um die Performance zu testen, wird eine sehr schlechte Implementation gew"ahlt, welche eine lineare Interpolation besitzt. Im Gegensatz zum soeben gezeigten Code werden in dieser schlechten Variante allerdings alle Konstante in der \textit{for}-Schleife berechnet. Jeder einzelner Zeitschritt dauert in der Berechnung ca. \SI{130}{ms}. 
+Um die Performance zu testen, wird eine sehr schlechte Implementation gew"ahlt, welche eine lineare Interpolation besitzt. Im Gegensatz zum soeben gezeigten Code werden in dieser schlechten Variante allerdings alle Konstante in der \textit{for}-Schleife berechnet. Jeder einzelner Zeitschritt dauert in der Berechnung ca. \SI{130}{\milli\second}. 
 
-Als Vergleich wird die schnellste Optimierung verwendet (Matlab-Code von oben). Die Berechnungszeit f"ur jeden einzelnen Zeitschritt konnte bis auf \SI{35}{\mu \second} reduziert werden. 
+Als Vergleich wird die schnellste Optimierung verwendet (Matlab-Code von oben). Die Berechnungszeit f"ur jeden einzelnen Zeitschritt konnte bis auf \SI{35}{\micro \second} reduziert werden. 
 
 Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logarithmischen Grafik. Die Optimierungsversuche haben sich auch in der Praxis als hervorragend erwiesen.
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=0.8\textwidth]{./trafo/images/Optimierung.eps}
+	\includegraphics[width=0.8\textwidth]{./trafo/images/differenceOptimization.eps}
 	\caption{Unterschied zwischen einer sehr schlechten und einer guter Implementierung.}
 	\label{trafo:Optimierung}
 \end{figure}
