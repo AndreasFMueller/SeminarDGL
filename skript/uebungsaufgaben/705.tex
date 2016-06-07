@@ -1,0 +1,83 @@
+Man m"ochte wissen, ob die Differentialgleichung
+\[
+zw'(z)+(az+b)w(z)=0
+\]
+mit $b\ne 0$ eine L"osung $w(z)$, die an der Stelle $z=0$
+nicht singul"ar ist.
+
+\begin{hinweis}
+L"osen Sie nach $w'(z)$ auf und berechnen Sie das Wegintegral
+entlang eines Kreises um den Nullpunkt.
+\end{hinweis}
+
+Pr"ufen Sie, ob die Funktion
+\[
+w(z) = z^{-b}e^{-az}
+\]
+eine L"osung der Differentialgleichung
+\[
+zw'(z)+(az+b)w(z)=0
+\]
+ist.
+
+\begin{loesung}
+Wir nehmen an, $w(z)$ sei eine in ganz $\mathbb C$ definierte L"osung.
+L"ost man die Differentialgleichung nach $w'(z)$ auf, erh"alt man
+\begin{equation}
+w'(z) = -\biggl(a+\frac{b}z\biggr)w(z)
+\label{705:eq}
+\end{equation}
+f"ur $z\ne 0$.
+Nun integriert man "uber einen geschlossenen Pfad $\gamma$ um den 
+Nullpunkt.
+Das Integral auf der linken Seite verschwindet, weil der Pfad geschlossen
+ist.
+Das Integral auf der rechten Seite ist 
+\[
+-\oint_\gamma 
+\biggl(a+\frac{b}z\biggr)w(z)\,dz
+=
+-a\oint_\gamma w(z)\,wz
+-
+b\oint_\gamma \frac{w(z)}z\,dz
+\]
+Das erste Integral auf der rechten Seite verschwindet, wenn $w(z)$ eine
+in ganz $\mathbb C$ definierte komplex differenzierbare Funktion ist.
+Das zweite Integral auf der rechten Seite kann mit der Cauchy-Integralformel
+ausgerechnet werden:
+\[
+\oint_\gamma \frac{w(z)}z\,dz
+=
+2\pi i w(0)
+\]
+Das Integral der Gleichung~(\ref{705:eq}) ist daher
+\[
+0=2\pi i b w(0)
+\]
+Damit sie erf"ullt ist, muss $b=0$ sein oder $w(0)=0$.
+
+Im ersten Fall, $b=0$, wird die Differentialgleichung zu
+\[
+zw'(z)+azw(z)=0
+\qquad\Rightarrow\qquad
+w'(z)+aw(z)=0,
+\]
+eine lineare Differentialgleichung mit konstanten Koeffizienten, von der
+bekannt ist, dass Sie eine in ganz $\mathbb C$ definierte L"osung hat.
+
+Im zweiten Fall, $w(0)=0$, k"onnen wir in der Gleichung~(\ref{705:eq}) 
+den Grenz"ubergang $z\to 0$ durchf"uhren, bei dem wir auf der
+linken Seite $w'(0)$ erhalten.
+Auf der rechten Seite erhalten wir aber
+\[
+ \lim_{z\to 0}\frac{w(z)}{z}=w'(0),
+\]
+mithin die Gleichung
+\[
+w'(0)=-aw(0)-bw'(0)=-bw'(0).
+\]
+Diese kann nur erf"ullt sein, wenn $b=-1$ ist, oder wenn $w'(0)=0$.
+Im Fall $w'(0)=0$ muss die Potenzreihe von $w(z)$ mit dem quadratischen
+Term beginnen.
+\end{loesung}
+
