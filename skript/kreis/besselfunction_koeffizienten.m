@@ -3,7 +3,7 @@ r=[0:0.01:7];
 
 n=[0:0.2:1];
 
-figure;
+figure("visible", "off");
 hold all;
 leg='';
 

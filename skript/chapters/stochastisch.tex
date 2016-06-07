@@ -388,7 +388,7 @@ f"ur eine brownsche Bewegung $W(t)$ an Stelle von $w(t)$.
 F"ur eine stetig differenzierbare Funktion $g\colon[0,T]\to \mathbb R$ 
 mit $g(0)=g(T)=0$, setze
 \[
-\int_0^T g\,dW = -\int g'(t) W(t)\,dt.
+\int_0^T g\,dW = -\int_0^T g'(t) W(t)\,dt.
 \]
 \end{definition}
 
@@ -445,7 +445,7 @@ E\biggl(
 \int_0^T\int_0^Tg'(t)g'(s) \underbrace{E(W(t)W(s))}_{\textstyle =t\wedge s}\,ds\,dt
 \\
 &=
-\int_0^Tg'(t) \biggl(\int_0^t g'(s) s\,ds + \int_t^T g'(s)t\,ds\biggr)
+\int_0^Tg'(t) \biggl(\int_0^t g'(s) s\,ds + \int_t^T g'(s)t\,ds\biggr)
 \,dt
 \\
 &=
@@ -541,7 +541,7 @@ Wie "ublich kann eine solche Unterteilung dazu verwendet werden, die
 Riemann-Summe als Approximation des Integrals zu definieren:
 
 \begin{definition}
-Die Riemann-Summe von $W$ f"ur die Unterteilung $P$ ist
+Die Riemann-Summe von f"ur $\int W\,dW$ und die Unterteilung $P$ ist
 \[
 R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 \]
@@ -619,10 +619,10 @@ In den Terme mit $j\ne k$ sind die $Y_k$ und $Y_j$ voneinander unabh"angig,
 der Erwartungswert des Produktes kann daher in das Produkt der Erwartungswerte
 zerlegt werden:
 \begin{align*}
-E\biggl(
+E\left(
 (Y_k^2-1)\Delta_k
 (Y_j^2-1)\Delta_j
-\biggr)
+\right)
 &=
 E(Y_k^2-1)
 E(Y_j^2-1)
@@ -677,7 +677,9 @@ Da die Maschenweite $|P^{(n)}|\to 0$ f"ur $n\to\infty$ folgt, dass
 $Q_n\to T$ in $L^2(\Omega)$.
 \end{proof}
 
-\begin{hilfssatz} Sei $P^{(n)}$ eine Folge von Unterteilungen des
+\begin{hilfssatz}
+\label{stochastisch:intwdw}
+Sei $P^{(n)}$ eine Folge von Unterteilungen des
 Intervals $[0,T]$ derart, dass die Maschenweite gegen $0$ strebt und
 sei $R_n=R(P^{(n)},\lambda)$ die zugeh"orige Riemann-Summe.
 Dann gilt
@@ -766,7 +768,7 @@ Die zweite Summe wurde im Hilfssatz~\ref{stochastisch:quadrvariation}
 berechnet, dort wurde gefunden, dass die Summe f"ur $n\to\infty$ gegen $T$
 konvergiert.
 Mit der gleichen Rechnung wie in \ref{stochastisch:quadrvariation}
-kann man finden, dass die zweite Summe gegen $\lambda T$ strebt.
+kann man finden, dass die erste Summe gegen $\lambda T$ strebt.
 
 Die Inkremente in der dritten Summe sind unabh"angig voneinander, daher
 verschwinden die Erwartunsgewerte gemischter Produkte, es bleiben nur
@@ -938,6 +940,24 @@ Dann ist des It\^o-Integral von $G$
 \]
 \end{definition}
 
+\begin{beispiel}
+Wir haben die Riemann-Summe f"ur $G=W$ bereits in
+Hilfssatz~\ref{stochastisch:intwdw} berechnet, daher k"onnen wir jetzt
+das It\^o-Integral angeben:
+\[
+\int_0^t W\,dW
+=
+\frac12 W(t)^2 -\frac{t}2.
+\]
+In differentieller Form:
+\[
+d(W^2)
+=
+2W\,dW + t.
+\]
+Dies ist ein Spezialfall der sp"ater zu untersuchenden It\^o-Produktregel.
+\end{beispiel}
+
 Das It\^o-Integral hat die folgenden Eigenschaften:
 
 \begin{satz}
@@ -1007,6 +1027,8 @@ hat, und falls $u\colon \mathbb R\times [0,T]\to\mathbb R$ eine
 stetig differenzierbare Funktion.
 Dann hat die Funktion $Y(t)=u(X(t), t)$ das stochastische Differential
 \begin{align*}
+dY
+=
 du(X,t)
 &=\frac{\partial u}{\partial t}\,dt + \frac{\partial u}{\partial x}\,dX 
 +\frac12\frac{\partial u^2}{\partial x^2}G^2\,dt
@@ -1038,6 +1060,8 @@ Im Spezialfall $m=2$ folgt
 \[
 dW^2 = 2W\,dW + dt.
 \]
+Dies haben wir schon als Resultat von
+Hilfssatz~\ref{stochastisch:intwdw} gefunden.
 \end{beispiel}
 
 \begin{beispiel} Wir betrachten die Funktion
@@ -1061,7 +1085,7 @@ dY&=\lambda Y\,dW
 \end{align*}
 also ist der Prozess $Y$ eine L"osung der stochastischen Differentialgleichung
 \begin{align*}
-dy&=\lambda Y\,dW
+dY&=\lambda Y\,dW
 \\
 Y(0)&=1.
 \end{align*}
@@ -1315,68 +1339,68 @@ diskutierten Rechenregeln verwendet werden k"onnen, die L"osungen
 zu finden.
 
 \subsubsection{Lineare stochastische Differentialgleichung mit $F=0$}
-Sei $g$ eine stetige Funktionen, man finde eine L"osung der
-Differenzialgleichung
+Sei $g$ eine stetige Funktion, man finde eine L"osung der
+stochastischen Differenzialgleichung
 \begin{equation}
 \begin{aligned}
-dX&=gX\,dW\\
-X(0)&=1.
+dY&=gY\,dW\\
+Y(0)&=1.
 \end{aligned}
 \label{stochastisch:beispiel1-dgl}
 \end{equation}
 Man beachte, dass ohne den stochastischen Einfluss nur noch die Gleichung
-$dX=0$ "ubrig bleibt, in diesem Fall ist also $X$ einfach nur eine
-Konstante, $X(t)=1$.
+$dY=0$ "ubrig bleibt, in diesem Fall ist also $Y$ einfach nur eine
+Konstante, $Y(t)=1$.
 Wir k"onnen aber auch nicht erwarten, dass der Erwartungswert der
-L"osung durch die L"osung $X(t)=1$ gegeben ist.
+L"osung durch die L"osung $Y(t)=1$ gegeben ist.
 Die Gleichung ist zwar linear, aber die Wirkung der stochastischen
-Schwankungen ist proportional zum aktuellen Wert von $X$.
+Schwankungen ist proportional zum aktuellen Wert von $Y$.
 
 W"are $W$ einfach nur eine differenzierbare Funktion, dann w"urde die
 Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}) zu der
 gew"ohnlichen Differentialgleichung
 \begin{align*}
-\frac{\dot X}{X} &= g\dot W,
+\frac{\dot Y}{Y} &= g\dot W,
 \\
 \intertext{die durch direkte Integration gel"ost werden kann:}
-\frac{d}{dt}\log X&= g(t) \dot W(t)
+\frac{d}{dt}\log Y&= g(t) \dot W(t)
 \\
-\log X(t)&=\int_0^t g(\tau)\dot W(\tau)\,d\tau,
+\log Y(t)&=\int_0^t g(\tau)\dot W(\tau)\,d\tau,
 \\
-X(t)&=e^{\int_0^t g(\tau)\dot W(\tau)\,d\tau}.
+Y(t)&=e^{\int_0^t g(\tau)\dot W(\tau)\,d\tau}.
 \end{align*}
 Daraus k"onnte man ableiten, dass f"ur einen Wiener-Prozess $W$ die L"osung
 \[
-X(t)=e^{\int_0^t g\,dW}
+Y(t)=e^{\int_0^t g\,dW}
 \]
 sein m"usste.
 Um dies zu kontrollieren, schreiben wir 
 \[
-Y(t)=\int_0^t g\,dW
+X(t)=\int_0^t g\,dW
 \qquad\Rightarrow\qquad
-dY = g\,dW = \underbrace{0}_{\textstyle F}\,dt
+dX = g\,dW = \underbrace{0}_{\textstyle F}\,dt
 +
 \underbrace{g}_{\textstyle G}\,dW
 \]
-f"ur das Integral im Exponenten, und beachten, dass $X(t)=e^{Y(t)}$.
+f"ur das Integral im Exponenten, und beachten, dass $Y(t)=e^{X(t)}$.
 Wir haben die Funktionen $F$ und $G$ wie in der Formulierung der
 It\^o-Kettenregel gew"ahlt.
 
-Um zu kontrollieren, ob $X(t)$ tats"achlich die L"osung der
+Um zu kontrollieren, ob $Y(t)$ tats"achlich die L"osung der
 Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}), m"ussen wir
-also $e^{Y(t)}$ ableiten, dazu ist die It\^o-Kettenregel zu verwenden,
-denn $X(t)=u(Y(t))$ mit $u(x)=e^x$.
+also $e^{X(t)}$ ableiten, dazu ist die It\^o-Kettenregel zu verwenden,
+denn $Y(t)=u(X(t))$ mit $u(x)=e^x$.
 Die It\^o-Kettenregel ergibt:
 \begin{align*}
-dX
+dY
 &=
 \biggl( u'F+\frac12u''G^2 \biggr)\,dt + u' G\,dW
 \\
 &=
-\underbrace{e^Y}_{\textstyle X}\biggl(\frac12g^2\,dt + g\,dW\biggr)
+\underbrace{e^X}_{\textstyle Y}\biggl(\frac12g^2\,dt + g\,dW\biggr)
 \\
 &=
-\frac12g^2X\,dt + gX\,dW
+\frac12g^2Y\,dt + gY\,dW
 \end{align*}
 Offensichtlich ist das weit davon entfernt, die L"osung der
 Differentialgleichung zu sein.
@@ -1386,36 +1410,36 @@ beigesteuert wird, ist zu viel.
 Um den Term der zweiten Ableitungen wieder los zu werden, versuchen wir
 den Ansatz
 \begin{equation}
-X(t) = e^{-\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW}.
+Y(t) = e^{-\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW}.
 \label{stochastisch:beispiel1-lsg}
 \end{equation}
 Um dies nachzupr"ufen schreiben wir wieder 
 \[
-Y(t)
+X(t)
 =
 -\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW
 \]
 f"ur den Exponenten, dies bedeutet, dass
 \[
-dY
+dX
 =
 \underbrace{-\frac12g^2}_{\textstyle F}\,dt
 +
 \underbrace{g}_{\textstyle G}\,dW.
 \]
 Wir wenden die It\^o-Kettenregel auf die Funktion
-$X(t)=u(Y(t))=e^{Y(t)}$, also $u(x)=e^x$, an.
+$Y(t)=u(X(t))=e^{X(t)}$, also $u(x)=e^x$, an.
 \begin{align*}
-dX
+dY
 &=
 \biggl( u'F + \frac12u''G^2\biggr)\,dt + u'G\,dW
 \\
 &=
 \underbrace{\biggl(-\frac12 g^2 + \frac12 g^2\biggr)}_{\textstyle=0}\,dt
 +
-\underbrace{e^Y}_{\textstyle X}g\,dW
+\underbrace{e^X}_{\textstyle Y}g\,dW
 \\
-&=gX\,dW.
+&=gY\,dW.
 \end{align*}
 Damit haben wir nachgewiesen, dass~(\ref{stochastisch:beispiel1-lsg})
 die L"osung der stochastischen
@@ -1425,35 +1449,36 @@ Da $g^2\ge 0$ ist, ist das Integral von $g^2$ im Exponenten
 immer positiv, somit ist $X(t)$ immer um einen Faktor $\le1$ 
 kleiner als die urspr"unglich vermutete L"osung:
 \[
-X(t)
+Y(t)
 =
-\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\textstyle \le 1}\cdot e^{\int_0^tg\,dW}.
+\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\textstyle \le 1}
+\cdot e^{\int_0^tg\,dW}.
 \]
 Im Spezialfall $g=1$ ist finden wir, dass
 \[
-X(t)=e^{-\frac12t}e^{W(t)}=e^{W(t)-\frac12t}
+Y(t)=e^{-\frac12t}e^{W(t)}=e^{W(t)-\frac12t}
 \]
-die L"osung der Differentialgleichung $dX=X\,dW$ ist.
+die L"osung der Differentialgleichung $dY=Y\,dW$ ist.
 
 \subsubsection{Lineare stochastische Differentialgleichung}
 Die allgemeinste lineare stochastische Differentialgleichung hat die Form
 \begin{equation}
-dX=fX\,dt+gX\,dW
+dY=fY\,dt+gY\,dW
 \label{stochastisch:beispiel2-dgl}
 \end{equation}
 mit stetigen Funktionen $f$ und $g$.
 Nehmen wir wieder an, dass $W$ eine differenzierbare Funktion ist,
-dann m"usste $X$ die Differentialgleichung
+dann m"usste $Y$ die Differentialgleichung
 \begin{align*}
-dX&=fX\,dt + gX\dot W\,\,dt
+dY&=fY\,dt + gY\dot W\,\,dt
 \\
 \intertext{erf"ullen, die wieder durch Integration gel"ost werden kann:}
-\frac{\dot X}{X}
+\frac{\dot Y}{Y}
 &=
 f+g\dot W
 \\
 \Rightarrow\qquad
-\log X(t)
+\log Y(t)
 &=
 e^{\int_0^t f+g\dot W\,d\tau}
 =
@@ -1463,7 +1488,7 @@ Wir verzichten darauf nachzurechnen, dass dies nicht die L"osung sein kann,
 denn wie vorhin wird ein Term fehlen.
 Wir vermuten, dass
 \begin{equation}
-X(t)
+Y(t)
 =
 e^{\int_0^t f -\frac12g^2\,d\tau + \int_0^t g\,dW}
 \label{stochastisch:beispiel2-lsg}
@@ -1471,53 +1496,53 @@ e^{\int_0^t f -\frac12g^2\,d\tau + \int_0^t g\,dW}
 die L"osung ist.
 Wir setzen daher wieder
 \[
-Y(t)=\int_0^t f-\frac12g^2\,d\tau + \int_0^tg\,dW,
+X(t)=\int_0^t f-\frac12g^2\,d\tau + \int_0^tg\,dW,
 \]
-der stochastische Prozess $Y$ erf"ullt die stochastische Differentialgleichung
+der stochastische Prozess $X$ erf"ullt die stochastische Differentialgleichung
 \[
-dY=
+dX=
 \underbrace{\biggl( f-\frac12g^2\biggr)}_{\textstyle F}\,dt
 +
 \underbrace{g}_{\textstyle G}\,dW.
 \]
-Wir vermuten, dass $X(t)=u(Y(t))=e^{Y(t)}$ die L"osung der
+Wir vermuten, dass $Y(t)=u(X(t))=e^{X(t)}$ die L"osung der
 Differentialgeichung ist.
 
-Wir wenden die It\^o-Kettenregel auf $X(t)$ an und finden
+Wir wenden die It\^o-Kettenregel auf $u=\exp$ und $X(t)$ an und finden
 \begin{align*}
-dX
+dY
 &=
 \biggl(u'F+\frac12u''G^2\biggr)\,dt + u'G\,dW
 \\
 &=
-e^Y\biggl( f\underbrace{-\frac12g^2+\frac12 g^2}_{\textstyle=0}\biggr)\,dt
+e^X\biggl( f\underbrace{-\frac12g^2+\frac12 g^2}_{\textstyle=0}\biggr)\,dt
 +
-e^Yg\,dW
+e^Xg\,dW
 \\
 &=
-Xf\,dt + Xg\,dW.
+Yf\,dt + Yg\,dW.
 \end{align*}
 Sind $f$ und $g$ konstante Funktionen, also $f(t)=a$ und $g(t)=b$, dann
-kann man $Y$ direkt berechnen:
+kann man $X$ direkt berechnen:
 \[
-Y(t)=\biggl(a-\frac12b^2\biggr)t + bW(t),
+X(t)=\biggl(a-\frac12b^2\biggr)t + bW(t),
 \]
 also gilt
 \[
-X(t)=e^{(a-\frac12b^2)t} e^{bW(t)}.
+Y(t)=e^{(a-\frac12b^2)t} e^{bW(t)}.
 \]
 
 \subsubsection{Langevin-Gleichung}
 Der Wiener-Prozess versucht, die Brownsche Bewegung zu modellieren.
 Er kann aber nur funktionieren, wenn sich das Teilchen im Wesentlichen
 reibungsfrei bewegen kann.
-Ein realistischeres Modells stammt von Langevin, der stochastische 
-Prozess $X$ beschreibt die Geschwindigkeit des Teilchens, und erf"ullt
+Ein realistischeres Modells stammt von Paul Langevin, der stochastische 
+Prozess $V$ beschreibt die Geschwindigkeit des Teilchens, und erf"ullt
 die stochastische Differentialgleichung
 \begin{equation}
 \begin{aligned}
-dX&=-bX\,dt+\sigma\,dW\\
-X(0)&=X_0
+dV&=-bV\,dt+\sigma\,dW\\
+V(0)&=V_0
 \end{aligned}
 \label{stochastisch:langevin-dgl}
 \end{equation}
@@ -1526,99 +1551,99 @@ Diffusion.
 \index{Langevin-Gleichung}
 F"ur $\sigma=0$ bleibt die gew"ohnliche Differentialgleichung
 \[
-\frac{\dot X}{X}=-b
+\frac{\dot V}{V}=-b
 \qquad\Rightarrow\qquad
-\log X(t)=-bt
+\log V(t)=-bt
 \qquad\Rightarrow\qquad
-X(t)=e^{-bt}X_0.
+V(t)=e^{-bt}V_0.
 \]
-Der stochastische Term h"angt in dieser Differentialgleichung nicht von $X$
+Der stochastische Term h"angt in dieser Differentialgleichung nicht von $V$
 ab, wir k"onnen daher erwarten, dass die Differentialgleichung wenigstens
 formal die gleiche L"osung haben wird wie eine gew"ohnliche
 inhomogene Differentialgleichung.
 Wir vermuten daher, dass
 \begin{equation}
-X(t)
+V(t)
 =
-e^{-bt}X_0 + \sigma\int_0^te^{-b(t-\tau)}\,dW
+e^{-bt}V_0 + \sigma\int_0^te^{-b(t-\tau)}\,dW
 =
-e^{-bt}\biggl(X_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)
+e^{-bt}\biggl(V_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)
 \label{stochastisch:langevin-lsg}
 \end{equation}
 die L"osung der Langevin-Gleichung~(\ref{stochastisch:langevin-dgl})
 sein wird.
 Tats"achlich ist die Ableitung davon
 \[
-dX
+dV
 =
 -be^{-bt}
-\underbrace{\biggl(X_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)}_{\textstyle =X}\,dt
+\underbrace{\biggl(V_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)}_{\textstyle =V}\,dt
 +
 e^{-bt}
 \sigma e^{bt}dW
 =
--bX\,dt +\sigma\,dW,
+-bV\,dt +\sigma\,dW,
 \]
 die Differentialgleichung ist also erf"ullt.
 
-Die L"osung erlaubt, Erwartungswert und Varianz von $X(t)$ zu berechnen.
+Die L"osung erlaubt, Erwartungswert und Varianz von $V(t)$ zu berechnen.
 Dazu verwenden wir die Eigenschaften des Wiener-Prozesses und des
 It\^o-Integrals in Satz~\ref{satz:ito-integral}.
 F"ur den Erwartungswert erhalten wir.
 \begin{align*}
-E(X(t))
+E(V(t))
 &=
-e^{-bt}E(X_0)
+e^{-bt}E(V_0)
 +
 \sigma \underbrace{E\biggl(\int_0^t e^{-b(t-\tau)}\,dW\biggr)}_{\textstyle=0}
 =
-e^{-bt}X_0.
+e^{-bt}V_0.
 \end{align*}
-F"ur den Erwartungswert von $X(t)^2$ berechnen wir
+F"ur den Erwartungswert von $V(t)^2$ berechnen wir
 \begin{align*}
-E(X(t)^2)
+E(V(t)^2)
 &=
-E\biggl(e^{-2bt}X_0^2+2\sigma e^{-bt}X_0\int_0^te^{-b(t-\tau)}\,dW
+E\biggl(e^{-2bt}V_0^2+2\sigma e^{-bt}V_0\int_0^te^{-b(t-\tau)}\,dW
 +\sigma^2\biggl(\int_0^t e^{-b(t-\tau)}\,dW\biggr)^2
 \biggr)
 \\
 &=
-e^{-2bt}E(X_0^2)
+e^{-2bt}E(V_0^2)
 +
-2\sigma e^{-bt}E(X_0)E\biggl( \int_0^te^{-b(t-\tau)}\,dW\biggr)
+2\sigma e^{-bt}E(V_0)E\biggl( \int_0^te^{-b(t-\tau)}\,dW\biggr)
 +
 \sigma^2E\biggl(\biggl(\int_0^t e^{-b(t-\tau)}\,dW\biggr)^2\biggr)
 \\
 &=
-e^{-2bt}E(X_0^2)
+e^{-2bt}E(V_0^2)
 +
 \sigma^2 \int_0^t e^{-2b(t-\tau)}\,d\tau
 \\
 &=
-e^{-2bt}E(X_0^2)
+e^{-2bt}E(V_0^2)
 +
 \frac{\sigma^2}{2b}(1-e^{-2bt}).
 \end{align*}
-Die Varianz von $X(t)$ ist daher
+Die Varianz von $V(t)$ ist daher
 \begin{align*}
-\operatorname{var}(X(t))
+\operatorname{var}(V(t))
 &=
-E(X(t)^2)-E(X(t))^2
+E(V(t)^2)-E(V(t))^2
 =
-e^{-2bt}E(X_0^2)
+e^{-2bt}E(V_0^2)
 +
 \frac{\sigma^2}{2b}(1-e^{-2bt}).
 -
-e^{-2bt}E(X_0)^2
+e^{-2bt}E(V_0)^2
 \\
 &=
-e^{-2bt}\operatorname{var}(X_0)
+e^{-2bt}\operatorname{var}(V_0)
 +
 \frac{\sigma^2}{2b}(1-e^{-2bt}).
 \end{align*}
-Die Varianz von $X(t)$ setzt sich also aus zwei Komponenten zusammen.
+Die Varianz von $V(t)$ setzt sich also aus zwei Komponenten zusammen.
 Sie ist das gewichtete Mittel der Varianz des Anfangsbedingung
-$\operatorname{var}(X_0)$ und der Varianz des Diffusionsterms, n"amlich
+$\operatorname{var}(V_0)$ und der Varianz des Diffusionsterms, n"amlich
 $\sigma^2/2b$.
 Die Gewichtsfaktoren sind $e^{-2bt}$ und $1-e^{-2bt}$, die sich zu
 $1$ addieren.
@@ -1626,10 +1651,10 @@ Zur Zeit $t=0$ ist die Varianz nat"urlich nur die Varianz der Anfangsbedingung.
 Mit zunehmender Zeit wird die Varianz der Anfangsbedingung unbedeutend,
 und es bleibt nur die Varianz des Diffusionsterms "ubrig.
 
-Der Integralterm in $X(t)$ ist normalverteilt, wie alles was aus dem
+Der Integralterm in $V(t)$ ist normalverteilt, wie alles was aus dem
 Wienerprozess entsteht.
-Der Term $e^{-bt}X_0$ wird aber in $X(t)$ immer unbedeutender, somit ist
-nach gen"ugend langer Zeit $t$ die Zufallsvariable $X(t)$ normalverteilt
+Der Term $e^{-bt}V_0$ wird aber in $V(t)$ immer unbedeutender, somit ist
+nach gen"ugend langer Zeit $t$ die Zufallsvariable $V(t)$ normalverteilt
 mit Erwartungswert $0$ und Varianz $\sigma^2/2b$.
 
 Kehren wir zur physikalischen Interpretation zur"uck, dann sehen wir,
@@ -1647,25 +1672,34 @@ bekannte Systeme sich unter Einfluss von Rauschen verhalten werden.
 
 \subsubsection{Ornstein-Uhlenbeck-Prozess}
 \index{Ornstein-Uhlenbeck-Prozess}
-Die Langevin-Gleichung beschreibt die Geschwindigkeit eines Teilchens,
+In der Langevin-Gleichung beschreibt $V$ die Geschwindigkeit eines Teilchens,
 dass der Brownschen Bewegung mit Reibung unterworfen ist.
 Wir m"ochten aber auch die Position des Teilchens kennen, wir braucht
-also noch eine weitere Zufallsvariable $Y$, welche die Position
+also noch eine weitere Zufallsvariable $S$, welche die Position
 beschreibt.
-Nat"urlich soll $X$ die Ableitung von $Y$ sein: $X=\dot Y$.
+Nat"urlich soll $V$ die Ableitung von $S$ sein: $V=\dot S$.
 Als klassische Differentialgleichung w"urden wir die Bewegungsgleichung
 schreiben als
-\[
-\ddot Y=-b\dot Y+\sigma\frac{dW}{dt},
-\]
+\begin{align*}
+\ddot S&=-b\dot S+\sigma\frac{dW}{dt}\\
+\text{oder}\qquad
+\dot  V&=-b V+\sigma\frac{dW}{dt},
+\end{align*}
 wobei der letzte Term nat"urlich nicht wirklich sinnvoll ist.
+
 Um dieser Gleichung Sinn zu geben, schreiben wir sie als
 Differentialgleichungssystem erster Ordnung mit den beiden Variablen
-$Y_1=Y=\dot X$ und $Y_2=X$ mit den Gleichungen
-\begin{align*}
-\dot Y_1&=-b Y_1+\sigma \frac{dW}{dt}\\
+$Y_1=V$ und $Y_2=S$ mit den Gleichungen
+\[
+\begin{aligned}
+\dot  V&=-b V+\sigma\frac{dW}{dt}
+&&\Rightarrow&
+\dot Y_1&=-b Y_1+\sigma \frac{dW}{dt},\\
+\dot S&=V
+&&\Rightarrow&
 \dot Y_2&=Y_1.
-\end{align*}
+\end{aligned}
+\]
 Als stochastische Differentialgleichung mit Anfangsbedingungen
 wird dies
 \begin{equation}
@@ -1680,7 +1714,12 @@ Y_2(0)&=Y_{20}
 \end{aligned}
 \label{stochastisch:ornstein-uhlenbeck-dgl}
 \end{equation}
-Die erste Gleichung f"ur $Y_1$ ist die Langevin-Gleichung, die wir bereits
+Man beachte, dass wir in der zweiten Gleichung keinen stochastischen
+Term haben, denn der Zusammenhang zwischen Ableitung des Ortes und
+Geschwindigkeit ist immer exakt erf"ullt.
+
+Die erste Gleichung von~(\ref{stochastisch:ornstein-uhlenbeck-dgl})
+f"ur $Y_1$ ist die Langevin-Gleichung, die wir bereits
 in~\ref{stochastisch:langevin-lsg}) gel"ost wurde.
 Durch eine weitere Integration kann man auch die Gleichung f"ur $Y_2$
 l"osen:
@@ -1702,7 +1741,11 @@ der zus"atzlich dem Rauschen aus einem Wiener-Prozess unterworfen ist.
 Ein harmonischer Oszillator hat die gew"ohnliche Differentialgleichung
 zweiter Ordnung
 \begin{equation}
-\ddot X=-\lambda^2 X-b\dot X, X(0)=X_0, \dot X(0)=X_1.
+\ddot X=-\lambda^2 X-b\dot X,
+\qquad
+X(0)=X_0,
+\qquad
+\dot X(0)=V_0.
 \label{stochastisch:harmosz-dgl2}
 \end{equation}
 Da wir zweite Ableitungen in stochastischen Differentialgleichungen
@@ -1711,9 +1754,9 @@ wieder durch zwei gekoppelte Gleichungen erster Ordnung:
 \begin{equation}
 \begin{aligned}
 \dot Y_1&=Y_2,                &&&Y_1(0)&=X_0, \\
-\dot Y_2&=-\lambda^2 Y_1-bY_2,&&&Y_2(0)&=X_1.
+\dot Y_2&=-\lambda^2 Y_1-bY_2,&&&Y_2(0)&=V_0.
 \end{aligned}
-\label{stochastsich:harmosz-dgl1}
+\label{stochastisch:harmosz-dgl1}
 \end{equation}
 In dieser Form k"onnen wir jetzt in der Form eines Systems stochastischer
 Differentialgleichungen formulieren:
@@ -1727,9 +1770,11 @@ wollen, dann wird daraus das stochastische Differentialgleichungssystem
 \begin{equation}
 \begin{aligned}
 dY_1&=Y_2\,dt,                                &&&Y_1(0)&=X_0,\\
-dY_2&=(-\lambda^2 Y_1-bY_2)\,dt + \sigma\,dW, &&&Y_2(0)&=X_1.
+dY_2&=(-\lambda^2 Y_1-bY_2)\,dt + \sigma\,dW, &&&Y_2(0)&=V_0.
 \end{aligned}
 \end{equation}
+Auch hier hat die erste Gleichung keinen stochastischen Term, weil sie
+den exakten Zusammenhang zwischen Ort und Geschwindigkeit ausdr"uckt.
 
 Wie bei den gew"ohnlichen Differentialgleichungen k"onnen wir diese
 Gleichung einfacher l"osen, wenn wir sie in Matrixform schreiben:
@@ -1744,7 +1789,7 @@ d\begin{pmatrix}Y_1\\Y_2\end{pmatrix}
 \begin{pmatrix}Y_1\\Y_2\end{pmatrix}\,dt
 +
 \begin{pmatrix}
-\sigma\\0
+0\\\sigma
 \end{pmatrix}\,dW.
 \end{equation}
 Die L"osung wird dann
@@ -1753,7 +1798,7 @@ Die L"osung wird dann
 Y_1(t)\\Y_2(t)
 \end{pmatrix}
 =
-e^{Dt}\begin{pmatrix}X_0\\X_1\end{pmatrix}
+e^{Dt}\begin{pmatrix}X_0\\V_0\end{pmatrix}
 +
 \sigma \int_0^t e^{D(t-\tau)}\begin{pmatrix}0\\\sigma\end{pmatrix}\,dW.
 \label{stochastisch:harmosz-explsg}
@@ -1774,7 +1819,7 @@ L"osung anzugeben:
 %Die Matrix $e^{Dt}$ kann durch Diagonalisierung berechnet werden.
 %Die Transformationsmatrix
 %\[
-T
+%T
 %=
 %\begin{pmatrix}
 %1&1\\
@@ -1826,7 +1871,7 @@ Y_1(t)\\Y_2(t)
                 \cos\lambda t&\frac1{\lambda}\sin\lambda t\\
 -\frac1{\lambda}\sin\lambda t&               \cos\lambda t
 \end{pmatrix}
-\begin{pmatrix}X_0\\X_1\end{pmatrix}
+\begin{pmatrix}X_0\\V_0\end{pmatrix}
 +
 \sigma\int_0^t
 \begin{pmatrix}
@@ -1839,7 +1884,7 @@ Die erste Komponenten davon ist
 \begin{equation}
 Y_1(t)
 =
-X_0\cos\lambda t+\frac{X_1}{\lambda}\sin\lambda t
+X_0\cos\lambda t+\frac{V_0}{\lambda}\sin\lambda t
 +
 \frac{\sigma}{\lambda}\int_0^t\sin\lambda(t-\tau)\,dW,
 \label{stochastisch:harmosz-y}
@@ -1847,7 +1892,7 @@ X_0\cos\lambda t+\frac{X_1}{\lambda}\sin\lambda t
 die L"osung der Differentialgleichung.
 
 Die L"osungsformel~(\ref{stochastisch:harmosz-y}) zeigt auch, dass
-$Y_1(t)$ selbst dann von $0$ verschieden sein kann, wenn $X_0=X_1=0$ ist.
+$Y_1(t)$ selbst dann von $0$ verschieden sein kann, wenn $X_0=V_0=0$ ist.
 Wir wollen f"ur diesen Spezialfall Erwartungswert und Varianz 
 von $Y_1(t)$ berechnen.
 Wir verwenden wieder die Resultate von Satz~\ref{satz:ito-integral}.
@@ -1857,21 +1902,21 @@ E(Y_1(t))
 &=
 E(X_0)\cos\lambda t
 +
-\frac{E(X_1)}{\lambda}\sin\lambda t
+\frac{E(V_0)}{\lambda}\sin\lambda t
 +
 \frac{\sigma}{\lambda}E\biggl(\int_0^t\sin\lambda(t-\tau)\,dW\biggr)
 \\
 &=
-E(X_0)\cos\lambda t+\frac{E(X_1)}{\lambda}\sin\lambda t.
+E(X_0)\cos\lambda t+\frac{E(V_0)}{\lambda}\sin\lambda t.
 \\
 \intertext{Den Erwartungswert von $Y_1(t)^2$ k"onnen wir wie folgt berechnen:}
 E(Y_1(t)^2)
 &=
 E(X_0^2)\cos^2\lambda t
 +
-2E(X_0X_1)\frac1{\lambda}\cos\lambda t\sin\lambda t
+2E(X_0V_0)\frac1{\lambda}\cos\lambda t\sin\lambda t
 +
-\frac{E(X_1^2)}{\lambda^2}\sin^2\lambda t
+\frac{E(V_0^2)}{\lambda^2}\sin^2\lambda t
 %+
 %\frac{\sigma E(X_1)}{\lambda^2}E\biggl(\int_0^t\sin\lambda(t-\tau)\,dW\biggr)
 %+
@@ -1887,18 +1932,18 @@ E(X_0^2)\cos^2\lambda t
 &=
 E(X_0^2)\cos^2\lambda t
 +
-2E(X_0X_1)\frac1{\lambda}\cos\lambda t\sin\lambda t
+2E(X_0V_0)\frac1{\lambda}\cos\lambda t\sin\lambda t
 +
-\frac{E(X_1^2)}{\lambda^2}\sin^2\lambda t
+\frac{E(V_0^2)}{\lambda^2}\sin^2\lambda t
 +
 \frac{\sigma^2}{\lambda^2}\int_0^t \sin^2\lambda(t-\tau)\,d\tau
 \\
 &=
 E(X_0^2)\cos^2\lambda t
 +
-2E(X_0X_1)\frac1{\lambda}\cos\lambda t\sin\lambda t
+2E(X_0V_0)\frac1{\lambda}\cos\lambda t\sin\lambda t
 +
-\frac{E(X_1^2)}{\lambda^2}\sin^2\lambda t
+\frac{E(V_0^2)}{\lambda^2}\sin^2\lambda t
 +
 \frac{\sigma^2}{4\lambda^3}
 (2\lambda t -\sin 2\lambda t).
@@ -1908,9 +1953,9 @@ $\operatorname{var}(Y_1(t))=E(Y_1(t)^2)-E(Y_1(t))^2$:}
 \operatorname{var}(Y_1(t))
 &=
 \operatorname{var}(X_0)\cos^2\lambda t
-+2\operatorname{cov}(X_0,X_1)\cos\lambda t\sin\lambda t
++2\operatorname{cov}(X_0,V_0)\cos\lambda t\sin\lambda t
 +
-\frac{\sin^2\lambda t}{\lambda^2}\operatorname{var}(X_1)
+\frac{\sin^2\lambda t}{\lambda^2}\operatorname{var}(V_0)
 +\frac{\sigma^2}{4\lambda^3}(2\lambda t-\sin2\lambda t).
 \end{align*}
 Wie im Beispiel der Langevin-Gleichung hat die Varianz
@@ -1923,9 +1968,9 @@ Der Term zu den Anfangsbedingungen kann in Matrixform geschrieben
 werden:
 \begin{gather*}
 \operatorname{var}(X_0)\cos^2\lambda t
-+2\operatorname{cov}(X_0,X_1)\cos\lambda t\sin\lambda t
++2\operatorname{cov}(X_0,V_0)\cos\lambda t\sin\lambda t
 +
-\frac{\sin^2\lambda t}{\lambda^2}\operatorname{var}(X_1)
+\frac{\sin^2\lambda t}{\lambda^2}\operatorname{var}(V_0)
 \qquad
 \qquad
 \qquad
@@ -1940,8 +1985,8 @@ werden:
 \cos\lambda t&\frac1\lambda\sin\lambda t
 \end{pmatrix}
 \begin{pmatrix}
-\operatorname{var}(X_0)    &\operatorname{cov}(X_0,X_1)\\
-\operatorname{cov}(X_0,X_1)&\operatorname{var}(X_1)
+\operatorname{var}(X_0)    &\operatorname{cov}(X_0,V_0)\\
+\operatorname{cov}(X_0,V_0)&\operatorname{var}(V_0)
 \end{pmatrix}
 \begin{pmatrix}
 \cos\lambda t\\
@@ -1990,6 +2035,13 @@ Differentialgleichungen eine "ahnliche Rolle wie Charakteristiken f"ur
 quasliineare partielle Differentialgleichungen erster Ordnung.
 
 \subsection{Stopzeiten}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/stochastisch-2.pdf}
+\caption{Brownsche Bewegung in zwei Dimension und Definition der
+Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
+\label{stochastisch:pfad}}
+\end{figure}%
 Wie fr"uher betrachten wir wieder einen stochastischen Prozess $X(t)$,
 der L"osung einer stochastischen Differentialgleichung
 \begin{equation}
@@ -2001,13 +2053,6 @@ X(0)&=X_0
 \label{stochastisch:stopzeitdgl}
 \end{equation}
 sein soll.
-\begin{figure}
-\centering
-\includegraphics{chapters/images/stochastisch-2.pdf}
-\caption{Brownsche Bewegung in zwei Dimension und Definition der
-Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
-\label{stochastisch:pfad}}
-\end{figure}
 
 \begin{definition}
 Sei $E$ eine beliebige offene oder abgeschlossene nicht leere Teilmenge
@@ -2131,7 +2176,7 @@ $\mathbb R^n$, und $u$ eine L"osung der partiellen Differentialgleichung
 Wir m"ochten die L"osung $u$ dazu verwenden, die Zeit $\tau_x$ zu berechnen,
 zu der eine im Punkt $x\in U$ beginnende Brownsche Bewegung zum ersten
 Mal das Gebiet $U$ verl"asst.
-Die Formel (\ref{stochastische:laplaceinkrement}) liefert
+Die Formel (\ref{stochastisch:laplaceinkrement}) liefert
 \[
 u(X(\tau_x))-u(X(0)) = \int_0^{\tau_x} \frac12\Delta u\,ds
 \]
@@ -2200,12 +2245,7 @@ anwendet.
 Also muss der Wert von $u(x)$ der Mittelwert der Werte
 auf einer Kugel um den Punkt $x$ sein.
 
-%
-%
-%
-\section{Kalman-Filter\label{section:kalman}}
-\rhead{Kalman-Filter}
-
+\input{chapters/kalman.tex}
 
 
 

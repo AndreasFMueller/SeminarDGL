@@ -1,0 +1,46 @@
+\documentclass{book}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{txfonts}
+\begin{document}
+
+\gdef\mpxshipout{\shipout\hbox\bgroup
+  \setbox0=\hbox\bgroup}
+\gdef\stopmpxshipout{\egroup  \dimen0=\ht0 \advance\dimen0\dp0
+  \dimen1=\ht0 \dimen2=\dp0
+  \setbox0=\hbox\bgroup
+    \box0
+    \ifnum\dimen0>0 \vrule width1sp height\dimen1 depth\dimen2 
+    \else \vrule width1sp height1sp depth0sp\relax
+    \fi\egroup
+  \ht0=0pt \dp0=0pt \box0 \egroup}
+\mpxshipout% line 33 ./exercise.mp
+$\displaystyle\frac{\pi}5$%
+\stopmpxshipout
+\mpxshipout% line 67 ./exercise.mp
+$\displaystyle z_1=2e^{\frac{\pi i}5}$%
+\stopmpxshipout
+\mpxshipout% line 68 ./exercise.mp
+$\displaystyle z_2=2e^{\frac{3\pi i}5}$%
+\stopmpxshipout
+\mpxshipout% line 69 ./exercise.mp
+$\displaystyle z_3=-2$%
+\stopmpxshipout
+\mpxshipout% line 70 ./exercise.mp
+$\displaystyle z_4=2e^{\frac{7\pi i}5}$%
+\stopmpxshipout
+\mpxshipout% line 71 ./exercise.mp
+$\displaystyle z_5=2e^{\frac{9\pi i}5}$%
+\stopmpxshipout
+\mpxshipout% line 73 ./exercise.mp
+$\operatorname{Re} z$%
+\stopmpxshipout
+\mpxshipout% line 74 ./exercise.mp
+$\operatorname{Im} z$%
+\stopmpxshipout
+\mpxshipout% line 76 ./exercise.mp
+$r=2$%
+\stopmpxshipout
+\end{document}

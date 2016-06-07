@@ -8,6 +8,8 @@
 \usepackage{geometry}
 \geometry{papersize={170mm,240mm},total={140mm,200mm},top=21mm,bindingoffset=10mm}
 \usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
 \usepackage{times}
 \usepackage{amsmath,amscd}
 \usepackage{amssymb}
@@ -18,7 +20,7 @@
 \usepackage{textcomp}
 \usepackage[all]{xy}
 \usepackage{txfonts}
-\usepackage{alltt}
+\usepackage{alltt} 
 \usepackage{verbatim}
 \usepackage{paralist}
 \usepackage{makeidx}
@@ -27,9 +29,11 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
 %\usepackage{pgfmath}
 \usepackage{placeins}
 \usepackage{subfigure}
+\usepackage[utf8]{inputenc}
 \usepackage[autostyle=false,english=american]{csquotes}
 \usepackage{float}
 \usepackage{enumitem}
@@ -41,6 +45,7 @@
 \usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit}
 \usetikzlibrary{patterns,decorations.pathreplacing}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
 \usepackage[europeanvoltages,
             europeancurrents,
             europeanresistors,   % rectangular shape
@@ -54,6 +59,10 @@
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usetikzlibrary{arrows}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
 \usepackage{listings}
 \lstdefinestyle{Matlab}{
   numbers=left,

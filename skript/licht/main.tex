@@ -1,8 +1,418 @@
+%externalize tikz
+\usetikzlibrary{external}
+\tikzexternalize[prefix=licht/tikz/, figure name=plot]
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{
+  ring shading/.code args={from #1 at #2 to #3 at #4}{
+    \def\colin{#1}
+    \def\radin{#2}
+    \def\colout{#3}
+    \def\radout{#4}
+    \pgfmathsetmacro{\proportion}{\radin/\radout}
+    \pgfmathsetmacro{\outer}{.8818cm}
+    \pgfmathsetmacro{\inner}{.8818cm*\proportion}
+    \pgfmathsetmacro{\innerlow}{\inner-0.01pt}
+    \pgfdeclareradialshading{ring}{\pgfpoint{0cm}{0cm}}%
+    {
+      color(0pt)=(white);
+      color(\innerlow)=(white);
+      color(\inner)=(#1);
+      color(\outer)=(#3)
+    }
+    \pgfkeysalso{/tikz/shading=ring}
+  },
+}
+
+%\usepackage{subcaption}
+%\usepackage{subfigure}
+    
 \chapter{Lichtbrechung in der Atmosph"are\label{chapter:thema}}
 \lhead{Lichtbrechung in der Atmosph"are}
 \begin{refsection}
-\chapterauthor{Simon Sch"afer und Tibor Schneider}
+\chapterauthor{Simon Schaefer und Tibor Schneider}
+
+%polar plot
+\usepgfplotslibrary{polar}
+
+\section{Einleitung}
+Der Blick an den Nachthimmel fasziniert uns Menschen schon seit Jahrtausenden. "Ahnlich der Frage "uber das Leben nach dem Tod wurden damit ganze Religionen und Kulturen begr"undet beziehungsweise zugrunde gerichtet. 
+"Uber die Jahrhunderte wuchs die Einsicht, wenn auch nicht stetig und leider auch nicht strikt monoton, dass eine genauere Vermessung des Nachthimmels, die Astrometrie, wenigstens physikalische Grundlagen zur Diskussion betragen kann. 
+W"ahrend Galileo Galilei noch mit blossem Auge und einem besseren Flaschenboden den Nachhimmel beobachtete (TODO: QUELLE), nutzte T. Brahe bereits ein XXX Teleskop (TODO: QUELLE). 
+Beide beobachteten die Bewegungen der Planeten unseres Sonnensystems und nahmen die Positionen entfernterer Sterne, Galaxien und anderen Objekten als sogenannte Fixsterne als konstant an. 
+W"ahrend die Nasa und andere noch daran t"ufteln einen Menschen auf unseren n"achsten Nachbarplaneten zu bugsieren, sind unsere Blicke und v.a. unsere Neugier bereits Milliarden von Lichtjahren "uber unser Sonnensystem hinaus ins Weltall gerichtet. 
+Die ehemaligen Fixsterne sind zu dynamischen Konstallationen erstaunlicher Ph"anomene geworden.
+Neue Technologien der Sensorik erz"ahlen uns von der materiellen Zusammensetzung leuchtender Gaswolken. 
+Gewaltige Pulsare werden zu Meilensteinen intergalaktischen Kartographie. 
+Die Bewegung und die unfassbaren Distanzen ganzer Galaxien von unserem Heimatplaneten geben uns sogar die M"oglichkeit in der Zeit zur"uck zu blicken.
+Die Gr"osse unseres Universums  erlaubt es sogar Annahmen "uber das Schicksal unseres eigenen Sonnensystems zu treffen, indem wir andere Systeme beobachten. 
+Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine hohe Pr"azision bei der Konstruktion der verwendeten Messinstrumente sowie ein tiefes Verst"andnis aller mo"glichen Effekte, die unseren Blick in die Tiefe des Weltalls beeinflussen. 
+Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten (TODO: QUELLE), die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
+Schon in der Primarschule lehr der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
+In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
+
+\section{Planares Modell} 
+\begin{figure}
+\centering
+\includegraphics{licht/standalone/fig_planar_skizze.pdf}
+\caption{Skizze des planaren Modells}
+\label{fig:13_1}
+\end{figure}
+
+
+F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir von Snell's Law aus: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$.
+Mit der in der Abbildung \ref{fig:13_1} verwendeten Notation:
+
+\begin{equation} \label{eq:13_1}
+  n \cdot \sin(\alpha) = n_0 \cdot \sin(\alpha_0) = \varepsilon
+\end{equation}
+
+Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich:
+$$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
+$$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
+
+Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
+Da dies m"oglicherweise gleich Null sein kann, muss dieser Fall separat behandelt werden (siehe Kapitel \ref{ch:spezialfall}). 
+Von nun an gilt die Bedingung: $y'(x) \neq 0$.
+
+\begin{equation} \label{eq:13_2}
+\sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
+\end{equation}
+
+Nun quadrieren wir die Gleichung \ref{eq:13_1} und setzen \ref{eq:13_2} ein:
+
+$$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon^2 = (n_0 \cdot \sin \alpha_0)^2$$
+
+Nun k"onnte man diese Gleichung nummerisch l"osen. 
+Jedoch ist die Anfangssteigung $y'(0)$ in der Gleichung in Form von $\alpha_0$ vorliegt. 
+Da eine Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist, leiten wir die Gleichung nach $x$ ab und erhalten:
+
+$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
+
+Nun ist $\alpha_0$ nicht mehr vorhanden und die jetzt vorliegende Gleichung hat Ordnung 2. 
+Der Anfangswinkel ist nun teil der Anfangsbedingung. 
+Da der ganze Term gleich 0 ist, muss der Ausdruck in den Klammern gleich 0 sein.
+Da $\frac{dn}{dx} = \frac{dn}{dy} \cdot \frac{dy}{dx}$, wird im Folgenden die Notation $n'_y = \frac{dn}{dy}$ verwendet.
+
+$$n' y'^2 + n' - n y' y'' = 0$$
+$$y''(x) = \frac{n'_y}{n} \cdot \left( y' + \frac{1}{y'} \right)$$
+
+\begin{equation} \label{eq:planar_DGL}
+y''(x) = \frac{n'_y}{n} \cdot \left( y'^2 + 1\right)
+\end{equation}
+
+\subsection{Vergleichsgr"osse $\Delta \alpha$}
+Um die Resultate vergleichen zu k"onnen, brauchen wir ein Mass f"ur die Brechung. 
+Wir definieren $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). Diese Gr"osse wird sowie im Planaren, als auch im Sph"arischen Modell verwendet. 
+
+\begin{figure}
+  \centering
+  \includegraphics{licht/standalone/fig_delta_alpha.pdf}
+  \caption{Skizze des Mass der Kr"ummung $\Delta \alpha$. \label{fig:skizze_mass}}
+\end{figure}
+
+
+\subsection{Verifikation}
+Um zu "uberpr"ufen, ob unser Modell plausibel ist, setzen wir verschiedene Funktionen f"ur $n(y)$ ein. 
+Wenn die Brechzahl konstant ist (das Heisst $\frac{dn}{dy} = 0$), dann sollte der Lichtstrahl nicht mehr gebrochen werden und auf einer Geraden weiterfahren. 
+Wenn man nun $n'(y)=0$ in die Gleichung \ref{eq:planar_DGL} einsetzt, erh"alt man: 
+
+$$y''(x) = 0$$
+
+Auch aus unserer Gleichung ist also erkennbar, dass sich der Lichtstrahl bei konstantem $n$ nicht bricht.
+
+Nun brauchen wir eine Funktion der Brechzahl in Abh"angigkeit der H"ohe. 
+Der Brechungsindex der Luft h"angt (teilweise) vom Druck ab. 
+Der H"ohendruck von Gasen nimmt nach der barometrischen H"ohenformel mit der H"ohe exponentiell ab.
+Ausserdem ist die Brechzahl immer $n \geq 1$, wobei im Vakuum $n=1$ gilt. 
+Mit diesen Informaitonen stellen wir die Brechzahl folgendermassen dar:
+
+$$n(y) = 1 + \mu e^{- \sigma y}, \qquad \frac{dn}{dy} = -\sigma \mu \cdot e^{-\sigma y}$$
+
+Nun setzen wir dies in die Differentialgleichung ein, und erhalten:
+
+\begin{equation} \label{eq:planar_DGL_n}
+y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \right)
+\end{equation}
+
+Der Lichtstrahl sollte sich immer in Richtung des gr"osseren $n$ kr"ummen. 
+Bei unserer Funktion bedeutet dies, er kr"ummt sich nach unten. 
+Um dies besser darzustellen, wird die Brechzahl in den Grafiken Grau eingezeichnet.
+Diese Differentialgleichung l"asst sich nummerisch l"osen (siehe Abbildung \ref{fig:planares_modell1}).
+Wie zu erwarten war, kr"ummen sich die Lichtstrahlen nach unten.
+Je H"oher der Strahl ist, desto schw"acher kr"ummt er sich. 
+
+\begin{figure}
+  \centering
+  \includegraphics{licht/standalone/fig_planar_simulation.pdf}
+  \caption{Nummerische L"osung der Differentialgleichung (\ref{eq:planar_DGL_n}). \label{fig:planares_modell1}}
+
+\end{figure}
+
+\subsection{Spezialfall: $y'(x) = 0$} \label{ch:spezialfall}
+
+In diesem Modell ist die Brechzahl $n$ nur von $y$ abh"angig. 
+Falls die Funktion nun die Steigung $f'(x) = 0$ hat, dann "andert sich die Brechzahl in Richtung des Lichtstrahls nicht mehr.
+Dies w"urde bedeuten, dass sich der Lichtstrahl nicht weiter kr"ummt. 
+
+In der Realit"at gibt es in der Luft immer relativ starke Unregelm"assigkeiten. 
+Betrachten wir das Beispiel der Abbildung \ref{fig:planares_modell1}. 
+Falls der Lichtstrahl waagerecht ist, kann er aufgrund der Unregelm"assigkeiten entweder nach oben oder unten gebrochen werden. 
+Wenn er nach oben gebrochen wird, so kr"ummt er sich sofort wieder nach unten.
+Und wenn er sich nach unten bricht, dann kr"ummt er sich weiter nach unten.  
+Der Fall $y'(x) = 0$ ist also in diesem Modell kein station"arer Punkt. 
+In der Realit"at ist dieser Spezialfall also nicht problematisch. 
+
+In unserem Modell jedoch wird bei der Herleitung durch $y'(x)$ geteilt.
+Die Gleichung \ref{eq:planar_DGL} gilt also nicht f"ur diesen Spezialfall. 
+Duch den Quantisierungsfehler beim nummerischen L"osen wird jedoch dieser Spezialfall nie erreicht, und wir m"ussen ihn in der Simulation nicht ber"ucksichtigen.
+Wie in der Abbildung \ref{fig:planares_modell1} an der blauen Kurve mit $f'(0) = 0.6$ zu erkennen ist, kr"ummt sich der Lichtstrahl weiter.
+
+
+\section{Sph"arisches Modell}
+
+Wir beginnen erneut mit Snell's Law, welche wir auf unser Sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepasst wurde: 
+
+$$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
+
+In dieser Gleichung kommen zwei verschiedene Winkel $\alpha$ und $\beta$ vor. 
+Um dies zu bereinigen verwenden wir den Sinussatz im Dreieck $OMN$:
+
+$$r \sin\alpha = (r + dr) \cdot \sin\beta$$
+
+Multipliziert man nun die beiden Gleichungen, erh"alt man:
+
+\begin{equation} \label{eq:sphere_base}
+n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha_0
+\end{equation}
+
+Somit sind nicht mehr zwei verschiedene Winkel in der Formel vorhanden.
+Wie beim Planaren Modell ist dieses Produkt konstant.  
+Aus dem Dreieck $MNP$ kann folgende Beziehung hergeleitet werden:
+
+$$\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{dr} = \frac{r}{r'}$$
+
+Wir quadrieren die diese Gleichung und l"osen nach $\sin^2(\beta)$ auf:
+
+$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r}{r')} \right)^2$$
+
+\begin{equation} \label{eq:sphere_sine}
+\Rightarrow \sin^2\alpha = \frac{1}{\left( \frac{r'}{r} \right)^2 +1}
+\end{equation}
+
+\begin{figure} 
+\centering
+\includegraphics[scale=1]{licht/standalone/fig_sphere_skizze.pdf}
+\caption{Skizze des Sph"arischen Modells. \label{fig:sphere_skizze}}
+\end{figure}
+
+W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. 
+In den folgenden Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$. 
+Wie bereits zuvor in Kapitel \ref{ch:spezialfall} beschrieben muss dieser nicht separat behandelt werden.
+Nun quadrieren wir die Gleichung \ref{eq:sphere_base} und setzen die Gleichung \ref{eq:sphere_sine} ein:
+
+$$\frac{(n \cdot r^2}{\left( \frac{r'}{r} \right)^2 +1} = (r_0 n_0 \sin \alpha_0)^2$$
+
+Diese Gleichung ist eine Differentialgleichung erster Ordnung. 
+Jedoch ist erneut der Term $sin^2(\alpha_0)$ vorhanden, welcher von $r'(0)$ abh"angt. 
+Damit die DGL auch korrekte Anfangsbedingungen besitzt, leiten wir die Gleichung nach $\varphi$ ab und erhalten:
+
+$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) =  \frac{2 r^2 n r' n'_r}{\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \left(\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\right)}{\left(\frac{r'^2}{r^2}+1\right)^2}$$
+
+$$\Rightarrow \frac{2n r' r}{\frac{r'^2}{r^2}+1} \cdot \left( n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} \right) = 0$$
+
+\begin{equation} \label{eq:sphere_origin}
+\Rightarrow n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} = 0
+\end{equation}
+
+$$\Rightarrow n'_r r'^2  + n'_r r^2 + n r'^2 + nr^2 = n r r'' - n r'^2$$
+
+$$\Rightarrow n'_r r'^2 + n'_r r^2 + 2 n r'^2 + n r^2 = n r r''$$
+
+\begin{equation} \label{eq:sphere_allg}
+\Rightarrow r'' = \frac{n'_r r'^2 + n'_r r^2 + 2 n r'^2 + n r^2}{n r}
+\end{equation}
+
+Anmerkung: Da $\frac{dn}{d\varphi} = \frac{dn}{dr} \cdot \frac{dr}{d\varphi}$ ist, wird die Notation: $n'_r = \frac{dn}{dr}$ verwendet.
+
+\subsection{Verifikation}
+Wie zuvor beim planaren Modell setzen wir verschiedene Funtionen f"ur $n(r)$ ein, und beurteilen die Resultate. 
+Als erstes untersuchen wir die Funktion $n(r) = 1, n'(r) = 0$. 
+Bei diesem Beispiel hat das Material "uberall dieselbe Brechzahl.
+Die Nummerischen L"osungen sollten alle (bez"uglich den karteischen Koordinaten) linear ansteigen und sich nicht kr"ummen. Die Simulation best"atigt dies (siehe Abbildung \ref{fig:sphaerisches_modell1}).
+
+Nun verwenden wir erneut die exponentielle Approximation der Brechzahl: 
+
+$$n(r) = 1 + \mu \cdot e^{-\sigma (r - r_0)} \qquad n'_r(r) = -\sigma \mu e^{-\sigma (r - r_0)}$$
+
+Nun setzen wir dies in die Differentialgleichung \ref{eq:sphere_allg} ein und berechnen die L"osung nummerisch (Abbildung \ref{fig:sphaerisches_modell2}, \ref{fig:sphaerisches_modell3}). 
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{licht/standalone/fig_sphere_simulation_vacuum.pdf}
+\captionof{figure}{L"osung des Sph"arischen Modells mit $n(r) = 1$. \label{fig:sphaerisches_modell1}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{licht/standalone/fig_sphere_simulation1.pdf}
+\caption{Nummerische L"osung der Exponentiellen Approximation mit $\mu = 1, \: \sigma = 0.5$. 
+\label{fig:sphaerisches_modell2}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{licht/standalone/fig_sphere_simulation2.pdf}
+\caption{Nummerische L"osung der Exponentiellen Approximation mit $\mu = 1, \: \sigma = 1$. \label{fig:sphaerisches_modell3} }
+\end{figure}
+
+\newpage
+
+\subsection{Spezialfall: geschlossener Kreis}
+Beim betrachten der Resultate f"allt auf, dass es m"oglicherweise eine Kombination aus Anfangsbedingungen und der Brechzahl das Licht in einem Kreis um den Planeten bricht. 
+Um diese Bedingungen zu finden, starten wir mit der Gleichung \ref{eq:sphere_origin}:
+
+$$\Rightarrow n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} = 0$$
+
+Bei diesem Spezialfall ist $r''(\varphi) = 0$, $r'(\varphi) = 0$. 
+Setzen wir nun diese Bedingungen in die Gleichung ein, erhalten wir:
+
+$$n'_r + n = 0 \quad \Rightarrow \quad n'_r(r) = -n(r)$$
+
+Dies ist nun ebenfalls eine Differentialgleichung, welche die L"osung $n(r) = C \cdot e^{-r}$ hat.
+Alle diese L"osungen haben die Eigenschaft, dass man bei dieser Verteilung der Brechzahl ein waagerechter Lichtstrahl auf jeder H"ohe in einen geschlossenen Kreis gebrochen wird.
+Da diese L"osung die Bedingung $n(r) \geq 1$ jedoch nicht erf"ullt, gibt es keine m"ogliche Verteilung der Brechzahlen, bei der auf jeder H"ohe der waagrechte Lichtstrahl zu einem Kreis gebrochen wird. 
+Jedoch ist es m"oglich, dass diese Bedingung auf genau einer H"ohe zutrifft. 
+Wir untersuchen wieder die exponentielle Approximation mit:
+$$n(r) = 1 + \mu \cdot e^{-\sigma (r-r_0)} \qquad n'(r) = -\mu \sigma \cdot e^{-\sigma (r-r_0)}$$
+
+Wir setzen diese Funktionen nun in die obrige Bedingung ein und erhalten:
+
+$$\mu \sigma \cdot e^{-\sigma (r-r_0)} = 1 + \mu \cdot e^{-\sigma (r-r_0)} \quad \Rightarrow \quad \mu \cdot e^{-\sigma (r-r_0)} \cdot (\sigma - 1) = 1$$
+
+$$\mu = \frac{e^{\sigma (r-r_0)}}{\sigma - 1}$$
+
+Wenn wir $r = r_0$ und $\sigma = 2$ festhalten, ergibt sich $\mu = 1$. 
+Auch die Simulation best"atigt, dass in diesem Fall das Licht in einem Kreis gebrochen wird.
+In der Simulation wurde auch ein leicht verf"alschter Lichtstrahl dargestellt, mit 0.01 Abweichung. 
+Da es in der Luft immer viele Unregelm"assigkeiten des Druckes, der Temperatur und der Luftfeuchtigkeit gibt, soll dieser Lichtstrahl zeigen, wie sich ein solcher Fehler auf den Verlauf auswirkt.
+
+Wie man erkennen kann ist dieser Lichtstrahl bis $90^\circ$ nicht vom anderen zu unterscheiden.
+Bei der Simulation ist jedoch der Radius mit $r_0=1$ sehr klein gew"ahlt worden. 
+Wenn der Radius gr"osser gemacht wird ($r_0 = 100$), so  verl"asst der Lichtstrahl viel fr"uher den pfad (Abbildung \ref{fig:sphere_special2}). 
+
+Jedoch ist eine solch extreme Athmosph"are nicht realistisch. 
+Bei $r = r_0$ betr"agt die Brechzahl $n(r_0) = 1 + \mu = 2$. 
+Diese Brechzahl ist nicht realistisch. 
+Es braucht also ein anderes Modell, mit dem man diesen Effekt erzeugen kann.
+
+Die Brechzahl der Luft ist nicht nur vom Druck abh"angig, sondern auch von der Luftfeuchtigkeit. 
+dazu wird folgende quadratische Approximation verwendet:
+
+$$n(r) = \left\{ \begin{array}{ll} 1 + \mu \cdot (r_0 - r)^2 & \text{wenn } r < r_0 \\ 1 & \text{sonst} \end{array} \right. \quad n'_r(r) = \left\{ \begin{array}{ll} 2\mu \cdot (r - r_0) & \text{wenn } r < r_0 \\ 0 & \text{sonst} \end{array} \right.$$
+
+Nun l"osen wir die obere Bedingung $-n'_r = n $, wenn $r < r_0$:
+
+$$2\mu \cdot (r_0 - r) = 1 + \mu(r_0 - r)^2$$
+
+Wenn wir nun f"ur $(r_0 - r) = 1$ einsetzen, erhalten wir $\mu = 1$. 
+Bei der Simulation mit diesen Bedingungen ist ersichtlich, dass in einen Kreis gebrochen wird (Abbildung \ref{fig:sphere_special3}). 
+Wenn aber wie erneut der Fehler Simuliert wird, ist die Abweichung viel kleiner als bei der exponentiellen Approximation. 
+Nun erh"ohen wir ebenfalls den Radius $r_0$ und wiederholen die Simulation. 
+Bei $r_0 = 1000$ ist der Lichtstrahl immer noch f"ur lange Zeit auf dem idealen Kreis (Abbildung \ref{fig:sphere_special4}). 
+Bei dieser Approximation ist es also m"oglich, dass sich ein Lichtstrahl f"ur kurze Zeit in einen Kreisbogen bricht, auch bei gr"osserem $r_0$.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_kreis_exp1.pdf} 
+  \caption{Nummersiche L"osung der exponentiellen Approximation mit $r(0) = r_0 = 1$, $r'(0) = 0$, $\sigma = 2$, $\mu = 1$. \label{fig:sphere_special1}}
+
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_kreis_exp2.pdf}
+  \caption{Nummerische L"osung der exponentielle Approximation mit $r(0) = r_0 = 100$, $\sigma = 2$, $\mu = 1$. \label{fig:sphere_special2}} 
+  
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_kreis_square1.pdf}
+  \caption{Nummerische L"osung der quadratischen Approximation mit $r(0) = r_0 = 1$, $mu = 1$. \label{fig:sphere_special3} }
+  
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_kreis_square2.pdf}
+  \caption{Nummerische L"osung der quadratischen Approximation mit $r(0) = r_0 = 1000$,  $\mu = 1$. \label{fig:sphere_special4} } 
+\end{figure}
+
+TODO: Diskusion dieser Resultate / L"osungen
+
+\section{Modellierung der Athmosph"are der Erde}
+
+In den oben hergeleiteten Gleichungen kommt immer die Brechzahl vor. 
+Bei bisherigen Simulationen sind wir von einer (willk"urlichen) Funktion ausgegangen, ohne uns dabei auf die Physik zu st"utzen. 
+Nun wollen wir ein m"oglichst realistisches, aber dennoch einfaches Modell f"ur die Atmosph"are der Erde finden.
+
+Die Brechzahl der Luft h"angt von volgenden Faktoren ab:
+\begin{itemize}
+  \item Wellenl"ange des Lichts: In unserem Modell gehen wir von einer konstanten Wellenl"ange aus. Dieser Effekt wird nicht ber"ucksichtigt.
+  \item Wasserfeuchtigkeit: Wasserdampf Anteil in der Luft beeinflusst die Brechzahl relativ stark. Jedoch variiert diese sehr stark mit dem Wetter. Deshalb wird dieser Einfluss vernachl"assigt. 
+  \item Luftdruck: Der Luftdruck l"asst sich approximativ relativ gut modellieren. Aus der Physik ist bekannt, dass der Druck bei Gasen mit der H"ohe exponentiell abnimmt. 
+  \item Temperatur: Wie in Abbildung \ref{fig:athmosphere_profile} erkennbar ist, ver"andert sich die Temperatur in abh"angigkeit der H"ohe sehr stark. Es ist jedoch sehr schwer, diesen Verlauf zu modellieren. Deshalb wird die Temperatur (vorerst) im Modell vernachl"assigt.
+\end{itemize}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.24]{licht/images/athmosphereProfile.png}
+  
+  \caption{Druck, Dichte, Temperatur und Schallgeschwindigkeit in Abh"angigkeit der H"ohe. \label{fig:athmosphere_profile}}
+  %QUELLE: https://en.wikipedia.org/wiki/Atmospheric_temperature
+\end{figure}
+
+Dank diesen Vereinfachungen l"asst sich die Brechzahl in Abh"angigkeit folgendermassen beschreiben:
+
+$$n(r) = 1 + \mu \cdot e^{-\sigma (r - r_0)}$$
+
+Der Parameter $r_0$ steht f"ur den Radius der Erdoberfl"ache. 
+Bei $r = r_0$ ergibt sich $n(r_0) = n_0 = 1 + \mu$. 
+$\sigma$ gibt an, wie schnell die Brechzahl zum tiefsten Wert $n = 1$ geht. 
+
+
+%Quelle: https://en.wikipedia.org/wiki/List_of_refractive_indices  %Brechzahl
+%Quelle: https://en.wikipedia.org/wiki/Earth  % Erdradius
+
+
+Durch Messungen ist der mittlere Erdradius $r_0 = 6.371 * 10^6$. 
+Die Brechzahl auf dieser H"ohe betr"agt: $n_0 = 1.000293$.
+Dementsprechend betr"agt $\mu = 2.93 * 10^{-3}$. 
+Um $\sigma$ abzusch"atzen, wird in der Abbildung \ref{fig:athmosphere_profile} Funktion der Dichte untersucht. 
+Die H"ohe bei 36.8\% der Maximaldichte (Dichte auf Meeresh"ohe) entspricht $\sigma$. 
+Somit wird $\sigma \approx 9 * 10^3$.
+
+Mit diesen Parametern l"asst sich die erneut die L"osung zum Sph"arischen Modell nummerisch Berechnen. 
+Aufgrund der Parameter erwarten wir eine sehr schwache Kr"ummung. 
+Dies kann man auch an der Abbildung \ref{fig:sphere_real} erkennen. 
+Die Vergleichsgr"osse $\Delta \alpha$, welche aus der Simulation resultiert, zeigt erneut, dass der Lichtstrahl st"arker gebrochen wird, wenn er horizontal eintrifft. 
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_real_simulation.pdf}
+  \caption{Nummerische L"osung des realistischen Modells. \label{fig:sphere_real} } 
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{licht/standalone/fig_real_comparison.pdf}t
+  \caption{TODO: Beschreibung hinzufügen. \label{fig:real_comparison}}
+\end{figure}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
-
