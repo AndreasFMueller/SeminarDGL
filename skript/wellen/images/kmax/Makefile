@@ -12,28 +12,28 @@ kmax.eps:	kmax-30.dat kmax-60.dat kmax-90.dat kmax-120.dat kmax-150.dat \
 		kmax-180.dat kmax-210.dat kmax-240.dat
 	$(OCTAVE_PLOTTER) -kmax ./ -fout kmax.eps
 
-kmax-30.dat:
+kmax-30.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 30 -dout kmax-30.dat
 
-kmax-60.dat:
+kmax-60.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 60 -dout kmax-60.dat
 
-kmax-90.dat:
+kmax-90.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 90 -dout kmax-90.dat
 
-kmax-120.dat:
+kmax-120.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 120 -dout kmax-120.dat
 
-kmax-150.dat:
+kmax-150.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 150 -dout kmax-150.dat
 
-kmax-180.dat:
+kmax-180.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 180 -dout kmax-180.dat
 
-kmax-210.dat:
+kmax-210.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 210 -dout kmax-210.dat
 
-kmax-240.dat:
+kmax-240.dat:	Makefile
 	$(OCTAVE_YX) $(YX_OPTIONS) -kmax 240 -dout kmax-240.dat
 
 clean:
