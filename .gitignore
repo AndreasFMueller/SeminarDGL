@@ -1,6 +1,8 @@
 *.aux
+*.auxlock
 *.bbl
 *.blg
+*.dvi
 *.out
 *.toc
 *.pdf
@@ -10,13 +12,30 @@
 *.log
 *.mpx
 *.synctex.gz
+skript/chapters/images/path*.mp
+skript/chapters/images/cube
+skript/chapters/images/cube.mp
+skript/chapters/images/harvest
+skript/chapters/images/harvest.mp
 **/*.[0-9]
 **/*.[0-9][0-9]
-**/skript-blx.bib
-**/skript.run.xml
+**/*-blx.bib
+**/*.run.xml
 **/mptextmp.mp
+*.dat
+*.swp
+*.bak
+*.eps
+*.project
+*.texlipse
 
-!.gitignore
+skript/kreis/besselfunction.png
+!skript/chapters/substitute.png
+
+#tikz pdf-images
+#recreated on every make
+#!skript/licht/standalone/*.pdf
+
 !/skript/trafo/images/BIL_VoltageTrans.pdf
 !/skript/trafo/images/orig_trafo.pdf
 !/skript/trafo/images/Trafo_Modell.pdf
