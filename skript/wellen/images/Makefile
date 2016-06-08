@@ -1,4 +1,4 @@
-SUBDIRS := allgemein basicfunctions kmax vara varc
+SUBDIRS = allgemein basicfunctions kmax vara varc
 
 all:
 	for d in $(SUBDIRS); \

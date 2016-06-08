@@ -1,4 +1,4 @@
-TIKZDIR := standalone
+TIKZDIR = standalone
 
 all:
 	cd $(TIKZDIR); make

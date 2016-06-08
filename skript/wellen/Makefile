@@ -1,5 +1,7 @@
+IMAGEDIR = images
+
 all:
-	cd images; make; cd ..;
+	cd $(IMAGEDIR); make
 
 clean:
-	cd images; make clean; cd ..;
+	cd $(IMAGEDIR); make clean

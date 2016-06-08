@@ -50,7 +50,10 @@ if (!file_loaded && isempty(kmaxpath) && isempty(n4path))
 	exit(-1)
 endif
 
-set(0, "defaultaxesfontname", "Helvetica");
+set(0, "DefaultAxesFontName", "Helvetica");
+set(0, "DefaultAxesFontSize", fontsize);
+set(0, "DefaultTextFontName", "Helvetica");
+set(0, "DefaultTextFontSize", fontsize);
 figure("visible", "off");
 hold("on");
 grid("on");
@@ -80,6 +83,6 @@ endif
 axis([x_min, x_max, y_min, y_max]);
 xlabel("x");
 ylabel("y(x)");
-print("-depsc2", filename, sprintf('-F:%d', fontsize));
+print("-depsc2", filename);
 
 toc();
