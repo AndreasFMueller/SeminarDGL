@@ -51,3 +51,7 @@ $(603_FILES):	603.mp
 	do \
 		mptopdf 603.$${i}; \
 	done
+
+clean:
+	find . -type f -regex '.*\.[0-9]+' -delete
+	rm -f *.log *.pdf *.mpx

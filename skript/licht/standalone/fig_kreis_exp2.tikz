@@ -1,0 +1,77 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+%used for drawing n(r)-Area
+\definecolor{lGray}{gray}{0.8}
+\definecolor{llGray}{gray}{0.9}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{
+  ring shading/.code args={from #1 at #2 to #3 at #4}{
+    \def\colin{#1}
+    \def\radin{#2}
+    \def\colout{#3}
+    \def\radout{#4}
+    \pgfmathsetmacro{\proportion}{\radin/\radout}
+    \pgfmathsetmacro{\outer}{.8818cm}
+    \pgfmathsetmacro{\inner}{.8818cm*\proportion}
+    \pgfmathsetmacro{\innerlow}{\inner-0.01pt}
+    \pgfdeclareradialshading{ring}{\pgfpoint{0cm}{0cm}}%
+    {
+      color(0pt)=(white);
+      color(\innerlow)=(white);
+      color(\inner)=(#1);
+      color(\outer)=(#3)
+    }
+    \pgfkeysalso{/tikz/shading=ring}
+  },
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+        \begin{axis} [
+          axis lines=none, 
+          width=6cm, 
+          axis equal,
+          ticks = none,  
+          legend style={at={(1.1,0.5)}, anchor=west, draw=none}, 
+          ymin = -150,
+          ymax = 150,
+          xmin = -150, 
+          xmax = 150, 
+          zmin = 1,
+          zmax = 2,
+          %colorbar, 
+          colormap={traditionalpm3d}{color=(white) color=(lGray) color=(lGray) color=(lGray) color=(lGray) color=(lGray)},
+          view={0}{90}
+        ]  
+          %\addplot3[surf, domain=-150:-70, y domain=-150:150, shader=flat, samples=81, forget plot] {1 + 1 * exp(-2*(sqrt(x^2+y^2)-100))};  
+          \draw [draw=none, fill=lGray] (axis cs:0,0) circle (33pt);  
+          \shade[even odd rule,ring shading={from lGray at 33pt to white at 36pt}]
+  (axis cs:0,0) circle (33pt) circle (36pt);
+          %\addlegendentry{$n(r)$};
+
+          
+          %f'(0)=0.01
+          \addplot [mark = none, thick, color=red] coordinates {
+            (0.00000,100.00000)(-2.75512,99.96232)(-5.50816,99.84877)(-8.25704,99.65945)(-10.99968,99.39454)(-13.73400,99.05427)(-16.45795,98.63893)(-19.16948,98.14889)(-21.86655,97.58457)(-24.83804,96.87257)(-27.78659,96.07065)(-30.70957,95.17975)(-33.60441,94.20094)(-36.40398,93.16060)(-39.17210,92.03878)(-41.90675,90.83701)(-44.60607,89.55703)(-47.22896,88.22171)(-49.81483,86.81471)(-52.36296,85.33870)(-54.87321,83.79685)(-57.31713,82.21217)(-59.72629,80.57104)(-62.10361,78.87857)(-64.45352,77.14051)(-66.70407,75.42338)(-68.94185,73.67578)(-71.17485,71.90315)(-73.41120,70.10955)(-76.13995,67.90859)(-78.89590,65.67960)(-81.68846,63.41934)(-84.52594,61.12262)(-87.92412,58.37178)(-91.40873,55.55090)(-94.99475,52.64789)(-98.69878,49.64942)(-102.53924,46.54059)(-106.53665,43.30458)(-110.71453,39.92239)(-115.09991,36.37236)(-119.72392,32.62940)(-124.62209,28.66415)(-129.83697,24.44237)(-135.41925,19.92349)(-142.02863,14.57418)(-149.24574,8.73133)(-157.19207,2.29774)(-166.02222,-4.84984)
+          };
+          \addlegendentry{$r'(0) = 0.01$};          
+          
+          %f'(0)=0
+          \addplot [mark = none, thick, color=blue] coordinates {
+            (0.00000,100.00000)(-15.64345,98.76883)(-30.90170,95.10565)(-45.39905,89.10065)(-58.77853,80.90170)(-70.71068,70.71068)(-80.90170,58.77853)(-89.10065,45.39905)(-95.10565,30.90170)(-98.76883,15.64345)(-100.00000,0.00000)(-98.76883,-15.64345)(-95.10565,-30.90170)(-89.10065,-45.39905)(-80.90170,-58.77853)(-70.71068,-70.71068)(-58.77853,-80.90170)(-45.39905,-89.10065)(-30.90170,-95.10565)(-15.64345,-98.76883)(-0.00000,-100.00000)(15.64345,-98.76883)(30.90170,-95.10565)(45.39905,-89.10065)(58.77853,-80.90170)(70.71068,-70.71068)(80.90170,-58.77853)(89.10065,-45.39905)(95.10565,-30.90170)(98.76883,-15.64345)(100.00000,-0.00000)(98.76883,15.64345)(95.10565,30.90170)(89.10065,45.39905)(80.90170,58.77853)(70.71068,70.71068)(58.77853,80.90170)(45.39905,89.10065)(30.90170,95.10565)(15.64345,98.76883)(0.00000,100.00000)
+          };
+          \addlegendentry{$r'(0) = 0$};
+          
+
+          \draw [fill=black] (axis cs:0,100) circle (1pt);         
+          
+          \end{axis}   
+      \end{tikzpicture}
+
+\end{document}

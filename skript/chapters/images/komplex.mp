@@ -371,6 +371,102 @@ label.top(btex $z$ etex, z6 shifted (0,1));
 endfig;
 
 %
+% Wegintegral, analytische Forsetzung von y' = 1/z
+%
+beginfig(5)
+
+numeric u;
+u := 60;
+numeric r;
+r := 1.2 * u;
+
+z0 = (     0,        0);
+z1 = (-2 * u,        0);
+z2 = ( 2 * u,        0);
+z3 = (     0, -1.4 * u);
+z4 = (     0,  1.4 * u);
+
+z5 = (-u,  0);
+z6 = ( u,  0);
+z7 = ( 0, -u);
+z8 = ( 0,  u);
+z9 = r * (cosd(60), sind(60));
+
+pickup pencircle scaled 1pt;
+
+path q;
+q = z0;
+for a = 0 step 1 until 60:
+	q := q--(0.4 * r * cosd(a), 0.4 * r * sind(a));
+endfor;
+q := q--cycle;
+fill q withcolor (0.95,0.95,0.95);
+draw z0--z9;
+label(btex $t$ etex, 0.27 * r * (cosd(30), sind(30)));
+
+path p;
+p = (r,0);
+for a = 1 step 1 until 355:
+	p := p--(r * (cosd(a), sind(a)));
+endfor;
+drawarrow p withcolor red;
+
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+drawarrow (z3 shifted (0,-10))--(z4 shifted (0,10));
+
+draw (z5 shifted (0,-2))--(z5 shifted (0,2));
+draw (2 * z5 shifted (0,-2))--(2 * z5 shifted (0,2));
+draw (z6 shifted (0,-2))--(z6 shifted (0,2));
+draw (2 * z6 shifted (0,-2))--(2 * z6 shifted (0,2));
+draw (z7 shifted (-2,0))--(z7 shifted (2,0));
+draw (z8 shifted (-2,0))--(z8 shifted (2,0));
+
+label.bot(btex $-1$ etex, z5);
+label.bot(btex $-2$ etex, 2 * z5);
+label.bot(btex $1$ etex, z6);
+label.bot(btex $2$ etex, 2 * z6);
+label.rt(btex $1$ etex, z8);
+label.rt(btex $-1$ etex, z7);
+
+label.urt(btex $\displaystyle y(\gamma(t)) = \int_{\gamma|[0,t]}  \frac1z\,dz$ etex,
+	z9 shifted (0, -7));
+
+def punkt(expr z, c) =
+pickup pencircle scaled 4pt;
+draw z withcolor c;
+pickup pencircle scaled 2.5pt;
+draw z withcolor white;
+enddef;
+
+punkt((r,0), black);
+
+punkt(z9, red);
+
+z10 = r * (cosd(135), sind(135));
+
+label.urt(btex $y(r)=\log(r)$ etex, (r,0));
+label.ulft(btex $y(\gamma(\frac34\pi))=\log(r) + \frac34\pi i$ etex, z10);
+punkt(z10, red);
+
+z11 = r * (cosd(14/10 * 180), sind(14/10 * 180));
+
+label.llft(btex $y(\gamma(\frac{7}{5}\pi)) = \log(r) + \frac75\pi i$ etex, z11);
+punkt(z11, red);
+
+z12 = r * (cosd(119/60 * 180), sind(119/60 * 180));
+z13 = z12 shifted (10,-10);
+z14 = z13 shifted (0, -0.8 * u);
+label.bot(btex $y(\gamma(\frac{119}{60}\pi)) = \log(r) + \frac{119}{60}\pi i$ etex, z14);
+pickup pencircle scaled 0.5pt;
+draw z12--z13--z14 withcolor red;
+punkt(z12, red);
+
+label.rt(btex Re etex, z2 shifted (10,0));
+label.top(btex Im etex, z4 shifted (0,10));
+
+endfig;
+
+%
 %
 %
 %beginfig(5)

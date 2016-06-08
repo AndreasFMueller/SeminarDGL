@@ -134,3 +134,6 @@ $(nullklinen_FILES): nullklinen.mp
 		mptopdf $${f}; \
 	done
 
+clean:
+	find . -type f -regex '.*\.[0-9]+' -delete
+	rm -f *.pdf *.log *.mpx harvest harvest.mp cube cube.mp path*.mp mptextmp.mp
