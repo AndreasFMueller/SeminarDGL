@@ -36,10 +36,4 @@ skript/kreis/besselfunction.png
 #recreated on every make
 #!skript/licht/standalone/*.pdf
 
-!/skript/trafo/images/BIL_VoltageTrans.pdf
-!/skript/trafo/images/orig_trafo.pdf
-!/skript/trafo/images/Trafo_Modell.pdf
-!/skript/trafo/images/VoltageTrans.pdf
-!/skript/trafo/images/VoltageTrans_bubble_turn6_10u_9u.pdf
-!/skript/trafo/images/differenceTimestep.pdf
-!/skript/trafo/images/differenceOptimization.pdf
+!/skript/trafo/images/*.pdf
