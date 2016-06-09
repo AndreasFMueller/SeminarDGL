@@ -9,6 +9,7 @@
 #include <math.h>
 #include <gsl/gsl_errno.h>
 #include <gsl/gsl_odeiv2.h>
+#define M_PI           3.14159265358979323846
 
 typedef struct param_s {
 	double	a;
