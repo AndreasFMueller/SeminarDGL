@@ -37,13 +37,13 @@ Alternativ kann man auch den Pseudocode
 \ref{alg:wellen:allgemeinepotenzreihenrechnungalt} verwenden. Dieser hat eine 
 Laufzeit von
 \begin{equation*}
-	\mathcal{O}
+	O
 	\left(
 		nk_{\text{max}} + k_{\text{max}} 
 		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
 	\right)
 	=
-	\mathcal{O}
+	O
 	\left(
 		k_{\text{max}}
 		\left(
@@ -53,7 +53,7 @@ Laufzeit von
 \end{equation*}
 mit einem Speicherverbrauch von
 \begin{equation*}
-	\mathcal{O}
+	O
 	\left(
 		\max(n, k_{\text{max}})
 	\right).
@@ -61,7 +61,7 @@ mit einem Speicherverbrauch von
 
 Eine Implementation mit \texttt{octave} hat gezeigt, dass dieser alternative 
 Algorithmus (Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnungalt}) 
-fast 10-Mal schneller ist. Dies liegt neben der zus"atzlichen inneren Schlaufe 
-auch vor allem daran, dass beim anderen Algorithmus mit \texttt{modulo} 
-gerechnet werden musste, um den Speicherverbrauch zu optimieren, was 
-zus"atzlichen Rechenaufwand bedeutet.
+fast zehn Mal schneller ist. Dies liegt neben der zus"atzlichen inneren 
+Schlaufe auch vor allem daran, dass beim anderen Algorithmus mit 
+\texttt{modulo} gerechnet werden musste, um den Speicherverbrauch von $O(n)$ zu 
+erm"oglichen, was zus"atzlichen Rechenaufwand bedeutet.
