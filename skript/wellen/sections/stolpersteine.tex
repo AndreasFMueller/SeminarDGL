@@ -1,5 +1,4 @@
 \section{Stolpersteine}
-
 Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
 beachtet werden m"ussen. Von besonderer Bedeutung sind die Genauigkeit der 
 L"osungen f"ur die jeweiligen $x$, sowie die Zeit, welche f"ur die 
@@ -11,8 +10,8 @@ Gem"ass
 	y(x) = \sum_{k=0}^{\textcolor{red}{\infty}}a_kx^k
 \end{equation*}
 m"usste man f"ur jedes $x$ eine unendliche Anzahl Additionen ausf"uhren, was 
-aber bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
-dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken:
+bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
+dauert. Folglich muss man die maximale Anzahl $k$ einschr"anken:
 \begin{equation*}
 	y(x) = \sum_{k=0}^{\textcolor{red}{k_{\text{max}}}}a_kx^k.
 \end{equation*}
@@ -23,7 +22,8 @@ dominieren beginnen wird.
 
 \begin{figure}
 	\includegraphics[width=1\hsize]{./wellen/images/kmax/kmax.pdf}
-	\caption{Auswirkung unterschiedlicher $k_{\text{max}}$ auf Wellenform.}
+	\caption{Auswirkung $k_{\text{max}} \in [30,240]$ mit Schrittl"ange 30 auf 
+	die Wellenform.}
 	\label{fig:wellen:variablekmax}
 \end{figure}
 
