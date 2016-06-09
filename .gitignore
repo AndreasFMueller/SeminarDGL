@@ -29,11 +29,8 @@ skript/chapters/images/harvest.mp
 *.project
 *.texlipse
 
-skript/kreis/besselfunction.png
-!skript/chapters/substitute.png
+skript/kreis/besselfunction.tex
 
-#tikz pdf-images
-#recreated on every make
-#!skript/licht/standalone/*.pdf
+!skript/chapters/substitute.png
 
 !/skript/trafo/images/*.pdf

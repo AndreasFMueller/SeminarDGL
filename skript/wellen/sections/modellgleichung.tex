@@ -1,7 +1,7 @@
 \section{\texorpdfstring{$p(x)$}{p(x)}}
-Als erster Schritt wird in diesem Abschnitt beschrieben, wo die Gleichung ihren 
-Ursprung findet. Gem"ass \cite{wellen:smirnow2} lautet die allgemeine 
-Differentialgleichung einer Welle
+In diesem Abschnitt wollen wir zuerst aufzeigen, woher die Gleichung 
+\ref{eq:wellen:pxdgl} kommt. Gem"ass \cite{wellen:smirnow2} lautet 
+die allgemeine Differentialgleichung einer Welle
 \begin{equation*}
 	\frac{\partial^2 u}{\partial t^2}
 	=
@@ -14,7 +14,7 @@ Differentialgleichung einer Welle
 	\label{eq:wellen:allgemeineDGL}
 \end{equation*}
 Da wir die Ausbreitung der Welle nur im Querprofil des Kanals betrachten, 
-besteht lediglich noch eine Abh"angigkeit der $x$-Koordinate. Die Gleichung 
+besteht lediglich noch eine Abh"angigkeit von der $x$-Koordinate. Die Gleichung 
 vereinfacht sich zu
 \begin{equation}
 	\frac{\partial^2 u}{\partial t^2}
@@ -40,14 +40,15 @@ Nach einer Division durch $T(x)X(x)$ sind die Variablen $x$ und $t$ separiert.
 	=
 	c^2 \frac{X''(x)}{X(x)}
 \end{equation*}
-Der neu entstandene Term kann nur dann funktionieren, wenn beide Seiten der 
+Der neu entstandene Term kann nur funktionieren, wenn beide Seiten der 
 Gleichung konstant sind.
 \begin{equation*}
 	\frac{T''(t)}{T(t)}
 	=
 	c^2 \frac{X''(x)}{X(x)} = \text{konstant} = \lambda
 \end{equation*}
-Es folgen zwei analytisch l"osbare Differentialgleichungen zweiter Ordnung:
+Jede Seite der Gleichung führt daher, f"ur jeweils eine der Funktionen, zu 
+einer analytisch l"osbaren Differentialgleichung zweiter Ordnung.
 \begin{align*}
 	T''(t) &= \lambda T(t) \\
 	X''(x) &= \frac{\lambda}{c^2}X(x)
