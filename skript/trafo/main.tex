@@ -11,18 +11,20 @@ In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und s
 
 \section{Problemstellung}
 
-Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet, Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Isolationsfestigkeit von Luft wesentlich schlechter ist als in "Ol. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
+Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet, Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Isolationsfestigkeit in Luft wesentlich schlechter als im "Ol ist. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
+
+Damit die Windungen an Ort gehalten werden k"onnen, sind sie in Epoxidharz eingegossen. Zwischen den Lagen befindet sich gen"ugend Platz, damit Luft oder "Ol zur K"uhlung durchstr"omen kann. Wenn sich beim Giessen des Harzes Luftblasen bilden, k"onnen an diesen Stellen Feld"uberh"ohungen entstehen und ebenfalls zu Teilentladungen f"uhren. \color{red} Bild w"are hilfreich \color{black}
 
 Fr"uher wurde ein Transformator oder allgemein ein elektronisches Betriebsmittel nach Erfahrungen gebaut. Dabei war es gang und g"abe, dass mehrere Prototypen notwendig waren, bis die ersten Spannungspr"ufungen bestanden werden konnten. Deshalb sind CAD-Simulationen wesentlich schneller und vor allem kosteng"unstiger. Das Ziel soll es sein, den Transformator m"oglichst genau darzustellen und dessen Spannungsverteilung zu berechnen, denn die Spannung und die Geometrie zusammen ergeben das elektrische Feld, welches schlussendlich zu Durchschl"agen oder Teilentladungen f"uhrt.
 
 An der Hochschule f"ur Technik Rapperswil wurde am Institut f"ur Energietechnik eine Methode entwickelt, wie die Spannungsverteilung bei einem Blitzstoss m"oglichst genau simuliert werden kann \cite{trafo:BILImpulse}. Diese Methode funktioniert sehr gut f"ur Leistungstransformatoren und konnte mit Messungen auch verifiziert werden. 
 Soll dieses Prinzip aber auf Instrumententransformatoren angewendet werden, ergibt die wesentlich h"ohere Anzahl von Wicklungen und deren engeren Lagen nummerische Probleme mit dem momentanen L"osungsverfahren. 
 
-Diese Probleme werden nun schrittweise behandelt und bestm"oglichst gel"ost. 
+Diese Probleme werden in diesem Abschnitt schrittweise behandelt und bestm"oglichst gel"ost. 
 
 
 \subsection{Ersatzschaltbild}
-Ein Transformator, ob "ol- oder luftgek"uhlt, kann prinzipiell mit dem Ersatzschaltbild \ref{trafo:einfaches_ESB} dargestellt werden. Dies macht Sinn, wenn der Transformator als Ganzes dargestellt werden will. Da bei diesem Problem aber die inneren Spannungen relevant sind, kann dieses bereits bekannte, jedoch zu simplen Ersatzschaltbild nicht verwendet werden. Es gilt nun, ein neues und genaueres Ersatzschaltbild zu finden. 
+Ein Transformator, ob "ol- oder luftgek"uhlt, kann prinzipiell mit dem Ersatzschaltbild \ref{trafo:einfaches_ESB} dargestellt werden. Dies macht Sinn, wenn der Transformator als Ganzes dargestellt werden will. Soll hingegen die Spannung an jeder Wicklung berechnet werden, kann dieses bereits bekannte, jedoch zu simple Ersatzschaltbild nicht verwendet werden. Es gilt nun, ein neues und genaueres Ersatzschaltbild zu finden. 
 
 \begin{figure}
 	\centering
@@ -37,12 +39,12 @@ Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} darges
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{./trafo/images/Trafo_Modell.pdf}
-	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die Leitwerte zwischen den Wicklungen und gegen"uber Masse sind auf Grund der "Ubersichtlichkeit weggelassen worden. Die gr"unen Pfeile stellen die Mitkopplung der Spulen dar. }
+	\includegraphics[width=\hsize]{./trafo/images/Trafo_Modell.pdf}
+	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die Leitwerte zwischen den Wicklungen und gegen"uber Masse sind auf Grund der "Ubersichtlichkeit weggelassen worden. Die gr"unen Pfeile stellen die Mitkopplung, das heisst die Str"ome welche durch das Eigenfeld einer Windung in die anderen Windungen induziert wird, der Spulen dar. }
 	\label{trafo:erweitertes_ESB}
 \end{figure}
 
-Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD-Programm notwendig. Alle Wicklungen, abgesehen von einer, werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Wicklungen ermittelt.
+Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD-Programm notwendig. Das Simulationsmodell des Transformators besteht aus in sich geschlossenen Windungen. Weil ein Transformator rotationssymmetrisch ist, kann auf eine rechenintensive 3D Feldsimulation verzichtet werden. \color{red} Noch genau erkl"aren. Eventuell w"are eine Grafik eines Modells hilfreich. \color{black}. Alle Windungen, abgesehen von einer, werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Wicklungen ermittelt.
 
 \subsection{Blitzstoss}
 \color{red}TODO\color{black}
@@ -54,7 +56,7 @@ Nun gilt es, eine Differentialgleichung f"ur das gefundene Ersatzschaltbild aufz
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{./trafo/images/orig_trafo.pdf}
+	\includegraphics[width=\hsize]{./trafo/images/orig_trafo.pdf}
 	\caption[Erweitertes Ersatzschaltbild f"ur einen Transformator mit Maschensatz und Knotenpunkt]{Erweitertes Ersatzschaltbild f"ur einen Transformator mit 4 Wicklungen. Die blauen Pfeil stellen den Maschensatz und die roten Punkte die Knotenpunktregel dar.}
 	\label{trafo:orig}
 \end{figure}
@@ -70,7 +72,7 @@ und
 \end{equation}
 geschrieben werden. 
 
-Mit einigen Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm des Systems, sprich in diesem Falle der Blitzstoss.
+Mit einigen Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm des Systems, welcher in diesem Falle der Blitzstoss ist.
 
 {\footnotesize 
 \begin{align}
@@ -81,10 +83,10 @@ Mit einigen Umformungen kann der ganze Transformator als System mehreren Differe
 			0&L_{21}&L_{22}&L_{23}&L_{24} & 0&0&0&0 \\
 			0&L_{31}&L_{32}&L_{33}&L_{34} & 0&0&0&0 \\
 			0&L_{41}&L_{42}&L_{43}&L_{44} & 0&0&0&0 \\
-			0&0&0&0&0 & \sum{C_{1x}}&-C_{12}&-C_{13}&-C_{14} \\
-			0&0&0&0&0 & -C_{21}&\sum{C_{2x}}&-C_{23}&-C_{24} \\
-			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3x}}&-C_{34} \\
-			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4x}}
+			0&0&0&0&0 & \sum{C_{1\mathrm{x}}}&-C_{12}&-C_{13}&-C_{14} \\
+			0&0&0&0&0 & -C_{21}&\sum{C_{2\mathrm{x}}}&-C_{23}&-C_{24} \\
+			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3\mathrm{x}}}&-C_{34} \\
+			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4\mathrm{x}}}
 			    \end{bmatrix}}_{\text{$M$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -106,10 +108,10 @@ Mit einigen Umformungen kann der ganze Transformator als System mehreren Differe
 			0&0&-R_{22}&0&0 & 0&1&-1&0 \\
 			0&0&0&-R_{33}&0 & 0&0&1&-1 \\
 			0&0&0&0&-R_{44} & 0&0&0&1 \\
-			1&-1&0&0&0 & -\sum G_{1x}&G_{12}&G_{13}&G_{14} \\
-			0&1&-1&0&0 & G_{21} &- \sum G_{2x}& G_{23}& G_{24} \\
-			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3x}&G_{34} \\
-			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4x}
+			1&-1&0&0&0 & -\sum G_{1\mathrm{x}}&G_{12}&G_{13}&G_{14} \\
+			0&1&-1&0&0 & G_{21} &- \sum G_{2\mathrm{x}}& G_{23}& G_{24} \\
+			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3\mathrm{x}}&G_{34} \\
+			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4\mathrm{x}}
 			\end{bmatrix}}_{\text{$N$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -152,10 +154,10 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 			0&\color{red}-\color{black}L_{21}&\color{red}-\color{black}L_{22}&\color{red}-\color{black}L_{23}&\color{red}-\color{black}L_{24} & 0&0&0&0 \\
 			0&\color{red}-\color{black}L_{31}&\color{red}-\color{black}L_{32}&\color{red}-\color{black}L_{33}&\color{red}-\color{black}L_{34} & 0&0&0&0 \\
 			0&\color{red}-\color{black}L_{41}&\color{red}-\color{black}L_{42}&\color{red}-\color{black}L_{43}&\color{red}-\color{black}L_{44} & 0&0&0&0 \\
-			0&0&0&0&0 & \sum{C_{1x}}&-C_{12}&-C_{13}&-C_{14} \\
-			0&0&0&0&0 & -C_{21}&\sum{C_{2x}}&-C_{23}&-C_{24} \\
-			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3x}}&-C_{34} \\
-			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4x}}
+			0&0&0&0&0 & \sum{C_{1\mathrm{x}}}&-C_{12}&-C_{13}&-C_{14} \\
+			0&0&0&0&0 & -C_{21}&\sum{C_{2\mathrm{x}}}&-C_{23}&-C_{24} \\
+			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3\mathrm{x}}}&-C_{34} \\
+			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4\mathrm{x}}}
 			    \end{bmatrix}}_{\text{$M$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -177,10 +179,10 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 			0&0&\color{red}+\color{black}R_{22}&0&0 & 0&\color{red}-\color{black}1&\color{red}+\color{black}1&0 \\
 			0&0&0&\color{red}+\color{black}R_{33}&0 & 0&0&\color{red}-\color{black}1&\color{red}+\color{black}1 \\
 			0&0&0&0&\color{red}+\color{black}R_{44} & 0&0&0&\color{red}-\color{black}1 \\
-			1&-1&0&0&0 & -\sum G_{1x}&G_{12}&G_{13}&G_{14} \\
-			0&1&-1&0&0 & G_{21} &- \sum G_{2x}& G_{23}& G_{24} \\
-			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3x}&G_{34} \\
-			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4x}
+			1&-1&0&0&0 & -\sum G_{1\mathrm{x}}&G_{12}&G_{13}&G_{14} \\
+			0&1&-1&0&0 & G_{21} &- \sum G_{2\mathrm{x}}& G_{23}& G_{24} \\
+			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3\mathrm{x}}&G_{34} \\
+			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4\mathrm{x}}
 			\end{bmatrix}}_{\text{$N$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -194,7 +196,7 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 			u_3 \\
 			u_4
 			\end{bmatrix}}_{\text{$x$}}
-			+
+			\color{red}-\color{black}
 			\underbrace{\begin{bmatrix}
 			u_\mathrm{in} \\
 			0 \\
@@ -210,23 +212,23 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 \end{align}
 }
 
-Dieses System mehrere Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas "ubersichtlicher darstellen l"asst. 
+Dieses System mehrerer Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas "ubersichtlicher darstellen l"asst. 
 
 \begin{equation}
-	M \cdot \dot x = N \cdot x + E
+	M \dot x = N x + E
 	\label{trafo:matricesDGL}
 \end{equation}
 
 Wird die Massenmatrix $M$ auf die rechte Seite der Gleichung \ref{trafo:matricesDGL} dividiert, ergibt dies
 
 \begin{equation}
-	\dot{x} = M^{-1} \cdot N \cdot x + M^{-1} \cdot E = A \cdot x + B
+	\dot{x} = M^{-1}N x + M^{-1} E = A x + B
 \end{equation}
 welches die allgemein bekannte und auch l"osbare Zustandsraumdarstellung \index{Zustandsraumdarstellung} (engl. state space) ist.
 
-Das Problem scheint bereits gel"ost zu sein, insofern sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
+Das Problem scheint bereits gel"ost zu sein, wenn sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
 
-Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst ressourcenschonend invertiert und die Eigenwerte der Inversion im Griff hat. 
+Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst ressourcenschonend invertiert und bei der Inversion der Eigenwerte die L"osung stabil bleibt. 
 
 
 \subsection{Singular Value Decomposition (SVD) \index{Singular Value Decomposition}}
@@ -234,12 +236,12 @@ Eine M"oglichkeit stellt die Singular Value Decomposition, zu Deutsch Singul"arw
 
 \begin{satz}
 	\label{trafo:SVDTheorem}
-	(\textit{SVD Theorem}) Sei $M\in \mathbb{R}^{n \times m}$ eine besetzte Matrix mit Rang $r$. Dann kann $M$ als Produkt von
+	(\textit{SVD Theorem}) Sei $M\in \mathbb{R}^{n \times m}$ eine besetzte Matrix mit Rang $r$. Dann kann $M$ als Produkt
 	\begin{equation}
 		M = USV^\top
 		\label{trafo:svd}
 	\end{equation} 
-	geschrieben werden, wenn $U \in \mathbb{R}^{n \times n}$ und $V \in \mathbb{R}^{m \times m}$ orthogonal sind und $S \in \mathbb{R}^{n \times m}$ eine rechteckige Diagonalmatrix ist 
+	geschrieben werden, wobei $U \in \mathbb{R}^{n \times n}$ und $V \in \mathbb{R}^{m \times m}$ orthogonal sind und $S \in \mathbb{R}^{n \times m}$ eine rechteckige Diagonalmatrix ist 
 	\begin{equation*}
 		S = \left( 
 			\begin{array}{ccc|ccc}
@@ -259,13 +261,11 @@ F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf di
 
 Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotationen, es sind dies die Matrizen $U$ und $V^\top$, und einer Streckung durch die Diagonalmatrix $S$. Dieser Vorgang ist in Abbildung \ref{trafo:SVDFig} dargestellt. 
 
-Die Matrix $U$ besitzt in der Senkrechte Eigenvektoren
+Die Matrix $U$ besitzt in der senkrechte Eigenvektoren
 \begin{equation*}
 	\left( 
 		\begin{array}{cccc}
-		& & & \\
-		u_1 & u_2 & \dots & u_n  \\
-		& & & 			
+		u_1 & u_2 & \dots & u_n  \\		
 		\end{array}
 	\right) 
 \end{equation*}
@@ -273,16 +273,16 @@ und l"asst sich mit
 \begin{equation*}
 	M M^\top = U S \underbrace{V^\top V}_{E} S^\top U^\top = U \underbrace{S S^\top}_{S^2} U
 \end{equation*}
-berechnen und anschliessend aufl"osen \cite{tafo:Watkins}.
+berechnen und anschliessend aufl"osen \cite{trafo:Watkins}. \color{red}TODO\color{black}
 
 Die Matrix $V$ besitzt in der Vertikale Eigenvektoren
 \begin{equation*}
 	\left( 
-		\begin{array}{ccc}
-		& {v_1}^{\top} & \\
-		& {v_2}^{\top} & \\
-		& \vdots & \\
-		&  {v_m}^{\top} & \\			
+		\begin{array}{c}
+		{v_1}^{\top}\\
+		{v_2}^{\top}\\
+		\vdots\\
+		{v_m}^{\top}\\			
 		\end{array}
 	\right) 
 \end{equation*}
@@ -292,7 +292,7 @@ und l"asst sich mit
 \end{equation*}
 berechnen und anschliessend aufl"osen \cite{trafo:Watkins}.
 
-Als etwas schnellere Alternative kann auch die Berechnung aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
+Als etwas schnellere Alternative kann die Berechnung von $V$ auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
 \begin{align*}
 	M^\top &= V \underbrace{S^\top}_{S} U^\top\\
 	S^{-1} M^\top &= V U^\top\\
@@ -306,10 +306,10 @@ Als etwas schnellere Alternative kann auch die Berechnung aus der Gleichung \ref
 	\label{trafo:SVDFig}
 \end{figure}
 
-Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die beiden Matrizen $U$ und $V$ im Betrag identisch. Falls die Eigenwerte der Matrix $M$ alle dasselbe Vorzeichen besitzen, sind die Matrizen $U$ und $V$ gar identisch. Weil ein Transformator rein logisch gesehen unbedingt eine D"ampfung, sprich alle Eigenwerte negativ, haben muss, gilt $U = V$. Dies kann auch nummerisch verifiziert werden.
+Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die beiden Matrizen $U$ und $V$ im Betrag identisch. Falls die Eigenwerte der Matrix $M$ alle dasselbe Vorzeichen besitzen, sind die Matrizen $U$ und $V$ gar identisch. Weil ein Transformator physikalisch gesehen unbedingt eine D"ampfung haben muss, soll heissen alle Eigenwerte einen negative Realteil besitzen, gilt $U = V$. Dies kann auch nummerisch verifiziert werden.
 
 \subsubsection{Unterdr"uckung von unerw"unschten Eigenwerten}
-Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
+Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physikalisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
 \begin{equation*}
 	S = \left( 
 			\begin{array}{cccccc}
@@ -327,11 +327,11 @@ Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu ei
 \subsubsection{Inversion}
 Als weiteres gilt es, eine einfache 'Inversion' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst.
 \begin{equation*}
-	M^{-1} = \left(USV^\top\right)^{-1} = \left(V^\top\right)^{-1} \cdot S^{-1} \cdot U^{-1}
+	M^{-1} = \left(USV^\top\right)^{-1} = \left(V^\top\right)^{-1} S^{-1} U^{-1}
 \end{equation*}
 Da die Matrizen $U$ und $V$ symmetrisch sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung als 
 \begin{equation*}
-	M^{-1} = V \cdot S^{-1} \cdot U^\top
+	M^{-1} = V S^{-1} U^\top
 \end{equation*}
 geschrieben werden.
 
@@ -343,27 +343,27 @@ Die Implementation in Matlab l"asst sich sehr kompakt und elegant darstellen. Wi
 {\scriptsize \lstinputlisting{./trafo/code/svd.m}}
 
 \subsubsection{Resultate}
-Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen erstellt werden. Als L"osungsverfahren wurde das etwas langsame, jedoch genaue nummerische Verfahren \textit{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lassen sich die Unterschiede der gew"ahlten Toleranzen sehr gut erkennen. Wenn die Toleranzen $10^{-11}$ und $10^{-12}$ gew"ahlt werden, l"asst sich das Problem l"osen, jedoch ist das Verhalten des Systems erfahrungsgem"ass nicht ganz realistisch. Die L"osung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tats"achlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die L"osung und ist somit nicht mehr brauchbar.
+Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen erstellt werden. Als L"osungsverfahren wurde das etwas langsame, jedoch genaue nummerische Verfahren \texttt{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lassen sich die Unterschiede der gew"ahlten Toleranzen sehr gut erkennen. Wenn die Toleranzen $10^{-11}$ und $10^{-12}$ gew"ahlt werden, l"asst sich das Problem l"osen, jedoch ist das Verhalten des Systems erfahrungsgem"ass nicht ganz realistisch. Die L"osung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tats"achlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die L"osung und ist somit nicht mehr brauchbar. Dieser Fall ist in Abbildung \ref{trafo:SVDTol} unten rechts dargestellt. Die y-Achse f"uhrt nummerisch von minus bis plus Unendlich.
 
 	\begin{figure}
 	    \centering
 	    \begin{minipage}{.5\textwidth}
 	        \centering
-	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd11.png}
+	        \includegraphics[width=\linewidth]{./trafo/images/svd11.png}
 	    \end{minipage}%
 	    \begin{minipage}{.5\textwidth}
 	        \centering
-	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd12.png}
+	        \includegraphics[width=\linewidth]{./trafo/images/svd12.png}
 	    \end{minipage}
 		\begin{minipage}{.5\textwidth}
 	        \centering
-	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd13.png}
+	        \includegraphics[width=\linewidth]{./trafo/images/svd13.png}
 	    \end{minipage}%
 	    \begin{minipage}{.5\textwidth}
 	        \centering
-	        \includegraphics[width=0.7\linewidth]{./trafo/images/svd14.png}
+	        \includegraphics[width=\linewidth]{./trafo/images/svd14.png}
 	    \end{minipage}
-	    \caption{Numerische Berechnungen mit verschiedenen Toleranzen. }
+	    \caption{Numerische Berechnungen mit verschiedenen Toleranzen. Abgebildet sind Str"ome und Spannungen s"amtlicher Windungen. In der Abbildung unten rechts ist ersichtlich, dass die L"osungen bei einer zu klein gew"ahlten Toleranz explodieren und die L"osungen divergieren (es sei auf die Skala der y-Achse hingewiesen). }
 	    \label{trafo:SVDTol}
 	\end{figure}
 
@@ -375,12 +375,12 @@ Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen
 
 \subsection{Optimierungen}
 
-Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Einen grossen Optimierungsschritt ist bereits beim "Ubergang von der $ode45$- zur exakten L"osung passiert. Potential zur Verbesserung ist jedoch immer vorhanden.
+Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Einen grossen Optimierungsschritt ist bereits beim "Ubergang von der \texttt{ode45}- zur exakten L"osung passiert. Potential zur Verbesserung ist jedoch immer vorhanden.
 
 Der wesentliche Teil der Berechnung, welche beeinflusst werden kann, ist die \textit{for}-Schleife. Diese wird so oft durchlaufen, wie die Anzahl der Schritte gew"ahlt wurde. Deshalb soll das Ziel sein, m"oglichst wenig in dieser Schleife zu berechnen. 
 
 \subsubsection{Exponentialfunktion der Eigenwerte}
-Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{-\Lambda \cdot \Delta t}$, welche bei jedem Zeitschritt mit den neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, h"alt sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen in einer \textit{spars}-Matrix). 
+Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{-\Lambda \cdot \Delta t}$, welche bei jedem Zeitschritt mit den neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, h"alt sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen in einer \textit{sparse}-Matrix). 
 
 \subsubsection{Lineare Interpolation}
 Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels Umformungen in die Darstellung 
@@ -407,6 +407,7 @@ geschrieben werden, wenn $f$ die Differenz der zwei Vektoren $f_0$ und $f_1$ ist
 Der Matlab-Code kann jetzt folgendermassen geschrieben werden.
 
 {\scriptsize \lstinputlisting{./trafo/code/compact.m}}
+
 
 \subsubsection{Vergleich}
 
@@ -459,7 +460,7 @@ Da die Herstellung von Transformatoren nie optimal abl"auft, k"onnen sich auch L
 \end{figure}
 
 \subsection{Schlussfolgerung}
-Das Problem kann erfolgreich formuliert werden und automatisiert werden. Mit mathematischen Hilfsmitteln ist es auch m"oglich, grosse Matrizen zu berechnen. \color{red} TODO
+Das Problem kann erfolgreich formuliert werden und automatisiert werden. Mit mathematischen Hilfsmitteln ist es auch m"oglich, grosse Matrizen zu berechnen. \color{red} TODO \color{black}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
