@@ -178,17 +178,17 @@ pickup pencircle scaled 0.5pt;
 z3 = point 50 of p;
 z4 = (3 * u, 1 * v);
 draw z3--z4 withcolor red;
-label.rt(btex Gleichung (16.10) etex, z4);
+label.rt(btex $\varrho$-Term dominiert: Wachstum mit Potenzgesetz etex, z4);
 
 z5 = point 400 of p;
 z6 = (6 * u, 4 * v);
 draw z5--z6 withcolor green;
-label.rt(btex Gleichung (16.9) etex, z6);
+label.rt(btex $\varkappa$-Term dominiert: lineares Wachstum etex, z6);
 
 z7 = (point 1700 of p);
-z8 = (17 * u, 12 * v);
+z8 = (15 * u, 21 * v);
 draw z7--z8 withcolor blue;
-label.bot(btex Gleichung (16.8) etex, z8);
+label.lft(btex $\Lambda$-Term dominiert: exponentielles Wachstum etex, z8);
 
 endfig;
 
@@ -325,11 +325,11 @@ pickup pencircle scaled 1pt;
 drawarrow z3--z4;
 label.lrt(btex $F_G$ etex, 0.8[z3,z4]);
 
-z5 = (-sind(b), cosd(b));
+z5 = (cosd(b), sind(b));
 z6 = z3 shifted (z5 scaled (0.4 * r));
 
 drawarrow z3--z6 withcolor blue;
-label.urt(btex $v$ etex, z6) withcolor blue;
+label.ulft(btex $v$ etex, z6) withcolor blue;
 
 endfig;
 
