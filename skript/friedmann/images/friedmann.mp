@@ -384,7 +384,7 @@ label.ulft(btex $v$ etex, z6) withcolor blue;
 endfig;
 
 %
-%
+% Big Crunch für verschiedene Werte von E
 %
 beginfig(6)
 
