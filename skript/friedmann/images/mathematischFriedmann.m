@@ -13,9 +13,9 @@ t3 = t(1500:end);
 a3 = a(1500:end);
 
 linewidth = 2;
-text1 = ' Gleichung (16.10)';
-text2 = ' Gleichung (16.9)';
-text3 = ' Gleichung (16.8)';
+text1 = ' \rho-Term dominert: potenzielles Wachstum';
+text2 = ' \kappa-Term dominert: lineares Wachstum';
+text3 = ' \Lambda-Term dominert: exponentielles Wachstum';
 f = figure(1);
 clf;
 hold on;
