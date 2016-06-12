@@ -63,7 +63,28 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
+% Matlab
 \usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    %numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 \lstdefinestyle{Matlab}{
   numbers=left,
   belowcaptionskip=1\baselineskip,
@@ -107,7 +128,14 @@
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
-%\addbibresource{thema/main.bib}
+\addbibresource{friedmann/main.bib}
+\addbibresource{komplex/main.bib}
+\addbibresource{kreis/main.bib}
+\addbibresource{licht/main.bib}
+\addbibresource{schrittlaenge/main.bib}
+\addbibresource{sir/main.bib}
+\addbibresource{trafo/main.bib}
+\addbibresource{wellen/main.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
 %\pgfplotsset{compat=1.12}

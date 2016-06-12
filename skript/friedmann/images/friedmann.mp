@@ -178,17 +178,17 @@ pickup pencircle scaled 0.5pt;
 z3 = point 50 of p;
 z4 = (3 * u, 1 * v);
 draw z3--z4 withcolor red;
-label.rt(btex Gleichung (16.10) etex, z4);
+label.rt(btex $\varrho$-Term dominiert: Wachstum mit Potenzgesetz etex, z4);
 
 z5 = point 400 of p;
 z6 = (6 * u, 4 * v);
 draw z5--z6 withcolor green;
-label.rt(btex Gleichung (16.9) etex, z6);
+label.rt(btex $\varkappa$-Term dominiert: lineares Wachstum etex, z6);
 
 z7 = (point 1700 of p);
-z8 = (17 * u, 12 * v);
+z8 = (15 * u, 21 * v);
 draw z7--z8 withcolor blue;
-label.bot(btex Gleichung (16.8) etex, z8);
+label.lft(btex $\Lambda$-Term dominiert: exponentielles Wachstum etex, z8);
 
 endfig;
 
@@ -280,6 +280,243 @@ endfig;
 %
 
 beginfig(4)
+
+numeric u, v;
+u := 60;
+v := 30;
+
+z0 = (0,0);
+z1 = (5 * u, 0);
+z2 = (0, 5 * v);
+
+path boundary;
+boundary := z0--z1--(z1 shifted z2)--z2--cycle;
+
+input "szenarios.mp";
+
+pickup pencircle scaled 1pt;
+
+draw apos withcolor red;
+draw azero withcolor green;;
+draw aneg withcolor blue;
+
+clip currentpicture to boundary;
+
+drawarrow (z0 shifted (-10,0))--(z1 shifted (10,0));
+drawarrow (z0 shifted (0,-10))--(z2 shifted (0,10));
+label.lft(btex $a$ etex, z2 shifted (0,10));
+label.top(btex $t$ etex, z1 shifted (10,0));
+
+draw (1 * u, -2)--(1 * u, 2);
+label.bot(btex $1$ etex, (1 * u, -2));
+
+draw (2 * u, -2)--(2 * u, 2);
+label.bot(btex $2$ etex, (2 * u, -2));
+
+draw (3 * u, -2)--(3 * u, 2);
+label.bot(btex $3$ etex, (3 * u, -2));
+
+draw (4 * u, -2)--(4 * u, 2);
+label.bot(btex $4$ etex, (4 * u, -2));
+
+draw (5 * u, -2)--(5 * u, 2);
+label.bot(btex $5$ etex, (5 * u, -2));
+
+draw (-2, 2 * v)--(2, 2 * v);
+label.lft(btex $2$ etex, (-2, 2 * v));
+draw (-2, 4 * v)--(2, 4 * v);
+label.lft(btex $4$ etex, (-2, 4 * v));
+
+label.ulft(btex $E > 0$ etex, point 230 of apos) withcolor red;
+label.lrt(btex $E=0$ (Fluchtgeschwindigkeit) etex, point 280 of azero) withcolor green;
+label.urt(btex $E < 0$ etex, point 175 of aneg) withcolor blue;
+
+endfig;
+
+%
+% Illustration Gravitation Energieerhaltung
+%
+beginfig(5)
+
+z0 = (0,0);
+
+pickup pencircle scaled 0.7pt;
+numeric r;
+r := 80;
+path kreis;
+kreis := z0 shifted (r,0);
+for a = 1 step 1 until 359:
+	kreis := kreis--(r * (cosd(a), sind(a)));
+endfor;
+kreis := kreis--cycle;
+
+draw kreis dashed evenly withcolor red;
+
+z2 = r * (cosd(80), sind(80));
+draw z0--z2 withcolor red;
+label.lft(btex $D$ etex, 0.5[z0,z2]) withcolor red;
+
+pickup pencircle scaled 10pt;
+draw z0 withcolor green;
+label.llft(btex $M$ etex, z0 shifted (-5,-5)) withcolor green;
+
+numeric b;
+b := 40;
+
+z1 = (cosd(b), sind(b));
+z3 = z1 scaled r;
+pickup pencircle scaled 4pt;
+draw (z1 scaled r) withcolor blue;
+label.rt(btex $m$ etex, (z1 scaled r) shifted (2,0)) withcolor blue;
+
+z4 = z1 scaled (0.6 * r);
+
+pickup pencircle scaled 1pt;
+drawarrow z3--z4;
+label.lrt(btex $F_G$ etex, 0.8[z3,z4]);
+
+z5 = (cosd(b), sind(b));
+z6 = z3 shifted (z5 scaled (0.4 * r));
+
+drawarrow z3--z6 withcolor blue;
+label.ulft(btex $v$ etex, z6) withcolor blue;
+
+endfig;
+
+%
+% Big Crunch für verschiedene Werte von E
+%
+beginfig(6)
+
+numeric u, v;
+u := 15;
+v := 100;
+
+input "bigcrunch.mp";
+
+pickup pencircle scaled 1pt;
+
+color gruen;
+gruen = (0,0.8,0);
+
+draw ahalf withcolor gruen;
+draw aone withcolor (0.8,1,0.8);
+draw atwo withcolor (0.8,1,0.8);
+
+z0 = (0,0);
+z1 = (9 * u, 0);
+z2 = (0, 2 * v);
+
+z10 = (-150, 0);
+z11 = ( -50, 0);
+z12 = z10 shifted z2;
+
+z21 = z1 shifted (30,0);
+z20 = z21 shifted (100,0);
+z22 = z20 shifted z2;
+
+fill (-28,-5)--(-8,-5)--(-8, 2*v + 10)--(-28, 2*v + 10)--cycle withcolor 0.95;
+fill (z21 shifted (-27,-5))--(z21 shifted (-6,-5))--(z21 shifted (-7, 2*v + 10))--(z21 shifted (-27, 2*v + 10))--cycle withcolor 0.95;
+
+drawarrow (z0 shifted (-5, 0))--(z1 shifted (5,0));
+drawarrow (z0 shifted (0,-5))--(z2 shifted (0,5));
+label.rt(btex $a$ etex, z2 shifted (0,5));
+label.top(btex $t$ etex, z1 shifted (5,0));
+
+drawarrow (z10 shifted (-5, 0))--(z11 shifted (5,0));
+drawarrow (z10 shifted (0,-5))--(z12 shifted (0,5));
+label.rt(btex $a$ etex, z12 shifted (0,5));
+label.top(btex $f(a)$ etex, z11 shifted (10,0));
+
+pickup pencircle scaled 0.4pt;
+
+draw (z10 shifted (0, 2 * v))--(z20 shifted (0, 2 * v));
+draw (z10 shifted (0, 1 * v))--(z20 shifted (0, 1 * v));
+draw (z10 shifted (0, 0.5 * v))--(z20 shifted (0, 0.5 * v));
+label.top(btex $E=-2$ etex, (0.3[z21,z20]) shifted (0, 0.5 * v));
+label.top(btex $E=-1$ etex, (0.3[z21,z20]) shifted (0, 1 * v));
+label.top(btex $E=-\frac12$ etex, (0.3[z21,z20]) shifted (0, 2 * v));
+
+pickup pencircle scaled 1pt;
+
+numeric flimit;
+flimit := 3;
+
+def f(expr a, E) =
+	sqrt(1/a - E)
+enddef;
+
+def fpoint(expr a, E) =
+	((100 * f(a, E) / flimit, a * v) shifted z10)
+enddef;
+
+path p;
+def fcurve(expr E) =
+	p := fpoint(1/E, E);
+	numeric amin;
+	amin := 1/(flimit * flimit + E);
+	numeric da;
+	da := 0.01;
+	for a = 1/E - da step -da until amin:
+		p := p--fpoint(a, E);
+	endfor;
+	p := p--fpoint(amin, E);
+enddef;
+fcurve(2);
+draw p withcolor (1,0.8,0.8);
+fcurve(1);
+draw p withcolor (1,0.8,0.8);
+fcurve(0.5);
+draw p withcolor red;
+
+def g(expr a, E) =
+	-f(a, E)
+enddef;
+
+def gpoint(expr a, E) =
+	((100 * g(a, E) / flimit, a * v) shifted z20)
+enddef;
+
+def gcurve(expr E) =
+	p := gpoint(1/E, E);
+	numeric amin;
+	amin := 1 / (flimit * flimit + E);
+	numeric da;
+	da := 0.01;
+	for a = 1/E - da step -da until amin:
+		p := p--gpoint(a, E);
+	endfor;
+	p := p--gpoint(amin, E);
+enddef;
+gcurve(2);
+draw p withcolor (0.8,0.8,1);
+gcurve(1);
+draw p withcolor (0.8,0.8,1);
+gcurve(0.5);
+draw p withcolor blue;
+
+drawarrow (z20 shifted (0,-5))--(z22 shifted (0,5));
+drawarrow (z21 shifted (-5,0))--(z20 shifted (10,0));
+label.lft(btex $a$ etex, z22 shifted (0,5));
+label.top(btex $f(a)$ etex, z20 shifted (10,0));
+
+numeric a;
+for i = 0 step 1 until 7:
+	a := 0.15 + i * 0.25;
+	draw (z10 shifted (0,a * v))--fpoint(a,0.5) withcolor red;
+	%drawarrow (-25 + 2 * i,a * v)--(-25 + 2 * i,a * v + 100 * f(a, 0.5) / flimit)
+	drawarrow
+		(-25 + 2 * i,a * v - 50 * f(a, 0.5) / flimit)
+		--
+		(-25 + 2 * i,a * v + 50 * f(a, 0.5) / flimit)
+		withcolor red;
+	draw (z20 shifted (0,a * v))--gpoint(a,0.5) withcolor blue;
+	drawarrow 
+		((-10 - 2 * i,a * v + 50 * f(a, 0.5) / flimit)
+		--
+		(-10 - 2 * i,a * v - 50 * f(a, 0.5) / flimit)
+		) shifted z21 withcolor blue;
+endfor;
 
 endfig;
 

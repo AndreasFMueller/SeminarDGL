@@ -50,16 +50,19 @@ if (!file_loaded && isempty(kmaxpath) && isempty(n4path))
 	exit(-1)
 endif
 
-set(0, "defaultaxesfontname", "Helvetica");
+set(0, "DefaultAxesFontName", "Helvetica");
+set(0, "DefaultAxesFontSize", fontsize);
+set(0, "DefaultTextFontName", "Helvetica");
+set(0, "DefaultTextFontSize", fontsize);
 figure("visible", "off");
 hold("on");
 grid("on");
 
 if (!isempty(kmaxpath))
-	count = 3;
-	for i = (30:30:240)
+	count = 4;
+	for i = (240:-30:30)
 		load(sprintf('%s/kmax-%d.dat', kmaxpath, i));
-		plot(x, y, sprintf('%d;;', mod(count++, 6)));
+		plot(x, y, sprintf('%d;;', mod(count--, 6)));
 	endfor
 elseif (!isempty(n4path))
 	load(sprintf('%s/n2.dat', n4path));
@@ -69,17 +72,17 @@ elseif (!isempty(n4path))
 	plot(x, p, sprintf('%d;p(x), n = 4;', 4));
 	plot(x, y, sprintf('%d;y(x), n = 4;', 1));
 else
-	plot(x, p, '2;p(x);');
-	plot(x, y, '3;y(x);');
 	if (!isempty(n2zeros))
 		plot([n2zeros(1), n2zeros(1)], [0, n2zeros(3)], '1;;');
 		plot([n2zeros(2), n2zeros(2)], [0, n2zeros(4)], '1;;');
 	endif
+	plot(x, p, '2;p(x);');
+	plot(x, y, '3;y(x);');
 endif
 
 axis([x_min, x_max, y_min, y_max]);
 xlabel("x");
 ylabel("y(x)");
-print("-depsc2", filename, sprintf('-F:%d', fontsize));
+print("-depsc2", filename);
 
 toc();
