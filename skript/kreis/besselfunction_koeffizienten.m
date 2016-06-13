@@ -12,7 +12,7 @@ for i=1:length(n)
   leg=strcat(leg,'$J_{',num2str(n(i)),'}(r)$;');
 endfor
 grid on;
-axis([r(1) r(length(r)) -0.5 1]);
+axis([r(1) r(length(r)) -0.45 1]);
 legend(strsplit(leg,';'));
 xlabel('Abstand $r$');
 ylabel('Normierte Amplitude');
