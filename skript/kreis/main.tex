@@ -49,11 +49,21 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 
 %Um die Differenzialgleichung zu l\"osen, w\"ahlen wir den Potenzreihenansatz mit der folgenden Potenzreihe und deren Ableitungen:
 \subsection*{Potenzreihe und deren Ableitungen}
-\begin{align*}
+
+\begin{normalsize}
+	Zum l\"osen der Differenzialgleichung \ref{eq:bessel_dgl} w\"ahlten wir den Ansatz der Potenzreihen-Methode.
+	F\"ur den Ansatz ben\"otigen wir zuerst eine allgemeine Potenzreihe wie \ref{eq:bessel:potenzreihe:allgemein}.
+	Da in der Differenzialgleichung die erste und zweite Ableitung darin vorkommen,
+	muss man die Potenzreihe noch ableiten, was wiederum eine Potenzreiche ergibt,
+	wie \ref{eq:bessel:potenzreihe:ersteableitung} und \ref{eq:bessel:potenzreihe:zweiteableitung} zeigen.
+\end{normalsize}
+\\
+\begin{align}
 	R \left( r \right)
 	&=
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
+	\label{eq:bessel:potenzreihe:allgemein}
 \\
 	R'\left( r \right)
 	&=
@@ -62,6 +72,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	+
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^{k - 1}
+	\label{eq:bessel:potenzreihe:ersteableitung}
 \\
 	R'' \left( r \right)
 	&=
@@ -73,9 +84,38 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	+
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^{k - 2}	
-\end{align*}
+	\label{eq:bessel:potenzreihe:zweiteableitung}
+\end{align}
+\\
+\begin{normalsize}
+	Wie man sieht,
+	wird die Potenzreihe mit zunehmender Ableitung immer gr\"osser und un\"ubersichtlicher.
+	Zudem verringert sich bei jeder Ableitung der Grad der Potenz um 1.
+	Wenn man die Potenz als Stelle nimmt,
+	dann kann man auch sagen,
+	dass sich pro Ableitung,
+	alle Koeffizienten um eine Stelle nach links verschieben.
+	Dank dieser Verschiebung ist es m\"oglich,
+	eine Abh\"anigkeit bzw. eine Rekursion der Koeffizienten zu erreichen.
+	Mit der Rekursion ist es wiederum m\"oglich,
+	nur wenige der Koeffizienten selber zu definieren m\"ussen,
+	was den Freiheitsgrad reduziert und somit die Berechnung vereinfacht.
+	
+	\begin{description}[style = nextline, leftmargin = \parindent, labelindent = \parindent]
+	%[style = multiline, labelwidth = 3.5cm, leftmargin = 3.5cm, itemsep = 1cm]
+		\item[Wieso ist es ein Vorteil, den Freiheitsgrad zu reduzieren?]
+		\dots Parameter reduzieren \dots Anzahl M\"oglichkeiten reduzieren \dots \\
+	\end{description}
+		
+\end{normalsize}
+
 \subsection*{Potenzreihen in Differenzialgleichung \ref{eq:bessel_dgl} einsetzen}
 %Nun kann man die Potenzreihen in die Differenzialgleichung \ref{eq:bessel_dgl} einsetzen und bekommt dann:
+
+\begin{normalsize}
+	
+\end{normalsize}
+
 \begin{align*}
 	\overbrace{
 		\varrho \, \left( \varrho - 1 \right) \, r^{\varrho}
@@ -105,7 +145,9 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}^{\left( r^2 - n^2 \right) \, R \left( r \right)}
 	= & \, 0
 \end{align*}
+
 %Gleiche Summenzeichen zusammenfassen:
+
 \begin{align*}
 	\left(
 	\varrho \, \left( \varrho - 1 \right)
@@ -132,10 +174,13 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
 	= & \, 0
 \end{align*}
+
 \subsection*{Indexgleichung f\"ur $\varrho$}
+
 %Nun muss man eine Indexgleichung für die Unbekannte $\varrho$ aufstellen, um diese zu bestimmen.
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
+
 \begin{align*}
 %	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 && \left| :a_0 \right. \\
 	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 && \left| \text{Ausmultiplizieren} \right. \\
@@ -145,8 +190,10 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\varrho &= \pm n \text{ und } \\
 	\varrho &= \pm 0 %\left( \text{Doppelte Nullstelle} \right)
 \end{align*}
+
 %Wir beschr\"anken uns in diesem Kapitel nur mit der L\"oesung $\varrho = \pm n$. Die L\"osung f\"ur $\varrho = \pm 0$ wird im Kapitel \ref{chapter:komplex} genauer behandelt.
 %Nun kann man $n$ f\"ur $\varrho$ in die Gleichung einsetzen und erh\"alt:
+
 \begin{align*}
 	\left(
 	n \, \left( n - 1 \right)
@@ -173,7 +220,9 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
 	= & \, 0
 \end{align*}
+
 %Als n\"achstes fasst man alles in eine einzige Summe zusammen und vereinfacht diese:
+
 \begin{align*}
 	r^n
 	\sum_{\textcolor{red}{k=2}}^{\infty}
@@ -206,8 +255,10 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\, r^k
 	= 0
 \end{align*}
+
 %Weil $r \neq 0$ sein muss, muss $ \left( 2 \, n \, k + k^2 \right) \, a_k + a_{k - 2} = 0$ sein.
 %Nun kann man eine Rekursion der Koeffizienten $a_k$ berechnen.
+
 \begin{align}
 	a_k
 	=
@@ -219,7 +270,9 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}
 	\label{eq:bessel_koeffreq}
 \end{align}
+
 %Da $k \geq 0$ sein muss, sind nur gerade Koeffizienten m\"oglich. Somit kann man f\"ur $k$ nun $2k$ in die Gleichung \ref{eq:bessel_koeffreq} einsetzen und erh\"alt:
+
 \begin{align*}
 	a_{2k}
 	&=
@@ -251,7 +304,9 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
 \end{align*}
+
 %Setzt man nun f\"ur $a_0 = \frac{1}{2^n \, {n}!}$ ein, so kommt man auf die Form:
+
 \begin{align}
 	J_n \left( r \right)
 	&= \nonumber
@@ -293,6 +348,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}
 	\label{eq:bessel_summenformel}
 \end{align}
+
 %%	Die Gleichung ist für ganzzahlige Koeffizienten.
 %%	Übergang zu Gammafunktion erläutern für allgemeine Formel
 %$\Gamma \left( \alpha \right) = {\left( \alpha - 1 \right) }!$
@@ -328,6 +384,12 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 \newpage
 
 \subsection{Veranschaulichung der Besselfunktion mit Beispielen}
+\begin{itemize}
+	\item Lautsprecher
+	\item Antenne
+	\item Lichtbrechung im Fernglas
+	\item \dots
+\end{itemize}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
