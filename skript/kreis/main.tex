@@ -140,21 +140,21 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 		\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	}^{r^2 \, R''\left( r \right)}
 	+ \\
-	\overbrace{
+	\underbrace{
 		\varrho \, r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
 		+
 		r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, k \, r^k
-	}^{r \, R' \left( r \right)}
-	+ \\
-	\overbrace{
+	}_{r \, R' \left( r \right)}
+	+ 
+	\underbrace{
 		r^{\varrho}
-			\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
+			\sum_{k=0}^{\infty} a_k \, r^{k + 2}
 		-
 		n^2 \, r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
-	}^{\left( r^2 - n^2 \right) \, R \left( r \right)}
+	}_{\left( r^2 - n^2 \right) \, R \left( r \right)}
 	= & \, 0
 \end{align*}
 \\
@@ -162,9 +162,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 \begin{normalsize}
 	Fasst man gleiche Terme zusammen, bekommt man:
 \end{normalsize}
-
 \begin{align}
-	\nonumber
 	\left(
 	\varrho \, \left( \varrho - 1 \right)
 	+ 
@@ -182,23 +180,23 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\right)
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
-	+ \\
+	+
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+ 
 	r^{\varrho}
-	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
-	= & \, 0
+	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
+	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:vereinfacht}
 \end{align}
-
-
+%
 \subsection*{Indexgleichung f\"ur $\varrho$}
-
 %Nun muss man eine Indexgleichung für die Unbekannte $\varrho$ aufstellen, um diese zu bestimmen.
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
-
+\begin{normalsize}
+	Indexgleichung f\"ur $a_0$
+\end{normalsize}
 \begin{align*}
 %	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 && \left| :a_0 \right. \\
 	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 && \left| \text{Ausmultiplizieren} \right. \\
@@ -248,7 +246,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 \begin{normalsize}
 	In der Gleichung \ref{eq:bessel:potenzreihe:dgl:index:eingesetzt} bildet man mehrmals die Summe von $k=0$ bis $k \rightarrow \infty$.
 	Diese Summen kann man zu einer einzigen Summe zusammenfassen und erh\"alt \ref{eq:bessel:summe:zusammengefasst}.
-	Da bei der einen Summe $r^{k+2}$ und nicht wie bei den restlichen Summe $r^k$ vorkommt,
+	Da bei der einen Summe $r^{\textcolor{red}{k+2}}$ und nicht wie bei den restlichen Summe $r^k$ vorkommt,
 	muss man beim Zusammenfassen die Grenzen der Summe anpassen (\textcolor{red}{rot} markiert).
 	Die Gleichung \ref{eq:bessel:summe:zusammengefasst} kann noch zu \ref{eq:bessel:summe:zusammengefasst:vereinfacht} vereinfacht werden.
 \end{normalsize}
@@ -256,7 +254,8 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 \begin{align}
 	r^n
 	\sum_{\textcolor{red}{k=2}}^{\infty}
-	\left( n \, \left( n - 1 \right) \, a_k
+	\left(
+	n \, \left( n - 1 \right) \, a_k 
 	+
 	2 \, n \, k \, a_k
 	+
@@ -266,13 +265,34 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	+
 	k \, a_k
 	+
-	a_{\textcolor{red}{k-2}}
+	a_{\textcolor{red}{k - 2}}
 	-
 	n^2 \, a_k
 	\right)
 	\, r^k
 	= 0 
 	\label{eq:bessel:summe:zusammengefasst}
+	\\
+	\nonumber
+	r^n
+	\sum_{k=2}^{\infty}
+	\left(
+	\underbrace{ \cancel{n} \, \left( \cancel{n} - \bcancel{1} \right) \, a_k }_{= \, 0}
+	+
+	2 \, n \, k \, a_k
+	+
+	\underbrace{k \, \left( k - \xcancel{1} \right) \, a_k}_{=\, k^2 \, a_k}
+	+
+	\underbrace{\bcancel{n} \, a_k}_{= \, 0}
+	+
+	\underbrace{\xcancel{k} \, a_k}_{= \, 0}
+	+
+	a_{k - 2}
+	-
+	\underbrace{\cancel{n^2} \, a_k}_{= \, 0}
+	\right)
+	\, r^k
+	= 0 
 	\\
 	r^n
 	\sum_{k=2}^{\infty}
@@ -287,12 +307,48 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	= 0
 	\label{eq:bessel:summe:zusammengefasst:vereinfacht}
 \end{align}
+\\
 %Weil $r \neq 0$ sein muss, muss $ \left( 2 \, n \, k + k^2 \right) \, a_k + a_{k - 2} = 0$ sein.
 %Nun kann man eine Rekursion der Koeffizienten $a_k$ berechnen.
 \begin{normalsize}
-	
+	\dots Nun muss entweder $r = 0$ sein,
+	damit die Gleichung \ref{eq:bessel:summe:zusammengefasst:vereinfacht} stimmt,
+	oder der Klammerausdruck in der Summe.
+	Da es sinnlos w\"ahre, wenn $r = 0$ ist,
+	was bedeuten w\"urde,
+	dass der Radius $0$ ist,
+	setzten man den Klammerausdruck gleich $0$ und bekommt so f\"ur die Koeffizienten eine Rekursion \ref{eq:bessel_koeffreq}.
 \end{normalsize}
 
+\begin{align*}
+	2 \, n \, k \, a_k
+	+
+	k^2 \, a_k
+	+
+	a_{k - 2}
+	= 0
+	&\Leftrightarrow
+	\left(
+	2 \, n \, k 
+	+
+	k^2 
+	\right)
+	\, a_k
+	+
+	a_{k - 2}
+	= 0 \\
+	\Leftrightarrow
+	k \,
+	\left(
+	2 \, n
+	+
+	k
+	\right)
+	\, a_k
+	= -a_{k - 2}
+	&\Leftrightarrow
+	\text{Rekursion der Koeffizienten \ref{eq:bessel_koeffreq}}
+\end{align*}
 \begin{align}
 	a_k
 	=
@@ -304,9 +360,11 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}
 	\label{eq:bessel_koeffreq}
 \end{align}
-
+\\
 %Da $k \geq 0$ sein muss, sind nur gerade Koeffizienten m\"oglich. Somit kann man f\"ur $k$ nun $2k$ in die Gleichung \ref{eq:bessel_koeffreq} einsetzen und erh\"alt:
-
+\begin{normalsize}
+	\dots nur gerade Koeffizineten m\"oglich \dots alle Abh\"angig von $a_0$
+\end{normalsize}
 \begin{align}
 	\nonumber
 	a_{2k}
