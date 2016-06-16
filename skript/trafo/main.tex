@@ -13,8 +13,16 @@ In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und s
 
 Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet, Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Isolationsfestigkeit in Luft wesentlich schlechter als im "Ol ist. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
 
-Damit die Windungen an Ort gehalten werden k"onnen, sind sie in Epoxidharz eingegossen. Zwischen den Lagen befindet sich gen"ugend Platz, damit Luft oder "Ol zur K"uhlung durchstr"omen kann. Wenn sich beim Giessen des Harzes Luftblasen bilden, k"onnen an diesen Stellen Feld"uberh"ohungen entstehen und ebenfalls zu Teilentladungen f"uhren. \color{red} Bild w"are hilfreich \color{black}
+Damit die Windungen an Ort gehalten werden k"onnen, sind sie in Epoxidharz eingegossen. Zwischen den Lagen befindet sich gen"ugend Platz, damit Luft oder "Ol zur K"uhlung durchstr"omen kann. Ein Resibloc-Testtransformator des Herstellers ABB ist in Abbildung \ref{trafo:resibloc} abgebildet. Es handelt sich dabei um einen luftgekühlten Leistungstransformator, welcher zusätzliche Anschlüsse für Verifikationsmessungen besitzt. 
 
+Wenn sich beim Giessen des Harzes Luftblasen bilden, k"onnen an diesen Stellen Feld"uberh"ohungen entstehen und ebenfalls zu Teilentladungen f"uhren. Diese Luftblasen können im CAD-Programm eingefügt und simuliert werden. Ein Beispiel ist in Abbildung \ref{trafo:E-FieldBubble} präsentiert.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{./Trafo/images/resibloc.jpg}
+	\caption{Resibloc-Testtransformator der Firma ABB. Zwischen den Layern ist der Luftspalt zur Kühlung ersichtlich.}
+	\label{trafo:resibloc}
+\end{figure}
 Fr"uher wurde ein Transformator oder allgemein ein elektronisches Betriebsmittel nach Erfahrungen gebaut. Dabei war es gang und g"abe, dass mehrere Prototypen notwendig waren, bis die ersten Spannungspr"ufungen bestanden werden konnten. Deshalb sind CAD-Simulationen wesentlich schneller und vor allem kosteng"unstiger. Das Ziel soll es sein, den Transformator m"oglichst genau darzustellen und dessen Spannungsverteilung zu berechnen, denn die Spannung und die Geometrie zusammen ergeben das elektrische Feld, welches schlussendlich zu Durchschl"agen oder Teilentladungen f"uhrt.
 
 An der Hochschule f"ur Technik Rapperswil wurde am Institut f"ur Energietechnik eine Methode entwickelt, wie die Spannungsverteilung bei einem Blitzstoss m"oglichst genau simuliert werden kann \cite{trafo:BILImpulse}. Diese Methode funktioniert sehr gut f"ur Leistungstransformatoren und konnte mit Messungen auch verifiziert werden. 
@@ -44,10 +52,31 @@ Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} darges
 	\label{trafo:erweitertes_ESB}
 \end{figure}
 
-Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD-Programm notwendig. Das Simulationsmodell des Transformators besteht aus in sich geschlossenen Windungen. Weil ein Transformator rotationssymmetrisch ist, kann auf eine rechenintensive 3D Feldsimulation verzichtet werden. \color{red} Noch genau erkl"aren. Eventuell w"are eine Grafik eines Modells hilfreich. \color{black}. Alle Windungen, abgesehen von einer, werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Wicklungen ermittelt.
+Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-Element-Methode-(FEM)-Simulationen in einem CAD-Programm notwendig. Das Simulationsmodell im CAD-Programm des Transformators besteht aus in sich geschlossenen Windungen. Weil ein Transformator rotationssymmetrisch ist, kann auf eine rechenintensive 3D Feldsimulation verzichtet werden. Ein Beispiel eines Transformators ist in den Abbildungen \ref{trafo:infolytica} dargestellt.
 
-\subsection{Blitzstoss}
-\color{red}TODO\color{black}
+\begin{figure}
+	\centering    
+	\subfigure[Ganzer Transformator]{
+		\label{fig:a}
+		\includegraphics[height=6cm]{./Trafo/images/infolytica_ganzer_trafo.pdf}}
+	\subfigure[Hochspannungwicklung]{
+		\label{fig:b}
+		\includegraphics[height=6cm]{./Trafo/images/infolytica_windungen.pdf}}
+	\caption{Darstellung eines rotationssymmetrischen Transformator in einem CAD-Programm. In \ref{fig:a} ist der ganze Transformator und in \ref{fig:b} ein Ausschnitt der Hochspannungswicklung abgebildet. Jede Windung ist für sich geschlossen moduliert.}
+	\label{trafo:infolytica}
+\end{figure}
+
+Alle Windungen, abgesehen von einer, werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Wicklung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Wicklungen berechnet. Dieser Vorgang wird für jede Windung wiederholt, bis alle Ersatzparameter für das Modell, und ins besonders für das Differentialgleichungssystem \ref{trafo:DGL}, bestimmt sind.
+
+\subsection{Blitzstoss (\textbf{B}asic \textbf{I}nsulation \textbf{L}evel)}
+Als Testspannung wird ein Blitzstoss wie in Abbildung \ref{trafo:BIL} verwendet. Mit diesem Spannungsimpuls soll die Spannungsfestigkeit bei einem Blitzeinschlag geprüft werden. Nach Norm muss die Anstiegszeit \SI{1.2}{\micro \second} und die Halbwertsababfallszeit (die Zeit, in welcher die Spannung auf \SI{50}{\percent} absinkt) \SI{50}{\micro \second} betragen. Die Höhe der Amplitude wird je nach Betriebsspannung in Kategorien eingeteilt, grundsätzlich beträgt sie aber ungefähr dem 6-fachen der Nennbetriebsspannung. Für die Berechnung wird auf Grund der Linearität meistens \SI{1}{\volt}, oder auch \textit{pro Einheit} (engl. \textit{per unit} [p.u.]), verwendet. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{./Trafo/images/pulse.pdf}
+	\caption{Normierte Blitzstossspannung zur Testung der Durchschlagsfestigkeit.}
+	\label{trafo:BIL}
+\end{figure}
 
 \section{Mathematische L"osung}
 \subsection{Differentialgleichung}
@@ -373,6 +402,41 @@ Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen
 \subsection{Schrittweite und Fehlerterm}
 \color{red}TODO\color{black}
 
+	\begin{figure}
+	    \centering
+	    \begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Sprung101.pdf}
+	    \end{minipage}%
+	    \begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Sprung1001.pdf}
+	    \end{minipage}
+	    \begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Sprung10001.pdf}
+	    \end{minipage}
+		\begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Interp101.pdf}
+	    \end{minipage}%
+	    \begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Interp1001.pdf}
+	    \end{minipage}
+	    \begin{minipage}{.32\textwidth}
+	        \centering
+	        \includegraphics[width=\linewidth]{./Trafo/images/Interp10001.pdf}
+	    \end{minipage}
+	    \caption{Unterschied konstanter und linearer interpolierter Störterm.}
+	\end{figure}
+
+	
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.9\textwidth]{./Trafo/images/differenceTimestep.pdf}
+			\caption{Unterschied konstanter und linearer interpolierter Störterm.}
+		\end{figure}
 \subsection{Optimierungen}
 
 Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Einen grossen Optimierungsschritt ist bereits beim "Ubergang von der \texttt{ode45}- zur exakten L"osung passiert. Potential zur Verbesserung ist jedoch immer vorhanden.
@@ -419,7 +483,7 @@ Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logari
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{./trafo/images/differenceOptimization.pdf}
+	\includegraphics[width=0.9\textwidth]{./trafo/images/differenceOptimization.pdf}
 	\caption{Unterschied zwischen einer sehr schlechten und einer guten Implementierung bei einem Trafomodell mit 500 Windungen.}
 	\label{trafo:Optimierung}
 \end{figure}
@@ -427,6 +491,10 @@ Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logari
 \subsection{Vergleich zwischen numerischer und exakter L"osung}
 \color{red}TODO\color{black}
 
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{./Trafo/images/ode45vsExact.pdf}
+	\end{figure}
 
 \section{Anwendung der gefundenen L"osungen}
 
