@@ -9,16 +9,18 @@
 %
 %
 %Potenzreihenherleitung
-\section{Potenzreihenherleitung der Besselfunktion}
-Das Ziel dieses Abschnittes ist, die Besselfunktion mit der Potenzreihen-Methode die in Kapitel \ref{section:potenzreihen:verallgemeinert} erl\"autert wurde, herzuleiten.
+\section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
+	Das Ziel dieses Abschnittes ist, die Besselfunktion mit der Potenzreihen-Methode die in Kapitel \ref{section:potenzreihen:verallgemeinert} erl\"autert wurde,
+	herzuleiten.
 \dots \\
 %Dieser Abschnitt befasst sich mit der Potenzherleitung der Besselfunktion. 
 %Bei der Herleitung werden Methoden, die in den vorherigen Kapitel  erl\"autert wurden, 
-%verwendet. Zuerst m\"uss eine Differenzialgleichung aufgestellt werden.
+%verwendet. Zuerst m\"uss eine Differentialgleichung aufgestellt werden.
 %Die Besselfunktion kommt aus der Wellengleichung.
 %
-\dots So kommt man auf die Gleichung \ref{eq:bessel_dgl}, welche grosse \"Ahnlichkeit mit der Gleichung \ref{potenzreihen:verallgemeinert-bessel} aufweisst.
-%Die Differenzialgleichung f\"ur die Besselfunktion lautet wiefolgt:
+	\dots So kommt man auf die Gleichung \refeq{eq:bessel:dgl},
+	welche grosse \"Ahnlichkeit mit der Gleichung \refeq{potenzreihen:verallgemeinert-bessel} aufweisst.
+%Die Differentialgleichung f\"ur die Besselfunktion lautet wiefolgt:
 \begin{align}
 	r^2 \, R'' \left( r \right)
 	+
@@ -27,30 +29,34 @@ Das Ziel dieses Abschnittes ist, die Besselfunktion mit der Potenzreihen-Methode
 	\left( r^2 - n^2 \right) \, R \left( r \right)
 	=
 	0
-	\label{eq:bessel_dgl}
+	\label{eq:bessel:dgl}
 \end{align}
-Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert}, gel\"ost und der L\"osungsweg aufgezeigt.
-\subsection*{Vorgehensweise}
-\begin{enumerate}
-	\item Die Potenzreihe und deren Ableitungen berechnet.
-	\item Die Potenzreihen in die Differenzialgleichung \ref{eq:bessel_dgl} eingesetzen, um
+	Im Folgenden wird nun die Gleichung \refeq{eq:bessel:dgl},
+	mithilfe der Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert},
+	gel\"ost und der L\"osungsweg aufgezeigt.
+\subsection[Vorgehensweise]{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
+\begin{compactenum}
+	\item Die Potenzreihe und deren Ableitungen berechnen.
+	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} eingesetzen, um
 	\item die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche
 	\item eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur
-	\item die Besselfunktion mit ganzzahlige Parametern \ref{eq:bessel_summenformel}.
-%	\item Allgemeine Besselfunktion \ref{eq:bessel_summenformel:allgemein}
-\end{enumerate}
+	\item die Besselfunktion mit ganzzahlige Parametern \refeq{eq:bessel_summenformel}.
+%	\item Allgemeine Besselfunktion \refeq{eq:bessel_summenformel:allgemein}
+\end{compactenum}
 
 
-%Um die Differenzialgleichung zu l\"osen, w\"ahlen wir den Potenzreihenansatz mit der folgenden Potenzreihe und deren Ableitungen:
-\subsection*{Potenzreihe und deren Ableitungen}
+%Um die Differentialgleichung zu l\"osen, w\"ahlen wir den Potenzreihenansatz mit der folgenden Potenzreihe und deren Ableitungen:
+\subsection[Potenzreihe und deren Ableitungen]{Potenzreihe und deren Ableitungen berechnen}
 
 \begin{normalsize}
-	Zum l\"osen der Differenzialgleichung \ref{eq:bessel_dgl} w\"ahlten wir den Ansatz der Potenzreihen-Methode.
-	F\"ur den Ansatz ben\"otigen wir zuerst eine allgemeine Potenzreihe wie \ref{eq:bessel:potenzreihe:allgemein}.
-	Da in der Differenzialgleichung die erste und zweite Ableitung darin vorkommen,
-	muss man die Potenzreihe noch ableiten, was wiederum eine Potenzreiche ergibt,
-	wie \ref{eq:bessel:potenzreihe:ersteableitung} und \ref{eq:bessel:potenzreihe:zweiteableitung} zeigen.
+	Wie schon erw\"ahnt,
+	kann mit Hilfe der Potenzreihen-Methode die Differentialgleichung \refeq{eq:bessel:dgl} gel\"ost werden.
+	F\"ur den Ansatz ben\"otigen wir zuerst eine verallgemeinerte Potenzreihe wie \refeq{eq:bessel:potenzreihe:verallgemeinert}.
+	Da in der Differentialgleichung die erste und zweite Ableitung vorkommt,
+	muss die Potenzreihe abgeleitet werden,
+	was wiederum eine Potenzreihe ergibt,
+	wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} zeigen.
 \end{normalsize}
 \\
 \begin{align}
@@ -58,7 +64,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	&=
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
-	\label{eq:bessel:potenzreihe:allgemein}
+	\label{eq:bessel:potenzreihe:verallgemeinert}
 \\
 	R'\left( r \right)
 	&=
@@ -104,27 +110,27 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 %		
 %\end{normalsize}
 
-\subsection*{Potenzreihen in Differenzialgleichung \ref{eq:bessel_dgl} einsetzen}
-%Nun kann man die Potenzreihen in die Differenzialgleichung \ref{eq:bessel_dgl} einsetzen und bekommt dann:
-
-\begin{normalsize}
-	Der n\"achste Schritt ist,
-	die erhaltenen Potenzreihen in die Differenzialgleichung \ref{eq:bessel_dgl} einzusetzen.
-\end{normalsize}
+\subsection[Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen]{Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen \dots}
+%Nun kann man die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} einsetzen und bekommt dann:
+%
+%\begin{normalsize}
+%	Der n\"achste Schritt ist,
+%	die erhaltenen Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} einzusetzen \dots
+%\end{normalsize}
 
 \begin{align*}
-	r^2 \, R'' \left( r \right)
+	\textcolor{mygreen}{r^2 \, R'' \left( r \right)}
 	+
-	r \, R' \left( r \right)
+	\textcolor{teal}{r \, R' \left( r \right)}
 	+
-	\left( r^2 - n^2 \right) \, R \left( r \right)
+	\textcolor{blue}{\left( r^2 - n^2 \right) \, R \left( r \right)}
 	=
 	0
-	\tag{\ref{eq:bessel_dgl}}
+	\tag{\ref{eq:bessel:dgl}}
 \end{align*}
 %
-\begin{align*}
-	\overbrace{
+\begin{align*}	
+	\textcolor{mygreen}{
 		\varrho \, \left( \varrho - 1 \right) \, r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
 		+
@@ -133,45 +139,77 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 		+
 		r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
-	}^{r^2 \, R''\left( r \right)}
+	}
 	+ \\
-	\underbrace{
+	\textcolor{teal}{
 		\varrho \, r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
 		+
 		r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, k \, r^k
-	}_{r \, R' \left( r \right)}
+	}
 	+ 
-	\underbrace{
+	\textcolor{blue}{
+		\biggl(
+		r^2 - n^2
+		\biggr) \,
 		r^{\varrho}
-			\sum_{k=0}^{\infty} a_k \, r^{k + 2}
-		-
-		n^2 \, r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
-	}_{\left( r^2 - n^2 \right) \, R \left( r \right)}
+	}
+	= & \, 0
+\end{align*}
+\begin{normalsize}
+	\dots , ausmultiplizieren \dots
+\end{normalsize}
+\begin{align*}
+	\textcolor{mygreen}{	\varrho \, \left( \varrho - 1 \right)} 
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, r^k
+	+
+	\textcolor{mygreen}{2 \, \varrho}
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, k \, r^k
+	+
+	\textcolor{mygreen}{1}
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
+	+ \\
+	\textcolor{teal}{\varrho}
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, r^k
+	+
+	\textcolor{teal}{1}
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, k \, r^k
+	+ 
+	r^{\varrho}
+		\sum_{k=0}^{\infty} a_k \, r^{k \textcolor{blue}{+ 2}}
+	-
+	\textcolor{blue}{n^2}
+	\, r^{\varrho}
+	\sum_{k=0}^{\infty} a_k \, r^k
 	= & \, 0
 \end{align*}
 \\
 %Gleiche Summenzeichen zusammenfassen:
 \begin{normalsize}
-	Fasst man gleiche Terme zusammen, bekommt man:
+	\dots , die gleichen Terme zusammenzufassen \dots
 \end{normalsize}
 \begin{align}
-	\left(
-	\varrho \, \left( \varrho - 1 \right)
+	\biggl(
+	\textcolor{mygreen}{\varrho \, \left( \varrho - 1 \right)}
 	+ 
-	\varrho
+	\textcolor{teal}{\varrho}
 	-
-	n^2
-	\right)
+	\textcolor{blue}{n^2}
+	\biggr)
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+ 
 	\left(	
-	2 \, \varrho
+	\textcolor{mygreen}{2 \, \varrho}
 	+
-	1
+	\textcolor{teal}{1}
 	\right)
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
@@ -184,72 +222,75 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:vereinfacht}
 \end{align}
-%
-\subsection*{Indexgleichung f\"ur $\varrho$}
+\begin{normalsize}
+	\dots und bekommt die Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht},
+	welche auf den ersten Blick komplizierter aussieht,
+	als die urspr\"ungliche Differentialgleichung \refeq{eq:bessel:dgl}.
+\end{normalsize}
+\subsection[Indexgleichung f\"ur $\varrho$]{Indexgleichung zum Bestimmen von $\varrho$}
 %Nun muss man eine Indexgleichung für die Unbekannte $\varrho$ aufstellen, um diese zu bestimmen.
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
 \begin{normalsize}
-	Indexgleichung f\"ur $a_0$
+	Indexgleichung f\"ur $a_0$,
+	wie in Abschnitt \ref{subsection:potenzreihen:indexgleichung} erleutert,
+	aufgestellt.
 \end{normalsize}
-\begin{align*}
-%	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 && \left| :a_0 \right. \\
-	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 && \left| \text{Ausmultiplizieren} \right. \\
-	\varrho ^2 - \varrho + \varrho -n^2 &= 0 && \left| \text{Vereinfachen} \right.\\
-	\varrho ^2 - n^2 &= 0 && \left| +n^2 \right.\\
-	\varrho ^2 &= n^2 && \left| \sqrt{\centerdot} \right.
+\begin{align*}	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 \\
+	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 \\
+	\varrho ^2 - \varrho + \varrho -n^2 &= 0  \\
+	\varrho ^2 - n^2 &= 0 \\
+	\varrho ^2 &= n^2
 \end{align*}
 \\
 \begin{normalsize}
-	Aus der Indexgleichung erh\"alt man $\varrho = \pm n$ und $\varrho = \pm 0 $.
-	Nun kann man in der Gleichung \ref{eq:bessel:potenzreihe:dgl:vereinfacht} $n$ f\"ur $\varrho$ einsetzen und kommt dann auf \ref{eq:bessel:potenzreihe:dgl:index:eingesetzt}.
-	Die zweite L\"osung $\varrho = 0$ wird im Kapitel \ref{chapter:komplex} behandelt.
+	Aus der Indexgleichung resultiert $\varrho = \pm n$.
+	
 \end{normalsize}
 
 %Wir beschr\"anken uns in diesem Kapitel nur mit der L\"oesung $\varrho = \pm n$. Die L\"osung f\"ur $\varrho = \pm 0$ wird im Kapitel \ref{chapter:komplex} genauer behandelt.
 %Nun kann man $n$ f\"ur $\varrho$ in die Gleichung einsetzen und erh\"alt:
 
+\subsection{Rekursion der Koeffizienten $a_k$}
+\begin{normalsize}
+	Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann (\textcolor{orange}{orange} markiert).
+\end{normalsize}
 \begin{align}
-	\left(
-	n \, \left( n - 1 \right)
+	\biggl(
+	\textcolor{orange}{n} \, \left( \textcolor{orange}{n} - 1 \right)
 	+
-	n
+	\textcolor{orange}{n}
 	-
 	n^2
-	\right)
-	\, r^{n}
+	\biggr)
+	\, r^{\textcolor{orange}{n}}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+
 	\left(	
-	2 \, n
+	2 \, \textcolor{orange}{n}
 	+
 	1
 	\right)
-	\, r^{n}
+	\, r^{\textcolor{orange}{n}}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
 	+
-	r^{n}
+	r^{\textcolor{orange}{n}}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+
-	r^{n}
-	\sum_{k=0}^{\infty} a_k \, r^{\textcolor{red}{k + 2}}
+	r^{\textcolor{orange}{n}}
+	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt}
 \end{align}
 \\
-%Als n\"achstes fasst man alles in eine einzige Summe zusammen und vereinfacht diese:
 \begin{normalsize}
-	In der Gleichung \ref{eq:bessel:potenzreihe:dgl:index:eingesetzt} bildet man mehrmals die Summe von $k=0$ bis $k \rightarrow \infty$.
-	Diese Summen kann man zu einer einzigen Summe zusammenfassen und erh\"alt \ref{eq:bessel:summe:zusammengefasst}.
-	Da bei der einen Summe $r^{\textcolor{red}{k+2}}$ und nicht wie bei den restlichen Summe $r^k$ vorkommt,
-	muss man beim Zusammenfassen die Grenzen der Summe anpassen (\textcolor{red}{rot} markiert).
-	Die Gleichung \ref{eq:bessel:summe:zusammengefasst} kann noch zu \ref{eq:bessel:summe:zusammengefasst:vereinfacht} vereinfacht werden.
-\end{normalsize}
 
+\end{normalsize}
+%Als n\"achstes fasst man alles in eine einzige Summe zusammen und vereinfacht diese:
 \begin{align}
 	r^n
 	\sum_{\textcolor{red}{k=2}}^{\infty}
-	\left(
+	\biggl(
 	n \, \left( n - 1 \right) \, a_k 
 	+
 	2 \, n \, k \, a_k
@@ -263,41 +304,107 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	a_{\textcolor{red}{k - 2}}
 	-
 	n^2 \, a_k
-	\right)
+	\biggr)
 	\, r^k
 	= 0 
 	\label{eq:bessel:summe:zusammengefasst}
+\end{align}
+\begin{normalsize}
+%	In der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt} bildet man mehrmals die Summe von $k=0$ bis $k \rightarrow \infty$.
+%	Diese Summen kann man zu einer einzigen Summe zusammenfassen und erh\"alt \refeq{eq:bessel:summe:zusammengefasst}.
+%	Da bei der einen Summe $r^{\textcolor{red}{k+2}}$ und nicht wie bei den restlichen Summe $r^k$ vorkommt,
+%	muss man beim Zusammenfassen die Grenzen der Summe anpassen (\textcolor{red}{rot} markiert).
+	In der Gleichung \ref{eq:bessel:potenzreihe:dgl:index:eingesetzt} k\"onnen die Summen zusammengefasst werden,
+	f\"ur $k \geq 2$ (\textcolor{red}{rot} markiert).
+\end{normalsize}
+\begin{align}
+	\nonumber
+	r^n
+	\sum_{k=2}^{\infty}
+	\biggl(
+	\left( \textcolor{violet}{n^2 - n} \right) \, a_k 
+	+
+	2 \, n \, k \, a_k
+	+
+	\left( \textcolor{violet}{k^2 - k} \right) \, a_k
+	+
+	n \, a_k
+	+
+	k \, a_k
+	+
+	a_{k - 2}
+	-
+	n^2 \, a_k
+	\biggr)
+	\, r^k
+	= 0 
 	\\
 	\nonumber
 	r^n
 	\sum_{k=2}^{\infty}
-	\left(
-	\underbrace{ \cancel{n} \, \left( \cancel{n} - \bcancel{1} \right) \, a_k }_{= \, 0}
+	\biggl(
+	\left( n^2 - n \right) \, a_k 
+	-
+	n^2 \, a_k
+	+
+	n \, a_k
+	+
+	\left( k^2 \textcolor{violet}{ - \, k} \right) \, a_k
+	+
+	\textcolor{violet}{k} \, a_k
 	+
 	2 \, n \, k \, a_k
 	+
-	\underbrace{k \, \left( k - \xcancel{1} \right) \, a_k}_{=\, k^2 \, a_k}
+	a_{k - 2}
+	\biggr)
+	\, r^k
+	= 0 
+	\\
+	\nonumber
+	r^n
+	\sum_{k=2}^{\infty}
+	\biggl(
+	\left( n^2 \textcolor{violet}{ - \, n} \right) \, a_k 
+	-
+	n^2 \, a_k
 	+
-	\underbrace{\bcancel{n} \, a_k}_{= \, 0}
+	\textcolor{violet}{n} \, a_k
 	+
-	\underbrace{\xcancel{k} \, a_k}_{= \, 0}
+	k^2 \, a_k
+	+
+	2 \, n \, k \, a_k
 	+
 	a_{k - 2}
-	-
-	\underbrace{\cancel{n^2} \, a_k}_{= \, 0}
-	\right)
+	\biggr)
+	\, r^k
+	= 0 
+	\\
+	\nonumber
+	r^n
+	\sum_{k=2}^{\infty}
+	\biggl(
+	\textcolor{violet}{n^2} \, a_k 
+	\textcolor{violet}{- \,
+	n^2} \, a_k
+	+
+	k^2 \, a_k
+	+
+	2 \, n \, k \, a_k
+	+
+	a_{k - 2}
+	\biggr)
 	\, r^k
 	= 0 
 	\\
 	r^n
 	\sum_{k=2}^{\infty}
-	\left(
-	2 \, n \, k \, a_k
-	+
+	\biggl(
 	k^2 \, a_k
 	+
+	2 \, n \, k \, a_k
+	+
 	a_{k - 2}
-	\right)
+	\biggr)
 	\, r^k
 	= 0
 	\label{eq:bessel:summe:zusammengefasst:vereinfacht}
@@ -307,22 +414,20 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 %Nun kann man eine Rekursion der Koeffizienten $a_k$ berechnen.
 %%
 %	\dots Nun muss entweder $r = 0$ sein,
-%	damit die Gleichung \ref{eq:bessel:summe:zusammengefasst:vereinfacht} stimmt,
+%	damit die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} stimmt,
 %	oder der Klammerausdruck in der Summe.
 %	Da es sinnlos w\"ahre, wenn $r = 0$ ist,
 %	was bedeuten w\"urde,
 %	dass der Radius $0$ ist,
-%	setzten man den Klammerausdruck gleich $0$ und bekommt so f\"ur die Koeffizienten eine Rekursion \ref{eq:bessel_koeffreq}.
+%	setzten man den Klammerausdruck gleich $0$ und bekommt so f\"ur die Koeffizienten eine Rekursion \refeq{eq:bessel:koeffizienten:rekursion}.
 \begin{normalsize}
-	Damit die Gleichung \ref{eq:bessel:summe:zusammengefasst:vereinfacht} stimmt,
-	muss der linke Teil der Gleichung ebenfalls $0$ ergeben.
-	Ein Spezialfall,
-	der diese Bedingung erf\"ullen w\"urde,
-	ist $r = 0$.
-	Dieser Spezialfall ergibt jedoch keine Rekursion der Koeffizienten und somit keine L\"osung f\"ur das Problem.
-	Demzufolge muss der Ausdruck in der Klammer $0$ ergeben.
-	Um eine Rekursion der Koeffizienten zu erhalten,
-	setzt man den Ausdruck in der Klammer gleich $0$ und l\"ost die erhaltene Gleichung nach $a_k$ auf.
+	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst} kann durch einfache Rechnungsschritte (jeweils \textcolor{violet}{violett} hervorgehoben) zu der Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} umgeformt werden.
+	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
+	dass $r$ oder die Summe $0$ ergeben muss.
+	$r = 0$ ist dabei ein Spezialfall, welcher keine Rekursion der Koeffizienten erm\"oglicht und somit nicht zur L\"osung des Problems f\"uhrt.
+	Demzufolge muss die Summe, bzw. die Klammer, $0$ ergeben.
+	Wird nun der Ausdruck in der Klammer mit $0$ gleichgesetzt,
+	kann so eine Rekursion der Koeffiziente gefunden werden.
 \end{normalsize}
 
 \begin{align*}
@@ -352,7 +457,7 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	\, a_k
 	= -a_{k - 2}
 	&\Leftrightarrow
-	\text{Rekursion der Koeffizienten \ref{eq:bessel_koeffreq}}
+	\text{Rekursion der Koeffizienten \refeq{eq:bessel:koeffizienten:rekursion}}
 \end{align*}
 \begin{align}
 	a_k
@@ -363,14 +468,19 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}{
 		k \, \left( 2 \, n + k \right)	
 	}
-	\label{eq:bessel_koeffreq}
+	\label{eq:bessel:koeffizienten:rekursion}
 \end{align}
 \\
-%Da $k \geq 0$ sein muss, sind nur gerade Koeffizienten m\"oglich. Somit kann man f\"ur $k$ nun $2k$ in die Gleichung \ref{eq:bessel_koeffreq} einsetzen und erh\"alt:
+%Da $k \geq 0$ sein muss, sind nur gerade Koeffizienten m\"oglich. Somit kann man f\"ur $k$ nun $2k$ in die Gleichung \refeq{eq:bessel:koeffizienten:rekursion} einsetzen und erh\"alt:
 %%
 %\dots nur gerade Koeffizineten m\"oglich \dots alle Abh\"angig von $a_0$
+\subsection[Bestimmen der Koeffizienten $a_k$]{Bestimmen der Koeffizienten $a_k$ mit Hilfe der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion}}
 \begin{normalsize}
-	
+	Aus der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} kommt hervor,
+	dass die geraden Koeffizienten eine Abh\"anigkeit haben und die ungeraden Koeffizienten ebenfalls.
+	\dots ungerade Koeffizienten entfallen \dots
+	Da nur gerade Koeffizeinten vorkommen,
+	kann $2k$ f\"ur $k$ eingesetzt werden.
 \end{normalsize}
 \begin{align}
 	\nonumber
@@ -395,7 +505,10 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 		-a_0
 	}{
 		4^k \, {k}! \, {\left( n + k \right)}!
-	}\\
+	}
+	=
+	\\
+	a_{2k}
 	&= 
 	\frac
 	{
@@ -403,10 +516,13 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 	}{
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
+	\label{eq:bessel:koeffizienten:gerade}
 \end{align}
-
+\begin{normalsize}
+	Nach weiteren Rechnungs- bzw. Umformungsschritten resutiert \refeq{eq:bessel:koeffizienten:gerade} als Rekursionsformel.
+\end{normalsize}
 %Setzt man nun f\"ur $a_0 = \frac{1}{2^n \, {n}!}$ ein, so kommt man auf die Form:
-
+\subsection{Besselfunktion f\"ur ganzzahlige Parametern}
 \begin{align}
 	J_n \left( r \right)
 	&= \nonumber
@@ -430,7 +546,10 @@ Im Folgenden wird nun die Gleichung \ref{eq:bessel_dgl}, mithilfe der Potenzreih
 		}
 	}{
 		{k}! \, { \left( k + n \right) }!
-	} \\
+	} 
+	=
+	\\
+	J_n \left( r \right)
 	&=
 	\sum_{k=0} ^{\infty}
 	\frac
