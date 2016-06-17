@@ -178,12 +178,12 @@ pickup pencircle scaled 0.5pt;
 z3 = point 50 of p;
 z4 = (3 * u, 1 * v);
 draw z3--z4 withcolor red;
-label.rt(btex $\varrho$-Term dominiert: Wachstum mit Potenzgesetz etex, z4);
+label.rt(btex $\rho$-Term dominiert: Wachstum mit Potenzgesetz etex, z4);
 
 z5 = point 400 of p;
 z6 = (6 * u, 4 * v);
 draw z5--z6 withcolor green;
-label.rt(btex $\varkappa$-Term dominiert: lineares Wachstum etex, z6);
+label.rt(btex $\kappa$-Term dominiert: lineares Wachstum etex, z6);
 
 z7 = (point 1700 of p);
 z8 = (15 * u, 21 * v);
@@ -352,7 +352,7 @@ kreis := kreis--cycle;
 
 draw kreis dashed evenly withcolor red;
 
-z2 = r * (cosd(80), sind(80));
+z2 = r * (cosd(78.5), sind(78.5));
 draw z0--z2 withcolor red;
 label.lft(btex $D$ etex, 0.5[z0,z2]) withcolor red;
 
@@ -365,21 +365,23 @@ b := 40;
 
 z1 = (cosd(b), sind(b));
 z3 = z1 scaled r;
-pickup pencircle scaled 4pt;
-draw (z1 scaled r) withcolor blue;
-label.rt(btex $m$ etex, (z1 scaled r) shifted (2,0)) withcolor blue;
-
 z4 = z1 scaled (0.6 * r);
 
 pickup pencircle scaled 1pt;
 drawarrow z3--z4;
-label.lrt(btex $F_G$ etex, 0.8[z3,z4]);
 
 z5 = (cosd(b), sind(b));
 z6 = z3 shifted (z5 scaled (0.4 * r));
 
+pickup pencircle scaled 1pt;
 drawarrow z3--z6 withcolor blue;
 label.ulft(btex $v$ etex, z6) withcolor blue;
+
+pickup pencircle scaled 4pt;
+draw (z1 scaled r) withcolor blue;
+label.rt(btex $m$ etex, (z1 scaled r) shifted (2,0)) withcolor blue;
+
+label.lrt(btex $F_G$ etex, 0.8[z3,z4]);
 
 endfig;
 
