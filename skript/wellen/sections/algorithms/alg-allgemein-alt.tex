@@ -1,0 +1,67 @@
+\begin{algorithm}
+	\floatname{algorithm}{Pseudocode}
+	\begin{algorithmic}[1]
+		\State $j \gets 1$
+		\For{$j \le n$}
+			\State $a_{-j} \gets 0$
+		\EndFor
+		\State $a_0 \gets y(0)$
+		\State $a_1 \gets y'(0)$
+		\State $k \gets 2$
+		\For{$k \le k_{\text{max}}$}
+			\State $s_{\text{polynom}} \gets 0$
+			\State $i \gets 0$
+			\For{$i \le n$}
+				\State $s_{\text{polynom}} \gets s_{\text{polynom}}+\lambda_i 
+				a_{k-2-i}$
+				\State $i \gets i + 1$
+			\EndFor
+			\State $a_k \gets -\cfrac{1}{k(k-1)} s_{\text{polynom}}$
+			\State $k \gets k + 1$
+		\EndFor
+		\State $x \gets x_{\text{min}}$
+		\For{$x \le x_{\text{max}}$}
+			\State $s_{\text{series}} \gets a_0 + a_1x$
+			\State $k \gets 2$
+			\For{$k \le k_{\text{max}}$}
+				\State $s_{\text{series}} \gets s_{\text{series}} + a_k x^k$
+				\State $k \gets k + 1$
+			\EndFor
+			\State $x \gets x + x_{\text{step}}$
+		\EndFor
+	\end{algorithmic}
+	\caption{Allgemeine Potenzreihenberechnung (Alternative)} 
+	\label{alg:wellen:allgemeinepotenzreihenrechnungalt}
+\end{algorithm}
+Alternativ kann man auch den Pseudocode 
+\ref{alg:wellen:allgemeinepotenzreihenrechnungalt} verwenden. Dieser hat eine 
+Laufzeit von
+\begin{equation*}
+	O
+	\left(
+		nk_{\text{max}} + k_{\text{max}} 
+		\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+	\right)
+	=
+	O
+	\left(
+		k_{\text{max}}
+		\left(
+			n+\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+		\right)
+	\right),
+\end{equation*}
+mit einem Speicherverbrauch von
+\begin{equation*}
+	O
+	\left(
+		\max(n, k_{\text{max}})
+	\right).
+\end{equation*}
+
+Eine Implementation mit \texttt{octave} hat gezeigt, dass dieser alternative 
+Algorithmus (Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnungalt}) 
+fast zehn Mal schneller ist. Dies liegt neben der zus"atzlichen inneren 
+Schlaufe auch vor allem daran, dass beim anderen Algorithmus mit 
+\texttt{modulo} gerechnet werden musste, um den Speicherverbrauch von $O(n)$ zu 
+erm"oglichen, was zus"atzlichen Rechenaufwand bedeutet.

@@ -53,5 +53,4 @@ $(603_FILES):	603.mp
 	done
 
 clean:
-	find . -type f -regex '.*\.[0-9]+' -delete
-	rm -f *.log *.pdf *.mpx
+	rm -f *.log *.pdf *.mpx *.[0-9]

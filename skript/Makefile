@@ -5,8 +5,11 @@
 #
 all:	subdirs skript.pdf
 
+SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis \
+		 komplex friedmann
+
 subdirs:
-	for d in chapters uebungsaufgaben; \
+	for d in $(SUBDIRECTORIES); \
 	do \
 		cd $${d}; make; cd ..; \
 	done
@@ -33,21 +36,20 @@ TEXFILES = $(SKRIPTFILES) \
 IMAGES =
 
 BLXFILES = skript1-blx.bbl \
-	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl \
-	skript5-blx.bbl skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl
-#	skript9-blx.bbl skript10-blx.bbl skript11-blx.bbl skript12-blx.bbl \
-#	skript13-blx.bbl skript14-blx.bbl skript15-blx.bbl skript16-blx.bbl \
-#	skript17-blx.bbl
+	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl skript5-blx.bbl \
+	skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl skript9-blx.bbl
+#	skript10-blx.bbl skript11-blx.bbl skript12-blx.bbl skript13-blx.bbl \
+#	skript14-blx.bbl skript15-blx.bbl skript16-blx.bbl skript17-blx.bbl
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
 			$(BLXFILES)
-	pdflatex skript.tex
+	pdflatex -shell-escape skript.tex
 	bibtex skript
 
 skript.ind:	skript.tex $(TEXFILES)
 	touch skript.ind
 	cd chapters && make
-	pdflatex skript.tex
+	pdflatex -shell-escape skript.tex
 	makeindex skript.idx
 
 # References
@@ -78,10 +80,10 @@ skript7-blx.bbl:	skript7-blx.aux
 
 skript8-blx.bbl:	skript8-blx.aux
 	bibtex skript8-blx
-#
-#skript9-blx.bbl:	skript9-blx.aux
-#	bibtex skript9-blx
-#
+
+skript9-blx.bbl:	skript9-blx.aux
+	bibtex skript9-blx
+
 #skript10-blx.bbl:	skript10-blx.aux
 #	bibtex skript10-blx
 #
@@ -106,5 +108,12 @@ skript8-blx.bbl:	skript8-blx.aux
 #skript17-blx.bbl:	skript17-blx.aux
 #	bibtex skript17-blx
 
-clean:
-	rm -f *.bbl *.aux *.log *.out
+clean:	cleansubdir
+	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
+		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib *.dvi
+
+cleansubdir:
+	for d in $(SUBDIRECTORIES); \
+	do \
+		cd $${d}; make clean; cd ..; \
+	done

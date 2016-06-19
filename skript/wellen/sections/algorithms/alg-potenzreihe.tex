@@ -1,0 +1,44 @@
+\begin{algorithm}
+	\floatname{algorithm}{Pseudocode}
+	\begin{algorithmic}[1]
+		\State $x \gets x_{\text{min}}$
+		\For{$x \le x_{\text{max}}$}
+			\State $a_{-2} \gets 0$
+			\State $a_{-1} \gets 0$
+			\State $a_0 \gets y(0)$
+			\State $a_1 \gets y'(0)$
+			\State $s_{\text{series}} \gets a_0 + a_1x$
+			\State $k \gets 2$
+			\For{$k \le k_{\text{max}}$}
+				\State $a_k \gets -\cfrac{1}{k(k-1)}			
+				(aa_{k-4}+ba_{k-3}+ca_{k-2})$
+				\State $s_{\text{series}} \gets s_{\text{series}} + a_k x^k$
+				\State $k \gets k + 1$
+			\EndFor
+			\State $x \gets x + x_{\text{step}}$
+		\EndFor
+	\end{algorithmic}
+	\caption{Wellen Potenzreihenberechnung} 
+	\label{alg:wellen:potenzreihenrechnung}
+\end{algorithm}
+
+Die Berechnung von Potenzreihenl"osungen im Intervall
+$[x_{\text{min}},x_{\text{max}}]$ kann "ausserst lange dauern. Auch hier muss 
+die Anzahl Berechnungen, in diesem Fall die Aufl"osung des Plots, 
+eingeschr"ankt werden. Eine genauere Absch"atzung kann mit Hilfe des 
+Pseudocodes \ref{alg:wellen:potenzreihenrechnung} gemacht werden. Der 
+Algorithmus hat eine Laufzeit von
+\begin{equation*}
+	O
+	\left(
+		k_{\text{max}}\frac{x_{\text{max}}-x_{\text{min}}}{x_{\text{step}}}
+	\right).
+\end{equation*}
+Da einzig vier Speicherpl"atze f"ur $a_{-2}$ bis $a_1$ ben"otigt werden, hat 
+dieser Algorithmus einen Speicherverbrauch von
+\begin{equation*}
+	O
+	\left(
+		1
+	\right).
+\end{equation*}
