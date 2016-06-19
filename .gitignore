@@ -22,6 +22,8 @@ skript/chapters/images/harvest.mp
 **/*-blx.bib
 **/*.run.xml
 **/mptextmp.mp
+*.exe
+*.bib
 *.dat
 *.swp
 *.bak

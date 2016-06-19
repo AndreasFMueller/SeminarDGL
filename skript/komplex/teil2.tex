@@ -1,101 +1,139 @@
 \section{Finden der Lösungen}
+Dieser Abschnitt dreht sich nun um die Bedeutung der Matrix $A$ für die Form der Lösungen $w_1$ udn $w_2$. 
+Die beiden Fälle Diagonal- und Dreiecksform werden einzeln betrachtet und analysiert.
+
+Als erstes wird untersucht, was mit den Lösungen durch die analytische Fortsetzung geschieht.
+Als zweites sei eine Funktion gesucht, die dasselbe Verhalten zeigt.
+In einem dritten Schritt wird die Veränderung der Lösungen durch die gefundene Funktion kompensiert. Diese neue, kompensierte Form ist dann eindeutig und als Laurent-Reihe darstellbar.
+Abschliessend erfolgt die Auflösung der kompensierten Funktion nach der gesuchten Lösung.
+
 \subsection{Diagonalform}
 %Matrix Diagonalisierbar
 Im Falle einer diagonalisierbaren Matrix 
-$$A'=\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}$$
-lassen sich beide Lösungen unabhängig voneinander betrachten. Für $j=1,2$ gilt
-$$\sk w_j = \lambda_j w_j$$
-Die Lösungen wären nur eindeutig, wenn $\lambda_1=\lambda_2=1$ gälte. Da die beiden $\lambda_j$ nach Voraussetzung unterschiedlich sind, ist mindestens ein $\lambda\ne 1$ und  muss kompensiert werden, damit sich die zugehörige Lösung in eine Laurent-Reihe entwickeln lässt.
+\[A'=\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}\]
+lassen sich beide Lösungen unabhängig voneinander betrachten. 
+\subsubsection{Verhänderung durch analytische Fortsetzung}
+Für $j=1,2$ gilt
+\[\sk w_j = \lambda_j w_j\]
+Die Lösungen werden durch Umlaufen des Nullpunktes also mit den Faktoren $\lambda_j$ multipliziert.
 
+\subsubsection{Funktion mit ähnlichem Verhalten}
 Gegeben sei nun die Funktion
-$$f(z):=z^{\varrho_j} \text{ mit }\varrho_j := \frac{1}{2\pi i}\log(\lambda_j).$$
+\[f(z):=z^{\varrho_j} \quad\text{ mit }\quad \varrho_j := \frac{1}{2\pi i}\log \lambda_j.\]
+Gesucht ist die analytische Fortsetzung von $f(z)$.
+Bei $\varrho_j$ handelt es sich im Allgemeinen nicht um eine ganze Zahl.
+Um genauer zu verstehen, was bei der analytischen Fortsetzung geschieht, soll die äquivalente Form
+\[z^{\varrho_j} = e^{\log(z^{\varrho_j})} = e^{\varrho_j \log z}\]
+betrachtet werden.
 
-Gesucht ist die analytische Fortsetzung von $f(z)$. Da es sich bei $\varrho_j$ im Allgemeinen nicht um eine ganze Zahl handelt, soll die äquivalente Form
-$$z^{\varrho_j} = e^{\log(z^{\varrho_j})} = e^{\varrho_j \log(z)}$$
-betrachtet werden, um genauer zu verstehen, was bei der analytischen Fortsetzung geschieht.
-
-Die Exponentialfunktion lässt sich an jeder Stelle in eine konvergente Potenzreihe entwickeln und somit als Laurent-Reihe schreiben. Durch die analytische Fortsetzung verändert sie sich folglich nicht. Der Logarithmus wird zu $\log(z) + 2\pi i$, und es folgt
-$$
+Die Exponentialfunktion ist eindeutig und bleibt unverändert.
+Der Logarithmus wird zu $\log z + 2\pi i$.
+Es folgt
+\begin{align*}
 \sk f(z)
-= \sk \left(e^{\varrho_j \log(z)} \right)
-= e^{\varrho_j \left(\log(z) + 2\pi i\right)}
-= e^{\varrho_j \log(z)}  e^{2\pi i\varrho_j}
-= z^{\varrho_j} e^{2\pi i\frac{1}{2\pi i}\log(\lambda_j)} 
-= f(z) \lambda_j
-$$
-Durch diese Definition für $\varrho_j$ wird die Funktion $f(z)$ durch die analytische Fortsetzung also ebenfalls mit dem Faktor $\lambda_j$ multipliziert. Dadurch lässt sich eine neue Funktion bilden, die beim Umlaufen des Nullpunktes eindeutig bleibt
-$$
+&= \sk \left(e^{\varrho_j \log z} \right) 
+= e^{\varrho_j \left(\log z + 2\pi i\right)} 
+= e^{\varrho_j \log z}  e^{2\pi i\varrho_j}
+= z^{\varrho_j} e^{2\pi i\frac{1}{2\pi i}\log \lambda_j} 
+= z^{\varrho_j} \lambda_j\\
+&= f(z) \lambda_j
+\end{align*}
+Durch diese Definition für $\varrho_j$ wird die Funktion $f(z)$ durch die analytische Fortsetzung also ebenfalls mit dem Faktor $\lambda_j$ multipliziert. 
+
+\subsubsection{Kompensierte Funktion}
+Nun lässt sich eine neue Funktion bilden, die beim Umlaufen des Nullpunktes eindeutig bleibt
+\[
 \sk \left(\frac{w_j}{z^{\varrho_j}}\right) 
 = \frac{\lambda_j w_j}{z^{\varrho_j}\lambda_j}
-= \frac{w_j}{z^{\varrho_j}}
-$$
-und in eine Laurent-Reihe entwickelt werden kann
-$$\frac{w_j}{z^{\varrho_j}} = \mathcal{L}_j(z).$$
+= \frac{w_j}{z^{\varrho_j}}.
+\]
+Diese Funktion kann in eine Laurent-Reihe entwickelt werde
+\[\frac{w_j}{z^{\varrho_j}} = \mathcal{L}_j(z).\]
 
-Bei der Bessel'schen Differentialgleichung trifft dieser Fall bei nicht-ganzzahligen $\nu\in\mathbb{C}\setminus\mathbb{Z}$ auf. Die Matrix $A$ ist dann diagonalisierbar und dieses Vorgehen liefert Lösungen in der bereits bekannten Form der verallgemeinerten Potenzreihe.
-$$ w_j = z^{\varrho_j}\mathcal{L}_j(z).$$
+\subsubsection{Resultat}
+Auflösen nach $w_j$ liefert 
+\[ w_j = z^{\varrho_j}\mathcal{L}_j(z).\]
+
+Bei der Bessel'schen Differentialgleichung trifft dieser Fall bei nicht-ganzzahligen $\nu\in\mathbb{C}\setminus\mathbb{Z}$ auf.
+Die Matrix $A$ ist dann diagonalisierbar und dieses Vorgehen liefert Lösungen in der bereits bekannten Form der verallgemeinerten Potenzreihe.
 
 
 \subsection{Dreiecksform}
 %Matrix nicht diagonalisierbar
 Die Dreiecksform mit nur einem Eigenwert 
-$$A'=\begin{pmatrix}\lambda & 0 \\ 1 & \lambda \end{pmatrix}$$
+\[A'=\begin{pmatrix}\lambda & 0 \\ 1 & \lambda \end{pmatrix}\]
 führt zu den Gleichungen
-$$
+\[
 \begin{array}{l}
 \sk w_1 = \lambda w_1 \\
 \sk w_2 = \lambda w_2 + w_1
 \end{array}
-$$
+\]
 
-Die Gleichung für $w_1$ ist identisch mit derjenigen aus dem diagonalisierbaren Fall, und auch die erste Lösung lässt sich in gleicher Weise finden. Bei der zweiten Lösung $w_2$ ist die erste Lösung $w_1$ als 'Störterm' enthalten. Das Ziel dieses Abschnittes ist es, analog zum vorherigen Abschnitt eine Lösungsform für $w_2$ zu finden.
+\subsubsection{Verhänderung durch analytische Fortsetzung}
+Die Gleichung für $w_1$ ist identisch mit derjenigen aus dem diagonalisierbaren Fall.
+$w_1$ wird lediglich mit dem Faktor $\lambda$ multipliziert.
+Die Lösung für $w_1$ lässt sich also auf dieselbe Art finden, wie im diagonalisierbaren Fall.
+Die zweite Lösung $w_2$ wird ebenfalls mit $\lambda$ multipliziert, enthält aber zusätzlich noch die erste Lösung $w_1$ als 'Störterm'.
 
 Als erstes sei die analytische Fortsetzung des Verhältnisses $\frac{w_2}{w_1}$ betrachtet.
-$$\sk \left(\frac{w_2}{w_1}\right)
+\[\sk \left(\frac{w_2}{w_1}\right)
 = \frac{\lambda w_2+w_1}{\lambda w_1} 
-= \frac{w_2}{w_1} + \frac{1}{\lambda}$$
+= \frac{w_2}{w_1} + \frac{1}{\lambda}\]
+Die analytische Fortsetzung erzeugt einen Summanden $\frac{1}{\lambda}$.
 
-Im vorhergehenden Abschnitt musste ein Faktor kompensiert werden, damit die betrachtete Funktion eindeutig und als Laurent-Reihe darstellbar wurde. Hier muss anstelle eines Faktors ein Summand kompensiert werden. Der Logarithmus erhält durch die analytische Fortsetzung den Summanden $2\pi i$ dazu. Gegeben sei nun folgende Funktion
-$$f(z) := \frac{1}{2\pi i\lambda} \log(z)$$
-und die analytische Fortsetzung
-$$\sk f(z) 
-= \sk \left(\frac{1}{2\pi i\lambda} \log(z) \right)
-= \frac{1}{2\pi i\lambda} \left(\log(z) + 2\pi i\right) 
-=\frac{1}{2\pi i\lambda} \log(z)+  \frac{1}{\lambda}$$
-$$\Leftrightarrow\sk f(z) = f(z) + \frac{1}{\lambda}.$$
-Diese Funktion $f(z)$ bekommt durch die analytische Fortsetzung also denselben Summanden $\frac{1}{\lambda}$ wie das Verhältnis $\frac{w_2}{w_1}$.
+\subsubsection{Funktion mit ähnlichem Verhalten}
+Es ist eine Funktion gesucht, die diesen Summanden kompensiert. 
+Gegeben sei die Funktion
+\[f(z) := \frac{1}{2\pi i\lambda} \log z.\]
+Deren analytische Fortsetzung ergibt
+\begin{align*} 
+\sk f(z) 
+&= \sk \left(\frac{1}{2\pi i\lambda} \log z \right) 
+= \frac{1}{2\pi i\lambda} \left(\log z + 2\pi i\right) 
+=\frac{1}{2\pi i\lambda} \log z+  \frac{1}{\lambda} \\
+&= f(z) + \frac{1}{\lambda}.
+\end{align*}
+Die analytische Fortsetzung dieser Funktion $f(z)$ erzeugt also denselben Summanden $\frac{1}{\lambda}$ wie das Verhältnis $\frac{w_2}{w_1}$.
 
-Wird die Differenz dieses Verhältnisses und der Funktionen $f(z)$ gebildet, folgt daraus
-$$
+\subsubsection{Kompensierte Funktion}
+Wird die Differenz dieses Verhältnisses und der Funktionen $f(z)$ gebildet, heben sich die Summanden gegenseitig auf. 
+Es folgt
+\begin{align*} 
 \sk\left( \frac{w_2}{w_1} - f(z) \right)
-=\sk\left( \frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} \log(z) \right)
-= \frac{w_2}{w_1} +\frac{1}{\lambda} - \frac{1}{2\pi i\lambda} \log(z) - \frac{1}{\lambda} 
-$$
-$$
-\Leftrightarrow \sk\left( \frac{w_2}{w_1} - f(z) \right)
-= \frac{w_2}{w_1} - f(z).
-$$
-Diese Differenz wird durch die analytische Fortsetzung also nicht verändert und kann als Laurent-Reihe dargestellt werden. Mit $a := \frac{1}{2\pi i\lambda}$ folgt
-$$\frac{w_2}{w_1} - a\log(z) =\mathcal{L}_2'(z)$$
+&=\sk\left( \frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} \log z \right)
+= \frac{w_2}{w_1} +\frac{1}{\lambda} - \frac{1}{2\pi i\lambda} \log z - \frac{1}{\lambda} 
+=\frac{w_2}{w_1} - \frac{1}{2\pi i\lambda} \log z\\
+&= \frac{w_2}{w_1} - f(z).
+\end{align*}
+Diese Differenz wird durch die analytische Fortsetzung also nicht verändert und kann als Laurent-Reihe dargestellt werden. 
+
+\subsubsection{Resultat}
+
+Mit $a = \frac{1}{2\pi i\lambda}$ folgt
+\[\frac{w_2}{w_1} - a\log z =\mathcal{L}_2'(z)\]
 Nun verbleibt nur noch, diese Gleichung nach $w_2$ aufzulösen. 
-$$ w_2 = w_1 \mathcal{L}_2'(z) + a w_1 \log(z) $$
+\[ w_2 = w_1 \mathcal{L}_2'(z) + a w_1 \log z \]
 Die Form von $w_1$ ist bereits bekannt und kann beim ersten Summanden eingefügt werden
-$$ w_2 = z^\varrho\mathcal{L}_1(z)\mathcal{L}_2'(z) + a w_1 \log(z) $$
-Eine letzte Vereinfachung ergibt sich aus der Multiplikation der Laurent-Reihen $\mathcal{L}_1$ und $\mathcal{L}_2'$. Die Multiplikation zweier Potenzreihen führt wieder auf eine Potenzreihe, also $\mathcal{L}_1 \mathcal{L}_2'=\mathcal{L}_2$ und folglich
-$$
-w_2 = z^\varrho\mathcal{L}_2(z) + a w_1 \log(z)
-$$
+\[ w_2 = z^\varrho\mathcal{L}_1(z)\mathcal{L}_2'(z) + a w_1 \log z \]
+Eine letzte Vereinfachung ergibt sich aus der Multiplikation der Laurent-Reihen $\mathcal{L}_1$ und $\mathcal{L}_2'$. 
+Die Multiplikation zweier Potenzreihen führt wieder auf eine Potenzreihe, also $\mathcal{L}_1 \mathcal{L}_2'=\mathcal{L}_2$ und folglich
+\[w_2 = z^\varrho\mathcal{L}_2(z) + a w_1 \log z\]
 Die zweite Lösung findet sich also als Kombination einer Laurent-Reihe multipliziert mit $z^\varrho$ und der ersten Lösung mal den Logarithmus.
 
 \section{Zusammenfassung}
-In manchen Fällen ist ein Potenzreihen-Ansatz mit Koeffizientenvergleich nicht ausreichend, um für eine Differentialgleichung 2. Ordnung beide linear unabhängigen Lösungen zu finden. Dies liegt daran, dass im Reellen nicht genügend Platz vorhanden ist, eventuelle Singularitäten zu umgehen. Im Reellen gibt es auch kein Pendant zur analytischen Fortsetzung. Die komplexe Mathematik bietet hier eine Möglichkeit, die "hinter der Singularität versteckte Lösung" zu finden, indem man diese Singularität durch die analytische Fortsetzung umgeht. 
+In manchen Fällen ist ein Potenzreihen-Ansatz mit Koeffizientenvergleich nicht ausreichend, um für eine Differentialgleichung 2. Ordnung beide linear unabhängigen Lösungen zu finden. 
+Dies liegt daran, dass im Reellen nicht genügend Platz vorhanden ist, eventuelle Singularitäten zu umgehen. 
+Im Reellen gibt es auch kein Pendant zur analytischen Fortsetzung. 
+Die komplexe Mathematik bietet hier eine Möglichkeit, die "hinter der Singularität versteckte Lösung" zu finden, indem man diese Singularität durch die analytische Fortsetzung umgeht. 
 
-In der Herleitung der Lösungsformen für $w_1$ und $w_2$ wurde nirgends eine Annahme getroffen, welche Form die Koeffizienten der Differentialgleichung haben. Für beliebige Differentialgleichungen der Form
-$$w'' + p(z)w' + q(z)w=0$$
+In der Herleitung der Lösungsformen für $w_1$ und $w_2$ wurde nirgends eine Annahme getroffen, welche Form die Koeffizienten der Differentialgleichung haben. 
+Für beliebige Differentialgleichungen der Form
+\[w'' + p(z)w' + q(z)w=0\]
 findet sich also die erste Lösung in Form von
-$$ w_1 = z^{\varrho_1}\mathcal{L}_1(z)$$
+\[ w_1 = z^{\varrho_1}\mathcal{L}_1(z)\]
 und die zweite Lösung in Form von
-$$w_2 = \begin{cases}
+\[w_2 = \begin{cases}
 z^{\varrho_2}\mathcal{L}_2(z) & \varrho_2\ne\varrho_1 \\
-z^{\varrho_2}\mathcal{L}_2(z) + a w_1 \log(z) & \varrho_2=\varrho_1.
-\end{cases} $$
+z^{\varrho_2}\mathcal{L}_2(z) + a w_1 \log z & \varrho_2=\varrho_1.
+\end{cases} \]
