@@ -1,15 +1,15 @@
 \section{Einleitung}
 
-In diesem Kapitel möchten wir ein Problem aufgreiffen, welches wir bei der Bessel'schen Differentialgleichung
+In diesem Kapitel möchten wir ein Problem aufgreifen, welches wir bei der Bessel'schen Differentialgleichung
 $$ z^2w''+zw'+(z^2 - \nu^2)w=0$$
-angetroffen haben. Wir fanden Lösungen der Form 
+angetroffen haben. Wir fanden Lösungen in Form der verallgemeinerten Potenzreihe
 $$J_\nu(z)=z^\varrho\sum_{k=0}^{\infty}a_kz^k,$$
-und die Indexgleichung lieferte $\varrho=\pm\nu.$
+und die Indexgleichung lieferte die dazugehörigen $\varrho=\pm\nu.$
 
 \emph{Problem}: Im Falle von ganzzahligen $\nu$ erhielten wir zwei linear abhängige Lösungen $$J_\nu(z) = J_{-\nu}(-z)\forall\nu\in\mathbb{Z}\setminus\{0\},$$
-und im Falle von $\nu=0$ erhielten wir sogar nur eine Lösung (da$\varrho=0$). Eine Differentialgleichung 2. Ordnung besitzt aber stets genau zwei linear unabhängige Lösungen. Wo also steckt die zweite Lösung?
+und im Falle von $\nu=0$ erhielten wir sogar nur eine Lösung (da $\varrho=0$). Eine Differentialgleichung 2. Ordnung besitzt aber stets genau zwei linear unabhängige Lösungen. Wo also steckt die zweite Lösung?
 
-Dieses Kapitel benötigt zwei bereits beschriebene Werkzeuge, die im Folgenden kurz zusammengefasst sind -- die analytischen Fortsetzung und die Laurent-Reihen.
+Dieses Kapitel benötigt zwei bereits beschriebene Werkzeuge, die im Folgenden kurz zusammengefasst sind -- die analytischen Fortsetzung und die Laurent-Reihen. Anschliessend sollen diese Werkzeuge mit der linearen Algebra kombiniert werden, welches den zentralen Teil dieses Kapitels ausmacht, und abschliessend möchten die Lösungen formell noch gefunden werden.
 
 \subsection{Analytische Fortsetzung}
 Die analytische Fortsetzung wurde im Kapitel \ref{sec:fortsetzung} bereits sehr ausführlich Diskutiert. Die wichtigsten Eigenschaften für die folgende Diskussion seien hier kurz zusammengefasst.
@@ -18,11 +18,11 @@ Am Beispiel der Gleichung $y'=\frac{1}{z}$ wurde gezeigt, dass eine Lösung sich
 
 Die Veränderung des Logarithmus ist jedoch von zentraler Wichtigkeit. Abbildung \ref{komplex:analytische-fortsetzung-log} auf Seite \pageref{komplex:analytische-fortsetzung-log} illustriert diese Veränderung. Bekanntlich ist der Logarithmus nur bis auf ein vielfaches von $2\pi i$ bestimmt. Dies zeigt sich in der analytischen Fortsetzung durch die $2\pi i$, welche beim einmaligen Umlaufen der Singularität hinzukommen. Durch mehrmaliges Umlaufen des Nullpunktes kann jede Lösung des Logarithmus erreicht werden.
 
-Die analytische Fortsetzung $f^+$ einer Funktion $f$ entlang eines geschlossenen Weges $\gamma$ in positiver Drehrichtung wird in diesem Kapitel sehr oft verwendet. Wir definieren deshalb den Seitz-Kull-Operator:
+Die analytische Fortsetzung $f^+$ einer Funktion $f$ entlang eines geschlossenen Weges $\gamma$ in positiver Drehrichtung um den Nullpunkt wird in diesem Kapitel sehr oft verwendet. Wir definieren deshalb den Seitz-Kull-Operator:
 $$\sk f(z)= f^+(z)$$
-Er soll folgendermassen gelesen werden: wenn man $f(z)$ einmal entlang eines geschlossenen Weges um den Nullpunk in positiver Drehrichtung analytisch fortsetzt, resultiert $f^+(z)$. 
+Er soll folgendermassen verstanden werden: wenn man $f(z)$ einmal entlang eines geschlossenen Weges um den Nullpunk in positiver Drehrichtung analytisch fortsetzt, resultiert $f^+(z)$. Kurz: die analytische Fortsetzung von $f(z)$ ist gleich $f^+(z)$.
 Somit lässt sich schreiben: 
-$$\sk \log(z) = \log z + 2\pi i.$$
+$$\sk \log z = \log z + 2\pi i.$$
 
 \subsection{Laurent-Reihe}
 Im Kapitel Wegintegrale (\ref{subsection:wegintegrale}) wurde gezeigt, dass eine Funktion $f(z)$ mit einer Singularität nicht in eine Potenzreihe mit ausschliesslich positiven Exponenten entwickelt werden kann. Auf Seite \pageref{sssec:LaurentReihen} wurde deshalb die Laurent-Reihe hergeleitet, um auch solche Funktionen in Potenzreihen entwickeln zu können. Da auch Laurent-Reihen in diesem Kapitel mehrfach verwendet werden, soll
@@ -31,7 +31,7 @@ als Kurzschreibweise für eine Laurent-Reihe im Punkt $z_0$ dienen. Die Stelle $
 
 Laurent-Reihen als Summe ganzzahliger Potenzen sind immer eindeutig. Die analytische Fortsetzung einer Laurent-Reihe führt folglich wieder auf dieselbe Laurent-Reihe. Es gilt
 $$\sk \mathcal{L}(z)=\mathcal{L}^+(z)=\mathcal{L}(z).$$
-Damit eine Funktion als Laurent-Reihe darstellbar ist, darf sie sich folglich nicht verändern, wenn sie entlang eines Weges um eine Singularität analytisch fortgesetzt wird.
+Eine Funktion ist also genau dann als Laurent-Reihe darstellbar, wenn sie sich durch die analytische Fortsetzung nicht verändert.
 
 \section{Lineare Algebra}
 Die wichtigsten Überlegungen um die zweite linear unabhängige Lösung einer Differentialgleichung 2. Ordnung zu finden, liefert die lineare Algebra. Wir wissen, dass es zwei linear unabhängige Lösungen geben muss. Wenn diese Lösungen existieren, dann können sie auch analytisch fortgesetzt werden. Im Folgenden sei $w$ der Vektor der beiden linear unabhängigen Lösungen
@@ -56,22 +56,22 @@ Sind die beiden Eigenwerte gleich, also im Falle $\lambda_1=\lambda_2=\lambda$, 
 $$A'=\begin{pmatrix}\lambda & 0 \\ 1 & \lambda\end{pmatrix}$$
 reduzieren.
 
-Zunächst ist jedoch ein Beweis vonnöten, dass die analytische Fortsetzung linear unabhängiger Lösungen wiederum auf linear unabhängige Lösungen führt, die Matrix $A$ also regulär ist. Wäre die Matrix $A$ singulär, liesse sich auch die Zerlegung in Diagonal- oder Dreiecksform nicht durchführen.
+Zunächst ist jedoch ein Beweis vonnöten, dass die analytische Fortsetzung linear unabhängiger Lösungen wiederum auf linear unabhängige Lösungen führt, die Matrix $A$ also regulär ist. Wäre die Matrix $A$ singulär, liesse sich auch die Zerlegung in Diagonal- oder Dreiecksform nicht durchführen. 
 
 \subsection{Beweis der Regularität von $A$}
 Eine Konstante kann als Spezialfall einer Laurent-Reihe betrachtet werden
-$$c = \mathcal{L}_1(z)=\sum_{k=-\infty}^{\infty}a_k(z-z_0)^k\left\vert z_0=0, a_k=\begin{cases}
+$$c = \mathcal{L}_1(z)=\sum_{k=-\infty}^{\infty}a_k(z-z_0)^k\quad\text{wobei}\quad  z_0=0, a_k=\begin{cases}
 c&k=0\\0&\text{sonst}
-\end{cases}\right.$$
+\end{cases}$$
 Somit ist die analytische Fortsetzung einer Funktion genau dann konstant, wenn die Funktion selbst konstant ist.
 $$c = \mathcal{L}_1(z)= \sk \mathcal{L}_1(z) = \sk c.$$
 $w_1$ und $w_2$ sind linear unabhängig. Deren Verhältnis ist also nicht konstant
-$$w_1\ne a w_2\Leftrightarrow\frac{w_1}{w_2}\ne a.$$
+$$w_1\ne a w_2\quad\Rightarrow\quad\frac{w_1}{w_2}\ne a.$$
 Die analytische Fortsetzung diese Verhältnisses ist folglich auch nicht konstant
 $$\frac{w_1^+}{w_2^+}=\sk \left(\frac{w_1}{w_2}\right) \ne \sk a = a $$
-$$\Leftrightarrow \frac{w_1^+}{w_2^+}\ne a\Leftrightarrow w_1^+\ne aw_2^+\qed
+$$\Rightarrow\quad \frac{w_1^+}{w_2^+}\ne a\quad\Rightarrow\quad w_1^+\ne aw_2^+\qed
 $$
 
-Die analytische Fortsetzung linear unabhängiger Lösungen $w$ führt also stets auf wiederum linear unabhängige Lösungen $w^+$. Die Matrix $A$ ist also in jedem Falle regulär und lässt sich durch Wahl zweier geeigneter Lösungen $w1$ und $w_2$ für jede Differentialgleichung 2. Ordnung entweder in Diagonal- oder Dreiecksform zerlegen. Diese beiden Fälle werden nun diskutiert.
+Die analytische Fortsetzung linear unabhängiger Lösungen $w$ führt also stets auf wiederum linear unabhängige Lösungen $w^+$. Die Matrix $A$ ist also in jedem Falle regulär und lässt sich durch Wahl zweier geeigneter Lösungen $w_1$ und $w_2$ für jede Differentialgleichung 2. Ordnung entweder in Diagonal- oder Dreiecksform zerlegen. Diese beiden Fälle werden nun diskutiert.
 
 
