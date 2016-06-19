@@ -47,15 +47,15 @@
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{external}
 \usepackage[europeanvoltages,
-europeancurrents,
-europeanresistors,   % rectangular shape
-americaninductors,   % "4-bumbs" shape
-europeanports,       % rectangular logic ports
-siunitx,             % #1<#2>
-emptydiodes,
-noarrowmos,
-smartlabels]         % lables are rotated in a smart way
-{circuitikz}          %
+            europeancurrents,
+            europeanresistors,   % rectangular shape
+            americaninductors,   % "4-bumbs" shape
+            europeanports,       % rectangular logic ports
+            siunitx,             % #1<#2>
+            emptydiodes,
+            noarrowmos,
+            smartlabels]         % lables are rotated in a smart way
+           {circuitikz}          %
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usetikzlibrary{arrows}
@@ -63,226 +63,256 @@ smartlabels]         % lables are rotated in a smart way
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
+% Matlab
 \usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    %numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 \lstdefinestyle{Matlab}{
-	numbers=left,
-	belowcaptionskip=1\baselineskip,
-	breaklines=true,
-	frame=L,
-	xleftmargin=\parindent,
-	language=Matlab,
-	showstringspaces=false,
-	basicstyle=\footnotesize\ttfamily,
-	keywordstyle=\bfseries\color{green!40!black},
-	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
-	stringstyle=\color{orange},
-	numberstyle=\ttfamily\tiny
+  numbers=left,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=Matlab,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  numberstyle=\ttfamily\tiny
 }
 \lstdefinelanguage{Maxima}{
-	keywords={addrow,addcol,zeromatrix,ident,augcoefmatrix,ratsubst,diff,ev,tex,%
-		with_stdout,nouns,express,depends,load,submatrix,div,grad,curl,matrix,%
-		invert,lambda,facsum,expand,false,then,if,else,subst,%
-		rootscontract,solve,part,assume,sqrt,integrate,abs,inf,exp,sin,cos,sinh,cosh},
-	sensitive=true,
-	comment=[n][\itshape]{/*}{*/}
+  keywords={addrow,addcol,zeromatrix,ident,augcoefmatrix,ratsubst,diff,ev,tex,%
+    with_stdout,nouns,express,depends,load,submatrix,div,grad,curl,matrix,%
+    invert,lambda,facsum,expand,false,then,if,else,subst,%
+    rootscontract,solve,part,assume,sqrt,integrate,abs,inf,exp,sin,cos,sinh,cosh},
+  sensitive=true,
+  comment=[n][\itshape]{/*}{*/}
 }
 \lstdefinestyle{Maxima}{
-	numbers=left,
-	belowcaptionskip=1\baselineskip,
-	breaklines=true,
-	frame=L,
-	xleftmargin=\parindent,
-	language=Maxima,
-	showstringspaces=false,
-	basicstyle=\footnotesize\ttfamily,
-	keywordstyle=\bfseries\color{green!40!black},
-	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
-	stringstyle=\color{orange},
-	numberstyle=\ttfamily\tiny
+  numbers=left,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=Maxima,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  numberstyle=\ttfamily\tiny
 }
 \usepackage{caption}
 \usepackage[mode=buildnew]{standalone}
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
-%\addbibresource{thema/main.bib}
+\addbibresource{friedmann/main.bib}
+\addbibresource{komplex/main.bib}
+\addbibresource{kreis/main.bib}
+\addbibresource{licht/main.bib}
+\addbibresource{schrittlaenge/main.bib}
+\addbibresource{sir/main.bib}
+\addbibresource{trafo/main.bib}
+\addbibresource{wellen/main.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
 %\pgfplotsset{compat=1.12}
 \setlength{\headheight}{15pt} % fix headheight warning
 \DeclareGraphicsRule{*}{mps}{*}{}
 \begin{document}
-	\pagestyle{fancy}
-	\frontmatter
-	\newcommand\HRule{\noindent\rule{\linewidth}{1.5pt}}
-	\begin{titlepage}
-		\vspace*{\stretch{1}}
-		\HRule
-		\vspace*{5pt}
-		\begin{flushright}
-			{
-				\LARGE
-				Mathematisches Seminar\\
-				\vspace*{20pt}
-				\Huge
-				Differentialgleichungen%
-			}
-			\vspace*{5pt}
-		\end{flushright}
-		\HRule
-		\begin{flushright}
-			\vspace{60pt}
-			\Large
-			Leitung: Andreas M"uller\\
-			\vspace{40pt}
-			\Large
-			Reto~Christen,
-			Kevin~Cina,
-			Andri~Hartmann,
-			Pascal~Horat %,
-			Matthias~Kn"opfel,
-			Stefan Kull,
-			Daniela~Meier,
-			Max~Obrist %,
-			Hansruedi~Patzen,
-			Benjamin~R"aber,
-			Simon~Schaefer %,
-			Tibor~Schneider,
-			Tobias~Schuler,
-			Roy~Seitz,
-			Martin~Stypinski
-		\end{flushright}
-		\vspace*{\stretch{2}}
-		\begin{center}
-			Hochschule f"ur Technik, Rapperswil, 2016
-		\end{center}
-	\end{titlepage}
-	\hypersetup{
-		linktoc=all,
-		linkcolor=blue
-	}
-	\newcounter{beispiel}
-	\newenvironment{beispiele}{
-		\bgroup\smallskip\parindent0pt\bf Beispiele\egroup
-		
-		\begin{list}{\arabic{beispiel}.}
-			{\usecounter{beispiel}
-				\setlength{\labelsep}{5mm}
-				\setlength{\rightmargin}{0pt}
-			}}{\end{list}}
-		\newcounter{uebungsaufgabe}
-		% environment fuer uebungsaufgaben
-		\newenvironment{uebungsaufgaben}{
-			\begin{list}{\arabic{uebungsaufgabe}.}
-				{\usecounter{uebungsaufgabe}
-					\setlength{\labelwidth}{2cm}
-					\setlength{\leftmargin}{0pt}
-					\setlength{\labelsep}{5mm}
-					\setlength{\rightmargin}{0pt}
-					\setlength{\itemindent}{0pt}
-				}}{\end{list}\vfill\pagebreak}
-			\newenvironment{teilaufgaben}{
-				\begin{enumerate}
-					\renewcommand{\labelenumi}{\alph{enumi})}
-				}{\end{enumerate}}
-			% Loesung
-			\def\swallow#1{
-				%nothing
-			}
-			\NewEnviron{loesung}[1][L"osung]{%
-				\begin{proof}[#1]%
-					\renewcommand{\qedsymbol}{$\bigcirc$}
-					\BODY
-				\end{proof}
-			}
-			\NewEnviron{bewertung}{%
-				\begin{proof}[Bewertung]%
-					\renewcommand{\qedsymbol}{}
-					\BODY
-				\end{proof}
-			}
-			\NewEnviron{diskussion}{%
-				\begin{proof}[Diskussion]%
-					\renewcommand{\qedsymbol}{}
-					\BODY
-				\end{proof}
-			}
-			\NewEnviron{hinweis}{%
-				\begin{proof}[Hinweis]%
-					\renewcommand{\qedsymbol}{}
-					\BODY
-				\end{proof}
-			}
-			\def\keineloesungen{%
-				\RenewEnviron{loesung}{\relax}
-				\RenewEnviron{bewertung}{\relax}
-				\RenewEnviron{diskussion}{\relax}
-			}
-			\newenvironment{beispiel}{%
-				\begin{proof}[Beispiel]%
-					\renewcommand{\qedsymbol}{$\bigcirc$}
-				}{\end{proof}}
-			
-			\input{linsys.tex}
-			\allowdisplaybreaks
-			
-			\lhead{Inhaltsverzeichnis}
-			\rhead{}
-			\tableofcontents
-			\newtheorem{satz}{Satz}[chapter]
-			\newtheorem{hilfssatz}[satz]{Hilfssatz}
-			\newtheorem{definition}[satz]{Definition}
-			\newtheorem{annahme}[satz]{Annahme}
-			\renewcommand{\floatpagefraction}{0.75}
-			\mainmatter
-			\input{vorwort.tex}
-			\part{Grundlagen}
-			%\keineloesungen
-			\begin{refsection}
-				\input{chapters/einleitung.tex}
-				%\input{kapitel.tex}
-				\input{chapters/grundlagen.tex}
-				\input{chapters/numerik.tex}
-				\input{chapters/potenzreihen.tex}
-				\input{chapters/linear.tex}
-				\input{chapters/geometrie.tex}
-				\input{chapters/komplex.tex}
-				%\input{chapters/stabilitaet.tex}
-				%\input{chapters/chaos.tex}
-				\input{chapters/stochastisch.tex}
-				\begin{appendices}
-					\input{chapters/newton.tex}
-					\input{chapters/komplexezahlen.tex}
-				\end{appendices}
-				\vfill
-				\pagebreak
-				\ifodd\value{page}\else\null\clearpage\fi
-				\lhead{Literatur}
-				\rhead{}
-				\printbibliography[heading=subbibliography]
-				\label{skript:literatur}
-			\end{refsection}
-			
-			\part{Anwendungen und Weiterf"uhrende Themen}
-			\lhead{Anwendungen}
-			\input{uebersicht.tex}
-			\def\chapterauthor#1{{\large #1}\bigskip\bigskip}
-			% Artikel
-			\input{wellen/main.tex}
-			\input{kreis/main.tex}
-			\input{schrittlaenge/main.tex}
-			\input{licht/main.tex}
-			\input{sir/main.tex}
-			\input{friedmann/main.tex}
-			\input{komplex/main.tex}
-			\input{trafo/main.tex}
-			\vfill
-			\pagebreak
-			\ifodd\value{page}\else\null\clearpage\fi
-			\lhead{Index}
-			\rhead{}
-			\input{skript.ind}
-			
-		\end{document}
+\pagestyle{fancy}
+\frontmatter
+\newcommand\HRule{\noindent\rule{\linewidth}{1.5pt}}
+\begin{titlepage}
+\vspace*{\stretch{1}}
+\HRule
+\vspace*{5pt}
+\begin{flushright}
+{
+\LARGE
+Mathematisches Seminar\\
+\vspace*{20pt}
+\Huge
+Differentialgleichungen%
+}
+\vspace*{5pt}
+\end{flushright}
+\HRule
+\begin{flushright}
+\vspace{60pt}
+\Large
+Leitung: Andreas M"uller\\
+\vspace{40pt}
+\Large
+Reto~Christen,
+Kevin~Cina,
+Andri~Hartmann,
+Pascal~Horat %,
+Matthias~Kn"opfel,
+Stefan Kull,
+Daniela~Meier,
+Max~Obrist %,
+Hansruedi~Patzen,
+Benjamin~R"aber,
+Simon~Schaefer %,
+Tibor~Schneider,
+Tobias~Schuler,
+Roy~Seitz,
+Martin~Stypinski
+\end{flushright}
+\vspace*{\stretch{2}}
+\begin{center}
+Hochschule f"ur Technik, Rapperswil, 2016
+\end{center}
+\end{titlepage}
+\hypersetup{
+    linktoc=all,
+    linkcolor=blue
+}
+\newcounter{beispiel}
+\newenvironment{beispiele}{
+\bgroup\smallskip\parindent0pt\bf Beispiele\egroup
+
+\begin{list}{\arabic{beispiel}.}
+  {\usecounter{beispiel}
+  \setlength{\labelsep}{5mm}
+  \setlength{\rightmargin}{0pt}
+}}{\end{list}}
+\newcounter{uebungsaufgabe}
+% environment fuer uebungsaufgaben
+\newenvironment{uebungsaufgaben}{
+\begin{list}{\arabic{uebungsaufgabe}.}
+  {\usecounter{uebungsaufgabe}
+  \setlength{\labelwidth}{2cm}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\labelsep}{5mm}
+  \setlength{\rightmargin}{0pt}
+  \setlength{\itemindent}{0pt}
+}}{\end{list}\vfill\pagebreak}
+\newenvironment{teilaufgaben}{
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+}{\end{enumerate}}
+% Loesung
+\def\swallow#1{
+%nothing
+}
+\NewEnviron{loesung}[1][L"osung]{%
+\begin{proof}[#1]%
+\renewcommand{\qedsymbol}{$\bigcirc$}
+\BODY
+\end{proof}
+}
+\NewEnviron{bewertung}{%
+\begin{proof}[Bewertung]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\NewEnviron{diskussion}{%
+\begin{proof}[Diskussion]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\NewEnviron{hinweis}{%
+\begin{proof}[Hinweis]%
+\renewcommand{\qedsymbol}{}
+\BODY
+\end{proof}
+}
+\def\keineloesungen{%
+\RenewEnviron{loesung}{\relax}
+\RenewEnviron{bewertung}{\relax}
+\RenewEnviron{diskussion}{\relax}
+}
+\newenvironment{beispiel}{%
+\begin{proof}[Beispiel]%
+\renewcommand{\qedsymbol}{$\bigcirc$}
+}{\end{proof}}
+
+\input{linsys.tex}
+\allowdisplaybreaks
+
+\lhead{Inhaltsverzeichnis}
+\rhead{}
+\tableofcontents
+\newtheorem{satz}{Satz}[chapter]
+\newtheorem{hilfssatz}[satz]{Hilfssatz}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{annahme}[satz]{Annahme}
+\newtheorem{problem}[satz]{Problem}
+\newtheorem*{problem*}{Problem}
+\renewcommand{\floatpagefraction}{0.75}
+\mainmatter
+\input{vorwort.tex}
+\part{Grundlagen}
+%\keineloesungen
+\begin{refsection}
+\input{chapters/einleitung.tex}
+%\input{kapitel.tex}
+\input{chapters/grundlagen.tex}
+\input{chapters/numerik.tex}
+\input{chapters/potenzreihen.tex}
+\input{chapters/linear.tex}
+\input{chapters/geometrie.tex}
+\input{chapters/komplex.tex}
+%\input{chapters/stabilitaet.tex}
+%\input{chapters/chaos.tex}
+\input{chapters/stochastisch.tex}
+\begin{appendices}
+\input{chapters/newton.tex}
+\input{chapters/komplexezahlen.tex}
+\end{appendices}
+\vfill
+\pagebreak
+\ifodd\value{page}\else\null\clearpage\fi
+\lhead{Literatur}
+\rhead{}
+\printbibliography[heading=subbibliography]
+\label{skript:literatur}
+\end{refsection}
+
+\part{Anwendungen und Weiterf"uhrende Themen}
+\lhead{Anwendungen}
+\input{uebersicht.tex}
+\def\chapterauthor#1{{\large #1}\bigskip\bigskip}
+% Artikel
+\input{wellen/main.tex}
+\input{kreis/main.tex}
+\input{schrittlaenge/main.tex}
+\input{licht/main.tex}
+\input{sir/main.tex}
+\input{friedmann/main.tex}
+\input{komplex/main.tex}
+\input{trafo/main.tex}
+\vfill
+\pagebreak
+\ifodd\value{page}\else\null\clearpage\fi
+\lhead{Index}
+\rhead{}
+\input{skript.ind}
+
+\end{document}

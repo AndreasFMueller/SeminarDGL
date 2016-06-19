@@ -20,7 +20,9 @@ label(btex $A$ etex, (0,0));
 path circle;
 
 numeric r;
-r := 4.5;
+r := 4.7;
+numeric b;
+b := 0.45;
 
 circle := r * (cosd(40), sind(40));
 
@@ -33,7 +35,7 @@ head := (0,0)--(5,-3)--(0,6)--(-5,-3)--cycle;
 
 z1 = (-0.3,-0.4);
 
-pickup pencircle scaled 0.3 pt;
+pickup pencircle scaled b;
 draw circle shifted z1;
 fill head scaled 0.2 rotated 10 shifted (r,0) rotated 10 shifted z1;
 
