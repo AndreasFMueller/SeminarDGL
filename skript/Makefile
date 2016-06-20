@@ -5,7 +5,7 @@
 #
 all:	subdirs skript.pdf
 
-SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis licht \
+SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis \
 		 komplex friedmann
 
 subdirs:
