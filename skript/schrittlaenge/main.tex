@@ -9,17 +9,17 @@
 \rhead{Problemstellung}
 
 
-Beim numerischen Lösen einer Differentialgleichung wird ein Wert aus dem vorangegangenen berechnet.
+Beim numerischen L"osen einer Differentialgleichung wird ein Wert aus dem vorangegangenen berechnet.
 Nun muss entschieden werden, zu welchem Zeitpunkt ein solcher Wert berechnet werden soll.
-Ist der Berechnungszeitpunkt vom vorangegangenen zum aktuellen Wert zu weit voneinander entfernt, kann dass bei engen Kurven zu grossen Fehlern führen.
-Diese Fehler können sich nun von Schritt zu Schritt fortpflanzen, sodass die Lösungskurve schlussendlich keine Ähnlichkeit mit der exakten Kurve zeigt.
+Ist der Berechnungszeitpunkt vom vorangegangenen zum aktuellen Wert zu weit voneinander entfernt, kann dass bei engen Kurven zu grossen Fehlern f"uhren.
+Diese Fehler k"onnen sich nun von Schritt zu Schritt fortpflanzen, sodass die L"osungskurve schlussendlich keine "Ahnlichkeit mit der exakten Kurve zeigt.
 
-Als Konsequenz kann nun einfach die Schrittweite kleiner gewählt werden.
-Somit werden die Fehler pro berechnetem Wert kleiner und darum die Lösungskurve genauer.
-Dies hat aber zur Folge, dass viel mehr Werte berechnet werden müssen, was mehr Rechenaufwand mit sich bringt.
-So wird vor allem auf Kurvenabschnitten mit geringer Richtungsänderung unn"otig Rechenzeit verschwendet.
+Als Konsequenz kann nun einfach die Schrittl"ange kleiner gew"ahlt werden.
+Somit werden die Fehler pro berechnetem Wert kleiner und darum die L"osungskurve genauer.
+Dies hat aber zur Folge, dass viel mehr Werte berechnet werden m"ussen, was mehr Rechenaufwand mit sich bringt.
+So wird vor allem auf Kurvenabschnitten mit geringer Richtungs"anderung unn"otig Rechenzeit verschwendet.
 
-Das Ziel dieser Arbeit ist nun, verschiedene Methoden zu entwerfen, welche die Schrittlänge je nach Gegebenheit anpassen können. 
+Das Ziel dieser Arbeit ist nun, verschiedene Methoden zu entwerfen, welche die Schrittl"ange je nach Gegebenheit anpassen k"onnen. 
 Die entwickelten Methoden werden an einem Beispielproblem getestet und nach vorbestimmten Kriterien untereinander verglichen.
 
 
@@ -32,7 +32,7 @@ Um die Schrittl"angenproblematik zu erl"autern, wird ein geeignetes Beispiel ben
 \item Das Problem sollte schnell und leicht verst"andlich sein, denn in diesem Kapitel geht es schliesslich um die Schrittl"angensteuerung.
 \item Das Konzept der Schrittl"angensteuerung und dessen Vorteile sollten damit auf einfache Weise visualisiert werden k"onnen.
 \end{itemize}
-Auf Grund diesen Voraussetzungen wurde als Beispielproblem das allgemein bekannte \em Zweik"orperproblem\em~gew"ahlt.
+Auf Grund dieser Voraussetzungen wurde als Beispielproblem das allgemein bekannte \em Zweik"orperproblem\em~gew"ahlt.
 Bei diesem Problem geht es darum, das Verhalten zweier K"orper, welche ohne "aussere Einfl"usse miteinander wechselwirken, zu berechnen. 
 Die Berechnungen werden zur Vereinfachung nach den Gesetzen und Axiomen von Newton vorgenommen, das heisst die relativistischen Effekte gem"ass Einstein werden ausser Acht gelassen.
 Ausserdem wird von Massepunkten ausgegangen.
@@ -139,7 +139,8 @@ s_{y1}\\
 -\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
 \end{pmatrix}
 \end{equation}
-Weil MatLab (abgeleitet von Matrix Laboratory) bevorzugt mit Matrizen und Vektoren rechnet, werden die Variablen entsprechend substituiert. So wird $s_x$ zu $z_1$, $s_y$ zu $z_2$, $s_{x1}$ zu $z_3$ und $s_{y1}$ zu $z_4$.
+Weil MatLab (abgeleitet von Matrix Laboratory) bevorzugt mit Matrizen und Vektoren rechnet, werden die Variablen entsprechend substituiert.
+So wird $s_x$ zu $z_1$, $s_y$ zu $z_2$, $s_{x1}$ zu $z_3$ und $s_{y1}$ zu $z_4$.
 \begin{equation}\label{eq:zustandsraumdarst}
 \frac{d \vec{z}}{dt}=\frac{d}{dt} \begin{pmatrix}
 z_1 \\ 
@@ -156,8 +157,8 @@ z_4 \\
 In MatLab wird die Gleichung als Funktion definiert.
 "Ubergeben wird die aktuelle Zeit t und der Zustand z.
 Der R"uckgabewert ist die daraus resultierende  Zustands"anderung dz.
-Der folgende Ausschnitt zeigt den MatLab Code aus Gleichung (\ref{eq:zustandsraumdarst}).
-\begin{lstlisting}[style=Matlab]
+Der folgende Codeausschnitt \ref{planetsCode} zeigt den MatLab Code entsprechend der Gleichung (\ref{eq:zustandsraumdarst}).
+\begin{lstlisting}[style=Matlab, caption={Problemfunktion}, captionpos=b, label={planetsCode}]
 function dz = planets(t, z)
 
     G = 6.6674e-11;
@@ -173,26 +174,211 @@ function dz = planets(t, z)
 end
 \end{lstlisting}
 
-Bild von optimaler L"osung
+Bei Bild \ref{ellipseOptimalImage} sieht man eine exakte L"osung von oben beschriebenem Problem.
+Die Anfangsbedingungen wurden manuell so eingestellt, dass die L"osungskurven der beiden K"orper zwei Ellipsen ergeben.
+Allein durch die "Anderung der Anfangsbedingungen kann der L"osungsalgorithmus an seine Grenzen gebracht werden, indem eine L"osungskurve erzeugt wird, welche sowohl lange gerade Strecken als auch enge Kurven beinhaltet.
+Dies ist in Bild \ref{hyperbelOptimalImage} ersichtlich.
+In Bild \ref{hyperbelOptimalImage}, welches die Geschwindigkeit zeigt, ist erkenntlich, dass die K"orper an der Stelle der gr"ossten Kr"ummung sehr stark beschleunigt werden.
+Weil die Schrittl"ange die Einheit der Zeit hat, stellt dies eine Herausforderung dar, da bei hohen Geschwindigkeiten ein gr"osserer Weg pro Berechnungsschritt zur"uckgelegt wird.
 
-Fixstep
+\begin{figure}
+\centering
+\includegraphics{schrittlaenge/images/ellipseOptimal.pdf}
+\caption{Exakte L"osung: Ellipsen}
+\label{ellipseOptimalImage}
+\end{figure}
 
-Problematik Schrittl"ange
+\begin{figure}
+\centering
+\includegraphics{schrittlaenge/images/ellipseOptimal.pdf}
+\caption{Exakte L"osung: Hyperbeln}
+\label{hyperbelOptimalImage}
+\end{figure}
 
-myOde
+HIER NOCH BILD EINFUEGEN GESCHWINDIGKEITSPLOT SPITZ
 
-
-
-
-%\begin{figure}
-%\centering
-%\includegraphics{chapters/images/geometrie-13.pdf}
-%\caption{Entwicklung des Systems~(\ref{geometrie:harvest-equation})
-%mit $a=5$ und $h=0.8$
-%\label{geometrie:harvest-graph}}
-%\end{figure}%
+\section{Runge-Kutta-Schritt\label{section:schrittlaenge:runge-kutta}}
+\rhead{Runge-Kutta-Verfahren}
 
 
+Nun wird ein Algorithmus ben"otigt, mit dem man die Berechnung des Beispielproblems vornehmen kann.
+MatLab und viele andere Mathematikprogramme beinhalten bereits solche Algorithmen.
+Ein in MatLab weit verbreitetes Beispiel daf"ur ist der ode45, welcher mit einem Runge-Kutta-Verfahren f"unfter Ordnung arbeitet.
+Das Problem bei Standardl"oseverfahren wie dem ode45 ist, dass die Schrittl"ange nur in begrenztem Masse steuerbar ist. 
+Darum ist es sinnvoll eine eigene Implementation des Runga-Kutta-Verfahrens zu verwenden. Der Einfachheit halber wird das Verfahren aus Kapitel \ref{subsection:numerik:runge-kutta} verwendet. 
+
+\begin{lstlisting}[style=Matlab, caption=Runge-Kutta-Schritt, captionpos=b, label=rk4StepCode] 
+function y = rk4Step(ode, t0, y0, h)            %ode: Problemfunktion
+                                                %t0 : Anfangszeitpunkt  
+                                                %y0 : Anfangsbedingung 
+                                                %h  : Schrittlaenge
+                                                
+    hDiv2 = h / 2;                              %Schrittlaenge halbieren
+    t1 = t0 + hDiv2;                            %Zeitpunkt nach halbem Schritt
+
+    k1 = ode(t0, y0).';                         %berechnen der vier Steigungen
+    k2 = ode(t1, y0 + hDiv2 * k1).';               
+    k3 = ode(t1, y0 + hDiv2 * k2).';
+    k4 = ode(t0 + h, y0 + h * k3).';
+    
+    y = y0 + h * (k1 + 2*k2 + 2*k3 + k4)./6;    %naechster Wert
+
+end
+
+\end{lstlisting}
+
+Die MatLab-Funktion rk4Step \ref{rk4StepCode} liefert den n"achsten Wert y zur"uck, welcher aus dem vorherigen Wert y0 sowie dem vorherigen Zeitpunkt t0 berechnet wird.
+Die Zeit zwischen y0 und y entspricht dabei der Schrittl"ange h.
+Als Parameter werden die Problemfunktion ode, welche im aktuellen Beispiel die Funktion planets \ref{planetsCode} ist, an die Funktion "ubergeben.
+Weiter wird der Ausgangszeitpunkt t0, der Ausgangswert y0 sowie die Schrittl"ange h mitgegeben.
+ 
+\section{Konstante Schrittl"ange}
+\rhead{Konstante Schrittl"ange}
+
+Dank der eigenen Implementation des Runge-Kutta-Verfahrens kann nun die Schrittl"ange frei gew"ahlt werden.
+So kann das Beispielproblem sehr einfach mit konstanter Schrittl"ange berechnet und die Ergebnisse verglichen werden. 
+
+
+\begin{lstlisting}[style=Matlab, caption=Konstante Schrittl"ange, captionpos=b, label=fixRk4Code] 
+function [t, y] = fixRk4(ode, x, y0, h)                 
+    
+    t = x(1);                                         % Anfangszeitpunkt an
+                                                      % Zeitvektor zuweisen
+                                                        
+    y = y0;                                           % Anfangswert an
+                                                      % Loesungsvektor zuweisen
+    while t(end) < x(2)
+  
+        y = [y; rk4Step(ode, t(end), y(end, :), h)];  % Loesungsvektor
+                                                      % erweitern 
+                                                        
+        t = [t; t(end)+h];                            % Zeitvektor erweitern
+
+    end
+
+end
+\end{lstlisting}
+
+Mit der MatLab-Funktion fixRk4 \ref{fixRk4Code} kann nun ein Problem mit einer vorgew"ahlten Schrittl"ange gel"ost werden.
+Diese Schrittl"ange bleibt "uber die gesamte Zeitspanne konstant.
+Dabei wird der Funktion neben der Problemfunktion ode auch die Zeitspanne x, die Anfangsbedingunen y0 sowie die Schrittl"ange h "ubergeben.
+Die Zeitspanne x ist ein Vektor bestehend aus den zwei Komponenten Anfangszeitpunkt x(1) und Endzeitpunkt x(2).
+Die Parameter welche von der Funktion zur"uckgegeben werden, sind t und y, wobei t den Zeitpunkten und y den Werten an diesen Zeitpunkten entsprechen.
+
+HIER FIXSTEPBILD ELLIPSE UNTERSCHIEDLICHE SCHRITTl"ange
+
+HIER FIXSTEPBILD SPITZ UNTERSCHIEDLICHE SCHRITTl"ange
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$x$ & 1 & 2 & 3 & 4 & 5 \\ \hline
+$f(x)$ & 10 & 11 & 12 & 13 & 14 \\ \hline
+
+\end{tabular}
+
+Im Bild \ref{} sind die Bahnen eines K"orpers, berechnet mit unterschiedlichen Schrittl"angen und darum auch unterschiedlichen Anzahl Schritten, ersichtlich.
+W"urde das Problem analytisch gel"ost werden, ergäbe sich das Bild einer perfekten Ellispe.
+Dies ist hier vorallem bei den Kurven welche mit weniger Schritten berechnet wurden nicht der Fall.
+
+Mit ver"anderten Anfangsbedingungen kann aus der Ellipse eine Hyperbel werden.
+Der Versatz der beiden K"orper in Richtung der y-Achse wurde verkleinert, so dass es fast zu einer Kollision kommt. 
+Dies ist in Bild \ref{} erkennbar.
+Bei einer Fastkollision ist die Richtungs"anderung an einer Stelle sehr gross, davor und danach treten nur sehr kleine Kr"ummungen auf.
+Diese grosse Kr"ummung ist ein entscheidender Punkt in der Berechnung der Gesamtkurve, denn ist die Abweichung dort zu gross, stimmt der ganze folgende Verlauf der Kurve nicht. 
+
+HIER BILD EINFUEGEN VON 3 VERSCHIEDENEN KURVEN SPITZ ZOOM, SIEHE VORTRAG FOLIE 10, KURVE 1,4,6
+
+Das Bild REFERENZ zeigt einen vergr"osserten Ausschnitt in der Umgebung der Fastkollision.
+Hierbei muss beachtet werden, dass nur die rechte der zwei punktsymmetrischen Bahnen dargestellt wird.
+
+Beim Begutachten von Bild REFERENZ wird klar, warum eine Schrittl"angensteuerung von grosser Bedeutung ist.
+Denn damit k"onnen die mehr oder weniger geraden Strecken mit einer grossen Schrittl"ange schnell berechnet werden und damit einen Grossteil der Rechenzeit f"ur die kritische Stelle aufgewendet werden.
+
+ 
+
+\section{Variable Schrittl"ange}
+\rhead{Variable Schrittl"ange}
+
+Um die Schrittl"ange adaptiv gestalten zu k"onnen, wird ein Kriterium ben"otigt, welches eine Aussage dar"uber macht, wie gross die Schrittl"ange sein sollte.
+Je gr"osser die Kr"ummung der Kurve, umso kleiner sollte die Schrittl"ange sein.
+Die Schwierigkeit dabei ist, dass weder die aktuelle Kr"ummung noch der zuk"unftige Verlauf der Kurve bekannt ist.
+Weiter ist es diffizil, einer bestimmten Kr"ummung die entsprechende Dimension der Schrittl"ange zuzuordnen.
+Deshalb wurde dieser L"osungsansatz verworfen.
+
+Eine weitere Strategie ist, den n"achsten Schritt mit zwei verschiedenen Verfahren zu berechnen, um anschliessend die beiden L"osungen zu vergleichen.
+"Uberschreitet die Differenz der L"osungen eine vorgegebene Toleranz, wird die Schrittl"ange halbiert und die Berechnung erneut durchgef"uhrt.
+Damit ergibt sich aber folgendes Problem: Die Schrittl"ange wird zwar verkleinert sobald die Toleranz nicht eingehalten wird, aber sie wird nie vergrössert.
+Aus diesem Grund wird die Schrittl"ange vor jedem Schritt zun"achst um den Faktor $\sqrt{2}$ vergr"ossert. 
+Damit nur ein Verfahren implementiert werden muss, wird folgender Trick angewendet: 
+Das erste Verfahren entspricht dem Runge-Kutta-Verfahren, welches im Abschnitt \ref{section:schrittlaenge:runge-kutta} erw"ahnt wird.
+Beim Zweiten wird das erste Verfahren mit halbierter Schrittl"ange zweimal angewendet. 
+
+
+\begin{lstlisting}[style=Matlab, caption=Variable Schrittl"ange, captionpos=b, label=code:myOde] 
+function [t, y] = myOde(ode, x, y0, h0, tol)
+    
+    y = [y0; rk4Step(ode, x(1), y0, h0)]; 
+    t = [x(1); x(1) + h0];
+    
+    while t(end) < x(2)
+        
+        hBig = h0 * sqrt(2);
+        hSmall = hBig / 2;
+        
+        yLast = y(end,:);
+        tLast = t(end);
+        
+        % naechster Schritt berechnen
+        yBig = rk4Step(ode, tLast, yLast, hBig);
+        ySmall1 = rk4Step(ode, tLast, yLast, hSmall);
+        ySmall2 = rk4Step(ode, tLast + hSmall, ySmall1, hSmall);
+        
+        % Fehlerberechnung
+        absError = abs(yBig - ySmall2);
+        change = abs(ySmall2 - yLast);
+        
+        relError = absError ./ change;
+        
+        if max(relError) > tol
+            h0 = hSmall;
+            y = [y; ySmall1];
+            t = [t; tLast + h0];
+        else
+            h0 = hBig;
+            y = [y; yBig]; 
+            t = [t; tLast + h0];           
+        end
+         
+    end
+end
+
+\end{lstlisting}
+
+Im Codebeispiel \ref{code:myOde} wird anders als bei der Funktion fixRk4 \ref{fixRk4Code} statt der konstanten Schrittl"ange h nur die Anfangsschrittl"ange h0, sowie zus"atzlich die Toleranz tol "ubergeben.
+Zuerst wird die Schrittl"ange h0 vergr"ossert.
+Dies ist im Code \texttt{hBig}.
+Anschliessend wird die erste L"osung yBig mit dem Runge-Kutta-Verfahren berechnet.
+Mit der halben Schrittl"ange hSmall werden nun hintereinander die L"osungen ySmall1 und \texttt{ySmall2} mit dem selben Verfahren berechnet.
+Direkt danach wird der relative Fehler berechnet.
+Ist dieser gr"osser als die spezifizierte Toleranz, wird als die neue Schrittl"ange \texttt{hSmall} gew"ahlt und die erste L"osung mit dieser Schrittl"ange verwendet.
+Ansonsten wird der grosse Schritt verwendet.
+
+BILD VERGLEICH MYODE ODE45 FIXSTEP
+
+TABELLE MIT ANZAHL SCHRITTEN
+
+Mit dem entwickelten Algorithmus kann die Anzahl Schritte und somit der Rechenaufwand massgeblich reduziert werden.
+Dies ist in Bild \ref{hyperbelOptimalImage} zu sehen.
+Zum Vergleich wurde auch der Standard-Solver ode45 aus MatLab herangezogen.
+Der entwickelte Algorithmus myOde braucht weniger Schritte um eine bessere L"osungskurve als der ode45 zu erhalten.
+Allerdings kann keine Aussage dar"uber gemacht werden, ob der schlussendliche Rechenaufwand effektiv geringer war.
+Dies, weil die Funktionsweise des ode45 nicht n"aher untersucht wurde.
+
+HIER BILD VERLAUF SCHRITTLAENGE MYODE
+
+In Bild \ref{fixRk4Code} kann der Verlauf der Schrittl"ange, welcher sich zur Berechnung der L"osungskurve \ref{fixRk4Code}mit myOde ergeben hat, herausgelesen werden.
+Eindr"ucklich ist, dass der Grossteil der Schritte sehr klein sind.
+Dies weil etwa 80 Prozent der Schritte zur Berechnung der kritischen Stelle aufgewendet werden.
 
 
 \end{refsection}
