@@ -11,11 +11,11 @@ In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und s
 
 \section{Problemstellung}
 
-Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet, Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Isolationsfestigkeit in Luft wesentlich schlechter als im "Ol ist. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
+Luftgek"uhlte Transformatoren sind im Gegensatz zu "olgek"uhlten Transformatoren eher gef"ahrdet, Teilentladungen oder gar Durchschl"age zu haben. Dies liegt daran, dass die Durchschlagfestigkeit in Luft wesentlich schlechter als in "Ol ist. Da ein luftgek"uhlter Transformator im Gegensatz zu einem "olgek"uhlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, dass Durchschl"age und gr"osstenteils auch Teilentladungen verhindert werden k"onnen. 
 
 Damit die Windungen an Ort gehalten werden k"onnen, sind sie in Epoxidharz eingegossen. Zwischen den Lagen befindet sich gen"ugend Platz, damit Luft oder "Ol zur K"uhlung durchstr"omen kann. Ein Resibloc-Testtransformator des Herstellers ABB ist in Abbildung \ref{trafo:resibloc} abgebildet. Es handelt sich dabei um einen luftgek"uhlten Leistungstransformator, welcher zus"atzliche Anschl"usse f"ur Verifikationsmessungen besitzt. 
 
-Wenn sich beim Giessen des Harzes Luftblasen bilden, k"onnen an diesen Stellen Feld"uberh"ohungen entstehen und ebenfalls zu Teilentladungen f"uhren. Diese Luftblasen k"onnen im CAD-Programm eingef"ugt und simuliert werden. Ein Beispiel ist in Abbildung \ref{trafo:E-FieldBubble} pr"asentiert.
+Wenn sich beim Giessen des Harzes Luftblasen bilden, k"onnen an diesen Stellen Feld"uberh"ohungen entstehen und ebenfalls zu Teilentladungen f"uhren. Diese Luftblasen k"onnen im CAD-Programm eingef"ugt und simuliert werden. Ein Beispiel wird später in Abbildung \ref{trafo:E-FieldBubble} pr"asentiert.
 
 \begin{figure}
 	\centering
@@ -43,7 +43,7 @@ Ein Transformator, ob "ol- oder luftgek"uhlt, kann prinzipiell mit dem Ersatzsch
 
 Ein Ansatz ist es, jede Windung einzeln zu modellieren. Pro Windung wird ein elektrischer Widerstand sowie eine Induktivit"at in Serie geschaltet. Ebenfalls m"ussen die Kapazit"aten sowie die Leitf"ahigkeiten gegen"uber Masse und den "ubrigen Windungen ber"ucksichtigt werden \cite{trafo:BILImpulse}. 
 
-Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} dargestellt. Als Veranschaulichung wird ein kleines Transformator-Beispiel, bestehend aus 4 Windungen, verwendet. Mit Messungen an Testtransformatoren zeigte sich, dass ab ca. 20 Windungen die Simulationen mit diesem Ersatzschaltbild sehr genau "ubereinstimmen. 
+Dieses Ersatzschaltbild wird in der Abbildung \ref{trafo:erweitertes_ESB} dargestellt. Als Veranschaulichung wird ein kleines Transformator-Beispiel, bestehend aus 4 Windungen, verwendet. Messungen an Testtransformatoren zeigten, dass ab ca. 20 Windungen die Simulationen mit diesem Ersatzschaltbild sehr genau "ubereinstimmen. 
 
 \begin{figure}
 	\centering
@@ -66,7 +66,16 @@ Damit die Werte der einzelnen Elementen ermittelt werden k"onnen, sind Finite-El
 	\label{trafo:infolytica}
 \end{figure}
 
-Alle Windungen, abgesehen von einer, werden auf das Spannungspotential \SI{0}{\volt} gesetzt. Die aktuelle gemessene Windung wird hingegen auf das Potential von \SI{1}{\volt} gesetzt und anschliessend werden die Induktivit"aten sowie Kapazit"aten gegen"uber allen anderen Windungen berechnet. Dieser Vorgang wird f"ur jede Windung wiederholt, bis alle Ersatzparameter f"ur das Modell, und ins besonders f"ur das Differentialgleichungssystem \ref{trafo:DGL}, bestimmt sind.
+Damit die Ersatzparameter des Transformators mit einer FEM-Simulation berechnet werden können, wird folgendermassen vorgegangen:
+\begin{itemize}
+	\item Alle Windungen, abgesehen einer, werden auf das Spannungspotential von  \SI{0}{\volt} gesetzt. 
+	\item Diese eine Windung wird hingegen an eine Spannungsquelle mit \SI{1}{\volt} angehängt.
+	\item Es lassen sich nun die Kapazitäten gegenüber allen anderen Windungen berechnen.
+	\item Als nächstes wird an alle Windungen einen Stromfluss von \SI{0}{\ampere} angelegt.
+	\item Wiederum eine Windung wird an eine Stromquelle mit \SI{1}{\ampere} angelegt und es lassen sich die Induktivitäten berechnen.
+	\item Dieser Vorgang wird für jede Windung wiederholt. Somit sind schlussendlich alle Ersatzparameter für das Modell, und ins besonders für das Differentialgleichungssystem \ref{trafo:DGL}, bestimmt.
+\end{itemize}
+
 
 \subsection{Blitzstoss/\textbf{B}asic \textbf{I}nsulation \textbf{L}evel (BIL)}
 Als Testspannung wird ein Blitzstoss wie in Abbildung \ref{trafo:BIL} verwendet. Mit diesem Spannungsimpuls soll die Spannungsfestigkeit bei einem Blitzeinschlag gepr"uft werden. Nach Norm muss die Anstiegszeit \SI{1.2}{\micro \second} und die Halbwertsabfallszeit (die Zeit, in welcher die Spannung auf \SI{50}{\percent} absinkt) \SI{50}{\micro \second} betragen. Die H"ohe der Amplitude wird je nach Betriebsspannung in Kategorien eingeteilt, grunds"atzlich betr"agt sie aber ungef"ahr dem 6-fachen der Nennbetriebsspannung. F"ur die Berechnung wird auf Grund der Linearit"at meistens \SI{1}{\volt}, oder auch \textit{pro Einheit} (engl. \textit{per unit} [p.u.]), verwendet. Später kann dies wieder skaliert werden.
@@ -99,7 +108,7 @@ und
 \begin{equation}
 	i_\mathrm{in} = i_1 + i_{C1g} + i_{R12} + i_{C12} + i_{R13} + i_{C13} + i_{R14} + i_{C14}
 \end{equation}
-geschrieben werden. 
+geschrieben werden. Die Ströme $i_{C1g}+ i_{C12} + i_{C13} + i_{C14}$ lassen sich zu einem gemeinsamen Strom $\sum i_{C1\mathrm{x}}$ und $i_{R12} + i_{R13} + i_{R14}$ zu $ \sum i_{R1\mathrm{x}}$ zusammenfassen. Daraus resultieren die Ersatzparameter $\sum C_{1\mathrm{x}}$ und $\sum R_{1\mathrm{x}}$ respektive $\sum G_{1\mathrm{x}}$, welche in der folgender Notation verwendet werden.
 
 Mit einigen Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm des Systems, welcher in diesem Falle der Blitzstoss ist.
 
@@ -257,7 +266,7 @@ welches die allgemein bekannte und auch l"osbare Zustandsraumdarstellung \index{
 
 Das Problem scheint bereits gel"ost zu sein, wenn sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
 
-Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst ressourcenschonend invertiert und bei der Inversion der Eigenwerte die L"osung stabil bleibt. 
+Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst ressourcenschonend invertiert und eine numerisch konvergierende Lösung ergibt. 
 
 
 \subsection{Singular Value Decomposition (SVD) \index{Singular Value Decomposition}}
@@ -290,11 +299,11 @@ F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf di
 
 Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotationen, es sind dies die Matrizen $U$ und $V^\top$, und einer Streckung durch die Diagonalmatrix $S$. Dieser Vorgang ist in Abbildung \ref{trafo:SVDFig} dargestellt. 
 
-Eine einfache Art die Singul"arwertzerlegung von $M$ zu bekommen, ist die Berechnung der Eigenwerte und Eigenvektoren von $M^\top M \in \mathbb{R}^{m \times m}$ und $MM^\top \in \mathbb{R}^{n \times n}$. Die linken Singul"arvektoren von $M$ sind Eigenvektoren von $MM^\top$ und k"onnen mit
+Eine einfache Art die Singul"arwertzerlegung von $M$ zu bekommen, ist die Berechnung der Eigenwerten und Eigenvektoren von $M^\top M \in \mathbb{R}^{m \times m}$ und $MM^\top \in \mathbb{R}^{n \times n}$. Die linken Singul"arvektoren von $M$, aus welcher die Matrix $U$ aufgebaut ist, sind Eigenvektoren von $MM^\top$ und k"onnen mit
 \begin{equation*}
 	\left(\lambda_i E - MM^\top\right)u_i = 0
 \end{equation*}
-berechnet werden, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ die Einheitsmatrix. Die Matrix $U$ besitzt somit in der senkrechte Eigenvektoren \cite{trafo:Watkins}.
+berechnet werden, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ die Einheitsmatrix ist. Die Matrix $U$ besitzt somit in der Senkrechte Eigenvektoren \cite{trafo:Watkins}.
 \begin{equation*}
 	\left( 
 		\begin{array}{cccc}
@@ -303,13 +312,13 @@ berechnet werden, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ di
 	\right)
 \end{equation*}
 
-Die rechten Singul"arvektoren $v_i$ k"onnen mit den Eigenvektoren von $M^\top M$ gefunden werden. Als etwas schnellere Alternative kann die Berechnung von $V$ auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
+Die rechten Singul"arvektoren $v_i$, welche die Matrix $V$ ergeben, k"onnen mit den Eigenvektoren von $M^\top M$ gefunden werden. Als etwas schnellere Alternative kann die Berechnung von $V$ auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
 \begin{align*}
 	M^\top &= V \underbrace{S^\top}_{S} U^\top\\
 	S^{-1} M^\top &= V U^\top\\
 	V &= S^{-1} M^\top \left(U^\top\right) = S^{-1} M^\top U
 \end{align*}
-Die Matrix $V$ besitzt in der Vertikale Eigenvektoren  \cite{trafo:Watkins}.
+Die Matrix $V$ besitzt in der Vertikale Eigenvektoren  \cite{trafo:Watkins}
 \begin{equation*}
 	\left( 
 		\begin{array}{c}
@@ -318,7 +327,7 @@ Die Matrix $V$ besitzt in der Vertikale Eigenvektoren  \cite{trafo:Watkins}.
 		\vdots\\
 		{v_m}^{\top}\\			
 		\end{array}
-	\right)
+	\right).
 \end{equation*}
 
 \begin{figure}
@@ -328,44 +337,45 @@ Die Matrix $V$ besitzt in der Vertikale Eigenvektoren  \cite{trafo:Watkins}.
 	\label{trafo:SVDFig}
 \end{figure}
 
-Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die Singulärwerte $\sigma$ in der Matrix $S$ sogleich die Eigenwerte $\lambda$ der Matrix $M$. Ebenfalls sind die beiden Matrizen $U$ und $V$ im Betrag identisch. Falls die Eigenwerte der Matrix $M$ alle dasselbe Vorzeichen besitzen, sind die Matrizen $U$ und $V$ gar identisch. Weil ein Transformator physikalisch gesehen unbedingt eine D"ampfung haben muss, soll heissen alle Eigenwerte einen negative Realteil besitzen, gilt $U = V$. Dies kann auch nummerisch verifiziert werden.
+Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die Singulärwerte $\sigma$ in der Matrix $S$ sogleich die Eigenwerte $\lambda$ der Matrix $M$.
 
 \subsubsection{Unterdr"uckung von unerw"unschten Eigenwerten}
-Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Eigenwerte des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwerte $\lambda < tol$, welche in der Numerik 'explodieren' und physikalisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
+Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Beträge von Eigenwerten des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwertbeträge $\lambda < \text{tol}$, welche numerischen Lösungsverfahren nicht folgen können und physikalisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
 \begin{equation*}
-	S = \left( 
+	S^\dagger = \left( 
 			\begin{array}{cccccc}
 				\lambda_1 & & & & & \\
 				& \ddots & & & &  \\
-				& & \lambda_{tol} & & & \\
+				& & \lambda_{\text{tol}} & & & \\
 				& & & 0 & & \\
 				& & & & \ddots & \\
 				& & & & & 0 \\				
 				\end{array}
 			\right) 
-			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{tol} > 0. 
+			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{\text{tol}} > 0. 
 \end{equation*}
+Bei der Matrix $S^\dagger$ handelt es sich um die Pseudoinverse.\footnote{Matlab bietet bereit eine Funktion \texttt{pinv(M,tol)} an, welche jedoch langsamer wie die Implementation in \ref{trafo:SVD} ist und deshalb nicht verwendet wird.} Es werden nur noch die Singulärwerte benutzt, welche nicht zu klein sind. Diejenigen welche unterhalb einer Toleranz sind, werden auf $0$ gesetzt und in den nächsten Rechenschritten ignoriert.
 
 \subsubsection{Inversion}
-Als weiteres gilt es, eine einfache 'Inversion' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst. \cite{trafo:Watkins}
+Als nächstes gilt es, eine einfache 'Inversion' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst. \cite{trafo:Watkins}
 \begin{equation*}
-	M^{-1} = \left(USV^\top\right)^{-1} = \left(V^\top\right)^{-1} S^{-1} U^{-1}
+	M^{-1} = \left(US^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S^\dagger\right)^{-1} U^{-1}
 \end{equation*}
 Da die Matrizen $U$ und $V$ symmetrisch sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung als 
 \begin{equation*}
-	M^{-1} = V S^{-1} U^\top
+	M^{-1} = V \left(S^\dagger \right)^{-1} U^\top
 \end{equation*}
 geschrieben werden.
 
 Dies ist wesentlich schneller zu berechnen als die Inverse der Matrix $M$, da lediglich die Diagonalmatrix invertiert werden muss.
 
-\subsubsection{Implementation}
+\subsubsection{Implementation \label{trafo:SVD}}
 Die Implementation in Matlab l"asst sich sehr kompakt und elegant darstellen. Wie soeben erkl"art werden zu kleine Eigenwerte auf Null gesetzt und anschliessend die Inverse berechnet. 
 
 {\scriptsize \lstinputlisting{./trafo/code/svd.m}}
 
 \subsubsection{Resultate}
-Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen erstellt werden. Als L"osungsverfahren wurde das etwas langsame, jedoch genaue nummerische Verfahren \texttt{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lassen sich die Unterschiede der gew"ahlten Toleranzen sehr gut erkennen. Wenn die Toleranzen $10^{-11}$ und $10^{-12}$ gew"ahlt werden, l"asst sich das Problem l"osen, jedoch ist das Verhalten des Systems erfahrungsgem"ass nicht ganz realistisch. Die L"osung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tats"achlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die L"osung und ist somit nicht mehr brauchbar. Dieser Fall ist in Abbildung \ref{trafo:SVDTol} unten rechts dargestellt. Die y-Achse f"uhrt numerisch von minus bis plus Unendlich.
+Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen erstellt werden. Als L"osungsverfahren wurde das etwas langsame, jedoch genaue nummerische Verfahren \texttt{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lassen sich die Unterschiede der gew"ahlten Toleranzen sehr gut erkennen. Wenn die Toleranzen $10^{-11}$ und $10^{-12}$ gew"ahlt werden, l"asst sich das Problem l"osen, jedoch ist das Verhalten des Systems erfahrungsgem"ass nicht ganz realistisch. Die L"osung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tats"achlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die L"osung und ist somit nicht mehr brauchbar. Dieser Fall ist in Abbildung \ref{trafo:SVDTol} unten rechts dargestellt.
 
 	\begin{figure}
 	    \centering
@@ -385,7 +395,7 @@ Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen
 	        \centering
 	        \includegraphics[width=\linewidth]{./trafo/images/svd14.png}
 	    \end{minipage}
-	    \caption{Numerische Berechnungen mit verschiedenen Toleranzen. Abgebildet sind Str"ome und Spannungen s"amtlicher Windungen. In der Abbildung unten rechts ist ersichtlich, dass die L"osungen bei einer zu klein gew"ahlten Toleranz explodieren und die L"osungen divergieren (es sei auf die Skala der y-Achse hingewiesen). }
+	    \caption{Numerische Berechnungen mit verschiedenen Toleranzen. Abgebildet sind Str"ome und Spannungen s"amtlicher Windungen. In der Abbildung unten rechts ist ersichtlich, dass die L"osungen bei einer zu klein gew"ahlten Toleranz explodieren und die L"osungen divergieren (es sei auf die Skala der $y$-Achse hingewiesen). }
 	    \label{trafo:SVDTol}
 	\end{figure}
 
@@ -404,9 +414,7 @@ Diese Differentialgleichung l"asst nach
 \end{equation*}
 aufl"osen, wobei $x_h$ die homogene L"osung ist. Den Fehlerterm wird im n"achsten Abschnitt etwas genauer betrachtet. 
 
-Das Gleichungssystem liesse sich demzufolge auch exakt l"osen, wenn es sich diagonalisieren und somit entkoppeln l"asst. Da die Matrix $A$ jedoch nicht symmetrisch ist, f"uhrt dieser Ansatz analytisch nicht zum Erfolg, da sich nur symmetrische Matrizen diagonalisieren lassen. In der Numerik sieht dies gl"ucklicherweise etwas lockerer aus und dieser Ansatz kann auf gut Glück versucht werden.
-
-Es gilt nun, die Matrix $A$ zu diagonalisieren. Pr"adestiniert daf"ur w"are wiederum die Singul"arwertzerlegung. In der Anwendung zeigte sich leider, dass die Resultate aufgrund der unsymmetrischen Matrix $A$ nicht mit dem Erwarteten "ubereinstimmen und deshalb muss einen anderen Weg gefunden werden. Eine weitere M"oglichkeit ist die Eigenwertzerlegung. Wird die Eingangsinduktivit"at $L_\mathrm{in}$ in der Gleichung \ref{trafo:symmetricalDGL} nicht allzu klein gew"ahlt, l"asst sich das System tats"achlich l"osen.
+Es gilt nun, die Matrix $A$ zu diagonalisieren und somit zu entkoppeln. Pr"adestiniert daf"ur w"are wiederum die Singul"arwertzerlegung. In der Anwendung zeigte sich leider, dass die Resultate aufgrund der unsymmetrischen Matrix $A$ nicht mit dem Erwarteten "ubereinstimmen und deshalb muss einen anderen Weg gefunden werden. Eine weitere M"oglichkeit ist die Eigenwertzerlegung. Wird die Eingangsinduktivit"at $L_\mathrm{in}$ in der Gleichung \ref{trafo:symmetricalDGL} nicht allzu klein gew"ahlt, l"asst sich das System tats"achlich l"osen.
 
 Die Eigenwertzerlegung lautet $A = V\Lambda V^{-1}$ und angewendet auf das Differentialgleichungssystem 
 \begin{align*}
@@ -422,7 +430,7 @@ wird die L"osung zu
 \end{equation}
 mit $y_0 = V^{-1}x_0$ und $F(t)$ als Fehlerterm.
 
-Das Differentialgleichungssystem l"asst sich nun exakt\footnote{'exakt' bedeutet nicht, dass es keine numerische Fehler besitzt, denn diese wird es gewiss geben. Mit 'exakt' ist die soeben pr"asentierte L"osungsmethode gemeint. Der Gegensatz dazu ist ein numerisches L"osungsverfahren, welches das Gleichungssystem mittels Numerik versucht zu l"osen.} l"osen. Es gilt nun, den Fehlerterm $B$ in die L"osung einzubinden, denn nur durch diesen Fehlerterm, dass heisst in diesem Falle den Blitzstoss, wird die Anwendung erst interessant.
+Das Differentialgleichungssystem l"asst sich nun exakt\footnote{'exakt' bedeutet nicht, dass es keine numerische Fehler besitzt, denn diese wird es gewiss geben. Mit 'exakt' ist die soeben pr"asentierte L"osungsmethode gemeint. Der Gegensatz dazu ist ein numerisches L"osungsverfahren, welches das Gleichungssystem mittels Solvern für gewöhnliche Differentialgleichungen versucht zu l"osen.} l"osen. Es gilt nun, den Fehlerterm $B$ in die L"osung einzubinden, denn nur durch diesen Fehlerterm, dass heisst in diesem Falle den Blitzstoss, wird die Anwendung erst interessant.
 
 Der Unterschied der Rechengeschwindigkeit zwischen der numerischen und exakten L"osung ist in Abbildung \ref{trafo:ode45vsExact} dargestellt. Der Fehlerterm f"ur die exakte L"osung wird diejenige Implementation verwendet, welche im n"achsten Abschnitt genauer behandelt wird. 
 
@@ -435,14 +443,14 @@ Der Unterschied der Rechengeschwindigkeit zwischen der numerischen und exakten L
 
 
 \subsection{Fehlerterm und Schrittweite}
-Wie bereits erw"ahnt, ist die Anwendung des Fehlerterms essentiell. Da es sich beim Fehlerterm nicht nur um eine Funktion, sondern auch um ein gemessenes Signal handelt, welches somit quantisiert ist, muss der Fehlerterm "uber einen gewissen Zeitschritt betrachtet werden.
+Da es sich beim Fehlerterm nicht nur um eine Funktion, sondern auch um ein gemessenes Signal handelt, welches somit quantisiert ist, muss der Fehlerterm "uber einen gewissen Zeitschritt betrachtet werden.
 
 \subsubsection{Konstanter St"orterm}
 Ein m"oglicher Ansatz ist es, denn Fehlerterm f"ur die Schrittweite $h$ als konstant zu betrachten. Die Gleichung \ref{trafo:TransfDGL} kann nun als
 \begin{equation*}
 	Y_i = Y_{i-1} e^{\Lambda h}  + h B_{i-1}
 \end{equation*}
-geschrieben werden. $Y_x$ und $B_x$ sind jeweils Vektoren der L"osungsmatrix respektive Fehlertermmatrix. 
+geschrieben werden. $Y_i$ und $B_i$ sind jeweils Vektoren der L"osungsmatrix respektive Fehlertermmatrix. 
 
 \subsubsection{Linear Interpolierter St"orterm}
 Es liegt nat"urlich nahe den St"orterm etwas sinnvoller zu implementieren. Denn eine Treppenfunktion, wie sie soeben beschrieben wurde, verh"alt sich bei grossen Schrittweiten $h$ sehr schlecht. Ein besseres Verhalten kann eine lineare Interpolation
@@ -474,7 +482,7 @@ oder f"ur das Differentialgleichungssystem
 \end{equation}
 
 \subsubsection{Vergleich}
-In Abbildung \ref{trafo:interpVergleich} werden konstante Fehlerterme (oben) und linear interpolierte Fehlerterme (unten) mit verschiedener Anzahl Zeitschritte dargestellt. Es ist sehr gut ersichtlich, dass die lineare Interpolation des Fehlerterm mit relativ wenigen Zeitschritten an das gew"unschte Ziel kommt, wohingegen der konstantgehaltener Fehlerterm wesentlich mehr Zeitschritte für die selbe Genauigkeit benötigt. 
+In Abbildung \ref{trafo:interpVergleich} werden konstante Fehlerterme (oben) und linear interpolierte Fehlerterme (unten) mit verschiedener Anzahl Zeitschritte dargestellt. Es ist sehr gut ersichtlich, dass die lineare Interpolation des Fehlerterm mit relativ wenigen Zeitschritten an das gew"unschte Ziel kommt, wohingegen der konstantgehaltene Fehlerterm wesentlich mehr Zeitschritte für die selbe Genauigkeit benötigt. 
 
 Abbildung \ref{trafo:differenceTimestep} zeigt der Unterschied der Berechnungszeiten des konstanten und des linear interpolierten St"orterm. Beide dauern ungef"ahr gleich lange und wachsen linear mit der Anzahl Zeitschritte. Der wesentliche Unterschied besteht darin, dass die lineare Interpolation bei sehr viel wenigeren Zeitschritten bereits eine akzeptable L"osung ergibt (gr"une Kreuze).
 	\begin{figure}
@@ -530,10 +538,7 @@ Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels
 \begin{equation*}
 	y_1 = y_0 \cdot e^{\lambda h} + b_0 \underbrace{\left(\left(\frac{e^{\lambda h}}{\lambda} - \frac{e^{\lambda h}}{h\lambda ^2}\right) + \frac{1}{h \lambda^2}\right)}_{a_0} + b_1 \underbrace{\left(\frac{e^{\lambda h}}{h \lambda^2} - \frac{1}{\lambda} - \frac{1}{h \lambda^2}\right)}_{a_1}
 \end{equation*} 
-
-gebracht werden. Die Konstanten $a_0$ und $a_1$ k"onnen wiederum vor der Schleife einmal berechnet werden. 
-
-Die lineare Interpolation kann jetzt als 
+gebracht werden. Die Konstanten $a_0$ und $a_1$ k"onnen wiederum vor der Schleife einmal berechnet werden. Die lineare Interpolation kann jetzt als 
 \begin{equation*}
 	y_1 = y_0 \cdot e^{\lambda h} + a_0 \cdot b_0 + a_1 \cdot b_1
 \end{equation*}
@@ -553,11 +558,9 @@ Der Matlab-Code kann jetzt folgendermassen geschrieben werden.
 
 \subsubsection{Vergleich}
 
-Um die Performance zu testen, wird eine sehr schlechte Implementation gew"ahlt, welche eine lineare Interpolation besitzt. Im Gegensatz zum soeben gezeigten Code werden in dieser schlechten Variante alle Konstante in der \textit{for}-Schleife berechnet. Jeder einzelner Zeitschritt dauert bei dieser Berechnung ca. \SI{130}{\milli\second}. 
+Um die Performance zu testen, wird eine sehr schlechte Implementation gew"ahlt, welche den Fehlerterm lineare interpoliert. Im Gegensatz zum soeben gezeigten Code werden in dieser schlechten Variante alle Konstante in der \textit{for}-Schleife berechnet. Jeder einzelner Zeitschritt dauert bei dieser Berechnung ca. \SI{130}{\milli\second}. 
 
-Als Vergleich wird die schnellste Optimierung verwendet (Matlab-Code von oben). Die Berechnungszeit f"ur jeden einzelnen Zeitschritt konnte bis auf \SI{35}{\micro \second} reduziert werden. 
-
-Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logarithmischen Grafik. Die Optimierungsversuche haben sich auch in der Praxis als hervorragend erwiesen.
+Als Vergleich wird die schnellste Optimierung verwendet (Matlab-Code von oben). Die Berechnungszeit f"ur jeden einzelnen Zeitschritt konnte bis auf \SI{35}{\micro \second} reduziert werden. Die Grafik \ref{trafo:Optimierung} zeigt den Unterschied in einer doppelt logarithmischen Grafik. Die Optimierung hat auf ein hervorragend schnelles Verfahren geführt.
 
 \begin{figure}
 	\centering
@@ -579,7 +582,7 @@ Schlussendlich k"onnen die gefundenen L"osungen wieder in das CAD-Modell eingele
 
 Interessant ist nat"urlich immer der gr"osste Spannungsunterschied zwischen benachbarten Windungen. In diesem Beispiel ist dies zwischen dem Layer 1 und 2 zwischen Windung 6 und 118.
 
-Diese L"osung wurde bereits in Abbildung \ref{trafo:loesung} pr"asentiert. Das elektrische Feld zum Zeitpunkt der gr"ossten Spannungsdifferenz ist in den Abbildungen \ref{trafo:E-Field} und \ref{trafo:E-FieldZoom} dargestellt. 
+Diese L"osung wurde bereits in Abbildung \ref{trafo:solution} pr"asentiert. Das elektrische Feld zum Zeitpunkt der gr"ossten Spannungsdifferenz ist in den Abbildungen \ref{trafo:E-Field} und \ref{trafo:E-FieldZoom} dargestellt. 
 
 \begin{figure}
 	\centering
