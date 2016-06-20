@@ -10,16 +10,10 @@
 %
 %Potenzreihenherleitung
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
-	Das Ziel dieses Abschnittes ist, die Besselfunktion mit der Potenzreihen-Methode die in Kapitel \ref{section:potenzreihen:verallgemeinert} erl\"autert wurde,
-	herzuleiten.
-\dots \\
-%Dieser Abschnitt befasst sich mit der Potenzherleitung der Besselfunktion. 
-%Bei der Herleitung werden Methoden, die in den vorherigen Kapitel  erl\"autert wurden, 
-%verwendet. Zuerst m\"uss eine Differentialgleichung aufgestellt werden.
-%Die Besselfunktion kommt aus der Wellengleichung.
-%
-	\dots So kommt man auf die Gleichung \refeq{eq:bessel:dgl},
-	welche grosse \"Ahnlichkeit mit der Gleichung \refeq{potenzreihen:verallgemeinert-bessel} aufweisst.
+\begin{normalsize}
+%	Das Ziel dieses Abschnittes ist, die Besselfunktion mit der Potenzreihen-Methode die in Kapitel \ref{section:potenzreihen:verallgemeinert} erl\"autert wurde,
+%	zu l
+\end{normalsize}
 %Die Differentialgleichung f\"ur die Besselfunktion lautet wiefolgt:
 \begin{align}
 	r^2 \, R'' \left( r \right)
@@ -31,9 +25,12 @@
 	0
 	\label{eq:bessel:dgl}
 \end{align}
-	Im Folgenden wird nun die Gleichung \refeq{eq:bessel:dgl},
-	mithilfe der Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert},
-	gel\"ost und der L\"osungsweg aufgezeigt.
+\\
+\begin{normalsize}
+	Im vorhergehenden Abschnitt wurde die Differentialgleichung \refeq{eq:bessel:dgl} hergeleitet.
+	Nun gilt es diese zu l\"osen.
+	Dazu wird die Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert} verwendet.
+\end{normalsize}
 \subsection[Vorgehensweise]{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
 \begin{compactenum}
 	\item Die Potenzreihe und deren Ableitungen berechnen.
@@ -170,18 +167,16 @@
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
 	+
-	\textcolor{mygreen}{1}
-	\, r^{\varrho}
+	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+ \\
 	\textcolor{teal}{\varrho}
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+
-	\textcolor{teal}{1}
-	\, r^{\varrho}
+	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
-	+ 
+	+ e
 	r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^{k \textcolor{blue}{+ 2}}
 	-
@@ -232,7 +227,7 @@
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
 \begin{normalsize}
-	Indexgleichung f\"ur $a_0$,
+	Indexgleichung f\"ur $r^0$,
 	wie in Abschnitt \ref{subsection:potenzreihen:indexgleichung} erleutert,
 	aufgestellt.
 \end{normalsize}
@@ -253,31 +248,31 @@
 
 \subsection{Rekursion der Koeffizienten $a_k$}
 \begin{normalsize}
-	Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann (\textcolor{orange}{orange} markiert).
+	Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann.
 \end{normalsize}
 \begin{align}
 	\biggl(
-	\textcolor{orange}{n} \, \left( \textcolor{orange}{n} - 1 \right)
+	n \, \left( n - 1 \right)
 	+
-	\textcolor{orange}{n}
+	n
 	-
 	n^2
 	\biggr)
-	\, r^{\textcolor{orange}{n}}
+	\, r^{n}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+
 	\left(	
-	2 \, \textcolor{orange}{n}
+	2 \, n
 	+
 	1
 	\right)
-	\, r^{\textcolor{orange}{n}}
+	\, r^{n}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
 	+
-	r^{\textcolor{orange}{n}}
+	r^{n}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^k
 	+
-	r^{\textcolor{orange}{n}}
+	r^{n}
 	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt}
@@ -322,11 +317,11 @@
 	r^n
 	\sum_{k=2}^{\infty}
 	\biggl(
-	\left( \textcolor{violet}{n^2 - n} \right) \, a_k 
+	\left( n^2 - n \right) \, a_k 
 	+
 	2 \, n \, k \, a_k
 	+
-	\left( \textcolor{violet}{k^2 - k} \right) \, a_k
+	\left( k^2 - k \right) \, a_k
 	+
 	n \, a_k
 	+
@@ -349,9 +344,9 @@
 	+
 	n \, a_k
 	+
-	\left( k^2 \textcolor{violet}{ - \, k} \right) \, a_k
+	\left( k^2 - \, k \right) \, a_k
 	+
-	\textcolor{violet}{k} \, a_k
+	k \, a_k
 	+
 	2 \, n \, k \, a_k
 	+
@@ -364,11 +359,11 @@
 	r^n
 	\sum_{k=2}^{\infty}
 	\biggl(
-	\left( n^2 \textcolor{violet}{ - \, n} \right) \, a_k 
+	\left( n^2 - n \right) \, a_k 
 	-
 	n^2 \, a_k
 	+
-	\textcolor{violet}{n} \, a_k
+	n \, a_k
 	+
 	k^2 \, a_k
 	+
@@ -383,9 +378,9 @@
 	r^n
 	\sum_{k=2}^{\infty}
 	\biggl(
-	\textcolor{violet}{n^2} \, a_k 
-	\textcolor{violet}{- \,
-	n^2} \, a_k
+	n^2 \, a_k 
+	-
+	n^2 \, a_k
 	+
 	k^2 \, a_k
 	+
@@ -421,7 +416,7 @@
 %	dass der Radius $0$ ist,
 %	setzten man den Klammerausdruck gleich $0$ und bekommt so f\"ur die Koeffizienten eine Rekursion \refeq{eq:bessel:koeffizienten:rekursion}.
 \begin{normalsize}
-	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst} kann durch einfache Rechnungsschritte (jeweils \textcolor{violet}{violett} hervorgehoben) zu der Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} umgeformt werden.
+	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst} kann durch einfache Rechnungsschritte zu der Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} umgeformt werden.
 	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
 	dass $r$ oder die Summe $0$ ergeben muss.
 	$r = 0$ ist dabei ein Spezialfall, welcher keine Rekursion der Koeffizienten erm\"oglicht und somit nicht zur L\"osung des Problems f\"uhrt.
