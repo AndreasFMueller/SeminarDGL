@@ -15,9 +15,9 @@ endfor
 grid on;
 axis([r(1) r(length(r)) -0.45 1]);
 leg(length(leg)) = ''; %Letztes Semikolon entfernen
-h_leg = legend(strsplit(leg,';'),"location",'northeastoutside');
+legend(strsplit(leg,';'),"location",'northeastoutside');
 xlabel('Abstand $r$');
 ylabel('Normierte Amplitude');
 plot(r,zeros(1,length(r)),'--k');
-print('-dpdflatexstandalone' , 'besselfunction' , '-F:20');
-%close
+print('-dpdflatexstandalone','besselfunction','-F:20');
+close
