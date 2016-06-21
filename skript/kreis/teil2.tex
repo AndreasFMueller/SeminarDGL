@@ -94,7 +94,7 @@
 %	dass sich pro Ableitung,
 %	alle Koeffizienten um eine Stelle nach links verschieben.
 %	Dank dieser Verschiebung ist es m\"oglich,
-%	eine Abh\"anigkeit bzw. eine Rekursion der Koeffizienten zu erreichen.
+%	eine Abh\"anigkeit \acs{\acs{bzw.}} eine Rekursion der Koeffizienten zu erreichen.
 %	Mit der Rekursion ist es wiederum m\"oglich,
 %	nur wenige der Koeffizienten selber zu definieren m\"ussen,
 %	was den Freiheitsgrad reduziert und somit die Berechnung vereinfacht.
@@ -176,7 +176,7 @@
 	+
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, r^k
-	+ e
+	+
 	r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^{k \textcolor{blue}{+ 2}}
 	-
@@ -227,11 +227,23 @@
 %\ref{section:potenzreihen:verallgemeinert}
 %Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
 \begin{normalsize}
-	Indexgleichung f\"ur $r^0$,
-	wie in Abschnitt \ref{subsection:potenzreihen:indexgleichung} erleutert,
-	aufgestellt.
+	Bei der Indexgleichung werden alle Terme,
+	welche die gleiche Potenz haben,
+	mit $0$ gleichgesetzt,
+	da die Differentialgleichung f\"ur jede Potenz gelten muss.
+	Wird die Indexgleichung f\"ur $r^{0 + \varrho}$ aufgestellt,
+	wobei $r^{0 + \varrho}$ weggelassen werden kann, resultiert daraus:
 \end{normalsize}
-\begin{align*}	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0 \\
+\begin{align}
+	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) \, a_0 &= 0
+	\label{eq:bessel:indexgleichung:ausgangslage}
+\end{align}
+\\
+\begin{normalsize}
+	In der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage} hat es nur eine Unbekannte $\varrho$,
+	nach welcher die Indexgleichung aufgel\"ost werden kann.
+\end{normalsize}
+\begin{align*}
 	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 \\
 	\varrho ^2 - \varrho + \varrho -n^2 &= 0  \\
 	\varrho ^2 - n^2 &= 0 \\
@@ -239,8 +251,11 @@
 \end{align*}
 \\
 \begin{normalsize}
-	Aus der Indexgleichung resultiert $\varrho = \pm n$.
-	
+	Das Resultat der Indexgleichung ist: $\varrho = \pm n$.
+	Da die Indexgleichung eine quadratische Gleichung ist,
+	muss es immer zwei L\"osungen geben,
+	was bis auf den Fall $n = 0$ erf\"ullt ist.
+	Die zweite L\"osung f\"ur den Fall $n = 0$ \acs{bzw.} $\varrho = 0$ wird im Kapitel \ref{chapter:komplex} gefunden.
 \end{normalsize}
 
 %Wir beschr\"anken uns in diesem Kapitel nur mit der L\"oesung $\varrho = \pm n$. Die L\"osung f\"ur $\varrho = \pm 0$ wird im Kapitel \ref{chapter:komplex} genauer behandelt.
@@ -420,7 +435,7 @@
 	Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
 	dass $r$ oder die Summe $0$ ergeben muss.
 	$r = 0$ ist dabei ein Spezialfall, welcher keine Rekursion der Koeffizienten erm\"oglicht und somit nicht zur L\"osung des Problems f\"uhrt.
-	Demzufolge muss die Summe, bzw. die Klammer, $0$ ergeben.
+	Demzufolge muss die Summe, \acs{bzw.} die Klammer, $0$ ergeben.
 	Wird nun der Ausdruck in der Klammer mit $0$ gleichgesetzt,
 	kann so eine Rekursion der Koeffiziente gefunden werden.
 \end{normalsize}
@@ -514,7 +529,7 @@
 	\label{eq:bessel:koeffizienten:gerade}
 \end{align}
 \begin{normalsize}
-	Nach weiteren Rechnungs- bzw. Umformungsschritten resutiert \refeq{eq:bessel:koeffizienten:gerade} als Rekursionsformel.
+	Nach weiteren Rechnungs- \acs{bzw.} Umformungsschritten resutiert \refeq{eq:bessel:koeffizienten:gerade} als Rekursionsformel.
 \end{normalsize}
 %Setzt man nun f\"ur $a_0 = \frac{1}{2^n \, {n}!}$ ein, so kommt man auf die Form:
 \subsection{Besselfunktion f\"ur ganzzahlige Parametern}
