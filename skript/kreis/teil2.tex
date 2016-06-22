@@ -1,4 +1,8 @@
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
+\begin{normalsize}
+Im vorhergehenden Abschnitt wurde die Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
+Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt.
+\end{normalsize}
 \begin{align}
 	r^2 \, R'' \left( r \right)
 	+
@@ -10,11 +14,10 @@
 	\label{eq:bessel:dgl}
 \end{align}
 \begin{normalsize}
-Im vorhergehenden Abschnitt wurde die Differentialgleichung \refeq{eq:bessel:dgl} hergeleitet.
-Nun gilt es diese zu l\"osen.
-Dazu wird die Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert} verwendet.
+Die L\"osungsmenge der Differentialgleichung \refeq{eq:bessel:dgl} ist trotz den Umformungen identische mit der L\"osungsmenge der Diffferentialgleichung \refeq{eq:besselsche_dgl}, jedoch ist die Differentialgleichung \refeq{eq:bessel:dgl} einfacher zu l\"osen.
+Zum L\"osen der Differentialgleichung \refeq{eq:bessel:dgl} wird die Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert} verwendet.
 \end{normalsize}
-\subsection[Vorgehensweise]{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
+\subsection{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
 \begin{compactenum}
 	\item Die Potenzreihe und deren Ableitungen berechnen.
 	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} eingesetzen, um
@@ -476,7 +479,7 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 	=
 	\frac
 	{
-		-a_0
+		\left( -a_0 \right) ^k
 	}{
 		4^k \, {k}! \, {\left( n + k \right)}!
 	}
@@ -486,7 +489,7 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 	&= 
 	\frac
 	{
-		-a_0
+		\left( -1 \right) ^k \, a_0 ^k
 	}{
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
@@ -494,8 +497,44 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 \end{align}
 \begin{normalsize}
 Nach weiteren Rechnungs- \acs{bzw.} Umformungsschritten resutiert \refeq{eq:bessel:koeffizienten:gerade} als Rekursionsformel f\"ur die geraden Koeffizienten.
+\dots Beschr\"anken auf $n$ ganzzahlig, somit kann Fakult\"at verwendet werden \dots
 \end{normalsize}
-\subsection{Besselfunktion f\"ur ganzzahlige Parametern}
+\subsection[Besselfunktion 1. Art]{Besselfunktion f\"ur ganzzahligen Parameter $n$}
+\begin{normalsize}
+Die Koeffizienten $a_k$ k\"onnen nun in die urspr\"ungliche Potenzreihe \refeq{eq:bessel:potenzreihe:verallgemeinert} eingesetzt werden.
+Da bei den Koeffizienten die Indexvariable $k$ durch $2k$ ersetzt wurde,
+muss diese \"Anderung auch bei der urspr\"unglichen Potenzreihe \"ubernommen werden.
+\end{normalsize}
+\begin{align}
+	\nonumber
+	R \left( r \right)
+	&=
+	r^{n} \,
+	\sum_{k=0}^{\infty}
+	\frac
+	{
+		\left( -1 \right) ^k \, a_0 ^k
+	}{
+		2^{2k} \, {k}! \, {\left( n + k \right)}!
+	}
+	\, r^{2k}
+	\\
+	R \left( r \right)
+	&=
+	\sum_{k=0}^{\infty}
+	\frac
+	{
+		\left( -1 \right) ^k \, a_0 ^k
+	}{
+		2^{2k} \, {k}! \, {\left( n + k \right)}!
+	}
+	\, r^{2k + n}
+	\label{eq:bessel:potenzreihe:koeffizienten:eingesetzt}
+\end{align}
+\begin{normalsize}
+In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
+welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
+\end{normalsize}
 \begin{align}
 	J_n \left( r \right)
 	&= \nonumber
@@ -540,10 +579,10 @@ Nach weiteren Rechnungs- \acs{bzw.} Umformungsschritten resutiert \refeq{eq:bess
 	}
 	\label{eq:bessel_summenformel}
 \end{align}
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.5]{kreis/besselfunction.pdf}
 		\label{img:besselfunction}
-		\caption[Besselfunktion]{Besselfunktion geplottet}
+		\caption[Besselfunktion]{Besselfunktion 1. Art geplottet}
 	\end{center}
 \end{figure}
