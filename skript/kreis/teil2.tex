@@ -24,7 +24,7 @@ Zum L\"osen der Differentialgleichung \refeq{eq:bessel:dgl} wird die Potenzreihe
 	\item die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche
 	\item eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur
-	\item die Besselfunktion mit ganzzahlige Parametern \refeq{eq:bessel_summenformel}.
+	\item die Besselfunktion mit ganzzahlige Parametern \refeq{eq:bessel:summenformel}.
 %	\item Allgemeine Besselfunktion \refeq{eq:bessel_summenformel:allgemein}
 \end{compactenum}
 \subsection[Potenzreihe und deren Ableitungen]{Potenzreihe und deren Ableitungen berechnen}
@@ -187,8 +187,9 @@ Die Indexgleichung f\"ur $r^{\varrho + 0}$ lautet wiefolgt:
 	\label{eq:bessel:indexgleichung:ausgangslage}
 \end{align}
 \begin{normalsize}
-Die Terme $r^{\varrho + 0}$ und $a_0$ fallen bei der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage} weg,
-\acs{bzw.} k\"onnen gek\"urzt werden.
+%Die Terme $r^{\varrho + 0}$ und $a_0$ fallen bei der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage} weg,
+%\acs{bzw.} k\"onnen gek\"urzt werden.
+\acs{bzw.}
 \end{normalsize}
 \begin{align}
 	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) &= 0
@@ -476,34 +477,103 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 	}{
 		4k \, \left( n + k \right)	
 	} 
+\end{align}
+\begin{normalsize}
+Um den Koeffizienten $a_{2k}$ zu berechnen,
+muss zuerst der Koeffizient $a_{2k-2}$ berechent werden,
+\mbox{welcher} aus dem Koeffizienten $a_{2k-4}$ berechnet wird \dots \\
+Um nun eine Formel f\"ur $a_{2k}$ zu erhalten,
+welche nur vom Koeffizienten $a_0$ abh\"angig ist,
+hat es sich bew\"ahrt,
+die Koeffizienten $a_2$, $a_4$ , $a_6$ , \dots \, zu berechnen,
+bis eine Regelm\"assigkeit erkennbar wird.
+\end{normalsize}
+\begin{align}
+	\nonumber
+	a_2
+	&=
+	\frac
+	{
+		-a_0
+	}{
+		4 \, \left( n + 1 \right)	
+	}
+	\\
+	\nonumber
+	a_4
+	&=
+	\frac
+	{
+		-a_{2}
+	}{
+		8 \, \left( n + 2 \right)	
+	}
 	=
 	\frac
 	{
-		\left( -a_0 \right) ^k
+		- \left( - a_{0} \right)
+	}{
+		8 \, \left( n + 2 \right) \, 4 \, \left( n + 1 \right)
+	}
+	=
+	\frac
+	{
+		\left( -1 \right) ^2 \, a_{0}
+	}{
+		32 \, \left( n + 2 \right) \, \left( n + 1 \right)
+	}
+	\\
+	\nonumber
+	a_6
+	&=
+	\frac
+	{
+		-a_{4}
+	}{
+		12 \, \left( n + 3 \right)	
+	}
+	=
+	\frac
+	{
+		- \left( - a_{2} \right)
+	}{
+		12 \, \left( n + 3 \right) \, 8 \, \left( n + 2 \right)
+	}
+	=
+	\dots
+	=
+	\frac
+	{
+		\left( -1 \right) ^3 \, a_{0}
+	}{
+		4^3 \, {3}! \, {\left( n + 3 \right)}!
+	}
+	\\
+	\nonumber
+	& \, \, \, \vdots
+	\\
+	a_{2k}
+	&=	
+	\frac
+	{
+		\left( -1 \right) ^k \, a_0 
 	}{
 		4^k \, {k}! \, {\left( n + k \right)}!
 	}
 	=
-	\\
-	a_{2k}
-	&= 
 	\frac
 	{
-		\left( -1 \right) ^k \, a_0 ^k
+		\left( -1 \right) ^k \, a_0
 	}{
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
 	\label{eq:bessel:koeffizienten:gerade}
 \end{align}
-\begin{normalsize}
-Nach weiteren Rechnungs- \acs{bzw.} Umformungsschritten resutiert \refeq{eq:bessel:koeffizienten:gerade} als Rekursionsformel f\"ur die geraden Koeffizienten.
-\dots Beschr\"anken auf $n$ ganzzahlig, somit kann Fakult\"at verwendet werden \dots
-\end{normalsize}
 \subsection[Besselfunktion 1. Art]{Besselfunktion f\"ur ganzzahligen Parameter $n$}
 \begin{normalsize}
 Die Koeffizienten $a_k$ k\"onnen nun in die urspr\"ungliche Potenzreihe \refeq{eq:bessel:potenzreihe:verallgemeinert} eingesetzt werden.
 Da bei den Koeffizienten die Indexvariable $k$ durch $2k$ ersetzt wurde,
-muss diese \"Anderung auch bei der urspr\"unglichen Potenzreihe \"ubernommen werden.
+muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen werden.
 \end{normalsize}
 \begin{align}
 	\nonumber
@@ -513,7 +583,7 @@ muss diese \"Anderung auch bei der urspr\"unglichen Potenzreihe \"ubernommen wer
 	\sum_{k=0}^{\infty}
 	\frac
 	{
-		\left( -1 \right) ^k \, a_0 ^k
+		\left( -1 \right) ^k \, a_0
 	}{
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
@@ -524,7 +594,7 @@ muss diese \"Anderung auch bei der urspr\"unglichen Potenzreihe \"ubernommen wer
 	\sum_{k=0}^{\infty}
 	\frac
 	{
-		\left( -1 \right) ^k \, a_0 ^k
+		\left( -1 \right) ^k \, a_0
 	}{
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
@@ -534,10 +604,12 @@ muss diese \"Anderung auch bei der urspr\"unglichen Potenzreihe \"ubernommen wer
 \begin{normalsize}
 In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
 welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
+
 \end{normalsize}
 \begin{align}
+	\nonumber
 	J_n \left( r \right)
-	&= \nonumber
+	&=
 	\sum_{k=0} ^{\infty}
 	\frac
 	{
@@ -558,7 +630,7 @@ welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
 		}
 	}{
 		{k}! \, { \left( k + n \right) }!
-	} 
+	}
 	=
 	\\
 	J_n \left( r \right)
@@ -577,12 +649,15 @@ welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
 	}{
 		{k}! \, { \left( k + n \right) }!
 	}
-	\label{eq:bessel_summenformel}
+	\label{eq:bessel:summenformel}
 \end{align}
+\begin{normalsize}
+Bla bla bla \dots
+\end{normalsize}
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.5]{kreis/besselfunction.pdf}
 		\label{img:besselfunction}
-		\caption[Besselfunktion]{Besselfunktion 1. Art geplottet}
+		\caption[Besselfunktion 1. Art]{Darstellung der Besselfunktionen 1. Art}
 	\end{center}
 \end{figure}
