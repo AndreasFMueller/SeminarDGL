@@ -603,13 +603,28 @@ muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen w
 \end{align}
 \begin{normalsize}
 In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
-welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
-
+welcher f\"ur die \mbox{weiteren} Koeffizienten ben\"otigt wird.
+Die Variable $r$ in der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} hat die Potenz $2k + n$.
+Im \mbox{Nenner} kommt bei $2^{2k}$ eine \"ahnliche Potenz vor.
+Daher wird nun $a_0 = {}^1\!/_{2^n}$ gew\"ahlt,
+um auch im \mbox{Nenner} auf die Potenz $2k + n$ zu kommen.
+F\"ur die Besselfunktion wird meist der Buchstabe J \mbox{verwendet},
+wo der Parameter $n$ tiefgestellt angegeben wird.
+Diese Notation wird daher \"ubernommen.
 \end{normalsize}
 \begin{align}
 	\nonumber
 	J_n \left( r \right)
 	&=
+	\sum_{k=0}^{\infty}
+	\frac
+	{
+		\left( -1 \right) ^k \, a_0
+	}{
+		2^{2k} \, {k}! \, {\left( n + k \right)}!
+	}
+	\, r^{2k + n}
+	=
 	\sum_{k=0} ^{\infty}
 	\frac
 	{
@@ -652,12 +667,13 @@ welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
 	\label{eq:bessel:summenformel}
 \end{align}
 \begin{normalsize}
-Bla bla bla \dots
+Die Potenzreihe \refeq{eq:bessel:summenformel} ist die L\"osung f\"ur die Differentialgleichung \refeq{eq:bessel:dgl}.
+Die Abbildung \ref{img:besselfunction} illustriert die Besselfunktion \refeq{eq:bessel:summenformel} f\"ur ausgew\"ahlte $n$'s.
 \end{normalsize}
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.5]{kreis/besselfunction.pdf}
-		\label{img:besselfunction}
 		\caption[Besselfunktion 1. Art]{Darstellung der Besselfunktionen 1. Art}
+		\label{img:besselfunction}
 	\end{center}
 \end{figure}
