@@ -1,4 +1,4 @@
-\hyphenation{werden Nenner einfacher Summe weiteren welcher verwendet}
+\hyphenation{werden Nenner einfacher Summe weiteren welcher verwendet angegeben}
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
 \begin{normalsize}
 Im vorhergehenden Abschnitt wurde die Besselsche Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
@@ -74,8 +74,7 @@ muss die Potenzreihe abgeleitet werden,
 	\label{eq:bessel:potenzreihe:zweiteableitung}
 \end{align}
 \begin{normalsize}%
-was wiederum eine Potenzreihe ergibt,
-wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} zeigen.
+was wiederum eine Potenzreihe ergibt \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung}.
 \end{normalsize}
 \subsubsection{\arabic{stepCounter}. Schritt: Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen}
 \stepcounter{stepCounter}
@@ -625,13 +624,9 @@ Die Variable $r$ in der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:e
 Im Nenner kommt bei $2^{2k}$ eine \"ahnliche Potenz vor.
 Daher wird nun $a_0 = 2^{-n}$ gew\"ahlt,
 um auch im Nenner auf die Potenz $2k + n$ zu kommen.
-F\"ur die Besselfunktion wird meist der Buchstabe J verwendet,
-wo der Parameter $n$ tiefgestellt angegeben wird.
-Diese Notation wird daher \"ubernommen.
 \end{normalsize}
-\begin{align}
-	\nonumber
-	J_n \left( r \right)
+\begin{align*}
+	R \left( r \right)
 	&=
 	\sum_{k=0}^{\infty}
 	\frac
@@ -642,6 +637,18 @@ Diese Notation wird daher \"ubernommen.
 	}
 	\, r^{2k + n}
 	=
+	\sum_{k=0}^{\infty}
+	\frac
+	{
+		\left( -1 \right) ^k
+	}{
+		2^{2k} \, 2^n \, {k}! \, {\left( n + k \right)}!
+	}
+	\, r^{2k + n}
+	=
+	\\
+	R \left( r \right)
+	&=
 	\sum_{k=0} ^{\infty}
 	\frac
 	{
@@ -664,7 +671,27 @@ Diese Notation wird daher \"ubernommen.
 		{k}! \, { \left( k + n \right) }!
 	}
 	=
-	\\
+	\sum_{k=0} ^{\infty}
+	\frac
+	{
+		\left( - 1 \right) ^k \, 
+		\left(		
+		\frac
+		{
+			r
+		}{
+			2
+		} \right) ^{2k+n}
+	}{
+		{k}! \, { \left( k + n \right) }!
+	}
+\end{align*}
+\begin{normalsize}%
+F\"ur die Besselfunktion wird meist der Buchstabe J verwendet,
+wo der Parameter $n$ tiefgestellt angegeben wird.
+Diese Notation wird daher \"ubernommen.
+\end{normalsize}
+\begin{align}
 	J_n \left( r \right)
 	&=
 	\sum_{k=0} ^{\infty}
