@@ -1,6 +1,7 @@
+\hyphenation{werden Nenner einfacher Summe weiteren welcher verwendet}
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
 \begin{normalsize}
-Im vorhergehenden Abschnitt wurde die Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
+Im vorhergehenden Abschnitt wurde die Besselsche Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
 Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt.
 \end{normalsize}
 \begin{align}
@@ -8,42 +9,49 @@ Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer ge
 	+
 	r \, R' \left( r \right)
 	+
-	\left( r^2 - n^2 \right) \, R \left( r \right)
+	\big( r^2 - n^2 \big) \, R \left( r \right)
 	=
 	0
 	\label{eq:bessel:dgl}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 Die L\"osungsmenge der Differentialgleichung \refeq{eq:bessel:dgl} ist trotz den Umformungen identische mit der L\"osungsmenge der Diffferentialgleichung \refeq{eq:besselsche_dgl}, jedoch ist die Differentialgleichung \refeq{eq:bessel:dgl} einfacher zu l\"osen.
 Zum L\"osen der Differentialgleichung \refeq{eq:bessel:dgl} wird die Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert} verwendet.
 \end{normalsize}
 \subsection{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
+\begin{normalsize}%
+Die Vorgehensweise f\"ur die Herleitung der Besselfunktion beinhalten folgende Schritte:
+\end{normalsize}
 \begin{compactenum}
 	\item Die Potenzreihe und deren Ableitungen berechnen.
 	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} eingesetzen, um
 	\item die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche
 	\item eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur
-	\item die Besselfunktion mit ganzzahlige Parametern \refeq{eq:bessel:summenformel}.
+	\item die Besselfunktion mit ganzzahligen Parametern \refeq{eq:bessel:summenformel}.
 %	\item Allgemeine Besselfunktion \refeq{eq:bessel_summenformel:allgemein}
 \end{compactenum}
-\subsection[Potenzreihe und deren Ableitungen]{Potenzreihe und deren Ableitungen berechnen}
+\newcounter{stepCounter}
+\setcounter{stepCounter}{1}
+\subsubsection{\arabic{stepCounter}. Schritt: Potenzreihe und deren Ableitungen berechnen}
+\stepcounter{stepCounter}
 \begin{normalsize}
 Wie schon erw\"ahnt,
 kann mit Hilfe der Potenzreihen-Methode die Differentialgleichung \refeq{eq:bessel:dgl} gel\"ost werden.
-F\"ur den Ansatz ben\"otigen wir zuerst eine verallgemeinerte Potenzreihe wie \refeq{eq:bessel:potenzreihe:verallgemeinert}.
-Da in der Differentialgleichung die erste und zweite Ableitung vorkommt,
-muss die Potenzreihe abgeleitet werden,
-was wiederum eine Potenzreihe ergibt,
-wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} zeigen.
+F\"ur den Ansatz ben\"otigen wir zuerst eine verallgemeinerte Potenzreihe
 \end{normalsize}
 \begin{align}
 	R \left( r \right)
 	&=
 	r^{\varrho}
-	\sum_{k=0}^{\infty} a_k \, r^k
+	\sum_{k=0}^{\infty} a_k \, r^k .
 	\label{eq:bessel:potenzreihe:verallgemeinert}
-\\
+\end{align}
+\begin{normalsize}%
+Da in der Differentialgleichung die erste und zweite Ableitung vorkommt,
+muss die Potenzreihe abgeleitet werden,
+\end{normalsize}
+\begin{align}
 	R'\left( r \right)
 	&=
 	\varrho \, r^{\varrho - 1}
@@ -65,17 +73,28 @@ wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreih
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^{k - 2}	
 	\label{eq:bessel:potenzreihe:zweiteableitung}
 \end{align}
-\subsection[Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen]{Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen \dots}
+\begin{normalsize}%
+was wiederum eine Potenzreihe ergibt,
+wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} zeigen.
+\end{normalsize}
+\subsubsection{\arabic{stepCounter}. Schritt: Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen}
+\stepcounter{stepCounter}
+\begin{normalsize}%
+Als n\"achstes werden die erhaltenen Potenzreihen in die Differentialgleichung
+\end{normalsize}
 \begin{align*}
 	\textcolor{mygreen}{r^2 \, R'' \left( r \right)}
 	+
 	\textcolor{teal}{r \, R' \left( r \right)}
 	+
-	\textcolor{blue}{\left( r^2 - n^2 \right) \, R \left( r \right)}
+	\textcolor{blue}{\big( r^2 - n^2 \big) \, R \left( r \right)}
 	=
 	0
 	\tag{\ref{eq:bessel:dgl}}
 \end{align*}
+\begin{normalsize}%
+eingesetzt \dots
+\end{normalsize}
 \begin{align*}	
 	\textcolor{mygreen}{
 		\varrho \, \left( \varrho - 1 \right) \, r^{\varrho}
@@ -97,16 +116,16 @@ wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreih
 	}
 	+ 
 	\textcolor{blue}{
-		\biggl(
+		\big(
 		r^2 - n^2
-		\biggr) \,
+		\big) \,
 		r^{\varrho}
 		\sum_{k=0}^{\infty} a_k \, r^k
 	}
 	= & \, 0
 \end{align*}
-\begin{normalsize}
-\dots , ausmultiplizieren \dots
+\begin{normalsize}%
+\dots , ausmultipliziert \dots
 \end{normalsize}
 \begin{align*}
 	\textcolor{mygreen}{	\varrho \, \left( \varrho - 1 \right)} 
@@ -135,8 +154,8 @@ wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreih
 	\sum_{k=0}^{\infty} a_k \, r^k
 	= & \, 0
 \end{align*}
-\begin{normalsize}
-\dots , die gleichen Terme zusammenzufassen \dots
+\begin{normalsize}%
+\dots und die Terme mit der gleichen Potenz von $r$ werden zusammengefasst.
 \end{normalsize}
 \begin{align}
 	\biggl(
@@ -165,37 +184,32 @@ wie \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreih
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:vereinfacht}
 \end{align}
-\begin{normalsize}
-\dots und bekommt die Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht},
-welche auf den ersten Blick komplizierter aussieht,
+\begin{normalsize}%
+Die resultierende Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} sieht auf den ersten Blick komplizierter aus,
 als die urspr\"ungliche Differentialgleichung \refeq{eq:bessel:dgl}.
 \end{normalsize}
-\subsection[Indexgleichung f\"ur $\varrho$]{Indexgleichung zum Bestimmen von $\varrho$}
-%Nun muss man eine Indexgleichung für die Unbekannte $\varrho$ aufstellen, um diese zu bestimmen.
-%\ref{section:potenzreihen:verallgemeinert}
-%Dazu eignet sich eine Indexgleichung f\"ur den Koeffizienten $a_0$:
-\begin{normalsize}
-Bei der Indexgleichung werden alle Terme,
-welche die gleiche Potenz haben,
+\subsubsection{\arabic{stepCounter}. Schritt: Indexgleichung zum Bestimmen von $\varrho$}
+\stepcounter{stepCounter}
+\begin{normalsize}%
+Beim Koeffizientenvergleich werden alle Terme,
+welche die gleiche Potenz von $r$ haben,
 mit $0$ gleichgesetzt,
 da die Differentialgleichung f\"ur jede Potenz gelten muss.
-Die Indexgleichung f\"ur $r^{\varrho + 0}$ lautet wiefolgt:
+Der Koeffizientenvergleich f\"ur die tiefste Potenz (im vorliegenden Fall $\varrho + 0$) wird auch Indexgleichung genannt.
 \end{normalsize}
 \begin{align}
-	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right)
+	\big( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \big)
 	\, r^{\varrho + 0} \, a_0 &= 0
 	\label{eq:bessel:indexgleichung:ausgangslage}
 \end{align}
-\begin{normalsize}
-%Die Terme $r^{\varrho + 0}$ und $a_0$ fallen bei der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage} weg,
-%\acs{bzw.} k\"onnen gek\"urzt werden.
+\begin{normalsize}%
 \acs{bzw.}
 \end{normalsize}
 \begin{align}
-	\left( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \right) &= 0
+	\big( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \big) &= 0
 	\label{eq:bessel:indexgleichung:ausgangslage:vereinfacht}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 In der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage:vereinfacht} hat es nur eine Unbekannte $\varrho$,
 nach welcher die Indexgleichung aufgel\"ost werden kann.
 \end{normalsize}
@@ -206,15 +220,16 @@ nach welcher die Indexgleichung aufgel\"ost werden kann.
 	\varrho ^2 &= n^2 \\
 	\varrho &= \pm n
 \end{align*}
-\begin{normalsize}
+\begin{normalsize}%
 Da die Indexgleichung eine quadratische Gleichung ist,
 muss es immer zwei L\"osungen geben,
 was bis auf den Fall $n = 0$ erf\"ullt ist.
 Wie die zweite L\"osung f\"ur den Fall $n = 0$ \acs{bzw.} $\varrho = 0$ zustande kommt,
-wird im Kapitel \ref{chapter:komplex} genauer erkl\"art.
+wird im Kapitel \ref{chapter:Loesung2} genauer erkl\"art.
 \end{normalsize}
-\subsection{Rekursion der Koeffizienten $a_k$}
-\begin{normalsize}
+\subsubsection{\arabic{stepCounter}. Schritt: Rekursion der Koeffizienten $a_k$}
+\stepcounter{stepCounter}
+\begin{normalsize}%
 Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann.
 \end{normalsize}
 \begin{align}
@@ -244,9 +259,9 @@ Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:b
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt}
 \end{align}
-\begin{normalsize}
-Da bekanntlich nur Terme mit der gleichen Potenz miteinander verrechnet werden k\"onnen,
-sollen alle Summen in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt} so umgeformt werden,
+\begin{normalsize}%
+%Da bekanntlich nur Terme mit der gleichen Potenz miteinander verrechnet werden k\"onnen,
+F\"ur einen Koeffizientenvergleich sollen alle Summen in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt} so umgeformt werden,
 dass sie den Term $r^k$ enthalten.
 Eine Summe enth\"alt den Term $r^{k + 2}$,
 welcher auf $r^k$ umgeformt werden muss.
@@ -280,7 +295,7 @@ Nun haben alle Summen den Term $r^k$ enthalten.
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 In der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen} k\"onnen die einzelnen Summen zu einer einzigen Summen zusammengefasst werden.
 Allerdings haben die Summen unterschiedliche Anfangswerte.
 Die einen Summen haben als Anfangswert $k = 0$,
@@ -401,7 +416,7 @@ werden die Terme mit dem Index $k < 2$ weggelassen.
 	= 0
 	\label{eq:bessel:summe:zusammengefasst:vereinfacht}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 %Die Gleichung \refeq{eq:bessel:summe:zusammengefasst} kann durch einfache Rechnungsschritte zu der Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} umgeformt werden.
 Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
 dass $r$ oder die Summe $0$ ergeben muss.
@@ -450,8 +465,9 @@ kann so eine Rekursion der Koeffiziente gefunden werden.
 	}
 	\label{eq:bessel:koeffizienten:rekursion}
 \end{align}
-\subsection[Bestimmen der Koeffizienten $a_k$]{Bestimmen der Koeffizienten $a_k$ mit Hilfe der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion}}
-\begin{normalsize}
+\subsubsection{\arabic{stepCounter}. Schritt: Bestimmen der Koeffizienten $a_k$ mit Hilfe der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion}}
+\stepcounter{stepCounter}
+\begin{normalsize}%
 Die Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} besagt,
 dass der Koeffizient $a_k$ vom Koeffizient $a_{k-2}$ eine lineare Abh\"angigkeit hat.
 Somit sind alle geraden Koeffizienten linear von $a_0$ abh\"angig und alle un\-geraden Koeffizienten von $a_1$.
@@ -478,15 +494,15 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 		4k \, \left( n + k \right)	
 	} 
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 Um den Koeffizienten $a_{2k}$ zu berechnen,
 muss zuerst der Koeffizient $a_{2k-2}$ berechent werden,
-\mbox{welcher} aus dem Koeffizienten $a_{2k-4}$ berechnet wird \dots \\
+welcher aus dem Koeffizienten $a_{2k-2-2}$ berechnet wird \dots \\
 Um nun eine Formel f\"ur $a_{2k}$ zu erhalten,
 welche nur vom Koeffizienten $a_0$ abh\"angig ist,
 hat es sich bew\"ahrt,
 die Koeffizienten $a_2$, $a_4$ , $a_6$ , \dots \, zu berechnen,
-bis eine Regelm\"assigkeit erkennbar wird.
+bis eine Regelm\"assigkeit erkennbar ist.
 \end{normalsize}
 \begin{align}
 	\nonumber
@@ -569,8 +585,9 @@ bis eine Regelm\"assigkeit erkennbar wird.
 	}
 	\label{eq:bessel:koeffizienten:gerade}
 \end{align}
-\subsection[Besselfunktion 1. Art]{Besselfunktion f\"ur ganzzahligen Parameter $n$}
-\begin{normalsize}
+\subsubsection{\arabic{stepCounter}. Schritt: Besselfunktion f\"ur ganzzahligen Parameter $n$}
+\stepcounter{stepCounter}
+\begin{normalsize}%
 Die Koeffizienten $a_k$ k\"onnen nun in die urspr\"ungliche Potenzreihe \refeq{eq:bessel:potenzreihe:verallgemeinert} eingesetzt werden.
 Da bei den Koeffizienten die Indexvariable $k$ durch $2k$ ersetzt wurde,
 muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen werden.
@@ -601,14 +618,14 @@ muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen w
 	\, r^{2k + n}
 	\label{eq:bessel:potenzreihe:koeffizienten:eingesetzt}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
-welcher f\"ur die \mbox{weiteren} Koeffizienten ben\"otigt wird.
+welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
 Die Variable $r$ in der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} hat die Potenz $2k + n$.
-Im \mbox{Nenner} kommt bei $2^{2k}$ eine \"ahnliche Potenz vor.
+Im Nenner kommt bei $2^{2k}$ eine \"ahnliche Potenz vor.
 Daher wird nun $a_0 = 2^{-n}$ gew\"ahlt,
-um auch im \mbox{Nenner} auf die Potenz $2k + n$ zu kommen.
-F\"ur die Besselfunktion wird meist der Buchstabe J \mbox{verwendet},
+um auch im Nenner auf die Potenz $2k + n$ zu kommen.
+F\"ur die Besselfunktion wird meist der Buchstabe J verwendet,
 wo der Parameter $n$ tiefgestellt angegeben wird.
 Diese Notation wird daher \"ubernommen.
 \end{normalsize}
@@ -666,7 +683,7 @@ Diese Notation wird daher \"ubernommen.
 	}
 	\label{eq:bessel:summenformel}
 \end{align}
-\begin{normalsize}
+\begin{normalsize}%
 Die Potenzreihe \refeq{eq:bessel:summenformel} ist die L\"osung f\"ur die Differentialgleichung \refeq{eq:bessel:dgl}.
 Die Abbildung \ref{img:besselfunction} illustriert die Besselfunktion \refeq{eq:bessel:summenformel} f\"ur ausgew\"ahlte $n$'s.
 \end{normalsize}
