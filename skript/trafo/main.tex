@@ -110,13 +110,13 @@ und
 \end{equation}
 geschrieben werden. Aus den Zusammenfassungen der Str"ome
 \begin{equation*}
-	\sum i_{C1\mathrm{x}} = i_{C1g}+ i_{C12} + i_{C13} + i_{C14}
+	\sum i_{C1k} = i_{C1g}+ i_{C12} + i_{C13} + i_{C14}
 \end{equation*}
 und
 \begin{equation*}
-	\sum i_{R1\mathrm{x}} = i_{R12} + i_{R13} + i_{R14}
+	\sum i_{R1k} = i_{R12} + i_{R13} + i_{R14}
 \end{equation*}
-resultieren die Ersatzparameter $\sum C_{1\mathrm{x}}$ und $\sum R_{1\mathrm{x}}$ respektive $\sum G_{1\mathrm{x}}$, welche in den Gleichungen \ref{trafo:DGL} und \ref{trafo:symmetricalDGL} verwendet werden.
+resultieren die Ersatzparameter $\sum C_{1k}$ und $\sum R_{1k}$ respektive $\sum G_{1k}$, welche in den Gleichungen \ref{trafo:DGL} und \ref{trafo:symmetricalDGL} verwendet werden.
 
 Mit einigen Umformungen kann der ganze Transformator als System mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit 4 Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm des Systems, welcher in diesem Falle der Blitzstoss ist.
 
@@ -129,10 +129,10 @@ Mit einigen Umformungen kann der ganze Transformator als System mehreren Differe
 			0&L_{21}&L_{22}&L_{23}&L_{24} & 0&0&0&0 \\
 			0&L_{31}&L_{32}&L_{33}&L_{34} & 0&0&0&0 \\
 			0&L_{41}&L_{42}&L_{43}&L_{44} & 0&0&0&0 \\
-			0&0&0&0&0 & \sum{C_{1\mathrm{x}}}&-C_{12}&-C_{13}&-C_{14} \\
-			0&0&0&0&0 & -C_{21}&\sum{C_{2\mathrm{x}}}&-C_{23}&-C_{24} \\
-			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3\mathrm{x}}}&-C_{34} \\
-			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4\mathrm{x}}}
+			0&0&0&0&0 & \sum{C_{1k}}&-C_{12}&-C_{13}&-C_{14} \\
+			0&0&0&0&0 & -C_{21}&\sum{C_{2k}}&-C_{23}&-C_{24} \\
+			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3k}}&-C_{34} \\
+			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4k}}
 			    \end{bmatrix}}_{\text{$M$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -154,10 +154,10 @@ Mit einigen Umformungen kann der ganze Transformator als System mehreren Differe
 			0&0&-R_{22}&0&0 & 0&1&-1&0 \\
 			0&0&0&-R_{33}&0 & 0&0&1&-1 \\
 			0&0&0&0&-R_{44} & 0&0&0&1 \\
-			1&-1&0&0&0 & -\sum G_{1\mathrm{x}}&G_{12}&G_{13}&G_{14} \\
-			0&1&-1&0&0 & G_{21} &- \sum G_{2\mathrm{x}}& G_{23}& G_{24} \\
-			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3\mathrm{x}}&G_{34} \\
-			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4\mathrm{x}}
+			1&-1&0&0&0 & -\sum G_{1k}&G_{12}&G_{13}&G_{14} \\
+			0&1&-1&0&0 & G_{21} &- \sum G_{2k}& G_{23}& G_{24} \\
+			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3k}&G_{34} \\
+			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4k}
 			\end{bmatrix}}_{\text{$N$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -200,10 +200,10 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 			0&\color{red}-\color{black}L_{21}&\color{red}-\color{black}L_{22}&\color{red}-\color{black}L_{23}&\color{red}-\color{black}L_{24} & 0&0&0&0 \\
 			0&\color{red}-\color{black}L_{31}&\color{red}-\color{black}L_{32}&\color{red}-\color{black}L_{33}&\color{red}-\color{black}L_{34} & 0&0&0&0 \\
 			0&\color{red}-\color{black}L_{41}&\color{red}-\color{black}L_{42}&\color{red}-\color{black}L_{43}&\color{red}-\color{black}L_{44} & 0&0&0&0 \\
-			0&0&0&0&0 & \sum{C_{1\mathrm{x}}}&-C_{12}&-C_{13}&-C_{14} \\
-			0&0&0&0&0 & -C_{21}&\sum{C_{2\mathrm{x}}}&-C_{23}&-C_{24} \\
-			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3\mathrm{x}}}&-C_{34} \\
-			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4\mathrm{x}}}
+			0&0&0&0&0 & \sum{C_{1k}}&-C_{12}&-C_{13}&-C_{14} \\
+			0&0&0&0&0 & -C_{21}&\sum{C_{2k}}&-C_{23}&-C_{24} \\
+			0&0&0&0&0 & -C_{31}&-C_{32}&\sum{C_{3k}}&-C_{34} \\
+			0&0&0&0&0 & -C_{41}&-C_{42}&-C_{43}&\sum{C_{4k}}
 			    \end{bmatrix}}_{\text{$M$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -225,10 +225,10 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 			0&0&\color{red}+\color{black}R_{22}&0&0 & 0&\color{red}-\color{black}1&\color{red}+\color{black}1&0 \\
 			0&0&0&\color{red}+\color{black}R_{33}&0 & 0&0&\color{red}-\color{black}1&\color{red}+\color{black}1 \\
 			0&0&0&0&\color{red}+\color{black}R_{44} & 0&0&0&\color{red}-\color{black}1 \\
-			1&-1&0&0&0 & -\sum G_{1\mathrm{x}}&G_{12}&G_{13}&G_{14} \\
-			0&1&-1&0&0 & G_{21} &- \sum G_{2\mathrm{x}}& G_{23}& G_{24} \\
-			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3\mathrm{x}}&G_{34} \\
-			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4\mathrm{x}}
+			1&-1&0&0&0 & -\sum G_{1k}&G_{12}&G_{13}&G_{14} \\
+			0&1&-1&0&0 & G_{21} &- \sum G_{2k}& G_{23}& G_{24} \\
+			0&0&1&-1&0 & G_{31} & G_{32} &-\sum G_{3k}&G_{34} \\
+			0&0&0&1&-1 & G_{41}&G_{42}&G_{43}&-\sum G_{4k}
 			\end{bmatrix}}_{\text{$N$}}
 			\cdot
 			\underbrace{\begin{bmatrix}
@@ -307,11 +307,11 @@ F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf di
 
 Einfach erkl"aren l"asst sich die Singul"arwertzerlegung mit jeweils zwei Rotationen, es sind dies die Matrizen $U$ und $V^\top$, und einer Streckung durch die Diagonalmatrix $S$. Dieser Vorgang ist in Abbildung \ref{trafo:SVDFig} dargestellt. 
 
-Eine einfache Art die Singul"arwertzerlegung von $M$ zu bekommen, ist die Berechnung der Eigenwerten und Eigenvektoren von $M^\top M \in \mathbb{R}^{m \times m}$ und $MM^\top \in \mathbb{R}^{n \times n}$. Die linken Singul"arvektoren von $M$, aus welcher die Matrix $U$ aufgebaut ist, sind Eigenvektoren von $MM^\top$ und k"onnen mit
+Eine einfache Art die Singul"arwertzerlegung von $M$ zu bekommen, ist die Berechnung der Eigenwerten und Eigenvektoren von $M^\top M \in \mathbb{R}^{m \times m}$ und $MM^\top \in \mathbb{R}^{n \times n}$. Die Matrix $U$ ist aus Eigenvektoren von $MM^\top$ aufgebaut welche mit
 \begin{equation*}
 	\left(\lambda_i E - MM^\top\right)u_i = 0
 \end{equation*}
-berechnet werden, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ die Einheitsmatrix ist. Die Matrix $U$ besitzt somit in der Senkrechte Eigenvektoren \cite{trafo:Watkins}.
+berechnet werden können, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ die Einheitsmatrix ist. Die Matrix $U$ besitzt somit in der Senkrechte Eigenvektoren \cite{trafo:Watkins}.
 \begin{equation*}
 	\left( 
 		\begin{array}{cccc}
@@ -320,7 +320,7 @@ berechnet werden, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind und $E$ di
 	\right)
 \end{equation*}
 
-Die rechten Singul"arvektoren $v_i$, welche die Matrix $V$ ergeben, k"onnen mit den Eigenvektoren von $M^\top M$ gefunden werden. Als etwas schnellere Alternative kann die Berechnung von $V$ auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
+Die Matrix $V$ kann mit dem selben Schema aus den Eigenvektoren von $M^\top M$ aufgebaut werden. Als etwas schnellere Alternative kann die Berechnung von $V$ jedoch auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt. 
 \begin{align*}
 	M^\top &= V \underbrace{S^\top}_{S} U^\top\\
 	S^{-1} M^\top &= V U^\top\\
@@ -350,7 +350,7 @@ Da es sich bei der Matrix $M$ um eine symmetrische Matrix handelt, sind die Sing
 \subsubsection{Unterdr"uckung von unerw"unschten Eigenwerten}
 Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu einer quadratischen Matrix. Dies bedeutet, dass sich auf der ganzen Diagonale Betr"age von Eigenwerten des Systems befinden. Ein Ansatz zur Unterdr"uckung unerw"unschten Frequenzen kann sein, zu kleine Eigenwertbetr"age $\lambda < \text{tol}$, welche numerischen L"osungsverfahren nicht folgen k"onnen und physikalisch gesehen zu grosse und unm"ogliche Frequenzen sind, auf Null zu setzen. Dies ergibt die Diagonalmatrix 
 \begin{equation*}
-	S^\dagger = \left( 
+	S_\text{tol} = \left( 
 			\begin{array}{cccccc}
 				\lambda_1 & & & & & \\
 				& \ddots & & & &  \\
@@ -362,16 +362,16 @@ Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu ei
 			\right) 
 			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{\text{tol}} > 0. 
 \end{equation*}
-Bei der Matrix $S^\dagger$ handelt es sich um die Pseudoinverse.\footnote{Matlab bietet bereit eine Funktion \texttt{pinv(M,tol)} an, welche jedoch langsamer wie die Implementation in \ref{trafo:SVD} ist und deshalb nicht verwendet wird.} Es werden nur noch die Singul"arwerte benutzt, welche nicht zu klein sind. Diejenigen welche unterhalb einer Toleranz sind, werden auf $0$ gesetzt und in den n"achsten Rechenschritten ignoriert.
+Die Matrix $S_\text{tol}$ ist eine reduzierte Matrix, welche nur die Singulärwerte bis zum Toleranzwert beinhaltet, die kleineren Werte werden durch $0$ ersetzt. Diese Matrix lässt sich noch nicht invertieren, da bekanntlich nicht durch $0$ geteilt werden darf. Die Pseudoinverse $S{_\text{tol}}^\dagger$ löst dieses Problem, indem sie die vorhandene Werte invertiert und die Nullen stehen lässt.\footnote{Matlab bietet bereit eine Funktion \texttt{pinv(M,tol)} an, welche jedoch langsamer wie die Implementation in \ref{trafo:SVD} ist und deshalb nicht verwendet wird.} Somit ist $S{_\text{tol}}^\dagger$ die Pseudoinverse der reduzierten Singulär-Matrix.
 
 \subsubsection{Inversion}
 Als n"achstes gilt es, eine einfache 'Inversion' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst. \cite{trafo:Watkins}
 \begin{equation*}
-	M^{-1} = \left(US^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S^\dagger\right)^{-1} U^{-1}
+	M^{-1} = \left(U S{_\text{tol}}^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S{_\text{tol}}^\dagger\right)^{-1} U^{-1}
 \end{equation*}
 Da die Matrizen $U$ und $V$ symmetrisch sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung als 
 \begin{equation*}
-	M^{-1} = V \left(S^\dagger \right)^{-1} U^\top
+	M^{-1} = V \left(S{_\text{tol}}^\dagger \right)^{-1} U^\top
 \end{equation*}
 geschrieben werden.
 
