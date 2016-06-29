@@ -4,7 +4,9 @@
 # (c) 2016 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
 all:
-	cd images; make
+
+images:
+	cd images; make images
 
 clean:
 	cd images; make clean

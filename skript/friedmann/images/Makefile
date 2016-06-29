@@ -3,10 +3,12 @@
 #
 # (c) 2016 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
+all:
+
 friedmann_FILES = friedmann-1.pdf friedmann-2.pdf friedmann-3.pdf \
 	friedmann-4.pdf friedmann-5.pdf friedmann-6.pdf
 
-friedmann: $(friedmann_FILES)
+images: $(friedmann_FILES)
 
 $(friedmann_FILES):	friedmann.mp universe.mp szenarios.mp bigcrunch.mp
 	TEX=latex mpost friedmann.mp
