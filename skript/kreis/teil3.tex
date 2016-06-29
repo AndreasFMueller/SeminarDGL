@@ -5,13 +5,14 @@ Eine mögliche Anwendung der Besselschen DGL ist die Bestimmung der möglichen 
 Da eine Membran an ihrem Rand eingespannt ist, ist deren Auslenkung dort immer 0. Somit können auch nur Frequenzen vorkommen, die am Rand der Membran eine Nullstelle haben. Wir erhalten somit ein Randwertproblem.
 \begin{equation}
 r^2 R''(r) + r R'(r) + (-\mu r^2 - n^2)R(r) = 0
+\label{eq:dglmitmu}
 \end{equation}
 mit 
 \begin{equation}
 R(\rho) = 0
 \end{equation}
 wobei $\rho$ der Radius der Membran ist.
-Wie wir im Abschnitt \refeq{eq:bessel:summenformel} gesehen haben, ist das n frei wählbar als Index der entsprechenden Bessel-Funktion, somit ist noch das $\mu$ zu bestimmen. 
+Wie wir im Abschnitt \refeq{eq:bessel_summenformel} gesehen haben, ist das n frei wählbar als Index der entsprechenden Bessel-Funktion, somit ist noch das $\mu$ zu bestimmen. 
 Dazu definieren wir die Funktion
 \begin{equation}
 F(r) = J_n \biggl(\frac{r}{a} \biggr),
@@ -24,14 +25,14 @@ und
 \begin{equation}
 F''(r) = \frac{r^2}{a^2} J_n \biggl(\frac{r}{a} \biggr).
 \end{equation}
-Setzen wir dies in die DGL ein, erhalten wir
+Setzen wir dies in die DGL \refeq{eq:dglmitmu} ein, erhalten wir
 \begin{equation}
 \frac{r^2}{a^2}J_n''\biggl(\frac{r}{a} \biggr) + 
-\frac{r}{x}J_n'\biggl(\frac{r}{a} \biggr) + 
-\biggl(\frac{r^2}{a^2} - k^2\biggr)J_n\biggl(\frac{r}{a}\biggr) = 0
+\frac{r}{a}J_n'\biggl(\frac{r}{a} \biggr) + 
+\biggl(\frac{r^2}{a^2} - k^2\biggr)J_n\biggl(\frac{r}{a}\biggr) = 0.
 \end{equation}
-Wir sehen, dass $\frac{1}{a}=-\mu^2$ entspricht.
-Für $J_0(r)$ wissen wir, dass die erste Nullstelle bei $\rho$ liegen muss, somit gilt
+Wir sehen, dass $\frac{1}{a^2}=-\mu$ entspricht.
+Für $J_0(r)$ wissen wir, dass die Nullstelle der Grundfrequenz bei $\rho$ liegen muss, somit gilt
 \begin{equation}
 \frac{\rho}{a} = r_0
 \end{equation}
@@ -40,5 +41,29 @@ Um nun die Frequenzen zu finden, welche auf einer Membran mit bestimmten Radius 
 J_n\biggl(\frac{\rho}{a}\biggl) = 0
 \end{equation}
 aufstellen.
-
+\\
 Da für diese Gleichung für mehrere Werte sowie auch für mehrere Funktionen erfüllt ist, lässt man diese am besten durch einen Computer berechnen. Die meisten Programme wie z.B. Mathematica oder Matlab haben eingebaute Funktionen um Nullstellen von Besselfunktionen zu berechnen.
+\\
+\\
+Folgend die ersten 5 Nullstellen der ersten sechs Besselschen Funtionen:
+\\
+\begin{tabular}{ccccccc}
+  & $J_0(z)$ & $J_1(z)$ & $J_2(z)$ & $J_3(z)$ & $J_4(z)$ & $J_5(z)$ \\
+ 1 & \text{  2.4048} & \text{  3.8317} & \text{  5.1356} & \text{
+6.3802} & \text{  7.5883} &
+   \text{  8.7715} \\
+ 2 & \text{  5.5201} & \text{  7.0156} & \text{  8.4172} & \text{
+9.7610} & \text{ 11.0647} &
+   \text{ 12.3386} \\
+ 3 & \text{  8.6537} & \text{ 10.1735} & \text{ 11.6198} & \text{
+13.0152} & \text{ 14.3725} &
+   \text{ 15.7002} \\
+ 4 & \text{ 11.7915} & \text{ 13.3237} & \text{ 14.7960} & \text{
+16.2235} & \text{ 17.6160} &
+   \text{ 18.9801} \\
+ 5 & \text{ 14.9309} & \text{ 16.4706} & \text{ 17.9598} & \text{
+19.4094} & \text{ 20.8269} &
+   \text{ 22.2178} \\
+\end{tabular}
+\\
+Wie aus der Tabelle zu entnehmen ist, kommen nicht nur ganzzahlige Vielfache vor. Somit ist das Obertonspecktrum eines Lautsprechers nicht rein harmonisch.
