@@ -41,13 +41,14 @@ BLXFILES = skript1-blx.bbl \
 #	skript14-blx.bbl skript15-blx.bbl skript16-blx.bbl skript17-blx.bbl
 
 skript.pdf:	skript.tex $(TEXFILES) skript.ind $(BLXFILES)
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
 	bibtex skript
 
-skript.ind:	skript.tex $(TEXFILES)
+skript.idx:	skript.tex $(TEXFILES)
 	touch skript.ind
-	cd chapters && make
-	pdflatex -shell-escape skript.tex
+	pdflatex skript.tex
+
+skript.ind:	skript.idx
 	makeindex skript.idx
 
 # References
