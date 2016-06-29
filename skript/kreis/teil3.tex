@@ -1,48 +1,48 @@
 \section{Anwendung der Besselfunktion}
-\subsection[Eigenfrequenz einer kreisförmigen Membram]{Eigenfrequenz einer kreisförmigen Membran}
+\subsection[Eigenfrequenz einer kreisförmigen Membram]{Eigenfrequenz einer kreisförmigen Membran}
 
-Eine mögliche Anwendung der Besselschen DGL ist die Bestimmung der möglichen Frequenzen einer kreisförmigen Membran. 
-Da eine Membran an ihrem Rand eingespannt ist, ist deren Auslenkung dort immer 0. Somit können auch nur Frequenzen vorkommen, die am Rand der Membran eine Nullstelle haben. Wir erhalten somit ein Randwertproblem.
+Eine mögliche Anwendung der Besselschen DGL ist die Bestimmung der möglichen Frequenzen einer kreisförmigen Membran. 
+Da eine Membran an ihrem Rand eingespannt ist, ist deren Auslenkung dort immer 0. Somit können auch nur Frequenzen vorkommen, die am Rand der Membran eine Nullstelle haben. Wir erhalten somit ein Randwertproblem.
 \begin{equation}
-r^2 R''(r) + r R'(r) + (-\mu r^2 - n^2)R(r) = 0
+r^2 R''(r) + r R'(r) + (-\mu r^2 - n^2)R(r) = 0
 \label{eq:dglmitmu}
 \end{equation}
 mit 
 \begin{equation}
-R(\rho) = 0
+R(\rho) = 0
 \end{equation}
 wobei $\rho$ der Radius der Membran ist.
 Wie wir im Abschnitt \refeq{eq:bessel_summenformel} gesehen haben, ist das n frei wählbar als Index der entsprechenden Bessel-Funktion, somit ist noch das $\mu$ zu bestimmen. 
 Dazu definieren wir die Funktion
 \begin{equation}
-F(r) = J_n \biggl(\frac{r}{a} \biggr),
+F(r) = J_n \biggl(\frac{r}{a} \biggr),
 \end{equation}
 mit den Ableitungen
 \begin{equation}
-F'(r) = \frac{r}{a} J_n \biggl(\frac{r}{a} \biggr)
+F'(r) = \frac{r}{a} J_n \biggl(\frac{r}{a} \biggr)
 \end{equation}
 und 
 \begin{equation}
-F''(r) = \frac{r^2}{a^2} J_n \biggl(\frac{r}{a} \biggr).
+F''(r) = \frac{r^2}{a^2} J_n \biggl(\frac{r}{a} \biggr).
 \end{equation}
-Setzen wir dies in die DGL \refeq{eq:dglmitmu} ein, erhalten wir
+Setzen wir dies in die DGL \refeq{eq:dglmitmu} ein, erhalten wir
 \begin{equation}
-\frac{r^2}{a^2}J_n''\biggl(\frac{r}{a} \biggr) + 
-\frac{r}{a}J_n'\biggl(\frac{r}{a} \biggr) + 
-\biggl(\frac{r^2}{a^2} - k^2\biggr)J_n\biggl(\frac{r}{a}\biggr) = 0.
+\frac{r^2}{a^2}J_n''\biggl(\frac{r}{a} \biggr) +
+\frac{r}{a}J_n'\biggl(\frac{r}{a} \biggr) +
+\biggl(\frac{r^2}{a^2} - k^2\biggr)J_n\biggl(\frac{r}{a}\biggr) = 0.
 \end{equation}
 Wir sehen, dass $\frac{1}{a^2}=-\mu$ entspricht.
-Für $J_0(r)$ wissen wir, dass die Nullstelle der Grundfrequenz bei $\rho$ liegen muss, somit gilt
+Für $J_0(r)$ wissen wir, dass die Nullstelle der Grundfrequenz bei $\rho$ liegen muss, somit gilt
 \begin{equation}
-\frac{\rho}{a} = r_0
+\frac{\rho}{a} = r_0
 \end{equation}
 Um nun die Frequenzen zu finden, welche auf einer Membran mit bestimmten Radius vorkommen, können wir die Gleichung
 \begin{equation}
-J_n\biggl(\frac{\rho}{a}\biggl) = 0
+J_n\biggl(\frac{\rho}{a}\biggl) = 0
 \end{equation}
 aufstellen.
 \\
-Da für diese Gleichung für mehrere Werte sowie auch für mehrere Funktionen erfüllt ist, lässt man diese am besten durch einen Computer berechnen. Die meisten Programme wie z.B. Mathematica oder Matlab haben eingebaute Funktionen um Nullstellen von Besselfunktionen zu berechnen.
+Da für diese Gleichung für mehrere Werte sowie auch für mehrere Funktionen erfüllt ist, lässt man diese am besten durch einen Computer berechnen. Die meisten Programme wie z.B. Mathematica oder Matlab haben eingebaute Funktionen um Nullstellen von Besselfunktionen zu berechnen.
 \\
 \\
 Folgend die ersten 5 Nullstellen der ersten sechs Besselschen Funtionen:

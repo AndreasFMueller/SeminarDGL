@@ -3,15 +3,16 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	subdirs skript.pdf
+all:	skript.pdf
+
 
 SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis \
 		 komplex friedmann
 
-subdirs:
+images:
 	for d in $(SUBDIRECTORIES); \
 	do \
-		cd $${d}; make; cd ..; \
+		cd $${d}; make images; cd ..; \
 	done
 
 CHAPTERS = chapters/einleitung.tex \
@@ -33,16 +34,13 @@ THEMA_FILES = thema/main.tex
 TEXFILES = $(SKRIPTFILES) \
 	$(THEMA_FILES)
 
-IMAGES =
-
 BLXFILES = skript1-blx.bbl \
 	skript2-blx.bbl skript3-blx.bbl skript4-blx.bbl skript5-blx.bbl \
 	skript6-blx.bbl skript7-blx.bbl skript8-blx.bbl skript9-blx.bbl
 #	skript10-blx.bbl skript11-blx.bbl skript12-blx.bbl skript13-blx.bbl \
 #	skript14-blx.bbl skript15-blx.bbl skript16-blx.bbl skript17-blx.bbl
 
-skript.pdf:	skript.tex $(TEXFILES) skript.ind $(IMAGES) \
-			$(BLXFILES)
+skript.pdf:	skript.tex $(TEXFILES) skript.ind $(BLXFILES)
 	pdflatex -shell-escape skript.tex
 	bibtex skript
 
