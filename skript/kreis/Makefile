@@ -1,3 +1,7 @@
+all:
+
+images:	besselfunktion.pdf
+
 besselfunction.pdf: besselfunction.tex besselfunction_koeffizienten.m besselfunction-inc.pdf
 	pdflatex besselfunction.tex
 
