@@ -1,7 +1,9 @@
+all:
+
 TIKZDIR = standalone
 
-all:
-	cd $(TIKZDIR); make
+images:
+	cd $(TIKZDIR); make images
 
 clean:
 	cd $(TIKZDIR); make clean

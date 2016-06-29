@@ -1,4 +1,4 @@
-all:	$(patsubst %.tikz,%.pdf,$(wildcard *.tikz))
+images:	$(patsubst %.tikz,%.pdf,$(wildcard *.tikz))
 
 %.pdf:	%.tikz
 	pdflatex $$(basename $<)
