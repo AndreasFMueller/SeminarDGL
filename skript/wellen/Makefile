@@ -1,7 +1,12 @@
+#
+# Makefile for welle paper
+#
+all:
+
 IMAGEDIR = images
 
-all:
-	cd $(IMAGEDIR); make
+images:
+	cd $(IMAGEDIR); make images
 
 clean:
 	cd $(IMAGEDIR); make clean
