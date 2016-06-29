@@ -2,7 +2,7 @@
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
 \begin{normalsize}
 Im vorhergehenden Abschnitt wurde die Besselsche Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
-Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt.
+Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt
 \end{normalsize}
 \begin{align}
 	r^2 \, R'' \left( r \right)
@@ -13,6 +13,7 @@ Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer ge
 	=
 	0
 	\label{eq:bessel:dgl}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 Die L\"osungsmenge der Differentialgleichung \refeq{eq:bessel:dgl} ist trotz den Umformungen identische mit der L\"osungsmenge der Diffferentialgleichung \refeq{eq:besselsche_dgl}, jedoch ist die Differentialgleichung \refeq{eq:bessel:dgl} einfacher zu l\"osen.
@@ -72,6 +73,7 @@ muss die Potenzreihe abgeleitet werden,
 	r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, k \, \left( k - 1 \right) \, r^{k - 2}	
 	\label{eq:bessel:potenzreihe:zweiteableitung}
+	\text{,}
 \end{align}
 \begin{normalsize}%
 was wiederum eine Potenzreihe \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} ergibt.
@@ -90,6 +92,7 @@ Als n\"achstes werden die erhaltenen Potenzreihen in die Differentialgleichung
 	=
 	0
 	\tag{\ref{eq:bessel:dgl}}
+	\text{,}
 \end{align*}
 \begin{normalsize}%
 eingesetzt \dots
@@ -154,7 +157,7 @@ eingesetzt \dots
 	= & \, 0
 \end{align*}
 \begin{normalsize}%
-\dots und die Terme mit der gleichen Potenz von $r$ zusammengefasst.
+\dots und die Terme mit der gleichen Potenz von $r$ zusammengefasst
 \end{normalsize}
 \begin{align}
 	\biggl(
@@ -182,6 +185,7 @@ eingesetzt \dots
 	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:vereinfacht}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 Die resultierende Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} sieht auf den ersten Blick komplizierter aus,
@@ -207,10 +211,11 @@ bzw.
 \begin{align}
 	\big( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \big) &= 0
 	\label{eq:bessel:indexgleichung:ausgangslage:vereinfacht}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 In der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage:vereinfacht} hat es nur eine Unbekannte $\varrho$,
-nach welcher die Indexgleichung aufgel\"ost werden kann.
+nach welcher die Indexgleichung aufgel\"ost werden kann:
 \end{normalsize}
 \begin{align*}
 	\varrho \, \left( \varrho -1 \right) + \varrho - n^2 &= 0 \\
@@ -218,6 +223,7 @@ nach welcher die Indexgleichung aufgel\"ost werden kann.
 	\varrho ^2 - n^2 &= 0 \\
 	\varrho ^2 &= n^2 \\
 	\varrho &= \pm n
+	\text{.}
 \end{align*}
 \begin{normalsize}%
 Da die Indexgleichung eine quadratische Gleichung ist,
@@ -229,7 +235,7 @@ wird im Kapitel \ref{chapter:Loesung2} genauer erkl\"art.
 \subsubsection{\arabic{stepCounter}. Schritt: Rekursion der Koeffizienten $a_k$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
-Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann.
+Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann
 \end{normalsize}
 \begin{align}
 	\biggl(
@@ -257,6 +263,7 @@ Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:b
 	\sum_{k=0}^{\infty} a_k \, r^{k + 2}
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 %Da bekanntlich nur Terme mit der gleichen Potenz miteinander verrechnet werden k\"onnen,
@@ -265,7 +272,7 @@ dass sie den Term $r^k$ enthalten.
 Eine Summe enth\"alt den Term $r^{k + 2}$,
 welcher auf $r^k$ umgeformt werden muss.
 Dazu wird der Anfangswert der Summe von $k = 0$ auf $k = 2$ ge\"andert und alle $k$'s in der Summe durch $k - 2$ ersetzt.
-Nun haben alle Summen den Term $r^k$ enthalten.
+Nun haben alle Summen den Term $r^k$ enthalten
 \end{normalsize}
 \begin{align}
 	\biggl(
@@ -293,6 +300,7 @@ Nun haben alle Summen den Term $r^k$ enthalten.
 	\sum_{k=2}^{\infty} a_{k - 2} \, r^k
 	= \, 0
 	\label{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 In der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen} k\"onnen die einzelnen Summen zu einer einzigen Summen zusammengefasst werden.
@@ -431,7 +439,7 @@ kann so eine Rekursion der Koeffiziente gefunden werden.
 	+
 	a_{k - 2}
 	= 0
-	&\Leftrightarrow
+	\\
 	\left(
 	2 \, n \, k 
 	+
@@ -440,8 +448,8 @@ kann so eine Rekursion der Koeffiziente gefunden werden.
 	\, a_k
 	+
 	a_{k - 2}
-	= 0 \\
-	\Leftrightarrow
+	= 0 
+	\\
 	k \,
 	\left(
 	2 \, n
@@ -450,8 +458,6 @@ kann so eine Rekursion der Koeffiziente gefunden werden.
 	\right)
 	\, a_k
 	= -a_{k - 2}
-	&\Leftrightarrow
-	\text{Rekursion der Koeffizienten \refeq{eq:bessel:koeffizienten:rekursion}}
 \end{align*}
 \begin{align}
 	a_k
@@ -502,6 +508,7 @@ welche nur vom Koeffizienten $a_0$ abh\"angig ist,
 hat es sich bew\"ahrt,
 die Koeffizienten $a_2$, $a_4$ , $a_6$ , \dots \, zu berechnen,
 bis eine Regelm\"assigkeit erkennbar ist.
+Die Koeffizienten sehen wiefolgt aus:
 \end{normalsize}
 \begin{align}
 	\nonumber
@@ -583,13 +590,14 @@ bis eine Regelm\"assigkeit erkennbar ist.
 		2^{2k} \, {k}! \, {\left( n + k \right)}!
 	}
 	\label{eq:bessel:koeffizienten:gerade}
+	\text{.}
 \end{align}
 \subsubsection{\arabic{stepCounter}. Schritt: Besselfunktion f\"ur ganzzahligen Parameter $n$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
 Die Koeffizienten $a_k$ k\"onnen nun in die urspr\"ungliche Potenzreihe \refeq{eq:bessel:potenzreihe:verallgemeinert} eingesetzt werden.
 Da bei den Koeffizienten die Indexvariable $k$ durch $2k$ ersetzt wurde,
-muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen werden.
+muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen werden
 \end{normalsize}
 \begin{align}
 	R \left( r \right)
@@ -613,6 +621,7 @@ muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen w
 	}
 	\, r^{2k + n}
 	\label{eq:bessel:potenzreihe:koeffizienten:eingesetzt}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
@@ -644,7 +653,6 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 	\, r^{2k + n}
 	=
 	\\
-	R \left( r \right)
 	&=
 	\sum_{k=0} ^{\infty}
 	\frac
@@ -682,11 +690,12 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 	}{
 		{k}! \, { \left( k + n \right) }!
 	}
+	\text{.}
 \end{align*}
 \begin{normalsize}%
 F\"ur die Besselfunktion wird meist der Buchstabe J verwendet,
 wo der Parameter $n$ tiefgestellt angegeben wird.
-Diese Notation wird daher \"ubernommen.
+Diese Notation wird daher \"ubernommen
 \end{normalsize}
 \begin{align}
 	J_n \left( r \right)
@@ -706,6 +715,7 @@ Diese Notation wird daher \"ubernommen.
 		{k}! \, { \left( k + n \right) }!
 	}
 	\label{eq:bessel:summenformel}
+	\text{.}
 \end{align}
 \begin{normalsize}%
 Die Potenzreihe \refeq{eq:bessel:summenformel} ist die L\"osung f\"ur die Differentialgleichung \refeq{eq:bessel:dgl}.
