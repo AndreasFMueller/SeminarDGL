@@ -175,13 +175,16 @@ Um ein geeignetes Kompartiment Model für Ebola zu finden, müssen zuerst die Gr
 \begin{description}
   \item [Exposed ($E$)] sind Individuen, welche in Kontakt mit einem Träger der Krankheit waren, aber die noch nicht infiziert sind. Die Infektion und der Ausbruch der Krankheit haben noch nicht stattgefunden, sobald dieser Zustand eintritt werden sie zu \emph{Infected}.
 \end{description}
-Die Übergange des Kompartimentmodells können wie folgt beschrieben werden:
- \begin{alignat*}{4}
-   \frac{dS}{dt} & = - &   & \beta S I & & \\
-   \frac{dE}{dt} & =   &   & \beta S I - &   & \delta E & & \\
-   \frac{dI}{dt} & =   &   &  &   & \delta E - & & \gamma I \\
-   \frac{dR}{dt} & =   &   &  &   &  & & \gamma I \\
- \end{alignat*}
+Die Überg"ange des Kompartimentmodells können wie folgt beschrieben werden:
+\[
+\arraycolsep=1.4pt\def\arraystretch{2.2}
+  \begin{array}{rccrcrcr}
+   \displaystyle\frac{dS}{dt} & = &-&\beta S I& &        & &        \\
+   \displaystyle\frac{dE}{dt} & = & &\beta S I&-&\delta E& &        \\
+   \displaystyle\frac{dI}{dt} & = & &         & &\delta E&-&\gamma I\\
+   \displaystyle\frac{dR}{dt} & = & &         & &        & &\gamma I
+ \end{array}
+\]
 Gekoppelt an das Ebola Beispiel können nun die Faktoren $\beta$, $\gamma$ und $\delta$ erklärt werden. Diese Faktoren können an verschiedene Krankheitsabschnitte gekoppelt werden.
 \begin{description}
   \item [Kontaktrate ($\beta$)] beschreibt die Art und Weise einer Übertragung. In diesem Wert enthalten sind, die Wahrscheinlichkeit angesteckt zu werden, aber $\beta$ bildet auch das soziale Gefüge ab. Haben mehr Menschen potentiellen Kontakt zu einem Infizierten, so ist $\beta$ höher.
