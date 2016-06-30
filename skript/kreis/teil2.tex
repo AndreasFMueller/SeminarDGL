@@ -1,8 +1,8 @@
-\hyphenation{werden Nenner einfacher Summe weiteren welcher verwendet angegeben}
+\hyphenation{werden Nenner einfacher Summe weiteren welcher verwendet angegeben Index-gleichung zusammen-gefasst Koeffizient Koeffizienten Differential-gleichung Klammer Spezial-fall Problems be-kommen}
 \section[Potenzreihenherleitung der Besselfunktion]{Potenzreihenherleitung der Besselfunktion 1. Art}
 \begin{normalsize}
 Im vorhergehenden Abschnitt wurde die Besselsche Differentialgleichung \refeq{eq:besselsche_dgl} hergeleitet.
-Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt
+Um diese zu l\"osen wird $\mu = - 1$ gesetzt und das Vorzeichen vor der Klammer gekehrt
 \end{normalsize}
 \begin{align}
 	r^2 \, R'' \left( r \right)
@@ -16,8 +16,7 @@ Um diese zu l\"osen wird $\mu = 1$ gesetzt und das Vorzeichen vor der Klammer ge
 	\text{.}
 \end{align}
 \begin{normalsize}%
-DGL sind bis auf skalierungsfaktor gleich \dots
-Die L\"osungsmenge der Differentialgleichung \refeq{eq:bessel:dgl} ist trotz den Umformungen identische mit der L\"osungsmenge der Diffferentialgleichung \refeq{eq:besselsche_dgl}, jedoch ist die Differentialgleichung \refeq{eq:bessel:dgl} einfacher zu l\"osen.
+Durch die Vereinfachung $\mu = -1$ ist die Differentialgleichung \refeq{eq:bessel:dgl} nur durch eine Skalierung von der Differentialgleichung \refeq{eq:besselsche_dgl} verschieden.
 Zum L\"osen der Differentialgleichung \refeq{eq:bessel:dgl} wird die Potenzreihen-Methode aus dem Kapitel \ref{section:potenzreihen:verallgemeinert} verwendet.
 \end{normalsize}
 \subsection{Vorgehensweise f\"ur die Herleitung der Besselfunktion}
@@ -26,8 +25,8 @@ Die Herleitung der Besselfunktion beinhaltet folgende Schritte:
 \end{normalsize}
 \begin{compactenum}
 	\item Die Potenzreihe und deren Ableitungen berechnen.
-	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} eingesetzen, um \dots
-	\item \dots die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche \dots
+	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} einsetzen, um \dots
+	\item die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche \dots
 	\item \dots eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur \dots
 	\item \dots die Besselfunktion mit ganzzahligen Parametern \refeq{eq:bessel:summenformel}.
@@ -77,7 +76,7 @@ muss die Potenzreihe abgeleitet werden,
 	\text{,}
 \end{align}
 \begin{normalsize}%
-was wiederum eine Potenzreihe \refeq{eq:bessel:potenzreihe:ersteableitung} und \refeq{eq:bessel:potenzreihe:zweiteableitung} ergibt.
+was wiederum eine Potenzreihe ergibt.
 \end{normalsize}
 \subsubsection{\arabic{stepCounter}. Schritt: Potenzreihen in Differentialgleichung \refeq{eq:bessel:dgl} einsetzen}
 \stepcounter{stepCounter}
@@ -93,7 +92,6 @@ Als n\"achstes werden die erhaltenen Potenzreihen in die Differentialgleichung
 	=
 	0
 	\tag{\ref{eq:bessel:dgl}}
-	\text{,}
 \end{align*}
 \begin{normalsize}%
 eingesetzt \dots
@@ -161,17 +159,17 @@ eingesetzt \dots
 \dots und die Terme mit der gleichen Potenz von $r$ zusammengefasst
 \end{normalsize}
 \begin{align}
-	\biggl(
+	\big(
 	\textcolor{mygreen}{\varrho \, \left( \varrho - 1 \right)}
 	+ 
 	\textcolor{teal}{\varrho}
 	-
 	\textcolor{blue}{n^2}
-	\biggr)
+	\big)
 	\, r^{\varrho}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+ 
-	\left(	
+	\left(
 	\textcolor{mygreen}{2 \, \varrho}
 	+
 	\textcolor{teal}{1}
@@ -188,10 +186,10 @@ eingesetzt \dots
 	\label{eq:bessel:potenzreihe:dgl:vereinfacht}
 	\text{.}
 \end{align}
-\begin{normalsize}%
-Die resultierende Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} sieht auf den ersten Blick komplizierter aus,
-als die urspr\"ungliche Differentialgleichung \refeq{eq:bessel:dgl}.
-\end{normalsize}
+%\begin{normalsize}%
+%Die resultierende Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} sieht auf den ersten Blick komplizierter aus,
+%als die urspr\"ungliche Differentialgleichung \refeq{eq:bessel:dgl}.
+%\end{normalsize}
 \subsubsection{\arabic{stepCounter}. Schritt: Indexgleichung zum Bestimmen von $\varrho$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
@@ -200,12 +198,13 @@ welche die gleiche Potenz von $r$ haben,
 mit $0$ gleichgesetzt,
 da die Differentialgleichung f\"ur jede Potenz gelten muss.
 Der Koeffizientenvergleich f\"ur die tiefste Potenz (im vorliegenden Fall $\varrho + 0$) wird auch Indexgleichung genannt.
-Problem 1
+Demzufolge ist die Indexgleichung f\"ur die Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht}
 \end{normalsize}
 \begin{align}
 	\big( \varrho \, \left( \varrho -1 \right) + \varrho - n^2 \big)
 	\, r^{\varrho + 0} \, a_0 &= 0
 	\label{eq:bessel:indexgleichung:ausgangslage}
+	\text{,}
 \end{align}
 \begin{normalsize}%
 bzw.
@@ -237,16 +236,16 @@ wird im Kapitel \ref{chapter:Loesung2} genauer erkl\"art.
 \subsubsection{\arabic{stepCounter}. Schritt: Rekursion der Koeffizienten $a_k$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
-Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann
+Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann:
 \end{normalsize}
 \begin{align}
-	\biggl(
+	\big(
 	n \, \left( n - 1 \right)
 	+
 	n
 	-
 	n^2
-	\biggr)
+	\big)
 	\, r^{n}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+
@@ -277,13 +276,13 @@ Dazu wird der Start-Index der Summe von $k = 0$ auf $k = 2$ ge\"andert und alle 
 Nun haben alle Summen den Term $r^k$ enthalten
 \end{normalsize}
 \begin{align}
-	\biggl(
+	\big(
 	n \, \left( n - 1 \right)
 	+
 	n
 	-
 	n^2
-	\biggr)
+	\big)
 	\, r^{n}
 	\sum_{k=0}^{\infty} a_k \, r^k
 	+
@@ -306,7 +305,7 @@ Nun haben alle Summen den Term $r^k$ enthalten
 \end{align}
 \begin{normalsize}%
 In der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen} k\"onnen die einzelnen Summen zu einer einzigen Summen zusammengefasst werden.
-Allerdings haben die Summen unterschiedliche Start-Indizes.
+Allerdings haben die Summen unterschiedliche Startindizes.
 Die einen Summen haben als Start-Index $k = 0$,
 wobei die andere Summe einen Start-Index von $k = 2$ hat.
 %Damit die Summen trotzdem zusammengefasst werden k\"onnen,
@@ -314,6 +313,7 @@ wobei die andere Summe einen Start-Index von $k = 2$ hat.
 Durch die Indexgleichung kann sichergestellt werden,
 dass die Koeffizienten f\"ur $k < 2$ wegfallen,
 bzw. 0 sind.
+Somit darf als Start-Index $k = 2$ verwendet werden.
 \end{normalsize}
 \begin{align}
 	r^n
@@ -434,9 +434,26 @@ Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
 dass $r$ oder die Summe $0$ ergeben muss.
 $r = 0$ ist dabei ein Spezialfall, welcher keine Rekursion der Koeffizienten erm\"oglicht und somit nicht zur L\"osung des Problems f\"uhrt.
 Demzufolge muss die Summe, bzw. die Klammer, $0$ ergeben.
-Wird nun der Ausdruck in der Klammer mit $0$ gleichgesetzt,
-kann so eine Rekursion der Koeffiziente gefunden werden.
-Problem 2
+Wird der Ausdruck in der Klammer,
+aus der Gleichung
+\end{normalsize}
+\begin{align*}
+	r^n
+	\sum_{k=2}^{\infty}
+	\biggl(
+	k^2 \, a_k
+	+
+	2 \, n \, k \, a_k
+	+
+	a_{k - 2}
+	\biggr)
+	\, r^k
+	= 0
+	\tag{\ref{eq:bessel:summe:zusammengefasst:vereinfacht}}
+	\text{,}
+\end{align*}
+\begin{normalsize}%
+mit $0$ gleichgesetzt
 \end{normalsize}
 \begin{align*}
 	2 \, n \, k \, a_k
@@ -445,27 +462,32 @@ Problem 2
 	+
 	a_{k - 2}
 	= 0
-	\\
-	\left(
+\end{align*}
+\begin{normalsize}
+und nach dem Koeffizient $a_k$ aufgel\"ost
+\end{normalsize}
+\begin{align}
+	\nonumber
+	\big(
 	2 \, n \, k 
 	+
 	k^2 
-	\right)
+	\big)
 	\, a_k
 	+
 	a_{k - 2}
 	= 0 
 	\\
+	\nonumber
 	k \,
-	\left(
+	\big(
 	2 \, n
 	+
 	k
-	\right)
+	\big)
 	\, a_k
 	= -a_{k - 2}
-\end{align*}
-\begin{align}
+	\\
 	a_k
 	=
 	\frac
@@ -475,12 +497,16 @@ Problem 2
 		k \, \left( 2 \, n + k \right)	
 	}
 	\label{eq:bessel:koeffizienten:rekursion}
+	\text{,}
 \end{align}
+\begin{normalsize}
+kann eine Rekursion der Koeffizienten gefunden werden.
+\end{normalsize}
 \subsubsection{\arabic{stepCounter}. Schritt: Bestimmen der Koeffizienten $a_k$ mit Hilfe der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion}}
 \stepcounter{stepCounter}
 \begin{normalsize}%
 Die Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} besagt,
-dass der Koeffizient $a_k$ vom Koeffizient $a_{k-2}$ eine lineare Abh\"angigkeit hat.
+dass der Koeffizient $a_k$ vom Koeffizient $a_{k-2}$ linear abh\"angt.
 Somit sind alle geraden Koeffizienten linear von $a_0$ abh\"angig und alle un\-geraden Koeffizienten von $a_1$.
 Da aber laut der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} $a_1$ aus $a_{-1}$ berechnet werden kann und $a_{-1} = 0$ ist,
 entfallen alle ungeraden Koeffizienten.
@@ -509,9 +535,12 @@ wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekur
 \begin{normalsize}%
 Um den Koeffizienten $a_{2k}$ zu berechnen,
 muss zuerst der Koeffizient $a_{2k-2}$ berechent werden,
-welcher aus dem Koeffizienten $a_{2k-2-2}$ berechnet wird \dots Genauer erkl\"aren\\
-Um nun eine Formel f\"ur $a_{2k}$ zu erhalten,
-welche nur vom Koeffizienten $a_0$ abh\"angig ist,
+welcher aus dem Koeffizienten $a_{2k-2-2}$ berechnet wird.
+F\"ur den Koeffizient $a_{2k}$ m\"ussen demzufolge alle Koeffizienten zwischen $a_0$ und $a_{2k}$ bekannt sein.
+Diese Berechnung ist sehr Zeit und Rechenintesiv.
+Daher wird nach einer Formel f\"ur $a_{2k}$ gesucht,
+wo der Koeffizient $a_{2k}$ direkt aus dem Koeffizient $a_0$ mit linearen Operationen berechnet werden kann.
+Um eine direkte Formel f\"ur $a_{2k}$ zu bekommen,
 hat es sich bew\"ahrt,
 die Koeffizienten $a_2$, $a_4$ , $a_6$ , \dots \, zu berechnen,
 bis eine Regelm\"assigkeit erkennbar ist.
@@ -700,9 +729,9 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 	\text{.}
 \end{align*}
 \begin{normalsize}%
-F\"ur die Besselfunktion wird meist der Buchstabe J verwendet,
+F\"ur die Besselfunktion wird meist der Buchstabe $J$ verwendet,
 wo der Parameter $n$ tiefgestellt angegeben wird.
-Diese Notation wird daher \"ubernommen
+Die Funtion
 \end{normalsize}
 \begin{align}
 	J_n \left( r \right)
@@ -722,9 +751,9 @@ Diese Notation wird daher \"ubernommen
 		{k}! \, { \left( k + n \right) }!
 	}
 	\label{eq:bessel:summenformel}
-	\text{.}
 \end{align}
 \begin{normalsize}%
+heisst \emph{Bessel-Funktionen} erster Art.
 Die Potenzreihe \refeq{eq:bessel:summenformel} ist die L\"osung f\"ur die Differentialgleichung \refeq{eq:bessel:dgl}.
 Die Abbildung \ref{img:besselfunction} illustriert die Besselfunktion \refeq{eq:bessel:summenformel} f\"ur ausgew\"ahlte $n$'s.
 \end{normalsize}
