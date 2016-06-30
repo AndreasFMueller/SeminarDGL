@@ -1,0 +1,17 @@
+\begin{tikzpicture}[node distance=3cm,>=stealth',bend angle=15,auto]
+	\begin{scope}
+		% First net
+		\node [state] (s1)                                    {S};
+		\node [state] (s2) [right of=s1]                      {I};
+		\node [state] (s3) [right of=s2]                      {Z};
+		\node [state] (s4) [below of=s2]                      {R};
+						   
+		\path[every node/.style={font=\sffamily\small}]
+		(s1) edge [post, bend left] node {$\beta$} (s2)
+		(s2) edge [post, bend left] node {$\lambda$} (s1)
+		(s2) edge [post, bend left] node {$\zeta$} (s3)
+		(s3) edge [post, bend left] node {$\gamma_{Z}$} (s4)
+		(s2) edge [post, bend right] node {$\gamma_{I}$} (s4);
+					
+	\end{scope}
+\end{tikzpicture}

@@ -4,53 +4,54 @@
 Wie im Kapitel 9 bereits gesehen, lassen sich Wellen durch Differentialgleichungen beschreiben. Allgemein können beliebige Wellen, z.B. Schallwellen oder Elektromagnetische Wellen, durch folgende Gleichung beschrieben werden:
 
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}.
 \end{equation}
 Diese Gleichung lässt sich mit Hilfe des Laplace-Operators verkürzt wie folgt schreiben:%
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \Delta u
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \Delta u.
 \end{equation}
 Durch Umformen der Gleichung erhalten wir folgendes:
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} - \Delta u = 0
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} - \Delta u = 0.
 \end{equation}
 In diesem Kapitel wollen wir uns auf rotationssymmetrische Anwendungen der Wellengleichung beschränken. Da solche Probleme besser in Zylinderkoordinaten beschrieben werden können, transformieren wir die Wellengleichung. Der Laplace-Operator sieht in Zylinderkoordinaten wie folgt aus:
 \begin{equation}
-\Delta u = \frac{1}{r} \frac{\partial}{\partial r}\biggl(r \frac{\partial u}{\partial r}\biggr) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2} 
+\Delta u = \frac{1}{r} \frac{\partial}{\partial r}\biggl(r \frac{\partial u}{\partial r}\biggr) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2}.
 \end{equation} 
 Durch Einsetzen erhalten wir folgende Gleichung:
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{1}{r} \frac{\partial}{\partial r}(r \frac{\partial u}{\partial r}) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2} 
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{1}{r} \frac{\partial}{\partial r}(r \frac{\partial u}{\partial r}) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2}.
 \end{equation}
 
 \subsection[Lösung durch Variablenseparation]{Lösung durch Variablenseparation}
 
 Wir wollen nun die Wellengleichung in Zylinderkoordinaten lösen. Dazu verwenden wir die Separationsmethode.
 Bei der Separationsmethode versuchen wir die Funktion $u(r, \phi, t)$ durch ein Produkt der Funktionen darzustellen, welche jeweils nur von einer Variable abhängen: $R(r)\Phi(\phi)T(t)$
-\\Somit erhalten wir folgende Gleichung:
+Somit erhalten wir folgende Gleichung:
 
 \begin{equation}
 \frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r} \frac{\partial}{\partial r}(r R'(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
+.
 \end{equation}
 Wir teilen nun durch die einzelnen Funktionen, damit die Funktionen alleine stehen:
 
 \begin{equation}
-\frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r}(R'(r) + R''(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
+\frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r}(R'(r) + rR''(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
 \Bigl\lvert
 :R(r) : T(t) :\Phi(\phi)
+.
 \end{equation}
-
 Somit erhalten wir:
-
 \begin{equation}
-\frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r} (R'(r) + R''(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
+\frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r} (R'(r) + rR''(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
+.
 \end{equation}
 Fixiert man nun eine Variable, stellt man fest, dass auf beiden Seiten eine Konstante stehen muss. Wir erhalten also:
 \begin{equation}
 \frac{1}{c^2}
 \frac{T''(t)}{T(t)} = 
 \frac{1}{r} 
-\frac{R'(r) + R''(r)}{R(r)} + 
+\frac{R'(r) + rR''(r)}{R(r)} + 
 \frac{1}{r^2}
 \frac{\Phi''(\phi)}{\Phi(\phi)} = \mu.
 \end{equation}
@@ -60,19 +61,19 @@ Wir erhalten eine Orts- und eine Zeitgleichung:
 \frac{T''(t)}{T(t)} = 
 \mu
 ,\quad
-\frac{1}{r} \frac{R'(r) + R''(r)}{R(r)} + 
+\frac{1}{r} \frac{R'(r) + rR''(r)}{R(r)} + 
 \frac{1}{r^2} \frac{\Phi''(\phi)}{\Phi(\phi)} = 
 \mu
 .
+\label{eq:separiertegleichung}
 \end{equation}
-
 Setzen wir die Konstante in die Gleichung ein und wiederholen den obigen Schritt, so erhalten wir eine weitere Konstante:
-
 \begin{equation}
-\frac{1}{r} \frac{R'(r) + R''(r)}{R(r)} - \mu =
+\frac{1}{r} \frac{R'(r) + rR''(r)}{R(r)} - \mu =
 -\frac{1}{r^2} \frac{\Phi''(\phi)}{\Phi(\phi)} = n
+.
 \end{equation}
-Formt man diese Gleichung nun um, so erhält man die Besselsche DGL:
+Formt man diese Gleichung nun um, so erhält man die Besselsche Differentialgleichung:
 \begin{equation}
 r^2 R''(r) + r R'(r) - (\mu r^2 + n^2)R(r) = 0
 \label{eq:besselsche_dgl}

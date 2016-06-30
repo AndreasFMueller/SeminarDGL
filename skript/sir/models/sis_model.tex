@@ -1,0 +1,13 @@
+
+ \begin{tikzpicture}[node distance=4cm,>=stealth',bend angle=15,auto]
+   \begin{scope}
+	 % First net
+	 \node [state] (s1)                                    {S};
+	 \node [state] (s2) [right of=s1]                      {I};
+		
+	\path[every node/.style={font=\sffamily\small}]
+		(s1) edge [post, bend left] node {$\beta$} (s2)
+		(s2) edge [post, bend left] node {$\lambda$} (s1);
+
+   \end{scope}
+ \end{tikzpicture}
