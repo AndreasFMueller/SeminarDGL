@@ -11,7 +11,7 @@ mit
 R(\rho) = 0,
 \end{equation}
 wobei $\rho$ der Radius der Membran ist.
-Wie wir im Abschnitt \refeq{eq:bessel_summenformel} gesehen haben, ist das n frei wählbar als Index der entsprechenden Bessel-Funktion, somit ist noch das $\mu$ zu bestimmen. 
+Wie wir im Abschnitt \refeq{eq:bessel_summenformel} gesehen haben, ist das $n$ frei wählbar als Index der entsprechenden Bessel-Funktion, somit ist noch das $\mu$ zu bestimmen. 
 Dazu definieren wir die Funktion
 \begin{equation}
 F(r) = J_n \biggl(\frac{r}{a} \biggr),
@@ -36,11 +36,11 @@ Für $J_0(r)$ wissen wir, dass die Nullstelle der Grundfrequenz bei $\rho$ liege
 \begin{equation}
 \frac{\rho}{a} = r_0.
 \end{equation}
-Für den  Zusammenhang zwischen der Frequenz und dem $\mu$ betrachten wir die Zeitgleichung in \refeq{eq:separiertegleichung}. Formt man diese Gleichung nach T''(t) um, so erhält man 
+Für den  Zusammenhang zwischen der Frequenz und dem $\mu$ betrachten wir die Zeitgleichung in \refeq{eq:separiertegleichung}. Formt man diese Gleichung nach $T''(t)$ um, so erhält man 
 \begin{equation}
 \frac{1}{c^2} T''(t) = \mu T(t).
 \end{equation} 
-Die Lösung dieser Gleichung sind bekanntlich $sin(t)$ und $cos(t)$, welche mittels eulerscher Formel als $e^{i\omega t}$ geschrieben werden können.
+Die Lösung dieser Gleichung sind bekanntlich $\sin(t)$ und $\cos(t)$, welche mittels eulerscher Formel als $e^{i\omega t}$ geschrieben werden können.
 Setzen wir dies in die Gleichung ein, erhalten wir
 \begin{equation}
 \frac{1}{c^2}(j\omega)^2 e^{i\omega t} = \mu e^{i\omega t}
@@ -61,47 +61,48 @@ Wie wir bei Gleichung \refeq{eq:dglmitfaktor} gesehen haben, entspricht gilt $\m
 \end{equation}
 Um nun die Frequenzen zu finden, welche auf einer Membran mit bestimmten Radius vorkommen, können wir die Gleichung
 \begin{equation}
-J_n(ar_0) = 0
+J_n(ar) = 0
 \end{equation}
 aufstellen.
-\\
+
 Da für diese Gleichung für mehrere Werte sowie auch für mehrere Funktionen erfüllt ist, lässt man diese am besten durch einen Computer berechnen. Die meisten Programme wie z.B. Mathematica oder Matlab haben eingebaute Funktionen um Nullstellen von Besselfunktionen zu berechnen.
 \\
 \\
 Folgend die ersten fünf Nullstellen der ersten sechs Besselschen Funtionen:
 \\
+\begin{center}
 \begin{tabular}{ccccccc}
-   & $J_0(z)$ & $J_1(z)$ & $J_2(z)$ & $J_3(z)$ & $J_4(z)$ & $J_5(z)$ \\
+   & $J_0(r)$ & $J_1(r)$ & $J_2(r)$ & $J_3(r)$ & $J_4(r)$ & $J_5(r)$ \\
  1 & \text{ 2.4048} & \text{ 3.8317} & \text{ 5.1356} & \text{ 6.3802} & \text{ 7.5883} & \text{ 8.7715} \\
  2 & \text{ 5.5201} & \text{ 7.0156} & \text{ 8.4172} & \text{ 9.7610} & \text{11.0647} & \text{12.3386} \\
  3 & \text{ 8.6537} & \text{10.1735} & \text{11.6198} & \text{13.0152} & \text{14.3725} & \text{15.7002} \\
  4 & \text{11.7915} & \text{13.3237} & \text{14.7960} & \text{16.2235} & \text{17.6160} & \text{18.9801} \\
  5 & \text{14.9309} & \text{16.4706} & \text{17.9598} & \text{19.4094} & \text{20.8269} & \text{22.2178} \\
 \end{tabular}
-\\
+\end{center}
 Wie aus der Tabelle zu entnehmen ist, kommen nicht nur ganzzahlige Vielfache vor. Somit ist das Obertonspektrum eines Lautsprechers nicht rein harmonisch.
-Zur Veranschaulichung wie sich die besselschen Funktionen auf die Schwingungen einer Membran auswirken, sind folgend jeweils die ersten 3 Schwingungen der Funktionen $J_0(z)$, $J_1(z)$ und $J_2(z)$ geplottet.
+Zur Veranschaulichung wie sich die besselschen Funktionen auf die Schwingungen einer Membran auswirken, sind folgend jeweils die ersten drei Schwingungen der mit Radialfunktionen $J_0(r)$, $J_1(r)$ und $J_2(r)$ geplottet.
 \begin{figure}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-1-0.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-2-0.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-3-0.jpg}
-        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_0(z)$}
+        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_0(r)$}
         \label{fig:membranj0}
 \end{figure}
 \begin{figure}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-1-1.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-2-1.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-3-1.jpg}
-        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_1(z)$}
+        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_1(r)$}
         \label{fig:membranj1}
 \end{figure}
 \begin{figure}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-1-2.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-2-2.jpg}
         \includegraphics[width=0.33\hsize]{./kreis/membran/circle-3-2.jpg}
-        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_2(z)$}
+        \caption{Schwingungen(Grundschwingung sowie 1. und 2. Oberschwingung) mit Radialfunktion $J_2(r)$}
         \label{fig:membranj2}
 \end{figure}
 Wie aus der Abbildung \ref{fig:membranj0} zu erkennen ist befinden sich alle Nullstellen auf konzentrischen Kreisen um den Mittelpunkt mit der ersten Nullstelle am Rand.
-\\
+
 Bei den höheren Besselfunktionen \ref{fig:membranj1} und \ref{fig:membranj2} befindet sich jeweils eine Nullstelle im Zentrum der Membran. Dies ist nicht weiter erstaunlich, denn die Besselfunktionen grösser $J_0$ haben bei 0 eine Nullstelle. 
