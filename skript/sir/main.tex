@@ -7,10 +7,10 @@
 \chapterauthor{Max Obrist und Martin Stypinski}
 
 Die \emph{Epidemiologie} ist eine wissenschaftliche Disziplin, welche sich mit Ursache, Verbreitung und Folgen von gesundheitsbezogenen Ereignissen in einer Population befasst.
-Im Gegensatz zur klassischen Medizin befasst sich die Epidemiologie nicht damit, wie eine Krankheit, bzw. eine kranke Person geheilt werden kann, sondern damit, wie sich eine spezielle Krankheit ausbreitet, und mit welchen Mitteln die Krankheit in der Gesamtbevölkerung besiegt werden kann.
+Im Gegensatz zur klassischen Medizin, befasst sich die Epidemiologie nicht damit, wie eine Krankheit, bzw. eine kranke Person geheilt werden kann, sondern damit, wie sich eine Krankheit ausbreitet und mit welchen Mitteln die Krankheit in der Gesamtbevölkerung besiegt werden kann.
 
 Die \emph{mathematische Epidemiologie} -- womit wir uns in diesem Kapitel ansatzweise befassen -- ist ein Teilgebiet der Epidemiologie, sowie der \emph{theoretischen Biologie}.
-Die mathematische Epidemiologie befasst sich speziell mit mathematischen Modellen zur Ausbreitung von Krankheiten, stellt also Fragen nach z.B. der Form oder der Ausbreitungsgeschwindigkeit von ansteckbaren Krankheiten, beispielsweise von Influenza, Masern oder auch Ebola. 
+Die mathematische Epidemiologie befasst sich speziell mit mathematischen Modellen zur Ausbreitung von Krankheiten, stellt also Fragen z.B. nach der Form oder der Ausbreitungsgeschwindigkeit von ansteckbaren Krankheiten, beispielsweise von Influenza, Masern oder auch Ebola. 
 Das \emph{SIR-Model}, welches wir auf den nächsten Seiten detailliert anschauen werden, ist ein mathematisches Modell, mit welchem der Verlauf einer Krankheit in einer Population modelliert werden kann.
 
 \section{Problemstellung}
@@ -18,7 +18,7 @@ Wir stellen uns vor, dass in einer Bevölkerungsgruppe eine Krankheit ausbricht.
 Es könnte sich dabei z.B. um einen neuen Influenza-Stamm handeln.
 Bei einer Grippe wird ein Träger, nachdem er die Krankheit ausgestanden hat, bekanntermassen immun gegen diesen speziellen Stamm (Aber nicht gegen andere Stämme von Influenza).
 Nachdem die Krankheit bereits ein wenig durch die Bevölkerung gegangen ist, lassen sich anhand der ersten Daten einige Informationen über die Krankheit erfassen.
-Zum Beispiel kann herausgefunden, wie infektiös eine Krankheit ist, oder wie lange es nach einer Infektion durchschnittliche dauert, bis ein Träger die Infektion überstanden hat.
+Zum Beispiel kann herausgefunden werden, wie infektiös eine Krankheit ist, oder wie lange es nach einer Infektion durchschnittliche dauert, bis ein Träger die Infektion überstanden hat.
 
 Anhand dieser Informationen soll nun ein Modell entwickelt werden, mit welchem gewisse Vorhersagen über den weiteren Verlauf der Krankheit getroffen werden können. 
 Es soll nochmals wiederholt werden, dass mit dem Verlauf der Krankheit nicht der Verlauf der Krankheit in einem Individuum gemeint ist, sondern wie sich die Krankheit in der Bevölkerung selbst ausbreitet. 
@@ -31,7 +31,7 @@ In diesem Fall hat der Bevölkerungswachstum im Verlauf der Krankheit nur einen 
 Im Falle von langanhaltenden Krankheiten, z.B. HIV/AIDS, wo der Krankheitsverlauf mehrere Jahrzehnte dauern kann, müsste das Modell entsprechend erweitert werden.
 
 \section{SIR-Modell}
-Bei allen Krankheiten, welche sich wie die oben beschriebene Grippe verhalten -- Ein gesundes Subjekt wird infiziert, ist eine gewisse Zeit lang krank und ist nach der Genesung immun gegen den Erreger -- lässt sich die Bevölkerung in 3 Kompartimente aufteilen. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
+Bei allen Krankheiten, welche sich wie die beschriebene Grippe verhalten lässt sich die Bevölkerung in 3 Kompartimente aufteilen. Dabei wird vorausgesetzt, dass ein gesundes Subjekt infiziert wird und anschliessend eine gewisse Zeit lang krank ist. Nach der Genesung ist das Subjekt immun gegen den Erreger und kann somit nicht noch einmal infiziert werden. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
 \begin{description}
   \item [Susceptibles ($\mathbf{S}$)] sind Individuen, welche von einem Träger der Krankheit angesteckt werden können. Sie tragen die Krankheit weder in sich, noch sind sie bereits immun gegen dagegen. Werden sie angesteckt, werden sie zu \emph{Infected}.
   \item [Infected ($\mathbf{I}$)] sind Personen, die zum aktuellen Zeitpunkt mit der Krankheit infiziert sind, und auch andere Individuen infizieren können. Nach einer gewissen Zeit genesen sie, und verschieben sich dann in das Kompartiment \emph{Removed}.
@@ -69,7 +69,7 @@ $\beta$ ist also nicht nur davon abhängig, wie ansteckend eine Krankheit ist, s
 Es gibt damit einfach Massnahmen, um diesen Faktor zu beeinflussen, zum Beispiel eine gute Hygiene oder auch Quarantänemassnahmen.
 
 Der Übergang von $I$ nach $R$ ist etwas einfacher zu erklären. 
-Nach einer gewissen Zeit von durchschnittlich $k$ Zeiteinheiten genest ein \emph{Infected} Individuum wieder.
+Nach einer gewissen Zeit von durchschnittlich $k$ Zeiteinheiten wird ein \emph{Infected} Individuum wieder gesund.
 Der Kehrwert dieser Dauer wird Genesungsrate genannt und $\gamma$ genannt, also $\gamma = \frac{1}{k}$.
 Von allen \emph{Infected} wird damit pro Zeiteinheit $\gamma I$ ins Kompartiment $R$ verschoben.
 Auch $\gamma$ kann mit bestimmten Massnahmen beeinflusst werden, z.B. indem Medikamente an die Bevölkerung verteilt werden.
@@ -103,7 +103,7 @@ Aber es gibt noch weitere Informationen, welche anhand des SIR-Modells gefunden 
 Ein speziell wichtiger Faktor, der anhand dieses Modells bestimmt werden kann, ist die Impfquote, die im nächsten Abschnitt genauer betrachtet wird.
 
 \section{Impfquote}
-Um eine Aussage über die Impfquote zu treffen, reicht es, die verschiedenen Gleichungen genauer zu betrachten, eine nummerische Lösung ist dafür nicht vonnöten.
+Um eine Aussage über die Impfquote zu treffen, reicht es, die verschiedenen Gleichungen genauer zu betrachten, eine nummerische Lösung ist dafür nicht nötig.
 Wir beginnen mit der einfachen Gleichung
 \begin{align*}
   \frac{dR}{dt} &= \gamma I,
