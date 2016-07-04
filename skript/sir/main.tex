@@ -186,7 +186,7 @@ Für eine Krankheit mit langer Inkubationszeit reicht dieses Model nicht mehr au
 Bei Ebola ist genau dies der Fall. Ein Individuum, welches mit dem Erreger in Kontakt gekommen ist, ist zu beginn nicht ansteckend und weist keinerlei Symptome auf. 
 Erst nach einer gewissen Zeit wird die Krankheit ausbrechen und es damit zu einer Bedrohung für seine Mitmenschen machen. 
 Deshalb muss ein neuer Zustand eingeführt werden, welcher Aufzeigt, dass die Person zwar exponiert wurde, die Krankheit aber noch nicht ausgebrochen ist.
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \include{sir/models/seir_model}
 \end{figure}
@@ -247,11 +247,10 @@ Nachdem nun die grundlegenden Konzepte des Kompartimentsmodels verstanden sind, 
 Nachdem im Spielfilm 'Shaun of the Dead' \ref{sir:shaun_ot_the_dead,} bereits das Thema abgehandelt wurde, ist zumindest klar wie das Model aussehen kann. Wird ein gesunder Mensch von einem Zombie gebissen so ist er infiziert und kann weiter Menschen infizieren. Stirbt eine infizierte Person so wird diese zum Zombie. Im Falle einer fatalen Kopfverletzung ist sowohl die infizierte Person als auch das Zombie tot. Sie übergeht somit in das Kompartiment $R$ (\emph{Removed}). Dieses in Worte gefasste Kompartiment kann der Abbildung \ref{fig:zombie_non_healing} entnommen werden.
 \begin{figure}[ht]
   \centering
-  \include{sir/models/zombie_non_healing}
+  \include{sir/models/zombie_model_non_healing}
   \caption{SIZR-Model}
   \label{fig:zombie_non_healing}
 \end{figure}
-\\
 Vollständigkeitshalber können nun die passenden Differentialgleichungen aufgestellt werden:
 \[
 \arraycolsep=1.4pt\def\arraystretch{2.2}
@@ -266,14 +265,13 @@ Vollständigkeitshalber können nun die passenden Differentialgleichungen aufges
 \textbf{todo Insert Diagramm}
 Wie nun zu erkennen ist, hätte die Zivilisation, wie wir sie kennen, keine Chance. Die Zombies würden innert kürzester Zeit die Herrschaft übernehmen. Weiter ist die Variante der Quarantäne wie für die Ebola Epidemie nicht geeignet. Die Mortalität von $100 \%$ beim Übergang zu R tritt ein, die Quarantäne würde den Prozess nur hinauszögern.
 \\
-Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen, dass im Falle einer Zombie Apocalypse die Pharmaindustrie alle Hebel in Bewegungen setzt, um eine geeignete Therapie zu finden. Diese Therapie könnte ermöglichen, dass bereits infizierte Menschen vom der Zombie Infektion geheilt werden können. Folglich muss eine kleine Anpassung im Model (Abb. \ref{fig:zombie_non_healing}) vorgenommen werden. 
+Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen, dass im Falle einer Zombie Apocalypse die Pharmaindustrie alle Hebel in Bewegungen setzt, um eine geeignete Therapie zu finden. Diese Therapie könnte ermöglichen, dass bereits infizierte Menschen vom der Zombie Infektion geheilt werden können. Folglich muss eine kleine Anpassung im Model (Abb. \ref{fig:zombie_healing}) vorgenommen werden. X
 \begin{figure}[ht]
   \centering
-  \include{sir/models/zombie_healing}
+  \include{sir/models/zombie_model_healing}
   \caption{SIZR-Model mit Heilungsaussichten}
   \label{fig:zombie_healing}
 \end{figure}
-\\
 Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lambda$ erweitert wurde.
 \[
 \arraycolsep=1.4pt\def\arraystretch{2.2}
@@ -291,8 +289,7 @@ Schlussfolgernd sehen wir, dass die Menschheit zwar sehr dezimiert wurde, jedoch
 \section{Weitere Anwendungsfälle}
 In den bisherigen Abschnitten wurde das SIR-Modell als Grundlage für verschiedene epidemiologische Analysen zu Rate gezogen.
 Es ist aber zu erwähnen, dass die zugrundeliegende Idee vom Kompartimentmodell auf viele andere Bereiche angewendet werden kann.
-In der Chemie kann das Modell benutzt werden, um bei einer chemischen Reaktion zu beschreiben, wie sich der Anteil der verschiedenen Moleküle verändert, als besonders gut geeignetes Beispiel sei hier die chemische Uhr genannt.
-
+In der Chemie kann das Modell benutzt werden, um bei einer chemischen Reaktion zu beschreiben, wie sich der Anteil der verschiedenen Moleküle verändert, als besonders gut geeignetes Beispiel sei hier die chemische Uhr genannt.X
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.8\textwidth]{sir/images/chemical_clock}
