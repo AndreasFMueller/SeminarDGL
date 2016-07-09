@@ -178,14 +178,17 @@ Natürlich kann auch in dieser Situation eine Individuum aus $S$ mit der Krankhe
 Allerdings nimmt der Anteil der \emph{Infected} immer mehr ab, es kann also nicht zu einer grossangelegten Epidemie kommen.
 
 \section{Ebola}
-Die Ebolafieber-Epidemie 2014  war eine der ausgeprägtesten und stärksten Ebolaepidemien seit der Entdeckung des Ebolavirus 1976 \cite{sir:ebola_history}.  Eine zentrale Frage während des Ausbruchs befasst sich mit der Entwicklung und Bekämpfung der Krankheit. Wie war der WHO zu jedem Zeitpunkt klar, welche Entwicklung die Krankheit durchläuft? Medien haben stets spekuliert und mit dem schlimmsten gerechnet, während verschiedene Expertenquellen aber mehrheitlich ruhig blieben. 
+Die Ebolafieber-Epidemie 2014  war eine der ausgeprägtesten und stärksten Ebolaepidemien seit der Entdeckung des Ebolavirus 1976 \cite{sir:ebola_history}.
+Eine zentrale Frage während des Ausbruchs, befasst sich mit der Entwicklung und Bekämpfung der Krankheit. Wie war der WHO zu jedem Zeitpunkt klar, welche Entwicklung die Krankheit durchläuft?
+Medien haben stets spekuliert und mit dem Schlimmsten gerechnet, während verschiedene Expertenquellen aber mehrheitlich ruhig blieben. 
 
-Um ein geeignetes Kompartimentmodell für Ebola zu finden, müssen zuerst die Grenzen von SIR beschrieben werden. 
+Um ein geeignetes Kompartimentmodell für Ebola zu finden, müssen zuerst die Grenzen von SIR beschrieben werden.
 Das SIR Model beschreibt 3 Zustände. 
 Für eine Krankheit mit langer Inkubationszeit reicht dieses Model nicht mehr aus. 
-Bei Ebola ist genau dies der Fall. Ein Individuum, welches mit dem Erreger in Kontakt gekommen ist, ist zu beginn nicht ansteckend und weist keinerlei Symptome auf. 
+Bei Ebola ist genau dies der Fall.
+Ein Individuum, welches mit dem Erreger in Kontakt gekommen ist, ist zu Beginn weder symptomatisch noch ansteckend. 
 Erst nach einer gewissen Zeit wird die Krankheit ausbrechen und es damit zu einer Bedrohung für seine Mitmenschen machen. 
-Deshalb muss ein neuer Zustand eingeführt werden, welcher Aufzeigt, dass die Person zwar exponiert wurde, die Krankheit aber noch nicht ausgebrochen ist.
+Deshalb muss ein neuer Zustand eingeführt werden, welcher aufzeigt, dass die Person zwar exponiert wurde, die Krankheit aber noch nicht ausgebrochen ist.
 \begin{figure}[ht]
   \centering
   \include{sir/models/seir_model}
@@ -205,9 +208,9 @@ Die Überg"ange des Kompartimentmodells können wie folgt beschrieben werden:
 \]
 Gekoppelt an das Ebola Beispiel können nun die Faktoren $\beta$, $\gamma$ und $\delta$ erklärt werden. Diese Faktoren können an verschiedene Krankheitsabschnitte gekoppelt werden.
 \begin{description}
-  \item [Kontaktrate ($\beta$)] beschreibt die Art und Weise einer Übertragung. In diesem Wert enthalten sind, die Wahrscheinlichkeit angesteckt zu werden, aber $\beta$ bildet auch das soziale Gefüge ab. Haben mehr Menschen potentiellen Kontakt zu einem Infizierten, so ist $\beta$ höher.
+  \item [Kontaktrate ($\beta$)] beschreibt die Art und Weise einer Übertragung. In diesem Wert enthalten ist die Wahrscheinlichkeit angesteckt zu werden. $\beta$ bildet aber auch die Prädispositon oder das soziale Gefüge ab. Haben mehr Menschen potentiellen Kontakt zu einem Infizierten, so ist $\beta$ höher.
   \item [Inkubationsdauer ($\frac{1}{\delta}$)] beschreibt die Dauer, welche benötigt wird, bis die Krankheit in einem Individuum ausbricht.
-  \item [Infektionsdauer ($\frac{1}{\gamma}$)] beschreibt die Dauer, welche die Krankheit im Körper verbleibt. Im Falle einer Genesung oder eines Exitus, ist das Individuum nicht mehr Ansteckbar. 
+  \item [Infektionsdauer ($\frac{1}{\gamma}$)] beschreibt die Dauer, in welcher die Krankheit im Körper verbleibt. Im Falle einer Genesung oder eines Exitus, ist das Individuum nicht mehr ansteckbar. 
 \end{description}
 Wir verwenden die reziproken Werte $\gamma$ und $\delta$ da mit einem Zeitschlitz gerechnet wird. Wenn die Infektionsdauer 10 Tage beträgt, so ist jeden Tag die Infektion um $\frac{1}{10}$ fortgeschritten.
 \begin{table}[h]
@@ -223,13 +226,13 @@ Wir verwenden die reziproken Werte $\gamma$ und $\delta$ da mit einem Zeitschlit
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=.8\textwidth]{sir/images/ebola_outbreak}
-  \caption[Ebola Ausbruch]{Die Abbildung widerspiegelt den Schweregrad der Ebolaepidemie in Liberia ohne ein Eingreifen von Hilfsorganisationen, Regierungen. Da die 'Case-Fatality-Rate' (CFR) von Ebola für diese Epidemie bei 80\% liegt\cite{sir:estimating_fatality}, wurde der Vollständigkeit halber das Kompartiment $R$ (\emph{Removed}) in \emph{Recovered} und \emph{Dead} aufgeteilt.}
+  \caption[Ebola Ausbruch]{Die Abbildung widerspiegelt den Schweregrad der Ebolaepidemie in Liberia ohne ein Eingreifen von Hilfsorganisationen oder von Regierungen. Da die 'Case-Fatality-Rate' (CFR) von Ebola für diese Epidemie bei 80\% liegt\cite{sir:estimating_fatality}, wurde der Vollständigkeit halber das Kompartiment $R$ (\emph{Removed}) in \emph{Recovered} und \emph{Dead} aufgeteilt.}
   \label{fig:ebola_outbreak}
 \end{figure}
 
-Wie in Abbildung~\ref{fig:ebola_outbreak} unschwer zu erkennen ist, wäre die Entwicklung in Liberia ohne dem Eingreifen der WHO fatal gewesen. Etwa 37\% der Bevölkerung wäre an den Folgen von Ebola gestorben. Doch dies war nicht der Fall. Obschon sehr hohe Zahlen zu beklagen waren, sind diese nicht annähernd auf dem erschreckend hohen Niveau, welcher das SIR-Modell vermuten lassen würde. Um die Massnahmen besser zu verstehen, müssen wir zuerst verstehen, welche Parameter wirklich veränderbar sind.
+Wie in Abbildung~\ref{fig:ebola_outbreak} unschwer zu erkennen ist, wäre die Entwicklung in Liberia ohne dem Eingreifen der WHO fatal gewesen. Etwa 37\% der Bevölkerung wäre an den Folgen von Ebola gestorben. Doch dies war nicht der Fall. Obschon sehr hohe Zahlen verzeichnet wurden, sind diese nicht annähernd auf dem erschreckend hohen Niveau, welches das SIR-Modell vermuten lassen würde. Um die Massnahmen besser zu verstehen, müssen wir zuerst verstehen, welche Parameter wirklich veränderbar sind.
 
-Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in Liberia nahezu identisch anzutreffen waren. Der einzige Parameter, welcher beeinflussbar ist, muss somit $\beta$ sein. Der Parameter $\beta$ bildet das soziale Gefüge und die damit verbundene Wahrscheinlichkeit einer Ansteckung ab. Verschiebt sich dieser Parameter gegen 0, so werden weniger Tote zu beklagen sein, erhöht er sich jedoch, so werden es massiv mehr. Der Einfluss von $\beta$ auf die Mortalitätsrate ist in Abbildung~\ref{fig:beta_change_det} dargestellt.
+Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in Liberia ähnlich waren. Die Werte können durch verschiedene Virenstämme unterschiedliche Dauern aufzeigen. Der einzige Parameter, welcher beeinflussbar ist, muss somit $\beta$ sein. Der Parameter $\beta$ bildet das soziale Gefüge und die damit verbundene Wahrscheinlichkeit einer Ansteckung ab. Verschiebt sich dieser Parameter gegen 0, so werden weniger Tote zu beklagen sein, erhöht er sich jedoch, so werden es massiv mehr. Der Einfluss von $\beta$ auf die Mortalitätsrate ist in Abbildung~\ref{fig:beta_change_det} dargestellt.
 
 \begin{figure}[ht]
 	\centering
@@ -238,8 +241,7 @@ Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in 
   \label{fig:beta_change_det}
 \end{figure}
 
-Mithilfe von Quarantänemassnahmen, also der Isolation von Individuen zur Eindämmung der Krankheit, setzen genau an diesem Punkt an. Dadurch, dass sich Personen weniger häufig begegnen, ist auch die Wahrscheinlichkeit, jemanden zu infizieren geringen. 
-Mathematisch gesehen wird dadurch die Kontaktrate $\beta$ reduziert, wodurch sich der Krankheitsverlauf stark einschränken lässt.
+Die Massnahmen zur Eindämmung der Krankheiten setzten also genau an diesem Ort an. Mithilfe von Quarantänemassnahmen, also der Isolation von Individuen zur Eindämmung der Krankheit, wurde der Parameter $\beta$ reduziert. Dadurch, dass sich Personen weniger häufig begegnen, ist auch die Wahrscheinlichkeit, jemanden zu infizieren geringer.
 
 \section{Zombies}
 Nachdem nun die grundlegenden Konzepte des Kompartimentsmodels verstanden sind, können noch viel komplexere und auch absurdere Beispiele modeliert werden. Stellen wir uns vor, die Zombie Apokalypse steht bevor und wir möchten diese gerne zumindes als Gesellschaft überleben. 
@@ -262,10 +264,13 @@ Vollständigkeitshalber können nun die passenden Differentialgleichungen aufges
 
  \end{array}
 \]
-\textbf{todo Insert Diagramm}
-Wie nun zu erkennen ist, hätte die Zivilisation, wie wir sie kennen, keine Chance. Die Zombies würden innert kürzester Zeit die Herrschaft übernehmen. Weiter ist die Variante der Quarantäne wie für die Ebola Epidemie nicht geeignet. Die Mortalität von $100 \%$ beim Übergang zu R tritt ein, die Quarantäne würde den Prozess nur hinauszögern.
-\\
-Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen, dass im Falle einer Zombie Apocalypse die Pharmaindustrie alle Hebel in Bewegungen setzt, um eine geeignete Therapie zu finden. Diese Therapie könnte ermöglichen, dass bereits infizierte Menschen vom der Zombie Infektion geheilt werden können. Folglich muss eine kleine Anpassung im Model (Abb. \ref{fig:zombie_healing}) vorgenommen werden. X
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{sir/images/Zombies_nicht_heilbar}
+  \caption[Zombie Apokalypse]{Zeigt den Verlauf eine Zombieapokalypse ohne gegenmassnahmen. Der Verlauf für die Menschheit wäre Fatal.}
+\end{figure}
+
+Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen, dass im Falle einer Zombie Apocalypse die Pharmaindustrie alle Hebel in Bewegungen setzt, um eine geeignete Therapie zu finden. Diese Therapie könnte ermöglichen, dass bereits infizierte Menschen vom der Zombie Infektion geheilt werden können. Folglich muss eine kleine Anpassung im Model (Abb. \ref{fig:zombie_healing}) vorgenommen werden. 
 \begin{figure}[ht]
   \centering
   \include{sir/models/zombie_model_healing}
@@ -283,13 +288,18 @@ Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lam
 
  \end{array}
 \]
-\textbf{todo: Insert Diagramm}
-Schlussfolgernd sehen wir, dass die Menschheit zwar sehr dezimiert wurde, jedoch eine Überlebenschance hat. Es stellt sich ein Equilibirum zwischen Menschen und Zombies ein. Aus diesem Model können wir entnehmen, dass man im Falle einer Zombieapokalypse den Kopf nicht verlieren sollte und stets die richtige Medikation bei sich haben müsste.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{sir/images/Zombies}
+  \caption[Zombies]{Im Falle einer medikamentösen Behandlung der Infektion, kann sich ein stabiles Gleichgewicht einstellen. Die Population der Menschheit wäre stark zurück gegangen, aber sie würde überleben.}
+\end{figure}
+
+Es stellt sich ein Gleichgewicht zwischen Menschen und Zombies ein. Aus diesem Model können wir entnehmen, dass man im Falle einer Zombieapokalypse den Kopf nicht verlieren sollte und stets die richtige Medikation bei sich haben müsste.
 
 \section{Weitere Anwendungsfälle}
 In den bisherigen Abschnitten wurde das SIR-Modell als Grundlage für verschiedene epidemiologische Analysen zu Rate gezogen.
 Es ist aber zu erwähnen, dass die zugrundeliegende Idee vom Kompartimentmodell auf viele andere Bereiche angewendet werden kann.
-In der Chemie kann das Modell benutzt werden, um bei einer chemischen Reaktion zu beschreiben, wie sich der Anteil der verschiedenen Moleküle verändert, als besonders gut geeignetes Beispiel sei hier die chemische Uhr genannt.X
+In der Chemie kann das Modell benutzt werden, um bei einer chemischen Reaktion zu beschreiben, wie sich der Anteil der verschiedenen Moleküle verändert, als besonders gut geeignetes Beispiel sei hier die chemische Uhr genannt.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.8\textwidth]{sir/images/chemical_clock}
