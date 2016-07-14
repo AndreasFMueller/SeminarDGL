@@ -3,6 +3,8 @@
 #
 # (c) 2016 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
+.PHONY:	all images clean
+
 all:
 
 images:	operator-1.pdf

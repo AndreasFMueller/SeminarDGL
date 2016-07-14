@@ -3,6 +3,8 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
+.PHONY:	images exercise path 601 602 603
+
 all:
 
 images:	exercise path 601 602 603

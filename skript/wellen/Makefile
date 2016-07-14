@@ -1,6 +1,8 @@
 #
 # Makefile for welle paper
 #
+.PHONY:	all images clean
+
 all:
 
 IMAGEDIR = images
