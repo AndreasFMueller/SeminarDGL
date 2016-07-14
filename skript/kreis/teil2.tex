@@ -26,10 +26,10 @@ Die Herleitung der Besselfunktion beinhaltet folgende Schritte:
 \begin{compactenum}
 	\item Die Potenzreihe und deren Ableitungen berechnen.
 	\item Die Potenzreihen in die Differentialgleichung \refeq{eq:bessel:dgl} einsetzen, um \dots
-	\item die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche \dots
+	\item \dots die Indexgleichung f\"ur $\varrho$ zu l\"osen, welche \dots
 	\item \dots eine Rekursion der Koeffizienten erm\"oglicht.
 	\item Bestimmen der Koeffizienten f\"ur \dots
-	\item \dots die Besselfunktion mit ganzzahligen Parametern \refeq{eq:bessel:summenformel}.
+	\item \dots die \emph{Bessel-Funktionen} erster Art \refeq{eq:bessel:summenformel}.
 %	\item Allgemeine Besselfunktion \refeq{eq:bessel_summenformel:allgemein}
 \end{compactenum}
 \newcounter{stepCounter}
@@ -49,7 +49,7 @@ F\"ur den Ansatz ben\"otigen wir zuerst eine verallgemeinerte Potenzreihe
 	\label{eq:bessel:potenzreihe:verallgemeinert}
 \end{align}
 \begin{normalsize}%
-Da in der Differentialgleichung die erste und zweite Ableitung vorkommt,
+Da in der Differentialgleichung die erste und zweite Ableitung vorkommen,
 muss die Potenzreihe abgeleitet werden,
 \end{normalsize}
 \begin{align}
@@ -190,7 +190,7 @@ eingesetzt \dots
 %Die resultierende Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} sieht auf den ersten Blick komplizierter aus,
 %als die urspr\"ungliche Differentialgleichung \refeq{eq:bessel:dgl}.
 %\end{normalsize}
-\subsubsection{\arabic{stepCounter}. Schritt: Indexgleichung zum Bestimmen von $\varrho$}
+\subsubsection{\arabic{stepCounter}. Schritt: Indexgleichung zur Bestimmung von $\varrho$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
 Beim Koeffizientenvergleich werden alle Terme,
@@ -236,7 +236,7 @@ wird im Kapitel \ref{chapter:Loesung2} genauer erkl\"art.
 \subsubsection{\arabic{stepCounter}. Schritt: Rekursion der Koeffizienten $a_k$}
 \stepcounter{stepCounter}
 \begin{normalsize}%
-Die Indexgleichung ergibt, dass $n$ f\"ur $\varrho$ in der Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden kann:
+Mit der Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage:vereinfacht} kann $n$ f\"ur $\varrho$ in die Gleichung \refeq{eq:bessel:potenzreihe:dgl:vereinfacht} eingesetzt werden:
 \end{normalsize}
 \begin{align}
 	\big(
@@ -306,11 +306,11 @@ Nun haben alle Summen den Term $r^k$ enthalten
 \begin{normalsize}%
 In der Gleichung \refeq{eq:bessel:potenzreihe:dgl:index:eingesetzt:gleichesummen} k\"onnen die einzelnen Summen zu einer einzigen Summen zusammengefasst werden.
 Allerdings haben die Summen unterschiedliche Startindizes.
-Die einen Summen haben als Start-Index $k = 0$,
-wobei die andere Summe einen Start-Index von $k = 2$ hat.
+Die ersten drei Summen haben als Start-Index $k = 0$,
+wobei die letzte Summe einen Start-Index von $k = 2$ hat.
 %Damit die Summen trotzdem zusammengefasst werden k\"onnen,
 %werden die Terme mit dem Index $k < 2$ weggelassen.
-Durch die Indexgleichung kann sichergestellt werden,
+Durch die Indexgleichung \refeq{eq:bessel:indexgleichung:ausgangslage:vereinfacht} kann sichergestellt werden,
 dass die Koeffizienten f\"ur $k < 2$ wegfallen,
 bzw. 0 sind.
 Somit darf als Start-Index $k = 2$ verwendet werden.
@@ -433,8 +433,8 @@ Somit darf als Start-Index $k = 2$ verwendet werden.
 Die Gleichung \refeq{eq:bessel:summe:zusammengefasst:vereinfacht} besagt,
 dass $r$ oder die Summe $0$ ergeben muss.
 $r = 0$ ist dabei ein Spezialfall, welcher keine Rekursion der Koeffizienten erm\"oglicht und somit nicht zur L\"osung des Problems f\"uhrt.
-Demzufolge muss die Summe, bzw. die Klammer, $0$ ergeben.
-Wird der Ausdruck in der Klammer,
+Demzufolge muss die Summe, bzw. die Klammer $\big( k^2 \, a_k + 2 \, n \, k \, a_k + a_{k - 2} \big)$, $0$ ergeben.
+Wird die Klammer,
 aus der Gleichung
 \end{normalsize}
 \begin{align*}
@@ -508,7 +508,7 @@ kann eine Rekursion der Koeffizienten gefunden werden.
 Die Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} besagt,
 dass der Koeffizient $a_k$ vom Koeffizient $a_{k-2}$ linear abh\"angt.
 Somit sind alle geraden Koeffizienten linear von $a_0$ abh\"angig und alle un\-geraden Koeffizienten von $a_1$.
-Da aber laut der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} $a_1$ aus $a_{-1}$ berechnet werden kann und $a_{-1} = 0$ ist,
+Da mit der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} $a_1$ aus $a_{-1}$ berechnet werden kann und $a_{-1} = 0$ ist,
 entfallen alle ungeraden Koeffizienten.
 Damit nur mit den geraden Koeffizienten gerechnet wird,
 wird $k$ durch $2k$ in der Rekursionsformel \refeq{eq:bessel:koeffizienten:rekursion} ersetzt
@@ -539,7 +539,7 @@ welcher aus dem Koeffizienten $a_{2k-2-2}$ berechnet wird.
 F\"ur den Koeffizient $a_{2k}$ m\"ussen demzufolge alle Koeffizienten zwischen $a_0$ und $a_{2k}$ bekannt sein.
 Diese Berechnung ist sehr Zeit und Rechenintesiv.
 Daher wird nach einer Formel f\"ur $a_{2k}$ gesucht,
-wo der Koeffizient $a_{2k}$ direkt aus dem Koeffizient $a_0$ mit linearen Operationen berechnet werden kann.
+wo der Koeffizient $a_{2k}$ direkt aus dem Koeffizient $a_0$ mit einfachen Operationen berechnet werden kann.
 Um eine direkte Formel f\"ur $a_{2k}$ zu bekommen,
 hat es sich bew\"ahrt,
 die Koeffizienten $a_2$, $a_4$ , $a_6$ , \dots \, zu berechnen,
@@ -628,11 +628,11 @@ Die Koeffizienten sehen wiefolgt aus:
 	\label{eq:bessel:koeffizienten:gerade}
 	\text{.}
 \end{align}
-\subsubsection{\arabic{stepCounter}. Schritt: Besselfunktion f\"ur ganzzahligen Parameter $n$}
+\subsubsection{\arabic{stepCounter}. Schritt: \emph{Bessel-Funktionen} erster Art}
 \stepcounter{stepCounter}
 \begin{normalsize}%
 Die Koeffizienten $a_k$ k\"onnen nun in die urspr\"ungliche Potenzreihe \refeq{eq:bessel:potenzreihe:verallgemeinert} eingesetzt werden.
-Da bei den Koeffizienten die Indexvariable $k$ durch $2k$ ersetzt wurde,
+Da bei den Koeffizienten der Start-Index $k$ durch $2k$ ersetzt wurde,
 muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen werden
 \end{normalsize}
 \begin{align}
@@ -660,12 +660,19 @@ muss diese \"Anderung auch f\"ur die urspr\"unglichen Potenzreihe \"ubernommen w
 	\text{.}
 \end{align}
 \begin{normalsize}%
-In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es jedoch den unbekannten Koeffizienten $a_0$,
+In der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} gibt es den unbekannten Koeffizient $a_0$,
 welcher f\"ur die weiteren Koeffizienten ben\"otigt wird.
+Da keine Bedinungen f\"ur den Koeffizent $a_0$ vorliegen,
+kann dieser frei bestimmt werden,
+was uns die M\"oglichkeit gibt,
+die Gleichung \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} weiter zu vereinfachen.
 Die Variable $r$ in der Potenzreihe \refeq{eq:bessel:potenzreihe:koeffizienten:eingesetzt} hat die Potenz $2k + n$.
 Im Nenner kommt bei $2^{2k}$ eine \"ahnliche Potenz vor.
-Daher wird nun $a_0 = 2^{-n}$ gew\"ahlt,
+Daher wird nun $a_0 = \big(2^n \, {n}! \big) ^{-1}$ gew\"ahlt,
 um auch im Nenner auf die Potenz $2k + n$ zu kommen.
+Das ${n}!$ wird ben\"otigt, da im Nenner ${k}! \, { \big( n + k \big) }!$ steht und ${0}! = 1$ ist.
+Jedoch ist ${n}!$ nur bei $n = 0$ oder $n = 1$ ebenfalls $1$ und muss daher ber\"ucksichtigt werden.
+So ergibt sich die Formel
 \end{normalsize}
 \begin{align*}
 	R \left( r \right)
@@ -695,7 +702,7 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 	{
 		\left( - 1 \right) ^k \, r ^{2k+n}
 	}{
-		2^{2k+n} \, {k}! \, { \left( k + n \right) }!
+		2^{2k+n} \, {k}! \, { \left( n + k \right) }!
 	}
 	=
 	\sum_{k=0} ^{\infty}
@@ -709,7 +716,7 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 			2^{2k+n}
 		}
 	}{
-		{k}! \, { \left( k + n \right) }!
+		{k}! \, { \left( n + k \right) }!
 	}
 	=
 	\sum_{k=0} ^{\infty}
@@ -724,14 +731,14 @@ um auch im Nenner auf die Potenz $2k + n$ zu kommen.
 			2
 		} \right) ^{2k+n}
 	}{
-		{k}! \, { \left( k + n \right) }!
+		{k}! \, { \left( n + k \right) }!
 	}
 	\text{.}
 \end{align*}
 \begin{normalsize}%
 F\"ur die Besselfunktion wird meist der Buchstabe $J$ verwendet,
 wo der Parameter $n$ tiefgestellt angegeben wird.
-Die Funtion
+Die Funktion
 \end{normalsize}
 \begin{align}
 	J_n \left( r \right)
@@ -748,7 +755,7 @@ Die Funtion
 			2
 		} \right) ^{2k+n}
 	}{
-		{k}! \, { \left( k + n \right) }!
+		{k}! \, { \left( n + k \right) }!
 	}
 	\label{eq:bessel:summenformel}
 \end{align}
