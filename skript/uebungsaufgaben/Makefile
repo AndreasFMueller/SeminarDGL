@@ -3,7 +3,9 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	exercise path 601 602 603
+all:
+
+images:	exercise path 601 602 603
 
 exercise_FILES = exercise-1.pdf
 exercise: $(exercise_FILES)

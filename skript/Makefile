@@ -5,7 +5,6 @@
 #
 all:	skript.pdf
 
-
 SUBDIRECTORIES = chapters uebungsaufgaben wellen kreis \
 		 komplex friedmann
 
