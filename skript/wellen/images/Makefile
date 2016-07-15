@@ -1,7 +1,7 @@
 #
 # Makefile für Bilder zum Artikel über Wellen
 #
-.PHONY:	all iamges clean
+.PHONY:	all images clean
 
 SUBDIRS = allgemein basicfunctions kmax vara varc
 
