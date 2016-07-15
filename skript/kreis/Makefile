@@ -1,6 +1,8 @@
+.PHONY:	all images clean
+
 all:
 
-images:	besselfunktion.pdf
+images:	besselfunction.pdf
 
 besselfunction.pdf: besselfunction.tex besselfunction_koeffizienten.m besselfunction-inc.pdf
 	pdflatex besselfunction.tex

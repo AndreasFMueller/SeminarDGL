@@ -1,3 +1,5 @@
+.PHONY:	all images clean
+
 all:
 
 TIKZDIR = standalone
