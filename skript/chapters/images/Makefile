@@ -3,7 +3,9 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	grundlagen numerik komplexezahlen randwert geometrie airy \
+all:
+
+images:	grundlagen numerik komplexezahlen randwert geometrie airy \
 	stochastisch komplex bifurkation hopf nullklinen
 
 grundlagen_FILES = grundlagen-1.pdf

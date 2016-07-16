@@ -8,11 +8,14 @@
 \usepackage{geometry}
 \geometry{papersize={170mm,240mm},total={140mm,200mm},top=21mm,bindingoffset=10mm}
 \usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{cancel}
 \usepackage{times}
 \usepackage{amsmath,amscd}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage[nolist]{acronym}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{textcomp}
@@ -31,6 +34,7 @@
 %\usepackage{pgfmath}
 \usepackage{placeins}
 \usepackage{subfigure}
+\usepackage[utf8]{inputenc}
 \usepackage[autostyle=false,english=american]{csquotes}
 \usepackage{float}
 \usepackage{enumitem}
@@ -60,7 +64,28 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
+% Matlab
 \usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    %numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 \lstdefinestyle{Matlab}{
   numbers=left,
   belowcaptionskip=1\baselineskip,
@@ -104,7 +129,14 @@
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
-%\addbibresource{thema/main.bib}
+\addbibresource{friedmann/main.bib}
+\addbibresource{komplex/main.bib}
+\addbibresource{kreis/main.bib}
+\addbibresource{licht/main.bib}
+\addbibresource{schrittlaenge/main.bib}
+\addbibresource{sir/main.bib}
+\addbibresource{trafo/main.bib}
+\addbibresource{wellen/main.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
 %\pgfplotsset{compat=1.12}
@@ -232,6 +264,8 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \newtheorem{hilfssatz}[satz]{Hilfssatz}
 \newtheorem{definition}[satz]{Definition}
 \newtheorem{annahme}[satz]{Annahme}
+\newtheorem{problem}[satz]{Problem}
+\newtheorem*{problem*}{Problem}
 \renewcommand{\floatpagefraction}{0.75}
 \mainmatter
 \input{vorwort.tex}
@@ -246,8 +280,8 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \input{chapters/linear.tex}
 \input{chapters/geometrie.tex}
 \input{chapters/komplex.tex}
-\input{chapters/stabilitaet.tex}
-\input{chapters/chaos.tex}
+%\input{chapters/stabilitaet.tex}
+%\input{chapters/chaos.tex}
 \input{chapters/stochastisch.tex}
 \begin{appendices}
 \input{chapters/newton.tex}
@@ -280,6 +314,7 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \ifodd\value{page}\else\null\clearpage\fi
 \lhead{Index}
 \rhead{}
+\addcontentsline{toc}{chapter}{\indexname}
 \input{skript.ind}
 
 \end{document}

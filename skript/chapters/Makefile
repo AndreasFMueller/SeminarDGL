@@ -3,8 +3,12 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
+.PHONY:	all images clean
+
 all:
-	cd images && make
+
+images:
+	cd images && make images
 
 clean:
 	cd images && make clean

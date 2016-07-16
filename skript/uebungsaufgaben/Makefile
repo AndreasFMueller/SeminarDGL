@@ -3,7 +3,11 @@
 #
 # (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 #
-all:	exercise path 601 602 603
+.PHONY:	all images exercise path 601 602 603
+
+all:
+
+images:	exercise path 601 602 603
 
 exercise_FILES = exercise-1.pdf
 exercise: $(exercise_FILES)
@@ -53,5 +57,4 @@ $(603_FILES):	603.mp
 	done
 
 clean:
-	find . -type f -regex '.*\.[0-9]+' -delete
-	rm -f *.log *.pdf *.mpx
+	rm -f *.log *.pdf *.mpx *.[0-9]

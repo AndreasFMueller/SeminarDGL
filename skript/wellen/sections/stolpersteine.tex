@@ -1,58 +1,46 @@
 \section{Stolpersteine}
-
 Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
-beachtet werden m"ussen. Von besonderer Signifikanz sind vor allem die 
-Genauigkeit der L"osungen f"ur die jeweiligen $x$, sowie der auch die Zeit, 
-welche f"ur die Berechnung ben"otigt wird.
-
+beachtet werden m"ussen. Von besonderer Bedeutung sind die Genauigkeit der 
+L"osungen f"ur die jeweiligen $x$, sowie die Zeit, welche f"ur die 
+Berechnung ben"otigt wird.
 
 \subsubsection{Genauigkeit}
 Gem"ass
 \begin{equation*}
-	y(x) = a_0 + a_1x 
-	-\sum_{k=2}^{\textcolor{red}{\infty}}\frac{1}{k(k-1)} 
-	(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+	y(x) = \sum_{k=0}^{\textcolor{red}{\infty}}a_kx^k
 \end{equation*}
 m"usste man f"ur jedes $x$ eine unendliche Anzahl Additionen ausf"uhren, was 
-aber bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
-dauern w"urde. Folglich muss man die maximale Anzahl $k$ einschr"anken.
-
+bedeutet, dass die Berechnung f"ur ein einzelnes $x$ unendlich lange 
+dauert. Folglich muss man die maximale Anzahl $k$ einschr"anken:
 \begin{equation*}
-	y(x) = a_0 + a_1x 
-	-\sum_{k=2}^{\textcolor{red}{k_{\text{max}}}}\frac{1}{k(k-1)} 
-	(aa_{k-4}+ba_{k-3}+ca_{k-2})x^k
+	y(x) = \sum_{k=0}^{\textcolor{red}{k_{\text{max}}}}a_kx^k.
 \end{equation*}
-
 Das hat aber weitreichende Folgen: So werden je nach $k_{\text{max}}$ fr"uher 
 oder sp"ater die L"osungswerte gegen $+\infty$ oder $-\infty$ gehen, was daran 
-liegt, dass der Term $x^k$ einer finiten Reihe gegen"uber den $a_k$ beginnen 
-wird zu dominieren.
+liegt, dass der Term $x^k$ einer endlichen Reihe gegen"uber den $a_k$ zu 
+dominieren beginnen wird.
 
 \begin{figure}
-	\includegraphics[scale=0.65]{./wellen/images/kmax/kmax.pdf}
-	\caption{Auswirkung unterschiedlicher $k_{\text{max}}$ auf Wellenform}
+	\includegraphics[width=1\hsize]{./wellen/images/kmax/kmax.pdf}
+	\caption{Auswirkung $k_{\text{max}} \in [30,240]$ mit Schrittl"ange 30 auf 
+	die Wellenform.}
 	\label{fig:wellen:variablekmax}
 \end{figure}
 
 Die Abbildung \ref{fig:wellen:variablekmax} zeigt auf, wie sich die L"osung 
 der Titelgleichung mit verschiedenen $k_{\text{max}}$ entwickelt. Es ist leicht 
 zu erkennen, dass mit gr"osser werdenden $k$ auch der Punkt, an dem $x^k$ 
-dominiert, sich weiter vom Entwicklungspunkt (hier = 0) entfernt. Es taucht 
-noch ein weiteres Ph"anomen auf: Da die Werte von $a_k$ immer kleiner werden 
-und die von $x^k$ immer gr"osser, kommt der Rechner irgendwann an seine Grenzen 
-und beginnt unbrauchbare Resultate zu liefern. Diese Ungenauigkeit ist durch 
-die bin"are Repr"asentation von Dezimalzahlen und den Limitierungen der 
-verschiedenen Datentypen wie \texttt{double} oder \texttt{float} in einem 
-Rechnersystem gegeben.
-
-Diese Probleme treten nicht nur in diesem einen Fall des parabolischen Kanals 
-auf, sondern sind allgemeing"ultig.
+dominiert, sich weiter vom Entwicklungspunkt entfernt. Es taucht noch ein 
+weiteres Ph"anomen auf: Da die Werte von $a_k$ immer kleiner werden und die von 
+$x^k$ immer gr"osser, kommt der Rechner an seine Grenzen und beginnt 
+unbrauchbare Resultate zu liefern. Diese Ungenauigkeit ist durch die bin"are 
+Darstellung von Dezimalzahlen und den Limitierungen der verschiedenen 
+Datentypen wie \texttt{double} oder \texttt{float} in einem Rechnersystem 
+gegeben. Diese Schwierigkeiten beschr"anken sich nicht nur auf die in diesem 
+Kapitel besprochenen Probleme, sondern sind inh"arent zu allen 
+Berechnungsaufgaben die mit Computern ausgef"uhrt werden.
 
 \subsubsection{Berechnungszeit}
-Die Berechnung von Potenzreihenl"osung im Intervall
-$[x_{\text{min}},x_{\text{max}}]$ kann "ausserst lange dauern. Auch hier muss 
-Anzahl Berechnungen, in diesem Fall die Aufl"osung des Plots, eingeschr"ankt 
-werden. 
 
 \input{./wellen/sections/algorithms/alg-potenzreihe.tex}
 

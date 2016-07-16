@@ -22,6 +22,8 @@ skript/chapters/images/harvest.mp
 **/*-blx.bib
 **/*.run.xml
 **/mptextmp.mp
+*.exe
+*.bib
 *.dat
 *.swp
 *.bak
@@ -29,9 +31,8 @@ skript/chapters/images/harvest.mp
 *.project
 *.texlipse
 
-skript/kreis/besselfunction.png
+skript/kreis/besselfunction.tex
+
 !skript/chapters/substitute.png
 
-#tikz pdf-images
-#recreated on every make
-#!skript/licht/standalone/*.pdf
+!/skript/trafo/images/*.pdf

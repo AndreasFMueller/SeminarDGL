@@ -1,0 +1,67 @@
+\chapter{Spannungsverteilung in luftgek"uhlten Transformatoren\label{chapter:thema}}
+\lhead{Spannungsverteilung in luftgekühlten Transformatoren}
+\begin{refsection}
+\chapterauthor{Reto Christen}
+
+\section{Einleitung}
+
+Heutzutage werden elektronische Betriebsmittel gegenüber früher mittels CAD-Programme berechnet und ausgelegt. Dies ermöglicht eine einfache und kostengünstige Entwicklung sowie Herstellung, da der erste Prototyp meistens die Erwartungen erfüllt. Die Lösungen von CAD-Programmen, was nichts anderes als Lösungen von Partiellen Differentialgleichungen sind, ergeben neue Herausforderungen, wie beispielsweise in der Numerik. 
+
+In diesem Kapitel wird ein solches Problem vorgestellt, genauer betrachtet und schlussendlich gelöst.
+
+\section{Problemstellung}
+
+Luftgekühlte Transformatoren sind im Gegensatz zu ölgekühlten Transformatoren eher gefährdet Teilentladungen oder gar Durchschläge zu haben. Dies liegt daran, dass die Isolationsfestigkeit von Luft wesentlich schlechter als in Öl ist. Da ein luftgekühlter Transformator im Gegensatz zu einem ölgekühlten Transformator diverse Vorteile besitzt, ist es von Interesse, die elektrischen Felder so zu limitieren, damit Durchschläge und grösstenteils auch Teilentladungen verhindert werden können. 
+
+Geschieht bei einem Betriebsmittel einen elektrischen Durchschlag, ist es normalerweise als defekt anzusehen. Dies würde bedeuten, dass pro Messung ein Prototyp zerstört werden müsste, was natürlich nicht sehr sinnvoll sein kann. Deshalb sind CAD-Simulationen wesentlich schneller und vor allem kostengünstiger. Das Ziel soll es sein, der Transformator möglichst genau darzustellen und dessen Spannungsverteilung zu berechnen, denn die Spannung und die Geometrie zusammen ergeben das elektrische Feld, welches schlussendlich zur Durchschläge führt.
+
+Dies gelang bis anhin sehr gut für Leistungstransformatoren. Will dieses Prinzip aber auf Instrumententransformatoren (\color{red}TODO\color{black} Unterschied?) angewendet werden, ergibt die wesentlich höhere Anzahl von Wicklungen nummerische Probleme im Lösungsverfahren. 
+
+Diese Probleme werden nun Schrittweise behandelt und bestmöglich gelöst. 
+
+
+\subsection{Ersatzschaltbild}
+Ein Transformator, ob öl- oder luftgekühlt, kann prinzipiell mit dem Ersatzschaltbild \color{red}TODO\color{black} dargestellt werden. Dies macht Sinn, wenn der Transformator als Ganzes dargestellt werden will. Da bei diesem Problem aber die inneren Spannungen relevant sind, kann dieses bereits bekannte Ersatzschaltbild nicht verwendet werden. Es gilt nun, ein neues und genaueres Ersatzschaltbild zu finden. 
+
+Ein Ansatz, welcher sich als erfolgreich erwiesen hat [\color{red}TODO cite\color{black}] ist die Aufteilung des Transformators in einzelne Windungen. Pro Windung wird ein elektrischer Widerstand sowie Induktivität in Serie geschaltet. Diese Werte entsprechen den elektrischen Werten einer Wicklung des Transformators. Ebenfalls müssen die Kapazitäten sowie die Leitfähigkeiten gegenüber Masse und den übrigen Windungen berücksichtigt werden. 
+
+Dieses Ersatzschaltbild wird in den Figuren \color{red}TODO\color{black} dargestellt. Als Beispiel wird ein kleines Transformator Beispiel, bestehend aus 4 Windungen, verwendet. 
+
+\subsection{Differentialgleichung}
+Mittels dem Maschensatz (blaue Pfeile in der Abbildung \color{red}TODO\color{black}) und der Knotenpunktregel können die Differentialgleichungen pro Wicklung aufgestellt werden. 
+
+Beispielsweise können die Gleichungen der Wicklung 2 als 
+
+\begin{equation*}
+	L_{22} \cdot \frac{di_2}{dt} + R_{22} \cdot i_2 + u_3 = u_2
+\end{equation*}
+und 
+\begin{equation}
+	\color{red}TODO
+\end{equation}
+geschrieben werden. 
+
+Der ganze Transformator kann als System mehreren Differentialgleichungen als
+
+\begin{equation}
+	\color{red} TODO
+\end{equation}
+oder 
+\begin{equation}
+	\textbf{M} \cdot \dot{\textbf{x}} = \textbf{S} \cdot \textbf{x} + \textbf{E}
+	\label{Trafo:matricesDGL}
+\end{equation}
+geschrieben werden, in welcher der Vektor \textbf{E} der Störterm des Systemes ist.
+
+Wird die Massenmatrix $\textbf{M}$ auf die rechte Seite der Gleichung \ref{Trafo:matricesDGL} dividiert, ergibt dies
+
+\begin{equation}
+	\dot{\textbf{x}} = \textbf{M}^-1 \cdot \textbf{S} \cdot \textbf{x} + \textbf{M}^-1 \cdot \textbf{E} = \textbf{A} \cdot \textbf{x} + \textbf{B}
+\end{equation}
+welches die allgemein bekannte und auch lösbare Zustandsraumdarstellung ist.
+
+Das Problem scheint bereits gelöst zu sein, insofern sich die Massenmatrix \textbf{M} invertieren lässt. In der Theorie wäre dies tatsächlich auch machbar. Weil gewisse Eigenwerte zu klein werden, lässt sich dies in der Theorie leider nicht ganz so einfach bewerkstelligen. 
+
+\printbibliography[heading=subbibliography]
+\end{refsection}
+
