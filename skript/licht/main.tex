@@ -61,10 +61,10 @@ Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl"ache aus, welches da
 Wir vernachl"assigen s"amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und beschr"anken uns auf die Betrachtung der durch die Erdtmosp"are verursachte Abklenkung.
 Wir definieren dafür $\Delta \alpha$ als die "Anderung des Einfallswinkels des Lichtstrahls bei Eintritt in die "aussersten Luftschichten und dem Auftreffen auf der Erdoberfl"ache. (siehe Abbildung \ref{fig:skizze_mass}) - oder kurz gesagt: die Ablenkung.
 Die Lufth"ulle unseres Planeten und ihre physikalischen Eigenschaften k"onnen beliebig komplex modelliert werden. 
-Für die optische Ablenkung von Lichtstrahlen ist dabei ist die Brechzahl $n\vec{p}$ entscheidend. 
+Für die optische Ablenkung von Lichtstrahlen ist dabei ist die Brechzahl $n(\vec{p})$ entscheidend. 
 Diese  skalare Gr"osse kann welche f"ur jeden Punkt im Raum bzw. Ortsvektor angegeben werden und beschreibt das Verh"altnis der Brechungsindexe zwischen zwei benachbarten Luftmassen.
 Der Brechungsindex ist wiederum das Verh"altnis zwischen der Geschwindigkeit des Lichts innerhalb der Luftmasse zur Geschwindigkeit im Vakuum an. 
-Wir sehen $n(\vec{p})$ zwar als stetige aber allgemeinen nicht integrierbare Funktion von $R^3$ nach $R$.
+Wir sehen $n(\vec{p})$ zwar als stetige aber allgemeinen nicht integrierbare Funktion in $ \mathbb{R}^3 \rightarrow \mathbb{R}$.
 Im Allgemeinen und lokal gesehen ist die Brechzahl in der Luft jeweils sehr nahe bei 1.
 Es liegt auf der Hand, dass wir $n(\vec{p})$ vereinfachen m"ussen, um dieses Problem anzugehen. 
 Wir wiederholen in diesem Kapitel kurz das Brechungsgesetz nach Snellius und stellen die zwei einfachsten darauf basierenden approximativen Modelle f"ur $n(\vec{p})$ vor. 
@@ -87,10 +87,10 @@ Diese beiden Medien haben einen unterschiedlichen Brechungsindex $n_W$ und $n_L$
 Schon 1621 fand der Mathematiker Snellius die zugrundeliegende Gesetzm"assigkeit:
 
 \begin{equation} \label{eq:snellius}
-$n_W \sin \alpha_W = n_L \sin \alpha_L$
+n_W \cdot \sin \alpha_W = n_L \cdot \sin \alpha_L 
 \end{equation}
 
-In diesem einfachen Szenario setzen wir die Brechzahl $n(\vec{p}) = 1$ f"ur jeden Punkt im Wasser und in der Luft - nur genau an der Wasseroberfl"ache gilt $n(\vec{p}) = \frac{n_Wasser}/{n_Luft}$.
+In diesem einfachen Szenario setzen wir die Brechzahl $n(\vec{p}) = 1$ f"ur jeden Punkt im Wasser und in der Luft - nur genau an der Wasseroberfl"ache gilt $n(\vec{p}) = \frac{n_W}{n_L}$.
 Wir stellen uns nun vor, dass wir statt einer einzigen Wasseroberfl"ache mehrere "ubereinander liegende Schichten von Medien verschiedener Brechungsindices zwischen uns und dem Fisch sehen.
 Weiter versetzen wir uns in die Lage des Fisches und beobachten die Speerspitze. 
 Oder die eines Teleskops auf der Erdoberfl"ache welches auf Alpha Centauri gerichtet wird.
@@ -132,7 +132,7 @@ und anschliessend nach $\sin^2(\alpha)$ aufzul"osen.
 \sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
 \end{equation}
 
-Dies ist nicht ohne Division durch y'(x)^2 m"oglich, weshalb nun die Bedingung: $y'(x) \neq 0$ gilt.
+Dies ist nicht ohne Division durch $y'(x)^2$ m"oglich, weshalb nun die Bedingung: $y'(x) \neq 0$ gilt.
 Auf den Grenzfall $y'(x) = 0$ gehen wir in Abschnitt \ref{ch:spezialfall}) ein.
 
 Nun quadrieren wir das angepasste Brechungsgesetz \ref{eq:13_1} und setzen \ref{eq:13_2} ein:
@@ -221,10 +221,12 @@ Entgegen der Meinung gewisser Minderheiten leben wir aber auf einem kugelf"ormig
 
 \section{Sph"arisches Modell}
 
-Anstatt "ubereinanderliegender Luftschichten betrachten wir nun ineinanderliegende Ebene Sh"ahren mit konstantem Innen und Aussen-Radius.
+Anstatt "ubereinanderliegender Luftschichten betrachten wir nun ineinanderliegende ebene sph"ahren mit konstantem Innen- und Aussenradius.
+Weiterhin nehmen wir an, dass $n$ nur von der H"öhe "uber dem Boden abh"angt bzw. $n(r)$ und die geografische L"ange oder Breite des Teleskops keinen Einfluss auf $n$ haben.
+So richten wir unser erneut 2-dimensionales Koordinatensystem so aus, dass das Teleskop auf $(r = r_0, \varphi=0)$ zu stehen kommt und betrachten lediglich Lichtstrahlen und deren Ablenkungen in der Ebene.
 Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arisches Modell (Abbildung \ref{fig:sphere_skizze}) angepassen: 
 
-$$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
+$$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha) $$ 
 
 In dieser Gleichung kommen zwei verschiedene Winkel $\alpha$ und $\beta$ vor. 
 Um dies zu bereinigen verwenden wir den Sinussatz im Dreieck $OMN$:
