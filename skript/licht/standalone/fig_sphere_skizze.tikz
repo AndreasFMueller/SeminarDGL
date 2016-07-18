@@ -3,6 +3,7 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{txfonts}
 
 %used for drawing n(r)-Area
 \definecolor{lGray}{gray}{0.8}
