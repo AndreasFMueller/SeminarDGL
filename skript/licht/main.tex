@@ -43,25 +43,26 @@
 Der Blick an den Nachthimmel fasziniert uns Menschen schon seit Jahrtausenden. "Ahnlich der Frage "uber das Leben nach dem Tod wurden damit ganze Religionen und Kulturen begr"undet beziehungsweise zugrunde gerichtet. 
 "Uber die Jahrhunderte wuchs die Einsicht, wenn auch nicht stetig und leider auch nicht strikt monoton, dass eine genauere Vermessung des Nachthimmels, die Astrometrie, wenigstens physikalische Grundlagen zur Diskussion betragen kann. 
 Schon Galileo Galilei beobachtete mit seinem Teleskop den Nachthimmel um seine Aussagen über die Bewegung der Erde um die Sonne zu belegen.
-Er beobachtete die Bewegungen der Planeten unseres Sonnensystems und nahm die Positionen entfernterer Sterne, Galaxien und anderen Objekten als sogenannte Fixsterne als konstant an. 
+Er beobachtete die Bewegungen der Planeten unseres Sonnensystems und nahm die Positionen, Grössen und sogar den Abstand entfernter Sterne, Galaxien und anderen Objekten als sogenannte Fixsterne als konstant an. 
 W"ahrend die Nasa und andere noch daran t"ufteln einen Menschen auf unseren n"achsten Nachbarplaneten zu bugsieren, sind unsere Blicke und vor allem unsere Neugier bereits Milliarden von Lichtjahren "uber unser Sonnensystem hinaus ins Weltall gerichtet. 
 Die ehemaligen Fixsterne sind zu dynamischen Konstallationen erstaunlicher Ph"anomene geworden.
 Neue Technologien der Sensorik erz"ahlen uns von der materiellen Zusammensetzung leuchtender Gaswolken. 
 Gewaltige Pulsare werden zu Meilensteinen intergalaktischen Kartographie. 
 Die Bewegung und die unfassbaren Distanzen ganzer Galaxien von unserem Heimatplaneten geben uns sogar die M"oglichkeit in der Zeit zur"uck zu blicken.
-Die Gr"osse unseres Universums  erlaubt es sogar Analogien des Schicksals unseres eigenen Sonnensystems zu finden, indem wir andere Systeme beobachten. 
-Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine hohe Pr"azision bei der Konstruktion der verwendeten Messinstrumente sowie ein tiefes Verst"andnis aller mo"glichen Effekte, die unseren Blick in die Tiefe des Weltalls beeinflussen. 
-Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten (TODO: QUELLE), die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
-Schon in der Primarschule lehrt der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
+Die Gr"osse unseres Universums  erlaubt es uns sogar Aussagen "uber das Schicksal unseres eigenen Sonnensystems zu treffen, indem wir dasjengi anderer Systeme beobachten. 
+Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine hohe Pr"azision bei der Konstruktion der verwendeten Messinstrumente sowie ein tiefes Verst"andnis aller m"oglichen Effekte, die unseren Blick in die Tiefe des Weltalls beeinflussen. 
+Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten, die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
+Schon in der Primarschule lehrt der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen.
+ 
 In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite[p. 121ff]{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
 
 \section{Allgemeine Problemstellung}
-Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl''ache aus, welches das Licht eines entfernten Sternes einf''angt. 
-Wir vernachl''assigen s''amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und besch''anken uns auf die Betrachtung der durch die Atmosp''are der Erde verursachte Brechung.
-Die Lufth''ulle unseres Planeten und ihre physikalischen Eigenschaften k''onnen beliebig komplex modelliert werden. 
-Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das sph''arische Modell.
-Wir m''ochten die Resultate der dazugeh''origen Simulationen untereinander vergleichen k''onnen. 
-Wir definieren daf''ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
+Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl"ache aus, welches das Licht eines entfernten Sternes einf"angt. 
+Wir vernachl"assigen s"amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und beschr"anken uns auf die Betrachtung der durch die Atmosp"are der Erde verursachte Brechung (Refraktion).
+Die Lufth"ulle unseres Planeten und ihre physikalischen Eigenschaften k"onnen beliebig komplex modelliert werden. 
+Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das sph"arische Modell.
+Wir m"ochten die Resultate der dazugeh"origen Simulationen untereinander vergleichen k"onnen. 
+Wir definieren daf"ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
 
 \begin{figure}
   \centering
@@ -71,8 +72,8 @@ Wir definieren daf''ur $\Delta \alpha$ als die "Anderung des Winkels der Funktio
 
 \section{Planares Modell} 
 
-Das planare Modell vernachl''assigt die Kr''ummung der Erdoberfl''ache und betrachtet die Atmosph''are als Abfolge von Luftschichten mit verschiedenen Brechungsindices. 
-Der Brechungsindex einer Luftschicht ist dabei nur von der H''ohe ``uber Boden ab''angig und innerhalb einer Schicht konstant.
+Das planare Modell vernachl"assigt die Kr"ummung der Erdoberfl"ache und betrachtet die Atmosph"are als Abfolge von Luftschichten mit verschiedenen Brechungsindices. 
+Der Brechungsindex einer Luftschicht ist dabei nur von der H"ohe "uber Boden ab"angig und innerhalb einer Schicht konstant.
 
 \begin{figure}
 \centering
@@ -94,7 +95,7 @@ Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich:
 $$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
 $$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
 
-Nun k"onnen wir das nach $sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
+Nun k"onnen wir das nach $\sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
 Da dies m"oglicherweise gleich Null sein kann, muss dieser Fall separat behandelt werden (siehe Abschnitt \ref{ch:spezialfall}). 
 Von nun an gilt die Bedingung: $y'(x) \neq 0$.
 
@@ -106,11 +107,12 @@ Nun quadrieren wir die Gleichung \ref{eq:13_1} und setzen \ref{eq:13_2} ein:
 
 $$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon^2 = (n_0 \cdot \sin \alpha_0)^2$$
 
-Nun k"onnte man diese Gleichung nummerisch l"osen. 
+Nun k"onnte man diese Gleichung numerisch l"osen. 
+%% 
 Jedoch ist die Anfangssteigung $y'(0)$ in der Gleichung in Form von $\alpha_0$ vorliegt. 
-Da eine Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist, leiten wir die Gleichung nach $x$ ab und erhalten:
+Da in einer Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist, leiten wir die Gleichung nach $x$ ab und erhalten:
 
-$$\frac{d}{dx} \left( \frac{n^2}{y'^2 + 1} \right) = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
+$$\frac{d}{dx} \frac{n^2}{y'^2 + 1}  = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
 
 Nun ist $\alpha_0$ nicht mehr vorhanden und die jetzt vorliegende Gleichung hat Ordnung 2. 
 Der Anfangswinkel ist nun teil der Anfangsbedingung. 
@@ -145,7 +147,7 @@ $$n(y) = 1 + \mu e^{- \sigma y}, \qquad \frac{dn}{dy} = -\sigma \mu \cdot e^{-\s
 Nun setzen wir dies in die Differentialgleichung ein, und erhalten:
 
 \begin{equation} \label{eq:planar_DGL_n}
-y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \right)
+y''(x) = \frac{-\sigma}{\displaystyle\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \right)
 \end{equation}
 
 %% Aussage Vermutlich falsch und für die Berechnung irrelevant.//sas
@@ -156,7 +158,7 @@ y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \
 
 Diese Differentialgleichung l"asst sich numerisch l"osen (siehe Abbildung \ref{fig:planares_modell1}).
 Die modellierte Brechzahl wurde in dieser Abbildung in grau dargestellt. 
-Die Ableitung von f an der Stelle Null modelliert dabei die H''ohe ''uber dem Horizont.
+Die Ableitung von f an der Stelle Null modelliert dabei die H"ohe "uber dem Horizont.
 Wie zu erwarten war, kr"ummen sich die Lichtstrahlen nach unten.
 Je steiler der Strahl ist, desto schw"acher kr"ummt er sich. 
 
@@ -183,13 +185,13 @@ In der Realit"at ist dieser Spezialfall also nicht problematisch.
 
 In unserem Modell jedoch wird bei der Herleitung durch $y'(x)$ geteilt.
 Die Gleichung \ref{eq:planar_DGL} gilt also nicht f"ur diesen Spezialfall. 
-Duch den Quantisierungsfehler beim nummerischen L"osen wird jedoch dieser Spezialfall nie erreicht, und wir m"ussen ihn in der Simulation nicht ber"ucksichtigen.
+Duch den Quantisierungsfehler beim numerischen L"osen wird jedoch dieser Spezialfall nie erreicht, und wir m"ussen ihn in der Simulation nicht ber"ucksichtigen.
 Wie in der Abbildung \ref{fig:planares_modell1} an der blauen Kurve mit $f'(0) = 0.6$ zu erkennen ist, kr"ummt sich der Lichtstrahl weiter.
 
 
 \section{Sph"arisches Modell}
 
-Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepassen: 
+Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arisches Modell (Abbildung \ref{fig:sphere_skizze}) angepassen: 
 
 $$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
 
@@ -212,7 +214,7 @@ $$\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{d
 
 Wir quadrieren die Gleichung und l"osen nach $\sin^2(\beta)$ auf:
 
-$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r}{r')} \right)^2$$
+$$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\displaystyle\frac{1}{\sin^2\alpha}-1} \left( \frac{r}{r')} \right)^2$$
 
 \begin{equation} \label{eq:sphere_sine}
 \Rightarrow \sin^2\alpha = \frac{1}{\left( \frac{r'}{r} \right)^2 +1}
@@ -229,13 +231,13 @@ In den folgenden Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$.
 Wie bereits zuvor in Kapitel \ref{ch:spezialfall} beschrieben muss dieser nicht separat behandelt werden.
 Nun quadrieren wir die Gleichung (\ref{eq:sphere_base}) und setzen die Gleichung (\ref{eq:sphere_sine}) ein:
 
-$$\frac{(n \cdot r^2}{\left( \frac{r'}{r} \right)^2 +1} = (r_0 n_0 \sin \alpha_0)^2$$
+$$\frac{(n \cdot r^2}{\displaystyle\left( \frac{r'}{r} \right)^2 +1} = (r_0 n_0 \sin \alpha_0)^2$$
 
 Diese Gleichung ist eine Differentialgleichung erster Ordnung. 
-Jedoch ist erneut der Term $sin^2(\alpha_0)$ vorhanden, welcher von $r'(0)$ abh"angt. 
+Jedoch ist erneut der Term $\sin^2(\alpha_0)$ vorhanden, welcher von $r'(0)$ abh"angt. 
 Damit die DGL auch korrekte Anfangsbedingungen besitzt, leiten wir die Gleichung nach $\varphi$ ab und erhalten:
 
-$$\frac{d}{d\varphi}\left(\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1}\right) =  \frac{2 r^2 n r' n'_r}{\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \left(\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\right)}{\left(\frac{r'^2}{r^2}+1\right)^2}$$
+$$\frac{d}{d\varphi}\frac{(n r)^2}{\left(\frac{r'}{r}\right)^2 + 1} =  \frac{2 r^2 n r' n'_r}{\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \left(\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\right)}{\left(\frac{r'^2}{r^2}+1\right)^2}$$
 
 $$\Rightarrow \frac{2n r' r}{\frac{r'^2}{r^2}+1} \cdot \left( n'_r + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} \right) = 0$$
 
@@ -263,7 +265,7 @@ Nun verwenden wir erneut die exponentielle Approximation der Brechzahl:
 
 $$n(r) = 1 + \mu \cdot e^{-\sigma (r - r_0)} \qquad n'_r(r) = -\sigma \mu e^{-\sigma (r - r_0)}$$
 
-Nun setzen wir dies in die Differentialgleichung \ref{eq:sphere_allg} ein und berechnen die L"osung nummerisch (Abbildung \ref{fig:sphaerisches_modell2}, \ref{fig:sphaerisches_modell3}). 
+Nun setzen wir dies in die Differentialgleichung \ref{eq:sphere_allg} ein und berechnen die L"osung numerisch (Abbildung \ref{fig:sphaerisches_modell2}, \ref{fig:sphaerisches_modell3}). 
 
 \begin{figure}
 \centering
@@ -404,14 +406,14 @@ $\sigma$ gibt an, wie schnell die Brechzahl zum tiefsten Wert $n = 1$ geht.
 %Quelle: https://en.wikipedia.org/wiki/Earth  % Erdradius
 
 
-Durch Messungen ist der mittlere Erdradius $r_0 = 6.371 * 10^6$. 
+Durch Messungen ist der mittlere Erdradius $r_0 = 6.371 \cdot 10^6$. 
 Die Brechzahl auf dieser H"ohe betr"agt: $n_0 = 1.000293$.
-Dementsprechend betr"agt $\mu = 2.93 * 10^{-3}$. 
+Dementsprechend betr"agt $\mu = 2.93 \cdot 10^{-3}$. 
 Um $\sigma$ abzusch"atzen, wird in der Abbildung \ref{fig:athmosphere_profile} Funktion der Dichte untersucht. 
 Die H"ohe bei 36.8\% der Maximaldichte (Dichte auf Meeresh"ohe) entspricht $\sigma$. 
-Somit wird $\sigma \approx 9 * 10^3$.
+Somit wird $\sigma \approx 9 \cdot 10^3$.
 
-Mit diesen Parametern l"asst sich die erneut die L"osung zum sph"arischen Modell nummerisch Berechnen. 
+Mit diesen Parametern l"asst sich die erneut die L"osung zum sph"arischen Modell numerisch Berechnen. 
 Aufgrund der Parameter erwarten wir eine sehr schwache Kr"ummung. 
 Dies kann man auch an der Abbildung \ref{fig:sphere_real} erkennen. 
 Die Vergleichsgr"osse $\Delta \alpha$, welche aus der Simulation resultiert, zeigt erneut, dass der Lichtstrahl st"arker gebrochen wird, wenn er horizontal eintrifft. 
@@ -419,13 +421,13 @@ Die Vergleichsgr"osse $\Delta \alpha$, welche aus der Simulation resultiert, zei
 \begin{figure}
   \centering
   \includegraphics[scale=1]{licht/standalone/fig_real_simulation.pdf}
-  \caption{Nummerische L"osung des realistischen Modells. \label{fig:sphere_real} } 
+  \caption{Numerische L"osung des realistischen Modells. \label{fig:sphere_real} } 
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[scale=1]{licht/standalone/fig_real_comparison.pdf}
-  \caption{TODO: Beschreibung hinzufügen. \label{fig:real_comparison}}
+  \caption{In der Praxis genutzte Approximationskurve f"ur verglichen mit den Simulationsergebnissen. \label{fig:real_comparison}}
 \end{figure}
 
 \printbibliography[heading=subbibliography]
