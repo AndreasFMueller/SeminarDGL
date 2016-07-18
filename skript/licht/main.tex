@@ -53,13 +53,13 @@ Die Gr"osse unseres Universums  erlaubt es sogar Analogien des Schicksals unsere
 Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine hohe Pr"azision bei der Konstruktion der verwendeten Messinstrumente sowie ein tiefes Verst"andnis aller mo"glichen Effekte, die unseren Blick in die Tiefe des Weltalls beeinflussen. 
 Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten (TODO: QUELLE), die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
 Schon in der Primarschule lehrt der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen. (TODO: HISTORISCHES BEISPIEL). 
-In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
+In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite[p. 121ff]{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
 
 \section{Allgemeine Problemstellung}
 Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl''ache aus, welches das Licht eines entfernten Sternes einf''angt. 
 Wir vernachl''assigen s''amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und besch''anken uns auf die Betrachtung der durch die Atmosp''are der Erde verursachte Brechung.
 Die Lufth''ulle unseres Planeten und ihre physikalischen Eigenschaften k''onnen beliebig komplex modelliert werden. 
-Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das Sph''arische Modell.
+Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das sph''arische Modell.
 Wir m''ochten die Resultate der dazugeh''origen Simulationen untereinander vergleichen k''onnen. 
 Wir definieren daf''ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
 
@@ -135,10 +135,10 @@ $$y''(x) = 0$$
 Auch aus unserer Gleichung ist also erkennbar, dass sich der Lichtstrahl bei konstantem $n$ nicht bricht.
 
 Nun brauchen wir eine Funktion der Brechzahl in Abh"angigkeit der H"ohe. 
-Der Brechungsindex der Luft h"angt (teilweise) vom Druck ab. 
-Der H"ohendruck von Gasen nimmt nach der barometrischen H"ohenformel mit der H"ohe exponentiell ab.
+Der Brechungsindex der Luft h"angt unter anderem vom Luftdruck ab. 
+Dieser nimmt nach der barometrischen H"ohenformel mit der H"ohe exponentiell ab.
 Ausserdem ist die Brechzahl immer $n \geq 1$, wobei im Vakuum $n=1$ gilt. 
-Mit diesen Informaitonen stellen wir die Brechzahl folgendermassen dar:
+Mit diesen Informationen stellen wir die Brechzahl folgendermassen dar:
 
 $$n(y) = 1 + \mu e^{- \sigma y}, \qquad \frac{dn}{dy} = -\sigma \mu \cdot e^{-\sigma y}$$
 
@@ -148,12 +148,17 @@ Nun setzen wir dies in die Differentialgleichung ein, und erhalten:
 y''(x) = \frac{-\sigma}{\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \right)
 \end{equation}
 
-Der Lichtstrahl sollte sich immer in Richtung des gr"osseren $n$ kr"ummen. 
-Bei unserer Funktion bedeutet dies, er kr"ummt sich nach unten. 
-Um dies besser darzustellen, wird die Brechzahl in den Grafiken Grau eingezeichnet.
-Diese Differentialgleichung l"asst sich nummerisch l"osen (siehe Abbildung \ref{fig:planares_modell1}).
+%% Aussage Vermutlich falsch und für die Berechnung irrelevant.//sas
+%
+%Der Lichtstrahl sollte sich immer in Richtung des gr"osseren $n$ kr"ummen. 
+%Bei unserer Funktion bedeutet dies, dass er sich nach unten kr"ummt. 
+%Um dies besser darzustellen, wird die Brechzahl in den Grafiken grau eingezeichnet.
+
+Diese Differentialgleichung l"asst sich numerisch l"osen (siehe Abbildung \ref{fig:planares_modell1}).
+Die modellierte Brechzahl wurde in dieser Abbildung in grau dargestellt. 
+Die Ableitung von f an der Stelle Null modelliert dabei die H''ohe ''uber dem Horizont.
 Wie zu erwarten war, kr"ummen sich die Lichtstrahlen nach unten.
-Je H"oher der Strahl ist, desto schw"acher kr"ummt er sich. 
+Je steiler der Strahl ist, desto schw"acher kr"ummt er sich. 
 
 \begin{figure}
   \centering
@@ -184,7 +189,7 @@ Wie in der Abbildung \ref{fig:planares_modell1} an der blauen Kurve mit $f'(0) =
 
 \section{Sph"arisches Modell}
 
-Wir beginnen erneut mit Snell's Law, welche wir auf unser sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepasst wurde: 
+Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arischen Modells (Abbildung \ref{fig:sphere_skizze}) angepassen: 
 
 $$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
 
@@ -205,7 +210,7 @@ Aus dem Dreieck $MNP$ kann folgende Beziehung hergeleitet werden:
 
 $$\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{dr} = \frac{r}{r'}$$
 
-Wir quadrieren die diese Gleichung und l"osen nach $\sin^2(\beta)$ auf:
+Wir quadrieren die Gleichung und l"osen nach $\sin^2(\beta)$ auf:
 
 $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\frac{1}{\sin^2\alpha}-1} \left( \frac{r}{r')} \right)^2$$
 
@@ -222,7 +227,7 @@ $$\tan^2 \alpha = \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin
 W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. 
 In den folgenden Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$. 
 Wie bereits zuvor in Kapitel \ref{ch:spezialfall} beschrieben muss dieser nicht separat behandelt werden.
-Nun quadrieren wir die Gleichung \ref{eq:sphere_base} und setzen die Gleichung \ref{eq:sphere_sine} ein:
+Nun quadrieren wir die Gleichung (\ref{eq:sphere_base}) und setzen die Gleichung (\ref{eq:sphere_sine}) ein:
 
 $$\frac{(n \cdot r^2}{\left( \frac{r'}{r} \right)^2 +1} = (r_0 n_0 \sin \alpha_0)^2$$
 
