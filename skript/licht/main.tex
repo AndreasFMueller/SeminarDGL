@@ -54,15 +54,21 @@ Die extremen Distanzen zwischen uns und den beobachteten Objekten fordern eine h
 Angefangen bei simplen Regenwolken, "uber die Lichtverschmutzung unserer Zivilisation, zu optischen Effekten der Lichtbrechung in der Atmosph"are durch die Temperatur und Zusammensamensetzung, ja sogar Bewegung der Lufschichten bis hin zu relativistischen Effekten, die einen Lichtstrahl aus weiter Ferne so manipulieren k"onnen, dass uns dessen Ursprung an ganz anderem Ort erscheint, als er tats"achlich ist. 
 Schon in der Primarschule lehrt der Strahlensatz, dass schon kleine Messfehler bei der Auswertung eines Bildes hier auf der Erde, hochgerechnet auf die Weiten des Universums extreme Dimensionen annehmen.
  
-In diesem Artikel m"ochten wir nun basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite[p. 121ff]{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
+Wir m"ochten basierend auf Jean Kovalevsky und P. Kenneth Seidelmanns 6. Kapitel in Grundlagen der Astrometrie \cite[p. 121ff]{licht:astrometry} die scheinbare Verschiebung beobachteter Objekte und deren mathematischen Korrektur beschreiben. 
 
 \section{Allgemeine Problemstellung}
 Wir gehen im Folgenden von einem Teleskop auf der Erdoberfl"ache aus, welches das Licht eines entfernten Sternes einf"angt. 
-Wir vernachl"assigen s"amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und beschr"anken uns auf die Betrachtung der durch die Atmosp"are der Erde verursachte Brechung (Refraktion).
+Wir vernachl"assigen s"amtliche Effekte, die weit entfernte Objekte auf den Weg dieses Lichtstrahls haben, und beschr"anken uns auf die Betrachtung der durch die Erdtmosp"are verursachte Abklenkung.
+Wir definieren dafür $\Delta \alpha$ als die "Anderung des Einfallswinkels des Lichtstrahls bei Eintritt in die "aussersten Luftschichten und dem Auftreffen auf der Erdoberfl"ache. (siehe Abbildung \ref{fig:skizze_mass}) - oder kurz gesagt: die Ablenkung.
 Die Lufth"ulle unseres Planeten und ihre physikalischen Eigenschaften k"onnen beliebig komplex modelliert werden. 
-Wir stellen weiter unten die zwei einfachsten approximativen Modelle vor: Das planare und das sph"arische Modell.
-Wir m"ochten die Resultate der dazugeh"origen Simulationen untereinander vergleichen k"onnen. 
-Wir definieren daf"ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion am Anfang und dort, wo sie nicht mehr weiter gebrochen wird (siehe Abbildung \ref{fig:skizze_mass}). 
+Für die optische Ablenkung von Lichtstrahlen ist dabei ist die Brechzahl $n\vec{p}$ entscheidend. 
+Diese  skalare Gr"osse kann welche f"ur jeden Punkt im Raum bzw. Ortsvektor angegeben werden und beschreibt das Verh"altnis der Brechungsindexe zwischen zwei benachbarten Luftmassen.
+Der Brechungsindex ist wiederum das Verh"altnis zwischen der Geschwindigkeit des Lichts innerhalb der Luftmasse zur Geschwindigkeit im Vakuum an. 
+Wir sehen $n(\vec{p})$ zwar als stetige aber allgemeinen nicht integrierbare Funktion von $R^3$ nach $R$.
+Im Allgemeinen und lokal gesehen ist die Brechzahl in der Luft jeweils sehr nahe bei 1.
+Es liegt auf der Hand, dass wir $n(\vec{p})$ vereinfachen m"ussen, um dieses Problem anzugehen. 
+Wir wiederholen in diesem Kapitel kurz das Brechungsgesetz nach Snellius und stellen die zwei einfachsten darauf basierenden approximativen Modelle f"ur $n(\vec{p})$ vor. 
+Auf diesen Grundlagen stellen wir Differentialgleichungen auf und werten deren Ergebnisse aus.
 
 \begin{figure}
   \centering
@@ -70,10 +76,30 @@ Wir definieren daf"ur $\Delta \alpha$ als die "Anderung des Winkels der Funktion
   \caption{Skizze des Mass der Kr"ummung $\Delta \alpha$. \label{fig:skizze_mass}}
 \end{figure}
 
+\section{Snelliussches Brechungsgesetz} 
+
+%% TODO: Grafik Blick auf den Fisch unter Wasser, vermuteter Fisch, tatsächlicher Weg des Lichts.
+
+Sehen wir am Ufer stehend einen Fisch im stillen Wasser eines Teiches, schwimmt er tats"achlich nicht genau an der vermuteten Stelle. 
+Der Speer unserer Vorfahren w"urde ihn verfehlen h"atten sie direkt auf den Fisch gezielt.
+Auf dem Weg vom Fisch zu unserem Auge durchbricht der Lichtstrahl den "Ubergang zwischen Wasser und Luft. 
+Diese beiden Medien haben einen unterschiedlichen Brechungsindex $n_W$ und $n_L$, wodurch der Lichtstrahl an der Wasseroberfl"ache abgelenkt wird.
+Schon 1621 fand der Mathematiker Snellius die zugrundeliegende Gesetzm"assigkeit:
+
+\begin{equation} \label{eq:snellius}
+$n_W \sin \alpha_W = n_L \sin \alpha_L$
+\end{equation}
+
+In diesem einfachen Szenario setzen wir die Brechzahl $n(\vec{p}) = 1$ f"ur jeden Punkt im Wasser und in der Luft - nur genau an der Wasseroberfl"ache gilt $n(\vec{p}) = \frac{n_Wasser}/{n_Luft}$.
+Wir stellen uns nun vor, dass wir statt einer einzigen Wasseroberfl"ache mehrere "ubereinander liegende Schichten von Medien verschiedener Brechungsindices zwischen uns und dem Fisch sehen.
+Weiter versetzen wir uns in die Lage des Fisches und beobachten die Speerspitze. 
+Oder die eines Teleskops auf der Erdoberfl"ache welches auf Alpha Centauri gerichtet wird.
+
 \section{Planares Modell} 
 
 Das planare Modell vernachl"assigt die Kr"ummung der Erdoberfl"ache und betrachtet die Atmosph"are als Abfolge von Luftschichten mit verschiedenen Brechungsindices. 
-Der Brechungsindex einer Luftschicht ist dabei nur von der H"ohe "uber Boden ab"angig und innerhalb einer Schicht konstant.
+Wir verwenden ein 2-dimensionales kartesisches Koordinatensystem. 
+Der Brechungsindex einer Luftschicht ist weiter nur von der H"ohe $y$ "uber Boden ab"angig und innerhalb einer Schicht konstant.
 
 \begin{figure}
 \centering
@@ -82,40 +108,45 @@ Der Brechungsindex einer Luftschicht ist dabei nur von der H"ohe "uber Boden ab"
 \label{fig:13_1}
 \end{figure}
 
-F"ur die Herleitung des Weges, welcher der Lichtstrahl zur"ucklegt, gehen wir vom Brechungsgesetz von Snellius aus, welches Ein- und Ausfallswinkel in Beziehung zu den konstanten Brechungsindices zweier homogenen Medien setzt: $n_1 \sin \alpha_1 = n_2 \sin \alpha_2$
 Wir m"ochten nun modellieren, dass es nicht einen haupts"achlichen, sondern viele kleine "Uberg"ange von einem Brechungsindex zum n"achsten gibt. 
-
-Mit der in der Abbildung \ref{fig:13_1} verwendeten Notation:
+Um nicht für jede Luftschicht eine neue Variable einzuf"uhren dr"ucken wir den Brechungsindex der folgenden Luftschicht durch denjenigen der aktuellen Schicht plus eine kleine "Anderung aus. 
+Gleiches setzen wir f"ur Ein- und Ausfallswinkel um. 
+F"ur jeden "Ubergang zwischen zwei Luftschichten k"onnen wir somit das Brechungsgesetz wie folgt formulieren:
 
 \begin{equation} \label{eq:13_1}
-  n \cdot \sin(\alpha) = n_0 \cdot \sin(\alpha_0) = \varepsilon
+  n \cdot \sin(\alpha) = (n + dn) \cdot \sin(\alpha + d\alpha) = const.
 \end{equation}
 
-Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich:
-$$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
-$$\Rightarrow y'(x)^2 = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
+Nun stellen wir die Blickrichtung des Teleskops als eine vom Funktion $y(x)$ mit $y(x_0) = y_0$ dar, wobei nun die Steigung $y'(x_0)$ der vertikalen Ausrichtung des Teleskops entspricht.
 
-Nun k"onnen wir das nach $\sin^2(\alpha)$ aufl"osen, indem wir durch $y'(x)^2$ teilen. 
-Da dies m"oglicherweise gleich Null sein kann, muss dieser Fall separat behandelt werden (siehe Abschnitt \ref{ch:spezialfall}). 
-Von nun an gilt die Bedingung: $y'(x) \neq 0$.
+Aus der Geometrie in der Abbildung \ref{fig:13_1} ist ersichtlich, dass wir mit 
+$$\frac{\cos \alpha}{\sin \alpha} = \frac{dy}{dx} = y'(x)$$
+einen Ausdruck für die Steigung dieser Funktion finden können. 
+Wir haben damit die M"oglichkeit bekommen folgende Umformung zu rechnen
+
+$$ y'(x)^2 = \frac{\cos \alpha}{\sin \alpha} = \frac{1 - \sin^2 \alpha}{\sin^2 \alpha} = \frac{1}{\sin^2 \alpha} - 1$$
+
+und anschliessend nach $\sin^2(\alpha)$ aufzul"osen.
 
 \begin{equation} \label{eq:13_2}
 \sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
 \end{equation}
 
-Nun quadrieren wir die Gleichung \ref{eq:13_1} und setzen \ref{eq:13_2} ein:
+Dies ist nicht ohne Division durch y'(x)^2 m"oglich, weshalb nun die Bedingung: $y'(x) \neq 0$ gilt.
+Auf den Grenzfall $y'(x) = 0$ gehen wir in Abschnitt \ref{ch:spezialfall}) ein.
 
-$$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \varepsilon^2 = (n_0 \cdot \sin \alpha_0)^2$$
+Nun quadrieren wir das angepasste Brechungsgesetz \ref{eq:13_1} und setzen \ref{eq:13_2} ein:
+
+$$n^2 \cdot \frac{1}{y'(x)^2 + 1} = const.^2 = (((n + dn)) \cdot \sin(\alpha + d\alpha))^2$$
 
 Nun k"onnte man diese Gleichung numerisch l"osen. 
-%% 
-Jedoch ist die Anfangssteigung $y'(0)$ in der Gleichung in Form von $\alpha_0$ vorliegt. 
+Wir m"ussen allerdings erst noch den Startwinkel $\alpha_0$ ber"ucksichtigen bzw. $y'(x_0)$.
 Da in einer Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist, leiten wir die Gleichung nach $x$ ab und erhalten:
 
 $$\frac{d}{dx} \frac{n^2}{y'^2 + 1}  = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right) = 0$$
 
 Nun ist $\alpha_0$ nicht mehr vorhanden und die jetzt vorliegende Gleichung hat Ordnung 2. 
-Der Anfangswinkel ist nun teil der Anfangsbedingung. 
+Der Anfangswinkel ist nun Teil der Anfangsbedingung. 
 Da der ganze Term gleich 0 ist, muss der Ausdruck in den Klammern gleich 0 sein.
 Da $\frac{dn}{dx} = \frac{dn}{dy} \cdot \frac{dy}{dx}$, wird im Folgenden die Notation $n'_y = \frac{dn}{dy}$ verwendet.
 
@@ -126,10 +157,9 @@ $$y''(x) = \frac{n'_y}{n} \cdot \left( y' + \frac{1}{y'} \right)$$
 y''(x) = \frac{n'_y}{n} \cdot \left( y'^2 + 1\right)
 \end{equation}
 
-
 \subsection{Verifikation}
 Um zu "uberpr"ufen, ob unser Modell plausibel ist, setzen wir verschiedene Funktionen f"ur $n(y)$ ein. 
-Wenn die Brechzahl konstant ist (das Heisst $\frac{dn}{dy} = 0$), dann sollte der Lichtstrahl nicht mehr gebrochen werden und auf einer Geraden weiterfahren. 
+Wenn die Brechzahl konstant ist (also $\frac{dn}{dy} = 0$), dann sollte der Lichtstrahl nicht mehr gebrochen werden und auf einer Geraden weiterfahren. 
 Wenn man nun $n'(y)=0$ in die Gleichung \ref{eq:planar_DGL} einsetzt, erh"alt man: 
 
 $$y''(x) = 0$$
@@ -140,7 +170,7 @@ Nun brauchen wir eine Funktion der Brechzahl in Abh"angigkeit der H"ohe.
 Der Brechungsindex der Luft h"angt unter anderem vom Luftdruck ab. 
 Dieser nimmt nach der barometrischen H"ohenformel mit der H"ohe exponentiell ab.
 Ausserdem ist die Brechzahl immer $n \geq 1$, wobei im Vakuum $n=1$ gilt. 
-Mit diesen Informationen stellen wir die Brechzahl folgendermassen dar:
+Mit diesen Informationen stellen wir eine modellierung der Brechzahl folgendermassen zusammen:
 
 $$n(y) = 1 + \mu e^{- \sigma y}, \qquad \frac{dn}{dy} = -\sigma \mu \cdot e^{-\sigma y}$$
 
@@ -150,11 +180,9 @@ Nun setzen wir dies in die Differentialgleichung ein, und erhalten:
 y''(x) = \frac{-\sigma}{\displaystyle\frac{1}{\mu e^{-\sigma y}} + 1} \cdot \left( y'^2 + 1 \right)
 \end{equation}
 
-%% Aussage Vermutlich falsch und für die Berechnung irrelevant.//sas
-%
-%Der Lichtstrahl sollte sich immer in Richtung des gr"osseren $n$ kr"ummen. 
-%Bei unserer Funktion bedeutet dies, dass er sich nach unten kr"ummt. 
-%Um dies besser darzustellen, wird die Brechzahl in den Grafiken grau eingezeichnet.
+Wie man anhand der Vorzeichen in \ref{eq:13_1} erkennen kann, kr"ummt sich der Lichstrahl immer in Richtung des gr"osseren $n$.
+Bei dem von uns verwendeten $n(y)$ bedeutet dies, dass er sich nach unten kr"ummt. 
+Um dies besser darzustellen, wird die Brechzahl in den Grafiken grau eingezeichnet.
 
 Diese Differentialgleichung l"asst sich numerisch l"osen (siehe Abbildung \ref{fig:planares_modell1}).
 Die modellierte Brechzahl wurde in dieser Abbildung in grau dargestellt. 
@@ -166,7 +194,6 @@ Je steiler der Strahl ist, desto schw"acher kr"ummt er sich.
   \centering
   \includegraphics{licht/standalone/fig_planar_simulation.pdf}
   \caption{Nummerische L"osung der Differentialgleichung (\ref{eq:planar_DGL_n}). \label{fig:planares_modell1}}
-
 \end{figure}
 
 \subsection{Spezialfall: $y'(x) = 0$} \label{ch:spezialfall}
@@ -188,9 +215,13 @@ Die Gleichung \ref{eq:planar_DGL} gilt also nicht f"ur diesen Spezialfall.
 Duch den Quantisierungsfehler beim numerischen L"osen wird jedoch dieser Spezialfall nie erreicht, und wir m"ussen ihn in der Simulation nicht ber"ucksichtigen.
 Wie in der Abbildung \ref{fig:planares_modell1} an der blauen Kurve mit $f'(0) = 0.6$ zu erkennen ist, kr"ummt sich der Lichtstrahl weiter.
 
+\subsection{Fazit planares Modell}
+Wir haben mit dem planaren Modell eine erste Modellierung einer kontinuierlichen Brechzahl simulieren k"onnen und sind mit den Resultaten qualitativ zufrieden. 
+Entgegen der Meinung gewisser Minderheiten leben wir aber auf einem kugelf"ormigen Planeten, weshalb wir nun eine sph"arische Geometrie aufbauen m"ochten.
 
 \section{Sph"arisches Modell}
 
+Anstatt "ubereinanderliegender Luftschichten betrachten wir nun ineinanderliegende Ebene Sh"ahren mit konstantem Innen und Aussen-Radius.
 Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arisches Modell (Abbildung \ref{fig:sphere_skizze}) angepassen: 
 
 $$n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)$$
