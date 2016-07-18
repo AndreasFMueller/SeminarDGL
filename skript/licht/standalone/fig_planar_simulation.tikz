@@ -42,6 +42,7 @@
       height=5cm,
       width=5cm,
       ticks = none, 
+      legend cell align=left,
       legend pos = outer north east, 
       legend style={draw=none}, 
       ymin = 0, 
@@ -74,7 +75,7 @@
         (9.26157,-2.18838)(9.40485,-2.45726)(9.54812,-2.76003)(9.69140,-3.10717)
         (9.83468,-3.51505)(9.87601,-3.64716)(9.91734,-3.78722)(9.95867,-3.93632)
         (10.00000,-4.09576)};
-    \addlegendentry{$f'(0) = 0.6 \: \Delta \alpha > 90^\circ$}
+    \addlegendentry{$f'(0) = 0.6, \: \Delta \alpha > 90^\circ$}
     
     \addplot [mark = none, thick, draw=red] coordinates{
         (0.00000,0.00000)(0.00005,0.00005)(0.00010,0.00010)(0.00015,0.00015)
@@ -94,7 +95,7 @@
         (8.78491,3.03784)(9.03491,3.03648)(9.28491,3.03149)(9.53491,3.02286)
         (9.78491,3.01056)(9.83869,3.00744)(9.89246,3.00414)(9.94623,3.00068)
         (10.00000,2.99704)};
-    \addlegendentry{$f'(0) = 1 \: \Delta \alpha > 90^\circ$}
+    \addlegendentry{$f'(0) = 1.0, \: \Delta \alpha > 90^\circ$}
     
     \addplot [mark = none, thick, draw=green] coordinates{
        (0.00000,0.00000)(0.00004,0.00005)(0.00007,0.00010)(0.00011,0.00015)

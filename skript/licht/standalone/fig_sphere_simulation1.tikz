@@ -40,6 +40,7 @@
     axis equal,
     ticks = none, 
     legend pos = outer north east, 
+	  legend cell align=left,
     legend style={draw=none}, 
     ymin = 0,
     ymax = 4,

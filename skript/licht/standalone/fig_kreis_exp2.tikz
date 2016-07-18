@@ -40,6 +40,7 @@
           axis equal,
           ticks = none,  
           legend style={at={(1.1,0.5)}, anchor=west, draw=none}, 
+	  legend cell align=left,
           ymin = -150,
           ymax = 150,
           xmin = -150, 
