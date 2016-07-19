@@ -16,7 +16,7 @@ Das \emph{SIR-Model}, welches wir auf den nächsten Seiten detailliert anschauen
 \section{Problemstellung}
 Wir stellen uns vor, dass in einer Bevölkerungsgruppe eine Krankheit ausbricht. 
 Es könnte sich dabei z.B. um einen neuen Influenza-Stamm handeln.
-Bei einer Grippe wird ein Träger, nachdem er die Krankheit ausgestanden hat, bekanntermassen immun gegen diesen speziellen Stamm (Aber nicht gegen andere Stämme von Influenza).
+Bei einer Grippe wird ein Träger, nachdem er die Krankheit ausgestanden hat, bekanntermassen immun gegen diesen speziellen Stamm, aber nicht gegen andere Stämme von Influenza.
 Nachdem die Krankheit bereits ein wenig durch die Bevölkerung gegangen ist, lassen sich anhand der ersten Daten einige Informationen über die Krankheit erfassen.
 Zum Beispiel kann herausgefunden werden, wie infektiös eine Krankheit ist, oder wie lange es nach einer Infektion durchschnittliche dauert, bis ein Träger die Infektion überstanden hat.
 
@@ -31,7 +31,7 @@ In diesem Fall hat der Bevölkerungswachstum im Verlauf der Krankheit nur einen 
 Im Falle von langanhaltenden Krankheiten, z.B. HIV/AIDS, wo der Krankheitsverlauf mehrere Jahrzehnte dauern kann, müsste das Modell entsprechend erweitert werden.
 
 \section{SIR-Modell}
-Bei allen Krankheiten, welche sich wie die beschriebene Grippe verhalten lässt sich die Bevölkerung in 3 Kompartimente aufteilen. Dabei wird vorausgesetzt, dass ein gesundes Subjekt infiziert wird und anschliessend eine gewisse Zeit lang krank ist. Nach der Genesung ist das Subjekt immun gegen den Erreger und kann somit nicht noch einmal infiziert werden. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
+Bei allen Krankheiten, welche sich wie die beschriebene Grippe verhalten, lässt sich die Bevölkerung in drei Kompartimente aufteilen. Dabei wird vorausgesetzt, dass ein gesundes Subjekt infiziert wird und anschliessend eine gewisse Zeit lang krank ist. Nach der Genesung ist das Subjekt immun gegen den Erreger und kann somit nicht noch einmal infiziert werden. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
 \begin{description}
   \item [Susceptibles ($\mathbf{S}$)] sind Individuen, welche von einem Träger der Krankheit angesteckt werden können. Sie tragen die Krankheit weder in sich, noch sind sie bereits immun gegen dagegen. Werden sie angesteckt, werden sie zu \emph{Infected}.
   \item [Infected ($\mathbf{I}$)] sind Personen, die zum aktuellen Zeitpunkt mit der Krankheit infiziert sind, und auch andere Individuen infizieren können. Nach einer gewissen Zeit genesen sie, und verschieben sich dann in das Kompartiment \emph{Removed}.
@@ -83,7 +83,7 @@ Damit sind alle Informationen bekannt, welche benötigt werden, um unsere Differ
    \displaystyle\frac{dR}{dt} & = & &         & &\gamma I
  \end{array}
 \]
-Die 3 Gleichungen sind dabei einfach zu erklären. 
+Die drei Gleichungen sind dabei einfach zu erklären. 
 Aus dem Kompartiment $S$ verschiebt sich jede Zeiteinheit eine gewisse Anzahl Individuen nach $I$, wobei dieser Wert abhängig ist vom Faktor $\beta$ sowie der Anzahl Individuen in den Kompartimenten $S$ und $I$.
 Diese tauchen dann im Kompartiment $I$ auf, aus welchem gleichzeitig jede Zeiteinheit eine gewisse Zahl von Individuen nach $R$ verschiebt, ein Wert, der Abhängig ist von $\gamma$ sowie der Anzahl der Individuen in Kompartiment $I$. 
 Damit haben wir die Grundlagen des SIR-Modells hergeleitet. 
@@ -136,6 +136,13 @@ welche beschreibt, wie sich das Kompartiment $I$ verhält, also wie sich der Ant
 Dafür betrachten wir die einzelnen Bestandteile der DGL separat. 
 Im Umkehrschluss zur gerade betrachteten DGL für das Kompartiment $S$ bedeutet $\beta S I$, dass der Anteil der \emph{Infected} von Seiten des Kompartiments $S$ her immer grösser oder gleich 0 ist, also immer zunimmt, oder gleich bleibt.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.8\textwidth]{sir/images/quiver}
+  \caption[Nullkline]{Auf der X-Achse ist $S$ abgebildet, während die Y-Achse $I$ zeigt. Es ist schön zu sehen, dass sich das Richtungsfeld immer von rechts nach links bewegt, $S$ also abnimmt ($S = - \beta S I$), während $I$ rechts der Nullkline (Rot) ansteigt ($\beta S I \ge \gamma I$) bevor das System bei der Nullkline mit dem Wert $\frac{\gamma}{\beta}$ kippt und links davon abnimmt ($\beta S I \le \gamma I$). Für die Erzeugung des Modelles wurde $\gamma = 4$ und $\beta = 10$ gesetzt, wodurch die Nullkline bei $\frac{\gamma}{\beta} = \frac{4}{10} = 0.4$ liegt.} 
+  \label{fig:quiver}
+\end{figure}
+
 Der zweite Term $- \gamma I$ wiederum ist immer negativ. 
 Die Population in $I$ kann ebenfalls nicht negativ sein, und der Parameter $\gamma$ beschreibt die Genesungsrate, welche wie $\beta$ immer positiv ist.
 Es besteht also sowohl ein stetiger Anstieg von Individuen aus dem Kompartiment $S$, genauso wie ein stetiger Abgang von Individuen nach $R$.
@@ -158,14 +165,8 @@ Da der Wert von I nicht bestimmt werden kann und nicht klar ist, wann dieser 0 i
   \beta S - \gamma &= 0 \\
   S &= \frac{\gamma}{\beta}
 \end{align*}
-Dieser Punkt $\frac{\gamma}{\beta}$ ist die Nullkline des Systemes, wie sie in Abbildung~\ref{fig:quiver} dargestellt ist
+Die Kurve $S = \frac{\gamma}{\beta}$ ist eine der Nullklinen des Systemes, wie sie in Abbildung~\ref{fig:quiver} dargestellt ist. Eine weitere Nullkline befindet sich auf der Kurve $I = 0$, diese ist aber für die weiteren Analysen nur wenig interessant.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=.8\textwidth]{sir/images/quiver}
-  \caption[Nullkline]{Auf der X-Achse ist $S$ abgebildet, während die Y-Achse $I$ zeigt. Es ist schön zu sehen, dass sich das Richtungsfeld immer von rechts nach links bewegt, $S$ also abnimmt ($S = - \beta S I$), während $I$ rechts der Nullkline (Rot) ansteigt ($\beta S I \ge \gamma I$) bevor das System bei der Nullkline mit dem Wert $\frac{\gamma}{\beta}$ kippt und links davon abnimmt ($\beta S I \le \gamma I$). Für die Erzeugung des Modelles wurde $\gamma = 4$ und $\beta = 10$ gesetzt, wodurch die Nullkline bei $\frac{\gamma}{\beta} = \frac{4}{10} = 0.4$ liegt.} 
-  \label{fig:quiver}
-\end{figure}
 
 Sobald also der Anteil von $S$ an der Gesamtpopulation $N$ einen kleineren Anteil als $\frac{\gamma}{\beta}$ hat, ist der Verlauf der Krankheit abnehmend und der Anteil der \emph{Infected} nimmt immer weiter ab.
 Interessant ist dabei vor allem, dass dieser Punkt einzig und alleine davon abhängig ist, wie gross der Anteil an \emph{Susceptibles} in der Population ist. 
@@ -181,6 +182,7 @@ Allerdings nimmt der Anteil der \emph{Infected} immer mehr ab, es kann also nich
 Die Ebolafieber-Epidemie 2014  war eine der ausgeprägtesten und stärksten Ebolaepidemien seit der Entdeckung des Ebolavirus 1976 \cite{sir:ebola_history}.
 Eine zentrale Frage während des Ausbruchs, befasst sich mit der Entwicklung und Bekämpfung der Krankheit. Wie war der WHO zu jedem Zeitpunkt klar, welche Entwicklung die Krankheit durchläuft?
 Medien haben stets spekuliert und mit dem Schlimmsten gerechnet, während verschiedene Expertenquellen aber mehrheitlich ruhig blieben. 
+
 
 Um ein geeignetes Kompartimentmodell für Ebola zu finden, müssen zuerst die Grenzen von SIR beschrieben werden.
 Das SIR Model beschreibt 3 Zustände. 
@@ -223,30 +225,30 @@ Wir verwenden die reziproken Werte $\gamma$ und $\delta$ da mit einem Zeitschlit
   Infektionsdauer ($\frac{1}{\gamma}$) & 10.38 Tage & 13.31 Tage \\
 \end{tabular}
 \end{table}
-\begin{figure}[ht]
+Wie in Abbildung~\ref{fig:ebola_outbreak} unschwer zu erkennen ist, wäre die Entwicklung in Liberia ohne das Eingreifen der WHO fatal gewesen. Etwa 37\% der Bevölkerung wäre an den Folgen von Ebola gestorben. Doch dies war nicht der Fall. Obschon sehr hohe Zahlen verzeichnet wurden, sind diese nicht annähernd auf dem erschreckend hohen Niveau, welches das SIR-Modell vermuten lassen würde. Um die Massnahmen besser zu verstehen, müssen wir zuerst verstehen, welche Parameter wirklich veränderbar sind.
+
+Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in Liberia ähnlich waren. Die Werte können durch verschiedene Virenstämme unterschiedliche Dauern aufzeigen. Der einzige Parameter, welcher beeinflussbar ist, muss somit $\beta$ sein. Der Parameter $\beta$ bildet das soziale Gefüge und die damit verbundene Wahrscheinlichkeit einer Ansteckung ab. Verschiebt sich dieser Parameter gegen 0, so werden weniger Tote zu beklagen sein, erhöht er sich jedoch, so werden es massiv mehr. Der Einfluss von $\beta$ auf die Mortalitätsrate ist in Abbildung~\ref{fig:beta_change_det} dargestellt.
+
+Die Massnahmen zur Eindämmung der Krankheiten setzten also genau an diesem Ort an. Mithilfe von Quarantänemassnahmen, also der Isolation von Individuen zur Eindämmung der Krankheit, wurde der Parameter $\beta$ reduziert. Dadurch, dass sich Personen weniger häufig begegnen, ist auch die Wahrscheinlichkeit, jemanden zu infizieren geringer.
+
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.8\textwidth]{sir/images/ebola_outbreak}
+	\includegraphics[width=.7\textwidth]{sir/images/ebola_outbreak}
   \caption[Ebola Ausbruch]{Die Abbildung widerspiegelt den Schweregrad der Ebolaepidemie in Liberia ohne ein Eingreifen von Hilfsorganisationen oder von Regierungen. Da die 'Case-Fatality-Rate' (CFR) von Ebola für diese Epidemie bei 80\% liegt\cite{sir:estimating_fatality}, wurde der Vollständigkeit halber das Kompartiment $R$ (\emph{Removed}) in \emph{Recovered} und \emph{Dead} aufgeteilt.}
   \label{fig:ebola_outbreak}
 \end{figure}
 
-Wie in Abbildung~\ref{fig:ebola_outbreak} unschwer zu erkennen ist, wäre die Entwicklung in Liberia ohne dem Eingreifen der WHO fatal gewesen. Etwa 37\% der Bevölkerung wäre an den Folgen von Ebola gestorben. Doch dies war nicht der Fall. Obschon sehr hohe Zahlen verzeichnet wurden, sind diese nicht annähernd auf dem erschreckend hohen Niveau, welches das SIR-Modell vermuten lassen würde. Um die Massnahmen besser zu verstehen, müssen wir zuerst verstehen, welche Parameter wirklich veränderbar sind.
-
-Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in Liberia ähnlich waren. Die Werte können durch verschiedene Virenstämme unterschiedliche Dauern aufzeigen. Der einzige Parameter, welcher beeinflussbar ist, muss somit $\beta$ sein. Der Parameter $\beta$ bildet das soziale Gefüge und die damit verbundene Wahrscheinlichkeit einer Ansteckung ab. Verschiebt sich dieser Parameter gegen 0, so werden weniger Tote zu beklagen sein, erhöht er sich jedoch, so werden es massiv mehr. Der Einfluss von $\beta$ auf die Mortalitätsrate ist in Abbildung~\ref{fig:beta_change_det} dargestellt.
-
-\begin{figure}[ht]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.8\textwidth]{sir/images/beta_change_det}
+	\includegraphics[width=.7\textwidth]{sir/images/beta_change_det}
   \caption[Einfluss von $\beta$ auf die Mortalitätsrate]{Diese Abbildung zeigt, dass bereits eine kleine Änderungen von $\beta$ einen grossen Einfluss auf den Krankheitsverlauf hat.}
   \label{fig:beta_change_det}
 \end{figure}
 
-Die Massnahmen zur Eindämmung der Krankheiten setzten also genau an diesem Ort an. Mithilfe von Quarantänemassnahmen, also der Isolation von Individuen zur Eindämmung der Krankheit, wurde der Parameter $\beta$ reduziert. Dadurch, dass sich Personen weniger häufig begegnen, ist auch die Wahrscheinlichkeit, jemanden zu infizieren geringer.
-
 \section{Zombies}
 Nachdem nun die grundlegenden Konzepte des Kompartimentsmodels verstanden sind, können noch viel komplexere und auch absurdere Beispiele modeliert werden. Stellen wir uns vor, die Zombie Apokalypse steht bevor und wir möchten diese gerne zumindes als Gesellschaft überleben. 
-\\
-Nachdem im Spielfilm 'Shaun of the Dead' \ref{sir:shaun_ot_the_dead,} bereits das Thema abgehandelt wurde, ist zumindest klar wie das Model aussehen kann. Wird ein gesunder Mensch von einem Zombie gebissen so ist er infiziert und kann weiter Menschen infizieren. Stirbt eine infizierte Person so wird diese zum Zombie. Im Falle einer fatalen Kopfverletzung ist sowohl die infizierte Person als auch das Zombie tot. Sie übergeht somit in das Kompartiment $R$ (\emph{Removed}). Dieses in Worte gefasste Kompartiment kann der Abbildung \ref{fig:zombie_non_healing} entnommen werden.
+
+Nachdem im Spielfilm 'Shaun of the Dead' \ref{sir:shaun_ot_the_dead} bereits das Thema abgehandelt wurde, ist zumindest klar wie das Model aussehen kann. Wird ein gesunder Mensch von einem Zombie gebissen so ist er infiziert und kann weiter Menschen infizieren. Stirbt eine infizierte Person so wird diese zum Zombie. Im Falle einer fatalen Kopfverletzung ist sowohl die infizierte Person als auch das Zombie tot. Sie übergeht somit in das Kompartiment $R$ (\emph{Removed}). Dieses in Worte gefasste Kompartimentsystem ist in der Abbildung~\ref{fig:zombie_non_healing} visuell dargestellt.
 \begin{figure}[ht]
   \centering
   \include{sir/models/zombie_model_non_healing}
@@ -264,10 +266,17 @@ Vollständigkeitshalber können nun die passenden Differentialgleichungen aufges
 
  \end{array}
 \]
-\begin{figure}[ht]
+
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=1\textwidth]{sir/images/Zombies_nicht_heilbar}
+	\includegraphics[width=.7\textwidth]{sir/images/Zombies_nicht_heilbar}
   \caption[Zombie Apokalypse]{Zeigt den Verlauf eine Zombieapokalypse ohne gegenmassnahmen. Der Verlauf für die Menschheit wäre Fatal.}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.7\textwidth]{sir/images/Zombies}
+  \caption[Zombies]{Im Falle einer medikamentösen Behandlung der Infektion, kann sich ein stabiles Gleichgewicht einstellen. Die Population der Menschheit wäre stark zurück gegangen, aber sie würde überleben.}
 \end{figure}
 
 Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen, dass im Falle einer Zombie Apocalypse die Pharmaindustrie alle Hebel in Bewegungen setzt, um eine geeignete Therapie zu finden. Diese Therapie könnte ermöglichen, dass bereits infizierte Menschen vom der Zombie Infektion geheilt werden können. Folglich muss eine kleine Anpassung im Model (Abb. \ref{fig:zombie_healing}) vorgenommen werden. 
@@ -277,6 +286,12 @@ Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen
   \caption{SIZR-Model mit Heilungsaussichten}
   \label{fig:zombie_healing}
 \end{figure}
+Der neue Parameter $\lambda$ beschreibt dabei die Heilungsrate des Systems
+
+\begin{description}
+  \item [Heilungsrate ($\lambda$)] beschreibt die Effektivität sowie die Zeit, in der eine potentielle Heilung wirkt. In diesem Wert enthalten ist die Wahrscheinlichkeit, dass das Medikament wird, die Wahrscheinlichkeit, dass ein Individuum das Medikament erhält -- Je besser ein Medikament verteilt werden kann, desto besser wirkt es -- und wie lange es dauert, bis ein Individuum geheilt ist. Die Heilungsrate ist der Kehrwert der Durchschnittlichen Heilungsdauer in Zeiteinheiten. Dauert es durchschnittlich $k$ Tage, bis ein Individuum geheilt ist, wird $\lambda = \frac{1}{k}$ 
+\end{description}
+
 Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lambda$ erweitert wurde.
 \[
 \arraycolsep=1.4pt\def\arraystretch{2.2}
@@ -288,23 +303,19 @@ Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lam
 
  \end{array}
 \]
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{sir/images/Zombies}
-  \caption[Zombies]{Im Falle einer medikamentösen Behandlung der Infektion, kann sich ein stabiles Gleichgewicht einstellen. Die Population der Menschheit wäre stark zurück gegangen, aber sie würde überleben.}
-\end{figure}
 
 Es stellt sich ein Gleichgewicht zwischen Menschen und Zombies ein. Aus diesem Model können wir entnehmen, dass man im Falle einer Zombieapokalypse den Kopf nicht verlieren sollte und stets die richtige Medikation bei sich haben müsste.
 
 \section{Weitere Anwendungsfälle}
+\begin{figure}[b]
+	\centering
+	\includegraphics[width=.5\textwidth]{sir/images/chemical_clock}
+  \caption[Chemische Uhr]{Eine chemische Uhr ist eine chemische Reaktion, die regelmässig zwischen den zwei verschiedenen Zuständen transparent und trüb hin- und herwechselt.\cite{sir:chemical_clock}}
+\end{figure}
+
 In den bisherigen Abschnitten wurde das SIR-Modell als Grundlage für verschiedene epidemiologische Analysen zu Rate gezogen.
 Es ist aber zu erwähnen, dass die zugrundeliegende Idee vom Kompartimentmodell auf viele andere Bereiche angewendet werden kann.
 In der Chemie kann das Modell benutzt werden, um bei einer chemischen Reaktion zu beschreiben, wie sich der Anteil der verschiedenen Moleküle verändert, als besonders gut geeignetes Beispiel sei hier die chemische Uhr genannt.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=.8\textwidth]{sir/images/chemical_clock}
-  \caption[Chemische Uhr]{Eine chemische Uhr, ist eine chemische Reaktion, die regelmässig zwischen den zwei verschiedenen Zuständen transparent und trüb hin- und herwechselt.\cite{sir:chemical_clock}}
-\end{figure}
 
 Kompartimentmodelle können näherungsweise auch benutzt werden, um Parteizugehörigkeiten der Bevölkerung über die Zeit zu analysieren. 
 Eine weitere Möglichkeit besteht auch darin, die Verbreitung von populärwissenschaftlichen Begriffen zu beschreiben. 
