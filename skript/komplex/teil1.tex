@@ -1,6 +1,6 @@
 \section{Einleitung}
 
-In diesem Kapitel möchten wir ein Problem aufgreifen, welches wir bei der Bessel'schen Differentialgleichung
+In diesem Kapitel möchten wir ein Problem aufgreifen, welches wir bei der Besselschen Differentialgleichung
 \[ z^2w''+zw'+(z^2 - \nu^2)w=0\]
 angetroffen haben. 
 Wir fanden Lösungen in Form der verallgemeinerten Potenzreihe
@@ -15,11 +15,11 @@ und die Indexgleichung lieferte die dazugehörigen $\varrho=\pm\nu.$
 Wo also steckt die zweite Lösung?
 \end{problem*} 
 
-Dieses Kapitel benötigt zwei bereits beschriebene Werkzeuge, die im Folgenden kurz zusammengefasst sind -- die analytischen Fortsetzung und die Laurent-Reihen.
+Dieses Kapitel benötigt zwei bereits beschriebene Werkzeuge, die im Folgenden kurz zusammengefasst sind --- die analytischen Fortsetzung und die Laurent-Reihen.
 Anschliessend sollen diese Werkzeuge mit der linearen Algebra kombiniert werden, welches den zentralen Teil dieses Kapitels ausmacht, und abschliessend möchten die Lösungen formell noch gefunden werden.
 
 \subsection{Analytische Fortsetzung}
-Die analytische Fortsetzung wurde im Kapitel \ref{sec:fortsetzung} bereits sehr ausführlich Diskutiert.
+Die analytische Fortsetzung wurde im Kapitel \ref{sec:fortsetzung} bereits sehr ausführlich diskutiert.
 Die wichtigsten Eigenschaften für die folgende Diskussion seien hier kurz zusammengefasst.
 
 Am Beispiel der Gleichung $y'=\frac{1}{z}$ wurde gezeigt, dass eine Lösung sich bei der analytischen Fortsetzung um eine Singularität verändern kann.
@@ -28,12 +28,15 @@ Wurzelfunktionen sind hier nicht von Interesse und werden nicht weiter betrachte
 
 Die Veränderung des Logarithmus ist jedoch von zentraler Wichtigkeit.
 Abbildung \ref{komplex:analytische-fortsetzung-log} auf Seite \pageref{komplex:analytische-fortsetzung-log} illustriert diese Veränderung.
-Bekanntlich ist der Logarithmus nur bis auf ein vielfaches von $2\pi i$ bestimmt. Dies zeigt sich in der analytischen Fortsetzung durch die $2\pi i$, welche beim einmaligen Umlaufen der Singularität hinzukommen.
+Bekanntlich ist der Logarithmus nur bis auf ein Vielfaches von $2\pi i$ bestimmt. Dies zeigt sich in der analytischen Fortsetzung durch die $2\pi i$, welche beim einmaligen Umlaufen der Singularität hinzukommen.
 Durch mehrmaliges Umlaufen des Nullpunktes kann jede Lösung des Logarithmus erreicht werden.
 
 Die analytische Fortsetzung $f^+$ einer Funktion $f$ entlang eines geschlossenen Weges $\gamma$ in positiver Drehrichtung um den Nullpunkt wird in diesem Kapitel sehr oft verwendet.
 Wir definieren deshalb den Seitz-Kull-Operator:
-\[\sk f(z)= f^+(z)\]
+\index{Seitz-Kull-Operator}%
+\[
+\sk f(z)= f^+(z).
+\]
 Er soll folgendermassen verstanden werden: wenn man $f(z)$ einmal entlang eines geschlossenen Weges um den Nullpunk in positiver Drehrichtung analytisch fortsetzt, resultiert $f^+(z)$.
 Kurz: die analytische Fortsetzung von $f(z)$ ist gleich $f^+(z)$.
 Somit lässt sich schreiben: 
@@ -53,7 +56,7 @@ Es gilt
 Eine Funktion ist also genau dann als Laurent-Reihe darstellbar, wenn sie sich durch die analytische Fortsetzung nicht verändert.
 
 \section{Lineare Algebra}
-Die wichtigsten Überlegungen um die zweite linear unabhängige Lösung einer Differentialgleichung 2. Ordnung zu finden, liefert die lineare Algebra.
+Die wichtigsten Überlegungen um die zweite linear unabhängige Lösung einer Differentialgleichung zweiter Ordnung zu finden, liefert die lineare Algebra.
 Wir wissen, dass es zwei linear unabhängige Lösungen geben muss.
 Wenn diese Lösungen existieren, dann können sie auch analytisch fortgesetzt werden.
 Im Folgenden sei $w$ der Vektor der beiden linear unabhängigen Lösungen
@@ -66,7 +69,7 @@ w_1^+\\ w_2^+
 Da es insgesammt nur zwei linear unabhängige Lösungen geben kann, muss zwischen $w$ und $w^+$ eine lineare Abhängigkeit bestehen.
 Es existiert also eine Matrix
 \[A = \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{pmatrix}\]
-so das gilt
+so dass gilt
 \[\sk w = w^+ = Aw.\]
 Die analytische Fortsetzung kann also durch die Matrix $A$ beschrieben werden.
 

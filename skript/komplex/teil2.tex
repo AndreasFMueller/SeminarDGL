@@ -1,9 +1,9 @@
 \section{Finden der Lösungen}
-Dieser Abschnitt dreht sich nun um die Bedeutung der Matrix $A$ für die Form der Lösungen $w_1$ udn $w_2$. 
+Dieser Abschnitt dreht sich nun um die Bedeutung der Matrix $A$ für die Form der Lösungen $w_1$ und $w_2$. 
 Die beiden Fälle Diagonal- und Dreiecksform werden einzeln betrachtet und analysiert.
 
 Als erstes wird untersucht, was mit den Lösungen durch die analytische Fortsetzung geschieht.
-Als zweites sei eine Funktion gesucht, die dasselbe Verhalten zeigt.
+Als zweites wird eine Funktion gesucht, die dasselbe Verhalten zeigt.
 In einem dritten Schritt wird die Veränderung der Lösungen durch die gefundene Funktion kompensiert. Diese neue, kompensierte Form ist dann eindeutig und als Laurent-Reihe darstellbar.
 Abschliessend erfolgt die Auflösung der kompensierten Funktion nach der gesuchten Lösung.
 
@@ -35,8 +35,8 @@ Es folgt
 = e^{\varrho_j \left(\log z + 2\pi i\right)} 
 = e^{\varrho_j \log z}  e^{2\pi i\varrho_j}
 = z^{\varrho_j} e^{2\pi i\frac{1}{2\pi i}\log \lambda_j} 
-= z^{\varrho_j} \lambda_j\\
-&= f(z) \lambda_j
+= z^{\varrho_j} \lambda_j
+= f(z) \lambda_j
 \end{align*}
 Durch diese Definition für $\varrho_j$ wird die Funktion $f(z)$ durch die analytische Fortsetzung also ebenfalls mit dem Faktor $\lambda_j$ multipliziert. 
 
@@ -54,7 +54,7 @@ Diese Funktion kann in eine Laurent-Reihe entwickelt werde
 Auflösen nach $w_j$ liefert 
 \[ w_j = z^{\varrho_j}\mathcal{L}_j(z).\]
 
-Bei der Bessel'schen Differentialgleichung trifft dieser Fall bei nicht-ganzzahligen $\nu\in\mathbb{C}\setminus\mathbb{Z}$ auf.
+Bei der Besselschen Differentialgleichung trifft dieser Fall bei nicht-ganzzahligen $\nu\in\mathbb{C}\setminus\mathbb{Z}$ auf.
 Die Matrix $A$ ist dann diagonalisierbar und dieses Vorgehen liefert Lösungen in der bereits bekannten Form der verallgemeinerten Potenzreihe.
 
 
@@ -65,8 +65,8 @@ Die Dreiecksform mit nur einem Eigenwert
 führt zu den Gleichungen
 \[
 \begin{array}{l}
-\sk w_1 = \lambda w_1 \\
-\sk w_2 = \lambda w_2 + w_1
+\sk w_1 = \lambda w_1 \\[1mm]
+\sk w_2 = \lambda w_2 + w_1.
 \end{array}
 \]
 
@@ -112,20 +112,20 @@ Diese Differenz wird durch die analytische Fortsetzung also nicht verändert und
 
 Mit $a = \frac{1}{2\pi i\lambda}$ folgt
 \[\frac{w_2}{w_1} - a\log z =\mathcal{L}_2'(z)\]
-Nun verbleibt nur noch, diese Gleichung nach $w_2$ aufzulösen. 
-\[ w_2 = w_1 \mathcal{L}_2'(z) + a w_1 \log z \]
-Die Form von $w_1$ ist bereits bekannt und kann beim ersten Summanden eingefügt werden
-\[ w_2 = z^\varrho\mathcal{L}_1(z)\mathcal{L}_2'(z) + a w_1 \log z \]
+Nun verbleibt nur noch, diese Gleichung nach $w_2$ aufzulösen:
+\[ w_2 = w_1 \mathcal{L}_2'(z) + a w_1 \log z.\]
+Die Form von $w_1$ ist bereits bekannt und kann beim ersten Summanden eingefügt werden:
+\[ w_2 = z^\varrho\mathcal{L}_1(z)\mathcal{L}_2'(z) + a w_1 \log z.\]
 Eine letzte Vereinfachung ergibt sich aus der Multiplikation der Laurent-Reihen $\mathcal{L}_1$ und $\mathcal{L}_2'$. 
-Die Multiplikation zweier Potenzreihen führt wieder auf eine Potenzreihe, also $\mathcal{L}_1 \mathcal{L}_2'=\mathcal{L}_2$ und folglich
-\[w_2 = z^\varrho\mathcal{L}_2(z) + a w_1 \log z\]
+Die Multiplikation zweier Potenzreihen führt wieder auf eine Potenzreihe, also $\mathcal{L}_1 \mathcal{L}_2'=\mathcal{L}_2$ und folglich:
+\[w_2 = z^\varrho\mathcal{L}_2(z) + a w_1 \log z.\]
 Die zweite Lösung findet sich also als Kombination einer Laurent-Reihe multipliziert mit $z^\varrho$ und der ersten Lösung mal den Logarithmus.
 
 \section{Zusammenfassung}
 In manchen Fällen ist ein Potenzreihen-Ansatz mit Koeffizientenvergleich nicht ausreichend, um für eine Differentialgleichung 2. Ordnung beide linear unabhängigen Lösungen zu finden. 
 Dies liegt daran, dass im Reellen nicht genügend Platz vorhanden ist, eventuelle Singularitäten zu umgehen. 
 Im Reellen gibt es auch kein Pendant zur analytischen Fortsetzung. 
-Die komplexe Mathematik bietet hier eine Möglichkeit, die "hinter der Singularität versteckte Lösung" zu finden, indem man diese Singularität durch die analytische Fortsetzung umgeht. 
+Die komplexe Analysis bietet hier eine Möglichkeit, die ``hinter der Singularität versteckte Lösung'' zu finden, indem man diese Singularität durch die analytische Fortsetzung umgeht. 
 
 In der Herleitung der Lösungsformen für $w_1$ und $w_2$ wurde nirgends eine Annahme getroffen, welche Form die Koeffizienten der Differentialgleichung haben. 
 Für beliebige Differentialgleichungen der Form
