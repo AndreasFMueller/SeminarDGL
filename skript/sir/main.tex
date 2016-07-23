@@ -7,16 +7,22 @@
 \chapterauthor{Max Obrist und Martin Stypinski}
 
 Die \emph{Epidemiologie} ist eine wissenschaftliche Disziplin, welche sich mit Ursache, Verbreitung und Folgen von gesundheitsbezogenen Ereignissen in einer Population befasst.
+\index{Epidemiologie}%
 Im Gegensatz zur klassischen Medizin, befasst sich die Epidemiologie nicht damit, wie eine Krankheit, bzw. eine kranke Person geheilt werden kann, sondern damit, wie sich eine Krankheit ausbreitet und mit welchen Mitteln die Krankheit in der Gesamtbevölkerung besiegt werden kann.
 
-Die \emph{mathematische Epidemiologie} -- womit wir uns in diesem Kapitel ansatzweise befassen -- ist ein Teilgebiet der Epidemiologie, sowie der \emph{theoretischen Biologie}.
-Die mathematische Epidemiologie befasst sich speziell mit mathematischen Modellen zur Ausbreitung von Krankheiten, stellt also Fragen z.B. nach der Form oder der Ausbreitungsgeschwindigkeit von ansteckbaren Krankheiten, beispielsweise von Influenza, Masern oder auch Ebola. 
+Die \emph{mathematische Epidemiologie} --- womit wir uns in diesem Kapitel ansatzweise befassen --- ist ein Teilgebiet der Epidemiologie, sowie der \emph{theoretischen Biologie}.
+\index{Epidemiologie!mathematische}
+Die mathematische Epidemiologie befasst sich speziell mit mathematischen Modellen zur Ausbreitung von Krankheiten, stellt also Fragen z.~B.~nach der Form oder der Ausbreitungsgeschwindigkeit von ansteckbaren Krankheiten, beispielsweise von Influenza, Masern oder auch Ebola. 
+\index{Influenza}%
+\index{Masern}%
 Das \emph{SIR-Model}, welches wir auf den nächsten Seiten detailliert anschauen werden, ist ein mathematisches Modell, mit welchem der Verlauf einer Krankheit in einer Population modelliert werden kann.
+\index{SIR}%
 
 \section{Problemstellung}
 Wir stellen uns vor, dass in einer Bevölkerungsgruppe eine Krankheit ausbricht. 
-Es könnte sich dabei z.B. um einen neuen Influenza-Stamm handeln.
+Es könnte sich dabei z.~B.~um einen neuen Influenza-Stamm handeln.
 Bei einer Grippe wird ein Träger, nachdem er die Krankheit ausgestanden hat, bekanntermassen immun gegen diesen speziellen Stamm, aber nicht gegen andere Stämme von Influenza.
+\index{Grippe}%
 Nachdem die Krankheit bereits ein wenig durch die Bevölkerung gegangen ist, lassen sich anhand der ersten Daten einige Informationen über die Krankheit erfassen.
 Zum Beispiel kann herausgefunden werden, wie infektiös eine Krankheit ist, oder wie lange es nach einer Infektion durchschnittliche dauert, bis ein Träger die Infektion überstanden hat.
 
@@ -27,15 +33,19 @@ Der Patient ist sozusagen also nicht ein einzelner Kranker, sondern eine ganze P
 Der Einfachheit halber nehmen wir an, dass die Grösse der Population konstant ist.
 Die Geburten- und Sterberate in der Bevölkerung werden damit ignoriert.
 Diese Annäherung ist dann möglich, wenn die Lebenserwartung (mehrere dutzend Jahre) im Vergleich zum Krankheitsverlauf (ein paar Wochen bis Monate) sehr gross ist.
-In diesem Fall hat der Bevölkerungswachstum im Verlauf der Krankheit nur einen vergleichbar kleinen Einfluss auf die Population, und kann dadurch vernachlässigt werden.
-Im Falle von langanhaltenden Krankheiten, z.B. HIV/AIDS, wo der Krankheitsverlauf mehrere Jahrzehnte dauern kann, müsste das Modell entsprechend erweitert werden.
+In diesem Fall hat der Bevölkerungswachstum im Verlauf der Krankheit nur einen vergleichbar kleinen Einfluss auf die Population, und kann dadurch vernachläs\-sigt werden.
+Im Falle von langanhaltenden Krankheiten, z.~B.~HIV/AIDS, wo der Krankheitsverlauf mehrere Jahrzehnte dauern kann, müsste das Modell entsprechend erweitert werden.
 
 \section{SIR-Modell}
 Bei allen Krankheiten, welche sich wie die beschriebene Grippe verhalten, lässt sich die Bevölkerung in drei Kompartimente aufteilen. Dabei wird vorausgesetzt, dass ein gesundes Subjekt infiziert wird und anschliessend eine gewisse Zeit lang krank ist. Nach der Genesung ist das Subjekt immun gegen den Erreger und kann somit nicht noch einmal infiziert werden. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
+\index{Kompartiment}%
 \begin{description}
-  \item [Susceptibles ($\mathbf{S}$)] sind Individuen, welche von einem Träger der Krankheit angesteckt werden können. Sie tragen die Krankheit weder in sich, noch sind sie bereits immun gegen dagegen. Werden sie angesteckt, werden sie zu \emph{Infected}.
+  \item [Susceptibles ($\mathbf{S}$)] sind Individuen, welche von einem Träger der Krankheit angesteckt werden kön\-nen. Sie tragen die Krankheit weder in sich, noch sind sie bereits immun gegen dagegen. Werden sie angesteckt, werden sie zu \emph{Infected}.
+\index{Susceptibe}%
   \item [Infected ($\mathbf{I}$)] sind Personen, die zum aktuellen Zeitpunkt mit der Krankheit infiziert sind, und auch andere Individuen infizieren können. Nach einer gewissen Zeit genesen sie, und verschieben sich dann in das Kompartiment \emph{Removed}.
+\index{Infected}%
   \item [Removed ($\mathbf{R}$)] sind jene Individuen, welche Immun gegen die Krankheit sind und nicht erneut angesteckt werden können. Im normalen SIR-Modell wird dabei nicht zwischen genesenen und verstorbenen Individuen unterschieden, weshalb dieses Kompartiment schlicht \emph{Removed} genannt wird.
+\index{Removed}%
 \end{description}
 
 Es wurde bereits erwähnt, dass davon ausgegangen wird, dass die Bevölkerung $N$ konstant ist, also $S + I + R = \text{const}$. Damit muss die Summe aller Ableitungen konstant sein, wie
@@ -43,9 +53,9 @@ Es wurde bereits erwähnt, dass davon ausgegangen wird, dass die Bevölkerung $N
   \frac{d}{dt}\left(S+I+R\right) = 0
 \end{align*}
 aufzeigt. 
-$N$, sowie die die Kompartimente $S$, $I$ und $R$ können dabei sowohl die nummerische Grösse der Population beschreiben, oder aber sie beschreiben die Populationen relativ. 
+$N$, sowie die die Kompartimente $S$, $I$ und $R$ können dabei sowohl die numerische Grösse der Population beschreiben, oder aber sie beschreiben die Populationen relativ. 
 In weiteren Verlauf wird zweiteres gewählt, damit ist zu jedem Zeitpunkt $N = 1$.
-Das SIR-Modell beschreibt nun, wie genau sich eine Krankheit in der Bevölkerung ausbreitet, wie sich also die Individuen durch diese 3 Kompartimente bewegen.
+Das SIR-Modell beschreibt nun, wie genau sich eine Krankheit in der Bevölkerung ausbreitet, wie sich also die Individuen durch diese drei Kompartimente bewegen.
 Um dies zu beschreiben, muss bekannt sein, mit welchen Raten sich die Individuen zwischen den Kompartimenten verschieben.
 
 \begin{figure}[H]
@@ -56,6 +66,7 @@ Um dies zu beschreiben, muss bekannt sein, mit welchen Raten sich die Individuen
 Betrachten wir zuerst den Übergang von $S$ nach $R$.
 Dieser Übergang ist davon abhängig, wie oft ein infiziertes Individuum ein anderes anstecken kann.
 Dies ist natürlich einerseits davon abhängig, wie infektiös eine Krankheit ist, diese Infektionsrate wird $\beta$ genannt.
+\index{Infektionsrate}%
 Gleichzeit ist dieser Übergang davon abhängig, wie viele Individuen überhaupt angesteckt werden können. 
 Pro Zeiteinheit sind dies $\beta N$ Individuen.
 Nun ist aber nicht jedes Individuum der Population $N$ tatsächlich \emph{Susceptible}, die Wahrscheinlichkeit ein solches Individuum zu treffen ist $\frac{S}{N}$.
@@ -72,7 +83,7 @@ Der Übergang von $I$ nach $R$ ist etwas einfacher zu erklären.
 Nach einer gewissen Zeit von durchschnittlich $k$ Zeiteinheiten wird ein \emph{Infected} Individuum wieder gesund.
 Der Kehrwert dieser Dauer wird Genesungsrate genannt und $\gamma$ genannt, also $\gamma = \frac{1}{k}$.
 Von allen \emph{Infected} wird damit pro Zeiteinheit $\gamma I$ ins Kompartiment $R$ verschoben.
-Auch $\gamma$ kann mit bestimmten Massnahmen beeinflusst werden, z.B. indem Medikamente an die Bevölkerung verteilt werden.
+Auch $\gamma$ kann mit bestimmten Massnahmen beeinflusst werden, z.~B.~indem Medikamente an die Bevölkerung verteilt werden.
 
 Damit sind alle Informationen bekannt, welche benötigt werden, um unsere Differentialgleichungen aufzustellen. 
 \[
@@ -103,12 +114,12 @@ Aber es gibt noch weitere Informationen, welche anhand des SIR-Modells gefunden 
 Ein speziell wichtiger Faktor, der anhand dieses Modells bestimmt werden kann, ist die Impfquote, die im nächsten Abschnitt genauer betrachtet wird.
 
 \section{Impfquote}
-Um eine Aussage über die Impfquote zu treffen, reicht es, die verschiedenen Gleichungen genauer zu betrachten, eine nummerische Lösung ist dafür nicht nötig.
+Um eine Aussage über die Impfquote zu machen, reicht es, die verschiedenen Gleichungen genauer zu betrachten, eine numerische Lösung ist dafür nicht nötig.
 Wir beginnen mit der einfachen Gleichung
 \begin{align*}
   \frac{dR}{dt} &= \gamma I,
 \end{align*}
-welche ja gar keine DGL beschreibt. 
+welche ja gar keine Differentialgleichung beschreibt. 
 Es ist bekannt, dass die Gesamtpopulation $N$ konstant ist. 
 Ausserdem ist bekannt, dass alle Kompartimente zusammen die Gesamtpopulation ergeben müssen, also
 \begin{align*}
@@ -128,13 +139,13 @@ Da eine negative Population wenig Sinn macht, müssen $S$ und $I$ immer positiv 
 Dasselbe gilt auch für den Parameter $\beta$, welcher ja die Rate darstellt, mit welcher Individuen vom Kompartiment $S$ nach $I$ verschoben werden.
 Für das Gesamtsystem $-\beta S I$ bedeutet dies, dass die Ableitung von $S$ zu jedem Zeitpunk kleiner oder gleich 0 ist. $S$ kann damit immer nur abnehmen, aber zu keinem Zeitpunkt wieder zunehmen (wie erwähnt wird die Geburtenrate ignoriert).
 
-Interessant ist nun vor allem die DGL
+Interessant ist nun vor allem die Differentialgleichung
 \begin{align*}
   \frac{dI}{dt} & = \beta S I - \gamma I,
 \end{align*}
 welche beschreibt, wie sich das Kompartiment $I$ verhält, also wie sich der Anteil der \emph{Infected} in der Gesamtpopulation verändert.
-Dafür betrachten wir die einzelnen Bestandteile der DGL separat. 
-Im Umkehrschluss zur gerade betrachteten DGL für das Kompartiment $S$ bedeutet $\beta S I$, dass der Anteil der \emph{Infected} von Seiten des Kompartiments $S$ her immer grösser oder gleich 0 ist, also immer zunimmt, oder gleich bleibt.
+Dafür betrachten wir die einzelnen Bestandteile der Differentialgleichung separat. 
+Im Umkehrschluss zur gerade betrachteten Differentialgleichung für das Kompartiment $S$ bedeutet $\beta S I$, dass der Anteil der \emph{Infected} von Seiten des Kompartiments $S$ her immer grösser oder gleich 0 ist, also immer zunimmt, oder gleich bleibt.
 
 \begin{figure}[t]
   \centering
@@ -152,7 +163,7 @@ Dieses Maximum befindet sich dort, wo die Ableitung von $I$ gleich null ist, als
 \begin{align*}
   \frac{dI}{dt} = 0.
 \end{align*}
-Um dies aufzulösen wird die DGL 
+Um dies aufzulösen wird die Differentialgleichung 
 \begin{align*}
   \frac{dI}{dt} = \beta S I - \gamma I
 \end{align*}
@@ -173,14 +184,18 @@ Interessant ist dabei vor allem, dass dieser Punkt einzig und alleine davon abh�
 Der Anteil der \emph{Infected} oder \emph{Removed} ist für diese Aussage nicht relevant. 
 
 Diese Erkenntnis lässt sich nun dazu nutzen, eine Impfquote zu berechnen. 
+\index{Impfquote}
 Ein Impfung bewirkt ja grundsätzlich nichts anderes, als dass ein Individuum ohne den Umweg über das Kompartiment $I$ zu machen, ins Kompartiment $R$ verschoben wird, und damit die Startbedingungen des Systems geändert werden.
-Wenn also ein Anteil von mehr als $\frac{\gamma}{\beta}$ in der Population von Beginn weg im Kompartiment $R$ ist -- im Umkehrschluss bedeutet dies, ein Anteil weniger als $\frac{\gamma}{\beta}$ ist im Kompartiment $S$ -- kann sich eine allfällige Infektion nicht im Gesamtsystem ausbreiten.
+Wenn also ein Anteil von mehr als $\frac{\gamma}{\beta}$ in der Population von Beginn weg im Kompartiment $R$ ist --- im Umkehrschluss bedeutet dies, ein Anteil weniger als $\frac{\gamma}{\beta}$ ist im Kompartiment $S$ --- kann sich eine allfällige Infektion nicht im Gesamtsystem ausbreiten.
 Natürlich kann auch in dieser Situation eine Individuum aus $S$ mit der Krankheit infiziert werden, eine Infektion ist natürlich immer möglich. 
 Allerdings nimmt der Anteil der \emph{Infected} immer mehr ab, es kann also nicht zu einer grossangelegten Epidemie kommen.
 
 \section{Ebola}
+\index{Ebola}%
 Die Ebolafieber-Epidemie 2014  war eine der ausgeprägtesten und stärksten Ebolaepidemien seit der Entdeckung des Ebolavirus 1976 \cite{sir:ebola_history}.
 Eine zentrale Frage während des Ausbruchs, befasst sich mit der Entwicklung und Bekämpfung der Krankheit. Wie war der WHO zu jedem Zeitpunkt klar, welche Entwicklung die Krankheit durchläuft?
+\index{WHO}%
+\index{World Health Organisation}%
 Medien haben stets spekuliert und mit dem Schlimmsten gerechnet, während verschiedene Expertenquellen aber mehrheitlich ruhig blieben. 
 
 
@@ -197,6 +212,7 @@ Deshalb muss ein neuer Zustand eingeführt werden, welcher aufzeigt, dass die Pe
 \end{figure}
 \begin{description}
   \item [Exposed ($\mathbf{E}$)] sind Individuen, welche in Kontakt mit einem Träger der Krankheit kamen, aber die Infektion noch nicht ausgebrochen ist. Die Infektion und der Ausbruch der Krankheit haben noch nicht stattgefunden, sobald dieser Zustand eintritt werden sie zu \emph{Infected}.
+\index{Exposed}%
 \end{description}
 Die Überg"ange des Kompartimentmodells können wie folgt beschrieben werden:
 \[
@@ -211,8 +227,11 @@ Die Überg"ange des Kompartimentmodells können wie folgt beschrieben werden:
 Gekoppelt an das Ebola Beispiel können nun die Faktoren $\beta$, $\gamma$ und $\delta$ erklärt werden. Diese Faktoren können an verschiedene Krankheitsabschnitte gekoppelt werden.
 \begin{description}
   \item [Kontaktrate ($\beta$)] beschreibt die Art und Weise einer Übertragung. In diesem Wert enthalten ist die Wahrscheinlichkeit angesteckt zu werden. $\beta$ bildet aber auch die Prädispositon oder das soziale Gefüge ab. Haben mehr Menschen potentiellen Kontakt zu einem Infizierten, so ist $\beta$ höher.
+\index{Kontaktrate}%
   \item [Inkubationsdauer ($\frac{1}{\delta}$)] beschreibt die Dauer, welche benötigt wird, bis die Krankheit in einem Individuum ausbricht.
+\index{Inkubationsdauer}%
   \item [Infektionsdauer ($\frac{1}{\gamma}$)] beschreibt die Dauer, in welcher die Krankheit im Körper verbleibt. Im Falle einer Genesung oder eines Exitus, ist das Individuum nicht mehr ansteckbar. 
+\index{Infektionsdauer}%
 \end{description}
 Wir verwenden die reziproken Werte $\gamma$ und $\delta$ da mit einem Zeitschlitz gerechnet wird. Wenn die Infektionsdauer 10 Tage beträgt, so ist jeden Tag die Infektion um $\frac{1}{10}$ fortgeschritten.
 \begin{table}[h]
@@ -226,6 +245,8 @@ Wir verwenden die reziproken Werte $\gamma$ und $\delta$ da mit einem Zeitschlit
 \end{tabular}
 \end{table}
 Wie in Abbildung~\ref{fig:ebola_outbreak} unschwer zu erkennen ist, wäre die Entwicklung in Liberia ohne das Eingreifen der WHO fatal gewesen. Etwa 37\% der Bevölkerung wäre an den Folgen von Ebola gestorben. Doch dies war nicht der Fall. Obschon sehr hohe Zahlen verzeichnet wurden, sind diese nicht annähernd auf dem erschreckend hohen Niveau, welches das SIR-Modell vermuten lassen würde. Um die Massnahmen besser zu verstehen, müssen wir zuerst verstehen, welche Parameter wirklich veränderbar sind.
+\index{Liberia}
+\index{Sierra Leone}
 
 Die Parameter $\gamma$ und $\delta$ sind im Grunde starre Werte, welche auch in Liberia ähnlich waren. Die Werte können durch verschiedene Virenstämme unterschiedliche Dauern aufzeigen. Der einzige Parameter, welcher beeinflussbar ist, muss somit $\beta$ sein. Der Parameter $\beta$ bildet das soziale Gefüge und die damit verbundene Wahrscheinlichkeit einer Ansteckung ab. Verschiebt sich dieser Parameter gegen 0, so werden weniger Tote zu beklagen sein, erhöht er sich jedoch, so werden es massiv mehr. Der Einfluss von $\beta$ auf die Mortalitätsrate ist in Abbildung~\ref{fig:beta_change_det} dargestellt.
 
@@ -249,7 +270,8 @@ Die Massnahmen zur Eindämmung der Krankheiten setzten also genau an diesem Ort 
 Nachdem nun die grundlegenden Konzepte des Kompartimentsmodels verstanden sind, können noch viel komplexere und auch absurdere Beispiele modeliert werden. Stellen wir uns vor, die Zombie Apokalypse steht bevor und wir möchten diese gerne zumindes als Gesellschaft überleben. 
 
 Nachdem im Spielfilm 'Shaun of the Dead' \ref{sir:shaun_ot_the_dead} bereits das Thema abgehandelt wurde, ist zumindest klar wie das Model aussehen kann. Wird ein gesunder Mensch von einem Zombie gebissen so ist er infiziert und kann weiter Menschen infizieren. Stirbt eine infizierte Person so wird diese zum Zombie. Im Falle einer fatalen Kopfverletzung ist sowohl die infizierte Person als auch das Zombie tot. Sie übergeht somit in das Kompartiment $R$ (\emph{Removed}). Dieses in Worte gefasste Kompartimentsystem ist in der Abbildung~\ref{fig:zombie_non_healing} visuell dargestellt.
-\begin{figure}[ht]
+\index{Shaun of the Dead}%
+\begin{figure}
   \centering
   \include{sir/models/zombie_model_non_healing}
   \caption{SIZR-Model}
@@ -262,8 +284,7 @@ Vollständigkeitshalber können nun die passenden Differentialgleichungen aufges
    \displaystyle\frac{dS}{dt} & = &-& \beta S Z  &-&  \gamma S & &         & & & & \\
    \displaystyle\frac{dI}{dt} & = & & \beta S Z  & &           &-&\gamma I &-& \zeta I  & & \\
    \displaystyle\frac{dZ}{dt} & = & &            & &           & &         & & \zeta I  &-& \gamma Z \\   
-   \displaystyle\frac{dR}{dt} & = & &            & &  \gamma S &+&\gamma I & &          &+& \gamma Z \\
-
+   \displaystyle\frac{dR}{dt} & = & &            & &  \gamma S &+&\gamma I & &          &+& \gamma Z.
  \end{array}
 \]
 
@@ -289,18 +310,18 @@ Da heute bereits für viele Krankheiten ein Medikament existiert, ist anzunehmen
 Der neue Parameter $\lambda$ beschreibt dabei die Heilungsrate des Systems
 
 \begin{description}
-  \item [Heilungsrate ($\lambda$)] beschreibt die Effektivität sowie die Zeit, in der eine potentielle Heilung wirkt. In diesem Wert enthalten ist die Wahrscheinlichkeit, dass das Medikament wird, die Wahrscheinlichkeit, dass ein Individuum das Medikament erhält -- Je besser ein Medikament verteilt werden kann, desto besser wirkt es -- und wie lange es dauert, bis ein Individuum geheilt ist. Die Heilungsrate ist der Kehrwert der Durchschnittlichen Heilungsdauer in Zeiteinheiten. Dauert es durchschnittlich $k$ Tage, bis ein Individuum geheilt ist, wird $\lambda = \frac{1}{k}$ 
+  \item [Heilungsrate ($\lambda$)] beschreibt die Effektivität sowie die Zeit, in der eine potentielle Heilung wirkt. In diesem Wert enthalten ist die Wahrscheinlichkeit, dass das Medikament wird, die Wahrscheinlichkeit, dass ein Individuum das Medikament erhält --- Je besser ein Medikament verteilt werden kann, desto besser wirkt es --- und wie lange es dauert, bis ein Individuum geheilt ist. Die Heilungsrate ist der Kehrwert der Durchschnittlichen Heilungsdauer in Zeiteinheiten. Dauert es durchschnittlich $k$ Tage, bis ein Individuum geheilt ist, wird $\lambda = \frac{1}{k}$ 
+\index{Heilungsrate}
 \end{description}
 
-Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lambda$ erweitert wurde.
+Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lambda$ erweitert wurde:
 \[
 \arraycolsep=1.4pt\def\arraystretch{2.2}
   \begin{array}{rccrcrcrcrcrcr}
    \displaystyle\frac{dS}{dt} & = &-& \beta S Z  &+& \lambda S Z   &-&  \gamma S & &         & & & & \\
    \displaystyle\frac{dI}{dt} & = & & \beta S Z  &-& \lambda S Z   & &           &-&\gamma I &-& \zeta I\\
    \displaystyle\frac{dZ}{dt} & = & &            & &               & &           & &         & & \zeta I  &-& \gamma Z \\   
-   \displaystyle\frac{dR}{dt} & = & &            & &               & &  \gamma S &+&\gamma I & &          &+& \gamma Z \\
-
+   \displaystyle\frac{dR}{dt} & = & &            & &               & &  \gamma S &+&\gamma I & &          &+& \gamma Z.
  \end{array}
 \]
 
@@ -310,7 +331,8 @@ Es stellt sich ein Gleichgewicht zwischen Menschen und Zombies ein. Aus diesem M
 \begin{figure}[b]
 	\centering
 	\includegraphics[width=.5\textwidth]{sir/images/chemical_clock}
-  \caption[Chemische Uhr]{Eine chemische Uhr ist eine chemische Reaktion, die regelmässig zwischen den zwei verschiedenen Zuständen transparent und trüb hin- und herwechselt.\cite{sir:chemical_clock}}
+  \caption[Chemische Uhr]{Eine chemische Uhr ist eine chemische Reaktion, die regelmässig zwischen den zwei verschiedenen Zuständen transparent und trüb hin- und herwechselt.\cite{sir:chemical_clock}
+\index{chemische Uhr}}
 \end{figure}
 
 In den bisherigen Abschnitten wurde das SIR-Modell als Grundlage für verschiedene epidemiologische Analysen zu Rate gezogen.
