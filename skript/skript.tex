@@ -201,11 +201,11 @@ Hochschule f"ur Technik, Rapperswil, 2016
   \setlength{\labelsep}{5mm}
   \setlength{\rightmargin}{0pt}
 }}{\end{list}}
-\newcounter{uebungsaufgabe}
+\newcounter{uebungsaufgabezaehler}
 % environment fuer uebungsaufgaben
 \newenvironment{uebungsaufgaben}{
-\begin{list}{\arabic{uebungsaufgabe}.}
-  {\usecounter{uebungsaufgabe}
+\begin{list}{\arabic{uebungsaufgabezaehler}.}
+  {\usecounter{uebungsaufgabezaehler}
   \setlength{\labelwidth}{2cm}
   \setlength{\leftmargin}{0pt}
   \setlength{\labelsep}{5mm}
@@ -216,6 +216,26 @@ Hochschule f"ur Technik, Rapperswil, 2016
 \begin{enumerate}
 \renewcommand{\labelenumi}{\alph{enumi})}
 }{\end{enumerate}}
+% Aufgabe
+\newcounter{problemcounter}[chapter]
+\def\aufgabepath{uebungsaufgaben/}
+\def\ainput#1{\input\aufgabepath/#1}
+\def\verbatimainput#1{\expandafter\verbatiminput{\aufgabepath/#1}}
+\def\aufgabetoplevel#1{%
+\expandafter\def\expandafter\inputpath{#1}%
+\let\aufgabepath=\inputpath
+}
+\def\includeagraphics[#1]#2{\expandafter\includegraphics[#1]{\aufgabepath#2}}
+% \aufgabe
+\newcommand{\uebungsaufgabe}[1]{%
+\refstepcounter{problemcounter}%
+\label{#1}%
+\bigskip{\parindent0pt\strut}\hbox{\bf\arabic{problemcounter}. }%
+\expandafter\def\csname aufgabepath\endcsname{\inputpath/}%
+\expandafter\input{uebungsaufgaben/#1.tex}
+}
+\renewcommand\theproblemcounter{\thechapter.\arabic{problemcounter}}
+
 % Loesung
 \def\swallow#1{
 %nothing
