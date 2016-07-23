@@ -16,7 +16,7 @@ Somit wird der Fehler pro berechnetem Wert kleiner und darum die L"osungskurve g
 Dies hat aber zur Folge, dass viel mehr Werte berechnet werden m"ussen, was mehr Rechenaufwand mit sich bringt.
 So wird vor allem auf Kurvenabschnitten mit geringer Richtungs"anderung unn"otig Rechenzeit verschwendet.
 
-Das Ziel dieser Arbeit ist nun, verschiedene Methoden zu entwerfen, welche die Schrittl"ange je nach Gegebenheit anpassen k"onnen. 
+Das Ziel dieser Arbeit ist, verschiedene Methoden zu entwerfen, welche die Schrittl"ange je nach Gegebenheit anpassen k"onnen. 
 Die entwickelten Methoden werden an einem Beispielproblem getestet und nach vorbestimmten Kriterien untereinander verglichen.
 
 \section{Beispiel}
@@ -29,7 +29,8 @@ Um die Schrittl"angenproblematik zu erl"autern, wird ein geeignetes Beispiel ben
 \item Das Konzept der Schrittl"angensteuerung und dessen Vorteile sollten damit auf einfache Weise visualisiert werden k"onnen.
 \end{itemize}
 Auf Grund dieser Voraussetzungen wurde als Beispielproblem das allgemein bekannte \em Zweik"orperproblem\em~gew"ahlt.
-Bei diesem Problem geht es darum, das Verhalten zweier K"orper, welche ohne "aussere Einfl"usse miteinander wechselwirken, zu berechnen. 
+\index{Zweikorperproblem@Zweik\"orperproblem}
+Bei diesem Problem geht es darum, das Verhalten zweier K"orper, welche ohne andere "aussere Einfl"usse miteinander gravitativ wechselwirken, zu berechnen. 
 Die Berechnungen werden zur Vereinfachung nach den Gesetzen und Axiomen von Newton vorgenommen, das heisst die relativistischen Effekte gem"ass Einstein werden ausser Acht gelassen.
 Ausserdem wird von Massepunkten ausgegangen.
 Damit gilt nach dem Newtonschen Gravitionsgesetz folgende Gleichung:
@@ -39,9 +40,9 @@ F_1 = F_2=\frac{G m_1 m_2}{r^2}
 In obiger Formel ist $G$ die universelle Gravitationskonstante und $r$ der Abstand zwischen den beiden Massenpunkten.
 Eine weitere Vereinfachung bringt die Annahme, dass beide Massen gleich sind. 
 Damit erfahren beide K"orper vom Betrag her die selbe Momentanbeschleunigung $a$.
-\begin{equation}
+\[
 F=\frac{G m^2}{r^2}=m a
-\end{equation}
+\]
 Auf die momentane Beschleunigung umgeformt gilt somit:
 \begin{equation}
 a=\frac{G m}{r^2} \label{eq:beschleunigungSkalar}
@@ -49,38 +50,38 @@ a=\frac{G m}{r^2} \label{eq:beschleunigungSkalar}
 F"ur die weitere Betrachtung ist es sinnvoll in mehreren Dimensionen zu rechnen.
 Aus diesem Grund wird die Formel nun aufgewertet.
 Jeder K"orper $K_i$ hat eine bestimmte Position welche durch seinen Ortsvektor $\vec{s_i}$ beschrieben wird.
-Der Abstand zwischen zwei K"orpern $K_1$ und $K_2$ ist damit die Differenz der beiden Ortsvektoren  $\vec{s_1}$ und $\vec{s_2}$:
+Der Abstand zwischen zwei K"orpern $K_1$ und $K_2$ ist damit die Differenz der beiden Ortsvektoren  $\vec{s}_1$ und $\vec{s}_2$:
 \begin{equation} \label{eq:abstand}
-\vec{r_{12}}= \vec{s_2}-\vec{s_1}
+\vec{r}_{12}= \vec{s}_2-\vec{s}_1
 \end{equation}
 Die Gleichung (\ref{eq:beschleunigungSkalar}) sieht in Vektorschreibweise umgeformt also folgendermassen aus:
 \begin{equation} \label{eq:gravitationVektor}
-\vec{a_1} =\frac{G m}{\mid \vec{r_{12}}\mid ^2}\cdot \frac{\vec{r_{12}}}{\mid \vec{r_{12}}\mid}=  \frac{d^2 \vec{s_1}}{dt^2}
+\vec{a_1} =\frac{G m}{| \vec{r}_{12}|^2}\cdot \frac{\vec{r}_{12}}{| \vec{r}_{12}|}=  \frac{d^2 \vec{s}_1}{dt^2}
 \end{equation}
-Der Ausdruck $\frac{\vec{r_{12}}}{\mid \vec{r_{12}}\mid}$ hat die L"ange $1$ und bewirkt das $\vec{a_1}$ in Richtung des K"orpers $K_2$ zeigt.
+Der Ausdruck $\frac{\vec{r}_{12}}{| \vec{r}_{12}|}$ hat die L"ange $1$ und bewirkt das $\vec{a_1}$ in Richtung des K"orpers $K_2$ zeigt.
 Ausserdem ist die Momentanbeschleunigung bekanntermassen die zweite Ableitung des Weges. 
 Das Problem wird weiter vereinfacht, indem die beiden K"orper symmetrisch zum Ursprung angeordnet werden und sich wegen der gleichen Masse auch symmetrisch bewegen.
 Somit sind die beiden Ortsvektoren $s_1$ und $s_2$ antiparallel:
-\begin{equation}
-\vec{s_2}=-\vec{s_1}
-\end{equation}
+\[
+\vec{s}_2=-\vec{s}_1
+\]
 Die Gleichung (\ref{eq:abstand}) reduziert sich damit auf:
-\begin{equation}
-\vec{r_{12}}= -2\vec{s_1}
-\end{equation}
+\[
+\vec{r}_{12}= -2\vec{s}_1
+\]
 Dies hat wiederum Auswirkungen auf Gleichung (\ref{eq:gravitationVektor}):
-\begin{equation}
-\frac{d^2 \vec{s_1}}{dt^2} =\frac{G m}{\mid -2\vec{s_{1}}\mid ^2}\cdot \frac{-2\vec{s_{1}}}{\mid -2\vec{s_{1}}\mid}
-\end{equation}
+\[
+\frac{d^2 \vec{s}_1}{dt^2} =\frac{G m}{| -2\vec{s}_{1}|^2}\cdot \frac{-2\vec{s}_{1}}{| -2\vec{s}_{1}|}
+\]
 In dieser Gleichung kommen jetzt nur Gr"ossen vor, welche im Zusammenhang mit dem K"orper $K_1$ stehen.
 Damit reicht es, wenn nur das Verhalten von einem K"orper untersucht wird. 
-Darum k"onnen auch die Indizes weggelassen werden.
-\begin{equation}
-\frac{d^2\vec{s}}{dt^2}=\frac{G m}{4\mid\vec{s}\mid ^2}\cdot\frac{-\vec{s}}{\mid\vec{s}\mid}=-\frac{G m}{4\mid\vec{s}\mid ^3}{\vec{s}}
-\end{equation}
+Darum k"onnen auch die Indizes weggelassen werden:
+\[
+\frac{d^2\vec{s}}{dt^2}=\frac{G m}{4|\vec{s}\,|^2}\cdot\frac{-\vec{s}}{|\vec{s}\,|}=-\frac{G m}{4|\vec{s}\,|^3}{\vec{s}}.
+\]
 Nun wird das Ganze in Komponentenschreibweise ausgedr"uckt.
-Um das Problem "ubersichtlicher zu gestalten, wird es auf zwei Dimensionen beschr"ankt.
-\begin{equation}
+Um das Problem "ubersichtlicher zu gestalten, wird es auf zwei Dimensionen beschr"ankt:
+\[
 \frac{d^2}{dt^2}
 \begin{pmatrix}
 s_x \\ s_y
@@ -89,38 +90,39 @@ s_x \\ s_y
 -\frac{G m}{4(s_x^2 + s_y^2)^\frac32}
 \begin{pmatrix}
 s_x \\ s_y
-\end{pmatrix}
-\end{equation}
+\end{pmatrix}.
+\]
 Weil $\vec{s}$ auf der rechten Seite nur mit einem Skalar multipliziert wird und beim Ableiten eines Vektors jede Komponente einzeln abgeleitet wird, kann die Gleichung aufgeteilt werden.
 Damit ergibt sich folgendes Gleichungssystem zweiter Ordnung:
-\begin{equation} \label{eq:kompSchreibwEins}
-\frac{d^2s_x}{dt^2}=-\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32}
-\end{equation}
-\begin{equation} \label{eq:kompSchreibwZwei}
-\frac{d^2s_y}{dt^2}=-\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
-\end{equation}
+\begin{align}
+\frac{d^2s_x}{dt^2}&=-\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32},
+\label{eq:kompSchreibwEins}
+\\
+\frac{d^2s_y}{dt^2}&=-\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}.
+\label{eq:kompSchreibwZwei}
+\end{align}
 Um die L"osung der Differentialgleichung mit bestimmten Anfangsbedingungen zu berechnen, muss diese in einem bestimmten Format dem L"osungsalgorithmus "ubergeben werden.
 In diesem Fall wird das Mathematikprogramm MATLAB verwendet. 
+\index{MATLAB}%
 "Ubliche Solver in MATLAB verlangen Differentialgleichungssysteme mit Differentialgleichungen erster Ordnung.
-Aus diesem Grund muss die Ordnung der beiden Gleichungen (\ref{eq:kompSchreibwEins}) und (\ref{eq:kompSchreibwZwei}) reduziert werden. 
-\begin{equation}
+Aus diesem Grund muss die Ordnung der beiden Gleichungen (\ref{eq:kompSchreibwEins}) und (\ref{eq:kompSchreibwZwei}) reduziert werden:
+\begin{align*}
 \frac{d}{dt} \begin{pmatrix}
 s_x \\ 
 s_{x1}\\
-\end{pmatrix} = \begin{pmatrix}
-s_{x1} \\ 
--\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32} \\
-\end{pmatrix}
-\end{equation}
-\begin{equation}
+\end{pmatrix} &= \begin{pmatrix}
+s_{x1} \\[1mm]
+\displaystyle-\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32} \\
+\end{pmatrix},
+\\
 \frac{d}{dt} \begin{pmatrix}
 s_y \\ 
 s_{y1}\\
-\end{pmatrix} = \begin{pmatrix}
-s_{y1} \\ 
--\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32} \\
-\end{pmatrix}
-\end{equation}
+\end{pmatrix} &= \begin{pmatrix}
+s_{y1} \\[1mm]
+\displaystyle-\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32} \\
+\end{pmatrix}.
+\end{align*}
 Zusammengesetzt ergibt sich folgendes Differentialgleichungssystem:
 \begin{equation}
 \frac{d}{dt} \begin{pmatrix}
@@ -128,14 +130,15 @@ s_x \\
 s_y \\
 s_{x1}\\
 s_{y1}
-\end{pmatrix} = \begin{pmatrix}
+\end{pmatrix} =
+\begin{pmatrix}
 s_{x1} \\ 
-s_{y1}\\
--\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32} \\
--\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
-\end{pmatrix}
+s_{y1}\\[1mm]
+\displaystyle-\frac{G m s_x}{4(s_x^2 + s_y^2)^\frac32} \\[4mm]
+\displaystyle-\frac{G m s_y}{4(s_x^2 + s_y^2)^\frac32}
+\end{pmatrix}.
 \end{equation}
-Weil MATLAB (abgeleitet von Matrix Laboratory) bevorzugt mit Matrizen und Vektoren rechnet, werden die Variablen entsprechend substituiert.
+Weil MATLAB (abgeleitet von Matrix Laboratory) bevorzugt mit Matrizen und Vektoren rechnet, werden die Variablen entsprechend substituiert:
 So wird $s_x$ zu $z_1$, $s_y$ zu $z_2$, $s_{x1}$ zu $z_3$ und $s_{y1}$ zu $z_4$.
 \begin{equation}\label{eq:zustandsraumdarst}
 \frac{d \vec{z}}{dt}=\frac{d}{dt} \begin{pmatrix}
@@ -145,10 +148,10 @@ z_3 \\
 z_4
 \end{pmatrix} = \begin{pmatrix}
 z_3 \\ 
-z_4 \\
--\frac{G m z_1}{4(z_1^2 + z_2^2)^\frac32} \\
--\frac{G m z_2}{4(z_1^2 + z_2^2)^\frac32}
-\end{pmatrix}
+z_4 \\[1mm]
+\displaystyle-\frac{G m z_1}{4(z_1^2 + z_2^2)^\frac32} \\[4mm]
+\displaystyle-\frac{G m z_2}{4(z_1^2 + z_2^2)^\frac32}
+\end{pmatrix}.
 \end{equation}
 In MATLAB wird die Gleichung als Funktion definiert.
 "Ubergeben wird die aktuelle Zeit \texttt{t} und der Zustand \texttt{z}.
@@ -170,7 +173,7 @@ function dz = planets(t, z)
 end
 \end{lstlisting}
 
-Bei Bild \ref{image:ellipseOptimal} sieht man eine exakte L"osung von vorher beschriebenem Problem.
+Bei Bild \ref{image:ellipseOptimal} sieht man eine exakte L"osung des vorher beschriebenen Probles.
 Die Anfangsbedingungen wurden manuell so eingestellt, dass die L"osungskurven der beiden K"orper zwei Ellipsen ergeben.
 Allein durch die "Anderung der Anfangsbedingungen kann der L"osungsalgorithmus an seine Grenzen gebracht werden, indem eine L"osungskurve erzeugt wird, welche sowohl lange gerade Strecken als auch enge Kurven beinhaltet.
 Dies ist in Bild \ref{image:hyperbelOptimal} ersichtlich.
@@ -197,7 +200,7 @@ Weil die Schrittl"ange die Einheit der Zeit hat, stellt dies eine Herausforderun
 
 \section{Runge-Kutta-Schritt\label{section:schrittlaenge:runge-kutta}}
 \rhead{Runge-Kutta-Verfahren}
-
+\index{Runge-Kutta-Verfahren}%
 Nun wird ein Algorithmus ben"otigt, mit dem man die Berechnung des Beispielproblems vornehmen kann.
 MATLAB und viele andere Mathematikprogramme beinhalten bereits solche Algorithmen.
 Ein in MATLAB weit verbreitetes Beispiel daf"ur ist der \texttt{ode45}, welcher mit einem Runge-Kutta-Verfahren f"unfter Ordnung arbeitet.
@@ -254,7 +257,7 @@ function [t, y] = fixRk4(ode, x, y0, h)
 end
 \end{lstlisting}
 
-Mit der MATLAB-Funktion \texttt{fixRk4} \ref{code:fixRk4} kann nun ein Problem mit einer vorgew"ahlten Schrittl"ange gel"ost werden.
+Mit der MATLAB-Funktion \texttt{fixRk4} \ref{code:fixRk4} kann nun ein Problem mit einer vorgew"ahlten Schritt\-l"ange gel"ost werden.
 Diese Schrittl"ange bleibt "uber die gesamte Zeitspanne konstant.
 Dabei wird der Funktion neben der Problemfunktion \texttt{ode} auch die Zeitspanne \texttt{x}, die Anfangsbedingunen \texttt{y0} sowie die Schrittl"ange \texttt{h} "ubergeben.
 Die Zeitspanne \texttt{x} ist ein Vektor bestehend aus den zwei Komponenten Anfangszeitpunkt \texttt{x(1)} und Endzeitpunkt \texttt{x(2)}.
@@ -288,9 +291,9 @@ F"ur eine korrekte Berechnung sind deshalb sehr viele Schritte n"otig, wie Tabel
 \begin{tabular}{|l|r|r|}
 \hline
 Plot \# & Anzahl Schritte & Schrittl"ange\\ \hline
-1 & 60'000 & $10^{-11}$\\ \hline
-2 & 20'000 & $3 \cdot 10^{-11}$\\ \hline
-3 & 6'000 & $10^{-10}$\\ \hline
+1 & 60'000 & $10^{-11}$\\
+2 & 20'000 & $3 \cdot 10^{-11}$\\
+3 & 6'000 & $10^{-10}$\\
 \end{tabular}
 \caption{Vergleich Schrittl"ange: Hyperbel}
 \label{table:fixStepVergleichHyperbel}
@@ -311,6 +314,7 @@ Denn so k"onnen die mehr oder weniger geraden Strecken mit einer grossen Schritt
 \rhead{Variable Schrittl"ange}
 
 Um die Schrittl"ange adaptiv gestalten zu k"onnen, wird ein Kriterium ben"otigt, welches eine Aussage dar"uber macht, wie gross die Schrittl"ange sein sollte.
+\index{adaptive Schrittlange@adaptive Schrittl\"ange}
 Je gr"osser die Kr"ummung der Kurve, umso kleiner sollte die Schrittl"ange sein.
 Die Schwierigkeit dabei ist, dass weder die aktuelle Kr"ummung noch der zuk"unftige Verlauf der Kurve bekannt ist.
 Weiter ist es diffizil, einer bestimmten Kr"ummung die entsprechende Dimension der Schrittl"ange zuzuordnen.
@@ -382,9 +386,9 @@ Ansonsten wird der grosse Schritt verwendet.
 \begin{tabular}{|l|r|}
 \hline
 Verfahren & Anzahl Schritte\\ \hline
-fixStep & 60'000\\ \hline
-myOde & 128\\ \hline
-ode45 & 197\\ \hline
+fixStep & 60'000\\
+myOde & 128\\
+ode45 & 197\\
 \end{tabular}
 \caption{Vergleich Verfahren}
 \label{table:vergleichVerfahren}
@@ -432,16 +436,16 @@ Weil die Algorithmen nicht unfehlbar und zum Teil sogar recht ungenau sind, kann
 \begin{tabular}{|l|l|r|}
 \hline
 Plot & Toleranz & Anzahl Schritte\\ \hline
-1 & 0.0001 & 128\\ \hline
-2 & 0.001 & 69\\ \hline
-3 & 0.01 & 33\\ \hline
+1 & 0.0001 & 128\\
+2 & 0.001 & 69\\
+3 & 0.01 & 33\\
 \end{tabular}
 \caption{myOde mit verschiedenen Toleranzen}
 \label{table:myOdeToleranz}
 \end{table}
 
 Zus"atzlich zum vorgestellten Algorithmus \texttt{myOde} wurde noch ein anderer Ansatz verfolgt.
-Die Idee hinter diesem war, die Kr"ummung der schon berechneten Kurve zu analysieren und daraus ein R"uckschluss auf die zuk"unftige Schrittl"ange zu treffen.
+Die Idee dahinter war, die Kr"ummung der schon berechneten Kurve zu analysieren und daraus ein R"uckschluss auf die zuk"unftige Schrittl"ange zu treffen.
 So sollte die Schrittl"ange kleiner werden, wenn die Kurve enger wird und umgekehrt.
 Das Problem dieser Variante ist, das es kein Anhaltspunkt gibt, welcher aussagen kann, ob die Schrittl"ange schon genug klein oder gen"ugend gross ist.
 So werden bei einer sich verengenden Kurve die Schritte beliebig klein. Dies kann abgefangen werden, wenn zum Beispiel eine minimale Schrittweite als Parameter definiert wird.

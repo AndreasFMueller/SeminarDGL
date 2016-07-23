@@ -1,7 +1,8 @@
 \section{Wellengleichung}
+\rhead{Wellengleichung}
 
 
-Wie im Kapitel 9 bereits gesehen, lassen sich Wellen durch Differentialgleichungen beschreiben. Allgemein können beliebige Wellen, z.B. Schallwellen oder Elektromagnetische Wellen, durch folgende Gleichung beschrieben werden:
+Wie im Kapitel 9 bereits gesehen, lassen sich Wellen durch Differentialgleichungen beschreiben. Allgemein können beliebige Wellen, z.B. Schallwellen oder elektromagnetische Wellen, durch folgende Gleichung beschrieben werden:
 
 \begin{equation}
 \frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}.
@@ -20,12 +21,15 @@ In diesem Kapitel wollen wir uns auf rotationssymmetrische Anwendungen der Welle
 \end{equation} 
 Durch Einsetzen erhalten wir folgende Gleichung:
 \begin{equation}
-\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2} = \frac{1}{r} \frac{\partial}{\partial r}(r \frac{\partial u}{\partial r}) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2}.
+\frac{1}{c^2} \frac{\partial^2 u}{\partial t^2}
+=
+\frac{1}{r} \frac{\partial}{\partial r}\biggl(r \frac{\partial u}{\partial r}\biggr) + \frac{1}{r^2} \frac{\partial^2 u}{\partial \phi^2} + \frac{\partial^2 u}{\partial z^2}.
 \end{equation}
 
 \subsection[Lösung durch Variablenseparation]{Lösung durch Variablenseparation}
 
 Wir wollen nun die Wellengleichung in Zylinderkoordinaten lösen. Dazu verwenden wir die Separationsmethode.
+\index{Separationsmethode}
 Bei der Separationsmethode versuchen wir die Funktion $u(r, \phi, t)$ durch ein Produkt der Funktionen darzustellen, welche jeweils nur von einer Variable abhängen: $R(r)\Phi(\phi)T(t)$
 Somit erhalten wir folgende Gleichung:
 
@@ -36,8 +40,9 @@ Somit erhalten wir folgende Gleichung:
 Wir teilen nun durch die einzelnen Funktionen, damit die Funktionen alleine stehen:
 \begin{equation}
 \frac{1}{c^2} R(r) \Phi(\phi) T''(t) = \frac{1}{r}(R'(r) + rR''(r)) \Phi(\phi) T(t) + \frac{1}{r^2} R(r) \Phi''(\phi) T(t)
-\Bigl\lvert
-:R(r) : T(t) :\Phi(\phi)
+\quad
+\Bigl\lvert\quad
+:R(r)T(t)\Phi(\phi)
 .
 \end{equation}
 Somit erhalten wir:
@@ -73,6 +78,7 @@ Setzen wir die Konstante in die Gleichung ein und wiederholen den obigen Schritt
 .
 \end{equation}
 Formt man diese Gleichung nun um, so erhält man die Besselsche Differentialgleichung:
+\index{Besselsche Differentialgleichung}
 \begin{equation}
 r^2 R''(r) + r R'(r) - (\mu r^2 + n^2)R(r) = 0
 \label{eq:besselsche_dgl}
