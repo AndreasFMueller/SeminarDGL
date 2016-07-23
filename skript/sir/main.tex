@@ -19,6 +19,7 @@ Das \emph{SIR-Model}, welches wir auf den nächsten Seiten detailliert anschauen
 \index{SIR}%
 
 \section{Problemstellung}
+\rhead{Problemstellung}
 Wir stellen uns vor, dass in einer Bevölkerungsgruppe eine Krankheit ausbricht. 
 Es könnte sich dabei z.~B.~um einen neuen Influenza-Stamm handeln.
 Bei einer Grippe wird ein Träger, nachdem er die Krankheit ausgestanden hat, bekanntermassen immun gegen diesen speziellen Stamm, aber nicht gegen andere Stämme von Influenza.
@@ -37,6 +38,7 @@ In diesem Fall hat der Bevölkerungswachstum im Verlauf der Krankheit nur einen 
 Im Falle von langanhaltenden Krankheiten, z.~B.~HIV/AIDS, wo der Krankheitsverlauf mehrere Jahrzehnte dauern kann, müsste das Modell entsprechend erweitert werden.
 
 \section{SIR-Modell}
+\rhead{SIR-Modell}
 Bei allen Krankheiten, welche sich wie die beschriebene Grippe verhalten, lässt sich die Bevölkerung in drei Kompartimente aufteilen. Dabei wird vorausgesetzt, dass ein gesundes Subjekt infiziert wird und anschliessend eine gewisse Zeit lang krank ist. Nach der Genesung ist das Subjekt immun gegen den Erreger und kann somit nicht noch einmal infiziert werden. Weitere klassische Beispiele für Krankheiten, die sich nach diesem Muster ausbreiten, sind die typischen Kinderkrankheiten Masern, Mumps oder Röteln.
 \index{Kompartiment}%
 \begin{description}
@@ -114,6 +116,7 @@ Aber es gibt noch weitere Informationen, welche anhand des SIR-Modells gefunden 
 Ein speziell wichtiger Faktor, der anhand dieses Modells bestimmt werden kann, ist die Impfquote, die im nächsten Abschnitt genauer betrachtet wird.
 
 \section{Impfquote}
+\rhead{Impfquote}
 Um eine Aussage über die Impfquote zu machen, reicht es, die verschiedenen Gleichungen genauer zu betrachten, eine numerische Lösung ist dafür nicht nötig.
 Wir beginnen mit der einfachen Gleichung
 \begin{align*}
@@ -191,6 +194,7 @@ Natürlich kann auch in dieser Situation eine Individuum aus $S$ mit der Krankhe
 Allerdings nimmt der Anteil der \emph{Infected} immer mehr ab, es kann also nicht zu einer grossangelegten Epidemie kommen.
 
 \section{Ebola}
+\rhead{Ebola}
 \index{Ebola}%
 Die Ebolafieber-Epidemie 2014  war eine der ausgeprägtesten und stärksten Ebolaepidemien seit der Entdeckung des Ebolavirus 1976 \cite{sir:ebola_history}.
 Eine zentrale Frage während des Ausbruchs, befasst sich mit der Entwicklung und Bekämpfung der Krankheit. Wie war der WHO zu jedem Zeitpunkt klar, welche Entwicklung die Krankheit durchläuft?
@@ -267,6 +271,7 @@ Die Massnahmen zur Eindämmung der Krankheiten setzten also genau an diesem Ort 
 \end{figure}
 
 \section{Zombies}
+\rhead{Zombies}
 Nachdem nun die grundlegenden Konzepte des Kompartimentsmodels verstanden sind, können noch viel komplexere und auch absurdere Beispiele modeliert werden. Stellen wir uns vor, die Zombie Apokalypse steht bevor und wir möchten diese gerne zumindes als Gesellschaft überleben. 
 
 Nachdem im Spielfilm 'Shaun of the Dead' \ref{sir:shaun_ot_the_dead} bereits das Thema abgehandelt wurde, ist zumindest klar wie das Model aussehen kann. Wird ein gesunder Mensch von einem Zombie gebissen so ist er infiziert und kann weiter Menschen infizieren. Stirbt eine infizierte Person so wird diese zum Zombie. Im Falle einer fatalen Kopfverletzung ist sowohl die infizierte Person als auch das Zombie tot. Sie übergeht somit in das Kompartiment $R$ (\emph{Removed}). Dieses in Worte gefasste Kompartimentsystem ist in der Abbildung~\ref{fig:zombie_non_healing} visuell dargestellt.
@@ -328,6 +333,7 @@ Analog dazu das Differentialgleichungssystem, welches nun um den Parameter $\lam
 Es stellt sich ein Gleichgewicht zwischen Menschen und Zombies ein. Aus diesem Model können wir entnehmen, dass man im Falle einer Zombieapokalypse den Kopf nicht verlieren sollte und stets die richtige Medikation bei sich haben müsste.
 
 \section{Weitere Anwendungsfälle}
+\rhead{Weitere Anwendungsf"alle}
 \begin{figure}[b]
 	\centering
 	\includegraphics[width=.5\textwidth]{sir/images/chemical_clock}
