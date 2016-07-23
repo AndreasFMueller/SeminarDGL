@@ -85,12 +85,12 @@ direkt aus den einzelnen Spalten ablesen.
 
 Aus den in der Tabelle berechneten $a_k$ l"asst sich eine allgemeine 
 Rekursionsformel
-\begin{equation*}
-	\begin{split}
-		a_{k+2} &= -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k) \\
-		\Leftrightarrow \qquad
-		a_k &= -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2}), \qquad k \in 
-		\mathbb{N} \setminus \{0, 1\}, a_{k<0} = 0
-	\end{split}
-\end{equation*}
+\index{Rekursionsformel}%
+\begin{align*}
+	a_{k+2} &= -\frac{1}{(k+2)(k+1)} (aa_{k-2}+ba_{k-1}+ca_k) \\
+	\Leftrightarrow \qquad
+	a_k &= -\frac{1}{k(k-1)} (aa_{k-4}+ba_{k-3}+ca_{k-2}), \qquad k \in 
+	\mathbb{N} \setminus \{0, 1\}
+	&&&a_{k<0} &= 0
+\end{align*}
 aufstellen.

@@ -1,10 +1,13 @@
 \section{Stolpersteine}
+\rhead{Stolpersteine}
 Bei der Berechnung der Welle mittels Potenzreihen gibt es mehrere Dinge, die 
 beachtet werden m"ussen. Von besonderer Bedeutung sind die Genauigkeit der 
 L"osungen f"ur die jeweiligen $x$, sowie die Zeit, welche f"ur die 
 Berechnung ben"otigt wird.
 
 \subsubsection{Genauigkeit}
+\index{Rechengenauigkeit}%
+\index{Genauigkeit}%
 Gem"ass
 \begin{equation*}
 	y(x) = \sum_{k=0}^{\textcolor{red}{\infty}}a_kx^k
@@ -41,7 +44,16 @@ Kapitel besprochenen Probleme, sondern sind inh"arent zu allen
 Berechnungsaufgaben die mit Computern ausgef"uhrt werden.
 
 \subsubsection{Berechnungszeit}
+\index{Berechnungszeit}%
 
 \input{./wellen/sections/algorithms/alg-potenzreihe.tex}
 
 \input{./wellen/sections/algorithms/alg-potenzreihe-alt.tex}
+
+Mit dieser Diskussion verlassen wir das parabolische Profil und betrachten 
+allgemeinere Aspekte wie Stolpersteine bei der Ausf"uhrung solcher Berechnungen 
+oder die verallgemeinerte L"osung von Differentialgleichungen 
+dieser Art mit einem Profil der Form
+\begin{equation*}
+p(x) = \sum_{i=0}^{n} \lambda_i x^i.
+\end{equation*}

@@ -1,5 +1,6 @@
 \section{\texorpdfstring{$p(x) = \sum_{i=0}^{n}\lambda_ix^i$}{p(x) = summe i = 
 0 bis n lambdai xi}}
+\rhead{$p(x) = \sum_{i=0}^{n}\lambda_ix^i$}
 
 Aufgrund der bisherigen Beobachtungen ist es nun m"oglich, eine 
 allgemein geltende Potenzreihenl"osung f"ur diese Art Differentialgleichungen 
@@ -19,11 +20,12 @@ mindestens zwei Elementen zwischen den verschiedenen $a_k$. Zus"atzlich erh"oht
 sich diese jeweils um den Index $i$ aufgrund der Verschiebung der $a_k$ nach 
 rechts, wie im Abschnitt \ref{subsec:wellen:Potenzreihenansatz} gezeigt wurde. 
 Daraus folgt die Rekursionsformel
-\begin{equation}
-	a_k = -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i}\lambda_i, \quad n \ge 0, 
-	a_{k-2-i < 0} =  0
+\index{Rekursionsformel}%
+\begin{align}
+	a_k &= -\frac{1}{k(k-1)}\sum_{i=0}^{n}a_{k-2-i}\lambda_i, \quad n \ge 0, 
+	&a_{k-2-i < 0} &=  0
 	\label{eq:wellen:allgemeineak}
-\end{equation}
+\end{align}
 f"ur ein Polynom $n$-ten Grades.
 
 \subsubsection{Schlussfolgerungen}
@@ -33,10 +35,10 @@ Werkzeug mit dem man, allein durch Einsetzen der Parameter, die Koeffizienten
 der Potenzreihenl"osung f"ur diese Art von Differentialgleichungen erh"alt.
 
 Sie erlaubt es uns zudem auch noch weitere Schl"usse zu ziehen. Man kann direkt 
-aus der Form der L"osung des gegebenen Polynomprofils ablesen, wie sich die 
-Differentialgleichung verhalten wird. Soll heissen, positive L"osungen 
+aus der Form des gegebenen Polynomprofils ablesen, wie sich die 
+Differentialgleichung verhalten wird. Soll heissen, positive Werte
 f"uhren zu einer Wellenform, die Sinus und Cosinus enthalten, negative 
-L"osungen liefern hingegen eine exponentielle Form aus Sinus Hyperbolicus und 
+Werte liefern hingegen eine exponentielle Form aus Sinus Hyperbolicus und 
 Cosinus Hyperbolicus.
 
 \subsubsection{Berechnungsaufwand}

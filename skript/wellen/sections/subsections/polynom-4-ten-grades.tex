@@ -3,15 +3,13 @@
 
 Auch ein Polynom $4$-ten Grades stellt kein Problem mehr dar. In die 
 Formel (\ref{eq:wellen:allgemeineak}) eingesetzt, ergibt sich
-\begin{equation*}
-	\begin{split}
+\begin{align*}
 		a_k &= -\frac{1}{k(k-1)} (aa_{k-2-4} + 
 		ba_{k-2-3} + ca_{k-2-2} + da_{k-2-1} +ea_{k-2-0})
 		\\
 		&= -\frac{1}{k(k-1)} (aa_{k-6} + ba_{k-5} + 
-		ca_{k-4} + da_{k-3} +ea_{k-2}), \qquad a_{k<0} = 0.
-	\end{split}
-\end{equation*}
+		ca_{k-4} + da_{k-3} +ea_{k-2}), &a_{k<0} &= 0.
+\end{align*}
 
 Vergleichen wir die zwei Wellen, die beim Polynom $2$-ten und $4$-ten Grades 
 entstehen (Abbildung \ref{fig:wellen:poly4-dgl}), kann man sehen, 
@@ -31,6 +29,13 @@ bis zur vierten Nullstelle folgt nochmals eine Exponentialfunktion, die nachher
 bis $+\infty$ in eine Schwingung "uber geht. Dies best"atigt, dass die beim 
 parabolischen Profil gefunden Erkenntnisse "uber die Form der L"osungskurve 
 allgemein anwendbar sind.
+
+% aus polynom-1-ten-grades.tex hierhin verschoben wegen Buchlayout
+\begin{figure}
+	\includegraphics[width=1\hsize]{./wellen/images/allgemein/n1.pdf}
+	\caption{L"osung Airy-Differentialgleichung}
+	\label{fig:wellen:airy-dgl}
+\end{figure}
 
 \begin{figure}
 	\includegraphics[width=1\hsize]{./wellen/images/allgemein/n4.pdf}

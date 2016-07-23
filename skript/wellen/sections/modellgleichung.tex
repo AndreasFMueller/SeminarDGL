@@ -2,6 +2,7 @@
 In diesem Abschnitt wollen wir zuerst aufzeigen, woher die Gleichung 
 \ref{eq:wellen:pxdgl} kommt. Gem"ass \cite{wellen:smirnow2} lautet 
 die allgemeine Differentialgleichung einer Welle
+\index{Wellengleichung}%
 \begin{equation*}
 	\frac{\partial^2 u}{\partial t^2}
 	=
@@ -13,7 +14,7 @@ die allgemeine Differentialgleichung einer Welle
 	\right).
 	\label{eq:wellen:allgemeineDGL}
 \end{equation*}
-Da wir die Ausbreitung der Welle nur im Querprofil des Kanals betrachten, 
+Da wir die Ausbreitung der Welle nur im Querprofil eines Kanals betrachten, 
 besteht lediglich noch eine Abh"angigkeit von der $x$-Koordinate. Die Gleichung 
 vereinfacht sich zu
 \begin{equation}
@@ -29,29 +30,30 @@ vereinfacht sich zu
 Zur L"osung der vereinfachten Wellengleichung 
 (\ref{eq:wellen:allgemeineDGLvereinfacht}) wird mittels Separation die von der 
 Zeit $t$ und der Ortskoordinate $x$ abh"angigen Funktion $u(x,t)$ in ein 
-Produkt zweier Funktionen $X(x)$ und $T(t)$ umgewandelt.
+Produkt zweier Funktionen $X(x)$ und $T(t)$ umgewandelt:
 \begin{equation*}
 	u (x,t) = X(x) T(t)
-	\Rightarrow T''(t) X(x) = c^2 X''(x)T(t)
+	\quad
+	\Rightarrow\quad T''(t) X(x) = c^2 X''(x)T(t).
 \end{equation*}
-Nach einer Division durch $T(x)X(x)$ sind die Variablen $x$ und $t$ separiert.
+Nach einer Division durch $T(x)X(x)$ sind die Variablen $x$ und $t$ separiert:
 \begin{equation*}
 	\frac{T''(t)}{T(t)}
 	=
-	c^2 \frac{X''(x)}{X(x)}
+	c^2 \frac{X''(x)}{X(x)}.
 \end{equation*}
 Der neu entstandene Term kann nur funktionieren, wenn beide Seiten der 
-Gleichung konstant sind.
+Gleichung konstant sind:
 \begin{equation*}
 	\frac{T''(t)}{T(t)}
 	=
-	c^2 \frac{X''(x)}{X(x)} = \text{konstant} = \lambda
+	c^2 \frac{X''(x)}{X(x)} = \text{konstant} = \lambda.
 \end{equation*}
 Jede Seite der Gleichung führt daher, f"ur jeweils eine der Funktionen, zu 
-einer analytisch l"osbaren Differentialgleichung zweiter Ordnung.
+einer analytisch l"osbaren Differentialgleichung zweiter Ordnung:
 \begin{align*}
 	T''(t) &= \lambda T(t) \\
-	X''(x) &= \frac{\lambda}{c^2}X(x)
+	X''(x) &= \frac{\lambda}{c^2}X(x).
 \end{align*}
 
 In dieser Untersuchung wird lediglich ein einzelner Zeitpunkt betrachtet.
@@ -66,6 +68,7 @@ sich die Welle ausbreitet, betrachtet werden.
 
 Wie bereits erw"ahnt, wird im Abschnitt \ref{sec:wellen:p(x)=parabel} auf den 
 speziellen Fall eines parabolischen Profils eingegangen. Die zu untersuchende 
-Differentialgleichung ergibt sich hiermit zu der Titelgleichung, mit den frei 
+Differentialgleichung ergibt sich hiermit die Titelgleichung, mit den frei 
 w"ahlbaren Parameter ${a,b,c} \in \mathbb{R}$, welche die Form des 
 parabolischen Profils beschreiben.
+
