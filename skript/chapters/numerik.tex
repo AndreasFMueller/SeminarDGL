@@ -53,7 +53,14 @@ y'=-\alpha y,\qquad y(0)=y_0
 \label{numerik:expdgl}
 \end{equation}
 numerisch zu l"osen. 
+Die L"osung ist nat"urlich bekannt, es ist 
+\begin{equation}
+y(x)=y_0e^{-\alpha x}.
+\label{numerik:beispiel-loesung}
+\end{equation}
 Dazu unterteilen wir die $x$-Achse in diskrete Abschnitte der L"ange $h$,
+genannt die {\em Schrittweite},
+\index{Schrittweite}%
 und bezeichnen die Teilpunkte mit $x_k=kh$.
 Das Ziel ist jetzt, $y(x_k)$ n"aherungsweise zu berechnen.
 Wir schreiben $y_k$ f"ur die N"aherungswerte von $y(x_k)$.
@@ -65,7 +72,7 @@ y(x+\Delta x)\simeq y(x) + y'(x)\cdot\Delta x
 (Abbildung~\ref{numerik:lineareapproximation}).
 F"ur die Punkte $x_k$ bedeutet das
 \[
-y(x_{k+1})\simeq y(x_{k})+y'(x_k)h.
+y(x_{k+1})\simeq y(x_{k})+y'(x_k)\cdot h.
 \]
 Die Differentialgleichung liefert Werte f"ur $y'(x_k)$ aus $x_k$ und $y(x_k)$,
 damit k"onnen wir aus dieser Approximation ein allgemeines
@@ -73,7 +80,7 @@ N"aherungsverfahren f"ur die L"osung einer Differentialgleichung
 konstruieren.
 
 \begin{satz}[Euler-Verfahren]
-\index{Euler-Verfahren}
+\index{Euler-Verfahren}%
 Die Differentialgleichung
 \begin{equation}
 y'=f(x,y),\qquad y(0)=y_0
@@ -90,7 +97,7 @@ der Differentialgleichung~(\ref{numerik:eulerdgl}) ist.
 
 Dieses Verfahren ist nicht besonders gut, wie wir im Folgenden zeigen
 wollen.
-Die Diskussion soll uns aber zeigen, worauf bei der Weiterentwicklung
+Die Diskussion soll vor allem zeigen, worauf bei der Weiterentwicklung
 des Verfahrens geachtet werden muss.
 
 Im vorliegenden Beispiel liefert die
@@ -204,6 +211,7 @@ y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}).
 \]
 In jedem einzelnen Schritt entsteht ein Fehler, dessen Gr"osse wir
 aus der Taylor-Entwicklung
+\index{Tayler-Entwicklung}
 \[
 y(x+\Delta x)=
 y(x) + y'(x)\cdot \Delta x + R(x) \Delta x^2
@@ -236,13 +244,14 @@ Genauigkeit gewinnen, sondern gleich deren zwei.
 
 Man nennt ein Verfahren, bei dem der Gesamt-Fehler von der Gr"ossenordnung
 $O(h^k)$ ist, von einem Verfahren $k$-ter Ordnung.
+\index{Verfahren kter Ordnung@Verfahren $k$-ter Ordnung}%
 Das Euler-Verfahren ist also ein Verfahren erster Ordnung oder ein
 lineares Verfahren.
 In der Praxis werden Verfahren bis zu vierter und f"unfter Ordnung
 verwendet, so dass eine zehnmal kleinere Schrittweite zu gleich
 vier Stellen Genauigkeitsgewinn f"uhren.
 Das Ziel der kommenden Abschnitte muss daher sein, einfach
-berechnebare Approximationen der Funktion mit m"oglichst geringen
+berechnebare Approximationen der Funktion $y(x)$ mit m"oglichst geringen
 Einzelschrittfehlern zu finden.
 
 \section{Einschritt-Verfahren\label{section:numerik:einschritt}}
@@ -297,7 +306,7 @@ y_{k+1}
 =
 y_{k}-\alpha h y_k +\frac12\alpha^2 h^2 y_k -\frac16 \alpha^3h^3 y_k
 =
-y_{k}\underbrace{\biggl(1-\alpha h +\frac12\alpha^2h^2 -\frac16 \alpha^3h^3\biggr)}_{\simeq e^{-\alpha h}}
+y_{k}\underbrace{\biggl(1-\alpha h +\frac12\alpha^2h^2 -\frac16 \alpha^3h^3\biggr)}_{\displaystyle \simeq e^{-\alpha h}}
 \label{numerik:kubisch}
 \end{equation}
 verwendet werden.
@@ -360,7 +369,7 @@ berechnen, also in einem einzelnen Schritt der Form
 y_{k+1}=y_k + h\, F(x_k, y_k, h).
 \]
 Die Funktion $F(x,y,h)$ heisst die {\em Inkrement-Funktion}
-\index{Inkrement-Funktion}
+\index{Inkrement-Funktion}%
 des Verfahrens.
 F"ur das Euler-Verfahren ist $F(x,y,h)=f(x,y)$.
 Es soll also eine Inkrement-Funktion gefunden werden, bei der $y(x+\Delta x)$
@@ -458,7 +467,7 @@ $(x_k+\frac12h,y_k+\frac{h}2f(x_k,y_k))$ durch, berechnet dort mit Hilfe
 von $f$ die Steigung, die dann f"ur einen Eulerschritt der L"ange $h$
 verwendet wird.u
 Daher heisst dieses Verfahren auch das {\em verbesserte Euler-Verfahren}.
-\index{Euler-Verfahren!verbessertes}
+\index{Euler-Verfahren!verbessertes}%
 
 Verwendet man $b=\frac12$, folgt zun"achst $a=\frac12$ und $\alpha=\beta=1$.
 Daraus erh"alt man die Rekursionsformel
@@ -482,7 +491,7 @@ vereinfachte Runge-Kutta-Verfahren}.
 \index{Runge-Kutta-Verfahren!vereinfachtes}
 
 \subsection{Runge-Kutta-Verfahren\label{subsection:numerik:runge-kutta}}
-\index{Runge-Kutta-Verfahren}
+\index{Runge-Kutta-Verfahren}%
 \begin{figure}
 \centering
 \includegraphics{chapters/images/numerik-4.pdf}
@@ -599,7 +608,7 @@ anderes als das Runge-Kutta-Verfahren zu verwenden.
 \section{Mehrschritt-Verfahren}
 \rhead{Mehrschritt-Verfahren}
 In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
-um die Inkrement-Funktion f"ur einen einzigen Schritt zu bestimmen.
+um die Inkrement-Funk\-tion f"ur einen einzigen Schritt zu bestimmen.
 Das Ziel dabei war, $y(x+h)$ in "Ubereinstimmung mit der Taylorreihe
 bis zu m"oglichst hoher Ordnung zu bestimmen.
 Im Runge-Kutta-Verfahren wurden dabei halbe Eulerschritte durchgef"uhrt,
@@ -754,9 +763,9 @@ Fehler aus der Durchf"uhrung des ersten Schrittes hinzuzuf"ugen.
 \end{table}
 
 In der Tabelle~\ref{numerik:genauigkeit-adams-bashforth} wird
-das Adams-Bashforth-Verfahren verglichen mit dem lineare Euler-Verfahren 
+das Adams-Bashforth-Verfahren verglichen mit dem lineare Euler-Verfah\-ren 
 und dem Verfahren vierter Ordnung von Runge-Kutta.
-Die Verbesserung der Genauigkeit des Adams-Bashforth-Verfahrens
+Die Verbesserung der Genauigkeit des Adams-Bash\-forth-Verfahrens
 gegen"uber dem Euler-Ver\-fah\-ren ist konsistent damit, dass
 das Adams-Bashforth-Verfahren ein quadratisches Verfahren ist.
 
@@ -891,7 +900,7 @@ einer Vektordifferentialgleichung erste Ordnung:
 =
 \begin{pmatrix}
 y_2\\
--y_1+\sin\frac{x}{10}
+\displaystyle -y_1+\sin\frac{x}{10}
 \end{pmatrix}
 =
 f(x,Y)
@@ -927,7 +936,7 @@ Als R"uckgabewert erh"alt man eine Matrix, die in jeder Zeile die
 Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
 aus dem \texttt{x}-Argument enth"alt.
 Die Resultate sind zusammen mit den Werten der exakten
-L"osung~(\ref{grundlagen:numerik-beispiel-loesung}) in der dritten Spalte 
+L"osung~(\ref{numerik:beispiel-loesung}) in der dritten Spalte 
 in der Tabelle~\ref{numerik:octave-resultate} zusammengestellt.
 Es ist gut erkennbar, wie der Fehler anf"anglich langsam ansteigt,
 dann aber unter Kontrolle bleibt.
@@ -997,11 +1006,11 @@ Struktur zur Parameter"ubergabe verwendet werden.
 Die Differentialgleichung wird beschrieben durch eine Struktur vom Typ
 \texttt{gsl\_odeiv2\_system}, welche ausser Zeigern auf die Funktion
 und die Parameter-Struktur auch noch die Dimension der Vektoren enth"alt.
-Es kann auch noch ein Funktionszeiger f"ur eine eine Funktion "ubergeben
+Es kann auch noch ein Funktionszeiger f"ur eine Funktion "ubergeben
 werden, die die Jacobi-Matrix berechnet, in unserem Beispiel wird dies
 jedoch nicht ben"otigt.
 
-Die eigentliche wird von einer ``driver''-Funktion durchgef"uhrt.
+Die eigentliche Berechnung wird von einer ``driver''-Funktion durchgef"uhrt.
 Diese sorgt im wesentlichen f"ur die Wahl der Schrittweite, verwaltet
 Datenstrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
 durchf"uhren.
@@ -1029,7 +1038,7 @@ f"ur verschiedene L"osungsverfahren vergleichen.
 Um die Rechnung durchzuf"uhren, muss jetzt die Driver-Funktion so oft
 angewendet werden, wie man Punkt der L"osungskurve ausgeben will.
 Dazu dient die Funktion \texttt{gsl\_odeiv2\_driver\_apply}. 
-An Argument braucht sie den eben initialisierten Driver, den aktuellen
+An Argumenten braucht sie den eben initialisierten Driver, den aktuellen
 $x$-Wert, den $x_{\text{next}}$-Wert, f"ur den der n"achste Punkt
 ausgegeben werden soll, sowie einen Vektor, in dem der aktuelle Anfangswert
 f"ur $Y(x)$ "ubergeben und $Y(x_{\text{next}})$ zur"uckgegeben wird.
@@ -1109,6 +1118,7 @@ aus, und berechnen die dadurch eindeutig festgelegte L"osungskurve.
 Randwertproblem, beschrieben in Abschnitt~\ref{section:randwertprobleme},
 verkn"upfen dagegen Werte von einzelnen Komponenten von $Y$ an den
 R"andern eines Intervalls.
+\index{Randwertproblem}%
 
 Wir betrachten zwei prototypische Randwertprobleme, die auch gleich
 zwei v"ollig verschiedene L"osungsverfahren motivieren.
@@ -1222,7 +1232,7 @@ v_0 \sin \alpha &=\frac{gp}{2v_0\cos\alpha}
 \\
 \sin2\alpha&=\frac{gp}{v_0^2}
 \\
-\alpha&= \frac12 \arcsin\frac{gp}{v_0^2}
+\alpha&= \frac12 \arcsin\frac{gp}{v_0^2}.
 \end{align*}
 Im Nenner rechts steht im wesentlichen die kinetische Energie,
 je mehr kinetische Energie der Ball zu Beginn hat, desto kleiner
@@ -1244,6 +1254,7 @@ allein unter der Wirkung seines Eigengewichtes an?
 \end{aufgabe}
 
 \subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
+\index{Schiess-Verfahren}%
 Wenn man experimentell versucht, ein Ziel zu treffen, dann wird man
 in wiederholten Versuchen die Richtung anpassen, so dass man dem Ziel
 immer n"aher kommt.
@@ -1270,6 +1281,7 @@ nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
 Schnellere Konvergenz kann mit dem Newton-Verfahren erreicht werden,
 welches in Anhang~\ref{chapter:newton} beschrieben wird.
+\index{Newton-Verfahren}%
 F"ur die Anwendung des Newton-Verfahrens auf das Randwert-Problem
 ist die Bestimmung der Steigung der Funktion n"otig, die die Abweichung
 der Kurve von der Randbedingung am rechten Rand angibt.
@@ -1280,7 +1292,7 @@ Dies ist die Ableitung
 h'(v_y)= \frac{\partial y}{\partial v_y},
 \]
 ein Eintrag der Jacobi-Matrix.
-In Abschnitt~\ref{grundlagen:XXX} wurde gezeigt, wie man auch f"ur
+In Abschnitt~\ref{grundlagen:jacobi} wurde gezeigt, wie man auch f"ur
 die Jacobi-Matrix eine Differentialgleichung aufstellen kann, die
 man nat"urlich ebenfalls mit den fr"uher beschriebenen numerischen
 Bibliotheken l"osen kann.
@@ -1294,7 +1306,7 @@ als anf"angliche Vertikalgeschwindigkeit.
 Berechnet dabei auch die Jacobi-Matrix
 \item Lese die $h(v_y)$ aus der L"osung zur Zeit $p/v_x$ ab, und $h'(v_y)$
 aus der Jacobi-Matrix und verwendet den Newton-Algorithmus
-(\ref{numerik:ball-newton}), um eine verbesserte Sch"atzung von $v_y$ 
+(Satz~\ref{newton:satz}), um eine verbesserte Sch"atzung von $v_y$ 
 zu bekommen.
 \item Wiederhole Schritte 2 und 3 bis die Randbedingung f"ur $t=p/v_x$
 gen"ugend genau erf"ullt ist.
