@@ -7,6 +7,8 @@
 \lhead{Einleitung}
 \rhead{}
 In XKCD 135 (Abbildung~\ref{einleitung:xkcd135})
+\index{XKCD}%
+\index{Munroe, Randall}%
 beschreibt Randall Munroe erdachte Aufgaben "uber die
 Jagdgewohnheiten von Velociraptoren, Fragen, bei denen es um Leben
 und Tod geht.
@@ -19,8 +21,10 @@ eine Frage von Leben und Tod ist.
 
 \index{Newton!Isaac}
 Isaac Newtons Grundgesetze der Dynamik sind die ersten Beispiele
+\index{Newton, Isaac}
 von Differentialgleichungen.
 Sein erstes Gesetz besagt:
+\index{Newton!erstes Gesetz von}
 \begin{quote}
 \em
 Ein K"orper verharrt im Zustand der Ruhe oder der gleichf"ormigen Translation,
@@ -35,7 +39,7 @@ oder
 wobei $\vec{v}$ der Vektor der Geschwindigkeit ist.
 Das erste Gesetz oder Tr"agheitsprinzip wurde schon von Galileo Galilei
 formuliert.
-\index{Tragheitsprinzip@Tr\"agheitsprinzip}
+\index{Tragheitsprinzip@Tr\"agheitsprinzip}%
 
 \begin{figure}
 \centering
@@ -47,6 +51,7 @@ Jagdgewohnheiten von Velociraptoren.
 
 
 Das zweite Gesetz besagt:
+\index{Newton!zweites Gesetz von}
 \begin{quote}
 \em
 Die "Anderung der Bewegung ist der Einwirkung der bewegenden Kraft
@@ -55,7 +60,7 @@ nach welcher jene Kraft wirkt.
 \end{quote}
 Mit {\em Bewegung}
 meint Newton den Impuls $\vec{p}=m\vec{v}$,
-\index{Impuls}
+\index{Impuls}%
 das zweite Gesetz wird in moderner Schreibweise
 \[
 \frac{d}{dt}(m\vec{v}) = \vec{F}.
@@ -105,8 +110,10 @@ Die Herkunft der Kr"afte wird in den Newtonschen Gesetzen nicht weiter
 gekl"art, doch Newton selbst beschreibt mit seinem Gravitationsgesetz
 die Herkunft der Kr"afte, die die Planeten im Sonnensystem auf ihren Bahnen
 halten.
-\index{Kepler!Johannes}
-\index{Kepler-Bahn}
+\index{Gravitationsgesetz}%
+\index{Kepler!Johannes}%
+\index{Kepler-Bahn}%
+\index{Sonnensystem}%
 Er zeigt, dass die Keplerschen Ellipsenbahnen L"osungen seiner
 Bewegungsgleichungen sind.
 Die rein kinematische Beschreibung durch Kepler machte einem
@@ -117,9 +124,10 @@ machte, wie sich das Sonnensystem "uber lange Zeit entwickeln wird.
 Seine Schlussfolgerung aus seinen aus heutiger Sicht rudiment"aren
 Untersuchungen: das Sonnensystem ist instabil, "uber die Jahrmillionen 
 werden die Planeten in den interstellaren Raum geschleudert werden.
+\index{Ellipsenbahn}
 
 Die industrielle Revolution brachte eine Vielzahl von Maschinen,
-\index{industrielle Revolution}
+\index{industrielle Revolution}%
 die automatisch geregelt werden mussten.
 Ingenieure entwickelten eine ganze Reihe von einfallsreichen L"osungen,
 doch erst in der Mitte des 19.~Jahrhunderts konnten Physiker diese
@@ -128,22 +136,22 @@ untersuchen.
 Im zwanzigsten Jahrhundert reiften die mathematischen Hilfsmittel
 soweit, dass auch instabile L"osungen untersucht werden konnten,
 wie sie bei nichtlinearen Differentialgleichungen auftreten.
-Mittlerweile ist das Auftreten Instabilit"aten recht gut verstanden
+Mittlerweile ist das Auftreten von Instabilit"aten recht gut verstanden
 und klassifiziert. 
 Die Technik der Linearisierung erm"oglicht zum Beispiel die
 Hopf-Bifurkation zu verstehen.
-\index{Hopf-Bifurkation}
-\index{Bifurkation!Hopf}
+\index{Hopf-Bifurkation}%
+\index{Bifurkation!Hopf}%
 Auch die Sattel-Knoten-Bifurkation und die Heugabel-Bifurkation
 lassen sich in Anwendungen finden.
-\index{Bifurkation!Sattel-Knoten-}
-\index{Sattel-Knoten-Bifurkation}
-\index{Bifurkation!Heugabel-}
-\index{Heugabel-Bifurkation}
+\index{Bifurkation!Sattel-Knoten-}%
+\index{Sattel-Knoten-Bifurkation}%
+\index{Bifurkation!Heugabel-}%
+\index{Heugabel-Bifurkation}%
 Und die Chaos-Theorie versteht sogar, wie "uber eine Kaskade von
 Bifurkationen die Bewegung eines Systems jede Vorhersagbarkeit verliert,
 es bewegt sich chaotisch.
-\index{Chaos}
+\index{Chaos}%
 
 In vielen F"allen l"asst sich eine Differentialgleichung erst dann
 verstehen, wenn man in komplexen Zahlen arbeiten. 
@@ -151,6 +159,27 @@ Die Hopf-Bifurkation tritt zum Beispiel genau dann auf, wenn eine
 Bedingung "uber die komplexen Eigenwerte des linearisierten Systems
 erf"ullt ist.
 
-Weitere Literaturhinweise im Literaturverzeichnis auf
-Seite~\pageref{skript:literatur}.
+Im Kapitel~2 sollen zun"achst Begriffe und Notation festgelegt werden,
+danach sollen einige analytische Grundtechniken vermittelt werden.
+Im Kapitel~3 wird gezeigt, wie Differentialgleichungen numerisch
+gel"ost werden k"onnen.
+Die Potenzreihenmethode ist Inhalt von Kapitel~4. 
+Den sehr wichtigen Spezialfall linearer Differentiagleichungen
+behandelt Kapitel~5 genauer.
+Geometrische Eigenschaften von Vektorfeld und L"osung lassen oft
+bereits ausreichend genaue Aussagen "uber die L"osung zu,  dies wird
+im Kapitel~6 gezeigt.
+Im Komplexen wird die Theorie sehr viel reichhaltiger, Kapitel~7 gibt
+einen "Uberblick "uber die komplexe Analysis.
+In der Praxis beeinflussen oft stochastische Prozesse die L"osung einer
+Differentialgleichung, zum Beispiel das Rauschen in einer elektronischen
+Schaltung.
+Kapitel~8 zeigt, wie man die Theorie der gew"ohnlichen Differentialgleichungen
+erweitern kann, dass Prozesse wie das Rauschen korrekt modelliert 
+werden k"onnen, und Fragen "uber erwartete L"osung und Varianz
+derselben zuverl"assig beantwortet werden k"onnen\footnote{Dieses Thema
+wurde nur im Master-Seminar behandelt.}.
+
+%Weitere Literaturhinweise im Literaturverzeichnis auf
+%Seite~\pageref{skript:literatur}.
 
