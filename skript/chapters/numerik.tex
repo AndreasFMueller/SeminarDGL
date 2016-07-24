@@ -1252,6 +1252,54 @@ p_{\text{max}} = \frac{v_0^2}{g}.
 Ein Seil ist zwischen zwei Punkten aufgeh"angt, welche Form nimmt es
 allein unter der Wirkung seines Eigengewichtes an?
 \end{aufgabe}
+\begin{loesung}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/numerik-5.pdf}
+\caption{Herleitung der Differentialgleichung der Kettenlinie
+\label{numerik:kettenlinie}}
+\end{figure}
+Zun"achst brauchen wir f"ur die Problemstellung eine Differentialgleichung.
+Zur Herleitung dient die Abbildung~\ref{numerik:kettenlinie}.
+Die Masse des Seils zwischen den beiden Punkten $x$ und $x+\Delta x$
+wird von den beiden eingezeichneten Kr"aften getragen, sie ist
+aber auch proportional zur L"ange des Seiles:
+\begin{align*}
+F(y'(x+\Delta x)-y'(x))
+&= \mu\sqrt{(y(x+\Delta x)-y(x))^2+\Delta x^2}
+\\
+\frac{y'(x+\Delta x)-y'(x)}{\Delta x}
+&=\frac{\mu}{F}\sqrt{1+\biggl(\frac{y(x+\Delta x)-y(x)}{\Delta x}\biggr)^2}
+\end{align*}
+Nach Grenz"ubergang $\Delta x\to 0$ erhalt man die Differentialgleichung
+\begin{equation}
+y''(x)=a\sqrt{1+y'(x)^2}.
+\label{numerik:kettenloesung}
+\end{equation}
+Diese Differentialgleichung hat die Funktion
+\[
+y(x) = \frac1a \cosh ax
+\]
+als L"osung, wie man durch Nachrechnen einsehen kann.
+Die Ableitungen von $y(x)$ sind
+\begin{align*}
+y'(x) &= \sinh ax\\
+y''(x) &= a\cosh ax.
+\end{align*}
+Eingesetzt in die Differentialgleichung erh"alt man
+\begin{align*}
+a\cosh ax&=a\sqrt{1+\sinh^2 ax}
+\\
+\cosh^2ax-\sinh^2ax&=1.
+\end{align*}
+Die Differntialgleichung~\eqref{numerik:kettenloesung}
+ist autonom, also sind auch verschobene Funktionen L"osungen, die allgemeine
+L"osung des Problems ist daher die Funktion
+\[
+y(x)=\frac1a\cosh a(x-x_0).
+\]
+Durch Einsetzen von Randbedingungen kann die Aufgabe damit gel"ost werden.
+\end{loesung}
 
 \subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
 \index{Schiess-Verfahren}%

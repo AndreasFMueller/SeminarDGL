@@ -298,4 +298,94 @@ pickup pencircle scaled 1pt;
 
 endfig;
 
+%
+% Differentialgleichung der Kettenlinie
+%
+beginfig(5)
+
+numeric u;
+u := 80;
+
+def exp(expr x) =
+	mexp(x * 256)
+enddef;
+def sinh(expr x) =
+	((exp(x) - exp(-x)) / 2)
+enddef;
+def cosh(expr x) =
+	((exp(x) + exp(-x)) / 2)
+enddef;
+def kette(expr x) =
+	(x * u, cosh(x) * u)
+enddef;
+
+def kettepfad(expr ax, bx) =
+	p := kette(ax);
+	for x = ax + 0.01 step 0.01 until bx:
+		p := p--kette(x);
+	endfor;
+	p := p--kette(bx);
+enddef;
+
+numeric startx, endx;
+startx := -1.5;
+endx := 1.5;
+path lightp;
+kettepfad(startx, endx);
+lightp := p;
+path darkp;
+kettepfad(-0.7, 0.2);
+darkp := p;
+
+pickup pencircle scaled 0.3pt;
+draw lightp;
+
+
+z0 = (0,0);
+z1 = (startx * u, 0);
+z2 = (endx * u, 0);
+z3 = lightp intersectionpoint ((-0.7 * u, 0)--(-0.7 * u, 10 * u));
+z4 = lightp intersectionpoint (( 0.2 * u, 0)--( 0.2 * u, 10 * u));
+z5 = (xpart z3, 0);
+z6 = (xpart z4, 0);
+
+draw z3--z5;
+draw z4--z6;
+
+pickup pencircle scaled 1pt;
+
+draw (z5 shifted (0,-2))--(z5 shifted (0,2));
+draw (z6 shifted (0,-2))--(z6 shifted (0,2));
+label.bot(btex $x\mathstrut$ etex, z5);
+label.bot(btex $x+\Delta x$ etex, z6);
+
+draw darkp withcolor red;
+
+drawarrow (z1 shifted (-10,0))--(z2 shifted (10,0));
+
+pickup pencircle scaled 0.3pt;
+
+z7  = z3 shifted (-0.5 * u, 0);
+z8  = z4 shifted ( 0.5 * u, 0);
+z9  = z7 shifted (       0, -sinh(-0.7) * u * 0.5);
+z10 = z8 shifted (       0,  sinh( 0.2) * u * 0.5);
+
+draw z3--z7--z9--cycle;
+draw z4--z8--z10--cycle;
+
+pickup pencircle scaled 1pt;
+
+drawarrow z3--z9;
+drawarrow z4--z10;
+
+label.rt(btex $Fy'(x+\Delta x)$ etex, 0.5[z8,z10]);
+label.lft(btex $-Fy'(x)$ etex, 0.5[z7,z9]);
+
+pickup pencircle scaled 3pt;
+
+draw z3;
+draw z4;
+
+endfig;
+
 end
