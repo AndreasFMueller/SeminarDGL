@@ -33,9 +33,9 @@
 	\caption{Allgemeine Potenzreihenberechnung (Alternative)} 
 	\label{alg:wellen:allgemeinepotenzreihenrechnungalt}
 \end{algorithm}
-Alternativ kann man auch den Pseudocode 
-\ref{alg:wellen:allgemeinepotenzreihenrechnungalt} verwenden. Dieser hat eine 
-Laufzeit von
+Alternativ kann man auch den 
+Pseudocode~\ref{alg:wellen:allgemeinepotenzreihenrechnungalt} verwenden. Dieser 
+hat eine Laufzeit von
 \begin{equation*}
 	O
 	\left(
@@ -54,8 +54,8 @@ Laufzeit von
 mit einem Speicherverbrauch von $O(\max(n, k_{\text{max}}))$.
 
 Eine Implementation mit \texttt{octave} hat gezeigt, dass dieser alternative 
-Algorithmus (Pseudocode \ref{alg:wellen:allgemeinepotenzreihenrechnungalt}) 
+Algorithmus (Pseudocode~\ref{alg:wellen:allgemeinepotenzreihenrechnungalt}) 
 fast zehn Mal schneller ist. Dies liegt neben der zus"atzlichen inneren 
 Schlaufe auch vor allem daran, dass beim anderen Algorithmus mit 
-\texttt{modulo} gerechnet werden musste, um den Speicherverbrauch von $O(n)$ zu 
+\texttt{modulo} gerechnet werden muss, um den Speicherverbrauch von $O(n)$ zu 
 erm"oglichen, was zus"atzlichen Rechenaufwand bedeutet.
