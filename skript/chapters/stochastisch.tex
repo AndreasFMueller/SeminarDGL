@@ -141,7 +141,7 @@ E(W(t)W(s))
 &=
 E\bigl((W(t)-W(s))\cdot W(s)\bigr)+E(W(s)^2)
 =
-\underbrace{E(W(t)-W(s))}_{\textstyle =0} \underbrace{E(W(s))}_{\textstyle =0} + s
+\underbrace{E(W(t)-W(s))}_{\displaystyle =0} \underbrace{E(W(s))}_{\displaystyle =0} + s
 \end{align*}
 wobei wir erneut Eigenschaft~2 verwendet haben.
 \end{proof}
@@ -432,7 +432,7 @@ E\biggl(
 \int_0^T g'(t) W(t)\,dt
 \biggr)
 =
-\int_0^T g'(t) \underbrace{E(W(t))}_{\textstyle =0}\,dt=0.
+\int_0^T g'(t) \underbrace{E(W(t))}_{\displaystyle =0}\,dt=0.
 \end{align*}
 Die Varianz ist daher der Erwartungswert $E(Z^2)$, die wir ebenfalls unter
 Verwendung der Rechenregeln berechnen k"onnen
@@ -458,7 +458,7 @@ E\biggl(
 \biggr)
 \\
 &=
-\int_0^T\int_0^Tg'(t)g'(s) \underbrace{E(W(t)W(s))}_{\textstyle =t\wedge s}\,ds\,dt
+\int_0^T\int_0^Tg'(t)g'(s) \underbrace{E(W(t)W(s))}_{\displaystyle =t\wedge s}\,ds\,dt
 \\
 &=
 \int_0^Tg'(t) \biggl(\int_0^t g'(s) s\,ds + \int_t^T g'(s)t\,ds\biggr)
@@ -466,7 +466,7 @@ E\biggl(
 \\
 &=
 \int_0^T g'(t)\biggl(
-\underbrace{[g(s)s]_0^t}_{\textstyle =tg(t)}-\int_0^t g(s)\,ds+t(\underbrace{g(T)}_{\textstyle =0}-g(t))
+\underbrace{[g(s)s]_0^t}_{\displaystyle =tg(t)}-\int_0^t g(s)\,ds+t(\underbrace{g(T)}_{\displaystyle =0}-g(t))
 \biggr)\,dt
 \\
 &=
@@ -774,11 +774,11 @@ R_n
 &=
 \underbrace{
 \sum_{k=0}^{m_n-1} (b_k-a_k)^2
-}_{\textstyle\to\lambda T}
+}_{\displaystyle\to\lambda T}
 -
 \underbrace{
 \frac12\sum_{k=0}^{m_n-1} (c_k-a_k)^2
-}_{\textstyle\to T}
+}_{\displaystyle\to T}
 +\sum_{k=0}^{m_n-1} (c_k-b_k)(b_k-a_k)
 - \frac12a_0^2
 + \frac12c_{m_n-1}^2.
@@ -901,7 +901,7 @@ E\biggl(\int_0^T G\,dW\biggr)
 E\biggl(\sum_{k=0}^{m-1} G(t_k) (W(t_{k+1}) - W(t_k))\biggr)
 \\
 &=
-\sum_{k=0}^{m-1} E(G(t_k)) \underbrace{E(W(t_{k+1}) - W(t_k))}_{\textstyle =0}=0.
+\sum_{k=0}^{m-1} E(G(t_k)) \underbrace{E(W(t_{k+1}) - W(t_k))}_{\displaystyle =0}=0.
 \end{align*}
 Damit ist 2.~beweisen.
 
@@ -1178,11 +1178,11 @@ Produktregel~\eqref{stochastisch:ito-produkt-integriert}:
 &\qquad
 + \int_0^r (F_1t+G_1W)G_2+(F_2t+G_2W)G_1\,dW + \int_0^r G_1G_2\,dt
 \\
-&=F_1F_2r^2+(G_1F_2+G_2F_1)\underbrace{\biggl(\int_0^rW\,dt + \int_0^rt\,dW\biggr)}_{\textstyle = rW(r)}
+&=F_1F_2r^2+(G_1F_2+G_2F_1)\underbrace{\biggl(\int_0^rW\,dt + \int_0^rt\,dW\biggr)}_{\displaystyle = rW(r)}
 \\
 &\qquad
-+G_1G_2\cdot \underbrace{2\int_0^r W\,dW}_{\textstyle W(r)^2-r}
-+ G_1G_2\underbrace{\int_0^r\,dt}_{\textstyle =r}
++G_1G_2\cdot \underbrace{2\int_0^r W\,dW}_{\displaystyle W(r)^2-r}
++ G_1G_2\underbrace{\int_0^r\,dt}_{\displaystyle =r}
 \\
 &= 
 F_1F_2r^2 + (G_1F_2+G_2F_1)rW(r) + G_1G_2W(r)^2
@@ -1402,9 +1402,9 @@ Um dies zu kontrollieren, schreiben wir
 \[
 X(t)=\int_0^t g\,dW
 \qquad\Rightarrow\qquad
-dX = g\,dW = \underbrace{0}_{\textstyle F}\,dt
+dX = g\,dW = \underbrace{0}_{\displaystyle F}\,dt
 +
-\underbrace{g}_{\textstyle G}\,dW
+\underbrace{g}_{\displaystyle G}\,dW
 \]
 f"ur das Integral im Exponenten, und beachten, dass $Y(t)=e^{X(t)}$.
 Wir haben die Funktionen $F$ und $G$ wie in der Formulierung der
@@ -1421,7 +1421,7 @@ dY
 \biggl( u'F+\frac12u''G^2 \biggr)\,dt + u' G\,dW
 \\
 &=
-\underbrace{e^X}_{\textstyle Y}\biggl(\frac12g^2\,dt + g\,dW\biggr)
+\underbrace{e^X}_{\displaystyle Y}\biggl(\frac12g^2\,dt + g\,dW\biggr)
 \\
 &=
 \frac12g^2Y\,dt + gY\,dW.
@@ -1448,9 +1448,9 @@ Dies bedeutet, dass
 \[
 dX
 =
-\underbrace{-\frac12g^2}_{\textstyle F}\,dt
+\underbrace{-\frac12g^2}_{\displaystyle F}\,dt
 +
-\underbrace{g}_{\textstyle G}\,dW.
+\underbrace{g}_{\displaystyle G}\,dW.
 \]
 Wir wenden die It\^o-Kettenregel auf die Funktion
 $Y(t)=u(X(t))=e^{X(t)}$, also $u(x)=e^x$, an:
@@ -1460,9 +1460,9 @@ dY
 \biggl( u'F + \frac12u''G^2\biggr)\,dt + u'G\,dW
 \\
 &=
-\underbrace{\biggl(-\frac12 g^2 + \frac12 g^2\biggr)}_{\textstyle=0}\,dt
+\underbrace{\biggl(-\frac12 g^2 + \frac12 g^2\biggr)}_{\displaystyle=0}\,dt
 +
-\underbrace{e^X}_{\textstyle Y}g\,dW
+\underbrace{e^X}_{\displaystyle Y}g\,dW
 \\
 &=gY\,dW.
 \end{align*}
@@ -1476,7 +1476,7 @@ kleiner als die urspr"unglich vermutete L"osung:
 \[
 Y(t)
 =
-\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\textstyle \le 1}
+\underbrace{e^{-\frac12 \int_0^tg^2\,d\tau}}_{\displaystyle \le 1}
 \cdot e^{\int_0^tg\,dW}.
 \]
 Im Spezialfall $g=1$ ist finden wir, dass
@@ -1528,9 +1528,9 @@ X(t)=\int_0^t f-\frac12g^2\,d\tau + \int_0^tg\,dW,
 der stochastische Prozess $X$ erf"ullt die stochastische Differentialgleichung
 \[
 dX=
-\underbrace{\biggl( f-\frac12g^2\biggr)}_{\textstyle F}\,dt
+\underbrace{\biggl( f-\frac12g^2\biggr)}_{\displaystyle F}\,dt
 +
-\underbrace{g}_{\textstyle G}\,dW.
+\underbrace{g}_{\displaystyle G}\,dW.
 \]
 Wir vermuten, dass $Y(t)=u(X(t))=e^{X(t)}$ die L"osung der
 Differentialgeichung ist.
@@ -1542,7 +1542,7 @@ dY
 \biggl(u'F+\frac12u''G^2\biggr)\,dt + u'G\,dW
 \\
 &=
-e^X\biggl( f\underbrace{-\frac12g^2+\frac12 g^2}_{\textstyle=0}\biggr)\,dt
+e^X\biggl( f\underbrace{-\frac12g^2+\frac12 g^2}_{\displaystyle=0}\biggr)\,dt
 +
 e^Xg\,dW
 \\
@@ -1605,7 +1605,7 @@ Tats"achlich ist die Ableitung davon
 dV
 =
 -be^{-bt}
-\underbrace{\biggl(V_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)}_{\textstyle =V}\,dt
+\underbrace{\biggl(V_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)}_{\displaystyle =V}\,dt
 +
 e^{-bt}
 \sigma e^{bt}dW
@@ -1623,7 +1623,7 @@ E(V(t))
 &=
 e^{-bt}E(V_0)
 +
-\sigma \underbrace{E\biggl(\int_0^t e^{-b(t-\tau)}\,dW\biggr)}_{\textstyle=0}
+\sigma \underbrace{E\biggl(\int_0^t e^{-b(t-\tau)}\,dW\biggr)}_{\displaystyle=0}
 =
 e^{-bt}V_0.
 \end{align*}
@@ -1815,7 +1815,7 @@ d\begin{pmatrix}Y_1\\Y_2\end{pmatrix}
 \begin{pmatrix}
          0& 1\\
 -\lambda^2&-b
-\end{pmatrix}}_{\textstyle=D}
+\end{pmatrix}}_{\displaystyle=D}
 \begin{pmatrix}Y_1\\Y_2\end{pmatrix}\,dt
 +
 \begin{pmatrix}
@@ -2255,7 +2255,7 @@ Aus \eqref{stochastisch:laplaceinkrement} folgt:
 \[
 u(X(\tau_x))-u(X(0))
 =
-\int_0^{\tau_x} \frac12\underbrace{\Delta u}_{\textstyle=0}\,ds=0.
+\int_0^{\tau_x} \frac12\underbrace{\Delta u}_{\displaystyle=0}\,ds=0.
 \]
 Zur Zeit $\tau_x$ ist $X(\tau_x)$ ein Randpunkt des Gebiets, der mit
 der Randbedingung bestimmt werden kann, es folgt:

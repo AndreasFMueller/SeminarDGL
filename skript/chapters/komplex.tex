@@ -435,9 +435,9 @@ f"ur den Konvergenzradius der Reihenentwicklung der Ableitung $f'(z)$
 \[
 \limsup_{k\to\infty} \root{k}\of{k|a_k|}
 =
-\underbrace{\lim_{k\to\infty} \root{k}\of{k}}_{\textstyle=1}
+\underbrace{\lim_{k\to\infty} \root{k}\of{k}}_{\displaystyle=1}
 \cdot
-\underbrace{ \limsup_{k\to\infty} \root{k}\of{|a_k|}}_{\textstyle=1/\varrho}
+\underbrace{ \limsup_{k\to\infty} \root{k}\of{|a_k|}}_{\displaystyle=1/\varrho}
 =
 \frac1{\varrho}.
 \]
@@ -701,7 +701,7 @@ f(z)
 \frac1{2\pi i} \int_{\gamma} \sum_{k=0}^\infty \frac{z^k}{x^{k+1}}g(x)\,dx
 =
 \sum_{k=0}^\infty
-\underbrace{\biggl(\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x^{k+1}}\,dx\biggr)}_{\textstyle =c_k}
+\underbrace{\biggl(\frac1{2\pi i} \int_{\gamma} \frac{g(x)}{x^{k+1}}\,dx\biggr)}_{\displaystyle =c_k}
 z^k
 =
 \sum_{k=0}^\infty c_kz^k.
@@ -815,7 +815,7 @@ f_2(z)
 \sum_{k=0}^\infty
 \biggl(
 \underbrace{\frac1{2\pi i}\int_{\gamma_2} (x-z_0)^kg(x)\,dx
-}_{\textstyle =d_{k+1}}
+}_{\displaystyle =d_{k+1}}
 \biggr)
 \frac1{(z-z_0)^{k+1}}
 =\sum_{k=1}^\infty \frac{d_k}{(z-z_0)^k}.
@@ -1184,7 +1184,7 @@ f(a)i\int_0^{2\pi}\,dt
 + irf'(a)\int_0^{2\pi} e^{it}\,dt + i\int_0^{2\pi}o(r)\,dt
 \\
 &=
-2\pi i f(a) + irf'(a)\underbrace{\left[\frac1{i}e^{it}\right]_0^{2\pi}}_{=0}+o(r)
+2\pi i f(a) + irf'(a)\underbrace{\left[\frac1{i}e^{it}\right]_0^{2\pi}}_{\displaystyle=0}+o(r)
 \\
 &=2\pi i f(a)+o(r).
 \end{align*}
