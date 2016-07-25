@@ -13,13 +13,17 @@ Gel"ost werden soll das lineare Differentialgleichungssystem
 \frac{d}{dt}x = A(t)x + f(t)\qquad x(0)=x_0
 \label{linear:gleichung}
 \end{equation}
+\index{Differentialgleichung!lineare}%
+\index{lineare Algebra}%
 gel"ost werden.
-Darin ist $A(t)$ eine $n\times n$-Matrix, wir nehmen der Einfachheit
+Darin ist $A(t)$ eine $n\times n$-Matrix.
+Wir nehmen der Einfachheit
 halber an, dass die Matrixelemente $a_{kl}(t)$ von $A(t)$ differenzierbare
 Funktionen von $t$ sind.
 Die Funktion $f(t)$ hat $n$-dimensionale Vektoren als Werte.
 Falls $f(t)=0$ ist, ist die Gleichung~(\ref{linear:gleichung}) 
 homogen.
+\index{Differentialgleichung!homogene}
 
 \section{Konstante Koeffizienten}
 \rhead{Konstante Koeffizienten}
@@ -36,15 +40,15 @@ A=\begin{pmatrix}
          &         &      &\lambda_n
 \end{pmatrix}.
 \]
-Durch Wechsel der Basis kann man diese Situation immer erreichen, wenn
-$A$ diagonalisierbar ist.
-
+%Durch Wechsel der Basis kann man diese Situation immer erreichen, wenn
+%$A$ diagonalisierbar ist.
+%
 In diesem Fall zerf"allt das Gleichungssystem in $n$ unabh"angige
 lineare Differentialgleichungen erster Ordnung
 \begin{align*}
 \dot{x}_1&=\lambda_1x_1 + f_1(t)\\
 \dot{x}_2&=\lambda_2x_2 + f_2(t)\\
-&\;\vdots\\
+&\;\,\vdots\\
 \dot{x}_n&=\lambda_nx_n + f_n(t).
 \end{align*}
 Die homogenen Gleichungen lassen sich sofort l"osen:
@@ -98,8 +102,12 @@ x(t)
 e^{At}
 \biggl(x_0 + \int_0^t e^{-A\tau}f(\tau)\,d\tau\biggr)
 \]
+Wir werden in den n"achsten zwei Abschnitten zeigen, dass diese 
+Funktion f"ur beliebige Matrizen $A$ definiert werden kann und
+eine L"osung der Differentialgleichung liefert.
 
 \subsection{Matrix-Exponentialfunktion}
+\index{Matrix-Exponentialfunktion}%
 Die L"osung im vorangegangenen Abschnitt konnte mit Hilfe der
 Matrix-Exponentialfunktion besonders kompakt formuliert werden.
 Allerdings war diese nur f"ur diagonalisierbare Matrizen definiert.
@@ -120,28 +128,35 @@ A+tA^2+\frac12t^2A^3+\frac1{3!}t^3A^4+\dots
 \biggl(E+tA+\frac12t^2A^2+\frac1{3!}A^3+\dots\biggr)A
 =e^{tA}A=Ae^{At}
 \end{align*}
+\begin{satz}
+\label{linear:matrix-exp}
 Die Matrix-Funktion $t\mapsto X(t)=e^{At}$ erf"ullt also die
 Matrix-Differentialgleichung
 \begin{equation}
-\frac{d}{dt} X = AX,
+\frac{d}{dt} X = AX
+\qquad\text{mit}\qquad
+X(0)=E.
 \label{linear:matrix-dgl}
 \end{equation}
+\end{satz}
 
 \subsection{Beliebige Koeffizientenmatrix}
 Mit der Matrix-Exponentialfunktion kann jetzt auch das homogene
 Differentialgleichungssystem gel"ost werden.
 Dazu multiplizieren wir~(\ref{linear:matrix-dgl}) auf der rechten Seite
-$x_0$ 
+mit $x_0$ 
 \[
-\frac{d}{dt}X(t)x_0 = A X(t)x_0,
+\frac{d}{dt}X(t)x_0 = A X(t)x_0.
 \]
-Damit ist die Funktion
+Die Funktion
 \[
-x(t)=X(t)x_o = e^{At}x_0
+x(t)=X(t)x_0 = e^{At}x_0
 \]
-eine L"osung der homogenen Gleichung.
+ist daher eine L"osung der homogenen Gleichung, der konstante Vektor $x_0$ 
+entspricht der Anfangsbedingung.
 
 Auch das Verfahren der Variation der Konstanten kann durchgef"uhrt werden.
+\index{Variation der Konstanten}%
 Dazu ersetzen wir $x_0$ durch einen Vektor $C(t)$, und leiten den Ansatz
 \[
 x(t)=e^{At}C(t)
@@ -162,7 +177,7 @@ e^{At}\dot{C}(t)
 f(t)
 &&\text{und}
 &
-C(0)0=x_0
+C(0)&=x_0
 \end{aligned}
 \]
 Diese Differentialgleichung kann durch Integration gel"ost werden,
@@ -172,6 +187,7 @@ wir erhalten
 &=
 e^{-At}f(t)
 \\
+\Rightarrow\qquad
 C(t)
 &=
 x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
@@ -187,6 +203,23 @@ x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
 Die fr"uher gefundene Formel f"ur die L"osung der Differentialgleichung
 (\ref{linear:gleichung}) f"ur den Spezialfall diagonalisierbarer 
 Matrizen gilt daher f"ur beliebige Matrizen.
+Wir fassen die Resultate dieses Abschnittes im folgenden Satz 
+zusammen.
+
+\begin{satz}\label{linear:inhomogeneloesung}
+Die Differntialgleichung
+\[
+\frac{d}{dt}x = A(t)x + f(t)\qquad x(0)=x_0
+\]
+hat die L"osung
+\[
+x(t)
+=
+e^{At}\biggl(
+x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
+\biggr).
+\]
+\end{satz}
 
 \subsection{Ein wichtiger Spezialfall: Jordan-Normalform}
 F"ur einige spezielle Matrizen l"asst sich die Matrix-Exponentialfunktion
@@ -215,9 +248,10 @@ p&q& &      & \\
  & &p&\ddots& \\
  & & &\ddots&q\\
  & & &      &p
-\end{pmatrix}
+\end{pmatrix},
 \label{linear:apqmatrix}
 \end{equation}
+nicht dargestellte Matrixelemente sind $0$.
 \end{definition}
 
 \begin{satz}
@@ -226,31 +260,32 @@ Die Matrix $A(p,q)^k$ hat die Matrixelemente
 \begin{equation}
 (A(p,q)^k)_{ij}
 =\begin{cases}
-\binom{k}{j-i}p^{k-(j-i)}q^{j-i} &\qquad i\le j\\
-0                                &\qquad i>j
+\displaystyle \binom{k}{j-i}p^{k-(j-i)}q^{j-i} &\qquad i\le j\\[2mm]
+0                                              &\qquad i>j.
 \end{cases}
 \label{linear:apqk}
 \end{equation}
 \end{satz}
 
 \begin{proof}[Beweis]
-Wir stellen zun"achst sicher, dass die Formel~\ref{linear:apqk} sinnvoll ist.
+Wir stellen zun"achst sicher, dass die Formel~\eqref{linear:apqk} sinnvoll ist.
 F"ur $k=0$ verschwinden alle Binomialkoeffizienten ausser $\binom{k}{0}$,
-die Formel~\ref{linear:apqk} beschreibt dann eine Diagonalmatrix, und
-die Diagonalelemente sind $\binom{0}{0}p^0q^0=1$, die Formel~\ref{linear:apqk}
+die Formel~\eqref{linear:apqk} beschreibt dann eine Diagonalmatrix, und
+die Diagonalelemente sind $\binom{0}{0}p^0q^0=1$, die Formel~\eqref{linear:apqk}
 beschreibt in diesem Fall also die Einheitsmatrix.
 
 Auch f"ur $k=1$ l"asst sich gleichermassen verifizieren, dass die
-Formel~\ref{linear:apqk} in diesem Fall die Matrix $A(p,q)$ beschreibt.
+Formel~\eqref{linear:apqk} in diesem Fall die Matrix $A(p,q)$ beschreibt.
 Damit haben wir auch bereits die Verankerung f"ur einen induktiven
-Beweis der Formel~\ref{linear:apqk} gelegt.
+Beweis der Formel~\eqref{linear:apqk} gelegt.
 
 F"ur den Induktionsschritt nehmen wir jetzt an, dass die
-Formel~\ref{linear:apqk} f"ur $k$ bereits bewiesen ist, und berechnen
-die Matrixelemente von $A(p,q)^{k+1}$, indem wir das Matrixprodukt
+Formel~\eqref{linear:apqk} f"ur $k$ bereits bewiesen ist, und berechnen
+f"ur den Fall $k+1$
+die Matrixelemente von $A(p,q)^{k+1}$, indem wir das Matrizenprodukt
 ausrechnen.
 Da $A(p,q)$ eine obere Dreiecksmatrix ist, werden auch alle Potenzen
-$A(p,q)^k$ obere Dreiecksmatrizen sein, was die Formel~\ref{linear:apqk}
+$A(p,q)^k$ obere Dreiecksmatrizen sein, was die Formel~\eqref{linear:apqk}
 auch ausdr"uckt.
 Wir brauchen daher nur Elemente oberhalb der Diagonalen, also f"ur $j\ge i$:
 \begin{align*}
@@ -291,11 +326,11 @@ q\binom{k}{j-(i+1)}p^{k-(j-(i+1))}q^{j-(i+1)}
 \binom{k+1}{j-i} p^{k+1-(j-i)}q^{j-i}
 \end{align*}
 Damit ist der Induktionsschritt vollzogen und damit die
-Formel~\ref{linear:apqk} bewiesen.
+Formel~\eqref{linear:apqk} bewiesen.
 \end{proof}
 
 Die Potenzen von $A(p,q)$ k"onnen jetzt mit Hilfe der Exponentialreihe
-zu verwenden werden, $e^{A(p,q)}$ zu berechnen:
+dazu verwendet werden, $e^{A(p,q)}$ zu berechnen:
 
 \begin{satz}
 \label{linear:apqexp}
@@ -406,6 +441,7 @@ A_1(\lambda_1)&              &      &              \\
 \]
 wobei die Werte $\lambda_i$ die Eigenwerte der Matrix sind.
 Diese Form der Matrix heisst die Jordan-Normalform.
+\index{Jordan-Normalform}%
 F"ur eine Matrix in Jordan-Normalform kann die Matrix-Exponentialfunktion
 explizit berechnet werden, man kann also die L"osungen der
 zugeh"origen Differentialgleichung direkt angeben.
@@ -470,6 +506,7 @@ y'(x)\\
 Y(x).
 \]
 Die Matrix auf der rechten Seite hat das charakteristische Polynom
+\index{charakteristisches Polynom}%
 \begin{align*}
 \left|\,\begin{matrix}
 —\lambda&1\\
@@ -485,6 +522,7 @@ Die Matrix auf der rechten Seite hat das charakteristische Polynom
 \end{align*}
 Das charakteristische Polynom hat also nur eine Nullstelle.
 Wir bestimmen die Eigenvektoren:
+\index{Eigenvektor}%
 \begin{align*}
 \begin{tabular}{|>{$}c<{$}>{$}c<{$}|}
 \hline
@@ -564,6 +602,7 @@ A'
 \end{pmatrix}
 \]
 Die Transformationsmatrix, die von der Standardbasis in die Basis $B'$
+\index{Transformationsmatrix}%
 umrechnet ist
 \[
 T
@@ -684,6 +723,8 @@ zu Anfangsbedingungen $y(0)$ und $y'(0)$.
 
 \subsection{Harmonischer Oszillator\label{linear:harmosz}}
 Ein ged"ampfter harmonischer Oszillator wird durch die lineare
+\index{harmonischer Oszillator}%
+\index{Differentialgleichung!lineare}%
 Differentialgleichung
 \begin{equation}
 \ddot X=-\lambda^2 X-b\dot X,\qquad X(0)=X_0,\qquad \dot X(0)=X_1.
@@ -693,8 +734,8 @@ zweiter Ordnung beschrieben.
 Als Differentialgleichungssystem erster Ordnung geschrieben wird dies zu
 \begin{equation}
 \begin{aligned}
-y_1'&=y_2,                              &&&y_1(0)&=x_0, \\
-y_2'&=-\lambda^2 y_1-by_2 + \sigma w(x),&&&y_2(0)&=x_1.
+y_1'&=y_2,                              &&&y_1(0)&=X_0, \\
+y_2'&=-\lambda^2 y_1-by_2 + \sigma w(x),&&&y_2(0)&=X_1.
 \end{aligned}
 \label{stochastsich:harmosz-dgl1}
 \end{equation}
@@ -737,6 +778,7 @@ D=\begin{pmatrix}
 \]
 Die Matrix $e^{Dx}$ kann durch Diagonalisierung berechnet werden.
 Die Transformationsmatrix
+\index{Transformationsmatrix}
 \[
 T
 =
@@ -800,9 +842,11 @@ y_1(x)\\y_2(x)
 \end{equation}
 Die erste Komponenten davon ist
 \begin{equation}
+X(x)
+=
 y_1(x)
 =
-x_0\cos\lambda x+\frac{x_1}{\lambda}\sin\lambda x
+X_0\cos\lambda x+\frac{X_1}{\lambda}\sin\lambda x
 +
 \frac{\sigma}{\lambda}\int_0^x\sin\lambda(x-\xi)w(\xi)\,d\xi,
 \label{linear:harmosz-y}
@@ -817,7 +861,7 @@ deshalb einfach, weil wir die Matrixdifferentialgleichung
 \[
 \frac{d}{dt} X=AX
 \qquad
-\text{mit}
+\text{mit Anfangsbedingung}
 \qquad
 X(0)=E
 \]
@@ -829,9 +873,12 @@ eine L"osung einer Matrixdifferentialgleichung war.
 Wir suchen daher $X(t)$ als L"osung der Differentialgleichung
 \[
 \frac{d}{dt}X(t)=A(t)X(t)
-\qquad\text{und}\qquad
+\qquad\text{mit Anfangsbedingung}\qquad
 X(0)=E.
 \]
+
+\subsection{Differentialgleichung der inversen Matrix}
+\index{Differentiagleichung!der inversen Matrix}%
 Die inverse Matrix $X(t)^{-1}$ kann man ebenfalls als L"osung einer
 Differentialgleichung finden.
 Die Ableitung der Beziehung
@@ -856,7 +903,7 @@ A(t)+ X(t)\frac{d}{dt}X(t)^{-1}
 \]
 Die Inverse $X(t)^{-1}$ erf"ullt daher die Differentialgleichung
 \[
-\frac{d}{dt}X(t)^{-1}= X(t)^{-1}A(t).
+\frac{d}{dt}X(t)^{-1}=-X(t)^{-1}A(t).
 \]
 Die Inverse kann also genauso als L"osung einer Differentialgleichung
 gefunden werden wie $X(t)$.
@@ -886,7 +933,7 @@ X(t)=e^{\int_0^tA(\tau)\,d\tau}
 \end{equation}
 eine L"osung der Matrix-Differentialgleichung
 \begin{equation}
-\frac{d}{dt}X(t)=A(t)X(t)\qquad\text{und}\qquad X(0)=E
+\frac{d}{dt}X(t)=A(t)X(t)\qquad\text{mit Anfangsbedingung}\qquad X(0)=E
 \label{linear:nichtkommutativ-gleichung}
 \end{equation}
 ist.
@@ -920,15 +967,17 @@ F"ur die Exponentialfunktion von Zahlen ist die Identit"at eine
 Selbstverst"andlichkeit, aber leider nicht f"ur die Matrizen.
 Denn w"are $e^{B+C}=e^Be^C$, dann m"usste auch $e^{B+C}=e^{C+B}=e^Ce^B$
 sein, die Matrizen $e^B$ und $e^C$ m"ussten vertauschen.
-Dies ist im allgemeinen aber nicht der Fall:
+Dies ist im Allgemeinen aber nicht der Fall, wie der folgende
+Satz zeigt.
 
 \begin{satz}[Baker-Campbell-Hausdorff]
+\index{Baker-Campbell-Hausdorff-Formel}%
 F"ur zwei beliebige $n\times n$-Matrizen $B$ und $C$ gilt
 \[
 [e^B,e^C]=[B,C]+\frac12([B,C^2]+[B^2,C])\dots
 \]
 wobei $[X,Y]=XY-YX$ der {\em Kommutator} von $X$ und $Y$ ist.
-\index{Kommutator}
+\index{Kommutator}%
 Insbesondere vertauschen $e^B$ und $e^C$ genau dann, wenn $B$ und $C$
 vertauschen.
 \end{satz}
@@ -1033,10 +1082,12 @@ Analog kann man die Vertauschung der Matrizen $A_2$ und $A_3$ untereinander
 nachrechnen.
 
 \subsection{L"osung der inhomogenen Gleichung}
+\index{Differentialgleichung!inhomogene}
 Wenn es gelingt, die Matrix-Differentialgleichung zu l"osen, dann
 ist $x(t)=X(t)x_0$ wieder eine L"osung der homogenen Gleichung.
 Ausserdem k"onnen wir wieder versuchen, die L"osung der inhomogenen
 Gleichung mit Variation der Konstanten zu finden.
+\index{Variation der Konstanten}%
 Dazu setzen wir $x(t)=X(t)C(t)$ an, und berechnen die Ableitung
 \[
 \frac{d}{dt}x(t)
@@ -1055,7 +1106,7 @@ Die Gleichung
 =
 X(t)^{-1}f(t)
 \]
-Kann durch Integration gel"ost werden:
+kann durch Integration gel"ost werden:
 \[
 C(t)
 =x_0+\int_0^t X(t)^{-1}(\tau)f(\tau)\,d\tau,
@@ -1065,3 +1116,23 @@ so dass die L"osung der inhomogenen Differentialgleichung
 x(t)=X(t)\biggl(x_0+\int_0^t X(\tau)^{-1} f(\tau)\,d\tau\biggr)
 \]
 wird.
+Wir fassen dieses Resultat als Satz zusammen:
+
+\begin{satz}\label{linear:allgloesung}
+Ist $X(t)$ die L"osung der homogenen Matrix-Differentialgleichung
+\[
+\frac{d}{dt}X(t)=A(t)X(t)
+\qquad\text{mit Anfangsbedingung}\qquad
+X(0)=E,
+\]
+dann ist
+\[
+x(t)=X(t)\biggl(x_0+\int_0^t X(\tau)^{-1} f(\tau)\,d\tau\biggr)
+\]
+die L"osung der inhomogenen linearen Differentialgleichung
+\[
+\frac{d}{dt}x(t)=A(t)x(t)+f(t)
+\qquad\text{mit Anfangsbedingung}\qquad 
+x(0)=x_0.
+\]
+\end{satz}

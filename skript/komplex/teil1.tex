@@ -1,32 +1,42 @@
-\section{Einleitung}
+\section{Problemstellung}
+\rhead{Problemstellung}
 
 In diesem Kapitel möchten wir ein Problem aufgreifen, welches wir bei der Besselschen Differentialgleichung
 \[ z^2w''+zw'+(z^2 - \nu^2)w=0\]
 angetroffen haben. 
+\index{Besselsche Differentialgleichung}
+\index{Differentialgleichung!Besselsche}
 Wir fanden Lösungen in Form der verallgemeinerten Potenzreihe
 \[J_\nu(z)=z^\varrho\sum_{k=0}^{\infty}a_kz^k,\]
 und die Indexgleichung lieferte die dazugehörigen $\varrho=\pm\nu.$
+\index{Indexgleichung}
+\index{verallgemeinerte Potenzreihe}
+\index{Potenzreihe!verallgemeinerte}
 
 \begin{problem*} 
  Eine Differentialgleichung 2. Ordnung besitzt genau zwei linear unabhängige Lösungen.
  Bei $\nu=0$ erhielten wir nur eine Lösung (da $\varrho=0$), und bei ganzzahligen $\nu\in\mathbb{Z}$ besteht eine lineare Abhängigkeit
  \[\nu(z) = J_{-\nu}(-z)\forall\nu\in\mathbb{Z}.\]
-
 Wo also steckt die zweite Lösung?
 \end{problem*} 
 
+\section{Methodik}
+\rhead{Methodik}
 Dieses Kapitel benötigt zwei bereits beschriebene Werkzeuge, die im Folgenden kurz zusammengefasst sind --- die analytischen Fortsetzung und die Laurent-Reihen.
 Anschliessend sollen diese Werkzeuge mit der linearen Algebra kombiniert werden, welches den zentralen Teil dieses Kapitels ausmacht, und abschliessend möchten die Lösungen formell noch gefunden werden.
 
 \subsection{Analytische Fortsetzung}
+\index{analytische Fortsetzung}%
 Die analytische Fortsetzung wurde im Kapitel \ref{sec:fortsetzung} bereits sehr ausführlich diskutiert.
 Die wichtigsten Eigenschaften für die folgende Diskussion seien hier kurz zusammengefasst.
 
 Am Beispiel der Gleichung $y'=\frac{1}{z}$ wurde gezeigt, dass eine Lösung sich bei der analytischen Fortsetzung um eine Singularität verändern kann.
+\index{Singularitat@Singularit\"at}
 Dies passiert jedoch nur bei mehrdeutigen komplexen Funktionen, also beim Logarithmus und bei Wurzelfunktionen.
 Wurzelfunktionen sind hier nicht von Interesse und werden nicht weiter betrachtet. 
 
 Die Veränderung des Logarithmus ist jedoch von zentraler Wichtigkeit.
+\index{Logarithmus}%
 Abbildung \ref{komplex:analytische-fortsetzung-log} auf Seite \pageref{komplex:analytische-fortsetzung-log} illustriert diese Veränderung.
 Bekanntlich ist der Logarithmus nur bis auf ein Vielfaches von $2\pi i$ bestimmt. Dies zeigt sich in der analytischen Fortsetzung durch die $2\pi i$, welche beim einmaligen Umlaufen der Singularität hinzukommen.
 Durch mehrmaliges Umlaufen des Nullpunktes kann jede Lösung des Logarithmus erreicht werden.
@@ -43,7 +53,9 @@ Somit lässt sich schreiben:
 \[\sk \log z = \log z + 2\pi i.\]
 
 \subsection{Laurent-Reihe}
+\index{Laurent-Reihe}%
 Im Kapitel Wegintegrale (\ref{subsection:wegintegrale}) wurde gezeigt, dass eine Funktion $f(z)$ mit einer Singularität nicht in eine Potenzreihe mit ausschliesslich positiven Exponenten entwickelt werden kann.
+\index{Wegintegral}
 Auf Seite \pageref{sssec:LaurentReihen} wurde deshalb die Laurent-Reihe hergeleitet, um auch solche Funktionen in Potenzreihen entwickeln zu können.
 Da auch Laurent-Reihen in diesem Kapitel mehrfach verwendet werden, soll
 \[\mathcal{L}(z):=\sum_{k=-\infty}^{\infty}a_k(z-z_0)^k\]
@@ -55,7 +67,7 @@ Es gilt
 \[\sk \mathcal{L}(z)=\mathcal{L}^+(z)=\mathcal{L}(z).\]
 Eine Funktion ist also genau dann als Laurent-Reihe darstellbar, wenn sie sich durch die analytische Fortsetzung nicht verändert.
 
-\section{Lineare Algebra}
+\subsection{Lineare Algebra}
 Die wichtigsten Überlegungen um die zweite linear unabhängige Lösung einer Differentialgleichung zweiter Ordnung zu finden, liefert die lineare Algebra.
 Wir wissen, dass es zwei linear unabhängige Lösungen geben muss.
 Wenn diese Lösungen existieren, dann können sie auch analytisch fortgesetzt werden.
@@ -74,6 +86,8 @@ so dass gilt
 Die analytische Fortsetzung kann also durch die Matrix $A$ beschrieben werden.
 
 Aus der linearen Algebra ist bekannt, dass für \emph{reguläre} Matrizen durch geeignete Transformation immer eine Basis gefunden werden kann, in welcher $A$ entweder Diagonalform oder Dreiecksform besitzt.
+\index{Diagonalform}%
+\index{Dreiecksform}%
 Die Diagonalform kann erreicht werden, wenn die Matrix $A$ zwei verschiedene Eigenwerte $\lambda_1$ und $\lambda_2$ besitzt. 
 \[A'=\begin{pmatrix}
 \lambda_1 & 0 \\ 
@@ -85,7 +99,7 @@ reduzieren.
 Zunächst ist jedoch ein Beweis vonnöten, dass die analytische Fortsetzung linear unabhängiger Lösungen wiederum auf linear unabhängige Lösungen führt, die Matrix $A$ also regulär ist.
 Wäre die Matrix $A$ singulär, liesse sich auch die Zerlegung in Diagonal- oder Dreiecksform nicht durchführen. 
 
-\subsection{Beweis der Regularität von $A$}
+\subsubsection{Beweis der Regularität von $A$}
 Eine Konstante kann als Spezialfall einer Laurent-Reihe betrachtet werden
 \[c = \mathcal{L}_1(z)=\sum_{k=-\infty}^{\infty}a_k(z-z_0)^k\qquad\text{wobei}\qquad  z_0=0, a_k=\begin{cases}
 c&k=0\\0&\text{sonst}

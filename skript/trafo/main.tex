@@ -202,6 +202,8 @@ Mit einigen Umformungen kann der ganze Transformator als System von mehreren Dif
 
 
 Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesentliche Vorteile mit sich bringt. Die Matrix $N$ ist fast symmetrisch. Wenn der Maschensatz jedoch in die andere Richtung als in Abbildung \ref{trafo:orig} angewendet wird, l"asst sich auch diese Matrix mit sehr geringem Aufwand in die symmetrische Form bringen. Dies ist f"ur dieses Beispiel zwar nicht n"otig, trotzdem kann es f"ur andere L"osungsans"atze von Vorteil sein. Aus der Gleichung \ref{trafo:DGL} wird nun 
+\index{Matrix!symmetrisch}%
+\index{symmetrische Matrix}%
 
 {\footnotesize 
 \begin{align}
@@ -300,6 +302,8 @@ Eine M"oglichkeit stellt die Singular Value Decomposition, zu Deutsch Singul"arw
 		\label{trafo:svd}
 	\end{equation} 
 	geschrieben werden, wobei $U \in \mathbb{R}^{n \times n}$ und $V \in \mathbb{R}^{m \times m}$ orthogonal sind und $S \in \mathbb{R}^{n \times m}$ eine rechteckige Diagonalmatrix ist 
+\index{Matrix!orthogonal}%
+\index{orthogonale Matrix}%
 	\begin{equation*}
 		S = \left( 
 			\begin{array}{ccc|ccc}
@@ -383,6 +387,7 @@ Als n"achstes gilt es, eine einfache 'Inverse' der Matrix $M$ zu finden. Bis anh
 	M^{-1} = \left(U S{_\text{tol}}^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S{_\text{tol}}^\dagger\right)^{-1} U^{-1}
 \end{equation*}
 Da die Matrizen $U$ und $V$ orthogonal sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung als 
+\index{Matrix!orthogonal}%
 \begin{equation*}
 	M^{-1} = V \left(S{_\text{tol}}^\dagger \right)^{-1} U^\top
 \end{equation*}

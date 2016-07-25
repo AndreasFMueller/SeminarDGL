@@ -28,7 +28,23 @@ Bessel-Funktionen damit verstanden werden k"onnen.
 \section{Analytische L"osungen
 \label{section:potenzreihen:analytisch}}
 \rhead{Analytische L"osungen}
-Wir setzen daher die L"osung in Form einer Potenzreihe als
+Wir streben an, eine Differentialgleichung mit Hilfe einer Potenzreihe
+zu l"osen.
+Da nichtlineare Operationen mit Potenzreihen sehr schnell zu un"ubersichtlichen
+Termen f"uhren, ist dies vor allem f"ur lineare Differentialgleichungen
+praktikabel, zum Beispiel
+\index{lineare Differentialgleichung}
+\index{Differentialgleichung!lineare}
+\begin{equation}
+p_n(x)y^{(n)}
++
+p_{n-1}(x)y^{(n-1)}
++\dots+
+p_1(x)y'(x) + p_0(x)y(x)=0.
+\label{potenzreihen:linear}
+\end{equation}
+Wir setzen daher die L"osung der Gleichung~\eqref{potenzreihen:linear}
+in Form einer Potenzreihe als
 \begin{equation}
 y(x)
 =
@@ -56,12 +72,23 @@ y''(x)
 \end{aligned}
 \label{potenzreihen:ableitungen}
 \end{equation}
+Diese Reihen kann man jetzt in die Gleichung~\eqref{potenzreihen:linear}
+einsetzen.
+Der Koeffizientenvergleich ist nat"urlich nur m"oglich, wenn sich auch
+die Koeffizienten $p_k(x)$ der Differentialgleichung als Potenzreihen
+oder sogar Polynome schreiben lassen.
+Dies ist die {\em Potenzreihen-Methode}.
+\index{Potenzreihen-Methode}%
 
-\section{Trigonometrische Funktionen
-\label{section:potenzreihen:trigo}}
-\rhead{Trigonometrische Funktionen}
+\subsubsection{Trigonometrische Funktionen}
+%\label{section:potenzreihen:trigo}}
+%\rhead{Trigonometrische Funktionen}
+Als Beispiel f"ur die Potenzreihen-Methode bestimmen wir die Potenzreihen
+der trigonometrischen Funktionen.
 Die trigonometrischen Funktionen $\sin x$ und $\cos x$ sind L"osungen
 der Schwingungsdifferentialgleichung
+\index{Schwingungsdifferentialgleichung}
+\index{Differentialgleichung!Schwingungs-}
 \begin{equation}
 \begin{aligned}
 y''&=-y
@@ -82,6 +109,7 @@ Wir setzen den Ansatz (\ref{potenzreihen:ansatz}) und die zweite Ableitung
 =0.
 \end{equation}
 Koeffizientenvergleich ergibt die Rekursionsformel
+\index{Rekursionsformel}
 \begin{equation}
 \begin{aligned}
 \sum_{k=0}^\infty \bigl(a_{k+2}(k+1)(k+2) + a_k\bigr)x^k
@@ -110,6 +138,7 @@ y(x)&=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots=\sin x,
 \end{aligned}
 \end{equation*}
 die bekannten Taylor-Reihenentwicklungen der trigonometrischen Funktionen.
+\index{Taylor-Reihe!der trigonometrischen Funktionen}
 
 \section{Verallgemeinerte Potenzreihen
 \label{section:potenzreihen:verallgemeinert}}
@@ -122,6 +151,7 @@ x^2y''+p(x)xy'+q(x)y=0,
 wobei $p(x)$ und $q(x)$ beliebige Funktionen von $x$ sind.
 Das h"aufige Auftreten der Kombinationen $x^2y''$ und $xy'$ in Anwendungen
 wird durch ein Dimensionsargument verst"andlich.
+\index{Dimensionsargument}
 Schreiben wir $[u]$ f"ur die Masseinheit einer Gr"osse, dann gilt
 \begin{equation*}
 \begin{aligned}
@@ -153,6 +183,8 @@ Insbesondere haben die Ableitungen an der Stelle $x=0$ keinen
 Einfluss darauf, ob die Differentialgleichung erf"ullt ist.
 Man spricht auch von einer ausserwesentlichen Singularit"at an
 der Stelle $x=0$.
+\index{Singularitat@Singularit\"at}
+\index{Singularitat@Singularit\"at!ausserwesentliche}
 Wir k"onnen allerdings nicht mehr annehmen, dass die L"osung als
 Potenzreihe in $x$ geschrieben werden kann, denn eine solche
 L"osung w"urde beliebige Ableitungen im Punkt $x=0$ haben, was 
@@ -202,6 +234,7 @@ y(x)=x^\varrho\sum_{k=0}^\infty a_kx^k.
 \label{potenzreihen:verallgemeinert}
 \end{equation}
 \index{Potenzreihe!verallgemeinerte}%
+\index{verallgemeinerte Potenzreihe}%
 Ausser den Koeffizienten $a_k,\;k\ge 0$ ist auch der Exponent
 $\varrho$ zu bestimmen.
 Das Problem ist so noch nicht eindeutig gestellt, denn es gilt zum Beispiel
@@ -212,7 +245,7 @@ x^{0}\bigl(1+x + x^2 + \dots\bigr),
 \]
 die gleiche Funktion wurde hier einmal mit $\varrho=-2$ und einmal
 mit $\varrho=0$ geschrieben.
-Um diese Zweideutigkeit zu vermeiden,
+Um diese Mehrdeutigkeit zu vermeiden,
 verlangen wir daher zus"atzlich, dass $a_0\ne 0$.
 
 Aus der allgemeinen Theorie der linearen Differentialgleichungen
@@ -334,6 +367,22 @@ Es muss daher noch eine weitere L"osung geben, allerdings kann diese
 nicht die Form einer verallgemeinerten Potenzreihe haben, sonst h"atte
 das Verfahren diese gefunden.
 
+Dieses Problem kann im Rahmen der reellen Analysis nicht abschliessend
+gel"ost werden.
+Stefan Kull und Roy Seitz zeigen in Kapitel~\ref{chapter:Loesung2}
+wie mit komplexer Analysis die zweite L"osung gefunden werden kann.
+Ist $y_1(x)$ eine L"osung der Differentialgleichung, dann zeigt ihr
+Resultat, dass eine zweite L"osung in der Form
+\begin{equation}
+y_2(x) = z^\varrho {\cal L}(x) + aw_1(x)\log x
+\label{potenzreihe:2teloesung}
+\end{equation}
+gefunden werden kann, wobei ${\cal L}(x)$ im Allgemeinen eine Laurent-Reihe
+ist, die wieder mit Hilfe eines Koeffizientenvergleichs bestimmt werden kann.
+\index{Laurent-Reihe}%
+In einfachen F"allen gen"ugt es, f"ur ${\cal L}(x)$ einen Potenzreihenansatz
+zu verwenden.
+
 \subsection{Bessel-Gleichung}
 Die Besselsche Differentialgleichung
 \begin{equation}
@@ -362,16 +411,21 @@ J_{\pm n}(x)=x^{\pm n}\sum_{k=0}^\infty a_kx^k,\qquad a_0=1
 \]
 geschrieben werden k"onnen.
 Die Funktionen $J_n(x)$ heissen {\em Bessel-Funktionen (erster Art)}.
-\index{Bessel-Funktionen erster Art}
+\index{Bessel-Funktionen!erster Art}
 \index{Bessel-Funktionen}
 
 Im Fallle $n=0$ hat die
 Indexgleichung~(\ref{potenzreihen:bessel-indexgleichung}) eine doppelte
 Nullstelle, es gibt dann nur einzige verallgemeinerte Potenzreihe
 $J_0(x)$ als L"osung.
-Nach der Motivation in Abschnitt~\ref{potenzreihen:doppeltens} erwarten
-wir eine weitere L"osung mit einem $\log(x)$-Term.
-Wir konstruieren daher den neuen Ansatz
+Nach den in Abschnitt~\ref{potenzreihen:doppeltens} formulierten
+Resultaten von Kapitel~\ref{chapter:Loesung2} suchen wir zu der bereits
+gefundenen L"osung $w_1(x)=J_0(x)$ eine weitere L"osung mit einem
+$\log(x)$-Term.
+Wir konstruieren daher den neuen Ansatz\footnote{Dabei haben wir die
+Konstante $a$ in \eqref{potenzreihe:2teloesung} auf $1$ gesetzt.
+Dies ist zul"assig, weil wir die L"osung einer linearen Differentialgleichung
+ja nur bis auf einen konstanten Faktor bestimmen m"ussen.}
 \begin{equation}
 y(x)
 =
@@ -420,7 +474,7 @@ Damit ist gezeigt, dass die Logarithmus-Terme herausfallen, und mit dem
 $\beta_k$ einer L"osung bestimmt werden k"onnen.
 
 Setzt man zudem $\beta=1$, kann man die L"osung explizit ermitteln, die
-etwas langeweilige Rechnung ergibt
+etwas umst"andliche Rechnung ergibt
 \begin{align*}
 K_0(x)
 &=
@@ -444,7 +498,8 @@ J_0(x)\log(x)
 -\sum_{l=1}^\infty (-1)^k\frac{x^{2k}}{(k!\cdot 2^k)^2}\sum_{i=1}^k\frac1s
 \end{align*}
 Dies ist die Bessel-Funktion 0-ter Ordnung und {\em zweiter Art} (siehe auch
-\index{Bessselfunktion zweiter Art}
+\index{Bessel-Funktionen!zweiter Art}
+\index{Bessel-Funktionen!0-ter Ordnung}
 \cite{skript:smirnow2}).
 
 \section{"Ubungsaufgaben}
