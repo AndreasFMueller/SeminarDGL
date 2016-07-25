@@ -920,7 +920,8 @@ stellen, allerdings werden die Argument in der umgekehrten Reihenfolge
 zu der erwarte, die wir in diesem Skript bisher verwendet haben.
 F"ur die Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
 kann man sie zum Beispiel so definieren:
-\verbatiminput{chapters/examples/octave-dgl-f.m}
+%\verbatiminput{chapters/examples/octave-dgl-f.m}
+\lstinputlisting[style=Octave]{chapters/examples/octave-dgl-f.m}
 
 Beim Aufruf der Funktion \texttt{lsode} muss man den {\em Namen}
 der Funktion, die Anfangsbedingung, sowie einen Vektoren mit $x$-Werten,
@@ -930,7 +931,8 @@ Der erste Wert im $x$-Vektor muss der $x$-Wert f"ur die Anfangsbedingung
 sein, in unserem Fall also $0$.
 Um die Werte von $y(x)$ f"ur ganzzahlige Werte von $x$ zu erhalten,
 muss man also die Befehle
-\verbatiminput{chapters/examples/octave-dgl-sol.m}
+\lstinputlisting[style=Octave]{chapters/examples/octave-dgl-sol.m}
+%\verbatiminput{chapters/examples/octave-dgl-sol.m}
 ausf"uhren.
 Als R"uckgabewert erh"alt man eine Matrix, die in jeder Zeile die
 Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
@@ -996,7 +998,7 @@ Die GSL "ubergibt zwei Arrays, im einen findet die Funktion die aktuellen
 $Y$-Werte, im anderen soll sie die Werte der Ableitung zur"uckgeben.
 F"ur die Beispiel-Differentialgleichung (\ref{numerik:beispieldgl})
 sieht der Code wie folgt aus:
-\verbatiminput{chapters/examples/dgl-f.c}
+\lstinputlisting[style=C]{chapters/examples/dgl-f.c}
 Der Parameter \texttt{params} dient dazu, der Funktion zus"atzliche
 Parameter zu "ubergeben.
 In unserem Fall ist das nur die Zahl $\omega$.
@@ -1029,7 +1031,8 @@ F"ur Aufgaben allgemeiner Art ebenfalls sehr gut geeignet ist das
 Runge-Kutta-Fehlberg-Verfahren f"unfter Ordnung mit dem Namen
 \texttt{gsl\_odeiv2\_step\_rkf45}.
 Diese Datenstrukturen werden mit dem Code
-\verbatiminput{chapters/examples/dgl-init.c}
+\lstinputlisting[style=C]{chapters/examples/dgl-init.c}
+%\verbatiminput{chapters/examples/dgl-init.c}
 initialisiert.
 Durch Austausch des zweiten Arguments der Driver-Allozierungs-Funktion
 kann man leicht das Verfahren wechseln und so Zeitaufwand und Genauigkeit
@@ -1047,7 +1050,8 @@ findet man dort den neuen aktuellen Wert von $x$, also im Erfolgsfall
 $x_{\text{next}}$.
 In unserem Fall brauchen wir $X(x)$ f"ur ganzzahlige $x$, die folgende
 Schleife bewerkstelligt dies:
-\verbatiminput{chapters/examples/dgl-loop.c}
+\lstinputlisting[style=C]{chapters/examples/dgl-loop.c}
+%\verbatiminput{chapters/examples/dgl-loop.c}
 
 \begin{table}
 \centering
@@ -1120,6 +1124,7 @@ verkn"upfen dagegen Werte von einzelnen Komponenten von $Y$ an den
 R"andern eines Intervalls.
 \index{Randwertproblem}%
 
+\subsection{Einf"uhrende Beispiele}
 Wir betrachten zwei prototypische Randwertprobleme, die auch gleich
 zwei v"ollig verschiedene L"osungsverfahren motivieren.
 
@@ -1252,6 +1257,9 @@ p_{\text{max}} = \frac{v_0^2}{g}.
 Ein Seil ist zwischen zwei Punkten aufgeh"angt, welche Form nimmt es
 allein unter der Wirkung seines Eigengewichtes an?
 \end{aufgabe}
+Die L"osungskurve dieses Problems heisst die Kettenlinie.
+\index{Kettenlinie}
+
 \begin{loesung}
 \begin{figure}
 \centering
@@ -1278,12 +1286,12 @@ y''(x)=a\sqrt{1+y'(x)^2}.
 \end{equation}
 Diese Differentialgleichung hat die Funktion
 \[
-y(x) = \frac1a \cosh ax
+y(x) = \frac1a \cosh ax + C
 \]
 als L"osung, wie man durch Nachrechnen einsehen kann.
 Die Ableitungen von $y(x)$ sind
 \begin{align*}
-y'(x) &= \sinh ax\\
+y' (x) &=  \sinh ax\\
 y''(x) &= a\cosh ax.
 \end{align*}
 Eingesetzt in die Differentialgleichung erh"alt man
@@ -1295,10 +1303,123 @@ a\cosh ax&=a\sqrt{1+\sinh^2 ax}
 Die Differntialgleichung~\eqref{numerik:kettenloesung}
 ist autonom, also sind auch verschobene Funktionen L"osungen, die allgemeine
 L"osung des Problems ist daher die Funktion
+\begin{equation}
+y(x)=\frac1a\cosh a(x-x_0) + C.
+\label{numerik:ketteaC}
+\end{equation}
+Die Bedeutung der Konstante $C$ ist leichter verst"andlich, wenn man sie
+als $C=y_0-1/a$ schreibt, also
 \[
-y(x)=\frac1a\cosh a(x-x_0).
+y(x)=\frac1a\cosh a(x-x_0) -\frac1a+y_0.
 \]
-Durch Einsetzen von Randbedingungen kann die Aufgabe damit gel"ost werden.
+Setzt man $x=x_0$ ein, findet man $y(x_0)=y_0$, d.~h.~der Punkt $(x_0,y_0)$
+ist der Scheitelpunkt des Graphen von $y(x)$.
+\def\asinh{\operatorname{asinh}}
+
+Damit kann jetzt das Anfangswertproblem gel"ost werden.
+Wir verlangen, dass die im Punkt $x=x_1$ der Funktionswert 
+$y(x_1)=y_1$ sein soll, und die Steigung $y'(x_1)=m$.
+Setzt man die L"osung~\eqref{numerik:ketteaC} in die Bedingung
+f"ur die Steigung ein, erh"alt man
+\[
+m=\sinh a(x_1-x_0)
+\qquad\Rightarrow\qquad
+\asinh m =a(x_1-x_0)
+\qquad\Rightarrow\qquad
+x_0=x_1-\frac1a\asinh m.
+\]
+Die Anfangsbedingung f"ur $y(x_1)$ liefert
+\begin{align*}
+y_1
+&=
+y(x_1)
+=
+\frac1a\cosh a(x_1-x_0) + y_0 - \frac1a
+=
+\frac1a\cosh \asinh(m)+y_0-\frac1a
+=
+\frac1a\sqrt{1+m^2}+y_0-\frac1a
+\\
+\Rightarrow\quad
+y_0
+&= 
+y_1+\frac1a-\frac1a\sqrt{1+m^2}.
+\end{align*}
+Damit ist das Randwertproblem vollst"andig gel"ost wir finden
+\begin{equation}
+y(x)
+=
+\frac1a\cosh \biggl(a(x-x_1) + \asinh m\biggr)
++ y_1 - \frac1a\sqrt{1+m^2}
+\end{equation}
+als allgemeine L"osung zur Anfangsbedingung $y(x_1)=y_1$, $y'(x_1)=m$.
+
+Mit dieser L"osung kann jetzt auch das Randwertproblem gel"ost werden.
+Es muss ein Wert $m$ gefunden werden, so dass $y(x_2)=y_2$,
+man muss also die Gleichung
+\[
+y_2
+=
+\frac1a\cosh \biggl(a(x_2-x_1)+\asinh m\biggr) + y_1 - \frac1a\sqrt{1+m^2}
+=:
+f(m)
+\]
+nach $m$ aufl"osen.
+Das ist leider nicht so einfach, weil $m$ in der transzendenten Funktion
+$\asinh$ auftritt.
+
+Wir k"onnen die Gleichung jedoch iterativ mit dem Newton-Verfahren
+nach Satz~\ref{newton:satz} l"osen.
+Dazu brauchen wir die Ableitung von $f$, sie ist
+\[
+f'(m)
+=
+\frac{ \sinh (x_2-x_1+\asinh m) -m}{\sqrt{m^2+1}}.
+\]
+Damit k"onnen wir die Iterationsformel
+\[
+m_{\text{neu}} = m - \frac{f(m) - y_2}{f'(m)}
+\]
+f"ur den korrekten Wert $m$ finden.
+Sie kann direkt in Octave implementiert werden:
+\lstinputlisting[style=Octave]{chapters/examples/kette.m}
+%\verbatiminput{chapters/examples/kette.m}
+
+In Tabelle~\ref{numerik:kette-newton} ist der Gang der Berechnung
+f"ur den Fall $x_1=-1$, $x_2=2$, $y_1=1$ und $y_2=2$  mit dem
+Startwert $m=0$ dargestellt.
+Wie erwartet ist die Konvergenz quadratisch, in jedem Schritt verdoppelt
+sich die Anzahl korrekter Stellen.
+In Abbildung~\ref{numerik:kette-newton-graph} sind die Graphen von $y(x)$
+zu den im Newton-Algorithmus ermittelten Werten von $m=y'(x_1)$ blau
+dargestellt, die L"osungskurve ist rot.
+\begin{table}
+\centering
+\begin{tabular}{|r|>{$}c<{$}|>{$}c<{$}|}
+\hline
+  &                      m                 &           f(m)               \\
+\hline
+ 1&\phantom{-}           0.0000000000000000& \phantom{-}8.0676619957777653\\
+ 2&         -            0.8053266839760436& \phantom{-}2.5748454835378896\\
+ 3&         -\underline{1}.3999183852140562& \phantom{-}0.5757860863682827\\
+ 4&         -\underline{1.6}180720459804230& \phantom{-}0.0383682292517731\\
+ 5&         -\underline{1.634}7219547661627& \phantom{-}0.0001812733120350\\
+ 6&         -\underline{1.63480136}59846743& \phantom{-}0.0000000040625958\\
+ 7&         -\underline{1.634801367764473}7& \phantom{-}0.0000000000000004\\
+ 8&         -\underline{1.6348013677644739}&           -0.0000000000000002\\
+\hline
+\end{tabular}
+\caption{Numerische L"osung des Randwertproblems f"ur die Kettenlinie
+mit Randbedingungen $x_1=-1$, $x_2=2$, $y(x_1)=y_1$ und $y(x_2)=y_2$.
+\label{numerik:kette-newton}}
+\end{table}
+\begin{figure}
+\centering
+\includegraphics{chapters/images/numerik-6.pdf}
+\caption{Iterative Bestimmung der Kettenlinie zwischen
+den Punkten $(-1,2)$ und $(2,2)$ mit Hilfe des Newton-Algorithmus.
+\label{numerik:kette-newton-graph}}
+\end{figure}
 \end{loesung}
 
 \subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
