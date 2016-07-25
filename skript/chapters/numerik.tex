@@ -92,7 +92,7 @@ y_{\mathstrut k}=y_{k-1} + h\cdot f(x_{k-1}, y_{k-1}),\quad k>0,
 \]
 mit $x_k=kh$,
 die eine N"aherung f"ur die Funktionswerte $y(x_k)$ der L"osung $y(x)$
-der Differentialgleichung~(\ref{numerik:eulerdgl}) ist.
+der Differentialgleichung~\eqref{numerik:eulerdgl} ist.
 \end{satz}
 
 Dieses Verfahren ist nicht besonders gut, wie wir im Folgenden zeigen
@@ -101,7 +101,7 @@ Die Diskussion soll vor allem zeigen, worauf bei der Weiterentwicklung
 des Verfahrens geachtet werden muss.
 
 Im vorliegenden Beispiel liefert die
-Differentialgleichung~(\ref{numerik:expdgl})
+Differentialgleichung~\eqref{numerik:expdgl}
 den Wert $y'(x_k)=-\alpha y(x_k)$ f"ur die Ableitung,
 woraus wir die Rekursionsformel
 \[
@@ -126,7 +126,7 @@ f"ur die N"aherung $y_k$ der Funktionswerte $y(x_k)$.
 
 Wir m"ochten $y(x)$ f"ur einen ganz bestimmten $x$-Wert berechnen.
 Dazu unterteilen wir das Intervall $[0,x]$ in $n$ Teilschritte der
-Breite $x/n$, und wenden die Formel~(\ref{numerik:rekursion}) an:
+Breite $x/n$, und wenden die Formel~\eqref{numerik:rekursion} an:
 \[
 y(x)=y(x_n)=(1-\alpha h)^n y_0=\biggl(1+\frac{-\alpha x}{n}\biggr)^n y_0.
 \]
@@ -144,7 +144,7 @@ $n$ der exakten L"osung (blau).
 \label{numerik:approximation}}
 \end{figure}%
 Abbildung~\ref{numerik:approximation} zeigt, wie die
-durch~(\ref{numerik:rekursion}) gegebenen Approximationen mit zunehmendem
+durch~\eqref{numerik:rekursion} gegebenen Approximationen mit zunehmendem
 $n$ der exakten L"osung $y(x)=e^{-\alpha x}$ n"aher kommen.
 
 Wir k"onnen auch den Fehler des numerischen Verfahrens berechnen.
@@ -180,7 +180,7 @@ Der relative Fehler des Verfahrens ist also
 \centering
 \includegraphics{chapters/images/numerik-3.pdf}
 \caption{Relativer Fehler des Euler-Verfahrens f"ur die Differentialgleichung
-(\ref{numerik:expdgl}) in Abh"angigkeit von der Anzahl $k$ der Schritte.
+\eqref{numerik:expdgl} in Abh"angigkeit von der Anzahl $k$ der Schritte.
 \label{numerik:relfehler}}
 \end{figure}%
 Ganz unabh"angig von der Schrittweite $h$ wird der relative Fehler
@@ -200,7 +200,7 @@ der Approximation zu erreichen.
 
 \section{Fehler-Entwicklung numerischer L"osungen}
 \rhead{Fehler-Entwicklung}
-Wir betrachten wieder die Differentialgleichung~(\ref{numerik:eulerdgl})
+Wir betrachten wieder die Differentialgleichung~\eqref{numerik:eulerdgl}
 und versuchen, den Fehler eines N"aherungsverfahrens zu bestimmen,
 welches Schritte der Gr"osse $h$ durchf"uhrt, um den Wert $y(x)$
 zu approximieren.
@@ -277,13 +277,13 @@ o(\Delta x^3)
 \label{numerik:taylor}
 \end{equation}
 zu verwenden.
-In (\ref{numerik:taylor}) werden h"ohere Ableitungen von $y(x)$ ben"otigt,
+In \eqref{numerik:taylor} werden h"ohere Ableitungen von $y(x)$ ben"otigt,
 w"ahrend die Differentialgleichung nur die erste Ableitung liefert.
 Die h"oheren Ableitungen wurden aber bereits im
 Abschnitt~\ref{grundlagen:hoehere-ableitungen} berechnet.
 
 Wir untersuchen, wie sich das Verfahren f"ur die Beispiel-Gleichung
-(\ref{numerik:expdgl}) anwenden l"asst.
+\eqref{numerik:expdgl} anwenden l"asst.
 Dort gilt
 \begin{equation*}
 \begin{aligned}
@@ -335,8 +335,8 @@ $i$&$x$&$e^{-\alpha x}$&Euler&kubisch\\
 \hline
 \end{tabular}
 \caption{N"aherungswerte f"ur die L"osung $e^{-\alpha x}$ der
-Beispieldifferentialgleichung (\ref{numerik:expdgl}) nach dem Euler-Verfahren
-und nach dem kubischen Verfahren (\ref{numerik:kubisch}) mit einer
+Beispieldifferentialgleichung \eqref{numerik:expdgl} nach dem Euler-Verfahren
+und nach dem kubischen Verfahren \eqref{numerik:kubisch} mit einer
 Schrittweite von 0.1. Unterstrichen ist jeweils die Stellen, die nach
 Rundung auf die angegebene Anzahl stellen mit dem exakten Wert "ubereinstimmt.
 \label{numerik:euler-kubisch}}
@@ -429,7 +429,7 @@ af(x,y) + bf(x+\alpha h, y + \beta h f(x,y))
 \label{numerik:inkrementF}
 \end{align}
 Damit dies bis zur zweiten Ordnung mit dem Inkrement zwischen $x$ und $x+h$
-"ubereinstimmt, muss~(\ref{numerik:inkrementF}) mit der Taylorreihe
+"ubereinstimmt, muss~\eqref{numerik:inkrementF} mit der Taylorreihe
 von $y(x)$ "ubereinstimmen, also mit
 \begin{equation}
 \frac{y(x+h)-y(x)}{h}=y'(x) + \frac12y''(x)h + O(h^2)
@@ -437,7 +437,7 @@ von $y(x)$ "ubereinstimmen, also mit
 +\frac12\frac{\partial f(x,y)}{\partial y}f(x,y) + O(h^2),
 \label{numerik:ytaylor}
 \end{equation}
-wobei wir f"ur $y''(x)$ die Gleichung (\ref{grundlagen:2abl}) verwendet haben.
+wobei wir f"ur $y''(x)$ die Gleichung \eqref{grundlagen:2abl} verwendet haben.
 Durch Koeffizientenvergleich finden wir die Bedingungen
 \[
 \begin{aligned}
@@ -498,7 +498,7 @@ vereinfachte Runge-Kutta-Verfahren}.
 \caption{Zusammenspiel der Richtungen $k_1$ bis $k_4$ bei einem
 Einzelschritt des Runge-Kutta-Verfahrens vierter Ordnung.
 Der n"achste Punkt $y_{k+1}$ wird gem"ass
-Formel~(\ref{numerik:runge-kutta-rekursion}) berechnet.
+Formel~\eqref{numerik:runge-kutta-rekursion} berechnet.
 \label{numerik:rk-step}}
 \end{figure}
 Das {\em Runge-Kutta-Verfahren} erweitert die Inkrement-Funktion derart,
@@ -535,7 +535,7 @@ Diese vier Steigungen werden jetzt gewichtet gemittelt, wobei
 $k_2$ und $k_3$ doppeltes Gewicht erhalten, und mit dieser
 Steigung wird ein ganzer Schritt vorgenommen.
 
-Die Formeln f"ur die $k_i$ sowie (\ref{numerik:runge-kutta-rekursion})
+Die Formeln f"ur die $k_i$ sowie \eqref{numerik:runge-kutta-rekursion}
 k"onnen ganz "ahnlich wie das verbesserte Euler-Verfahren bzw.~das
 vereinfachte Runge-Kutta-Verfahren begr"undet werden.
 Der Aufwand daf"ur ist aber betr"achtlich, so dass wir auf die
@@ -694,7 +694,7 @@ Vergleicht man Koeffizienten, findet man
 a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32
 \end{aligned}
 \]
-Aus der Formel (\ref{numerik:zweischrittansatz}) wird somit die
+Aus der Formel \eqref{numerik:zweischrittansatz} wird somit die
 Iterationsformel
 \begin{equation}
 y_{n+2}=y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
@@ -780,7 +780,7 @@ Bei einem Einschritt-Verfahren kann in jedem Schritt die Schrittweite $h$
 ver"andert werden, zum Beispiel f"ur Bereiche von $x$-Werten, in denen
 die Steigung von $y(x)$ sehr rasch "andert.
 
-F"ur die Beispiel-Differentialgleichung (\ref{numerik:expdgl}) k"onnen
+F"ur die Beispiel-Differentialgleichung \eqref{numerik:expdgl} k"onnen
 wir das Adams-Bashforth-Verfahren zweiter Ordnung ($s=2$) vollst"andig
 analysieren.
 Die Rekursionsformel wird zu
@@ -913,12 +913,14 @@ Rechnung beeinflussen kann, z.~B.~um die $x$-Werte anzugeben, f"ur die
 die $Y(x)$ bestimmt werden sollen, oder um Genauigkeitsziele zu erreichen.
 
 \subsection{Octave}
+\index{Octave}%
 In Octave steht eine einzige Funktion \texttt{lsode} zur Verf"ugung, welche
+\index{lsode@{\texttt{lsode}}}
 auf zuverl"assige Art Differentialgleichungen l"ost.
 Der Anwender muss eine Implementation der Funktion $f$ zur Verf"ugung
 stellen, allerdings werden die Argument in der umgekehrten Reihenfolge
 zu der erwarte, die wir in diesem Skript bisher verwendet haben.
-F"ur die Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
+F"ur die Beispieldifferentialgleichung \eqref{numerik:beispieldgl}
 kann man sie zum Beispiel so definieren:
 %\verbatiminput{chapters/examples/octave-dgl-f.m}
 \lstinputlisting[style=Octave]{chapters/examples/octave-dgl-f.m}
@@ -938,7 +940,7 @@ Als R"uckgabewert erh"alt man eine Matrix, die in jeder Zeile die
 Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
 aus dem \texttt{x}-Argument enth"alt.
 Die Resultate sind zusammen mit den Werten der exakten
-L"osung~(\ref{numerik:beispiel-loesung}) in der dritten Spalte 
+L"osung~\eqref{numerik:beispiel-loesung} in der dritten Spalte 
 in der Tabelle~\ref{numerik:octave-resultate} zusammengestellt.
 Es ist gut erkennbar, wie der Fehler anf"anglich langsam ansteigt,
 dann aber unter Kontrolle bleibt.
@@ -981,9 +983,12 @@ berechnet mit der Funktion \texttt{lsode} von Octave.
 \end{table}
 
 \subsection{GNU Scientific Library}
+\index{GNU scientific library}%
+\index{GSL}%
 W"ahrend Octave dem Benutzer die Wahl eines geeigneten Verfahrens abnimmt
 und ihm "uberhaupt wenig Kontrolle "uber den Gang der Rechnung gibt,
-kann ein Programmierer durch den Einsatz der GNU Scientific Library (GSL) die
+kann ein C-Programmierer durch den Einsatz der GNU Scientific Library (GSL) die
+\index{C}%
 volle Kontrolle "uber alle Aspekte der Iteration erhalten.
 Der Preis ist eine wesentlich h"ohere Komplexit"at.
 Ziel dieses Abschnitts ist, ein einfaches Beispielprogramm zu
@@ -996,7 +1001,7 @@ Zun"achst braucht es nat"urlich wieder eine Implementation der
 Funktion $f$. 
 Die GSL "ubergibt zwei Arrays, im einen findet die Funktion die aktuellen
 $Y$-Werte, im anderen soll sie die Werte der Ableitung zur"uckgeben.
-F"ur die Beispiel-Differentialgleichung (\ref{numerik:beispieldgl})
+F"ur die Beispiel-Differentialgleichung \eqref{numerik:beispieldgl}
 sieht der Code wie folgt aus:
 \lstinputlisting[style=C]{chapters/examples/dgl-f.c}
 Der Parameter \texttt{params} dient dazu, der Funktion zus"atzliche
@@ -1098,7 +1103,7 @@ Schleife bewerkstelligt dies:
 10000&   0.86607968&   0.86610200&  -0.00002232\\
 \hline
 \end{tabular}
-\caption{L"osungen der Beispieldifferentialgleichung (\ref{numerik:beispieldgl})
+\caption{L"osungen der Beispieldifferentialgleichung \eqref{numerik:beispieldgl}
 mit Hilfe der GNU Scientific Library (GSL).
 \label{numerik:gsl-resultate}}
 \end{table}
@@ -1195,7 +1200,7 @@ v_y
 Offenbar gibt es zu jedem $v_x$ einen passenden Wert von $v_y$,
 mit dem das Ziel getroffen wird.
 
-Die Differentialgleichung (\ref{numerik:ball-dgl}) ist nicht in einer
+Die Differentialgleichung \eqref{numerik:ball-dgl} ist nicht in einer
 Form, die der numerischen L"osung zug"anglich ist.
 Wir schreiben Sie daher als Differentialgleichung erster Ordnung 
 f"ur vierdimensionale Vektoren:
@@ -1231,7 +1236,7 @@ Winkel gefunden werden, unter dem der Ball geworfen werden muss,
 um das Ziel zu trefen.
 Bei der Elevation $\alpha$ sind die Komponenten der Anfangsgeschwindigkeit
 $v_x=v_0\cos\alpha$ und $v_y=v_0\sin\alpha$. 
-Setzt man dies in die Bedingung~(\ref{numerik:ball-bedingung}) ein,
+Setzt man dies in die Bedingung~\eqref{numerik:ball-bedingung} ein,
 findet man
 \begin{align*}
 v_0 \sin \alpha &=\frac{gp}{2v_0\cos\alpha}
@@ -1528,8 +1533,8 @@ L"osung des gestellten Randwertproblems.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/randwert-1.pdf}
-\caption{L"osungen des Anfangswertproblems~(\ref{numerik:ball-dgl-1}) und
-(\ref{numerik:ball-dgl-2}).
+\caption{L"osungen des Anfangswertproblems~\eqref{numerik:ball-dgl-1} und
+\eqref{numerik:ball-dgl-2}.
 Das Newton-Verfahren korrigiert $v_y$ derart, dass $h(v_y)=0$ wird.
 So wird die L"osung des Randwertproblems (rot) gefunden.
 \label{numerik:randwert-bild}}

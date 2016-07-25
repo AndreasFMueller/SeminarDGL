@@ -7,7 +7,7 @@ Der klassische diskrete Kalmanfilter l"ost das Filterproblem f"ur ein
 diskretes, lineares dynamisches System.
 Das System wird mit Hilfe einer linearen Differenzengleichung beschrieben,
 in der ein diskreter stochastische Prozess sowohl bei der Systementwicklung
-wie auch beim Messen einfluss nimmt.
+wie auch beim Messen Einfluss nimmt.
 Der Filter soll aus den Messungen den Systemzustand rekonstruieren, soweit
 dies von den stochastischen Komponenten nicht verunm"oglicht wird.
 Der Kalman-Filer l"ost auf optimale Weise: jede andere L"osung hat
@@ -17,7 +17,7 @@ Skript \cite{skript:wrstat}, die dort verwendete Notation wird auch
 im Abschnitt~\ref{skript:diskreter-kalman-filter} verwendet.
 
 Es liegt nahe, nach einer entsprechenden L"osung f"ur kontinuierliche
-Systeme zu Fragen.
+Systeme zu fragen.
 Zwar ist es in sehr vielen F"allen in der Praxis m"oglich, dank
 Diskretisierung mit dem diskreten Kalman-Filter eine gute L"osung
 zu finden.
@@ -56,7 +56,7 @@ x_{k+1} = \varphi_k x_k + u_k
 \end{equation}
 beschreiben, jedoch nur bis auf einen normalverteilten Fehler $u_k$.
 Gemessen wird aber nicht $x_k$, sondern nur ein Teil oder eine
-Linearkombination $Hx_k$ der Komponenten von $x_k$, und auch wieder
+Linearkombination $H_kx_k$ der Komponenten von $x_k$, und auch wieder
 nur mit einem unvermeidbaren normalverteilten Fehler $w_k$:
 \[
 z_k=H_kx_k + w_k.
@@ -69,7 +69,7 @@ Die L"osung besteht jeweils aus zwei Schritten.
 Zun"achst wird $\varphi_k$ dazu verwendet, eine Sch"atzung $\hat x_{k+1|k}$
 des Systemszustand f"ur die Zeit $k+1$ nur auf Grund der zur Zeit
 $k$ zur Verf"ugung stehenden Informationen zu bestimmen.
-Die Matrix $\varphi_k$ liefert diese Information:
+Die Matrix $\varphi_k$ liefert diese Information mittels
 \[
 \hat x_{k+1|k} = \varphi_k \hat x_k.
 \]
@@ -79,13 +79,16 @@ $\hat x_{k+1|k}$ bereits die richtige L"osung w"are.
 Die Abweichung der vorhergesagten Messung $H_{k+1}\hat x_{k+1|k}$
 von der tats"achlichen Messung $z_{k+1}$ ist
 $z_{k+1}-H_{k+1}\hat x_{k+1|k}$r, daraus wird die Korrektur mit Hilfe
+der Gain-Matrix $K_{k+1}$ nach
+\index{Gain-Matrix}%
 \[
 \hat x_{k+1}
 =
 x_{k+1|k} + K_{k+1}(z_{k+1} - H_{k+1} \hat x_{k+1|k})
 =
-(I-K_{k+1}H_{k+1}) \varphi_{k}\hat x_k + K_{k+1}z_{k+1}.
+(I-K_{k+1}H_{k+1}) \varphi_{k}\hat x_k + K_{k+1}z_{k+1}
 \]
+berechnet.
 Der Fehler der Sch"atzung $\hat x_{k+1}$ kann mit Hilfe der
 Fehler-Kovarianzmatrizen $Q_k=E(u_ku^t_k)$ der Systemfehler $u_k$
 \index{Fehler-Kovarianz}
@@ -111,7 +114,7 @@ K_{k+1}
 =
 P_{k+1|k}H_{k+1}^t(H_{k+1}P_{k+1|k}H_{k+1}^t + R_{k+1})^{-1}
 \]
-gefunden, und der Sch"atzfehler ist
+als Gain-Matrix gefunden, und der Sch"atzfehler ist
 \[
 P_{k+1}=(I-K_{k+1}H_{k+1})(\varphi_{k}P_k\varphi_k^t+Q_k).
 \]
@@ -130,8 +133,8 @@ und wir m"ussen erst noch ein mathematische Formulierung daf"ur finden.
 %
 \subsection{Das kontinuierliche Filterproblem}
 Wir suchen jetzt eine kontinuierliche Entsprechung f"ur die diskrete
-Entwicklungsgleichung~(\ref{stochastisch:diskrete-entwicklungs-gleichung}).
-Gesucht ist der zeitabh"nagige $n$-dimensional Systemzustand $X(t)$. 
+Entwicklungsgleichung~\eqref{stochastisch:diskrete-entwicklungs-gleichung}.
+Gesucht ist der zeitabhn"agige $n$-dimensional Systemzustand $X(t)$. 
 Die Entwicklung des Systems wird durch eine lineare Differentialgleichung
 \[
 \frac{dX(t)}{dt}
@@ -157,15 +160,18 @@ $m\times n$-Matrix $G(t)$ mit
 \[
 Z(t) = G(t) X(t).
 \]
+Der Matrix $G(t)$ entspricht im diskreten Filterproblem die Matrix $H_k$.
+
 Wir m"ussen jetzt aber noch den Messfehler modellieren.
 Dieser sollte im Wesentlichen ein Wiener-Prozess sein, wir k"onnen daher
 den Messprozess durch die stochastische Differentialgleichung
 \begin{equation}
 dZ(t)
 = 
-G(t)X(t) \,dt +  D(t)\,dV(t),
+G(t)X(t) \,dt +  D(t)\,dV(t)
 \label{stochastisch:kontinuierlicher-messprozess}
 \end{equation}
+beschreiben,
 worin $V(t)$ ein $m$-dimensionaler Wiener-Prozess ist und $D(t)$ 
 eine $m\times m$-Matrix.
 
@@ -197,7 +203,7 @@ f"ur den eindimensionalen Fall ($n=m=1$).
 
 Ohne die Information aus dem Messprozess $Z(t)$ steht f"ur die 
 Sch"atzung nur noch die
-Entwicklungsgleichung~(\ref{stochastisch:kontinuierliche-zeitentwicklung})
+Entwicklungsgleichung~\eqref{stochastisch:kontinuierliche-zeitentwicklung}
 zur Verf"ugung.
 Ausserdem ist der Systemfehler unbekannt, so dass nur noch die gew"ohnliche
 lineare Differentialgleichung
@@ -207,7 +213,7 @@ d\hat X(t) = F(t)\hat X(t)\,dt
 \end{equation}
 bleibt.
 
-Die Gleichung~(\ref{stochastisch:homogene-entwicklung}) muss erweitert
+Die Gleichung~\eqref{stochastisch:homogene-entwicklung} muss erweitert
 werden um einen Term, der die Abweichung der Messung misst.
 Ohne die Messfehler m"usste
 \[
@@ -225,7 +231,7 @@ G(t)(X(t)-\hat X(t))\,dt + D(t)\,dV(t)
 .
 \label{stochastisch:innovations-prozess}
 \end{equation}
-Die Korrektur muss linear von (\ref{stochastisch:innovations-prozess})
+Die Korrektur muss linear von \eqref{stochastisch:innovations-prozess}
 abh"angen, die stochastische Differentialgleichung f"ur $\hat X(t)$
 hat daher die Form
 \begin{align*}
@@ -246,7 +252,7 @@ K(t)\,dZ(t)
 mit einer noch zu bestimmenden Funktionen $K(t)$.
 $N(t)$ heisst der Innovations-Prozess.
 Die Funktion $K(t)$ muss so bestimmt werden, dass die Bedingungen
-1-3 an den Sch"atzprozess erf"ullt sind.
+1--3 an den Sch"atzprozess erf"ullt sind.
 
 Der Sch"atzfehler zur Zeit $t$ ist der Erwartungswert
 \[
@@ -260,7 +266,7 @@ Man kann zeigen, dass $S(t)$ die gew"ohnliche Differentialgleichung
 \label{stochastisch:ricatti}
 \end{equation}
 erf"ullt.
-(\ref{stochastisch:ricatti}) ist eine Riccati-Differentialgleichung.
+\eqref{stochastisch:ricatti} ist eine Riccati-Differentialgleichung.
 Mit $S(t)$ kann das Filterproblem gel"ost werden, es gilt
 \begin{equation}
 d\hat X(t)

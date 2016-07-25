@@ -14,17 +14,19 @@ System gibt es keine chaotischen Bewegungen.
 Ziel dieses Kapitels ist, in diese geometrische
 Denkweise einzuf"uhren.
 Das Buch \cite{skript:hirsch} f"uhrt diesen Ansatz weiter bis zu
-einer Einf"uhrung in chaotische Bewegung.
+einer Einf"uhrung in die Theorie der chaotische Bewegung.
 
 \section{Autonome Systeme}
 \rhead{Autonome Systeme}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/geometrie-13.pdf}
-\caption{Entwicklung des Systems~(\ref{geometrie:harvest-equation})
+\caption{Entwicklung des Systems~\eqref{geometrie:harvest-equation}
 mit $a=5$ und $h=0.8$
 \label{geometrie:harvest-graph}}
 \end{figure}%
+\index{autonome Differentialgleichung}%
+\index{Differentialgleichung!autonome}%
 Ein eindimensionales System k"onnen wir schreiben als
 \[
 y'=f(x,y).
@@ -51,7 +53,7 @@ $-\infty$ divergieren.
 Alle anderen L"osungen konvergieren gegen die blaue Kurve.
 
 Offenbar ist es ziemlich schwierig, das
-System~(\ref{geometrie:harvest-equation}) "uber gr"ossere $x$-Intervalle
+System~\eqref{geometrie:harvest-equation} "uber gr"ossere $x$-Intervalle
 zu verstehen. 
 Zum Beispiel h"angt das Verhalten davon ab, ob der Startwert zwischen den
 farbigen Kurven liegt oder ausserhalb, und diese h"angt vom Start-$x$ ab.
@@ -131,6 +133,7 @@ verschwindet:
 
 \begin{definition}
 $y$ heisst {\em kritischer Punkt} des Vektorfeldes $f$, wenn $f(y)=0$.
+\index{kritischer Punkt}
 \end{definition}
 
 Dass in einem kritischen Punkt das Vektorfeld verschwindet bedeutet nicht,
@@ -168,14 +171,14 @@ Die L"osungskurve bewegt sich also "uber den kritischen Punkt hinweg.
 \includegraphics{chapters/images/geometrie-1.pdf}
 \caption{Bahnen das Differentialgleichungssystems $y'=\sqrt{|y|}$
 k"onnen den kritischen Punkt bei $y=0$ traversieren.
-Die L"osung~(\ref{geometrie:1dimkritloesung}) ist etwas fetter rot
+Die L"osung~\eqref{geometrie:1dimkritloesung} ist etwas fetter rot
 eingezeichnet.
 L"osungen k"onnen aber auch beliebig lange im Punkt $y$ verweilen,
 wie die blaue Kurve illustriert.
 \label{geometrie:1dimkrit}}
 \end{figure}
 Abbildung~\ref{geometrie:1dimkrit} zeigt die Bahnen.
-Die L"osung~(\ref{geometrie:1dimkritloesung}) ist nicht die einzige.
+Die L"osung~\eqref{geometrie:1dimkritloesung} ist nicht die einzige.
 Andere L"osungen bestehen jeweils aus einem Ast der Kurve mit positiven
 $y$ und einem mit negativen $y$, dazwischen kann die L"osung beliebig lange
 im kritischen Punkt verweilen.
@@ -187,6 +190,7 @@ Anfangsbedingung $y=0$ gibt es beliebig viele L"osungen.
 % Linearisierung
 %
 \subsection{Linearisierung}
+\index{Linearisierung}%
 In einem kritischen Punkt $y_0$ verschwinden alle Komponenten von $f(y_0)$.
 Falls $f$ stetig differenzierbar ist, k"onnen wird $f$ in einer Umgebung
 des kritischen Punktes in erster Ordnung mit Hilfe der Ableitung
@@ -199,6 +203,7 @@ die Jacobi-Matrix, sie ist die $n\times n$-Matrix bestehend aus allen
 partiellen Ableitungen der Komponenten von $f$ nach den Variablen $y_i$.
 In einer Umgebung eines kritischen Punktes ist die Gestalt der Bahnen also
 im wesentlichen durch die Jacobi-Matrix bestimmt.
+\index{Jacobi-Matrix}%
 
 \begin{beispiel}
 Wir betrachten als Beispiel die eindimensionale ($n=1$) Differentialgleichung
@@ -249,6 +254,8 @@ nachdem auf welcher Seite die L"osungskurve beginnt.
 %
 \section{Eindimensionale Systeme}
 \rhead{Eindimensionale Systeme}
+\index{eindimensionales System}%
+\index{System!einidimensionales}%
 Wir untersuchen in diesem Abschnitt das Verhalten eindimensionaler autonomer
 Systeme, und konzentrieren uns dabei auf Eigenschaften, die allein
 auf Grund der geringen Dimension erschliessen lassen.
@@ -282,6 +289,7 @@ $y'=f(y)$.
 Die Bewegung zwischen den Nullstellen wird vollst"andig dominiert durch
 das Vorzeichen von $f(y)$ zwischen den Nullstellen.
 Wir k"onnen dies in einem sogenannten Phasen-Portrait visualisieren.
+\index{Phasenportrait}%
 Abbildung~\ref{geometrie:phasenportrait} zeigt die L"osungen der
 Differentialgleichung
 \begin{equation}
@@ -292,7 +300,7 @@ Die Nullstellen dieser Funktion sind $-1$, $0$ und $1$.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/geometrie-14.pdf}
-\caption{Fluss der Differentialgleichung~(\ref{geometrie:cube}) und
+\caption{Fluss der Differentialgleichung~\eqref{geometrie:cube} und
 Phasenportrait
 \label{geometrie:phasenportrait}}
 \end{figure}
@@ -309,6 +317,7 @@ der L"osung ist, dass sie mit einer Dimension auskommt.
 % Mögliche Änderungen (Bifurkationen) der Phasendiagramme
 %
 \subsection{Bifurkationen\label{geometrie:subsection:bifurkationen}}
+\index{Bifurkation}%
 Betrachten wir jetzt eine Differentialgleichung, die ausserdem von einem
 Parameter $b$ abh"angt:
 \[
@@ -317,9 +326,9 @@ y'=f(y,b).
 Das Phasenportrait wird sich ver"andern, wenn $b$ variert, wir
 m"ochten die verschiedenen dabei m"oglichen "Uberg"ange verstehen
 k"onnen.
-Es interessiert vor allem kleine "Anderungen in der Umgebung eines
+Es interessiert vor Allem kleine "Anderungen in der Umgebung eines
 Wertes $b_0$.
-Dabei kommt es vor allem darauf an, dass mit Nullstellen passiert, und
+Dabei kommt es vor Allem darauf an, dass mit Nullstellen passiert, und
 welches Vorzeichen $f$ links und rechts von der Nullstelle hat.
 Wir gehen daher davon aus, dass $f$ f"ur $b_0$ an der Stelle $y=0$
 hat, dass also $a_0(b_0)=0$ ist.
@@ -364,6 +373,8 @@ Diese Art der Bifurkation heisst {\em Sattel-Knoten-}
 oder {\em Saddle-Node-Bifurkation}.
 \index{Sattel-Knoten-Bifurkation}
 \index{Saddle-Node-Bifurkation}
+\index{Bifurkation!Sattel-Knoten-}%
+\index{Bifurkation!Saddle-Node-}%
 
 \begin{figure}
 \centering
@@ -381,7 +392,7 @@ Abh"angigkeit vom Parameter $b$.
 Parameter $b$.
 \label{geometrie:pitchfork}}
 \end{figure}
-Eine andere Art von Bifurkatione zeigt das Modell
+Eine andere Art von Bifurkation zeigt das Modell
 \[
 f(y,b)=y^3-by.
 \]
@@ -394,6 +405,8 @@ dargestellt, diese Art von Bifurkation heisst {\em Heugabel-}
 oder {\em Pitchformk-Bifurkation}.
 \index{Heugabel-Bifurkation}
 \index{Pitchfork-Bifurkation}
+\index{Bifurkation!Heugabel-}
+\index{Bifurkation!Pitchfork-}
 Bei dieser Art von Bifurkation werden aus einer Nullstelle deren drei.
 War die Nullstelle instabil (wie in Abbildung~\ref{geometrie:pitchfork}),
 entstehen zwei neue instabile Nullstellen, die bisherige Nullstellen 
@@ -438,7 +451,7 @@ In diesem Abschnitt betrachten wir die geometrischen Einschr"ankungen, denen
 zweidimensionale autonome Systeme unterliegen.
 Wieder sind Punkte von besonderem Interesse, in denen $f$ verschwindet.
 Bei eindimensionalen Systemen teilen solche Punkte den $y$-Bereich in
-verschiedene Intervall, in denen die Bewegung nur in jeweils
+verschiedene Intervalle, in denen die Bewegung nur in jeweils
 eine Richtung erfolgen kann, damit ist es leicht zu entscheiden,
 ob ein solcher kritischer Punkt stabil oder instabil ist.
 In zwei Dimensionen legen die Punkte alleine den Charakter noch nicht
@@ -477,7 +490,7 @@ im Folgenden an zwei Beispiel illustrieren wollen.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/nullklinen-1.pdf}
-\caption{Nullklinen der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
+\caption{Nullklinen der Differentialgleichung~\eqref{geometrie:nullklinen-dgl1},
 die $y_1$-Nullklinen in rot, die $y_2$-Nullklinen in blau.
 Kritische Punkte sind die Schnittpunkte verschiedenfarbiger Nullklinen.
 \label{geometrie:nullklinen1}}
@@ -485,7 +498,7 @@ Kritische Punkte sind die Schnittpunkte verschiedenfarbiger Nullklinen.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/nullklinen-2.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1}),
+\caption{Vektorfeld der Differentialgleichung~\eqref{geometrie:nullklinen-dgl1},
 es best"atigt die Resultate der qualitiativen Diskussion aus
 Abbildung~\ref{geometrie:nullklinen1}.
 \label{geometrie:nullklinen-fluss}}
@@ -493,14 +506,14 @@ Abbildung~\ref{geometrie:nullklinen1}.
 \begin{figure}
 \centering
 \includegraphics{chapters/images/nullklinen-3.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+\caption{Vektorfeld der Differentialgleichung~\eqref{geometrie:nullklinen-dgl1}
 in einer Umgebung des instabilen kritischen Punktes $(\frac12,\frac12)$.
 \label{geometrie:nullklinen-instabil}}
 \end{figure}
 \begin{figure}
 \centering
 \includegraphics{chapters/images/nullklinen-4.pdf}
-\caption{Vektorfeld der Differentialgleichung~(\ref{geometrie:nullklinen-dgl1})
+\caption{Vektorfeld der Differentialgleichung~\eqref{geometrie:nullklinen-dgl1}
 in einer Umgebung des stabilen kritischen Punktes $(2,0)$.
 \label{geometrie:nullklinen-stabil}}
 \end{figure}
@@ -533,7 +546,7 @@ L"osungskurven der $y_1$-Achse anschmiegen.
 
 Die $y_1$-Nullkline hat die Gleichung
 \[
-0=2y_1\biggl(1-\frac{y_1}2\biggr)-3y_1y_2=y_1(2-y_1-3y_2),
+0=2y_1\biggl(1-\frac{y_1}2\biggr)-3y_1y_2=y_1(2-y_1-3y_2)
 \qquad\Rightarrow\qquad
 y_1=0
 \quad\text{oder}\quad
@@ -550,7 +563,7 @@ der Schnittpunkt der $y_2$-Nullkline $y_2=0$ mit der $y_1$-Nullkline
 $y_1+3y_2=2$, also $(2,0)$, oder der Schnittpunkt der
 $y_1$-Nullkline $y_1=0$ mit der $y_2$-Nullkline $y_1+y_2=0$, also $(0,1)$.
 Ausserdem ist nat"urlich $(0,0)$ ein kritischer Punkt.
-ein vierter kritischer Punkt entsteht als Schnittpunkt
+Ein vierter kritischer Punkt entsteht als Schnittpunkt
 der $y_1$-Nullkline $y_1+3y_2=2$ mit der $y_2$-Nullkline $y_1+y_2=1$,
 also als L"osung des linearen Gleichungssystems
 \[
@@ -587,8 +600,9 @@ Eigenwerte der Ableitungen klassifizieren kann.
 
 
 \begin{beispiel}
-Das {\em Fitzhugh-Nagumo-Modell} wird verwendet, um das Verhalten eines Neurons
-zu simulieren.
+Das {\em Fitzhugh-Nagumo-Modell} wird verwendet, um das Verhalten eines
+Neurons zu simulieren.
+\index{Neuron}
 \index{Fitzhugh-Nagumo-Modell}
 \begin{figure}
 \centering
@@ -618,7 +632,7 @@ Die $v$-Nullkline hat die Gleichung
 \[
 0=v-\frac13v^3-w
 \qquad\Rightarrow\qquad
-w=v-\frac13v^3 = v(1-{\textstyle\frac1{\sqrt{3}}}v)(1+{\textstyle\frac1{\sqrt{3}}}v)
+w=v-\frac13v^3 = v(1-{\textstyle\frac1{\sqrt{3}}}v)(1+{\textstyle\frac1{\sqrt{3}}}v).
 \]
 Diese kubische Parabel hat im Nullpunkt die Steigung $1$.
 Die $w$-Nullkline ist die Gerade
@@ -652,7 +666,7 @@ Man kann sofort ablesen, dass $(0,0)$ ein instabiler kritischer Punkt ist.
 Die L"osungskurven, die von diesem Punkt abgestossen werden, n"ahern sich
 einem der beiden anderen kritischen Punkte und bewegen sich
 in einer Spirale um diesen Punkt herum.
-Da sich die L"osungskurven nicht schneiden d"urfen kann man folgern,
+Da sich die L"osungskurven nicht schneiden d"urfen, kann man folgern,
 dass die beiden anderen kritschen Punkte stabil sein m"ussen,
 die L"osungskurven werden sich ihnen in Spiralbahnen n"ahern.
 \label{geometrie:fh-diskussion}
@@ -676,8 +690,8 @@ y'=\frac{\partial f(0)}{\partial y}y
 \]
 Die m"oglichen Bewegungsformen in der Umgebung des kritischen Punktes
 sind also bestimmt durch die Jacobi-Matrix.
-Jede beliebige $2\times 2$-Matrix kann auch tats"achlich als Jacobi-Matrix
-vorkommen, denn das System
+Jede beliebige $2\times 2$-Matrix $A$ kann auch tats"achlich als Jacobi-Matrix
+vorkommen, denn das lineare System
 $
 y'=Ay
 $
@@ -693,6 +707,8 @@ hinaus.
 
 Eine solche Klassifikation kann auf der Basis von Eigenwerten und
 Eigenvektoren erfolgen.
+\index{Eigenvektor}%
+\index{Eigenwert}%
 Dazu ben"otigen wir eine "Ubersicht "uber die Eigenwerte einer
 Matrix
 \[
@@ -701,6 +717,7 @@ A=\begin{pmatrix}a&b\\c&d\end{pmatrix},
 die wir als Nullstellen des charakteristischen Polynoms bestimmen
 k"onnen.
 Das charakteristische Polynom ist
+\index{charakteristisches Polynom}
 \[
 \chi_A(\lambda)
 =
@@ -713,6 +730,8 @@ Das charakteristische Polynom ist
 \lambda^2-(a+b)\lambda + ad-bc,
 \]
 es ist bestimmt durch die Spur und die Determinante der Matrix
+\index{Spur}
+\index{Determinante}
 \[
 \begin{aligned}
 \det A&=ad -bc,
@@ -736,6 +755,7 @@ Eigenwerte
 \Delta = \biggl(\frac{\operatorname{Spur}A}2\biggr)^2 - \det A
 \]
 Falls die Diskriminanten $\Delta > 0$ ist, sind die beiden Eigenwerte
+\index{Diskriminante}%
 verschieden, und folglich gibt es zwei verschiedene Eigenvektoren,
 die Matrix $A$ kann diagonalisiert werden mit Diagonalelementen
 $\lambda_{1,2}$.  Das Differentialgleichungssystem zerf"allt dann
@@ -937,7 +957,7 @@ v\beta
 &&\Rightarrow&
 v
 &=
-\alpha a+d-\alpha=2\alpha-\alpha=\alpha
+\alpha a+d-\alpha=2\alpha-\alpha=\alpha,
 \\
 -\det A +\alpha d
 &=
@@ -945,7 +965,7 @@ v
 &&\Rightarrow&
 u\beta&=-\det A +\alpha(a+d)-\alpha^2
 =\alpha^2-\det A
-=\Delta=-\beta^2
+=\Delta=-\beta^2.
 \end{align*}
 Aus der zweiten Gleichung folgt $ u=-\beta$.
 Damit haben wir die Wirkung der Matrix $A$ auf den Vektoren $w_1$ und $w_2$
@@ -960,12 +980,13 @@ Aw_2&=-\beta w_1 + \alpha w_2
 A'=\begin{pmatrix}
 \alpha&\beta\\
 -\beta&\alpha
-\end{pmatrix}
+\end{pmatrix}.
 \]
 Dies ist die gesuchte Form der Matrix, in der sich die L"osungskurven
 leichter beschreiben lassen.
 Eine L"osung daf"ur l"asst sich angeben, wenn man ber"ucksichtigt, dass
 $A'$ einer Drehmatrix "ahnelt.
+\index{Drehmatrix}%
 Wir vermuten daher, dass die L"osungskurve im wesentlichen den kritischen
 Punkt umkreist, m"oglicherweise mit einer "Anderung des Abstandes
 zum kritischen Punkt, und schreiben daher
@@ -991,7 +1012,7 @@ y_{10}=r_0\cos\delta_0
 \qquad\text{und}\qquad
 y_{20}=r_0\sin\delta_0.
 \]
-Setzen wir jetzt den Ansatz~(\ref{geometrie:rotsol}) in die
+Setzen wir jetzt den Ansatz~\eqref{geometrie:rotsol} in die
 Differentialgleichung ein, erhalten wir
 \begin{align*}
 y'(x)
@@ -1043,9 +1064,9 @@ sind Spiralen um den kritischen Punkt
 \end{figure}
 
 \begin{beispiel}
-Wir kehren nochmals zum Beispiel~(\ref{geometrie:nullklinen-dgl1})
+Wir kehren nochmals zum Beispiel~\eqref{geometrie:nullklinen-dgl1}
 von Seite~\pageref{geometrie:nullklinen-dgl1} zur"uck.
-Die kritischen Punkte wurden in (\ref{geometrie:nullklinen-krit}) bereits
+Die kritischen Punkte wurden in \eqref{geometrie:nullklinen-krit} bereits
 zusammengestellt.
 Die Ableitung von $f$, also die Jacobi-Matrix, ist
 \[
@@ -1060,7 +1081,7 @@ y_2-y_2^2-y_1y_2
 \begin{pmatrix}
 2-2y_1-3y_2 & -3y_1\\
 -y_2        &1-2y_2-y_1
-\end{pmatrix}
+\end{pmatrix}.
 \]
 In den vier kritischen Punkten finden wir die folgenden Matrizen und
 Eigenwerte
@@ -1078,7 +1099,7 @@ Eigenwerte
 	&\frac{\partial f}{\partial y}&=\begin{pmatrix}-\frac12&-\frac32\\-\frac12&-\frac12\end{pmatrix}
 		&&\lambda_1=\frac{\sqrt{3}-1}2,\;\lambda_2=-\frac{\sqrt{3}+1}2
 \end{align*}
-Nur bei den Punktein $(2,0)$ und $(0,1)$ sind beide Eigenwerte negativ,
+Nur bei den Punkten $(2,0)$ und $(0,1)$ sind beide Eigenwerte negativ,
 nur diese beiden Punkte sind stabil, wie bereits die  Diskussion der
 Nullklinen auf Seite~\pageref{geometrie:nullklinen-stabilitaet}
 gezeigt hat.
@@ -1095,6 +1116,7 @@ in diesem Abschnitt soll gezeigt werden, wie die Formeln f"ur die Vektoren
 $w_1$ und $w_2$ mit Hilfe komplexer Zahlen hergeleitet werden k"onnen.
 
 Zun"achst halten wir fest, dass im Falle $\Delta<0$ zwei konjugiert
+\index{konjugiert komplex}%
 komplexe Eigenwerte
 $
 \lambda= \alpha + i\beta
@@ -1124,7 +1146,7 @@ Wir konstruieren daher die Vektoren
 w_1&=\frac{i}2(v-\overline v)
 &&\qquad
 &
-v&=-iw_1+w_2
+v&=-iw_1+w_2,
 \\
 w_2&=\frac12(v+\overline v)
 &&\qquad
@@ -1139,7 +1161,7 @@ Aw_1
 &=
 \frac{i}2(Av-A\overline v)
 =
-\frac{i}2(\lambda v-\overline{\lambda}\overline{v})
+\frac{i}2(\lambda v-\overline{\lambda}\overline{v}),
 \\
 Aw_2
 &=
@@ -1148,7 +1170,7 @@ Aw_2
 \frac12(\lambda v+\overline{\lambda}\overline{v}).
 \end{align*}
 Setzen wir die Darstellungen von $v$ und $\overline{v}$ durch $w_i$ aus 
-(\ref{geometrie:wv}) ein, und erhalten:
+\eqref{geometrie:wv} ein, und erhalten:
 \begin{align*}
 \frac{i}2(\lambda v-\overline{\lambda}\overline{v})
 &=
@@ -1157,7 +1179,7 @@ Setzen wir die Darstellungen von $v$ und $\overline{v}$ durch $w_i$ aus
 \frac{1}2(\lambda+\overline{\lambda}) w_1
 +
 \frac{i}2(\lambda-\overline{\lambda}) w_2
-=\alpha w_1-\beta w_2
+=\alpha w_1-\beta w_2,
 \\
 \frac12(\lambda v+\overline{\lambda}\overline{v})
 &=
@@ -1165,8 +1187,8 @@ Setzen wir die Darstellungen von $v$ und $\overline{v}$ durch $w_i$ aus
 =
 -\frac{i}2(\lambda-\overline{\lambda}) w_1
 +
-\frac12(\lambda+\overline{\lambda}) w_2.
-=\beta w_1+\alpha w_2
+\frac12(\lambda+\overline{\lambda}) w_2
+=\beta w_1+\alpha w_2.
 \end{align*}
 Verwendet man also $\{w_1,w_2\}$ als Basis, dann bekommt die Matrix die
 Form
@@ -1182,7 +1204,7 @@ Komponenten, $w_1$ ist der Realteil des Vektors $v$, $w_2$ ist
 der Imagin"arteil.
 Damit haben wir ein Rezept, wie wir eine Basis von reellen Vektoren
 konstruieren k"onnen, in denen das System die
-Form~(\ref{geometrie:drehmatrix}) hat.
+Form~\eqref{geometrie:drehmatrix} hat.
 
 Die Komponenten eines Eigenvektors $v$ erf"ullen die Gleichung
 \[
@@ -1207,16 +1229,18 @@ dessen Real- und Imagin"arteile
 \]
 dies sind die Vektoren, die im vorangegangenen Abschnitt aus dem "Armel
 gesch"uttelt worden waren, um die Matrix des Systems in die
-Form~(\ref{geometrie:drehmatrix}) zu bringen.
+Form~\eqref{geometrie:drehmatrix} zu bringen.
 
 \begin{beispiel}
 \label{geometrie:fh-fortsetzung}
 Wir wenden obige Analyse auf das
-Fitzhugh-Nagumo-Modell~(\ref{geometrie:fitzhugh-dgl}) von
+Fitzhugh-Nagumo-Modell~\eqref{geometrie:fitzhugh-dgl} von
 Seite~\pageref{geometrie:fitzhugh-dgl} an.
+\index{Fitzhugh-Nagumo-Modell}%
 Um die Diskussion etwas zu vereinfachen, untersuchen wir nur den Fall
 $\tau = 1$.
 Wir m"ussen die Jacobi-Matrix in einem kritischen Punkt bestimmen, sie ist
+\index{Jacobi-Matrix}%
 \begin{equation}
 J=
 \begin{pmatrix}
@@ -1257,7 +1281,7 @@ Es hat die Nullstellen
 Der erste Term in der Wurzel ist das Quadrat des Terms vor der Wurzel.
 Ohne $q$ in der Wurzel g"abe es einen Eigenwert mit dem gleichen Vorzeichen
 wie $p$, der andere ist $0$.
-Die Vorzeichen von $p$ und $q$ bestimmen also weitgehen, ob ein 
+Die Vorzeichen von $p$ und $q$ bestimmen also weitgehend, ob ein 
 kritischer Punkt stabil oder instabil ist.
 
 \begin{enumerate}
@@ -1392,7 +1416,7 @@ y&=r\sin\varphi&&\qquad&\dot y&=\dot r\sin\varphi+r\cos\varphi\cdot\dot\varphi
 \end{aligned}
 \]
 erlauben uns,
-das System~(\ref{geometrie:hopfsystem}) in kartesische Koordinaten
+das System~\eqref{geometrie:hopfsystem} in kartesische Koordinaten
 umzurechnen:
 \begin{equation}
 \begin{aligned}

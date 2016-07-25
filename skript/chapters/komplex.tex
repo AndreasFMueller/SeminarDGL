@@ -28,9 +28,13 @@ komplexen Variablen noch gar nicht definiert ist.
 \section{Komplex differenzierbare Funktionen}
 \rhead{Komplex differenzierbare Funktionen}
 Wir betrachten in diesem Kapitel komplexwertige Funktionen,
+\index{komplexwertige Funktion}%
 die ein einem Teilgebiet der komplexen Ebene definiert sind.
 Ein {\em Gebiet} ist eine offene Teilmenge $\Omega\subset \mathbb C$.
+\index{Gebiet}%
 {\em Offen} heisst, dass mit jedem Punkt $z_0\in\Omega$ eine Umgebung
+\index{offen}%
+\index{Umgebung}%
 \[
 U=\{z\in\mathbb Z\,|\,|z-z_0|<\varepsilon\}
 \]
@@ -53,11 +57,14 @@ beschrieben.
 Und nat"urlich wissen wir auch, was unter den Ableitungen der Funktionen 
 $u(x,y)$ und $v(x,y)$ zu verstehen ist.
 Der Funktion $f(z)$ entspricht eine Abbildung $\mathbb R^2\to\mathbb R^2$
+\index{Abbildung}%
 \[
 (x,y)\mapsto\begin{pmatrix}u(x,y)\\v(x,y)\end{pmatrix}.
 \]
 Die Ableitung einer solchen Funktion im Punkt $(x_0,y_0)$
 ist eine lineare Abbildung von Vektoren, die in linearer N"aherung
+\index{lineare Naherung@lineare N\"aherung}
+\index{Naherung@N\"aherung, lineare}
 den Funktionswert bei $f(z_0 + \Delta z)$ 
 \[
 \begin{pmatrix}
@@ -92,13 +99,15 @@ f(x)=f(x_0)+f'(x_0)(x-x_0) + o(x-x_0)
 \label{komplex:abldef}
 \end{equation}
 gilt.
-Der Term $x-x_0$ und die Gleichung (\ref{komplex:abldef}) sind aber auch
+Der Term $x-x_0$ und die Gleichung \eqref{komplex:abldef} sind aber auch
 f"ur komplexe Argument sinnvoll, wir definieren daher
 
 \begin{definition}
-Die komplexe Funktion $f(z)$ heisst im Punkt komplex differenzierbar
-und hat die komplexe Ableitung $f'(z_0)\in\mathbb C$,
-wenn 
+Die komplexe Funktion $f(z)$ heisst im Punkt $z_0$ komplex differenzierbar
+und hat die komplexe Ableitung $f'(z_0)\in\mathbb C$, wenn 
+\index{komplex differenzierbar}%
+\index{komplexe Ableitung}%
+\index{Ableitung!komplexe}%
 \begin{equation}
 f(z)=f(z_0) + f'(z_0)(z-z_0) +o(z-z_0)
 \label{komplex:defkomplabl}
@@ -109,19 +118,21 @@ gilt.
 \begin{beispiel}
 Die Funktion $z\mapsto f(z)=z^n$ ist "uberall komplex differenzierbar
 und hat die Ableitung $nz^{n-1}$.
-Um dies nachzupr"ufen, m"ussen wir die Bedingung~(\ref{komplex:defkomplabl})
+Um dies nachzupr"ufen, m"ussen wir die Bedingung~\eqref{komplex:defkomplabl}
 verifizieren.
 Aus einer wohlbekannten Faktorisierung von $z^n - z_0^n$ k"onnen wir den
 Differenzenquotienten finden:
-\[
+\begin{align*}
 \frac{f(z)-f(z_0)}{z-z_0}
-=
+&=
 \frac{z^n-z_0^n}{z-z_0}
 =
 \frac{(z-z_0)(z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1})}{z-z_0}
-=
-z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1}
-\]
+\\
+&=
+\underbrace{z^{n-1}+z^{n-2}z_0+z^{n-3}z_0^2+\dots+z^{n-1}
+}_{\displaystyle \text{$n$ Summanden}}.
+\end{align*}
 Lassen wir jetzt $z$ gegen $z_0$ gehen, wird die rechte Seite
 zu $nz_0^{n-1}$.
 \end{beispiel}
@@ -214,7 +225,7 @@ erf"ullen die Cauchy-Riemannschen Differentialgleichungen
 \frac{\partial u}{\partial y}
 &=
 -
-\frac{\partial v}{\partial x}
+\frac{\partial v}{\partial x}.
 \end{aligned}
 \label{komplex:dgl:cauchy-riemann}
 \end{equation}
@@ -255,7 +266,7 @@ werden, n"amlich
 +
 \frac{\partial^2 v}{\partial y^2}
 =
-0
+0.
 \end{equation*}
 
 \begin{definition}
@@ -266,8 +277,8 @@ Der Operator
 +
 \frac{\partial^2}{\partial y^2}
 \]
-heisst der {\em Laplace-Operator} in zwei Dimensionen
-\index{Laplace-Operator}.
+heisst der {\em Laplace-Operator} in zwei Dimensionen.
+\index{Laplace-Operator}%
 \end{definition}
 
 \begin{definition}
@@ -277,7 +288,8 @@ die Gleichung
 \Delta h=0
 \]
 erf"ullt.
-\index{harmonische Funktion}
+\index{harmonische Funktion}%
+\index{harmonisch}%
 \end{definition}
 
 \begin{satz}
@@ -292,6 +304,8 @@ Andererseits koppeln sie auch Real- und Imagin"arteil stark zusammen.
 \begin{beispiel}
 Von einer komplex differenzierbaren Funktion $f(z)$ sei nur der Realteil
 $u(x,y)=x^3 -3xy^2$ bekannt.
+Man finde alle m"oglichen Funktionen $f(z)$.
+
 Zun"achst kontrollieren wir, ob dies "uberhaupt ein Realteil sein kann,
 indem wir nachrechnen, ob $u(x,y)$ harmonisch ist.
 \begin{equation*}
@@ -316,6 +330,7 @@ indem wir nachrechnen, ob $u(x,y)$ harmonisch ist.
 \end{aligned}
 \end{equation*}
 $u$ ist also harmonisch.
+
 Um die Funktion $f$ zu finden, brauchen wir jetzt noch den Imagin"arteil.
 Wir finden ihn mit Hilfe der Cauchy-Riemann-Differentialgleichungen.
 Es gilt
@@ -342,7 +357,7 @@ sie ist
 \[
 \frac{\partial v}{\partial y}=3x^2+C'(y).
 \]
-Aus der zweiten Gleichung von (\ref{komplex:crbeispiel}) liest man
+Aus der zweiten Gleichung von \eqref{komplex:crbeispiel} liest man
 ab, dass
 \[
 C'(y)=-3y^2
@@ -364,7 +379,7 @@ Die Cauchy-Riemann-Differentialgleichungen besagen auch, dass man nur
 die Ableitungen nach $x$ zu berechnen braucht, um die Ableitung $f'(x)$
 zu bestimmen.
 Die Rechenregeln f"ur die Ableitung lassen sich daher direkt auf
-komplexe Funktionen "ubertragen.
+komplexe Funktionen "ubertragen:
 \begin{align*}
 \frac{d}{dz}z^n
 &=
@@ -391,6 +406,7 @@ Als wichtiges Beispiel komplex differenzierbarer Funktionen betrachten
 wir die analytischen Funktionen.
 \begin{definition}
 Eine Funktion $f\colon\mathbb C\to\mathbb C$ heisst analytisch im Punkt
+\index{analytisch}%
 $z_0$, wenn sie in eine konvergente Potenzreihe
 \begin{equation}
 f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k
@@ -408,13 +424,14 @@ f'(z)=\sum_{k=1}^\infty ka_k(z-z_0)^{k-1},
 und es stellt sich nur die Frage, ob diese Potenzreihe ebenfalls konvergent
 ist.
 Man kann dies mit der Formel f"ur den Konvergenzradius pr"ufen.
-F"ur die Potenzreihe (\ref{komplex:freihe}) f"ur $f(z)$ liefert sie den
+\index{Konvergenzradius}%
+F"ur die Potenzreihe \eqref{komplex:freihe} f"ur $f(z)$ liefert sie den
 Konvergenzradius
 \[
 \frac{1}{\varrho} = \limsup_{k\to\infty} \root{k}\of{|a_k|}.
 \]
-Dieselbe Formel f"ur die Reihe~(\ref{komplex:fpreihe}) liefert
-f"ur den Konvergenzradius der Ableitung $f'(z)$
+Dieselbe Formel f"ur die Reihe~\eqref{komplex:fpreihe} liefert
+f"ur den Konvergenzradius der Reihenentwicklung der Ableitung $f'(z)$
 \[
 \limsup_{k\to\infty} \root{k}\of{k|a_k|}
 =
@@ -430,10 +447,10 @@ die h"oheren Ableitungen.
 
 Eine analytische Funktion ist somit beliebig oft komplex differenzierbar.
 Aus den Ableitungen kann wie bei reellen Funktionen die Taylor-Reihe
-gebildet werden, sie muss mit der Potenzreihe (\ref{komplex:freihe})
+gebildet werden, sie muss mit der Potenzreihe \eqref{komplex:freihe}
 "ubereinstimmen.
+\index{Taylor-Reihe}%
 Analytische Funktionen haben also eine konvergente Taylor-Reihe,
-\index{Taylor-Reihe}
 \[
 f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0}{k!}(z-z_0)^k.
 \]
@@ -443,6 +460,7 @@ f(z) = \sum_{k=0}^\infty \frac{f^{(k)}(z_0}{k!}(z-z_0)^k.
 %
 \subsection{Wegintegrale\label{subsection:wegintegrale}}
 Das Finden einer Stammfunktion, die Integration, ist die Grundtechnik,
+\index{Stammfunktion}%
 mit der man den "Ubergang von lokaler Information in Form von Ableitungen,
 zu globaler Information "uber reelle Funktionen vollzieht.
 Sie liefert aus der Steigung zwischen zwei Punkten $x_0$ und $x$ den
@@ -477,6 +495,7 @@ Theorie ergeben.
 %
 \subsubsection{Definition des Wegintegrals}
 Ein Weg in der komplexen Ebene ist eine Abbildung 
+\index{Abbildung}%
 \[
 \gamma\colon [a,b]\to\mathbb C: t\mapsto \gamma(t).
 \]
@@ -493,6 +512,37 @@ eine stetige komplexe Funktion, dann heisst
 das {\em Wegintegral} von $f(z)$ entlang der Kurve $\gamma$.
 \index{Wegintegral}
 \end{definition}
+
+\begin{beispiel}
+Man berechne das Wegintegral der Funktion $f(z)=z^n$ entlang des
+Weges 
+$\gamma(t)=1+t+it^2$
+f"ur $t\in[0,1]$.
+
+Die Definition besagt
+\begin{align*}
+\int_\gamma f(z)\,dz
+&=
+\int_0^1 f(\gamma(t))\gamma'(t)\,dt
+=
+\int_0^1 \gamma(t)^n \gamma'(t)\,dt
+=
+\int_0^1 \frac{d}{dt}\frac{\gamma(t)^{n+1}}{n+1}\,dt
+\\
+&=
+\biggl[\frac{\gamma(t)^{n+1}}{n+1}\biggr]_0^1
+=
+\frac{(2+i)^{n+1}}{n+1}-\frac{1^{n+1}}{n+1}
+=
+\frac{(2+i)^{n+1}-1}{n+1}.
+\end{align*}
+Man stellt in diesem Beispiel auch fest, dass das Integral offenbar
+unabh"angig ist von der Wahl des Weges, es kommt einzig auf die
+beiden Endpunkte an:
+\[
+\int_\gamma z^n \,dz = \frac1{n+1}\bigl(\gamma(1)^{n+1}-\gamma(0)^{n+1}\bigr).
+\]
+\end{beispiel}
 
 \begin{beispiel}
 Wir berechnen als Beispiel das Wegintegral der Funktion $f(z)=1/z$ entlang
@@ -525,6 +575,7 @@ Wert des Wegintegrals.
 \begin{satz}
 Seien $\gamma_1(t), t\in[a,b],$ und $\gamma_2(s),s\in[c,d]$
 verschiedene Parametrisierungen
+\index{Parametrisierung}%
 der gleichen Kurve, es gebe also eine Funktion $t(s)$ derart, dass
 $\gamma_1(t(s))=\gamma_2(s)$.
 Dann ist
@@ -552,6 +603,7 @@ Wir verwenden die Definition des Wegintegrals
 \end{align*}
 Beim zweiten Gleichheitszeichen haben wir die Formel f"ur die
 Variablentransformation $t=t(s)$ in einem Integral verwendet.
+\index{Variablentransformation}%
 \end{proof}
 
 Wir erwarten, dass das Wegintegral "ahnlich wie das Integral reeller
@@ -662,7 +714,7 @@ Wenn $z<\varrho$ ist, dann ist
 \frac{|z|}{|x|}
 <1,
 \]
-so dass die geometrische Reihe (\ref{komplex:georeihe}) konvergent ist,
+so dass die geometrische Reihe \eqref{komplex:georeihe} konvergent ist,
 daraus lesen wir ab, dass der Konvergenzradius mindestens $\varrho$
 ist.
 Gr"osser kann er allerdings auch nicht sein, da f"ur $|z|\ge \varrho$
@@ -673,7 +725,7 @@ unendlich gross.
 
 Der Satz~\ref{komplex:integralanalytisch} ist nur f"ur Potenzreihen
 im Punkt $0$ formuliert, was im Wesentlichen durch die
-Umformung~(\ref{komplex:georeihe}) bedingt war.
+Umformung~\eqref{komplex:georeihe} bedingt war.
 Man kann dies aber auch als Potenzreihe
 \[
 \frac1{x-z}
@@ -704,10 +756,11 @@ f"ur das Wegintegral.
 mit einer Singularit"at $z_0$.
 \label{komplex:laurentpfad}}
 \end{figure}%
+\index{Laurent-Reihe}%
 In Satz~\ref{komplex:integralanalytisch} konnten wir eine Potenzreihe f"ur
 solche $z$ konstruieren, deren Betrag kleiner ist als der kleinste Abstand
 der Kurve $\gamma$ vom Ursprung.
-Dies war notwendig, weil in~(\ref{komplex:georeihe}) die geometrische Reihe
+Dies war notwendig, weil in~\eqref{komplex:georeihe} die geometrische Reihe
 nur konvergiert, wenn der Quotient $<1$ ist.
 Wenn die Funktion $f(z)$ jedoch eine Singularit"at im Punkt $z_0$ hat, dann
 kann es nicht m"oglich sein, die Funktion mit einer Potenzreihe zu
@@ -918,7 +971,7 @@ Da die Wahl des Weges keine Rolle spielt, ist $F(z)$ wohldefiniert.
 
 Die Bedingung des eben bewiesenen Satzes ist nicht wirklich n"utzlich,
 sie ist kaum nachpr"ufbar.
-Es braucht also zus"atzliche Anstrengungen um gen"ugen viele
+Es braucht also zus"atzliche Anstrengungen um gen"ugend viele
 Funktionen zu finden, welche die Eigenschaft haben, dass Wegintegrale
 "uber geschlossene Wege verschwinden.
 Wir zielen dabei auf den folgenden Satz hin:
@@ -930,6 +983,8 @@ $\Omega$ auf einen Punkt zusammenziehbarer geschlossener Weg, dann gilt
 \oint_{\gamma}f(z)\,dz=0.
 \]
 Ist insbesondere $\Omega$ {\em einfach zusammenh"angend}
+\index{einfach zusammenhangend@einfach zusammenh\"angend}%
+\index{zusammenziehbar}%
 (d.~h.~jeder geschlossene Weg l"asst sich in einen Punkt zusammenziehen),
 dann verschwindet das Wegintegral von $f(z)$ "uber jeden geschlossenen
 Weg in $\Omega$.
@@ -938,6 +993,7 @@ Weg in $\Omega$.
 
 \begin{proof}[Beweis]
 Wir verwenden f"ur den folgenden Beweis den Satz von Green "uber
+\index{Green, Satz von}%
 Wegintegrale in der Ebene.
 Er besagt, dass f"ur einen geschlossenen Weg $\gamma$ der in der Ebene
 das Gebiet $D$ berandet, und zwei Funktionen $L(x,y)$ und $M(x,y)$, gilt
@@ -963,12 +1019,12 @@ i \int u(x,y)\dot y(t)+v(x,y)\dot x(t)\,dt
 \\
 &=
 \int_D
-\underbrace{-\frac{\partial v}{\partial x}}_{\textstyle=\frac{\partial u}{\partial y}}
+\underbrace{-\frac{\partial v}{\partial x}}_{\displaystyle=\frac{\partial u}{\partial y}}
 -\frac{\partial u}{\partial y}
 \,dx\,dy
 +i
 \int_D
-\underbrace{\frac{\partial u}{\partial x}}_{\textstyle=\frac{\partial v}{\partial y}}
+\underbrace{\frac{\partial u}{\partial x}}_{\displaystyle=\frac{\partial v}{\partial y}}
 -\frac{\partial v}{\partial y}\,dx\,dy
 =0.
 \end{align*}
@@ -992,6 +1048,7 @@ y''(x)-xy(x)=0
 \]
 gel"ost werden.
 Wir nehmen an, dass die Differentialgleichung mit der Laplace-Transformation
+\index{Laplace-Transformation}%
 gel"ost werden kann.
 Allerdings verwenden wir nicht die Integration entlang der positiven
 reellen Achse, wie das bei der traditionellen Laplace-Transformation
@@ -1006,12 +1063,12 @@ $\gamma\colon\mathbb R\to \mathbb C$.
 Setzen wir diesen Ansatz in die Airy-Differentialgleichung ein,
 erhalten wir
 \begin{align*}
-\int_\gamma z^2e^{xz}v(z)\,dz-\int\gamma xe^{xz}v(z)\,dz&=0
+\int_\gamma z^2e^{xz}v(z)\,dz-\int_\gamma xe^{xz}v(z)\,dz&=0
 \end{align*}
 Das zweite Integral kann mit partieller Integration umgeformt werden,
 man erh"alt
 \begin{align*}
-\int\gamma xe^{xz}v(z)\,dz
+\int_\gamma xe^{xz}v(z)\,dz
 &=
 \int_{-\infty}^{\infty} xe^{x\gamma(t)}v(\gamma(t))\dot\gamma(t)\,dt
 =
@@ -1019,7 +1076,7 @@ man erh"alt
 -\int_\gamma e^{xz}v'(z)\,dz
 \end{align*}
 Dieser Ausdruck ist nur dann sinnvoll, wenn der Weg $\gamma$ so gew"ahlt
-wird, dass die Endpunkte des Weges der Integrand beliebig klein wird,
+wird, dass an den Endpunkte des Weges der Integrand beliebig klein wird,
 dies wird sp"ater die Wahl des Weges einschr"anken.
 Andererseits erhalten wir die Differentialgleichung erster Ordnung
 \begin{align*}
@@ -1063,8 +1120,11 @@ Man nennt
 \frac{1}{2\pi i}\int_{\gamma_0} e^{xz-\frac13z^3}\,dz
 \]
 die Airy-Funktion.
+\index{Airy-Funktion}%
+\index{Funktion!Airy-}%
+\index{Ai}%
 Auf die Wahl der Kurve $\gamma_0$ kommt es nicht an, solange sie in den
-beiden grauen Gebieten links der imagin"aren Achse enden.
+beiden grauen Gebieten links der imagin"aren Achse endet.
 Deformiert man die Kurve $\gamma_0$ in die imagin"are Achse, erh"alt
 man daher die folgende Integraldarstellung der Airy-Funktion:
 \begin{align*}
@@ -1088,6 +1148,7 @@ Weitere Information "uber die Airy-Funktionen sind in \cite{skript:airy}
 zusammengefasst.
 
 \subsection{Die Cauchy-Integralformel}
+\index{Cauchy-Integralformel}%
 Sei jetzt $f(z)$ eine komplex differenzierbare Funktion.
 Dann ist auch die Funktion
 \[
@@ -1119,7 +1180,8 @@ durch $f(z)=f(a)+f'(a)(z-a)+o(z-a)$, also
 i\int_0^{2\pi}f(a) + f'(a)re^{it}+o(r)\,dt
 \\
 &=
-f(a)i\int_0^{2\pi}\,dt + irf'(a)\int e^{it}\,dt + i\int_0^{2\pi}o(r)\,dt
+f(a)i\int_0^{2\pi}\,dt
++ irf'(a)\int_0^{2\pi} e^{it}\,dt + i\int_0^{2\pi}o(r)\,dt
 \\
 &=
 2\pi i f(a) + irf'(a)\underbrace{\left[\frac1{i}e^{it}\right]_0^{2\pi}}_{=0}+o(r)
@@ -1225,7 +1287,7 @@ f(z)=\sum_{k=-\infty}^{\infty} c_k(z-z_0)^k
 \]
 entwickelt werden, deren Koeffizienten durch
 \[
-c_k = \frac1{2\pi i}\oint\gamma \frac{f(\zeta)}{(z-z_0)^{k+1}}\,d\zeta,\qquad k\in\mathbb Z
+c_k = \frac1{2\pi i}\oint_\gamma \frac{f(\zeta)}{(z-z_0)^{k+1}}\,d\zeta,\qquad k\in\mathbb Z
 \]
 gegeben sind.
 \end{satz}
@@ -1236,6 +1298,17 @@ gegeben sind.
 \section{Analytische Fortsetzung}
 \rhead{Analytische Fortsetzung}
 \label{sec:fortsetzung}
+Wir haben schon gesehen, dass eine reelle Funktion, die in einem
+Punkte eine konvergente
+Potenzreihe besitzt, auf nat"urliche Weise auch als komplexe Funktion
+betrachtet werden kann, indem man komplexe Argumente in der Potenzreihe
+zul"asst.
+Die neue komplexe Funktion ist ein einem Kreis um den Punkt
+konvergent.
+Mit Hilfe der Potenzreihe kann man also immer eine Funktion auf ein
+Kreisgebiet ausdehen.
+Dieser Abschnitt untersucht die Frage, ob man diese Idee auch auf 
+noch gr"ossere Gebiete ausdehnen kann.
 \subsection{Analytische Fortsetzung mit Potenzreihen}
 \begin{figure}
 \centering
@@ -1318,7 +1391,7 @@ Punkt $z_0$ konvergent.
 Wir vermuten nat"urlich, dass dies eine Darstellung des nat"urlichen
 Logarithmus einer komplexen Zahl ist.
 Nat"urlich ist das immer nur auf einem Kreisgebiet m"oglich, die Reihe
-f"ur $z_=1$ ist zum Beispiel im Punkt $z=-1$ nicht konvergent.
+f"ur $z=1$ ist zum Beispiel im Punkt $z=-1$ nicht konvergent.
 
 Um eine in der ganzen komplexen Ebene definierte Funktion $\log(z)$ zu
 konstruieren, m"ussen wir also eine analytische Fortsetzung aufbauen.
@@ -1398,8 +1471,8 @@ und $\gamma_-$ durch das Vorzeichen unterscheiden.
 \label{komplex:analytische-fortsetzung-dgl}}
 In Abschnitt~\ref{subsection:wegintegrale} wurde gezeigt, wie Wegintegrale
 Stammfunktionen komplexer Funktionen liefern k"onnen.
-Im vorangegangenen Abschnitt wurde untersucht, wie komplex differenzierbare
-Funktionen mit Hilfe von analytischer Fortsetzung entlang einer Kurve
+Im vorangegangenen Abschnitt wurde untersucht, wie eine komplex differenzierbare
+Funktion mit Hilfe von analytischer Fortsetzung entlang einer Kurve
 ausgedehnt werden kann.
 
 Sei $f(z)$ eine komplex differenzierbare Funktion.

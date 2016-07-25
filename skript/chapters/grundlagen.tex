@@ -43,7 +43,7 @@ F(x,y,y',\dots,y^{(n)})=0
 gegeben sein.
 Die Ordnung einer Differentialgleichung ist die h"ochste vorkommende
 Ableitung.
-\index{Ordnung einer Differentialgleichung}%
+\index{Ordnung!einer Differentialgleichung}%
 
 \begin{figure}
 \centering
@@ -83,7 +83,7 @@ kann in eine Vektor-Differen\-tialgleichung erster Ordnung f"ur eine
 \index{Differentialgleichung!Vektor-}%
 $n$-dimensionale vektorwertige Funktion umgewandelt werden.
 Ist $y(x)$ die gesuchte Funktion in der
-Differentialgleichung~(\ref{grundlagen:explizit}), dann kann man
+Differentialgleichung~\eqref{grundlagen:explizit}, dann kann man
 den Vektor
 \[
 u(x)=\begin{pmatrix}
@@ -109,7 +109,7 @@ y'\\y''\\\vdots\\f(x,y,y',\dots,y^{(n-1)})
 \end{equation}
 Der Vektor auf der rechten Seite h"angt nur von $x$, der Funktion $y$
 und ihren Ableitungen bis zur $n-1$-ten Ordnung ab, also von $u$, man
-kann (\ref{grundlagen:vektordgl}) daher als
+kann \eqref{grundlagen:vektordgl} daher als
 \begin{equation}
 \frac{d}{dx}u=\tilde{f}(x,u)
 \end{equation}
@@ -145,7 +145,7 @@ Der Tangentialvektor ist
 \end{equation}
 Die Kurve $\gamma(x)$ ist also in jedem Punkt des $n+1$-dimensionalen
 Raumes tangential an das Vektorfeld, welches
-durch~(\ref{grundlagen:gamma-vektorfeld}) definiert wird.
+durch~\eqref{grundlagen:gamma-vektorfeld} definiert wird.
 Der Spezialfall $n=1$ f"uhrt wieder zur"uck auf das Richtungsfeld
 wie in Abbildung~\ref{grundlagen:richtungsfeld}.
 
@@ -184,7 +184,7 @@ wenn es eine Zahl $L$ gibt
 \end{equation}
 f"ur alle Vektoren $x_1,x_2\in\mathbb R^n$.
 Eine Funktion heisst lokal Lipschitz-stetig im Punkt $x_0$, wenn die
-Bedingung (\ref{grundlagen:lipschitz}) f"ur $x_i$ in einer Umgebung von
+Bedingung \eqref{grundlagen:lipschitz} f"ur $x_i$ in einer Umgebung von
 $x_0$ erf"ullt ist.
 \end{definition}
 
@@ -221,8 +221,9 @@ Existenz und Eindeutigkeit einer L"osung garantiert.
 
 \subsection{Autonome Differentialgleichungen}
 Eine besondere Bedeutung haben Differentialgleichungen, in denen
-$f$ nicht von $x$ abh"angt, man nennt sie {\em autonom}
-\index{autonome Differentialgleichung}.
+$f$ nicht von $x$ abh"angt, man nennt sie {\em autonom}.
+\index{autonome Differentialgleichung}%
+\index{Differentialgleichung!autonome}%
 Die L"osungen einer solchen Differentialgleichungen h"angen im
 folgenden Sinne nicht vom Start-$x$-Wert ab:
 Ist $y(x)$ die L"osung des Anfangswertproblems
@@ -254,7 +255,7 @@ von den Anfangsbedingungen erf"ullt.
 \centering
 \includegraphics{chapters/images/grundlagen-2.pdf}
 \caption{Vektorfeld des autonomen Differentialgleichungssystems
-(\ref{grundlagen:hopfsystem})
+\eqref{grundlagen:hopfsystem}
 mit L"osungskurven.
 \label{grundlagen:vektorfeld}}
 \end{figure}%
@@ -361,8 +362,8 @@ wir fordern daher, dass $x$ die Differentialgleichung
 \label{skript:deautonom-param}
 \end{equation}
 erf"ullt, die wir sofort l"osen k"onnen: $x(t)=t$.
-Wenn wir zur Differentialgleichung (\ref{skript:deautonom-dgl}) 
-die Differentialgleichung (\ref{skript:deautonom-param}) hinzunehmen,
+Wenn wir zur Differentialgleichung \eqref{skript:deautonom-dgl}
+die Differentialgleichung \eqref{skript:deautonom-param} hinzunehmen,
 bekommen wir ein Differentialgleichungssystem, dessen rechte Seite
 nicht explizit von  $t$ abh"angt.
 
@@ -536,7 +537,7 @@ y'''(x)
 Die Terme werden offensichtlich schnell kompliziert.
 
 \subsection{Ableitung nach der Anfangsbedingung\label{grundlagen:jacobi}}
-\index{Ableitung nach der Anfangsbedingung}%
+\index{Ableitung!nach der Anfangsbedingung}%
 Ver"andert man die Anfangsbedingung, "andert sich auch die L"osung,
 die Komponente $y_i$ ist also eine Funktion von $x$ und
 von allen Anfangswerten $y_{j0}$:
@@ -577,7 +578,7 @@ Die Werte von $y$ "andern sich um
 \label{grundlagen:jacobi-1}
 \end{equation}
 aber $y$ h"angt von den Anfangsbedingungen ab.
-Leiten wir (\ref{grundlagen:jacobi-1}) nach $y_0$ ab, finden wir
+Leiten wir \eqref{grundlagen:jacobi-1} nach $y_0$ ab, finden wir
 \begin{equation}
 \frac{\partial}{\partial y_0}\frac{dy}{dx}
 =
@@ -604,7 +605,7 @@ Schreiben wir die Ableitungen von $f$ nach $y$ in die Matrix
 \end{pmatrix}
 =F(x,y),
 \]
-kann die Gleichung (\ref{grundlagen:jacobi-2}) mit dem Matrizenprodukt als
+kann die Gleichung \eqref{grundlagen:jacobi-2} mit dem Matrizenprodukt als
 \begin{equation*}
 \frac{\partial}{\partial y_0}\frac{dy}{dx}
 =
@@ -642,7 +643,7 @@ F(x,y)=\frac{\partial f(x,y)}{\partial y}.
 \end{satz}
 Vor allem bei der numerischen L"osung mit dem Computer l"asst sich
 die Jacobi-Matrix also gleich mit bestimmen, indem man die gefundene
-L"osung $y$ als Input f"ur die Gleichung (\ref{grundlagen:jacobi-dgl})
+L"osung $y$ als Input f"ur die Gleichung \eqref{grundlagen:jacobi-dgl}
 verwendet.
 
 \begin{beispiel}
@@ -713,7 +714,7 @@ Die Ableitung davon ist
 -\cos x&-\sin x
 \end{pmatrix}
 \]
-Setzen wir dies in die Differentialgleichung (\ref{grundlagen:jacobi-dgl}) ein
+Setzen wir dies in die Differentialgleichung \eqref{grundlagen:jacobi-dgl} ein
 finden wir
 \[
 F(x,y)J(x)
@@ -791,8 +792,8 @@ J_{22}(x)
 \end{pmatrix}.
 \]
 F"ur die Ableitung der ersten zwei Komponenten verwenden wir die
-Differentialgleichung (\ref{grundlagen:jacobi-1}), f"ur die $J$-Komponenten
-aber die Differentialgleichung (\ref{grundlagen:jacobi-dgl}).
+Differentialgleichung \eqref{grundlagen:jacobi-1}, f"ur die $J$-Komponenten
+aber die Differentialgleichung \eqref{grundlagen:jacobi-dgl}.
 \begin{equation}
 \frac{d}{dx}Y(x)
 =
@@ -922,12 +923,12 @@ f_2(x,y)\\
 %Ableitungen an den beiden Enden des Intervals $x/x_0$ ist.
 %
 %Wir m"ochten die Abh"angigket der L"osung $y(x)$ von $x_0$ aber auch
-%noch mit der Differentialgleichung (\ref{grundlagen:shiftdgl}) berechnen.
+%noch mit der Differentialgleichung \eqref{grundlagen:shiftdgl} berechnen.
 %Durch einsetzen finden wir die Differentialgleichung
 %\[
 %v'=-2xy v
 %\]
-%F"ur $y$ m"ussen wir die L"osung (\ref{grundlagen:startloesung})
+%F"ur $y$ m"ussen wir die L"osung \eqref{grundlagen:startloesung}
 %einsetzen, auch diese Gleichung ist wieder separierbar:
 %\[
 %\frac{v'}{v}=-2x\cdot \frac2{x^2-x_0^2+\displaystyle\frac2{y_0}},
@@ -1052,13 +1053,13 @@ Man sagt, die Variablen seien {\em separiert}.
 \index{separiert}%
 \index{separiert}
 \index{Variablen, Separation der}
-Man beachte, dass die Gleichung (\ref{grundlagen:separiert}) nur eine
+Man beachte, dass die Gleichung \eqref{grundlagen:separiert} nur eine
 formale Bedeutung haben kann, die Symbole $dy$ und $dx$ sind ja keine Zahlen,
 mit denen man algebraische Operationen durchf"uhren k"onnte.
 Mit etwas Vorsicht angewandt f"uhrt dieser Kalk"ul aber nicht auf
 Widerspr"uche.
 
-Wir integrieren jetzt beide Seiten von (\ref{grundlagen:separiert}), und
+Wir integrieren jetzt beide Seiten von \eqref{grundlagen:separiert}, und
 erhalten 
 \[
 \int\frac1y\,dy=-N\int\,dx
@@ -1073,6 +1074,7 @@ y=\pm e^{C}e^{-Nx},
 \]
 wobei die beiden Vorzeichen $\pm$ das Betragszeichen in der Stammfunktion
 von $\frac1y$ reflektieren.
+\index{Stammfunktion}
 Man kann den Faktor $\pm e^{C}$ in eine neue Konstante $a$ zusammenfassen,
 und erh"alt somit als L"osung der urspr"unglichen Differentialgleichung
 die Familie
@@ -1136,7 +1138,7 @@ F(y(x))=G(x)
 erf"ullen.
 Da $f(y)\ne 0$ in einer Umgebung von $y_0$, ist $F$ in einer Umgebung von $y_0$
 streng monoton wachsend oder fallend und damit invertierbar.
-Also ist die Gleichung~(\ref{grundlagen:FG}) nach $y(x)$ aufl"osbar, und
+Also ist die Gleichung~\eqref{grundlagen:FG} nach $y(x)$ aufl"osbar, und
 es gilt
 \[
 y(x)=F^{-1}(G(x)).
@@ -1205,7 +1207,7 @@ Die L"osungsmenge einer homogenen linearen Differentialgleichung
 bildet einen Vektorraum: jede Linearkombination von L"osungen
 ist wieder eine L"osung.
 Seien zum Beispiel $y_1(x)$ und $y_2(x)$ L"osungen der Differentialgleichung
-(\ref{grundlagen:linearedgl}).
+\eqref{grundlagen:linearedgl}.
 Wir m"ochten zeigen, dass
 $y(x)=\alpha y_1(x)+\beta y_2(x)$ eine L"osung ist.
 Die Ableitungen selbst sind linear:
@@ -1239,7 +1241,7 @@ eine L"osung er homogenen Differentialgleichung addiert.
 
 \begin{satz}
 Die L"osungsmenge der  inhomogene lineare Differentialgleichung
-(\ref{grundlagen:linearedgl}) ist
+\eqref{grundlagen:linearedgl} ist
 \[
 {\mathbb L}=\{
 y_p(x)+y_h(x)\;|\; y_h(x)=\mathbb L_h
@@ -1279,7 +1281,7 @@ mit Koeffizienten $a_i$ sein:
 
 \begin{definition}
 Die lineare homogene Differentialgleichung mit konstanten Koeffizienten
-(\ref{grundlagen:homogenedgl}) hat das {\em charakteristische Polynom}
+\eqref{grundlagen:homogenedgl} hat das {\em charakteristische Polynom}
 \begin{equation}
 \chi(\lambda)
 =
@@ -1296,7 +1298,7 @@ der Differentialgleichung.
 \begin{satz}
 Sind $\lambda_i$ die Nullstellen des charakteristischen Polynoms der
 lineare homogenen Differentialgleichung mit konstanten Koeffizienten
-(\ref{grundlagen:homogenedgl}), dann sind die Funktionen
+\eqref{grundlagen:homogenedgl}, dann sind die Funktionen
 $y_i(x)=e^{\lambda_i x}$ L"osungen.
 Ist $\lambda$ eine $k$-fache Nullstelle, dann sind ausserdem die
 Funktionen
@@ -1534,7 +1536,7 @@ bezeichnen wollen.
 Die $y_i(x)$ sind Spaltenvektoren, die wir
 in eine Matrix $Y(x)$ zusammenfassen k"onnen.
 Die Funktion $g(x)$ ist ebenfalls ein Spaltenvektor.
-Dann besagt die Gleichung (\ref{grundlagen:agl})
+Dann besagt die Gleichung \eqref{grundlagen:agl}
 \[
 Y(x)A'(x)=g(x).
 \]

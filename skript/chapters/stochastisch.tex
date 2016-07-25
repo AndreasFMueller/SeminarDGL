@@ -6,7 +6,7 @@
 \rhead{}
 In vielen Anwendungen wird die Bewegung eines Systems auch von
 zuf"alligen Einfl"ussen bestimmt, die man oft auch Rauschen nennt.
-Die Natur des Rauschen bedeutet, dass aufeinanderfolgende inkremente
+Es liegt in der Natur des Rauschen, dass aufeinanderfolgende Inkremente
 v"ollig unkorreliert sind, w"ahrend Inkremente einer differenzierbaren
 Funktion voneinander abh"angig sind.
 Die L"osung einer Differentialgleichung unter Einfluss von Rauschen 
@@ -30,8 +30,10 @@ zu finden.
 %
 \section{Modell f"ur Rauschen: der Wiener-Prozess\label{section:wiener}}
 \rhead{Wiener-Prozess}
+\index{Rauschen}
 Rauschen ist ein Zufallsph"anomen, die Wiederholung eines Experimentes
 wird im Allgemeinen einen anderen Verlauf ergeben.
+\index{Experiment}
 Der Pfad eines Teilchens $W(t)$ in Abh"angikeit ist daher ein Zufallsresultat.
 Wir brauchen daher einen Wahrscheinlichkeitsraum $\Omega$ und ein
 Wahrscheinlichkeitsmass $P$, und die Wege $W$ sind abh"angig von 
@@ -127,9 +129,9 @@ Dann k"onnen wir $E(W(t)W(s))$ berechnen
 \begin{align*}
 E(W(t)W(s))
 &=
-E((W(t)-W(s)+W(s))W(s))
+E\bigl((W(t)-W(s)+W(s))\cdot W(s)\bigr)
 =
-E((W(t)-W(s))W(s))+E(W(s)^2)
+E\bigl((W(t)-W(s))W(s))+E(W(s)^2\bigr)
 \end{align*}
 Eigenschaften~1 und~2 zeigen, dass $E(W(s)^2)=s$ ist.
 Eigenschaft~3 besagt, dass $W(t)-W(s)$ und $W(s)$ unabh"angig sind,
@@ -137,14 +139,16 @@ der Erwartungswert ihres Produktes ist daher das Produkt der Erwartungswerte:
 \begin{align*}
 E(W(t)W(s))
 &=
-E((W(t)-W(s))W(s))+E(W(s)^2)
+E\bigl((W(t)-W(s))\cdot W(s)\bigr)+E(W(s)^2)
 =
 \underbrace{E(W(t)-W(s))}_{\textstyle =0} \underbrace{E(W(s))}_{\textstyle =0} + s
 \end{align*}
 wobei wir erneut Eigenschaft~2 verwendet haben.
 \end{proof}
 Man k"onnte diese Eigenschaft umschreiben als die Beobachtung,
-dass die weitere Entwicklung von $W(t)$ nach der Zeit $s$ bedeutungslos ist.
+dass die weitere Entwicklung von $W(t)$ nach der Zeit $s$
+f"ur den Erwartungswert des Produktes $W(t)W(s)$
+bedeutungslos ist.
 
 \begin{figure}
 \centering
@@ -193,7 +197,7 @@ bekommt:
 =
 \frac{\operatorname{var}(W_1)}4 + \operatorname{var}Y
 =
-\frac{T}4 +\sigma_Y^2
+\frac{T}4 +\sigma_Y^2.
 \end{align*}
 Es folgt $\sigma_Y^2=\frac{T}4$.
 
@@ -210,7 +214,7 @@ Y-\frac{W_1(T)}2
 W_2\biggl(\frac{T}2\biggr)-W_2(0)
 &=
 Y+
-\frac{W_1(T)}2
+\frac{W_1(T)}2,
 \\
 \biggl(W_2(T)-W_2\biggl(\frac{T}2\biggr)\biggr)
 \biggl(W_2\biggl(\frac{T}2\biggr)-W_2(0)\biggr)
@@ -228,7 +232,7 @@ E(Y^2)-E\biggl(\frac{W_1(T)^2}4\biggr)
 =
 \sigma_Y^2 - \frac14\operatorname{var}(W_1(T))
 =
-0
+0.
 \end{align*}
 Somit sind die Inkremente unabh"angig.
 
@@ -286,6 +290,8 @@ Tripel $t \ge s\ge r$ unabh"angig sein m"ussen.
 Die Konstruktion stellt nur sicher, dass dies gilt, wenn die Zeitpunkte
 des Tripels Eckpunkte der Polygonkonstruktion sind.
 \end{compactenum}
+Wir verzichten auf diese technischen Details und verweisen daf"ur
+auf \cite{skript:evans}.
 
 %
 %
@@ -293,12 +299,12 @@ des Tripels Eckpunkte der Polygonkonstruktion sind.
 \section{Stochastische Differentialgleichungen\label{section:stochdgl}}
 \rhead{Differentialgleichungen}
 Wir m"ochten gerne eine Differentialgleichung f"ur den Zustand
-$X(t)$ eines Systems l"osen, welches von Rauschen mit beeinfluss wird.
+$X(t)$ eines Systems l"osen, welches von Rauschen mit beeinflusst wird.
 Eine solche Differentialgleichung k"onnten wir schreiben als
 \[
 \frac{dX(t)}{dt}
 =
-b(X(t)) + B(X(t))\frac{dW(t)}{dt}
+b(X(t)) + B(X(t))\frac{dW(t)}{dt},
 \]
 wobei $b$ die Rolle der Funktion $f$ aus
 Abschnitt~\ref{section:anfangswertprobleme} spielt.
@@ -354,15 +360,25 @@ Der Term $\frac12u''$ ist in der klassischen Analysis nicht vorhanden.
 Wir m"ussen daher auch alle gewohnten Rechenregeln der Analysis "uberpr"ufen.
 
 \subsection{Stochastische Integrale\label{subsection:stochint}}
-\index{stochastisches Integral}
+\index{stochastisches Integral}%
+\index{Integral!stochastisches}%
 Wir m"ochten eine Definition f"ur ein Integral der Form
 \[
 \int_0^T G\,dW
 \]
 f"ur zwei stochastische Prozesse $G(t)$ und $W(t)$.
+Wir gehen wie folgt vor:
+\begin{compactenum}
+\item Wir beginnen mit dem Fall, wo $G$ eine differenzierbare Funktion
+ist, die assuerdem an den Endpunkten des Intervals verschwindet.
+\item Wir untersuchen zun"achst den Fall $G=W$, und definieren den
+Begriff der Riemann-Summen daf"ur.
+\item Wir konstruieren das It\^o-Integral als Grenzwert von Riemann-Summen.
+\end{compactenum}
 
 \subsubsection{Das Paley-Wiener-Zygmund Integral}
 \index{Paley-Wiener-Zygmund Integral}
+\index{Integral!Paley-Wiender-Zygmund}
 F"ur differenzierbare Funktionen $g(t)$ und $w(t)$ ist klar, was 
 mit dem Integral gemeint ist:
 \[
@@ -416,7 +432,7 @@ E\biggl(
 \int_0^T g'(t) W(t)\,dt
 \biggr)
 =
-\int_0^T g'(t) \underbrace{E(W(t))}_{\textstyle =0}\,dt=0
+\int_0^T g'(t) \underbrace{E(W(t))}_{\textstyle =0}\,dt=0.
 \end{align*}
 Die Varianz ist daher der Erwartungswert $E(Z^2)$, die wir ebenfalls unter
 Verwendung der Rechenregeln berechnen k"onnen
@@ -461,7 +477,7 @@ E\biggl(
 g(t)\biggl(-\int_0^t\int_0^tg(s)\,ds\biggr)
 \biggr]_0^T
 +
-\int_0^Tg(t)^2\,dt
+\int_0^Tg(t)^2\,dt.
 \end{align*}
 Damit ist die Behauptung bewiesen.
 \end{proof}
@@ -492,7 +508,7 @@ E\biggl(
 \biggr)^2
 \biggr)
 =
-\int_0^T(g_m(t)-g_n(t))^2\,dt<\varepsilon
+\int_0^T(g_m(t)-g_n(t))^2\,dt<\varepsilon.
 \]
 Die Zufallsvariablen
 \[
@@ -533,6 +549,8 @@ F"ur ein festes $0\le \lambda\le 1$ setzen wir
 \[
 \tau_k = (1-\lambda)t_{k\mathstrut}+\lambda t_{k+1\mathstrut}.
 \]
+\index{Unterteilung}%
+\index{Maschenweite}%
 \end{definition}
 F"ur $\lambda=0$ ist $\tau_k=t_k$, f"ur $\lambda=1$ gilt $\tau_k=t_{k+1}$.
 F"ur andere Werte von $\lambda$ ist $\tau_k$ ein Punkt im Inneren des
@@ -541,11 +559,11 @@ Wie "ublich kann eine solche Unterteilung dazu verwendet werden, die
 Riemann-Summe als Approximation des Integrals zu definieren:
 
 \begin{definition}
-Die Riemann-Summe von f"ur $\int W\,dW$ und die Unterteilung $P$ ist
+Die {\em Riemann-Summe} von f"ur $\int W\,dW$ und die Unterteilung $P$ ist
 \[
 R=R(P,\lambda) = \sum_{k=0}^{m-1} W(\tau_k)(W(t_{k+1})-W(t_k)).
 \]
-\index{Riemann-Summe}
+\index{Riemann-Summe}%
 \end{definition}
 
 \begin{hilfssatz}
@@ -600,7 +618,7 @@ Die Summanden in der Summe lassen sich damit kompakter ausdr"ucken:
 \begin{align*}
 Q_n-T
 &=
-\sum_{k=0}^{m_n-1} (Y_k^2-1) \Delta_k
+\sum_{k=0}^{m_n-1} (Y_k^2-1) \Delta_k.
 \end{align*}
 Dies k"onnen wir in $E((Q_n-T)^2)$ einsetzen:
 \begin{align*}
@@ -611,7 +629,7 @@ E((Q_n-T)^2)
 E\biggl(
 (Y_k^2-1)\Delta_k
 (Y_j^2-1)\Delta_j
-\biggr)
+\biggr).
 \end{align*}
 Die Doppelsumme kann zerlegt werden in Terme mit $j=k$ und $j\ne k$.
 
@@ -634,7 +652,7 @@ E(Y_j^2-1)
 \bigl(E(Y_j^2) -1\bigr)
 \Delta_k
 \Delta_j
-=0
+=0.
 \end{align*}
 Im letzten Schritt haben wir verwendet, dass $E(Y_k^2)=\operatorname{var}Y_k=1$
 ist.
@@ -648,7 +666,7 @@ E((Q_n-T)^2)
 &=
 \sum_{k=0}^{m_n-1} E\bigl((Y_k^2-1)^2\bigr)\Delta_k^2
 \le 
-\biggl(\sum_{k=0}^{m_n-1} E\bigl((Y_k^2-1)^2\bigr)\Delta_k\biggr)\, |P^{(n)}|
+\biggl(\sum_{k=0}^{m_n-1} E\bigl((Y_k^2-1)^2\bigr)\Delta_k\biggr)\, |P^{(n)}|.
 \end{align*}
 Im letzten Schritt haben wir einen Faktor $\Delta_k$ aus der Summe
 herausgenommen und durch die Maschenweite $|P^{(n)}|$ abgesch"atzt.
@@ -714,6 +732,7 @@ c_k=W(t_{k+1}^{(n)}),
 wobei wir im folgenden zur Vereinfachung der Rechnung die Indizes auch
 weglassen.
 Jetzt versuchen wir $b(c-a)$ durch andere Differenzen auszudr"ucken.
+Zur Verf"ugung haben wir die folgenden Differenzen:
 \begin{align*}
 (b-a)^2
 &=
@@ -725,7 +744,7 @@ c^2-2ac+a^2
 \\
 (c-b)(b-a)
 &=
-cb-b^2-ac+ab
+cb-b^2-ac+ab.
 \end{align*}
 Um den Ausdruck $b(c-a)$ zu produzieren, muss der letzte Term verwendet
 werden, denn er ist der einzige, der $bc$ enth"alt.
@@ -762,7 +781,7 @@ R_n
 }_{\textstyle\to T}
 +\sum_{k=0}^{m_n-1} (c_k-b_k)(b_k-a_k)
 - \frac12a_0^2
-+ \frac12c_{m_n-1}^2
++ \frac12c_{m_n-1}^2.
 \end{align*}
 Die zweite Summe wurde im Hilfssatz~\ref{stochastisch:quadrvariation}
 berechnet, dort wurde gefunden, dass die Summe f"ur $n\to\infty$ gegen $T$
@@ -830,6 +849,8 @@ als
 \int_0^TG\,dW = \sum_{k=0}^{m-1}G(t_k)(W(t_{k+1})-W(t_k)).
 \]
 Das It\^o-Integral ist eine Zufallsvariable.
+%\index{Ito-Integral@It\^o-Integral}%
+%\index{Integral!Ito@It\^o-}%
 \end{definition}
 
 Das It\^o-Integral hat die folgenden Eigenschaften
@@ -850,7 +871,7 @@ E\biggl(\int_0^T G\,dW\biggr)=0.
 \[
 E\biggl(\biggl(\int_0^T G\,dW\biggr)^2\biggr)
 =
-E\biggl(\int_0^T G^2\,dt\biggr)
+E\biggl(\int_0^T G^2\,dt\biggr).
 \]
 \end{compactenum}
 \end{hilfssatz}
@@ -869,7 +890,7 @@ a\sum_{k=0}^{m-1} G(t_k)(W(t_{k+1})-W(t_k))
 +
 b\sum_{k=0}^{m-1} H(t_k)(W(t_{k+1})-W(t_k))
 \\
-&=a\int_0^TG\,dW+b\int_0^TH\,dW
+&=a\int_0^TG\,dW+b\int_0^TH\,dW,
 \end{align*}
 womit die Linearit"at bewiesen ist.
 
@@ -923,11 +944,12 @@ Somit ist auch 3.~bewiesen.
 \end{proof}
 
 Die Bedeutung der dritten Eigenschaft besteht darin, dass eine
-Folge von Stufen-Prozessen, die $L^2(0,T)$ konvergiert, zu einer
+Folge von Stufen-Prozessen, die in $L^2(0,T)$ konvergiert, zu einer
 konvergenten Folge von It\^o-Integralen f"uhrt.
 
 \begin{definition}
-\index{It\^o-Integral}
+\index{Ito-Integral@It\^o-Integral}%
+\index{Integral!Ito@It\^o-}%
 Ist $G$ ein beliebiger auf $[0,T]$ quadratintegrierbarer Prozess,
 und $G_n$ eine Folge von stochastischen Prozessen, die in $L^2([0,T])$
 gegen $G$ konvergiert.
@@ -936,7 +958,7 @@ Dann ist des It\^o-Integral von $G$
 \int_0^T G\,dW
 =
 \
-\lim_{n\to\infty} \int_0^T G_n\,dW
+\lim_{n\to\infty} \int_0^T G_n\,dW.
 \]
 \end{definition}
 
@@ -955,7 +977,8 @@ d(W^2)
 =
 2W\,dW + t.
 \]
-Dies ist ein Spezialfall der sp"ater zu untersuchenden It\^o-Produktregel.
+Dies ist ein Spezialfall der sp"ater zu untersuchenden It\^o-Produktregel,
+man beachte den nach der klassischen Analysis nicht erwarteten Term $t$.
 \end{beispiel}
 
 Das It\^o-Integral hat die folgenden Eigenschaften:
@@ -971,11 +994,11 @@ und $a,b\in\mathbb R$. Dann gilt
 =
 a\int_0^TG\,dW
 +
-b\int_0^TH\,dW
+b\int_0^TH\,dW.
 \]
 \item Der Erwartungswert des It\^o-Integrals ist
 \[
-E\biggl(\int_0^T G\,dW\biggr)=0
+E\biggl(\int_0^T G\,dW\biggr)=0.
 \]
 \item Die Varianz des It\^o-Integrals ist
 \[
@@ -988,14 +1011,15 @@ E\biggl(\int_0^T G^2\,dt\biggr).
 
 Mit dem It\^o-Integral k"onnen wir jetzt alle Komponenten einer
 stochastischen Differentialgleichung definieren.
-Zun"achst k"onnen wir f"ur jeden auf $[0,T]$ quadratintegrierbaren Prozess $G$ 
-und f"ur jede integrierbare Funktion $F\in L^1([0,T])$ die Gr"ossen
+Ausser den bestimmten Integralen auf $[0,T]$ k"onnen wir wegen der
+Linearit"at auch Integrale auf beliebigen Teilintervallen berechnen.
+Wir setzen dazu f"ur jeden auf $[0,T]$ quadratintegrierbaren Prozess $G$ 
+und f"ur jede integrierbare Funktion $F\in L^1([0,T])$ 
 \begin{align*}
 \int_s^r F(t)\,dt&=\int_0^r F(t)\,dt - \int_0^s F(t)\,dt
 \\
-\int_s^r G\,dW&=\int_0^r G\,dW - \int_0^s G\,dW
+\int_s^r G\,dW&=\int_0^r G\,dW - \int_0^s G\,dW.
 \end{align*}
-definieren.
 \begin{definition}
 Wenn $X$ ein stochastischer Prozess ist, der
 \[
@@ -1004,6 +1028,8 @@ X(r)=X(s)+\int_s^rF(t)\,dt + \int_s^tG\,dW
 erf"ullt, dann sagt man $X$ habe das {\em stochastische Differential}
 \[
 dX=F\,dt + G\,dW.
+\index{stochastisches Differential}%
+\index{Differential, stochastisches}%
 \]
 \end{definition}
 
@@ -1013,7 +1039,7 @@ dX=F\,dt + G\,dW.
 \subsection{Rechenregeln}
 Bisher wissen wir nur, dass das It\^o-Integral linear ist, dies reicht
 aber nicht f"ur einen Kalk"ul, mit dem wir hoffen k"onnen,
-Differentialgleichungen zu l"osen.u
+Differentialgleichungen zu l"osen.
 Dazu brauchen wir mindestens noch eine Kettenregel und eine
 Produktregel.
 
@@ -1042,7 +1068,7 @@ du(X,t)
 \frac{\partial u}{\partial x}G\,dW.
 \end{align*}
 \end{satz}
-Bis auf den Term in den zweiten Ableitungen sind die Terme genau
+Bis auf den Term mit den zweiten Ableitungen sind die Terme genau
 diejenigen, die man von der klassischen Kettenregel her erwarten
 k"onnte.
 
@@ -1081,7 +1107,8 @@ e^{\lambda W(t)-\frac12\lambda^2 t}
 +
 \lambda e^{\lambda W -\frac12\lambda^2 t}\,dW
 \\
-dY&=\lambda Y\,dW
+\Rightarrow\qquad\qquad
+dY&=\lambda Y\,dW,
 \end{align*}
 also ist der Prozess $Y$ eine L"osung der stochastischen Differentialgleichung
 \begin{align*}
@@ -1124,7 +1151,7 @@ Die integrierte Form der Produktregel besagt, dass
 \begin{equation}
 X_1(r)X_2(r)-X_1(0)X_2(0)
 =
-\int_0^r X_2\,dX_1 + \int_0^r X_1\,dX_2 + \int_0^r G_1G_2\,dt
+\int_0^r X_2\,dX_1 + \int_0^r X_1\,dX_2 + \int_0^r G_1G_2\,dt,
 \label{stochastisch:ito-produkt-integriert}
 \end{equation}
 diese m"ussen wir nachrechnen.
@@ -1139,7 +1166,7 @@ X_i(t) = \int_0^t F_i\,d\tau + G_i\int_0^r dW =  F_it+G_iW(t).
 \]
 Diese Bedingung werden wir im zweiten Schritt wieder aufheben.
 Wir berechnen die rechte Seite der integrierten
-Produktregel~(\ref{stochastisch:ito-produkt-integriert}):
+Produktregel~\eqref{stochastisch:ito-produkt-integriert}:
 \begin{align*}
 \int_0^r X_2\,dX_1 + X_1\,dX_2 + G_1G_2\,dt
 &=
@@ -1168,7 +1195,7 @@ F_1r\cdot F_2r + F_2r\cdot G_1W(r)+F_1r\cdot G_2W(r) + G_1W(r)\cdot G_2W(r)
 =
 X_1(r) \cdot X_2(r).
 \end{align*}
-Dies ist die linke Seite von (\ref{stochastisch:ito-produkt-integriert}), die
+Dies ist die linke Seite von \eqref{stochastisch:ito-produkt-integriert}, die
 damit f"ur diesen Spezialfall bewiesen ist.
 
 2.~Wir ersetzen jetzt die Konstanten $G_i$ und $F_i$ durch Stufenprozesse.
@@ -1190,7 +1217,7 @@ Es gibt nach dem zweiten Schritt eine Folge von Prozessen $X_i^n$ mit
 \[
 X_i^n(t) = X_i(0) + \int_0^t F_i^n\,d\tau + \int_0^t G_i^n\,dW,
 \]
-f"ur die jeweils die Produktregel gilt.
+f"ur die jeweils die Produktregel gilt:
 \begin{align*}
 X_i^n(r)X_i^n(r)-X_i^n(s)X_i^n(s)
 &=
@@ -1205,7 +1232,7 @@ X_i^n(r)X_i^n(r)-X_i^n(s)X_i^n(s)
 +
 \int_0^r X_1^nG_2^n\,dW
 +
-\int_0^r G_1^nG_2^n\,dW
+\int_0^r G_1^nG_2^n\,dW.
 \\
 \intertext{Der Grenz"ubergang $n\to\infty$ f"uhrt auf}
 X_i(r)X_i(r)-X_i(s)X_i(s)
@@ -1218,7 +1245,7 @@ X_i(r)X_i(r)-X_i(s)X_i(s)
 +
 \int_0^r X_1G_2\,dW
 +
-\int_0^r G_1G_2\,dW
+\int_0^r G_1G_2\,dW.
 \end{align*}
 Damit ist die Produktformel bewiesen.
 \end{proof}
@@ -1237,7 +1264,7 @@ d(X^m)=mX^{m-1}\,dX + \frac12m(m-1)X^{m-2}G^2\,dt,
 dies ist die It\^o-Produktformel f"ur $u(x)=x^m$.
 Wir beweisen diese Formel durch vollst"andige Induktion.
 F"ur $m=0$ ist sie trivialerweise korrekt.
-Wir nehmen daher an, dass Sie f"ur $m-1$ gilt, dass also
+Wir nehmen daher an, dass sie f"ur $m-1$ gilt, dass also
 \begin{align*}
 d(X^{m-1})
 &=
@@ -1246,13 +1273,10 @@ d(X^{m-1})
 &=
 (m-1)X^{m-2}F\,dt + (m-1)X^{m-2}G\,dW + \frac12(m-1)(m-2)X^{m-3}G^2\,dt.
 \end{align*}
-Dies wenden jetzt die Produktregel auf $X^m = XX^{m-1}$ an.
+Darauf wenden wir die Produktregel auf $X^m = XX^{m-1}$ an.
 F"ur $X_1=X$ ist $G_1=G$, und $X_2=X^{m-1}$ und
-\[
-G_2
-=
-(m-1)X^{m-2}G
-\]
+$ G_2 = (m-1)X^{m-2}G $
+wird
 \begin{align*}
 d(X^m)
 &=
@@ -1357,7 +1381,7 @@ Die Gleichung ist zwar linear, aber die Wirkung der stochastischen
 Schwankungen ist proportional zum aktuellen Wert von $Y$.
 
 W"are $W$ einfach nur eine differenzierbare Funktion, dann w"urde die
-Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}) zu der
+Differentialgleichung~\eqref{stochastisch:beispiel1-dgl} zu der
 gew"ohnlichen Differentialgleichung
 \begin{align*}
 \frac{\dot Y}{Y} &= g\dot W,
@@ -1387,7 +1411,7 @@ Wir haben die Funktionen $F$ und $G$ wie in der Formulierung der
 It\^o-Kettenregel gew"ahlt.
 
 Um zu kontrollieren, ob $Y(t)$ tats"achlich die L"osung der
-Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}), m"ussen wir
+Differentialgleichung~\eqref{stochastisch:beispiel1-dgl}, m"ussen wir
 also $e^{X(t)}$ ableiten, dazu ist die It\^o-Kettenregel zu verwenden,
 denn $Y(t)=u(X(t))$ mit $u(x)=e^x$.
 Die It\^o-Kettenregel ergibt:
@@ -1400,7 +1424,7 @@ dY
 \underbrace{e^X}_{\textstyle Y}\biggl(\frac12g^2\,dt + g\,dW\biggr)
 \\
 &=
-\frac12g^2Y\,dt + gY\,dW
+\frac12g^2Y\,dt + gY\,dW.
 \end{align*}
 Offensichtlich ist das weit davon entfernt, die L"osung der
 Differentialgleichung zu sein.
@@ -1419,7 +1443,8 @@ X(t)
 =
 -\frac12\int_0^tg^2\,d\tau+\int_0^t g\,dW
 \]
-f"ur den Exponenten, dies bedeutet, dass
+f"ur den Exponenten.
+Dies bedeutet, dass
 \[
 dX
 =
@@ -1428,7 +1453,7 @@ dX
 \underbrace{g}_{\textstyle G}\,dW.
 \]
 Wir wenden die It\^o-Kettenregel auf die Funktion
-$Y(t)=u(X(t))=e^{X(t)}$, also $u(x)=e^x$, an.
+$Y(t)=u(X(t))=e^{X(t)}$, also $u(x)=e^x$, an:
 \begin{align*}
 dY
 &=
@@ -1441,9 +1466,9 @@ dY
 \\
 &=gY\,dW.
 \end{align*}
-Damit haben wir nachgewiesen, dass~(\ref{stochastisch:beispiel1-lsg})
+Damit haben wir nachgewiesen, dass~\eqref{stochastisch:beispiel1-lsg}
 die L"osung der stochastischen
-Differentialgleichung~(\ref{stochastisch:beispiel1-dgl}) ist.
+Differentialgleichung~\eqref{stochastisch:beispiel1-dgl} ist.
 
 Da $g^2\ge 0$ ist, ist das Integral von $g^2$ im Exponenten
 immer positiv, somit ist $X(t)$ immer um einen Faktor $\le1$ 
@@ -1461,6 +1486,8 @@ Y(t)=e^{-\frac12t}e^{W(t)}=e^{W(t)-\frac12t}
 die L"osung der Differentialgleichung $dY=Y\,dW$ ist.
 
 \subsubsection{Lineare stochastische Differentialgleichung}
+\index{lineare stochastiche Differentialgleichung}
+\index{Differentialgleichung!stochstiasche!lineare}
 Die allgemeinste lineare stochastische Differentialgleichung hat die Form
 \begin{equation}
 dY=fY\,dt+gY\,dW
@@ -1536,13 +1563,14 @@ Y(t)=e^{(a-\frac12b^2)t} e^{bW(t)}.
 Der Wiener-Prozess versucht, die Brownsche Bewegung zu modellieren.
 Er kann aber nur funktionieren, wenn sich das Teilchen im Wesentlichen
 reibungsfrei bewegen kann.
+\index{Langevin, Paul}
 Ein realistischeres Modells stammt von Paul Langevin, der stochastische 
 Prozess $V$ beschreibt die Geschwindigkeit des Teilchens, und erf"ullt
 die stochastische Differentialgleichung
 \begin{equation}
 \begin{aligned}
 dV&=-bV\,dt+\sigma\,dW\\
-V(0)&=V_0
+V(0)&=V_0.
 \end{aligned}
 \label{stochastisch:langevin-dgl}
 \end{equation}
@@ -1570,7 +1598,7 @@ e^{-bt}V_0 + \sigma\int_0^te^{-b(t-\tau)}\,dW
 e^{-bt}\biggl(V_0 + \sigma\int_0^te^{b\tau}\,dW\biggr)
 \label{stochastisch:langevin-lsg}
 \end{equation}
-die L"osung der Langevin-Gleichung~(\ref{stochastisch:langevin-dgl})
+die L"osung der Langevin-Gleichung~\eqref{stochastisch:langevin-dgl}
 sein wird.
 Tats"achlich ist die Ableitung davon
 \[
@@ -1661,7 +1689,7 @@ Kehren wir zur physikalischen Interpretation zur"uck, dann sehen wir,
 dass die Geschwindigkeit eines dem Langenvin-Prozesses unterworfenen
 Teilchens nach einiger Zeit seine Anfangsgeschwindigkeit ``vergisst'',
 die Zeitkonstante daf"ur ist gegeben durch die Reibung $b$.
-Die Schwangungen der Geschwindigkeit sind umso gr"osser, je geringer
+Die Schwankungen der Geschwindigkeit sind umso gr"osser, je geringer
 die Reibung ist.
 
 \subsection{Stochastische Differentialgleichungen 2. Ordnung}
@@ -1669,6 +1697,7 @@ Die meisten Bewegungsgleichungen der Physik sind Differentialgleichungen
 zweiter Ordnung.
 In diesem Abschnitt wollen wir daher zwei Beispiele untersichen, wie
 bekannte Systeme sich unter Einfluss von Rauschen verhalten werden.
+\index{Differentialgleichung!stochastische!quadratische}%
 
 \subsubsection{Ornstein-Uhlenbeck-Prozess}
 \index{Ornstein-Uhlenbeck-Prozess}
@@ -1718,17 +1747,18 @@ Man beachte, dass wir in der zweiten Gleichung keinen stochastischen
 Term haben, denn der Zusammenhang zwischen Ableitung des Ortes und
 Geschwindigkeit ist immer exakt erf"ullt.
 
-Die erste Gleichung von~(\ref{stochastisch:ornstein-uhlenbeck-dgl})
+Die erste Gleichung von~\eqref{stochastisch:ornstein-uhlenbeck-dgl}
 f"ur $Y_1$ ist die Langevin-Gleichung, die wir bereits
-in~\ref{stochastisch:langevin-lsg}) gel"ost wurde.
+in~\eqref{stochastisch:langevin-lsg} gel"ost wurde.
 Durch eine weitere Integration kann man auch die Gleichung f"ur $Y_2$
 l"osen:
 \begin{align*}
-Y_1(t)&=e^{-bt}Y_{10}+\int_0^te^{-b(t-\tau)}\,dW\\
-Y_2(t)&=Y_{20}+\int_0^t Y_1(\tau)\,d\tau
+Y_1(t)&=e^{-bt}Y_{10}+\int_0^te^{-b(t-\tau)}\,dW,\\
+Y_2(t)&=Y_{20}+\int_0^t Y_1(\tau)\,d\tau.
 \end{align*}
 
 \subsubsection{Harmonischer Oszillator}
+\index{harmonischer Oszillator}%
 Der Ornstein-Uhlenbeck-Prozess war insofern einfach zu behandeln, als 
 die Geschwindigkeit aus dem Langevin-Prozess einfach noch einmal
 integriert werden musste.
@@ -1749,7 +1779,7 @@ X(0)=X_0,
 \label{stochastisch:harmosz-dgl2}
 \end{equation}
 Da wir zweite Ableitungen in stochastischen Differentialgleichungen
-nicht verwenden k"onnen, ersetzen wir~(\ref{stochastisch:harmosz-dgl2})
+nicht verwenden k"onnen, ersetzen wir~\eqref{stochastisch:harmosz-dgl2}
 wieder durch zwei gekoppelte Gleichungen erster Ordnung:
 \begin{equation}
 \begin{aligned}
@@ -1764,7 +1794,7 @@ Differentialgleichungen formulieren:
 dY_1&=Y_2\,dt,\\
 dY_2&=(-\lambda^2Y_1-bY_2)\,dt.
 \end{align*}
-Wenn wir auf der rechten Seite von~(\ref{stochastisch:harmosz-dgl2})
+Wenn wir auf der rechten Seite von~\eqref{stochastisch:harmosz-dgl2}
 einen Rauschterm, also eine Ableitung eines Wiener-Prozesses hinzuf"ugen
 wollen, dann wird daraus das stochastische Differentialgleichungssystem
 \begin{equation}
@@ -1861,7 +1891,7 @@ L"osung anzugeben:
 %\end{pmatrix}
 %\end{align*}
 %Daraus k"onnen wir jetzt die L"osung mit der
-%Formel~(\ref{stochastisch:harmosz-explsg}) ablesen:
+%Formel~\eqref{stochastisch:harmosz-explsg} ablesen:
 \begin{equation}
 \begin{pmatrix}
 Y_1(t)\\Y_2(t)
@@ -1880,7 +1910,7 @@ Y_1(t)\\Y_2(t)
 \end{pmatrix}\,dW.
 \label{stochastisch:harmosz-y2}
 \end{equation}
-Die erste Komponenten davon ist
+Die erste Komponente davon ist
 \begin{equation}
 Y_1(t)
 =
@@ -1891,7 +1921,7 @@ X_0\cos\lambda t+\frac{V_0}{\lambda}\sin\lambda t
 \end{equation}
 die L"osung der Differentialgleichung.
 
-Die L"osungsformel~(\ref{stochastisch:harmosz-y}) zeigt auch, dass
+Die L"osungsformel~\eqref{stochastisch:harmosz-y} zeigt auch, dass
 $Y_1(t)$ selbst dann von $0$ verschieden sein kann, wenn $X_0=V_0=0$ ist.
 Wir wollen f"ur diesen Spezialfall Erwartungswert und Varianz 
 von $Y_1(t)$ berechnen.
@@ -1960,7 +1990,7 @@ $\operatorname{var}(Y_1(t))=E(Y_1(t)^2)-E(Y_1(t))^2$:}
 \end{align*}
 Wie im Beispiel der Langevin-Gleichung hat die Varianz
 also zwei Komponenten.
-Die ersten drei Komponenten beschreiben den Einfluss der Anfangsbedingungen.
+Die ersten drei Terme beschreiben den Einfluss der Anfangsbedingungen.
 Der letzte Term beschreibt die zus"atzliche Varianz, die durch
 das Rauschen in den Oszillator eingebracht wird.
 
@@ -1991,7 +2021,7 @@ werden:
 \begin{pmatrix}
 \cos\lambda t\\
 \frac1\lambda\sin\lambda t
-\end{pmatrix}
+\end{pmatrix}.
 \end{gather*}
 Diese Form kann man auch erhalten, indem man die Kovarianzen mit Hilfe von
 \[
@@ -2006,13 +2036,14 @@ Y_1(t)^2&Y_1(t)Y_2(t)\\
 Y_1(t)Y_2(t)&Y_2(t)^2
 \end{pmatrix}
 \]
-berechnet, und darauf die Formel~(\ref{stochastisch:harmosz-y2}) anwendet.
+berechnet, und darauf die Formel~\eqref{stochastisch:harmosz-y2} anwendet.
 
 %
 % Partielle Differentialgleichungen
 %
 \section{Partielle Differentialgleichungen\label{section:pdgl}}
 \rhead{Partielle Differentialgleichungen}
+\index{partielle Differentialgleichungen}%
 Die It\^osche Kettenregel stellt einen Zusammenhang her zwischen der zweiten
 Ableitung von $u$ und den Werten von $u$ am Ende eines Pfades.
 In diesem Abschnitt wollen wir den Zusammenhang wie folgt konkretisieren.
@@ -2040,6 +2071,7 @@ quasliineare partielle Differentialgleichungen erster Ordnung.
 \includegraphics{chapters/images/stochastisch-2.pdf}
 \caption{Brownsche Bewegung in zwei Dimension und Definition der
 Stopzeit $\tau$, zu der der Pfad $X(t)$ das Gebiet verl"asst.
+\index{Stopzeit}%
 \label{stochastisch:pfad}}
 \end{figure}%
 Wie fr"uher betrachten wir wieder einen stochastischen Prozess $X(t)$,
@@ -2066,6 +2098,8 @@ erreicht.
 \end{definition}
 
 Die charakteristische Funktion
+\index{charakteristische Funktion}%
+\index{Funktion!charakteristische}%
 \[
 \chi_{[0,\tau]}(t)=\begin{cases}
 1\qquad\qquad&t\le \tau\\
@@ -2092,7 +2126,7 @@ Das It\^o-Integral ist linear:
 a\int_0^T \chi_{[0,\tau]} G\,dW + b \int_0^T\chi_{[0,\tau]} H\,dW
 \\
 &=
-a\int_0^\tau G\,dW + b \int_0^\tau H\,dW
+a\int_0^\tau G\,dW + b \int_0^\tau H\,dW.
 \end{align*}
 \item Der Erwartungswert des It\^o-Integrals ist
 \[
@@ -2118,7 +2152,7 @@ E\biggl(\int_0^\tau G^2\,dt\biggr).
 Die It\^o-sche Kettenregel funktioniert auch f"ur $\tau$ als obere
 Grenze f"ur die stochastischen Integrale.
 Wenn also $X$ als stochastischer Prozess eine L"osung der stochastischen
-Differentialgleichung (\ref{stochastisch:stopzeitdgl}) ist, dann gilt
+Differentialgleichung~\eqref{stochastisch:stopzeitdgl} ist, dann gilt
 nach der der It\^o-schen Kettenregel
 \[
 du(X,t)
@@ -2131,7 +2165,7 @@ du(X,t)
 \sum_{k=1}^n b_{ik}b_{jk}\,dt.
 \]
 In integrierter Form bedeutet dies
-\[
+\begin{equation}
 u(X(t),t)-u(X(0),0)
 =
 \int_0^t
@@ -2141,26 +2175,27 @@ u(X(t),t)-u(X(0),0)
 \sum_{i,j=1}^n \frac{\partial^2u}{\partial x_i\,\partial x_j} \,ds
 +
 \int_0^t \operatorname{grad} u\cdot B\,dW.
-\]
+\label{stochastisch:uinkrement}
+\end{equation}
 Und nat"urlich gelten diese Formeln auch dann, wenn man $t$ durch $\tau$
 ersetzt.
 
 Im Folgenden interessiert uns nur der Fall $b=0$, $b_{ik}=\delta_{ik}$
 und Funktionen $u$, die nicht von der Zeit abh"angen.
-Dann vereinfacht sich die Formel zu
+Dann vereinfacht sich die Formel~\eqref{stochastisch:uinkrement} zu
 \begin{equation}
 u(X(t))-u(X(0))
 =
 \int_0^t \frac12\sum_{i=1}^n\frac{\partial^2 u}{\partial x_i^2}\,ds
 =
-\int_0^t \frac12\Delta u\,ds
+\int_0^t \frac12\Delta u\,ds.
 \label{stochastisch:laplaceinkrement}
 \end{equation}
 Ausserdem ist in diesem Fall $X$ nichts anderes als eine Brownsche Bewegung,
 $X=W$.
 
 \subsection{Brownsche Bewegung und der Laplace-Operator}
-Wir wenden die Formel (\ref{stochastisch:laplaceinkrement}) jetzt in
+Wir wenden die Formel~\ref{stochastisch:laplaceinkrement} jetzt in
 zwei Beispielen an.
 
 \subsubsection{Zeit bis zum Verlassen eines Gebietes}
@@ -2169,18 +2204,18 @@ $\mathbb R^n$, und $u$ eine L"osung der partiellen Differentialgleichung
 \begin{equation}
 \begin{aligned}
 -\frac12\Delta u&=1&\qquad&\text{in $U$}\\
-               u&=0&      &\text{auf $\partial U$}
+               u&=0&      &\text{auf $\partial U$.}
 \end{aligned}
 \label{stochastisch:hittingtime}
 \end{equation}
 Wir m"ochten die L"osung $u$ dazu verwenden, die Zeit $\tau_x$ zu berechnen,
 zu der eine im Punkt $x\in U$ beginnende Brownsche Bewegung zum ersten
 Mal das Gebiet $U$ verl"asst.
-Die Formel (\ref{stochastisch:laplaceinkrement}) liefert
+Die Formel~\eqref{stochastisch:laplaceinkrement} liefert
 \[
 u(X(\tau_x))-u(X(0)) = \int_0^{\tau_x} \frac12\Delta u\,ds
 \]
-Da $u$ eine L"osung von (\ref{stochastisch:hittingtime}) ist, ist der 
+Da $u$ eine L"osung von~\eqref{stochastisch:hittingtime} ist, ist der 
 Integrand auf der rechten Seite gleich $-1$:
 \[
 u(X(\tau_x))-u(X(0)) = -\int_0^{\tau_x} \,ds
@@ -2196,7 +2231,7 @@ nur deren Erwartungswert:
 \[
 E(\tau_x)=E(u(X(0)))=u(x).
 \]
-Die L"osung $u$ der Differentialgleichung (\ref{stochastisch:hittingtime})
+Die L"osung $u$ der Differentialgleichung~\eqref{stochastisch:hittingtime}
 gibt die erwartete Zeit an, bis eine bei $x$ beginnende Brownsche Bewegung 
 das Gebiet $U$ verlassen hat.
 
@@ -2212,11 +2247,11 @@ also eine L"osung der partiellen Differentialgleichung
 \end{aligned}
 \label{stochastisch:harmonisch}
 \end{equation}
-Wir wollen (\ref{stochastisch:laplaceinkrement}) verwenden, die Funktion
+Wir wollen \eqref{stochastisch:laplaceinkrement} verwenden, die Funktion
 $u$ zu charakterisieren.
 Dazu sei wieder $\tau_x$ die Zeit, zu der eine im Punkt $x\in U$ beginnende
 Brownsche Bewegung das Gebiet $U$ verl"asst.
-Aus (\ref{stochastisch:laplaceinkrement}) folgt:
+Aus \eqref{stochastisch:laplaceinkrement} folgt:
 \[
 u(X(\tau_x))-u(X(0))
 =
@@ -2237,13 +2272,25 @@ aus laufen, bis sie den Rand "uberquert, und nimmt den Mittelwert
 der derart erreichten Randwerte.
 
 Aus dieser Charakterisierung der harmonischen Funktionen kann man
+\index{harmonische Funktion!Charakterisierung}%
 auch deren Mittelwerteigenschaft ableiten. 
+\index{Mittelwerteigenschaft}%
 Da die Brownsche Bewegung isotrop ist, muss sich im Zentrum
+\index{isotrop}%
 eines kugelf"ormigen Gebietes immer der gleiche Wert f"ur $u$
 ergeben, selbst wenn man eine beliebige Drehung auf die Randwerte 
 anwendet.
 Also muss der Wert von $u(x)$ der Mittelwert der Werte
 auf einer Kugel um den Punkt $x$ sein.
+
+Im Lichte der Theorie der Charakteristiken bei quasilinearen partiellen
+Differentialgleichungen k"onnte man Brownsche Bewegungen ``stochastische
+Charakeristiken'' einer elliptischen partiellen Differentialgleichung
+betrachten.
+Der Funktionswert einer L"osung an der Stelle $x$ erh"alt man, indem
+man (stochastischen) Charakteristiken bis zum Rand des Gebietes
+folgt, und "uber die so erhaltenen Werte mittelt.
+
 
 \input{chapters/kalman.tex}
 

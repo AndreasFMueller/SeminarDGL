@@ -98,10 +98,10 @@ y''+y&=0.
 \label{potenzreihen:schwingungsdgl}
 \end{equation}
 Die Potenzreihen-Methode erlaubt uns, direkt Potenzreihen f"ur die
-L"osungen von (\ref{potenzreihen:schwingungsdgl}) zu finden.
-Wir setzen den Ansatz (\ref{potenzreihen:ansatz}) und die zweite Ableitung
-(\ref{potenzreihen:ableitungen}) in die Schwingungsdifferentialgleichung
-(\ref{potenzreihen:schwingungsdgl}) ein und erhalten
+L"osungen von \eqref{potenzreihen:schwingungsdgl} zu finden.
+Wir setzen den Ansatz \eqref{potenzreihen:ansatz} und die zweite Ableitung
+\eqref{potenzreihen:ableitungen} in die Schwingungsdifferentialgleichung
+\eqref{potenzreihen:schwingungsdgl} ein und erhalten
 \begin{equation}
 \sum_{k=0}^\infty a_{k+2}(k+1)(k+2)x^k 
 +
@@ -172,9 +172,9 @@ Schreiben wir $[u]$ f"ur die Masseinheit einer Gr"osse, dann gilt
 Wenn zwischen den Termen $x^2y''$, $xy'$ und $y$ irgend ein
 gesetzm"assiger Zusammenhang bestehen soll, dann ist die wohl
 einfachste Form davon eine lineare Beziehung mit dimensionslosen
-Koeffizienten wie in~(\ref{potenzreihen:verallgemeinert-dgl}).
+Koeffizienten wie in~\eqref{potenzreihen:verallgemeinert-dgl}.
 
-Die Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+Die Differentialgleichung~\eqref{potenzreihen:verallgemeinert-dgl}
 liefert f"ur den Punkt $x=0$ keinen Wert von $y''$.
 Eine L"osungsfunktion $y(x)$, die die Differentialgleichung f"ur
 $x\ne 0$ erf"ullt, erf"ullt sie f"ur alle $x$, wenn $y(0)=0$ oder
@@ -192,11 +192,11 @@ die Differentialgleichung nicht garantieren kann.
 
 \subsection{Verallgemeinerter Ansatz und Indexgleichung}
 \label{subsection:potenzreihen:indexgleichung}
-Setzt man $y(x)$ als Potenzreihe der Form~(\ref{potenzreihen:ansatz}) an,
+Setzt man $y(x)$ als Potenzreihe der Form~\eqref{potenzreihen:ansatz} an,
 dann beginnt die Potenzreihe von $x^2y''$ mit dem Term $a_2x^2$,
 und $xy'$ beginnt mit $a_1x$.
 Daraus folgt, dass nur der Term mit $y$ der
-Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+Differentialgleichung~\eqref{potenzreihen:verallgemeinert-dgl}
 einen konstanten Term hat, also $a_0=0$.
 Teilt man die Differentialgleichung durch $x$ und l"asst $x$ gegen $0$
 streben, bekommt man
@@ -223,11 +223,11 @@ y''(x)+p(x)\underbrace{\frac{y'(x)}{x}}_{\to y''(0)}+q(x)\frac{y(x)}{x^2}
 \end{align*}
 also ist auch $a_2=0$, das Argument l"asst sich offenbar fortsetzen, 
 im Allgemeinen wird $a_k=0\;\forall k$ oder $y(x)=0$.
-Der einfache Potenzreihenansatz~(\ref{potenzreihen:ansatz}) f"uhrt
+Der einfache Potenzreihenansatz~\eqref{potenzreihen:ansatz} f"uhrt
 daher nicht zum Ziel.
 
 Wir suchen jetzt eine L"osung der
-Differentialgleichung~(\ref{potenzreihen:verallgemeinert-dgl})
+Differentialgleichung~\eqref{potenzreihen:verallgemeinert-dgl}
 in Form einer verallgemeinerten Potenzreihe der Form
 \begin{equation}
 y(x)=x^\varrho\sum_{k=0}^\infty a_kx^k.
@@ -249,7 +249,7 @@ Um diese Mehrdeutigkeit zu vermeiden,
 verlangen wir daher zus"atzlich, dass $a_0\ne 0$.
 
 Aus der allgemeinen Theorie der linearen Differentialgleichungen
-ist bekannt, dass die Gleichung (\ref{potenzreihen:verallgemeinert-dgl})
+ist bekannt, dass die Gleichung \eqref{potenzreihen:verallgemeinert-dgl}
 zwei linear unabh"angige L"osungsfunktionen haben wird,
 welche im Allgemeinen verschiedene $\varrho$ verwenden werden.
 Da jede L"osung sich als Linearkombination dieser zwei L"osungen schreiben
@@ -275,9 +275,9 @@ y''(x)
 \label{potenzreihen:verallgemeinert-ableitungen}
 \end{equation}
 schreiben, und vermeiden so eine explodierende Zahl von Termen, die
-die Produktregel aus (\ref{potenzreihen:verallgemeinert})
+die Produktregel aus \eqref{potenzreihen:verallgemeinert}
 hervorbringen w"urde.
-Wir setzen (\ref{potenzreihen:verallgemeinert-ableitungen})
+Wir setzen \eqref{potenzreihen:verallgemeinert-ableitungen}
 in die Differentialgleichung ein und erhalten
 \begin{equation}
 \sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
@@ -307,7 +307,7 @@ p(x)&=\sum_{k=0}^\infty p_kx^k&&\text{und}
 q(x)&=\sum_{k=0}^\infty q_kx^k.
 \end{aligned}
 \end{equation*}
-Einsetzen in die Gleichungen~(\ref{potenzreihen:verallgemeinert-reihen})
+Einsetzen in die Gleichungen~\eqref{potenzreihen:verallgemeinert-reihen}
 ergibt
 \begin{equation*}
 \sum_{k=0}^\infty (\varrho+k)(\varrho+k-1)a_kx^{\varrho+k}
@@ -325,7 +325,7 @@ Koeffizientenvergleich in diesem Fall liefert
 \label{potenzreihen:indexgleichung}
 \end{equation}
 wobei wir $a_0=1$ verwendet haben.
-Die quadratische Gleichung (\ref{potenzreihen:indexgleichung}) heisst auch die
+Die quadratische Gleichung \eqref{potenzreihen:indexgleichung} heisst auch die
 {\em Indexgleichung}.
 \index{Indexgleichung}
 Sie hat im allgemeinen zwei verschiedenen L"osungen f"ur die beiden
@@ -359,7 +359,7 @@ dann, wenn $-p_0-(2\varrho-1)$ ganzzahlig ist.
 \end{beispiel}
 
 \subsection{Doppelte Nullstellen\label{potenzreihen:doppeltens}}
-Wenn die Indexgleichung~(\ref{potenzreihen:indexgleichung}) nur eine 
+Wenn die Indexgleichung~\eqref{potenzreihen:indexgleichung} nur eine 
 Nullstelle hat, dann kann das eben skizzierte Verfahren auch nur eine
 Potenzreihe liefern, obwohl wir bei einer Differentialgleichung
 zweiter Ordnung zwei linear unabh"angige L"osungen erwarten.
@@ -390,9 +390,9 @@ x^2y''+xy'+(x^2-n^2)y=0
 \label{potenzreihen:verallgemeinert-bessel}
 \end{equation}
 ist ein Beispiel einer Differentialgleichung der
-Form~(\ref{potenzreihen:verallgemeinert-dgl}) mit
+Form~\eqref{potenzreihen:verallgemeinert-dgl} mit
 $p(x)=1$ und $q(x)=x^2-n^2$.
-Die Indexgleichung~(\ref{potenzreihen:indexgleichung}) wird in diesem Fall zu
+Die Indexgleichung~\eqref{potenzreihen:indexgleichung} wird in diesem Fall zu
 \begin{equation}
 \begin{aligned}
 \varrho(\varrho - 1) + \varrho -n^2&=0
@@ -415,7 +415,7 @@ Die Funktionen $J_n(x)$ heissen {\em Bessel-Funktionen (erster Art)}.
 \index{Bessel-Funktionen}
 
 Im Fallle $n=0$ hat die
-Indexgleichung~(\ref{potenzreihen:bessel-indexgleichung}) eine doppelte
+Indexgleichung~\eqref{potenzreihen:bessel-indexgleichung} eine doppelte
 Nullstelle, es gibt dann nur einzige verallgemeinerte Potenzreihe
 $J_0(x)$ als L"osung.
 Nach den in Abschnitt~\ref{potenzreihen:doppeltens} formulierten

@@ -172,9 +172,9 @@ f'(t)&=ie^{it}=if(t)\notag\\
 f''(t)&=-f(t).\label{skript:exp-dgl}
 \end{align}
 Die Funktion $f$ muss also eine L"osung der Differentialgleichung
-(\ref{skript:exp-dgl}) sein, welche die Anfangsbedingungen $f(0)=1$ und
+\eqref{skript:exp-dgl} sein, welche die Anfangsbedingungen $f(0)=1$ und
 $f'(0)=if(0)=i$ erf"ullen muss.
-Doch die Differentialgleichung (\ref{skript:exp-dgl}) hat die L"osungen
+Doch die Differentialgleichung \eqref{skript:exp-dgl} hat die L"osungen
 \[
 f(t)=a\cos t+b\sin t.
 \]
@@ -203,8 +203,8 @@ auszudr"ucken:
 z=|r|\cdot e^{i\operatorname{arg}z}.
 \]
 Die Real- und Imagin"arteile von $e^{it}$ sind $\cos t$ und $\sin t$,
-wir k"onnen sie auch mit den Formeln (\ref{skript:realteil-formel}) und
-(\ref{skript:imaginaerteil-formel}) ausdr"ucken:
+wir k"onnen sie auch mit den Formeln \eqref{skript:realteil-formel} und
+\eqref{skript:imaginaerteil-formel} ausdr"ucken:
 \begin{align*}
 \cos t
 &=
@@ -268,7 +268,7 @@ E + tJ - \frac{t^2}{2!} E - \frac{t^3}{3!} J + \frac{t^4}{4!} E
 = E \cos t + J \sin t.
 \label{skript:eulermatrixdarstellung}
 \end{align}
-Die Eulerformel (\ref{skript:euler-formula}) l"asst sich also auch in der
+Die Eulerformel \eqref{skript:euler-formula} l"asst sich also auch in der
 Matrixdarstellung der komplexen Zahlen wiedergewinnen.
 
 \section{Komplexe Matrizen}
@@ -507,9 +507,9 @@ a&b\\-\bar b&\bar a
 a\bar a+\bar bb = |a|^2 + |b|^2=1.
 \end{align*}
 Solche Matrizen sind also nicht nur unit"ar, sondern haben auch Determinante 1.
-Multipliziert man zwei Matrizen der Form (\ref{skript:su2form}),
+Multipliziert man zwei Matrizen der Form \eqref{skript:su2form},
 wird das Produkt auch wieder Determinante 1 haben, aber es ist nicht klar,
-dass es sich in der Form (\ref{skript:su2form}) schreiben l"asst.
+dass es sich in der Form \eqref{skript:su2form} schreiben l"asst.
 Daher rechnen wir das Produkt aus, wir erhalten
 \begin{align*}
 \begin{pmatrix}  a                        & b                      \\
@@ -524,8 +524,8 @@ Daher rechnen wir das Produkt aus, wir erhalten
                  -(\overline{ab+b\bar c}) & \overline{ac-b\bar d}  \end{pmatrix}
 .
 \end{align*}
-Das Produkt zweier Matrizen der Form (\ref{skript:su2form}) ist also wieder eine
-Matrix der Form (\ref{skript:su2form}).
+Das Produkt zweier Matrizen der Form \eqref{skript:su2form} ist also wieder eine
+Matrix der Form \eqref{skript:su2form}.
 Die Menge dieser Matrizen ist demzufolge abgeschlossen unter
 Matrixmultiplikation und Bildung der Inversen.
 Man nennt diese Matrizen die Gruppe der speziellen unit"aren Matrizen:
@@ -599,6 +599,8 @@ Geometrisch ist $\operatorname{SU}(2)$ also eine dreidimensionale Kugel
 eingebettet in in einen vierdimensionalen Raum.
 
 \subsubsection{Spur und Determinante}
+\index{Spur}%
+\index{Determinante}%
 Spur und Determinate k"onnen samt all ihren Rechenregeln sofort auf
 komplexe Matrizen "ubertragen werden.
 F"ur den Adjunktionsoperator finden wir die Rechenregeln
@@ -761,7 +763,7 @@ A^t=-A.
 \]
 Die infinitesimale Versionen von orthogonalen Matrizen sind also
 antisymmetrische Matrizen.
-\index{antihermitsche Matrix}
+\index{antihermitesche Matrix}
 \index{Matrix!antihermitesch}
 Analog sind die infinitesimalen Versionen von unit"aren Matrizen
 antihermitesch.
@@ -827,7 +829,7 @@ CAB-CBA-ABC+BAC
 \end{align*}
 Ein Vektorraum mit einer antisymmetrischen, bilinearen Abbildung
 $[\,\cdot\,,\,\cdot\,]$,
-welche die Jacobi-Identit"at (\ref{skript:jacobi}) erf"ullt, heisst eine
+welche die Jacobi-Identit"at \eqref{skript:jacobi} erf"ullt, heisst eine
 {\em Lie-Algebra}.
 \index{Lie-Algebra}%
 So wie der Hamilton-Operator als Erzeuger der Zeitentwicklung das
@@ -840,6 +842,7 @@ vorgezogen.
 \index{SO(3)}
 Zur Gruppe $\operatorname{SO}(3)$ der Drehmatrizen geh"ort die Lie-Algebra
 $\operatorname{so}(3)$ der antisymmetrischen $3\times 3$-Matrizen.
+\index{Drehmatrix}%
 Solche Matrizen haben die Form
 \[
 \Omega
@@ -995,7 +998,7 @@ Darin wurde aber die Bedingung noch nicht abgebildet, dass Matrizen
 in $\operatorname{SU}(2)$ die Determinante $1$ haben m"ussen, wir
 haben bis jetzt nur Unitarit"at verwendet. Wir m"ussen also noch
 verlangen, dass in erster N"aherung $\det(E+tA)=0$ ist.
-Aus Formel (\ref{skript:detandtrace}) schliessen wir, dass die Spur
+Aus Formel \eqref{skript:detandtrace} schliessen wir, dass die Spur
 $\operatorname{tr}A$ verschwindet, oder dass $a=-d$:
 \begin{equation}
 \operatorname{su}(2)

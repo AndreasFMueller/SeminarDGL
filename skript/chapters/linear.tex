@@ -21,7 +21,7 @@ Wir nehmen der Einfachheit
 halber an, dass die Matrixelemente $a_{kl}(t)$ von $A(t)$ differenzierbare
 Funktionen von $t$ sind.
 Die Funktion $f(t)$ hat $n$-dimensionale Vektoren als Werte.
-Falls $f(t)=0$ ist, ist die Gleichung~(\ref{linear:gleichung}) 
+Falls $f(t)=0$ ist, ist die Gleichung~\eqref{linear:gleichung}
 homogen.
 \index{Differentialgleichung!homogene}
 
@@ -30,7 +30,7 @@ homogen.
 In diesem Abschnitt nehmen wir an, dass $A(t)$ konstant ist, wir schreiben
 einfach $A$ f"ur den konstanten Wert von $A(t)$.
 \subsection{Diagonalisierbare Koeffizientenmatrix}
-Besonders einfach w"are (\ref{linear:gleichung}) zu l"osen, wenn $A$
+Besonders einfach w"are \eqref{linear:gleichung} zu l"osen, wenn $A$
 Diagonalform h"atte,
 \[
 A=\begin{pmatrix}
@@ -143,7 +143,7 @@ X(0)=E.
 \subsection{Beliebige Koeffizientenmatrix}
 Mit der Matrix-Exponentialfunktion kann jetzt auch das homogene
 Differentialgleichungssystem gel"ost werden.
-Dazu multiplizieren wir~(\ref{linear:matrix-dgl}) auf der rechten Seite
+Dazu multiplizieren wir~\eqref{linear:matrix-dgl} auf der rechten Seite
 mit $x_0$ 
 \[
 \frac{d}{dt}X(t)x_0 = A X(t)x_0.
@@ -201,7 +201,7 @@ x_0+\int_0^t e^{-A\tau}f(\tau)\,d\tau
 \biggr).
 \]
 Die fr"uher gefundene Formel f"ur die L"osung der Differentialgleichung
-(\ref{linear:gleichung}) f"ur den Spezialfall diagonalisierbarer 
+\eqref{linear:gleichung} f"ur den Spezialfall diagonalisierbarer 
 Matrizen gilt daher f"ur beliebige Matrizen.
 Wir fassen die Resultate dieses Abschnittes im folgenden Satz 
 zusammen.
@@ -822,7 +822,7 @@ e^{Dx}
 \end{pmatrix}
 \end{align*}
 Daraus k"onnen wir jetzt die L"osung mit der
-Formel~(\ref{linear:harmosz-explsg}) ablesen:
+Formel~\eqref{linear:harmosz-explsg} ablesen:
 \begin{equation}
 \begin{pmatrix}
 y_1(x)\\y_2(x)
@@ -856,7 +856,7 @@ die L"osung der Differentialgleichung.
 
 \section{Zeitabh"angige Koeffizienten}
 \rhead{Zeitabh"angige Koeffizienten}
-Die L"osung der Differentialgleichung~(\ref{linear:gleichung}) war
+Die L"osung der Differentialgleichung~\eqref{linear:gleichung} war
 deshalb einfach, weil wir die Matrixdifferentialgleichung
 \[
 \frac{d}{dt} X=AX
@@ -878,7 +878,7 @@ X(0)=E.
 \]
 
 \subsection{Differentialgleichung der inversen Matrix}
-\index{Differentiagleichung!der inversen Matrix}%
+\index{Differentialgleichung!der inversen Matrix}%
 Die inverse Matrix $X(t)^{-1}$ kann man ebenfalls als L"osung einer
 Differentialgleichung finden.
 Die Ableitung der Beziehung
@@ -938,8 +938,8 @@ eine L"osung der Matrix-Differentialgleichung
 \end{equation}
 ist.
 Wir pr"ufen dies nach, indem wir den
-Ansatz~(\ref{linear:nichtkommutativ-ansatz})
-in die Gleichung~(\ref{linear:nichtkommutativ-gleichung}) einsetzen.
+Ansatz~\eqref{linear:nichtkommutativ-ansatz}
+in die Gleichung~\eqref{linear:nichtkommutativ-gleichung} einsetzen.
 Die Anfangsbedingung ist selbstverst"andlich erf"ullt.
 F"ur die Ableitung verwenden wir die Definition der Ableitung als
 Grenzwert eines Differenzenquotienten:
@@ -1027,7 +1027,7 @@ e^{\int_0^tA(\tau)\,d\tau}
 e^{\int_t^{t+h}A(\tau)\,d\tau}
 \]
 vertauschen, dann l"asst sich die Berechnung
-(\ref{linear:nichtkommutativ-diffquot}) weiterf"uhren, wir
+\eqref{linear:nichtkommutativ-diffquot} weiterf"uhren, wir
 erhalten
 \begin{align*}
 \frac{d}{dt}X(t)
@@ -1061,6 +1061,7 @@ A_3(\alpha)&=\begin{pmatrix}\cos \alpha&\sin \alpha\\-\sin \alpha&\cos \alpha\en
 \end{align*}
 F"ur $A_4$ ist dies klar, denn dies sind Drehmatrizen in der Ebene,
 die schon aus geometrischen Gr"unden vertauschen.
+\index{Drehmatrix}%
 F"ur $A_1$ rechnen wir nach:
 \begin{align*}
 A_1(s_1)A_1(s_2)

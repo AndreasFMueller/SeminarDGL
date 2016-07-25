@@ -23,17 +23,17 @@ Finde $\hat{x}\in\mathbb R$ so, dass $f(\hat{x})=y$.
 Im allgemeinen kann man nicht davon ausgehen, dass sich eine L"osung der
 Gleichung $f(x)=y$ in geschlossener Form finden l"asst.
 Nur einige wenige Klassen von Gleichungen haben L"osungsformeln dieser Art.
-Wir beschr"anken uns daher auf das Problem, eine Approximation f"ur die
-L"osung zu bestimmen.
+Wir beschr"anken uns daher auf das Problem, eine numerische Approximation
+f"ur die L"osung zu bestimmen.
 
 Indem wir statt der Funktion $f(x)$ die Funktion $x\mapsto g(x)=f(x)-y$
 betrachten, k"onnen wir die gesuchte Zahl $x$ auch als L"osung der
 Gleichung $g(x)=0$ finden:
 \begin{equation}
 f(x)=y
-\qquad\qquad
+\qquad
 \Rightarrow
-\qquad\qquad
+\qquad
 g(x)=f(x)-y = 0.
 \label{newton:reduktion}
 \end{equation}
@@ -56,10 +56,10 @@ f(x_{\mathstrut n+1})-f(x_{\mathstrut n})
 }{
 x_{\mathstrut n+1}-x_{\mathstrut n}
 }
-\simeq = f'(x_n).
+\simeq f'(x_n).
 \label{newton:pre}
 \end{equation}
-Wir m"ochten gerne, dass $f(x_{n+1})=0$ ist, und k"onnen (\ref{newton:pre})
+Wir m"ochten gerne, dass $f(x_{n+1})=0$ ist, und k"onnen \eqref{newton:pre}
 unter dieser Annahme nach $x_{n+1}$ aufl"osen:
 \begin{align*}
 -f(x_n)
@@ -73,7 +73,7 @@ Damit haben wir ein L"osungsverfahren gefunden:
 \begin{satz}[Newton]
 \label{newton:satz}
 Ist $f$ eine differenzierbare Funktion, deren Ableitung bei der Nullstelle
-$\hat{x}$ nicht verschwindet, also $f(\hat{x})\ne 0$, und $x_0$ eine erste
+$\hat{x}$ nicht verschwindet, also $f'(\hat{x})\ne 0$, und $x_0$ eine erste
 Approximation f"ur $\hat{x}$, dann konvergiert die Folge
 definiert durch die Rekursionsformel
 \[
@@ -131,6 +131,7 @@ in Abschnitt~\ref{section:newton:konvergenz} erkl"art wird.
 \end{beispiel}
 
 \section{Konvergenzgeschwindigkeit\label{section:newton:konvergenz}}
+\index{Konvergenzgeschwindigkeit}
 Im vorangegangenen Abschnitt wird auf die besonders schnelle Konvergenz
 des Newton-Verfahrens hingewiesen: in jedem Iterationsschritt verdoppelt
 sich die Anzahl korrekter Stellen.
@@ -139,7 +140,7 @@ Nullstelle $\hat{x}$ in eine Potenzreihe
 \[
 f(x)
 =
-\underbrace{f(\hat{x})}_{=0} + f'(\hat{x})(x-\hat{x})
+\underbrace{f(\hat{x})}_{\displaystyle=0} + f'(\hat{x})(x-\hat{x})
 + \frac12 f''(\hat{x}) (x-\hat{x})^2+\dots
 =
 f'(\hat{x})(x-\hat{x}) + \frac12 f''(\hat{x}) (x-\hat{x})^2+\dots
@@ -180,11 +181,12 @@ Gr"ossenordnung $(10^{-k})^2=10^{-2k}$, die Anzahl korrekter Stellen
 hat sich verdoppelt.
 Eine merkliche Abweichung von diesem Gesetz ist nur zu erwarten, wenn
 der Faktor $f''(\hat{x})/(2f'(\hat{x}))$ gross ist.
-Dies tritt vor allem dann ein, wenn der Nenner $f(\hat{x})$
+Dies tritt vor allem dann ein, wenn der Nenner $f'(\hat{x})$
 nahe bei Null ist.
 
 \begin{definition}
 Eine Folge $x_n$ mit $\lim_{n\to\infty}=\hat{x}$ heisst {\em quadratisch}
+\index{quadratische Konvergenz}%
 konvergent, wenn $x_{n+1}-\hat{x} = O((x_n-\hat{x})^2)$.
 \end{definition}
 
@@ -289,7 +291,9 @@ Wir k"onnen dies auch in Matrixform schreiben als
 \frac{\partial g(x)}{\partial x}\Delta x^k
 \end{align*}
 Dies ist ein lineares Gleichungssystem f"ur den Vektor $\Delta x^k$.
-Falls $m=n$ und die Jacobi-Matrix invertierbarbar ist, dann kann
+Falls $m=n$ und die Jacobi-Matrix $\partial g/\partial x$ invertierbar ist,
+dann kann
+\index{Jacobi-Matrix}%
 man das Gleichungssystem mit Hilfe der inversen Matrix l"osen:
 \[
 \Delta x^k =
@@ -394,7 +398,7 @@ verschiedenen Ausgangspunkten.
 \label{newton:2dbeispiel}}
 \end{table}
 Schreibt man $z=x+iy$ als komplexe Zahl, dann wird die Gleichung
-(\ref{newton:z3}) zu 
+\eqref{newton:z3} zu 
 \[
 z^3 = 1+2i,
 \]
