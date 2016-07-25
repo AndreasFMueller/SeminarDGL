@@ -18,7 +18,7 @@ $(grundlagen_FILES):	grundlagen.mp
 	done
 
 numerik_FILES = numerik-1.pdf numerik-2.pdf numerik-3.pdf numerik-4.pdf \
-	numerik-5.pdf
+	numerik-5.pdf numerik-6.pdf
 numerik:	$(numerik_FILES)
 $(numerik_FILES): numerik.mp
 	TEX=latex mpost numerik.mp

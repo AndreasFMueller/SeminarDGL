@@ -393,7 +393,7 @@ Dies ist wesentlich schneller zu berechnen als die Inverse der Matrix $M$, da le
 \subsubsection{Implementation \label{trafo:SVD}}
 Die Implementation in Matlab l"asst sich sehr kompakt und elegant darstellen. Wie soeben erkl"art werden zu kleine Eigenwerte auf Null gesetzt und anschliessend die Inverse berechnet. 
 
-{\scriptsize \lstinputlisting{./trafo/code/svd.m}}
+{\scriptsize \lstinputlisting[style=MATLAB]{./trafo/code/svd.m}}
 
 \subsubsection{Resultate}
 Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen erstellt werden. Als L"osungsverfahren wurde das etwas langsame, jedoch genaue nummerische Verfahren \texttt{ode45} von Matlab verwendet. In der Abbildung \ref{trafo:SVDTol} lassen sich die Unterschiede der gew"ahlten Toleranzen sehr gut erkennen. Wenn die Toleranzen $10^{-11}$ und $10^{-12}$ gew"ahlt werden, l"asst sich das Problem l"osen, jedoch ist das Verhalten des Systems erfahrungsgem"ass nicht ganz realistisch. Die L"osung mit der Toleranz $10^{-13}$ zeigt, wie es in der Praxis tats"achlich aussehen sollte. Wird die Toleranz hingegen noch einmal etwas verringert, explodiert die L"osung und ist somit nicht mehr brauchbar. Dieser Fall ist in Abbildung \ref{trafo:SVDTol} unten rechts dargestellt.
@@ -575,7 +575,7 @@ geschrieben werden, wenn $b$ die Differenz der zwei Vektoren $b_0$ und $b_1$ ist
 \subsubsection{Implementation}
 Der Matlab-Code kann jetzt folgendermassen geschrieben werden.
 
-{\scriptsize \lstinputlisting{./trafo/code/compact.m}}
+{\scriptsize \lstinputlisting[style=MATLAB]{./trafo/code/compact.m}}
 
 
 \subsubsection{Vergleich}

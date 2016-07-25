@@ -10,6 +10,7 @@ verbatimtex
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{txfonts}
+\usepackage{color}
 \begin{document}
 etex;
 
@@ -385,6 +386,116 @@ pickup pencircle scaled 3pt;
 
 draw z3;
 draw z4;
+
+endfig;
+
+%
+% Newton Iteration zur Bestimmung der Kettenlinie
+%
+beginfig(6)
+
+numeric u;
+u := 100;
+
+numeric a;
+a := 1;
+
+z10 = (-1, 1);
+z20 = ( 2, 2);
+
+def exp(expr x) =
+	mexp(256 * x)
+enddef;
+
+def cosh(expr x) =
+	((exp(x) + exp(-x)) / 2)
+enddef;
+
+def sinh(expr x) =
+	((exp(x) - exp(-x)) / 2)
+enddef;
+
+def asinh(expr x) =
+	(mlog(x + sqrt(1+x*x)) / 256)
+enddef;
+
+def f(expr x, m) =
+	((1/a) * cosh(a * (x + 1) + asinh(m)) + 1 - (1/a) * sqrt(1 + m*m))
+enddef;
+
+def punkt(expr x, m) =
+	(x * u, f(x,m) * u)
+enddef;
+
+numeric s;
+s := 0.01;
+def graph(expr m, c) =
+	path p;
+	p := punkt(-1.3,m);
+	for x = -1.3 + s step s until 2.3:
+		p := p--punkt(x,m);
+	endfor;
+	p := p--punkt(2.3,m);
+	draw p withcolor c;
+enddef;
+
+pickup pencircle scaled 1pt;
+
+graph( 0.000000, blue);
+label.ulft(btex $y'(x_1)=0$ etex, punkt(-0.1,0)) withcolor blue;
+graph(-0.805326, blue);
+label.ulft(btex $y'(x_1)=-0.805$ etex, punkt(0.7,-0.805326) shifted (0,-4)) withcolor blue;
+graph(-1.399918, blue);
+label.ulft(btex $y'(x_1)=-1.399$ etex, punkt(0.7,-1.399918) shifted (0,-4)) withcolor blue;
+graph(-1.618072, blue);
+label.ulft(btex $y'(x_1)=-1.618$ etex, punkt(0.7,-1.618072) shifted (0,-6)) withcolor blue;
+graph(-1.634721, blue);
+%label.ulft(btex $m=-1.634721$ etex, punkt(0.5,-1.634721)) withcolor blue;
+pickup pencircle scaled 1.5pt;
+graph(-1.634801, red);
+label.lrt(btex $y'(x_1)=-1.634801$ etex, punkt(0.9,-1.634801)) withcolor red;
+
+z0 = (     0, 0    );
+z1 = (-1 * u, 0    );
+z2 = ( 2 * u, 0    );
+z3 = (     0, 2 * u);
+
+z4 = (-1 * u, 1 * u);
+z5 = ( 2 * u, 2 * u);
+z6 = (-1 * u, 2 * u);
+
+pickup pencircle scaled 0.3pt;
+
+draw z1--z4;
+draw z2--z5;
+
+path boundary;
+boundary = (z1 shifted (-30,0))--(z2 shifted (30,0))--(z5 shifted (30,10))--(z6 shifted (-30,10))--cycle;
+
+clip currentpicture to boundary;
+
+label.bot(btex $x_1=-1$ etex, z1);
+label.bot(btex $x_2=2$ etex, z2);
+label.llft(btex $y(x_1)=y_1=1$ etex, z4);
+label.rt(btex $y_2=2\color{red}=y(x_2)$ etex, z5);
+
+pickup pencircle scaled 1pt;
+
+drawarrow (z1 shifted (-30,0))--(z2 shifted (30,0));
+drawarrow (z0 shifted (0,-10))--(z3 shifted (0,15));
+draw (z1 shifted (0,-2))--(z1 shifted (0,2));
+draw (z2 shifted (0,-2))--(z2 shifted (0,2));
+label.top(btex $x$ etex, z2 shifted (30,0));
+label.lft(btex $y$ etex, z3 shifted (0,15));
+
+pickup pencircle scaled 5pt;
+draw z4 withcolor white;
+draw z5 withcolor white;
+
+pickup pencircle scaled 3pt;
+
+draw z4;
+draw z5;
 
 endfig;
 
