@@ -82,7 +82,7 @@ Damit die Ersatzparameter des Transformators mit einer FEM-Simulation berechnet 
 	\item Es lassen sich nun die Kapazit"aten gegen"uber allen anderen Windungen berechnen.
 	\item Das gleiche Vorgehen wird mit der selben Windung an einer Stromquelle verwendet. Die Windung, welche zuvor an der Spannungsquelle angeschlossen war, wird mit \SI{1}{\ampere} Strom durchflossen und alle anderen Windungen mit \SI{0}{\ampere}.
 	\item Somit lassen sich die Induktivit"aten berechnen.
-	\item Dieser Vorgang wird f"ur jede Windung wiederholt. Somit sind schlussendlich alle Ersatzparameter f"ur das Modell, und ins besonders f"ur das Differentialgleichungssystem \ref{trafo:DGL}, bestimmt.
+	\item Dieser Vorgang wird f"ur jede Windung wiederholt. Somit sind schlussendlich alle Ersatzparameter f"ur das Modell, und ins besonders f"ur das Differentialgleichungssystem \eqref{trafo:DGL}, bestimmt.
 \end{itemize}
 
 
@@ -128,7 +128,7 @@ und
 \begin{equation*}
 	\sum i_{R1k} = i_{R12} + i_{R13} + i_{R14}
 \end{equation*}
-resultieren die Ersatzparameter $\sum C_{1k}$ und $\sum R_{1k}$ respektive $\sum G_{1k}$, welche in den Gleichungen \ref{trafo:DGL} und \ref{trafo:symmetricalDGL} verwendet werden.
+resultieren die Ersatzparameter $\sum C_{1k}$ und $\sum R_{1k}$ respektive $\sum G_{1k}$, welche in den Gleichungen \eqref{trafo:DGL} und \eqref{trafo:symmetricalDGL} verwendet werden.
 
 Mit einigen Umformungen kann der ganze Transformator als System von mehreren Differentialgleichungen geschrieben werden \cite{trafo:SeminarCHR}. Als Beispiel wird wiederum der Transformator mit vier Windungen gew"ahlt. Der Vektor $E$ ist der St"orterm des Systems, welcher in diesem Falle der Blitzstoss ist.
 
@@ -201,7 +201,7 @@ Mit einigen Umformungen kann der ganze Transformator als System von mehreren Dif
 		
 
 
-Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesentliche Vorteile mit sich bringt. Die Matrix $N$ ist fast symmetrisch. Wenn der Maschensatz jedoch in die andere Richtung als in Abbildung \ref{trafo:orig} angewendet wird, l"asst sich auch diese Matrix mit sehr geringem Aufwand in die symmetrische Form bringen. Dies ist f"ur dieses Beispiel zwar nicht n"otig, trotzdem kann es f"ur andere L"osungsans"atze von Vorteil sein. Aus der Gleichung \ref{trafo:DGL} wird nun 
+Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesentliche Vorteile mit sich bringt. Die Matrix $N$ ist fast symmetrisch. Wenn der Maschensatz jedoch in die andere Richtung als in Abbildung \ref{trafo:orig} angewendet wird, l"asst sich auch diese Matrix mit sehr geringem Aufwand in die symmetrische Form bringen. Dies ist f"ur dieses Beispiel zwar nicht n"otig, trotzdem kann es f"ur andere L"osungsans"atze von Vorteil sein. Aus der Gleichung \eqref{trafo:DGL} wird nun 
 \index{Matrix!symmetrisch}%
 \index{symmetrische Matrix}%
 
@@ -279,7 +279,7 @@ Dieses System mehrerer Differentialgleichungen kann auch mit Matrizen und Vektor
 	\label{trafo:matricesDGL}
 \end{equation}
 
-Wird die Massenmatrix $M$ auf die rechte Seite der Gleichung \ref{trafo:matricesDGL} dividiert, ergibt dies
+Wird die Massenmatrix $M$ auf die rechte Seite der Gleichung \eqref{trafo:matricesDGL} dividiert, ergibt dies
 
 \begin{equation}
 	\dot{x} = M^{-1}N x + M^{-1} E = A x + B
@@ -336,7 +336,7 @@ berechnet werden können, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind un
 	\right)
 \end{equation*}
 
-Die Matrix $V$ kann mit dem selben Schema aus den Eigenvektoren von $M^\top M$ aufgebaut werden. Als etwas schnellere Alternative kann die Berechnung von $V$ jedoch auch aus der Gleichung \ref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt:
+Die Matrix $V$ kann mit dem selben Schema aus den Eigenvektoren von $M^\top M$ aufgebaut werden. Als etwas schnellere Alternative kann die Berechnung von $V$ jedoch auch aus der Gleichung \eqref{trafo:svd} erfolgen, denn $M$, $S$ und $U$ sind bekannt:
 \begin{align*}
 	M^\top &= V \underbrace{S^\top}_{\displaystyle S} U^\top\\
 	S^{-1} M^\top &= V U^\top\\
@@ -427,7 +427,7 @@ Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen
 
 \subsection{Exaktes L"osungsverfahren}
 \index{exakte L"osung}
-Eine stabile L"osung konnte mit dem \texttt{ode45}-L"osungsverfahren von Matlab bereits gefunden werden, allerdings ist der ben"otigte Zeitaufwand viel zu hoch. Aus diesem Grunde stellt sich die Frage, ob das Gleichungssystem \ref{trafo:symmetricalDGL} nicht auch exakt gel"ost werden kann.
+Eine stabile L"osung konnte mit dem \texttt{ode45}-L"osungsverfahren von Matlab bereits gefunden werden, allerdings ist der ben"otigte Zeitaufwand viel zu hoch. Aus diesem Grunde stellt sich die Frage, ob das Gleichungssystem \eqref{trafo:symmetricalDGL} nicht auch exakt gel"ost werden kann.
 
 Als Motivation wird eine gew"ohnliche Differentialgleichung erster Ordnung in einer Dimension betrachtet. 
 \begin{equation*}
@@ -441,7 +441,7 @@ Diese Differentialgleichung l"asst nach
 \end{equation*}
 aufl"osen, wobei $x_h$ die homogene L"osung ist. Den Fehlerterm $b(t)$ wird im n"achsten Abschnitt etwas genauer betrachtet. 
 
-Es gilt nun, die Matrix $A$ zu diagonalisieren und somit zu entkoppeln. Pr"adestiniert daf"ur w"are wiederum die Singul"arwertzerlegung. In der Anwendung zeigte sich leider, dass die Resultate aufgrund der unsymmetrischen Matrix $A$ nicht mit dem Erwarteten "ubereinstimmen und deshalb muss einen anderen Weg gefunden werden. Eine weitere M"oglichkeit ist die Eigenwertzerlegung. Wird die Eingangsinduktivit"at $L_\mathrm{in}$ in der Gleichung \ref{trafo:symmetricalDGL} nicht allzu klein gew"ahlt, l"asst sich das System tats"achlich l"osen.
+Es gilt nun, die Matrix $A$ zu diagonalisieren und somit zu entkoppeln. Pr"adestiniert daf"ur w"are wiederum die Singul"arwertzerlegung. In der Anwendung zeigte sich leider, dass die Resultate aufgrund der unsymmetrischen Matrix $A$ nicht mit dem Erwarteten "ubereinstimmen und deshalb muss einen anderen Weg gefunden werden. Eine weitere M"oglichkeit ist die Eigenwertzerlegung. Wird die Eingangsinduktivit"at $L_\mathrm{in}$ in der Gleichung \eqref{trafo:symmetricalDGL} nicht allzu klein gew"ahlt, l"asst sich das System tats"achlich l"osen.
 
 Die Eigenwertzerlegung lautet $A = V\Lambda V^{-1}$ und angewendet auf das Differentialgleichungssystem 
 \begin{align*}
@@ -473,7 +473,7 @@ Der Unterschied der Rechengeschwindigkeit zwischen der numerischen und exakten L
 Da es sich beim Fehlerterm nicht nur um eine Funktion, sondern auch um ein gemessenes Signal handelt, welches somit quantisiert ist, muss der Fehlerterm "uber einen gewissen Zeitschritt betrachtet werden.
 
 \subsubsection{Konstanter St"orterm}
-Ein m"oglicher Ansatz ist, denn Fehlerterm f"ur die Schrittweite $h$ als konstant zu betrachten. Die Gleichung \ref{trafo:TransfDGL} kann nun als
+Ein m"oglicher Ansatz ist, denn Fehlerterm f"ur die Schrittweite $h$ als konstant zu betrachten. Die Gleichung \eqref{trafo:TransfDGL} kann nun als
 \begin{equation*}
 	Y_i = Y_{i-1} e^{\Lambda h}  + h B_{i-1}
 \end{equation*}
@@ -557,10 +557,10 @@ Ein wichtiger Punkt bei L"osungsverfahren ist die Optimierung. Ein grosser Optim
 Der wesentliche Teil der Berechnung, welche beeinflusst werden kann, ist die \textit{for}-Schleife. Diese wird so oft durchlaufen, wie die Anzahl der Schritte gew"ahlt wurde. Deshalb soll das Ziel sein, m"oglichst wenig in dieser Schleife zu berechnen. 
 
 \subsubsection{Exponentialfunktion der Eigenwerte}
-Die Gleichung \ref{trafo:exakteLoesung} besitzt eine Konstante $e^{\Lambda h}$, welche bei jedem Zeitschritt mit den neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, h"alt sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen in einer \textit{sparse}-Matrix). 
+Die Gleichung \eqref{trafo:exakteLoesung} besitzt eine Konstante $e^{\Lambda h}$, welche bei jedem Zeitschritt mit den neuen Anfangswerten multipliziert wird. Es macht also Sinn, diese Konstante einmal vor der Schleife zu berechnen und als Variable abzuspeichern. Da es sich bei der Matrix $\Lambda$ um eine Diagonalmatrix handelt, h"alt sich auch der Speicherbedarf der Konstante in Grenzen (es sind dies $2n + 1$ Variablen in einer \textit{sparse}-Matrix). 
 
 \subsubsection{Lineare Interpolation}
-Die soeben vorgestellte lineare Interpolation \ref{trafo:linInterp} kann mittels Umformungen in die Darstellung 
+Die soeben vorgestellte lineare Interpolation \eqref{trafo:linInterp} kann mittels Umformungen in die Darstellung 
 
 \begin{equation*}
 	y_1 = y_0 \cdot e^{\lambda h} + b_0 \underbrace{\left(\left(\frac{e^{\lambda h}}{\lambda} - \frac{e^{\lambda h}}{h\lambda ^2}\right) + \frac{1}{h \lambda^2}\right)}_{\displaystyle a_0} + b_1 \underbrace{\left(\frac{e^{\lambda h}}{h \lambda^2} - \frac{1}{\lambda} - \frac{1}{h \lambda^2}\right)}_{\displaystyle a_1}
