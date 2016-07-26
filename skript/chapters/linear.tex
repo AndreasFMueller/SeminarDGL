@@ -100,7 +100,7 @@ Mit dieser Schreibweise kann die L"osung geschrieben werden als
 x(t)
 =
 e^{At}
-\biggl(x_0 + \int_0^t e^{-A\tau}f(\tau)\,d\tau\biggr)
+\biggl(x_0 + \int_0^t e^{-A\tau}f(\tau)\,d\tau\biggr).
 \]
 Wir werden in den n"achsten zwei Abschnitten zeigen, dass diese 
 Funktion f"ur beliebige Matrizen $A$ definiert werden kann und
@@ -126,7 +126,7 @@ A+tA^2+\frac12t^2A^3+\frac1{3!}t^3A^4+\dots
 \\
 &=
 \biggl(E+tA+\frac12t^2A^2+\frac1{3!}A^3+\dots\biggr)A
-=e^{tA}A=Ae^{At}
+=e^{tA}A=Ae^{At}.
 \end{align*}
 \begin{satz}
 \label{linear:matrix-exp}
@@ -161,13 +161,13 @@ Dazu ersetzen wir $x_0$ durch einen Vektor $C(t)$, und leiten den Ansatz
 \[
 x(t)=e^{At}C(t)
 \]
-nach $t$ ab
+nach $t$ ab:
 \[
 \frac{d}{dt}x(t)
 =
 Ae^{At}C(t) + e^{At}\dot{C}(t)
 =
-A x(t) + e^{At}\dot{C}(t)
+A x(t) + e^{At}\dot{C}(t).
 \]
 Damit $x(t)$ eine L"osung ist, muss gelten
 \[
@@ -177,7 +177,7 @@ e^{At}\dot{C}(t)
 f(t)
 &&\text{und}
 &
-C(0)&=x_0
+C(0)&=x_0.
 \end{aligned}
 \]
 Diese Differentialgleichung kann durch Integration gel"ost werden,
@@ -323,7 +323,7 @@ q\binom{k}{j-(i+1)}p^{k-(j-(i+1))}q^{j-(i+1)}
 \left(\binom{k}{j-i}+\binom{k}{j-i-1}\right) p^{k+1-(j-i)}q^{j-i}
 \\
 &=
-\binom{k+1}{j-i} p^{k+1-(j-i)}q^{j-i}
+\binom{k+1}{j-i} p^{k+1-(j-i)}q^{j-i}.
 \end{align*}
 Damit ist der Induktionsschritt vollzogen und damit die
 Formel~\eqref{linear:apqk} bewiesen.
@@ -341,7 +341,7 @@ e^{A(p,q)}
 \begin{cases}
 \frac1{(j-i)!}q^{j-i}e^p,
  &\qquad i\le j\\
-0&\qquad i>j
+0&\qquad i>j.
 \end{cases}
 \]
 \end{satz}
@@ -352,7 +352,7 @@ nur die Matrixelemente mit $i\le j$ zu berechnen:
 \begin{align*}
 (e^{A(p,q)})_{ij}
 &=
-\sum_{k=0}^\infty \frac1{k!}\binom{k}{j-i}p^{k-(j-i)}q^{j-i}
+\sum_{k=0}^\infty \frac1{k!}\binom{k}{j-i}p^{k-(j-i)}q^{j-i}.
 \end{align*}
 Wir k"urzen $j-i=s$ ab, und beachten, dass der Binomialkoeffizient nur
 dann von $0$ verschieden ist, wenn $k\ge j-i=s$ ist.
@@ -458,7 +458,7 @@ Dann hat $e^{tA(\lambda)}$ die Matrix-Elemente
 \begin{cases}
 \frac1{(j-i)!}t^{j-i}e^{\lambda t}
  &\qquad i\le j\\
-0&\qquad i>j
+0&\qquad i>j.
 \end{cases}
 \]
 \end{satz}
@@ -518,7 +518,7 @@ Die Matrix auf der rechten Seite hat das charakteristische Polynom
 \lambda^2+2\sigma\lambda+\sigma^2=(\lambda+\sigma)^2=0
 \\
 \Rightarrow\qquad
-\lambda&=-\sigma
+\lambda&=-\sigma.
 \end{align*}
 Das charakteristische Polynom hat also nur eine Nullstelle.
 Wir bestimmen die Eigenvektoren:
@@ -555,7 +555,7 @@ Wir bestimmen die Eigenvektoren:
 v=
 \begin{pmatrix}
 1\\-\sigma
-\end{pmatrix}
+\end{pmatrix}.
 \end{align*}
 Da es nur einen Eigenvektor gibt, kann die Matrix nicht diagonalisierbar
 sein.
@@ -588,7 +588,7 @@ Gleichungssystems
 \qquad
 w=\begin{pmatrix}
 0\\1
-\end{pmatrix}
+\end{pmatrix},
 \]
 wobei wir f"ur die frei w"ahlbare zweite Variable den Wert $1$ gew"ahlt haben.
 In der Basis $B'=\{v, w\}$ hat die Matrix des Differentialgleichungssystems
@@ -599,7 +599,7 @@ A'
 \begin{pmatrix}
 -\sigma&      1\\
       0&-\sigma 
-\end{pmatrix}
+\end{pmatrix}.
 \]
 Die Transformationsmatrix, die von der Standardbasis in die Basis $B'$
 \index{Transformationsmatrix}%
@@ -754,7 +754,7 @@ Gleichung einfacher l"osen, wenn wir sie in Matrixform schreiben:
 +
 \begin{pmatrix}
 0\\\sigma
-\end{pmatrix}w(x)
+\end{pmatrix}w(x).
 \end{equation}
 Die L"osung wird dann
 \begin{equation}
@@ -819,7 +819,7 @@ e^{Dx}
 \begin{pmatrix}
                 \cos\lambda x&\frac1{\lambda}\sin\lambda x\\
 -\frac1{\lambda}\sin\lambda x&               \cos\lambda x
-\end{pmatrix}
+\end{pmatrix}.
 \end{align*}
 Daraus k"onnen wir jetzt die L"osung mit der
 Formel~\eqref{linear:harmosz-explsg} ablesen:
@@ -957,7 +957,7 @@ e^{\int_0^tA(\tau)\,d\tau
 +
 \int_t^{t+h}A(\tau)\,d\tau}
 -
-e^{\int_0^tA(\tau)\,d\tau}\biggr)
+e^{\int_0^tA(\tau)\,d\tau}\biggr).
 \label{linear:nichtkommutativ-diffquot}
 \end{align}
 An dieser Stelle m"ochten wir gerne eine Identit"at der Form $e^{B+C}=e^Be^C$

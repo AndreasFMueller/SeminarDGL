@@ -141,7 +141,7 @@ E(W(t)W(s))
 &=
 E\bigl((W(t)-W(s))\cdot W(s)\bigr)+E(W(s)^2)
 =
-\underbrace{E(W(t)-W(s))}_{\displaystyle =0} \underbrace{E(W(s))}_{\displaystyle =0} + s
+\underbrace{E(W(t)-W(s))}_{\displaystyle =0} \underbrace{E(W(s))}_{\displaystyle =0} + s,
 \end{align*}
 wobei wir erneut Eigenschaft~2 verwendet haben.
 \end{proof}
@@ -168,7 +168,7 @@ $X(0)=0$ und Varianz $T$.
 Da $X(t)$ ausserdem stetig sein soll, verwenden wir als erste Iteration
 die lineare Funktion:
 \[
-W_1(t) = X(T)\frac{t}{T}
+W_1(t) = X(T)\frac{t}{T}.
 \]
 Die Eigenschaft~3 verlangt, dass auch $X(T/2)$ normalverteilt ist mit
 Erwartungswert $0$ und Varianz $T/2$.
@@ -395,7 +395,7 @@ vereinfachen:
 -
 \int_0^T g'(t) w(t)\,dt
 =
--\int_0^T g'(t) w(t)\,dt
+-\int_0^T g'(t) w(t)\,dt.
 \]
 Diese letzte Formel ist aber auch geeignet als Definition des Integrals
 f"ur eine brownsche Bewegung $W(t)$ an Stelle von $w(t)$.
@@ -587,11 +587,11 @@ in $L^2(\Omega)$.
 \begin{proof}[Beweis]
 Konvergenz in $L^2(\Omega)$ bedeutet, dass der Erwartungswert der
 quadratische Abweichung gegen $0$ streibt.
-Setzen wir
+Wir setzen
 \[
 Q_n
 = 
-\sum_{k=0}^{m_n-1} \left(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\right)^2,
+\sum_{k=0}^{m_n-1} \left(W(t_{k+1}^{(n)})-W(t_{k}^{(n)})\right)^2
 \]
 und m"ussen untersuchen, ob $E((Q_n - T)^2)$ gegen $0$ strebt.
 Wir beginnen mit der Bemerkung, dass
@@ -732,7 +732,7 @@ c_k=W(t_{k+1}^{(n)}),
 wobei wir im folgenden zur Vereinfachung der Rechnung die Indizes auch
 weglassen.
 Jetzt versuchen wir $b(c-a)$ durch andere Differenzen auszudr"ucken.
-Zur Verf"ugung haben wir die folgenden Differenzen:
+Zur Verf"ugung haben wir die drei Differenzen:
 \begin{align*}
 (b-a)^2
 &=
@@ -761,7 +761,7 @@ Ausdruck $ac$ wegf"allt:
 \\
 &=
 cb-ab + \frac12a^2
--\frac12c^2
+-\frac12c^2.
 \end{align*}
 Die quadratischen Terme sind $\frac12c_k^2=\frac12W(t_{k+1}^{(n)})^2$ und
 $\frac12a_k^2=\frac12W(t_{k}^{(n)})^2$, die sich in aufeinanderfolgenden Termen
@@ -853,7 +853,7 @@ Das It\^o-Integral ist eine Zufallsvariable.
 %\index{Integral!Ito@It\^o-}%
 \end{definition}
 
-Das It\^o-Integral hat die folgenden Eigenschaften
+Das It\^o-Integral von Stufenprozessen hat die folgenden Eigenschaften.
 \begin{hilfssatz}
 Wenn $G$ und $H$ Stufenprozesse sind und $a,b\in\mathbb R$, dann gilt
 \begin{compactenum}
@@ -981,7 +981,8 @@ Dies ist ein Spezialfall der sp"ater zu untersuchenden It\^o-Produktregel,
 man beachte den nach der klassischen Analysis nicht erwarteten Term $t$.
 \end{beispiel}
 
-Das It\^o-Integral hat die folgenden Eigenschaften:
+Das It\^o-Integral f"ur beliebige quadratintegrierbare Prozesse
+hat die folgenden Eigenschaften.
 
 \begin{satz}
 \label{satz:ito-integral}

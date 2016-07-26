@@ -46,7 +46,7 @@ Funktion $f\colon\Omega\to\mathbb C$.
 Eine komplexwertige Funktion $f(z)$ kann betrachtet werden als zwei
 reellwertige Funktionen von zwei Variablen $x$ und $y$:
 \[
-f(z)=\operatorname{Re}f(x+iy) + i \operatorname{Im}f(x+iy)
+f(z)=\operatorname{Re}f(x+iy) + i \operatorname{Im}f(x+iy).
 \]
 Schreibt man
 $\operatorname{Re}f(x+iy)=u(x,y)$
@@ -559,11 +559,11 @@ Wir finden f"ur die Wegintegrale
 \begin{align*}
 \int_{\gamma_+}\frac1z\,dz
 &=
-\int_0^\pi \frac1{e^{it}}ie^{it}\,dt=i\int_0^\pi\,dt=i\pi
+\int_0^\pi \frac1{e^{it}}ie^{it}\,dt=i\int_0^\pi\,dt=i\pi,
 \\
 \int_{\gamma_-}\frac1z\,dz
 &=
--\int_0^\pi \frac1{e^{-it}}ie^{-it}\,dt=-i\int_0^\pi\,dt=-i\pi
+-\int_0^\pi \frac1{e^{-it}}ie^{-it}\,dt=-i\int_0^\pi\,dt=-i\pi.
 \end{align*}
 Das Wegintegral zwischen $1$ und $-1$ h"angt also mindestens f"ur diese
 spezielle Funktion $f(z)=1/z$ von der Wahl des Weges ab.
@@ -599,7 +599,7 @@ Wir verwenden die Definition des Wegintegrals
 &=
 \int_c^d f(\gamma_2(s)\,\gamma_2'(s)\,ds
 =
-\int_{\gamma_2}f(z)\,dz
+\int_{\gamma_2}f(z)\,dz.
 \end{align*}
 Beim zweiten Gleichheitszeichen haben wir die Formel f"ur die
 Variablentransformation $t=t(s)$ in einem Integral verwendet.
@@ -1063,7 +1063,7 @@ $\gamma\colon\mathbb R\to \mathbb C$.
 Setzen wir diesen Ansatz in die Airy-Differentialgleichung ein,
 erhalten wir
 \begin{align*}
-\int_\gamma z^2e^{xz}v(z)\,dz-\int_\gamma xe^{xz}v(z)\,dz&=0
+\int_\gamma z^2e^{xz}v(z)\,dz-\int_\gamma xe^{xz}v(z)\,dz&=0.
 \end{align*}
 Das zweite Integral kann mit partieller Integration umgeformt werden,
 man erh"alt
@@ -1073,7 +1073,7 @@ man erh"alt
 \int_{-\infty}^{\infty} xe^{x\gamma(t)}v(\gamma(t))\dot\gamma(t)\,dt
 =
 \left[e^{xz}v(z)\right]_{\gamma(-\infty)}^{\gamma(\infty)}
--\int_\gamma e^{xz}v'(z)\,dz
+-\int_\gamma e^{xz}v'(z)\,dz.
 \end{align*}
 Dieser Ausdruck ist nur dann sinnvoll, wenn der Weg $\gamma$ so gew"ahlt
 wird, dass an den Endpunkte des Weges der Integrand beliebig klein wird,
@@ -1233,7 +1233,7 @@ f'''(z)
 \\
 f^{(k)}(z)
 &=
-\frac{k!}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{k+1}}\,d\zeta
+\frac{k!}{2\pi i}\oint_{\gamma}\frac{f(\zeta)}{(\zeta-z)^{k+1}}\,d\zeta.
 \end{align*}
 Es folgt
 
@@ -1259,7 +1259,7 @@ f(z)=\sum_{k=0}^na_k(z-z_0)^k
 hat die Koeffizienten
 \[
 a_k=\frac1{2\pi i}\int_{\gamma}\frac{f(z)}{(z-z_0)^{k+1}}\,dz,\quad
-k\ge 0
+k\ge 0.
 \]
 \end{satz}
 
@@ -1453,6 +1453,7 @@ $\gamma_-$ stimmen auf der negativen reellen Achse nicht "uberein,
 sie unterscheiden sich um $2\pi i$:
 \[
 \log_+(z)-\log_-(z)=2\pi i.
+\qedhere
 \]
 \end{beispiel}
 
