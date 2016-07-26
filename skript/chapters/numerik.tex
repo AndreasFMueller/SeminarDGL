@@ -1267,7 +1267,7 @@ allein unter der Wirkung seines Eigengewichtes an?
 \end{aufgabe}
 Die L"osungskurve dieses Problems heisst die {\em Kettenlinie}.
 \index{Kettenlinie}
-In diesem Fall k"onnen wir zwar wieder eine L"osungsfunktion $y(x)$,
+Auch in diesem Fall k"onnen wir wieder eine L"osungsfunktion $y(x)$ finden,
 aber die Bestimmung der Parameter ist jetzt nicht mehr in geschlossener
 Form m"oglich.
 Wir behelfen uns mit einer numerischen L"osung.
@@ -1280,19 +1280,30 @@ Wir behelfen uns mit einer numerischen L"osung.
 \caption{Herleitung der Differentialgleichung der Kettenlinie
 \label{numerik:kettenlinie}}
 \end{figure}
-Zun"achst brauchen wir f"ur die Problemstellung eine Differentialgleichung.
+Zun"achst brauchen wir f"ur eine Differentialgleichung, deren L"osung die
+gesuchte Kurve beschreibt.
 Zur Herleitung dient die Abbildung~\ref{numerik:kettenlinie}.
 Die Masse des Seils zwischen den beiden Punkten $x$ und $x+\Delta x$
-wird von den beiden eingezeichneten Kr"aften getragen, sie ist
-aber auch proportional zur L"ange des Seiles:
+wird von den beiden eingezeichneten Kr"aften getragen.
+Die horizontalen Komponenten tragen nicht dazu bei, das Seil zu
+tragen, sie haben daher entlang des ganzen Seils immer die gleiche
+Gr"osse $F$.
+Die Masse des Seilst"ucks ist proportional zu seiner L"ange,
+der Proportionalit"atsfaktor ist die lineare Massendichte $\mu$.
+Nach dem dritten Newtonschen Gesetz
+\index{Newton!drittes Gesetz von}
+sind die vertikalen Kraftkomponenten gleich gross wie die Gewichtskraft
+des Seilst"ucks:
 \begin{align*}
 F(y'(x+\Delta x)-y'(x))
-&= \mu\sqrt{(y(x+\Delta x)-y(x))^2+\Delta x^2}
+&= \mu g\sqrt{(y(x+\Delta x)-y(x))^2+\Delta x^2}
 \\
+\intertext{oder nach Divison durch $F\Delta x$:}
 \frac{y'(x+\Delta x)-y'(x)}{\Delta x}
-&=\frac{\mu}{F}\sqrt{1+\biggl(\frac{y(x+\Delta x)-y(x)}{\Delta x}\biggr)^2}
+&=\frac{\mu g}{F}\sqrt{1+\biggl(\frac{y(x+\Delta x)-y(x)}{\Delta x}\biggr)^2}.
 \end{align*}
-Nach Grenz"ubergang $\Delta x\to 0$ erhalt man die Differentialgleichung
+Schreibt man $a=\mu g/F$ und geht zur Grenze $\Delta x\to 0$ "uber,
+erh"alt man die Differentialgleichung
 \begin{equation}
 y''(x)=a\sqrt{1+y'(x)^2}.
 \label{numerik:kettenloesung}
@@ -1334,13 +1345,17 @@ y''(x) &= a\cosh ax.
 \end{align*}
 Eingesetzt in die Differentialgleichung erh"alt man
 \begin{align*}
-a\cosh ax&=a\sqrt{1+\sinh^2 ax}
+a\cosh ax&=a\sqrt{1+\sinh^2 ax},
 \\
-\cosh^2ax-\sinh^2ax&=1.
+\intertext{was sich zu}
+\cosh^2ax-\sinh^2ax&=1
 \end{align*}
+umformen l"asst, diese Gleichung ist f"ur hyperbolische Funktionen
+immer erf"ullt.
+
 Die Differntialgleichung~\eqref{numerik:kettenloesung}
-ist autonom, also sind auch verschobene Funktionen L"osungen, die allgemeine
-L"osung des Problems ist daher die Funktion
+ist autonom, also sind auch verschobene Funktionen L"osungen.
+Die allgemeine L"osung des Problems ist daher die Funktion
 \begin{equation}
 y(x)=\frac1a\cosh a(x-x_0) + C.
 \label{numerik:ketteaC}
@@ -1382,14 +1397,14 @@ y_0
 &= 
 y_1+\frac1a-\frac1a\sqrt{1+m^2}.
 \end{align*}
-Damit ist das Randwertproblem vollst"andig gel"ost wir finden
+Damit ist das Anfangswertproblem vollst"andig gel"ost, 
 \begin{equation}
 y(x)
 =
-\frac1a\cosh \biggl(a(x-x_1) + \asinh m\biggr)
+\frac1a\cosh \bigl(a(x-x_1) + \asinh m\bigr)
 + y_1 - \frac1a\sqrt{1+m^2}
 \end{equation}
-als allgemeine L"osung zur Anfangsbedingung $y(x_1)=y_1$, $y'(x_1)=m$.
+ist die allgemeine L"osung zur Anfangsbedingung $y(x_1)=y_1$, $y'(x_1)=m$.
 
 Mit dieser L"osung kann jetzt auch das Randwertproblem gel"ost werden.
 Es muss ein Wert $m$ gefunden werden, so dass $y(x_2)=y_2$,
@@ -1397,7 +1412,7 @@ man muss also die Gleichung
 \[
 y_2
 =
-\frac1a\cosh \biggl(a(x_2-x_1)+\asinh m\biggr) + y_1 - \frac1a\sqrt{1+m^2}
+\frac1a\cosh \bigl(a(x_2-x_1)+\asinh m\bigr) + y_1 - \frac1a\sqrt{1+m^2}
 =:
 f(m)
 \]
@@ -1418,8 +1433,10 @@ Damit k"onnen wir die Iterationsformel
 m_{\text{neu}} = m - \frac{f(m) - y_2}{f'(m)}
 \]
 f"ur den korrekten Wert $m$ finden.
-Sie kann direkt in Octave implementiert werden:
-\lstinputlisting[style=Octave]{chapters/examples/kette.m}
+Sie kann leicht in Octave implementiert werden, wie Listing~\ref{numerik:ketteprog} zeigt.
+%\lstinputlisting[style=Octave]{chapters/examples/kette.m}
+%\begin{lstlisting}[style=Octave,caption={Octave-Programm zur Bestimmung der Anfangssteigung $m$ im Kettenlinien-Problem}]
+%\begin{lstlisting}[style=Octave, caption={Octave-Programm}, captionpos={b}, label={numerik:ketteprog}]
 %\verbatiminput{chapters/examples/kette.m}
 
 In Tabelle~\ref{numerik:kette-newton} ist der Gang der Berechnung
@@ -1458,6 +1475,29 @@ den Punkten $(-1,2)$ und $(2,2)$ mit Hilfe des Newton-Algorithmus.
 \label{numerik:kette-newton-graph}}
 \end{figure}
 \end{loesung}
+\begin{lstlisting}[style=Octave,caption={Octave-Programm zur Bestimmung der Anfangssteigung $m$ im Kettenlinien-Problem}, captionpos={t}, label={numerik:ketteprog}]
+global x1 = -1
+global x2 =  2
+global y1 =  1
+global y2 =  2
+
+function v = f(m)
+        global x1 x2 y1 y2
+        v = cosh(x2 - x1 + asinh(m)) + y1 - y2 - sqrt(1 + m^2);
+endfunction
+
+function v = fprime(m)
+        global x1 x2 y1 y2
+        v = (sinh(x2 - x1 + asinh(m)) - m)/sqrt(1 + m^2);
+endfunction
+
+m = 0;
+
+for i = (1:10)
+        printf("%2d   %20.16f %20.16f\n", i, m, f(m));
+        m = m - f(m)/fprime(m);
+endfor
+\end{lstlisting}
 
 \subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
 \index{Schiess-Verfahren}%
