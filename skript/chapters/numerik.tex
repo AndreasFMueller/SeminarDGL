@@ -290,7 +290,7 @@ Dort gilt
 y'(x)&=f(x,y)=-\alpha y
 \\
 \Rightarrow\qquad
-\frac{\partial f}{\partial x}&=0&\frac{\partial f}{\partial y}&=-\alpha
+\frac{\partial f}{\partial x}&=0&\frac{\partial f}{\partial y}&=-\alpha.
 \end{aligned}
 \end{equation*}
 Alle zweiten Ableitungen verschwinden.
@@ -411,13 +411,13 @@ durch eine der Variablen $a$, $b$, $\alpha$ und $\beta$.
 
 Wir berechnen nun $F(x,y,h)$ bis zur zweiten Ordnung, damit wird 
 $y(x+h)$ bis zur dritten Ordnung ausdr"ucken k"onnen.
-\begin{align*}
+\begin{align}
 f(x+\alpha h, y + \beta h f(x,y))
 &=
 f(x,y)+\alpha h\frac{\partial f(x,y)}{\partial x}
 + \beta h \frac{\partial f(x,y)}{\partial y} + O(h^2)
-\end{align*}
-\begin{align}
+\notag
+\\
 F(x,y,h)
 &=
 af(x,y) + bf(x+\alpha h, y + \beta h f(x,y))
@@ -425,7 +425,7 @@ af(x,y) + bf(x+\alpha h, y + \beta h f(x,y))
 \\
 &=
 (a+b)f(x,y) + \biggl(\alpha b\frac{\partial f(x,y)}{\partial x}
-+ \beta b\frac{\partial f(x,y)}{\partial y} f(x,y))\biggr)h+O(h^2)
++ \beta b\frac{\partial f(x,y)}{\partial y} f(x,y))\biggr)h+O(h^2).
 \label{numerik:inkrementF}
 \end{align}
 Damit dies bis zur zweiten Ordnung mit dem Inkrement zwischen $x$ und $x+h$
@@ -474,7 +474,7 @@ Daraus erh"alt man die Rekursionsformel
 \begin{equation}
 y_{k+1}=y_k+\frac{h}2\biggl(
 f(x_k,y_k) + f(x_k+h, y_k + hf(x_k,y_k))
-\biggr)
+\biggr).
 \label{numerik:simplified-runge-kutta}
 \end{equation}
 In diesem Verfahren f"uhrt man also zuerst einen Eulerschritt der L"ange
@@ -672,7 +672,7 @@ y_{n+1}
 \frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
 f(x_{n+1},y_{n+1})
 +O(h^3)
-\biggr)
+\biggr).
 \end{align*}
 Sie muss bis zur zweiten Ordnung mit der Taylorreihe "ubereinstimmen:
 \begin{align*}
@@ -686,19 +686,19 @@ y_{n+1}+hf(x_{n+1},y_{n+1})+\frac12h^2\biggl(
 +
 \frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
 f(x_{n+1},y_{n+1})
-\biggr)
+\biggr).
 \end{align*}
 Vergleicht man Koeffizienten, findet man
 \[
 \begin{aligned}
-a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32
+a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32.
 \end{aligned}
 \]
 Aus der Formel \eqref{numerik:zweischrittansatz} wird somit die
 Iterationsformel
 \begin{equation}
 y_{n+2}=y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
-- \frac12 f(x_{n\mathstrut},y_{n\mathstrut})\biggr)
+- \frac12 f(x_{n\mathstrut},y_{n\mathstrut})\biggr).
 \end{equation}
 Diese Rekursionsformel definiert ein quadratisches Verfahren, das
 {\em Adams-Bashforth-Verfahren} mit $s=2$.
@@ -790,7 +790,7 @@ y_{n+2}=y_{n+1}+h\biggl(\frac32 (-\alpha y_{n+1})-\frac12(-\alpha y_n)\biggr)
 \biggl(1-\frac32\alpha h\biggr)
 y_{n+1}
 +\frac{\alpha h}{2}
-y_{n\mathstrut}
+y_{n\mathstrut}.
 \]
 Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
 sie mit Hilfe eines Potenzansatzes l"osen. 
@@ -846,7 +846,7 @@ Wir verwenden diese Approximation mit $x_0=(1-3\delta)^2$ und $x-x_0=-4\delta$
 \\
 &=1-3\delta+2\delta + 2\delta^2+O(\delta^3)
 \\
-&=1-3\delta+2\delta + \frac12(2\delta)^2+O(\delta^3)
+&=1-3\delta+2\delta + \frac12(2\delta)^2+O(\delta^3).
 \end{align*}
 Damit k"onnen wir jetzt $\lambda_+$ bis zur zweiten Ordnung berechnen:
 \begin{align*}
@@ -903,7 +903,7 @@ y_2\\
 \displaystyle -y_1+\sin\frac{x}{10}
 \end{pmatrix}
 =
-f(x,Y)
+f(x,Y).
 \label{numerik:beispieldgl}
 \end{equation}
 Ein numerisches Verfahren braucht also als Input eine Anfangsbedingung
@@ -1156,7 +1156,7 @@ m\frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
 =
 \begin{pmatrix}
 0\\-mg
-\end{pmatrix}
+\end{pmatrix}.
 \label{numerik:ball-dgl}
 \end{equation}
 Die Masse $m$ kann herausgek"urzt werden.
@@ -1621,7 +1621,7 @@ J_{31}&J_{32}&J_{33}&J_{34}\\
 J_{41}&J_{42}&J_{43}&J_{44}\\
      0&     0&     0&     0\\
      0&     0&     0&     0
-\end{pmatrix}
+\end{pmatrix}.
 \end{equation}
 \begin{table}
 \centering
@@ -1656,7 +1656,7 @@ J(x) = \begin{pmatrix}
 0&1&0&x\\
 0&0&1&0\\
 0&0&0&1
-\end{pmatrix}
+\end{pmatrix}.
 \end{equation}
 Die L"osung $J_{13}(x)=x$ und $J_{24}=x$.
 Damit haben wir die n"otige Information, um den Newton-Algorithmus
