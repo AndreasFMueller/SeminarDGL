@@ -150,7 +150,14 @@ $$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \text{const}^2 = (((n + dn)) \cdot \sin(\alp
 Nun k"onnte man diese Gleichung numerisch l"osen. 
 Wir m"ussen allerdings erst noch den Startwinkel $\alpha_0$ ber"ucksichtigen bzw. $y'(x_0)$.
 Da in einer Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist sondern sich in der Konstanten $\text{const}$ versteckt, leiten wir die Gleichung nach $x$ ab und erhalten:
-$$\frac{d}{dx} \text{const}^2 = 0 = \frac{d}{dx} \frac{n^2}{y'^2 + 1}  = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right)$$
+\begin{equation}
+\begin{aligned}
+\frac{d}{dx} \text{const}^2 
+& = \frac{d}{dx} \frac{n^2}{y'^2 + 1}  \\
+0 
+& = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right)
+\end{aligned}
+\end{equation}
 Die jetzt vorliegende Gleichung hat zweite Ordnung und der Anfangswinkel $\alpha_0$ ist nun Teil der Anfangsbedingung. 
 Aus der Gleichung geht hervor, dass der Ausdruck in den Klammern ebenfalls gleich $0$ sein muss.
 $$0 = n' y'^2 + n' - n y' y''$$
@@ -249,9 +256,11 @@ Damit die DGL auch korrekte Anfangsbedingungen besitzt, leiten wir die Gleichung
 
 \begin{equation}
 \begin{aligned}
-0 = \frac{d}{d\varphi} \text{const}^2 
+\frac{d}{d\varphi} \text{const}^2 
 & = \frac{d}{d\varphi}\frac{(n r)^2}{\left(\displaystyle\frac{r'}{r}\right)^2 + 1} \\
+0 = 
 & = \frac{2 r^2 n r' n'}{\displaystyle\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\displaystyle\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \left(\displaystyle\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\right)}{\left(\displaystyle\frac{r'^2}{r^2}+1\right)^2} \\
+\rightarrow 0 = 
 & = \frac{2n r' r}{\displaystyle\frac{r'^2}{r^2}+1} \cdot \left( n' + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} \right).
 \end{aligned}
 \end{equation}
