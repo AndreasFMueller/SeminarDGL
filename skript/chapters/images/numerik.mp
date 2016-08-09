@@ -229,15 +229,24 @@ z14 = f(z33);  z24 = z10 + hh * z14;
 z40 = (z11 + 2 * z12 + 2 * z13 + z14);
 z35 = z10 + z40 * h/6;
 
-draw (z10--z35) scaled u withcolor green;
+draw (z10--z35) scaled u withcolor (0,0.8,0);
 
-draw      (z20--z31) scaled u withcolor 0.9;
+color lightline;
+lightline := (0.5,0.5,0.5);
+
+pickup pencircle scaled 1pt;
+draw      (z20--z31) scaled u withcolor lightline;
+pickup pencircle scaled 1.4pt;
 drawarrow (z20--z21) scaled u; label.top(btex $k_1$ etex, z21 scaled u);
 
-draw      (z20--z32) scaled u withcolor 0.9;
+pickup pencircle scaled 1pt;
+draw      (z20--z32) scaled u withcolor lightline;
+pickup pencircle scaled 1.4pt;
 drawarrow (z20--z22) scaled u; label.top(btex $k_2$ etex, z22 scaled u);
 
-draw      (z20--z33) scaled u withcolor 0.9;
+pickup pencircle scaled 1pt;
+draw      (z20--z33) scaled u withcolor lightline;
+pickup pencircle scaled 1.4pt;
 drawarrow (z20--z23) scaled u; label.bot(btex $k_3$ etex, z23 scaled u);
 
 drawarrow (z20--z24) scaled u; label.bot(btex $k_4$ etex, z24 scaled u);
@@ -269,15 +278,15 @@ label.llft(btex $y_k + hk_3$ etex, z33 scaled u);
 pickup pencircle scaled 4pt;
 
 draw z10 scaled u;
-draw z31 scaled u;
-draw z32 scaled u;
-draw z33 scaled u;
+draw z31 scaled u withcolor blue;
+draw z32 scaled u withcolor blue;
+draw z33 scaled u withcolor blue;
 %draw z20 scaled u;
 %draw z31 scaled u;
 %draw z32 scaled u;
 %draw z33 scaled u;
 
-draw z35 scaled u withcolor green;
+draw z35 scaled u withcolor (0,0.8,0);
 
 pickup pencircle scaled 2.5pt;
 
