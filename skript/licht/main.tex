@@ -155,14 +155,14 @@ Da in einer Differentialgleichung erster Ordnung die Steigung nicht Teil der Anf
 \frac{d}{dx} \text{const}^2 
 & = \frac{d}{dx} \frac{n^2}{y'^2 + 1}  \\
 0 
-& = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'(y'^2 + 1) - n y' y'' \right)
+& = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'y'(y'^2 + 1) - n y' y'' \right)
 \end{aligned}
 \end{equation}
 Die jetzt vorliegende Gleichung hat zweite Ordnung und der Anfangswinkel $\alpha_0$ ist nun Teil der Anfangsbedingung. 
 Aus der Gleichung geht hervor, dass der Ausdruck in den Klammern ebenfalls gleich $0$ sein muss.
-$$0 = n' y'^2 + n' - n y' y''$$
+$$0 = y' \cdot \left( n' ( y'^2 + 1 ) - n y'' \right)$$ 
+Die L"osung $y'=0$ vernachl"assigen wir, da sie einen horizontalen Strahl entspricht, der in einer realen, inhomogenen Atmosph"are so nicht auftritt.
 Wir l"osen nach $y''$ auf und erhalten 
-$$y''(x) = \frac{n'}{n} \cdot \left( y' + \frac{1}{y'} \right)$$
 \begin{equation} \label{eq:planar_DGL}
 y''(x) = \frac{n'}{n} \cdot \left( y'^2 + 1\right)
 \end{equation}
@@ -300,14 +300,14 @@ Nun setzen wir dies in die Differentialgleichung (\ref{eq:sphere_allg}) ein und 
 \begin{figure}
 \centering
 \includegraphics[scale=1]{licht/standalone/fig_sphere_simulation1.pdf}
-\caption{Numerische L"osung der Exponentiellen Approximation mit $\mu = 1, \: \sigma = 0.5$. 
+\caption{Numerische L"osung der exponentiellen Approximation mit $\mu = 1, \: \sigma = 0.5$. 
 \label{fig:sphaerisches_modell2}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[scale=1]{licht/standalone/fig_sphere_simulation2.pdf}
-\caption{Numerische L"osung der Exponentiellen Approximation mit $\mu = 1, \: \sigma = 1$. \label{fig:sphaerisches_modell3} }
+\caption{Numerische L"osung der exponentiellen Approximation mit $\mu = 1, \: \sigma = 1$. \label{fig:sphaerisches_modell3} }
 \end{figure}
 
 \newpage
