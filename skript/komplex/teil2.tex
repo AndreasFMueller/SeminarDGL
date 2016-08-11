@@ -13,9 +13,9 @@ Abschliessend erfolgt die Auflösung der kompensierten Funktion nach der gesucht
 Im Falle einer diagonalisierbaren Matrix 
 \[A'=\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}\]
 lassen sich beide Lösungen unabhängig voneinander betrachten. 
-\subsubsection{Verhänderung durch analytische Fortsetzung}
+\subsubsection{Veränderung durch analytische Fortsetzung}
 Für $j=1,2$ gilt
-\[\sk w_j = \lambda_j w_j\]
+\[\sk w_j = \lambda_j w_j.\]
 Die Lösungen werden durch Umlaufen des Nullpunktes also mit den Faktoren $\lambda_j$ multipliziert.
 
 \subsubsection{Funktion mit ähnlichem Verhalten}
@@ -37,7 +37,7 @@ Es folgt
 = e^{\varrho_j \log z}  e^{2\pi i\varrho_j}
 = z^{\varrho_j} e^{2\pi i\frac{1}{2\pi i}\log \lambda_j} 
 = z^{\varrho_j} \lambda_j
-= f(z) \lambda_j
+= f(z) \lambda_j.
 \end{align*}
 Durch diese Definition für $\varrho_j$ wird die Funktion $f(z)$ durch die analytische Fortsetzung also ebenfalls mit dem Faktor $\lambda_j$ multipliziert. 
 
@@ -48,13 +48,13 @@ Nun lässt sich eine neue Funktion bilden, die beim Umlaufen des Nullpunktes ein
 = \frac{\lambda_j w_j}{z^{\varrho_j}\lambda_j}
 = \frac{w_j}{z^{\varrho_j}}.
 \]
-Diese Funktion kann in eine Laurent-Reihe entwickelt werde
-\[\frac{w_j}{z^{\varrho_j}} = \mathcal{L}_j(z).\]
+Diese Funktion kann in eine Laurent-Reihe
+\[\frac{w_j}{z^{\varrho_j}} = \mathcal{L}_j(z)\]
+entwickelt werden.
 
 \subsubsection{Resultat}
 Auflösen nach $w_j$ liefert 
 \[ w_j = z^{\varrho_j}\mathcal{L}_j(z).\]
-
 Bei der Besselschen Differentialgleichung trifft dieser Fall bei nicht-ganzzahligen $\nu\in\mathbb{C}\setminus\mathbb{Z}$ auf.
 \index{Besselsche Differentialgleichung}
 \index{Differentialgleichung!Besselsche}
@@ -73,16 +73,16 @@ führt zu den Gleichungen
 \end{array}
 \]
 
-\subsubsection{Verhänderung durch analytische Fortsetzung}
+\subsubsection{Veränderung durch analytische Fortsetzung}
 Die Gleichung für $w_1$ ist identisch mit derjenigen aus dem diagonalisierbaren Fall.
 $w_1$ wird lediglich mit dem Faktor $\lambda$ multipliziert.
 Die Lösung für $w_1$ lässt sich also auf dieselbe Art finden, wie im diagonalisierbaren Fall.
 Die zweite Lösung $w_2$ wird ebenfalls mit $\lambda$ multipliziert, enthält aber zusätzlich noch die erste Lösung $w_1$ als 'Störterm'.
 
-Als erstes sei die analytische Fortsetzung des Verhältnisses $\frac{w_2}{w_1}$ betrachtet.
+Als erstes sei die analytische Fortsetzung des Verhältnisses $\frac{w_2}{w_1}$ betrachtet:
 \[\sk \left(\frac{w_2}{w_1}\right)
 = \frac{\lambda w_2+w_1}{\lambda w_1} 
-= \frac{w_2}{w_1} + \frac{1}{\lambda}\]
+= \frac{w_2}{w_1} + \frac{1}{\lambda}.\]
 Die analytische Fortsetzung erzeugt einen Summanden $\frac{1}{\lambda}$.
 
 \subsubsection{Funktion mit ähnlichem Verhalten}
@@ -114,7 +114,7 @@ Diese Differenz wird durch die analytische Fortsetzung also nicht verändert und
 \subsubsection{Resultat}
 
 Mit $a = \frac{1}{2\pi i\lambda}$ folgt
-\[\frac{w_2}{w_1} - a\log z =\mathcal{L}_2'(z)\]
+\[\frac{w_2}{w_1} - a\log z =\mathcal{L}_2'(z).\]
 Nun verbleibt nur noch, diese Gleichung nach $w_2$ aufzulösen:
 \[ w_2 = w_1 \mathcal{L}_2'(z) + a w_1 \log z.\]
 Die Form von $w_1$ ist bereits bekannt und kann beim ersten Summanden eingefügt werden:

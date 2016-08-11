@@ -107,7 +107,7 @@ Für beide Terme auf der rechten Seite lässt sich die Differentialgleichung in 
 			\nonumber \dot{a} ^2 &= \frac{\Lambda c^2 a^2}{3}  \\
 			\nonumber \dot{a} &= \underbrace{\sqrt{\frac{\Lambda c^2}{3}}}_{\displaystyle=E} a \\
 			\nonumber \dot{a} &= E \cdot a \\
-			a &= a_0 \cdot e^{E \: t} \label{friedmann:Lambda}
+			a &= a_0 \cdot e^{Et}.\label{friedmann:Lambda}
 		\end{align}
 	
 	
@@ -116,9 +116,9 @@ Mit $\kappa = 0$ gibt es zwei mögliche Ausprägungen für das Universum, entwed
 	\item $\Lambda = 0$ :
 		\begin{align}
 			\nonumber \left(\frac{\dot{a}}{a}\right) ^2 &= - \frac{\kappa c^2}{a^2}\\
-			\nonumber \dot{a} ^2 &= - \kappa \, c^2 \\
-			\nonumber \dot{a} &= \sqrt{- \kappa}\, c \\
-			a &= \sqrt{- \kappa}\, c \cdot t + a_0\label{friedmann:Kappa}
+			\nonumber \dot{a} ^2 &= - \kappa c^2 \\
+			\nonumber \dot{a} &= \sqrt{- \kappa} c \\
+			a &= \sqrt{- \kappa}\, c \cdot t + a_0.\label{friedmann:Kappa}
 		\end{align}
 		
 Auch hier gibt es zwei mögliche Ausprägungen. Wenn $\kappa = 0$, dann ist das Universum statisch und hat für alle Zeit den Skalenfaktor $a_{0}$, wenn $\kappa > 0$ wächst der Skalenfaktor linear mit der Zeit.
@@ -142,7 +142,7 @@ Wie vorher schon angedeutet, steht $\rho$ für die Dichte des Universums. Ist da
 \subsubsection{Diskussion der Lösungen}
 Wir finden also für jeden Term in der Gleichung eine andere Beschreibung der Bewegung des Universums. Betrachten wir die Anfangsgleichung genauer, können wir herauslesen, welcher Term bei einer gegebenen Grösse $a$ dominiert.
 \begin{alignat}{5}
-	\left(\frac{\dot{a}}{a}\right) ^2 &= \;\; &\frac{8 \pi G}{3}&\;\rho\; &-\;\frac{\kappa c^2}{a^2}\; &+ \;\frac{\Lambda c^2}{3}\\
+	\left(\frac{\dot{a}}{a}\right) ^2 &= \;\; &\frac{8 \pi G}{3}&\;\rho\; &-\;\frac{\kappa c^2}{a^2}\; &+ \;\frac{\Lambda c^2}{3}.\\
 	\intertext{Wir setzen für $\rho$ den Ausdruck aus (\ref{friedmann:dichte}) ein:}
 	\left(\frac{\dot{a}}{a}\right) ^2 &= \;\;&\frac{8 \pi G}{3} &\frac{\mu}{a^3}\; &-\;\frac{\kappa c^2}{a^2}\; &+\; \frac{\Lambda c^2}{3}.
 \end{alignat}
@@ -230,18 +230,18 @@ Wir wählen die Konstanten $\mu$ und $R$ so, dass die Gleichung folgendermassen 
 \subsection{Diskussion der Differentialgleichung}
 Wir erinnern uns, die Konstante $E$ steht für die Gesamtenergie des Universums und kann positiv, negativ oder null sein.
 \begin{enumerate}
-	\item Beginnen wir mit dem einfachsten Fall und setzen $E = 0$.
-	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}\]
-	Diese Gleichung wurde in \ref{friedmann:UniversumMitMasse} schon gelöst. Ist die Gesamtenergie $E$ null, dehnt sich das Universum gemäss  (\ref{friedmann:Masse}) aus. Je grösser also das Universum wird, desto kleiner wird die Geschwindigkeit der Ausdehnung.
-	\[\lim_{t\to\infty} \dot{a}(t) = 0\]
-	\item Für den zweiten Fall ist $E > 0$.
-	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}\]
+	\item Beginnen wir mit dem einfachsten Fall und setzen $E = 0$, also
+	\[\left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3}.\]
+	Diese Gleichung wurde in \ref{friedmann:UniversumMitMasse} schon gelöst. Ist die Gesamtenergie $E$ null, dehnt sich das Universum gemäss  (\ref{friedmann:Masse}) aus. Je grösser also das Universum wird, desto kleiner wird die Geschwindigkeit der Ausdehnung:
+	\[\lim_{t\to\infty} \dot{a}(t) = 0.\]
+	\item Für den zweiten Fall ist $E > 0$:
+	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} + \frac{E}{a^2}.\]
 	Betrachten wir die rechte Seite, bemerken wir den Potenzunterschied im Nenner. Daraus folgt, dass für {\em kleine} $a$'s der {\em erste} Term dominiert, während der {\em zweite} Term für {\em grosse} $a$'s dominiert. Das kleine Universum verhält sich also wie für $E = 0$. Das grosse Universum hingegen verhält sich wie das massenlose Universum in \ref{friedmann:masselosesUniversum} mit $\Lambda = 0$.  
 	
 	\item Als letztes soll $E < 0$ sein
 	\[\ \left(\frac{\dot{a}}{a} \right)^2 = \frac{1}{a^3} - \frac{|E|}{a^2} \qquad \Leftrightarrow \qquad \dot{a}^2 = \frac{1}{a} - |E|\]
 	\begin{equation}
-	\dot{a} = \pm \sqrt{\frac{1}{a} - |E|}
+	\dot{a} = \pm \sqrt{\frac{1}{a} - |E|}.
 	\end{equation}
 	Diese Gleichung ist wiederum nicht in geschlossener Form lösbar. Mithilfe des Phasenportraits in Abbildung \ref{friedmann:phasenportrait} kann die Lösung aber ausgearbeitet werden. Wir konzentrieren uns zuerst auf die Kurven und Pfeile für den Energiewert $E = -\frac{1}{2}$. Da die Differentialgleichung nichtlinear ist, entstehen zwei Phasenportraits.  Die rote Kurve beschreibt die Funktion \[f(a) = + \sqrt{\frac{1}{a} - \frac{1}{2}},\] die blaue Kurve $-f(a)$. Die Pfeile im grau hinterlegten Bereich zeigen, wie sich der Skalenfaktor für $f(a)$ und $-f(a)$ verhält. Je länger ein Pfeil ist, desto grösser ist die Veränderung. Die Länge des Pfeils entspricht der Länge der jeweiligen vertikalen roten oder blauen Linie. Gehen wir von der Anfangsbedingung $a_0 = 0^+$ aus, können wir folgende Überlegung machen:
 	Das Universum dehnt sich am Anfang ziemlich stark aus, da $a$ klein ist. Irgendwann mischt sich die Gesamtenergie $E$ ins Spiel, die Expansion wird mehr und mehr ausgebremst. Die Geschwindigkeit der Ausdehnung erreicht den Wert null, sobald sich die beiden Terme unter der Wurzel aufheben. Das Universum kommt also zum Stillstand. 
@@ -269,7 +269,7 @@ In der Abbildung \ref{friedmann:universumMasse} sind die drei Szenarien eingezei
 \subsection*{Energiedichte}
 Wie wir wissen, existiert im Weltall nicht nur sichtbare, sondern auch dunkle Materie und Strahlung. Dunkle Materie verhält sich in Bezug auf die gravitative Wirkung ähnlich wie sichtbare Materie, und deshalb wird im Folgenden nicht weiter darauf eingegangen.
 Anders verhält es sich mit der Strahlung in Bezug auf die Dynamik des Universums. Wir schreiben
-\[ E_\text{str} = \frac{h c}{\lambda} \]
+\[ E_\text{str} = \frac{h c}{\lambda}, \]
 wobei $h$ die {\em Planksche Konstante}, $c$ die {\em Lichtgeschwindigkeit} und $\lambda$ die {\em Wellenlänge} des Photons ist.
 Nun ist die Energie der Strahlung (z.B. eines Photons) in einem sich ausdehnenden Universum nicht konstant, sondern ändert sich mit der Zeit. 
 Denn, vergrössert sich die Raumzeit während der Laufzeit, so geschieht dies auch mit der Wellenlänge des Strahls. Das bedeutet, dass die Energie eines Photons umgekehrt proportional zum Skalenfaktor $a$ ist. Für die Energiedichte der Strahlung bedeutet dies, dass sie sich nicht nur kubisch wie bei der baryonischen Materie ändert, sondern mit vierter Potenz:

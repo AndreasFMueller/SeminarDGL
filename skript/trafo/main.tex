@@ -275,22 +275,19 @@ Die Matrix $M$ ist eine symmetrische Matrix, was f"ur weitere Berechnungen wesen
 \end{align}
 }
 
-Dieses System mehrerer Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas "ubersichtlicher darstellen l"asst. 
+Dieses System mehrerer Differentialgleichungen kann auch mit Matrizen und Vektoren geschrieben werden, welches sich etwas "ubersichtlicher darstellen l"asst:
 
 \begin{equation}
-	M \dot x = N x + E
+	M \dot x = N x + E.
 	\label{trafo:matricesDGL}
 \end{equation}
-
 Wird die Massenmatrix $M$ auf die rechte Seite der Gleichung \eqref{trafo:matricesDGL} dividiert, ergibt dies
-
 \begin{equation}
-	\dot{x} = M^{-1}N x + M^{-1} E = A x + B
+	\dot{x} = M^{-1}N x + M^{-1} E = A x + B,
 \end{equation}
 welches die allgemein bekannte und auch l"osbare Zustandsraumdarstellung \index{Zustandsraumdarstellung} (engl. state space) ist.
 
 Das Problem scheint bereits gel"ost zu sein, wenn sich die Massenmatrix $M$ invertieren l"asst. In der Theorie w"are dies tats"achlich auch machbar, jedoch sehr aufw"andig. Weil auch gewisse Eigenwerte zu klein sind, explodiert die L"osung und kann somit mit diesem Ansatz nicht gel"ost werden.
-
 Folglich muss ein Ansatz gefunden werden, welcher die Massenmatrix $M$ m"oglichst ressourcenschonend invertiert und eine numerisch konvergierende L"osung ergibt. 
 
 
@@ -319,7 +316,8 @@ Eine M"oglichkeit stellt die Singular Value Decomposition, zu Deutsch Singul"arw
 				&  \vdots  &          &        & \vdots &   \\				
 				\end{array}
 			\right) 
-			\hspace{2cm}\sigma_1 \geq \sigma_2 \geq \dots \sigma_r > 0. 
+			\qquad\text{mit}\qquad
+			\sigma_1 \geq \sigma_2 \geq \dots \sigma_r > 0. 
 	\end{equation*}
 \end{satz}
 F"ur die Herleitung und den Beweis des Satzes \ref{trafo:SVDTheorem} wird auf die Fachliteratur verwiesen \cite{trafo:Watkins}.
@@ -335,7 +333,7 @@ berechnet werden können, wobei $\lambda_i$ die Eigenwerte von $MM^\top$ sind un
 	\left( 
 		\begin{array}{cccc}
 		u_1 & u_2 & \dots & u_n  \\		
-		\end{array}
+		\end{array}.
 	\right)
 \end{equation*}
 
@@ -379,15 +377,16 @@ Die rechteckige Diagonalmatrix $S$ wird wegen der symmetrischen Matrix $M$ zu ei
 				& & & & & 0 \\				
 				\end{array}
 			\right) 
-			\hspace{2cm}\lambda_1 \geq \lambda_2 \geq \dots \lambda_{\text{tol}} > 0. 
+			\qquad\text{mit}\qquad
+			\lambda_1 \geq \lambda_2 \geq \dots \lambda_{\text{tol}} > 0. 
 \end{equation*}
 Die Matrix $S_\text{tol}$ ist eine reduzierte Matrix, welche nur die Singul"arwerte bis zum Toleranzwert beinhaltet, die kleineren Werte werden durch $0$ ersetzt. Diese Matrix l"asst sich noch nicht invertieren, da bekanntlich nicht durch Null geteilt werden darf. Die Pseudoinverse $S{_\text{tol}}^\dagger$ löst dieses Problem, indem sie die vorhandene Werte invertiert und die Nullen stehen l"asst.\footnote{Matlab bietet bereit eine Funktion \texttt{pinv(M,tol)} an, welche jedoch langsamer wie die Implementation in \ref{trafo:SVD} ist und deshalb nicht verwendet wird.}
 %Somit ist $S{_\text{tol}}^\dagger$ die Pseudoinverse der reduzierten Singul"ar-Matrix.
 
 \subsubsection{Inverse}
-Als n"achstes gilt es, eine einfache 'Inverse' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst. \cite{trafo:Watkins}
+Als n"achstes gilt es, eine einfache 'Inverse' der Matrix $M$ zu finden. Bis anhin wurde die Singul"arwertzerlegung angewendet, in der Annahme, schlussendlich eine Vereinfachung der Inversion zu finden. Die Inversion zeigt tats"achlich, dass sich einiges vereinfachen l"asst \cite{trafo:Watkins}:
 \begin{equation*}
-	M^{-1} = \left(U S{_\text{tol}}^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S{_\text{tol}}^\dagger\right)^{-1} U^{-1}
+	M^{-1} = \left(U S{_\text{tol}}^\dagger V^\top\right)^{-1} = \left(V^\top\right)^{-1} \left(S{_\text{tol}}^\dagger\right)^{-1} U^{-1}.
 \end{equation*}
 Da die Matrizen $U$ und $V$ orthogonal sind, gilt $U^{-1} = U^\top$ und $\left(V^\top\right)^{-1} = V$. Dadurch kann die Gleichung als 
 \index{Matrix!orthogonal}%
@@ -432,17 +431,17 @@ Damit der Wert der Toleranz bestimmt werden kann, m"ussen ein paar Testl"osungen
 \index{exakte L"osung}
 Eine stabile L"osung konnte mit dem \texttt{ode45}-L"osungsverfahren von Matlab bereits gefunden werden, allerdings ist der ben"otigte Zeitaufwand viel zu hoch. Aus diesem Grunde stellt sich die Frage, ob das Gleichungssystem \eqref{trafo:symmetricalDGL} nicht auch exakt gel"ost werden kann.
 
-Als Motivation wird eine gew"ohnliche Differentialgleichung erster Ordnung in einer Dimension betrachtet. 
+Als Motivation wird eine gew"ohnliche Differentialgleichung erster Ordnung in einer Dimension betrachtet:
 \begin{equation*}
-	\dot{x}(t) = a x(t) + b(t)
+	\dot{x}(t) = a x(t) + b(t).
 	\label{trafo:1D_DGL}
 \end{equation*}
-Diese Differentialgleichung l"asst nach
+Diese Differentialgleichung l"asst sich mit
 \begin{equation*}
 	x_h(t) = x_0 e^{\lambda t}
 	\label{trafo:homogene_Loesung}
 \end{equation*}
-aufl"osen, wobei $x_h$ die homogene L"osung ist. Den Fehlerterm $b(t)$ wird im n"achsten Abschnitt etwas genauer betrachtet. 
+l"osen, wobei $x_h$ die homogene L"osung ist. Den Fehlerterm $b(t)$ wird im n"achsten Abschnitt etwas genauer betrachtet. 
 
 Es gilt nun, die Matrix $A$ zu diagonalisieren und somit zu entkoppeln. Pr"adestiniert daf"ur w"are wiederum die Singul"arwertzerlegung. In der Anwendung zeigte sich leider, dass die Resultate aufgrund der unsymmetrischen Matrix $A$ nicht mit dem Erwarteten "ubereinstimmen und deshalb muss einen anderen Weg gefunden werden. Eine weitere M"oglichkeit ist die Eigenwertzerlegung. Wird die Eingangsinduktivit"at $L_\mathrm{in}$ in der Gleichung \eqref{trafo:symmetricalDGL} nicht allzu klein gew"ahlt, l"asst sich das System tats"achlich l"osen.
 
