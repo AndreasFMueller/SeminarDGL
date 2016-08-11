@@ -157,19 +157,19 @@ pickup pencircle scaled 4pt;
 draw z0 withcolor red;
 pickup pencircle scaled 3pt;
 draw z0 withcolor white;
-label.urt(btex $X(0)$ etex, z0);
+label.ulft(btex $X(0)$ etex, z0);
 
 pickup pencircle scaled 4pt;
 draw z30 withcolor red;
 pickup pencircle scaled 3pt;
 draw z30 withcolor white;
-label.llft(btex $X(\tau)$ etex, z30);
+label.urt(btex $X(\tau)$ etex, z30);
 
 pickup pencircle scaled 4pt;
 draw z31 withcolor 0.8;
 pickup pencircle scaled 3pt;
 draw z31 withcolor white;
-label.lrt(btex $X(T)$ etex, z31);
+label.llft(btex $X(T)$ etex, z31);
 
 endfig;
 

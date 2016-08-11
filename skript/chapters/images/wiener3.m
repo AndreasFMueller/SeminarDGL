@@ -7,8 +7,10 @@ global N = 2^10;
 global f = zeros(N + 1, 1);
 
 state = zeros(1, 625);
-state(1) = 48;
-rand("state", state);
+#state(1) = 51;
+#state(1) = 52;
+state(1) = 57;
+randn("state", state);
 
 sigma2 = 1;
 f(N + 1) = normrnd(0, sqrt(sigma2));

@@ -1,5 +1,5 @@
 #
-# wiener2.m -- simulation of wiener prozess
+# wiener2.m -- simulation of wiener process, escape time
 #
 # (c) 2016 Prof Andreas Müller, Hochschule Rapperswil
 #
@@ -9,8 +9,14 @@ f = zeros(N + 1, n);
 sigma2 = 1;
 
 state = zeros(1, 625);
-state(1) = 49;
-rand("state", state);
+#state(1) = 48;
+#state(1) = 53;
+#state(1) = 65;
+#state(1) = 69;
+#state(1) = 76;
+#state(1) = 77;
+state(1) = 78;
+randn("state", state);
 
 f(N + 1,1) = normrnd(0, sqrt(sigma2));
 f(N + 1,2) = normrnd(0, sqrt(sigma2));

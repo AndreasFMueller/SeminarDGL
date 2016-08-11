@@ -104,6 +104,7 @@ Sehen wir am Ufer stehend einen Fisch im stillen Wasser eines Teiches, schwimmt 
 \index{Fisch}%
 \index{Teich}%
 Der Speer unserer Vorfahren w"urde ihn verfehlen, zielten sie direkt auf den Fisch.
+\index{Speer}%
 Auf dem Weg vom Fisch zu unserem Auge durchbricht der Lichtstrahl den "Ubergang zwischen Wasser und Luft. 
 Diese beiden Medien haben unterschiedliche Brechungsindizes $n_W$ und $n_L$, wodurch der Lichtstrahl an der Wasseroberfl"ache abgelenkt wird.
 1621 fand auch der Mathematiker Snellius die nach ihm benannte zugrunde liegende Gesetzm"assigkeit:
@@ -139,7 +140,7 @@ Gleiches setzen wir f"ur Ein- und Ausfallswinkel um.
 F"ur jeden "Ubergang zwischen zwei Luftschichten k"onnen wir somit das Brechungsgesetz wie folgt formulieren:
 
 \begin{equation} \label{eq:13_1}
-  n \cdot \sin(\alpha) = (n + dn) \cdot \sin(\alpha + d\alpha) = \text{const}
+  n \cdot \sin(\alpha) = (n + dn) \cdot \sin(\alpha + d\alpha) = \text{const.}
 \end{equation}
 
 Nun stellen wir den Weg des Lichstrahls mit $y(x_0) = y_0$ dar, wobei nun die Steigung $y'(x_0)$ der vertikalen Ausrichtung des Teleskops entspricht bzw. der Gegenwinkel von  $\alpha_0$ der H"ohe "uber dem Horizont.
@@ -155,23 +156,27 @@ $$ y'(x)^2 = \biggl(\frac{\cos \alpha}{\sin \alpha}\biggr)^2 = \frac{1 - \sin^2 
 \Rightarrow \qquad\sin^2 (\alpha) = \frac{1}{y'(x)^2 + 1}
 \end{equation}
 
-Dies ist nicht ohne Division durch $(y'(x)^2 + 1)$ m"oglich, weshalb nun die Bedingung: ($y'(x)^2 +1) \neq 0$ gilt, die aber immer erf"ullt ist.
+Dies ist nicht ohne Division durch $y'(x)^2 + 1$ m"oglich, weshalb nun die Bedingung: $y'(x)^2 +1 \neq 0$ gilt, die aber immer erf"ullt ist.
 Als n"achstes quadrieren wir das angepasste Brechungsgesetz \eqref{eq:13_1} und setzen \eqref{eq:13_2} ein:
-$$n^2 \cdot \frac{1}{y'(x)^2 + 1} = \text{const}^2 = (((n + dn)) \cdot \sin(\alpha + d\alpha))^2$$
+\[
+n^2 \cdot \frac{1}{y'(x)^2 + 1} = \text{const}^2 = (((n + dn)) \cdot \sin(\alpha + d\alpha))^2.
+\]
 Nun k"onnte man diese Gleichung numerisch l"osen. 
-Wir m"ussen allerdings erst noch den Startwinkel $\alpha_0$ ber"ucksichtigen bzw. $y'(x_0)$.
+Wir m"ussen allerdings erst noch den Startwinkel $\alpha_0$ ber"ucksichtigen bzw.~$y'(x_0)$.
 Da in einer Differentialgleichung erster Ordnung die Steigung nicht Teil der Anfangsbedingung ist sondern sich in der Konstanten $\text{const}$ versteckt, leiten wir die Gleichung nach $x$ ab und erhalten:
-\begin{equation}
-\begin{aligned}
+\begin{align}
 \frac{d}{dx} \text{const}^2 
-& = \frac{d}{dx} \frac{n^2}{y'^2 + 1}  \\
+& = \frac{d}{dx} \frac{n^2}{y'^2 + 1}
+\notag
+\\
 0 
-& = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'y'(y'^2 + 1) - n y' y'' \right)
-\end{aligned}
-\end{equation}
+& = \frac{2n}{y'^4 + 2y'^2 + 1} \cdot \left( n'y'(y'^2 + 1) - n y' y'' \right).
+\end{align}
 Die jetzt vorliegende Gleichung hat zweite Ordnung und der Anfangswinkel $\alpha_0$ ist nun Teil der Anfangsbedingung. 
-Aus der Gleichung geht hervor, dass der Ausdruck in den Klammern ebenfalls gleich $0$ sein muss.
-$$0 = y' \cdot ( n' ( y'^2 + 1 ) - n y'' )$$ 
+Aus der Gleichung geht hervor, dass der Ausdruck in den Klammern ebenfalls gleich $0$ sein muss:
+\[
+0 = y' \cdot ( n' ( y'^2 + 1 ) - n y'' ).
+\]
 Die L"osung $y'=0$ vernachl"assigen wir, da sie einen horizontalen Strahl entspricht, der in einer realen, inhomogenen Atmosph"are so nicht auftritt.
 Wir l"osen nach $y''$ auf und erhalten 
 \begin{equation} \label{eq:planar_DGL}
@@ -183,8 +188,9 @@ eine allgemeine Differentialgleichung f"ur Lichtstrahlen im planaren Modell.
 Um zu "uberpr"ufen, ob unser Modell plausibel ist, setzen wir verschiedene Funktionen f"ur $n(y)$ ein. 
 Wenn die Brechzahl konstant ist (also $\frac{dn}{dy} = 0$), dann sollte der Lichtstrahl nicht mehr gebrochen werden und auf einer Geraden weiterfahren. 
 Wenn man nun $n'(y)=0$ in die Gleichung \eqref{eq:planar_DGL} einsetzt, erh"alt man: 
-$$y''(x) = 0$$
+$y''(x) = 0.$
 Auch aus unserer Gleichung ist also erkennbar, dass sich der Lichtstrahl bei konstantem $n$ nicht bricht.
+
 Nun brauchen wir eine Funktion der Brechzahl in Abh"angigkeit von der H"ohe. 
 Der Brechungsindex der Luft h"angt unter anderem vom Luftdruck ab. 
 Dieser nimmt nach der barometrischen H"ohenformel mit der H"ohe exponentiell ab.
@@ -195,12 +201,13 @@ n(y) = 1 + \mu e^{- \sigma y}
 \qquad
 \Rightarrow
 \qquad
-\frac{dn}{dy} = -\sigma \mu \cdot e^{-\sigma y}
+\frac{dn}{dy} = -\sigma \mu \cdot e^{-\sigma y}.
 \]
 Nun setzen wir dies in die Differentialgleichung ein, und erhalten:
 \begin{equation} \label{eq:planar_DGL_n}
 y''(x) = \frac{-\sigma}{\displaystyle\frac{1}{\mu e^{-\sigma y}} + 1} \cdot ( y'^2 + 1 ).
 \end{equation}
+
 Wie man anhand der Vorzeichen in \eqref{eq:planar_DGL} erkennen kann, kr"ummt sich der Lichstrahl immer in Richtung des gr"osseren $n$.
 Bei dem von uns verwendeten $n(y)$ bedeutet dies, dass er sich nach unten kr"ummt. 
 Um dies besser darzustellen, wird die Brechzahl in den Grafiken grau eingezeichnet.
@@ -237,7 +244,7 @@ Weiterhin nehmen wir an, dass $n$ nur von der H"ohe "uber dem Boden abh"angt bzw
 So richten wir ein 2-dimensionales, polares Koordinatensystem so aus, dass das Teleskop auf $(r = r_0, \varphi=0)$ zu stehen kommt.
 Wir beginnen erneut mit dem Brechnungsgesetz von Snellius, welche wir auf unser sph"arisches Modell (Abbildung \ref{fig:sphere_skizze}) anpassen: 
 \begin{equation} \label{eq:snellius_spheric}
-n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha)
+n \cdot \sin \beta = (n + dn) \cdot \sin(\alpha + d\alpha).
 \end{equation}
 In dieser Gleichung kommen zwei verschiedene Winkel $\alpha$ und $\beta$ vor. 
 Um dies zu bereinigen verwenden wir den Sinussatz im Dreieck $OMN$
@@ -252,20 +259,22 @@ n r \sin \alpha = (n + dn)(r + dr) \sin (\alpha + d\alpha) = n_0 r_0 \sin \alpha
 Somit sind nicht mehr zwei verschiedene Winkel in der Formel vorhanden.
 Wie beim planaren Modell ist dieses Produkt konstant.  
 Aus dem Dreieck $MNP$ kann folgende Beziehung hergeleitet werden:
-$$\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{dr} = \frac{r}{r'}.$$
+\[
+\tan \alpha =  \frac{\overline{NP}}{\overline{MP}} = \frac{r \cdot d\varphi}{dr} = \frac{r}{r'}.
+\]
 Wir quadrieren die Gleichung und l"osen nach $\sin^2(\alpha)$ auf:
 \begin{align}
 \tan^2 \alpha &= \frac{\sin^2\alpha}{\cos^2\alpha} = \frac{\sin^2\alpha}{1-\sin^2\alpha} = \frac{1}{\displaystyle\frac{1}{\sin^2\alpha}-1} = \biggl( \frac{r}{r'} \biggr)^2
 \notag
 \\
-\Rightarrow \qquad\sin^2\alpha &= \frac{1}{\biggl( \displaystyle\frac{r'}{r} \biggr)^2 +1}
+\Rightarrow \qquad\sin^2\alpha &= \frac{1}{\biggl( \displaystyle\frac{r'}{r} \biggr)^2 +1}.
 \label{eq:sphere_sine}
 \end{align}
 \begin{figure} 
 \centering
 \includegraphics[scale=1]{licht/standalone/fig_sphere_skizze.pdf}
 \caption{Skizze des sph"arischen Modells. \label{fig:sphere_skizze}}
-\end{figure}
+\end{figure}%
 W"ahrend diesen Umformungen wurde durch $r'(\varphi)$ geteilt. 
 In den folgenden Gleichungen sei Vorausgesetzt, dass $r'(\varphi) \neq 0$. 
 Wie bereits zuvor in Kapitel \ref{ch:spezialfall} beschrieben muss dieser nicht separat behandelt werden.
@@ -275,12 +284,11 @@ Diese Gleichung ist eine Differentialgleichung erster Ordnung.
 Jedoch ist erneut der Term $\sin^2(\alpha_0)$ vorhanden, welcher von $r'(0)$ abh"angt. 
 Damit die Differentialgleichung auch korrekte Anfangsbedingungen besitzt, leiten wir die Gleichung nach $\varphi$ ab und erhalten:
 \begin{align*}
+0=
 \frac{d}{d\varphi} \text{const}^2 
 &=
 \frac{d}{d\varphi}\frac{(n r)^2}{\biggl(\displaystyle\frac{r'}{r}\biggr)^2 + 1}
-\\
-0
-&=
+=
 \frac{2 r^2 n r' n'}{\displaystyle\frac{r'^2}{r^2}+1}+\frac{2 r n^2 r'}{\displaystyle\frac{r'^2}{r^2}+1}-\frac{r^2 n^2 \biggl(\displaystyle\frac{2 r' r''}{r^2}-\frac{2 r'^3}{r^3}\biggr)}{\biggl(\displaystyle\frac{r'^2}{r^2}+1\biggr)^2}
 \\
 \Rightarrow\qquad
@@ -327,7 +335,7 @@ Nun verwenden wir erneut die exponentielle Approximation der Brechzahl:
 \[
 n(r) = 1 + \mu \cdot e^{-\sigma (r - r_0)}
 \qquad\Rightarrow\qquad
-n'(r) = -\sigma \mu e^{-\sigma (r - r_0)}
+n'(r) = -\sigma \mu e^{-\sigma (r - r_0)}.
 \]
 Nun setzen wir dies in die Differentialgleichung \eqref{eq:sphere_allg} ein und berechnen die L"osung numerisch (Abbildungen \ref{fig:sphaerisches_modell2} und \ref{fig:sphaerisches_modell3}). 
 
@@ -353,10 +361,14 @@ Nun setzen wir dies in die Differentialgleichung \eqref{eq:sphere_allg} ein und 
 \subsection{Spezialfall: Geschlossener Kreis}
 Beim Betrachten der Resultate f"allt auf, dass es m"oglicherweise eine Kombination aus Anfangsbedingungen und der Brechzahl gibt, welche das Licht in einem Kreis um den Planeten bricht. 
 Um diese Bedingungen zu finden, starten wir mit der Gleichung \eqref{eq:sphere_allg}:
-$$ n' + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} = 0$$
+\[
+n' + n - \frac{n r r'' - n r'^2}{r'^2 + r^2} = 0.
+\]
 Bei diesem Spezialfall ist $r''(\varphi) = 0$, $r'(\varphi) = 0$. 
 Setzen wir nun diese Bedingungen in die Gleichung ein, erhalten wir:
-$$n' + n = 0 \quad \Rightarrow \quad n'(r) = -n(r)$$
+\[
+n' + n = 0 \quad \Rightarrow \quad n'(r) = -n(r).
+\]
 Dies ist nun ebenfalls eine Differentialgleichung, welche die L"osung $n(r) = C \cdot e^{-r}$ hat.
 Alle diese L"osungen haben die Eigenschaft, dass man bei dieser Verteilung der Brechzahl ein waagerechter Lichtstrahl auf jeder H"ohe in einen geschlossenen Kreis gebrochen wird.
 
@@ -414,7 +426,7 @@ n'(r)
 \]
 Nun l"osen wir die obere Bedingung $-n' = n $, wenn $r < r_0$:
 \[
-2\mu \cdot (r_0 - r) = 1 + \mu(r_0 - r)^2
+2\mu \cdot (r_0 - r) = 1 + \mu(r_0 - r)^2.
 \]
 Wenn wir nun f"ur $(r_0 - r) = 1$ einsetzen, erhalten wir $\mu = 1$. 
 Bei der Simulation mit diesen Bedingungen ist ersichtlich, dass in einen Kreis gebrochen wird (Abbildung \ref{fig:sphere_special3}). 
@@ -500,10 +512,10 @@ Refraktion verglichen mit den Simulationsergebnissen. \label{fig:real_comparison
 \end{figure}
 
 \section{Fazit und Zusammenfassung}
-\rhead{Fazit und Zusammenfassung}
 Basierend auf dem Brechungsgesetz von Snellius haben wir uns zwei verschiedene Geometrien angesehen und verschiedene Modellierungen der Brechzahl darin simuliert und numerisch ausgewertet. 
 Die Ergebnisse liegen erfreulich nahe an den in der Praxis zur Bereinigung benutzten Werte.
-Die mathematischen Eigenschaften der verwendeten Gleichungen, zeigen erste Grenzf"alle an, welche tats"achlich auch besonderen Situationen in der Natur entsprechen.
+Die mathematischen Eigenschaften der verwendeten Gleichungen zeigen erste Grenzf"alle an, welche tats"achlich auch besonderen Situationen in der Natur entsprechen.
 
 \printbibliography[heading=subbibliography]
+\rhead{Fazit und Zusammenfassung}
 \end{refsection}

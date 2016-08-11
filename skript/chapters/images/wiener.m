@@ -8,7 +8,7 @@ f = zeros(N + 1, 1);
 
 state = zeros(1, 625);
 state(1) = 47;
-rand("state", state);
+randn("state", state);
 
 sigma2 = 1;
 f(N + 1) = normrnd(0, sqrt(sigma2));
