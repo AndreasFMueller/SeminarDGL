@@ -158,6 +158,10 @@
 \usepackage{caption}
 \usepackage[mode=buildnew]{standalone}
 \usepackage[backend=bibtex]{biblatex}
+% workaround for biblatex bug
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
 \addbibresource{friedmann/main.bib}
